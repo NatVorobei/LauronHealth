@@ -1,0 +1,329 @@
+<section class="two-product-section">
+    <div class="two-product-section__header">
+      {% if section.settings.title != blank %}
+        <h2 class="two-product-section__heading">{{ section.settings.title }}</h2>
+      {% endif %}
+    </div>
+   <div class="two-product-cards">
+    {% for block in section.blocks %}
+      {% assign product = all_products[block.settings.product] %}
+      {% if product %}
+        {% assign variant = product.variants.first %}
+        {% assign price = variant.price %}
+        {% assign compare_price = variant.compare_at_price %}
+        {% if compare_price and compare_price > price %}
+          {% assign has_discount = true %}
+          {% assign discount = compare_price | minus: price | times: 100.0 | divided_by: compare_price | round %}
+        {% else %}
+          {% assign has_discount = false %}
+        {% endif %}
+       
+          <div class="two-product-card">
+            <div class="two-product-card__container">
+            {% if block.settings.custom_image != blank %}
+              <img src="{{ block.settings.custom_image | img_url: '400x' }}" alt="">
+            {% endif %}
+  
+            <div class="two-product-card__content"> 
+              <h3 class="two-product-card__title">{{ product.title }}</h3>
+              <div class="two-product-card__ratings">
+                <div style="color: #FFC300;">{{ block.settings.rating }}</div>
+                <div class="two-product-card__ratings-text">{{ block.settings.reviews }}</div>
+              </div>
+              <hr class="two-product-card__divider" />
+              <ul class="two-product-card__features-list">
+                {% assign features = block.settings.features | split: ';' %}
+                {% for item in features %}
+                  <li>{{ 'checkbox-promo.svg' | inline_asset_content }} {{ item | strip }}</li>
+                {% endfor %}
+              </ul>
+      
+              <p class="two-product-card__caption">{{ block.settings.caption }}</p>
+              <div class="two-product-card__price-row">
+                {% if has_discount %}
+                  <div class="two-product-card__discount-badge">{{ block.settings.discount }} {{ discount }}%</div>
+                  <p class="two-product-card__prices">
+                    <s>{{ compare_price | money }}</s>
+                    <strong>{{ price | money }}</strong>
+                  </p>
+                {% else %}
+                  <p class="two-product-card__prices">
+                    <strong>{{ price | money }}</strong>
+                  </p>
+                {% endif %}
+              </div>
+  
+              <form method="post" action="/cart/add" class="two-product-card__actions">
+                <input type="hidden" name="id" value="{{ variant.id }}">
+                <button type="submit" class="two-product-card__actions-button">{{ 'lauron-cart.svg' | inline_asset_content }} КУПИТИ</button>
+              </form>
+            </div>
+          </div>
+          </div>
+        
+      {% endif %}
+    {% endfor %}
+    </div>
+  </section>
+  
+  <style>
+  .two-product-section {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 120px;
+  }
+  .two-product-section__header {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-right: 10px;
+    padding-left: 50px;
+    margin-bottom: 60px;
+    margin-top: 120px;
+  }
+  .two-product-section__heading {
+    font-family: Montserrat, sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    margin: 0;
+    line-height: 30px;
+  }
+  .two-product-card__container {
+    display: flex;
+    gap: 58px;
+  }
+  .two-product-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+  .two-product-card {
+    background: #F0F4F5;
+    padding: 40px 30px 40px 40px;
+    border-radius: 20px;
+    flex: 1 1 45%;
+  }
+  .two-product-card__title {
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 24px;
+  }
+  .two-product-card__ratings {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  .two-product-card__ratings-text {
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 500;
+    font-family: Inter, sans-serif;
+    color: #87878D;
+    text-decoration: underline;
+  }
+  .two-product-card__divider {
+    margin-top: 16px;
+    margin-bottom: 20px;
+    background: #D7D7D7;
+  }
+  .two-product-card img {
+    max-width: 150px;
+    height: auto;
+  }
+  .two-product-card__features-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+  }
+  .two-product-card__features-list li {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    line-height: 12px;
+    font-family: Inter, sans-serif;
+    color: #1F1F21;
+  }
+  .two-product-card__caption {
+    font-family: Inter, sans-serif;
+    font-size: 12px;
+    line-height: 12px;
+    color: #87878D;
+  }
+  .two-product-card__discount-badge {
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 12px;
+    color: #FF2400;
+  }
+  .two-product-card__price-row  {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+  .two-product-card__prices {
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+    color: #1F1F21;
+  }
+  .two-product-card__content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .two-product-card__caption {
+    margin-bottom: 20px;
+  }
+  .two-product-card__actions {
+    align-self: flex-end;
+  }
+  .two-product-card__actions-button {
+    font-size: 14px;
+    line-height: 12px;
+    font-family: Inter, sans-serif;
+    color: #fff;
+    font-weight: 700;
+    background-color: #1F1F21;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 13px 28px;
+    cursor: pointer;
+  }
+  
+    @media (max-width: 749px) {
+      .two-product-section__header {
+        padding: 0 10px;
+        margin-bottom: 50px;
+      }
+      .two-product-section__heading {
+        font-size: 24px;
+        line-height: 24px;
+      }
+      .two-product-cards {
+        flex-direction: column;
+        gap: 30px;
+      }
+      .two-product-card {
+        padding: 16px;
+      }
+      .two-product-card__container {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+      }
+      .two-product-card__title {
+        font-size: 18px;
+        line-height: 20px;
+      }
+      .two-product-card__features-list li {
+        font-size: 12px;
+        line-height: 12px;
+      }
+      .two-product-card__divider {
+        margin-top: 14px;
+        margin-bottom: 16px;
+      }
+      .two-product-card__caption {
+        font-size: 10px;
+        line-height: 12px;
+        margin-bottom: 15px;
+      }
+      .two-product-card__discount-badge,
+      .two-product-card__prices {
+        font-size: 14px;
+        line-height: 12px;
+      }
+      .two-product-card__features-list {
+        margin-bottom: 24px;
+      }
+    }
+    @media (max-width: 1279px) {
+      .two-product-section {
+        padding: 0 10px;
+      }
+    }
+  </style>
+  
+  {% schema %}
+  {
+    "name": "Two Product Promo",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Заголовок",
+        "default": "Купуйте зараз"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "product_block",
+        "name": "Product Block",
+        "settings": [
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Виберіть товар"
+          },
+          {
+            "type": "image_picker",
+            "id": "custom_image",
+            "label": "Своя картинка товару"
+          },
+          {
+            "type": "text",
+            "id": "rating",
+            "label": "Рейтинг",
+            "default": "★ ★ ★ ★ ★"
+          },
+          {
+            "type": "text",
+            "id": "reviews",
+            "label": "К-сть відгуків",
+            "default": "31 відгук"
+          },
+          {
+            "type": "text",
+            "id": "discount",
+            "label": "Знижка",
+            "default": "Збережіть"
+          },
+          {
+            "type": "text",
+            "id": "caption",
+            "label": "Підписка",
+            "default": "For a two-week subscription:"
+          },
+          {
+            "type": "text",
+            "id": "features",
+            "label": "Список переваг (через крапку з комою)",
+            "default": "Change or cancel anytime; Change or cancel anytime; Change or cancel anytime"
+          }
+        ]
+      }
+    ],
+    "max_blocks": 2,
+    "presets": [
+      {
+        "name": "Two Product Promo",
+        "blocks": [
+          {
+            "type": "product_block"
+          },
+          {
+            "type": "product_block"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
