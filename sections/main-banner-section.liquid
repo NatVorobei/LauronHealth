@@ -1,0 +1,247 @@
+<div class="main-banner">
+  <div class="main-banner__desktop" style="background-image: url('{{ section.settings.banner_image | img_url: 'master' }}');">
+    <div class="main-banner__content main-banner__content--desktop">
+      <div class="main-banner__inner">
+        <h2 class="main-banner__heading">
+          {{ section.settings.heading }}
+        </h2>
+        <div class="main-banner__description">
+          {{ section.settings.description }}
+        </div>
+        <div class="main-banner__description2">
+          {{ section.settings.description2 }}
+        </div>
+        <div class="main-banner__buttons">
+          <a href="{{ section.settings.button1_link }}" class="main-banner__button">
+            <img src="https://cdn.shopify.com/s/files/1/0745/8786/5320/files/can.png?v=1751960850" alt="can" width="16" height="32" />
+            {{ section.settings.button1_text }}
+            </a>
+          <a href="{{ section.settings.button2_link }}" class="main-banner__button">{{ section.settings.button2_text }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-banner__mobile">
+    <picture>
+      <source media="(max-width: 749px)" srcset="{{ section.settings.mobile_banner_image | img_url: '720x' }}">
+      <img class="main-banner__mobile--image" src="{{ section.settings.banner_image | img_url: 'master' }}" alt="Banner image">
+    </picture>
+    <div class="main-banner__content main-banner__content--mobile">
+      <div class="main-banner__inner">
+        <h2 class="main-banner__heading">
+          {{ section.settings.heading }}
+        </h2>
+        <div class="main-banner__description">
+          {{ section.settings.description }}
+        </div>
+        <div class="main-banner__description2">
+          {{ section.settings.description2 }}
+        </div>
+        <div class="main-banner__buttons">
+          <a href="{{ section.settings.button1_link }}" class="main-banner__button">
+            <img src="https://cdn.shopify.com/s/files/1/0745/8786/5320/files/can.png?v=1751960850" alt="can" width="16" height="32" />
+            {{ section.settings.button1_text }}
+            </a>
+          <a href="{{ section.settings.button2_link }}" class="main-banner__button">{{ section.settings.button2_text }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .main-banner {
+    width: 100%;
+  }
+
+  .main-banner__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .main-banner__desktop {
+    display: block;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 720px;
+    position: relative;
+  }
+
+  .main-banner__content--desktop {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    color: #000;
+    max-width: 760px;
+  }
+
+  .main-banner__mobile {
+    display: none;
+    flex-direction: column;
+  }
+
+  .main-banner__mobile picture,
+  .main-banner__mobile--image {
+    width: 100%;
+    height: 320px;
+    display: block;
+    object-fit: cover;
+    object-position: right;
+  }
+
+  .main-banner__content--mobile {
+    padding: 40px 14px;
+    background-color: #fff;
+    color: #000;
+  }
+
+  .main-banner__heading {
+    font-size: 44px;
+    line-height: 50px;
+    margin: 0;
+  }
+
+  .main-banner__heading > p {
+    margin: 0;
+    font-size: inherit;
+    line-height: inherit;
+    display: inline;
+  }
+
+  .main-banner__description,
+  .main-banner__description2 {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .main-banner__description > p,
+  .main-banner__description2 > p {
+    margin: 0;
+    font-size: inherit;
+    line-height: 1.5;
+  }
+
+  .main-banner__buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+  .main-banner__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 202px;
+    height: 50px;
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .main-banner__button:hover {
+    background-color: #333;
+  }
+
+  @media (max-width: 749px) {
+    .main-banner__desktop {
+      display: none;
+    }
+    .main-banner__mobile {
+      display: flex;
+    }
+    .main-banner__inner {
+      gap: 24px;
+    }
+    .main-banner__heading {
+      font-size: 24px;
+      line-height: 30px;
+    }
+    .main-banner__description,
+    .main-banner__description2 {
+      font-size: 12px;
+    }
+    .main-banner__buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 24px;
+    }
+    .main-banner__button {
+      font-size: 12px;
+      font-weight: 900;
+      max-width: 148px;
+      padding: 0 24px;
+      line-height: 14px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Custom Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Desktop Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_banner_image",
+      "label": "Mobile Background Image"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description (Top)"
+    },
+    {
+      "type": "richtext",
+      "id": "description2",
+      "label": "Description (Bottom)"
+    },
+    {
+      "type": "text",
+      "id": "button1_text",
+      "label": "Button 1 Text"
+    },
+    {
+      "type": "url",
+      "id": "button1_link",
+      "label": "Button 1 Link"
+    },
+    {
+      "type": "text",
+      "id": "button2_text",
+      "label": "Button 2 Text"
+    },
+    {
+      "type": "url",
+      "id": "button2_link",
+      "label": "Button 2 Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Main Banner"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,136 @@
+<div class="custom-portrait-block" style="text-align: {{ section.settings.text_alignment }};">
+  {% if section.settings.portrait_image %}
+    <div class="portrait-image-container">
+    <div class="portrait-image">
+      <img src="{{ section.settings.portrait_image | img_url: '300x300' }}" alt="{{ section.settings.main_text | escape }}" style="max-width: 100%; height: auto;"> 
+    </div>
+    {% if section.settings.sub_text %}
+      <div class="portrait-sub-text-pc">{{ section.settings.sub_text }}</div>
+    {% endif %}
+    </div>
+  {% endif %}
+  <div class="portrait-content">
+    {% if section.settings.main_text %}
+      <p class="portrait-main-text">{{ section.settings.main_text }}</p>
+    {% endif %}
+    {% if section.settings.sub_text %}
+      <div class="portrait-sub-text">{{ section.settings.sub_text }}</div>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+.custom-portrait-block {
+  display: flex;
+  align-items: center;
+  max-width: 986px;
+  margin: 120px auto 120px auto;
+  gap: 40px;
+}
+.portrait-image {
+  overflow: hidden;
+  width: 140px;
+  height: 140px;
+  flex-shrink: 0;
+  border-radius: 64px;
+}
+.portrait-main-text {
+  font-size: 18px;
+  line-height: 26px;
+  color: #1F1F21;
+  margin: 0;
+}
+.portrait-sub-text p {
+  font-size: 16px;
+  line-height: 20px;
+  color: #1F1F21;
+  margin: 0;
+}
+.portrait-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.portrait-image-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+}
+.portrait-sub-text-pc p {
+  font-size: 16px;
+  line-height: 20px;
+  color: #1F1F21;
+  margin: 0;
+  display: none;
+}
+
+@media(max-width: 749px) {
+  .custom-portrait-block {
+    flex-direction: column-reverse;
+    margin: 80px auto 100px auto;
+  }
+  .portrait-main-text {
+    font-size: 18px;
+    line-height: 22px;
+  }
+  .portrait-content {
+    align-items: center;
+    text-align: center;
+    gap: 30px;
+    padding: 0 14px;
+  }
+  .portrait-sub-text {
+    display: none;
+  }
+  .portrait-sub-text-pc p {
+    display: block;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Caption Block",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "portrait_image",
+      "label": "Portrait Image",
+      "info": "Select a portrait image (recommended: 300x300px or larger)"
+    },
+    {
+      "type": "textarea",
+      "id": "main_text",
+      "label": "Main Text",
+      "default": "Text",
+      "info": "Enter the main text"
+    },
+    {
+      "type": "richtext",
+      "id": "sub_text",
+      "label": "Subtext",
+      "default": "<p>Subtext</p>",
+      "info": "Enter the subtext"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center",
+      "info": "Choose the alignment for text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Caption Block",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
