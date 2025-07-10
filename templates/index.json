@@ -404,6 +404,43 @@
         "subtitle": "Сьогодні нові дослідження підтверджують: внутрішнє споживання гіалуронової кислоти високої молекулярної маси (HMW-HA) має системний вплив на організм."
       }
     },
+    "two_products_block_AMVERG": {
+      "type": "two-products-block",
+      "blocks": {
+        "product_block_RedqR9": {
+          "type": "product_block",
+          "settings": {
+            "product": "freeze-age",
+            "custom_image": "shopify://shop_images/freeze-age-transparent_1.png",
+            "rating": "★ ★ ★ ★ ★",
+            "reviews": "31 відгук",
+            "discount": "Збережіть",
+            "caption": "For a two-week subscription:",
+            "features": "Change or cancel anytime; Change or cancel anytime; Change or cancel anytime"
+          }
+        },
+        "product_block_ya6gGh": {
+          "type": "product_block",
+          "settings": {
+            "product": "freeze-age",
+            "custom_image": "shopify://shop_images/freeze-age-transparent_1.png",
+            "rating": "★ ★ ★ ★ ★",
+            "reviews": "31 відгук",
+            "discount": "Збережіть",
+            "caption": "For a two-week subscription:",
+            "features": "Change or cancel anytime; Change or cancel anytime; Change or cancel anytime"
+          }
+        }
+      },
+      "block_order": [
+        "product_block_RedqR9",
+        "product_block_ya6gGh"
+      ],
+      "name": "Two Product Promo",
+      "settings": {
+        "title": "Купуйте зараз"
+      }
+    },
     "collapsible_content_6jfRpL": {
       "type": "collapsible-content",
       "blocks": {
@@ -472,7 +509,7 @@
         "open_first_collapsible_row": false,
         "image_ratio": "adapt",
         "desktop_layout": "image_second",
-        "padding_top": 100,
+        "padding_top": 0,
         "padding_bottom": 36
       }
     }
@@ -487,6 +524,7 @@
     "scientist_caption_block_jbJ3kJ",
     "benefits_grid_9eCkJq",
     "facts_slider_wLAYh7",
+    "two_products_block_AMVERG",
     "collapsible_content_6jfRpL"
   ]
 }
