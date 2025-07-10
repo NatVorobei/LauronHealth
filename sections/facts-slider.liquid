@@ -8,6 +8,55 @@
         <p class="facts-slider__subheading">{{ section.settings.subtitle }}</p>
       {% endif %}
     </div>
+
+    <div class="swiper facts-swiper hidden-mobile">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          <div class="swiper-slide facts-slide">
+            <h3 class="facts-slide__label">{{ block.settings.label }}</h3>
+            <p class="facts-slide__value">{{ block.settings.value }}</p>
+            <p class="facts-slide__text">{{ block.settings.description }}</p>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+
+    <div class="swiper facts-swiper-mobile show-mobile">
+      <div class="swiper-wrapper">
+        {% assign blocks = section.blocks %}
+        {% assign blocks_per_slide = 4 %}
+        {% assign total = blocks.size %}
+        {% for i in (0..total) %}
+          {% assign index = forloop.index0 %}
+          {% assign mod = index | modulo: blocks_per_slide %}
+          {% if mod == 0 %}
+            <div class="swiper-slide">
+              <div class="facts-slide-group">
+          {% endif %}
+
+          {% assign block = blocks[i] %}
+          {% if block %}
+            <div class="facts-slide">
+              <h3 class="facts-slide__label">{{ block.settings.label }}</h3>
+              <p class="facts-slide__value">{{ block.settings.value }}</p>
+              <p class="facts-slide__text">{{ block.settings.description }}</p>
+            </div>
+          {% endif %}
+
+          {% assign next = index | plus: 1 %}
+          {% assign mod_next = next | modulo: blocks_per_slide %}
+          {% if mod_next == 0 or forloop.last %}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="swiper-button-prev swiper-button-prev-mobile"></div>
+      <div class="swiper-button-next swiper-button-next-mobile"></div>
+    </div>
   </div>
 </div>
 
@@ -15,10 +64,14 @@
   .facts-slider-wrapper {
     background-image: url('https://cdn.shopify.com/s/files/1/0745/8786/5320/files/facts-background.png?v=1752072333');
     background-repeat: no-repeat;
+    font-family: Inter, sans-serif;
   }
+
   .facts-slider-container {
+    position: relative;
     max-width: 1280px;
     margin: 0 auto;
+    padding-bottom: 60px;
   }
 
   .facts-slider__header {
@@ -35,6 +88,7 @@
   .facts-slider__heading {
     font-size: 42px;
     font-weight: 700;
+    font-family: Montserrat, sans-serif;
     margin: 0;
     line-height: 30px;
   }
@@ -46,30 +100,249 @@
     line-height: 30px;
     font-weight: 700;
     margin: 0;
+    font-family: Inter, sans-serif;
+  }
+
+  .facts-swiper {
+    padding: 0 40px;
+  }
+
+  .facts-swiper .swiper-wrapper {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .facts-slide {
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    box-sizing: border-box;
+  }
+
+  .facts-slide__label {
+    font-family: Montserrat, sans-serif;
+    font-size: 20px;
+    line-height: 22px;
+    font-weight: 700;
+    color: #1F1F21;
+  }
+
+  .facts-slide__value {
+    font-family: Montserrat, sans-serif;
+    font-size: 54px;
+    line-height: 40px;
+    font-weight: 700;
+    color: #1F1F21;
+  }
+
+  .facts-slide__text {
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    color: #87878D;
+    line-height: 18px;
+    max-width: 200px;
+    margin: 0 auto;
+  }
+
+  .facts-swiper .swiper-button-prev,
+  .facts-swiper .swiper-button-next,
+  .facts-swiper-mobile .swiper-button-prev,
+  .facts-swiper-mobile .swiper-button-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    z-index: 10;
+    padding: 0;
+    color: black;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .facts-swiper .swiper-button-prev:hover,
+  .facts-swiper .swiper-button-next:hover,
+  .facts-swiper-mobile .swiper-button-prev:hover,
+  .facts-swiper-mobile .swiper-button-next:hover {
+    background: #f0f0f0;
+  }
+
+  .facts-swiper .swiper-button-prev:after,
+  .facts-swiper .swiper-button-next:after,
+  .facts-swiper-mobile .swiper-button-prev:after,
+  .facts-swiper-mobile .swiper-button-next:after {
+    font-size: 12px;
+    padding: 0;
+  }
+
+  .swiper-button-prev {
+    left: 0;
+  }
+
+  .swiper-button-next {
+    right: 0;
+  }
+
+  .show-mobile {
+    display: none;
+  }
+
+  .hidden-mobile {
+    display: block;
+  }
+
+  @media (max-width: 749px) {
+    .facts-slider__header {
+      padding: 40px 10px 60px 10px;
+    }
+
+    .facts-slider__heading {
+      font-size: 24px;
+      line-height: 24px;
+    }
+
+    .facts-slider__subheading {
+      font-size: 16px;
+      line-height: 22px;
+    }
+    
+    .show-mobile {
+      display: block;
+    }
+
+    .hidden-mobile {
+      display: none;
+    }
+
+    .facts-slide-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 0 25px;
+    }
+
+    .facts-slide-group .facts-slide {
+      flex: 1 1 calc(50% - 20px);
+      max-width: calc(50% - 20px);
+      box-sizing: border-box;
+    }
+
+    .swiper-button-prev-mobile {
+      left: 5px;
+    }
+
+    .swiper-button-next-mobile {
+      right: 5px;
+    }
+
+    .facts-slide {
+      gap: 20px;
+    }
+
+    .facts-slide__label {
+      font-size: 16px;
+      line-height: 18px;
+    }
+
+    .facts-slide__value {
+      font-size: 34px;
+      line-height: 30px;
+    }
+
+    .facts-slide__text {
+      font-size: 10px;
+      line-height: 14px;
+    }
   }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    new Swiper('.facts-swiper', {
+      loop: true,
+      slidesPerView: 1,
+      spaceBetween: 20,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 },
+        1280: { slidesPerView: 4 }
+      }
+    });
+
+    new Swiper('.facts-swiper-mobile', {
+      loop: true,
+      slidesPerView: 1,
+      spaceBetween: 20,
+      navigation: {
+        nextEl: '.swiper-button-next-mobile',
+        prevEl: '.swiper-button-prev-mobile',
+      }
+    });
+  });
+</script>
+
 {% schema %}
-  {
-    "name": "Facts slider",
-    "settings": [
-      {
-        "type": "text",
-        "id": "title",
-        "label": "Заголовок",
-        "default": "Заголовок"
-      },
-      {
-        "type": "textarea",
-        "id": "subtitle",
-        "label": "Підзаголовок",
-        "default": "Підзаголовок"
-      },
-    ],
-    "presets": [
+{
+  "name": "Facts slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Заголовок",
+      "default": "Антивіковий ефект"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Підзаголовок",
+      "default": "Перші результати: краща шкіра, більше енергії, загальне здоров’я"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "fact",
+      "name": "Факт",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Заголовок (наприклад: Anti-aging)",
+          "default": "Anti-aging"
+        },
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Значення (наприклад: 91%)",
+          "default": "91%"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Опис",
+          "default": "Average time for the first tangible results: better skin condition, more energy, improved overall health"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
     {
       "name": "Facts slider",
       "category": "Custom"
     }
   ]
-  }
+}
 {% endschema %}
