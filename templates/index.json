@@ -340,6 +340,64 @@
     },
     "facts_slider_wLAYh7": {
       "type": "facts-slider",
+      "blocks": {
+        "fact_RGcgAp": {
+          "type": "fact",
+          "settings": {
+            "label": "Anti-aging",
+            "value": "91%",
+            "description": "Average time for the first tangible results: better skin condition, more energy, improved overall health"
+          }
+        },
+        "fact_x3jRF4": {
+          "type": "fact",
+          "settings": {
+            "label": "Anti-aging",
+            "value": "91%",
+            "description": "Average time for the first tangible results: better skin condition, more energy, improved overall health"
+          }
+        },
+        "fact_eU7Dxn": {
+          "type": "fact",
+          "settings": {
+            "label": "Anti-aging",
+            "value": "91%",
+            "description": "Average time for the first tangible results: better skin condition, more energy, improved overall health"
+          }
+        },
+        "fact_xrfrDB": {
+          "type": "fact",
+          "settings": {
+            "label": "Anti-aging",
+            "value": "91%",
+            "description": "Average time for the first tangible results: better skin condition, more energy, improved overall health"
+          }
+        },
+        "fact_tk7NRT": {
+          "type": "fact",
+          "settings": {
+            "label": "Anti-aging",
+            "value": "91%",
+            "description": "Average time for the first tangible results: better skin condition, more energy, improved overall health"
+          }
+        },
+        "fact_7Ha9XK": {
+          "type": "fact",
+          "settings": {
+            "label": "Anti-aging",
+            "value": "91%",
+            "description": "Average time for the first tangible results: better skin condition, more energy, improved overall health"
+          }
+        }
+      },
+      "block_order": [
+        "fact_RGcgAp",
+        "fact_x3jRF4",
+        "fact_eU7Dxn",
+        "fact_xrfrDB",
+        "fact_tk7NRT",
+        "fact_7Ha9XK"
+      ],
       "name": "Facts slider",
       "settings": {
         "title": "Факти про добавку",
