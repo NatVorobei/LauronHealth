@@ -41,6 +41,13 @@ details[open] .accordion-toggle-icon .icon-minus {
   height: 20px;
 }
 
+.accordion__content p {
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  line-height: 22px;
+  color: #1F1F21;
+}
+
 @media screen and (min-width: 750px) {
   .collapsible-section-layout {
     padding-bottom: 7rem;
