@@ -566,12 +566,32 @@
             "name": "Олівія",
             "role": "Стилістка"
           }
+        },
+        "testimonial_7bLKaE": {
+          "type": "testimonial",
+          "settings": {
+            "text": "Після 40 я почав відчувати, що відновлення після роботи чи тренувань стало повільнішим. Lauron взяв на тест, без особливих очікувань. Через кілька тижнів зрозуміла, що з'явилося більше витривалості навіть у напружені дні.",
+            "avatar": "shopify://shop_images/testimonials-1.webp",
+            "name": "Бартек",
+            "role": "Керівник з маркетингу"
+          }
+        },
+        "testimonial_6YacyJ": {
+          "type": "testimonial",
+          "settings": {
+            "text": "Зйомки, fitting-и, шоуруми — дні летять швидко. Lauron допоміг мені краще тримати ритм без падіння сил у другій половині дня. Я не змінювала режим харчування, тільки додала Lauron — і відчула різницю.",
+            "avatar": "shopify://shop_images/testimonials-2.webp",
+            "name": "Олівія",
+            "role": "Стилістка"
+          }
         }
       },
       "block_order": [
         "testimonial_bCNqpT",
         "testimonial_fF7fJW",
-        "testimonial_Qe9nJQ"
+        "testimonial_Qe9nJQ",
+        "testimonial_7bLKaE",
+        "testimonial_6YacyJ"
       ],
       "name": "Testimonials",
       "settings": {
