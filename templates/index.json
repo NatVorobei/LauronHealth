@@ -548,10 +548,20 @@
             "name": "Анна",
             "role": "Домогосподарка"
           }
+        },
+        "testimonial_fF7fJW": {
+          "type": "testimonial",
+          "settings": {
+            "text": "Після 40 я почав відчувати, що відновлення після роботи чи тренувань стало повільнішим. Lauron взяв на тест, без особливих очікувань. Через кілька тижнів зрозуміла, що з'явилося більше витривалості навіть у напружені дні.",
+            "avatar": "shopify://shop_images/testimonials-1.webp",
+            "name": "Бартек",
+            "role": "Керівник з маркетингу"
+          }
         }
       },
       "block_order": [
-        "testimonial_bCNqpT"
+        "testimonial_bCNqpT",
+        "testimonial_fF7fJW"
       ],
       "name": "Testimonials",
       "settings": {
