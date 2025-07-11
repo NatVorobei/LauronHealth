@@ -598,38 +598,14 @@
         "title": "Відгуки клієнтів"
       }
     },
-    "newsletter_xJdP4W": {
-      "type": "newsletter",
-      "blocks": {
-        "heading_ALi8Rc": {
-          "type": "heading",
-          "settings": {
-            "heading": "Subscribe to our emails",
-            "heading_size": "h1"
-          }
-        },
-        "paragraph_WMNce6": {
-          "type": "paragraph",
-          "settings": {
-            "text": "<p>Be the first to know about new collections and exclusive offers.</p>"
-          }
-        },
-        "email_form_bgyF4R": {
-          "type": "email_form",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "heading_ALi8Rc",
-        "paragraph_WMNce6",
-        "email_form_bgyF4R"
-      ],
-      "name": "t:sections.newsletter.presets.name",
+    "custom_newsletter_wVGgpG": {
+      "type": "custom-newsletter",
+      "name": "Custom Newsletter",
       "settings": {
-        "color_scheme": "",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
+        "background_image": "shopify://shop_images/newsletter-image.webp",
+        "discount": "-10%",
+        "heading": "на перше замовлення",
+        "subheading": "Підпишіться на розсилку, щоб першими дізнаватись про новинки, спеціальні пропозиції та корисні матеріали — і отримайте знижку 10% на першу покупку."
       }
     },
     "collapsible_content_6jfRpL": {
@@ -718,7 +694,7 @@
     "two_products_block_AMVERG",
     "benefits_compare_dG49nV",
     "testimonials_Ym7QRD",
-    "newsletter_xJdP4W",
+    "custom_newsletter_wVGgpG",
     "collapsible_content_6jfRpL"
   ]
 }
