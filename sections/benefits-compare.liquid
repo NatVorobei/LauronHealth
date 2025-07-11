@@ -1,0 +1,212 @@
+<section class="benefits-section">
+    <div class="benefits-container">
+      <div class="benefits-left">
+        <h2 class="benefits-heading">{{ section.settings.heading }}</h2>
+        <p class="benefits-description-top">{{ section.settings.description_1 }}</p>
+        <p class="benefits-description-bottom">{{ section.settings.description_2 }}</p>
+      </div>
+  
+      <div class="benefits-right">
+        <div class="benefits-headers">
+          <span></span>
+          {% if section.settings.product_1_image %}
+            <img src="{{ section.settings.product_1_image | image_url }}" alt="Product 1" class="product-img">
+          {% endif %}
+          {% if section.settings.product_2_image %}
+            <img src="{{ section.settings.product_2_image | image_url }}" alt="Product 2" class="product-img">
+          {% endif %}
+        </div>
+  
+        {% for block in section.blocks %}
+          <div class="benefits-row">
+            <span class="benefit-label">{{ block.settings.label }}</span>
+            <span class="benefit-icon">{% if block.settings.product_1_check %}{{ 'compare-checkmark.svg' | inline_asset_content }}{% else %}{{ 'compare-close.svg' | inline_asset_content }}{% endif %}</span>
+            <span class="benefit-icon">{% if block.settings.product_2_check %}{{ 'compare-checkmark.svg' | inline_asset_content }}{% else %}{{ 'compare-close.svg' | inline_asset_content }}{% endif %}</span>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  
+  <style>
+  .benefits-section {
+    padding: 46px 0;
+    background-color: #F0F4F5;
+  }
+  .benefits-container {
+    display: flex;
+    gap: 40px;
+    max-width: 1160px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 0 auto;
+  }
+  .benefits-left {
+    max-width: 355px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+  .benefits-right {
+    max-width: 660px;
+    display: flex;
+    flex-direction: column;
+  }
+  .benefits-headers {
+    display: grid;
+    grid-template-columns: 1fr 50px 50px;
+    gap: 75px;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .product-img {
+    width: 40px;
+    height: auto;
+  }
+  .benefits-row {
+    display: grid;
+    grid-template-columns: 1fr 50px 50px;
+    gap: 80px;
+    padding: 14px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  .benefits-heading {
+    font-size: 42px;
+    font-weight: 700;
+    font-family: Montserrat, sans-serif;
+    margin: 0;
+    line-height: 30px;
+    color: #1F1F21;
+  }
+  .benefits-description-top,
+  .benefits-description-bottom {
+    font-family: Inter, sans-serif;
+    font-size: 20px;
+    line-height: 28px;
+    color: #87878D;
+    margin: 0;
+  }
+  .benefits-description-top {
+    font-weight: 700;
+    color: #1F1F21;
+  }
+  .benefit-label {
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    line-height: 22px;
+    color: #000;
+    text-align: right;
+  }
+  .benefit-icon {
+    text-align: center;
+  }
+  @media (max-width: 768px) {
+    .benefits-container {
+      flex-direction: column;
+    }
+    .benefits-section {
+      background-color: transparent;
+      padding: 0;
+    }
+    .benefits-row {
+      gap: 55px;
+      padding: 11px 0;
+    }
+    .benefits-headers {
+      gap: 55px;
+    }
+    .benefit-label {
+      font-size: 10px;
+      line-height: 16px;
+    }
+    .benefits-heading {
+      font-size: 24px;
+      line-height: 24px;
+    }
+    .benefits-description-top,
+    .benefits-description-bottom {
+      font-size: 16px;
+      line-height: 22px;
+    }
+    .benefits-container {
+      gap: 80px;
+    }
+    .benefits-left {
+      gap: 30px;
+      max-width: 100%;
+      padding: 0 14px;
+    }
+    .benefits-right {
+      background-color: #F0F4F5;
+      padding: 40px 20px;
+    }
+  }
+  </style>
+  
+  {% schema %}
+  {
+    "name": "Benefits Compare",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Заголовок",
+        "default": "Переваги"
+      },
+      {
+        "type": "text",
+        "id": "description_1",
+        "label": "Опис",
+        "default": "У світі добавок важливо не лише що ви споживаєте, а як це засвоюється. "
+      },
+      {
+        "type": "text",
+        "id": "description_2",
+        "label": "Опис",
+        "default": "Більшість формул не проходять через бар’єри організму — ефекти залишаються недосяжними."
+      },
+      {
+        "type": "image_picker",
+        "id": "product_1_image",
+        "label": "Зображення продукту 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "product_2_image",
+        "label": "Зображення продукту 2"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "feature",
+        "name": "Перевага",
+        "settings": [
+          {
+            "type": "text",
+            "id": "label",
+            "label": "Назва переваги",
+            "default": "Клінічно підтверджена ефективність"
+          },
+          {
+            "type": "checkbox",
+            "id": "product_1_check",
+            "label": "Продукт 1 має цю перевагу",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "product_2_check",
+            "label": "Продукт 2 має цю перевагу",
+            "default": false
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Benefits Compare",
+        "category": "Custom"
+      }
+    ]
+  }
+{% endschema %}
