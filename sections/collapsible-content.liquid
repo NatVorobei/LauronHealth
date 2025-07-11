@@ -105,6 +105,7 @@
           </div>
         </div>
       </div>
+      <a href="{{ section.settings.details_link }}" class="collapsible-content__button">{{ section.settings.details_link_text }}</a>
     </div>
   </div>
 </div>
@@ -122,6 +123,16 @@
       "type": "text",
       "id": "caption",
       "label": "t:sections.collapsible_content.settings.caption.label"
+    },
+    {
+      "type": "text",
+      "id": "details_link_text",
+      "label": "Деталі"
+    },
+    {
+      "type": "url",
+      "id": "details_link",
+      "label": "Деталі посилання"
     },
     {
       "type": "inline_richtext",
