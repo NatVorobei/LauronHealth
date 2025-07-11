@@ -1,0 +1,208 @@
+<div class="custom-newsletter-wrapper">
+    <div class="custom-newsletter-inner page-width">
+      <div class="custom-newsletter-image">
+        <img src="{{ section.settings.background_image | img_url: '800x' }}" alt="Newsletter image" />
+      </div>
+      <div class="custom-newsletter-content">
+        {% if section.settings.heading != blank and section.settings.discount != blank %}
+          <h2 class="custom-newsletter-content__heading"><span class="custom-newsletter-content__discount">{{ section.settings.discount }}</span> {{ section.settings.heading }}</h2>
+        {% endif %}
+        {% if section.settings.subheading != blank %}
+          <p>{{ section.settings.subheading }}</p>
+        {% endif %}
+  
+        {% form 'customer', class: 'custom-newsletter-form' %}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <div class="custom-newsletter-form-container">
+            <input
+              type="email"
+              name="contact[email]"
+              placeholder="Введіть ваш email"
+              required
+            />
+            <button type="submit">Підписатися</button>
+          </div>
+        {% endform %}
+      </div>
+    </div>
+  </div>
+  
+  <style>
+    .custom-newsletter-wrapper {
+      display: flex;
+      justify-content: center;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+  
+    .custom-newsletter-inner {
+      max-width: 1160px;
+      width: 100%;
+      display: flex;
+      height: 100%;
+      border-radius: 20px;
+      overflow: hidden;
+      padding: 0;
+    }
+  
+    .custom-newsletter-image {
+      width: 475px;
+      height: 100%;
+      flex-shrink: 0;
+    }
+  
+    .custom-newsletter-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  
+    .custom-newsletter-content {
+      flex: 1;
+      background-color: #F0F4F5;
+      padding: 40px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  
+    .custom-newsletter-content__heading {
+      font-family: Montserrat, sans-serif;
+      font-size: 36px;
+      line-height: 28px;
+      font-weight: 700;
+      margin: 0;
+      color: #1F1F21;
+      margin-bottom: 20px;
+    }
+  
+    .custom-newsletter-content__discount {
+      color: #FF2400;
+    }
+    
+    .custom-newsletter-content p {
+      font-size: 16px;
+      line-height: 20px;
+      font-family: Inter, sans-serif;
+      color: #87878D;
+      margin: 0;
+      margin-bottom: 40px;
+    }
+  
+    .custom-newsletter-form-container {
+      display: flex;
+      gap: 10px;
+    }
+  
+    .custom-newsletter-form-container input[type="email"] {
+      flex: 1;
+      padding: 16px 18px;
+      border: 1px solid #1F1F21;
+      border-radius: 20px;
+      font-size: 16px;
+      line-height: 20px;
+      font-family: Inter, sans-serif;
+      color: #87878D;
+    }
+  
+    .custom-newsletter-form-container button {
+      font-size: 14px;
+      line-height: 12px;
+      font-family: Inter, sans-serif;
+      font-weight: 700;
+      padding: 20px 28px;
+      text-transform: uppercase;
+      background-color: #1F1F21;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+  
+    @media (max-width: 768px) {
+      .custom-newsletter-wrapper {
+        height: auto;
+        padding: 0 10px;
+      }
+      .custom-newsletter-inner {
+        flex-direction: column-reverse;
+        height: auto;
+      }
+      .custom-newsletter-image {
+        width: 100%;
+        height: auto;
+      }
+      .custom-newsletter-image img {
+        height: auto;
+      }
+      .custom-newsletter-content__heading {
+        font-size: 22px;
+        line-height: 28px;
+        text-align: center;
+      }
+      .custom-newsletter-content p {
+        font-size: 14px;
+        line-height: 18px;
+        color: #1F1F21;
+        text-align: center;
+      }
+      .custom-newsletter-content {
+        padding: 40px 10px 40px;
+      }
+      .custom-newsletter-form-container button {
+        padding: 14px 18px;
+        font-size: 12px;
+        line-height: 16px;
+        border-radius: 16px;
+      }
+      .custom-newsletter-form-container input[type="email"] {
+        padding: 14px;
+        font-size: 14px;
+        line-height: 16px;
+        border-radius: 16px;
+      }
+    }
+  </style>
+  
+  
+  {% schema %}
+  {
+    "name": "Custom Newsletter",
+    "tag": "section",
+    "class": "section",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "background_image",
+        "label": "Картинка зліва"
+      },
+      {
+        "type": "text",
+        "id": "discount",
+        "label": "Заголовок",
+        "default": "-10%"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Заголовок",
+        "default": "на перше замовлення"
+      },
+      {
+        "type": "textarea",
+        "id": "subheading",
+        "label": "Підзаголовок",
+        "default": "Підпишіться на розсилку, щоб першими дізнаватися про новинки..."
+      }
+    ],
+    "presets": [
+      {
+        "name": "Custom Newsletter"
+      }
+    ]
+  }
+{% endschema %}
+  
