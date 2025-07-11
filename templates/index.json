@@ -441,6 +441,102 @@
         "title": "Купуйте зараз"
       }
     },
+    "benefits_compare_dG49nV": {
+      "type": "benefits-compare",
+      "blocks": {
+        "feature_jpnfUK": {
+          "type": "feature",
+          "settings": {
+            "label": "Клінічно підтверджена ефективність",
+            "product_1_check": true,
+            "product_2_check": true
+          }
+        },
+        "feature_zj7Q8q": {
+          "type": "feature",
+          "settings": {
+            "label": "Високомолекулярна гіалуронова кислота",
+            "product_1_check": true,
+            "product_2_check": false
+          }
+        },
+        "feature_gYMMeP": {
+          "type": "feature",
+          "settings": {
+            "label": "Технологія біополімерної інкапсуляції",
+            "product_1_check": true,
+            "product_2_check": false
+          }
+        },
+        "feature_bbBADc": {
+          "type": "feature",
+          "settings": {
+            "label": "Захист активних компонентів від руйнування",
+            "product_1_check": true,
+            "product_2_check": false
+          }
+        },
+        "feature_AFxRCx": {
+          "type": "feature",
+          "settings": {
+            "label": "Запобігання утворенню важкозасвоюваних сполук",
+            "product_1_check": true,
+            "product_2_check": false
+          }
+        },
+        "feature_VMDTYP": {
+          "type": "feature",
+          "settings": {
+            "label": "Очищена вода для оптимального засвоєння",
+            "product_1_check": true,
+            "product_2_check": false
+          }
+        },
+        "feature_Kxb88Y": {
+          "type": "feature",
+          "settings": {
+            "label": "Доведена біодоступність на клітинному рівні",
+            "product_1_check": true,
+            "product_2_check": false
+          }
+        },
+        "feature_aRDzWd": {
+          "type": "feature",
+          "settings": {
+            "label": "Формула без доданого цукру, ароматизаторів і барвників",
+            "product_1_check": true,
+            "product_2_check": false
+          }
+        },
+        "feature_Dkgb7p": {
+          "type": "feature",
+          "settings": {
+            "label": "Готовий до вживання формат",
+            "product_1_check": true,
+            "product_2_check": false
+          }
+        }
+      },
+      "block_order": [
+        "feature_jpnfUK",
+        "feature_zj7Q8q",
+        "feature_gYMMeP",
+        "feature_bbBADc",
+        "feature_AFxRCx",
+        "feature_VMDTYP",
+        "feature_Kxb88Y",
+        "feature_aRDzWd",
+        "feature_Dkgb7p"
+      ],
+      "name": "Benefits Compare",
+      "settings": {
+        "heading": "Переваги",
+        "description_1": "У світі добавок важливо не лише що ви споживаєте, а як це засвоюється.",
+        "description_2": "Більшість формул не проходять через бар’єри організму — ефекти залишаються недосяжними. Lauron змінює це: ми використовуємо передові технології доставки, щоб активні компоненти досягали клітинного рівня. Продуманий склад, підтверджена ефективність і максимальна зручність — усе в одному продукті.",
+        "product_1_image": "shopify://shop_images/benefits-compare-1.png",
+        "product_2_image": "shopify://shop_images/benefits-compare-2.png"
+      }
+    },
     "collapsible_content_6jfRpL": {
       "type": "collapsible-content",
       "blocks": {
@@ -525,6 +621,7 @@
     "benefits_grid_9eCkJq",
     "facts_slider_wLAYh7",
     "two_products_block_AMVERG",
+    "benefits_compare_dG49nV",
     "collapsible_content_6jfRpL"
   ]
 }
