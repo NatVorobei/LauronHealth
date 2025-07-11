@@ -598,6 +598,40 @@
         "title": "Відгуки клієнтів"
       }
     },
+    "newsletter_xJdP4W": {
+      "type": "newsletter",
+      "blocks": {
+        "heading_ALi8Rc": {
+          "type": "heading",
+          "settings": {
+            "heading": "Subscribe to our emails",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph_WMNce6": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Be the first to know about new collections and exclusive offers.</p>"
+          }
+        },
+        "email_form_bgyF4R": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading_ALi8Rc",
+        "paragraph_WMNce6",
+        "email_form_bgyF4R"
+      ],
+      "name": "t:sections.newsletter.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "collapsible_content_6jfRpL": {
       "type": "collapsible-content",
       "blocks": {
@@ -684,6 +718,7 @@
     "two_products_block_AMVERG",
     "benefits_compare_dG49nV",
     "testimonials_Ym7QRD",
+    "newsletter_xJdP4W",
     "collapsible_content_6jfRpL"
   ]
 }
