@@ -35,6 +35,30 @@
       <div class="swiper-button-next"></div>
     </div>
   </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      new Swiper(".testimonials-swiper", {
+        loop: true,
+        // slidesPerView: 3,
+        spaceBetween: 25,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+          0: {
+            slidesPerView: 1.5,
+            spaceBetween: 16,
+          },
+          750: {
+            slidesPerView: 5,
+            spaceBetween: 25,
+          }
+        }
+      });
+    });
+  </script>
   
   <style>
     .testimonials {
@@ -205,30 +229,6 @@
       }
     }
   </style>
-  
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      new Swiper(".testimonials-swiper", {
-        loop: true,
-        // slidesPerView: 3,
-        spaceBetween: 25,
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-        breakpoints: {
-          0: {
-            slidesPerView: 1.5,
-            spaceBetween: 16,
-          },
-          750: {
-            slidesPerView: 3,
-            spaceBetween: 25,
-          }
-        }
-      });
-    });
-  </script>
   
   {% schema %}
   {
