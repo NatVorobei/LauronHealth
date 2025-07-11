@@ -537,6 +537,27 @@
         "product_2_image": "shopify://shop_images/benefits-compare-2.png"
       }
     },
+    "testimonials_Ym7QRD": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_bCNqpT": {
+          "type": "testimonial",
+          "settings": {
+            "text": "Я почала пити Lauron, коли втома стала накопичуватися після народження другої дитини. П'ю зранку, поки діти снідають. Стало помітно легше тримати енергію протягом дня. Не очікувала великої різниці, але організм реально дякує.",
+            "avatar": "shopify://shop_images/scientist.webp",
+            "name": "Анна",
+            "role": "Домогосподарка"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_bCNqpT"
+      ],
+      "name": "Testimonials",
+      "settings": {
+        "title": "Відгуки клієнтів"
+      }
+    },
     "collapsible_content_6jfRpL": {
       "type": "collapsible-content",
       "blocks": {
@@ -622,6 +643,7 @@
     "facts_slider_wLAYh7",
     "two_products_block_AMVERG",
     "benefits_compare_dG49nV",
+    "testimonials_Ym7QRD",
     "collapsible_content_6jfRpL"
   ]
 }
