@@ -1,3 +1,4 @@
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 <section class="two-product-section">
     <div class="two-product-section__header">
       {% if section.settings.title != blank %}
@@ -247,6 +248,11 @@
       }
       .two-product-card__features-list {
         margin-bottom: 24px;
+      }
+      .two-product-card__actions-button {
+        font-size: 10px;
+        line-height: 12px;
+        padding: 12px 24px;
       }
     }
     @media (max-width: 1279px) {
