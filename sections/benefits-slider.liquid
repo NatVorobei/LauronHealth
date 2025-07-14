@@ -170,17 +170,20 @@
 {% javascript %}
 document.addEventListener("DOMContentLoaded", function () {
   new Swiper(".custom-swiper-benefits", {
-    slidesPerView: 'auto',
-    spaceBetween: 23,
+    slidesPerView: 3,
+    spaceBetween: 40,
     loop: true,
-    centeredSlides: true,
     breakpoints: {
+      0: {
+        slidesPerView: 1.5,
+        spaceBetween: 23,
+      },
       768: {
-        spaceBetween: 30
+        slidesPerView: 2,
       },
       1024: {
-        spaceBetween: 40
-      }
+        slidesPerView: 3,
+      },
     }
   });
 });
