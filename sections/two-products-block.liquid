@@ -55,7 +55,7 @@
   
               <form method="post" action="/cart/add" class="two-product-card__actions">
                 <input type="hidden" name="id" value="{{ variant.id }}">
-                <button type="submit" class="two-product-card__actions-button">{{ 'lauron-cart.svg' | inline_asset_content }} КУПИТИ</button>
+                <button type="submit" class="two-product-card__actions-button">{{ 'lauron-cart.svg' | inline_asset_content }} {{ section.settings.buy_button }}</button>
               </form>
             </div>
           </div>
@@ -199,6 +199,7 @@
     gap: 16px;
     padding: 13px 28px;
     cursor: pointer;
+    text-transform: uppercase;
   }
   
     @media (max-width: 749px) {
@@ -310,7 +311,13 @@
             "id": "features",
             "label": "Список переваг (через крапку з комою)",
             "default": "Change or cancel anytime; Change or cancel anytime; Change or cancel anytime"
-          }
+          },
+          {
+            "type": "text",
+            "id": "buy_button",
+            "label": "Текст кнопки 'Купити'",
+            "default": "Купити"
+          },
         ]
       }
     ],

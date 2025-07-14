@@ -44,6 +44,7 @@
   font-weight: 700;
   margin: 0;
   line-height: 30px;
+  font-family: Montserrat, sans-serif;
 }
 .custom-swiper-benefits-subheading {
   font-size: 24px;
@@ -101,6 +102,7 @@
   font-weight: 700;
   line-height: 24px;
   margin: 0 0 32px;
+  font-family: Montserrat, sans-serif;
 }
 
 .custom-swiper-benefits-card p {
@@ -122,6 +124,7 @@
   align-items: center;
   gap: 16px;
   align-self: end;
+  font-family: Montserrat, sans-serif;
 }
 
 @media(max-width: 749px) {
@@ -138,9 +141,9 @@
     font-size: 16px;
     line-height: 22px;
   }
-  .custom-swiper-benefits-wrapper {
+  {% comment %} .custom-swiper-benefits-wrapper {
     padding-left: 10px;
-  }
+  } {% endcomment %}
   .custom-swiper-benefits-content {
     padding: 20px;
   }
@@ -158,6 +161,9 @@
     font-size: 14px;
     line-height: 22px;
   }
+  .custom-swiper-benefits .swiper-wrapper {
+    margin-left: 10px;
+  }
 }
 </style>
 
@@ -166,6 +172,7 @@ document.addEventListener("DOMContentLoaded", function () {
   new Swiper(".custom-swiper-benefits", {
     slidesPerView: 3,
     spaceBetween: 40,
+    loop: true,
     breakpoints: {
       0: {
         slidesPerView: 1.5,

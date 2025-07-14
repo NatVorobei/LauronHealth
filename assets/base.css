@@ -3625,4 +3625,7 @@ details-disclosure > details {
 .header__active-menu-item {
   font-size: 16px;
 }
+#HeaderDrawer-logo {
+  display: none;
+}
 /* Custom classes end */
