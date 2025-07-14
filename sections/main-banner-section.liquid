@@ -77,7 +77,21 @@
     transform: translateY(-50%);
     color: #000;
     max-width: 760px;
+    z-index: 2;
   }
+
+  .main-banner__desktop::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0.6) 15%,
+      rgba(255, 255, 255, 0.15) 30%,
+      rgba(255, 255, 255, 0) 50%);
+    z-index: 1;
+    pointer-events: none;
+  }  
 
   .main-banner__mobile {
     display: none;
