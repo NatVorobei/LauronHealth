@@ -169,30 +169,17 @@
 
 {% javascript %}
 document.addEventListener("DOMContentLoaded", function () {
-  const swiperEl = document.querySelector(".custom-swiper-benefits");
-  const slidesCount = parseInt(swiperEl.dataset.slidesCount || "0");
-
-  const loopEnabled = slidesCount > 2;
-  const centered = slidesCount < 3;
-
-  new Swiper(swiperEl, {
-    loop: loopEnabled,
-    spaceBetween: 40,
-    slidesPerView: 3,
-    centeredSlides: centered,
+  new Swiper(".custom-swiper-benefits", {
+    slidesPerView: 'auto',
+    spaceBetween: 23,
+    loop: true,
+    centeredSlides: true,
     breakpoints: {
-      0: {
-        slidesPerView: centered ? 1.2 : 1.5,
-        centeredSlides: centered,
-        spaceBetween: 23
-      },
       768: {
-        slidesPerView: Math.min(slidesCount, 2),
-        centeredSlides: centered,
+        spaceBetween: 30
       },
       1024: {
-        slidesPerView: Math.min(slidesCount, 3),
-        centeredSlides: centered,
+        spaceBetween: 40
       }
     }
   });
