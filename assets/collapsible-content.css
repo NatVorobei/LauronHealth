@@ -3,6 +3,14 @@
   z-index: 0;
 }
 
+.collapsible-content__wrapper {
+  max-width: 1160px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
 .collapsible-section-layout {
   padding-bottom: 5rem;
   padding-top: 5rem;
@@ -11,10 +19,27 @@
 .accordion__title {
   font-family: Montserrat, sans-serif;
   font-weight: 700;
-  font-size: 20px;
-  line-height: 22px;
+  font-size: 14px;
+  line-height: 20px;
   margin: 0;
   color: #1F1F21;
+}
+
+.collapsible-content__button {
+  align-self: flex-end;
+  font-size: 14px;
+  line-height: 12px;
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  padding: 20px 28px;
+  text-transform: uppercase;
+  background-color: #1F1F21;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
 }
 
 .accordion summary {
@@ -43,8 +68,8 @@ details[open] .accordion-toggle-icon .icon-minus {
 
 .accordion__content p {
   font-family: Inter, sans-serif;
-  font-size: 16px;
-  line-height: 22px;
+  font-size: 12px;
+  line-height: 18px;
   color: #1F1F21;
 }
 
@@ -85,10 +110,12 @@ details[open] .accordion-toggle-icon .icon-minus {
 }
 
 .collapsible-content-wrapper-narrow {
-  margin: 0 auto;
+  /* margin: 0 auto;
   padding-right: 1.5rem;
   padding-left: 1.5rem;
-  max-width: 1160px;
+  max-width: 1160px; */
+  width: 100%;
+  padding: 0 14px;
 }
 
 .collapsible-content__header {
@@ -96,17 +123,27 @@ details[open] .accordion-toggle-icon .icon-minus {
 }
 
 .collapsible-content__heading {
-  font-size: 42px;
+  font-size: 24px;
+  line-height: 20px;
   font-family: Montserrat, sans-serif;
   margin: 0;
-  line-height: 30px;
   color: #1F1F21;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
 @media screen and (min-width: 750px) {
   .collapsible-content__heading {
     margin-bottom: 60px;
+    font-size: 42px;
+    line-height: 30px;
+  }
+  .accordion__title {
+    font-size: 20px;
+    line-height: 22px;
+  }
+  .accordion__content p {
+    font-size: 16px;
+    line-height: 22px;
   }
 }
 
@@ -142,6 +179,16 @@ details[open] .accordion-toggle-icon .icon-minus {
 
 .collapsible-row-layout .accordion .accordion__content {
   padding-top: 0;
+}
+
+@media(max-width: 749px) {
+  .collapsible-content__button {
+    padding: 14px 18px;
+    font-size: 12px;
+    line-height: 16px;
+    border-radius: 16px;
+    margin-right: 14px;
+  }
 }
 
 /* .collapsible-content summary:hover {

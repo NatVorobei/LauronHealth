@@ -27,7 +27,7 @@
               <div class="card-expanded-scroll">
                 <p>{{ block.settings.full_text }}</p>
               </div>
-              <button class="close-btn" onclick="this.closest('.benefits-card').classList.remove('expanded')">×</button>
+              <button class="close-btn" onclick="this.closest('.benefits-card').classList.remove('expanded')">{{ 'exit-button.svg' | inline_asset_content }}</button>
             </div>
           </div>
         </div>
@@ -160,6 +160,10 @@
     padding-right: 10px;
   }
 
+  .card-expanded-scroll p {
+    margin: 0;
+  }
+
   .benefits-card.expanded .card-expanded {
     display: flex;
     animation: fadeIn 0.2s ease-in-out;
@@ -167,13 +171,14 @@
 
   .close-btn {
     position: absolute;
-    top: 10px;
+    top: 15px;
     right: 15px;
     background: transparent;
     border: none;
     font-size: 26px;
     color: #333;
     cursor: pointer;
+    padding: 0;
   }
 
   .hidden-on-mobile {
@@ -282,12 +287,14 @@
     .view-all-btn-wrapper {
       margin-bottom: 100px;
     }
-    .expand-btn {
+    .expand-btn,
+    .close-btn {
       width: 24px;
       height: 24px;
     }
   
-    .expand-btn svg {
+    .expand-btn svg,
+    .close-btn svg {
       width: 100% !important;
       height: 100% !important;
       max-width: 24px;

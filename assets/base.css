@@ -3600,6 +3600,9 @@ details-disclosure > details {
 
 
 /* Custom classes start */
+* {
+  box-sizing: border-box;
+}
 .lauron-menu {
   align-items: center;
   gap: 60px;
