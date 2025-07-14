@@ -60,38 +60,37 @@
               </form> -->
 
               <product-form data-section-id="{{ section.id }}">
-  {% form 'product', product, class: 'product-form', data-type: 'add-to-cart-form' %}
-    <input
-      type="hidden"
-      name="id"
-      value="{{ variant.id }}"
-      class="product-variant-id"
-      {% unless variant.available %}disabled{% endunless %}
-    >
-
-    <button
-      type="submit"
-      name="add"
-      class="two-product-card__actions-button"
-      aria-live="polite"
-      {% unless variant.available %}disabled{% endunless %}
-    >
-      {{ 'lauron-cart.svg' | inline_asset_content }}
-      <span>
-        {% if variant.available %}
-          {{ block.settings.buy_button }}
-        {% else %}
-          {{ 'products.product.sold_out' | t }}
-        {% endif %}
-      </span>
-      <span class="sold-out-message hidden">
-        {{ 'products.product.sold_out' | t }}
-      </span>
-      {% render 'loading-spinner' %}
-    </button>
-  {% endform %}
-</product-form>
-
+                {% form 'product', product, class: 'product-form', data-type: 'add-to-cart-form' %}
+                  <input
+                    type="hidden"
+                    name="id"
+                    value="{{ variant.id }}"
+                    class="product-variant-id"
+                    {% unless variant.available %}disabled{% endunless %}
+                  >
+              
+                  <button
+                    type="submit"
+                    name="add"
+                    class="two-product-card__actions-button"
+                    aria-live="polite"
+                    {% unless variant.available %}disabled{% endunless %}
+                  >
+                    {{ 'lauron-cart.svg' | inline_asset_content }}
+                    <span>
+                      {% if variant.available %}
+                        {{ block.settings.buy_button }}
+                      {% else %}
+                        {{ 'products.product.sold_out' | t }}
+                      {% endif %}
+                    </span>
+                    <span class="sold-out-message hidden">
+                      {{ 'products.product.sold_out' | t }}
+                    </span>
+                    {% render 'loading-spinner' %}
+                  </button>
+                {% endform %}
+              </product-form>
             </div>
           </div>
           </div>
@@ -217,9 +216,6 @@
   .two-product-card__caption {
     margin-bottom: 20px;
   }
-  .two-product-card__actions {
-    align-self: flex-end;
-  }
   .two-product-card__actions-button {
     font-size: 14px;
     line-height: 12px;
@@ -235,6 +231,9 @@
     padding: 13px 28px;
     cursor: pointer;
     text-transform: uppercase;
+  }
+  product-form {
+    align-self: flex-end;
   }
   
     @media (max-width: 749px) {
