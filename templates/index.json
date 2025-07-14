@@ -173,6 +173,7 @@
       "blocks": {
         "slide_GjN6WP": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/benefits-slider-1.png",
             "heading": "Біополімерна інкапсуляція",
@@ -336,7 +337,9 @@
       "settings": {
         "title": "Цілеспрямована дія інгредієнтів",
         "subtitle": "Кожен інгредієнт працює на конкретну потребу організму — \nдля відчутної підтримки зсередини",
-        "columns": 4
+        "columns": 4,
+        "view_more_label": "ПОКАЗАТИ БІЛЬШЕ",
+        "view_less_label": "ПОКАЗАТИ МЕНШЕ"
       }
     },
     "facts_slider_wLAYh7": {
@@ -417,7 +420,8 @@
             "reviews": "31 відгук",
             "discount": "Збережіть",
             "caption": "For a two-week subscription:",
-            "features": "Change or cancel anytime; Change or cancel anytime; Change or cancel anytime"
+            "features": "Change or cancel anytime; Change or cancel anytime; Change or cancel anytime",
+            "buy_button": "Купити"
           }
         },
         "product_block_ya6gGh": {
@@ -429,7 +433,8 @@
             "reviews": "31 відгук",
             "discount": "Збережіть",
             "caption": "For a two-week subscription:",
-            "features": "Change or cancel anytime; Change or cancel anytime; Change or cancel anytime"
+            "features": "Change or cancel anytime; Change or cancel anytime; Change or cancel anytime",
+            "buy_button": "Купити"
           }
         }
       },
