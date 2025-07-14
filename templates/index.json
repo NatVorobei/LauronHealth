@@ -24,6 +24,63 @@
         "button2_link": ""
       }
     },
+    "tabs_with_images_ADi6Ve": {
+      "type": "tabs-with-images",
+      "blocks": {
+        "tab_YWgmMb": {
+          "type": "tab",
+          "settings": {
+            "tab_image": "shopify://shop_images/womens-health.png",
+            "tab_text": "\"Функціональний напій для покращення самопочуття, клітинної гідратації та загальної стійкості організму.\""
+          }
+        },
+        "tab_AEtnPp": {
+          "type": "tab",
+          "settings": {
+            "tab_image": "shopify://shop_images/vogue.png",
+            "tab_text": "\"Функціональний напій для покращення самопочуття, клітинної гідратації та загальної стійкості організму.\""
+          }
+        },
+        "tab_FUf7wD": {
+          "type": "tab",
+          "settings": {
+            "tab_image": "shopify://shop_images/marie-claire.png",
+            "tab_text": "\"Функціональний напій для покращення самопочуття, клітинної гідратації та загальної стійкості організму.\""
+          }
+        },
+        "tab_fitMzV": {
+          "type": "tab",
+          "settings": {
+            "tab_image": "shopify://shop_images/elle.png",
+            "tab_text": "\"Функціональний напій для покращення самопочуття, клітинної гідратації та загальної стійкості організму.\""
+          }
+        },
+        "tab_ar6W4T": {
+          "type": "tab",
+          "settings": {
+            "tab_image": "shopify://shop_images/forbes.png",
+            "tab_text": "\"Функціональний напій для покращення самопочуття, клітинної гідратації та загальної стійкості організму.\""
+          }
+        },
+        "tab_d3HXA6": {
+          "type": "tab",
+          "settings": {
+            "tab_image": "shopify://shop_images/cosmopolitan.png",
+            "tab_text": "\"Функціональний напій для покращення самопочуття, клітинної гідратації та загальної стійкості організму.\""
+          }
+        }
+      },
+      "block_order": [
+        "tab_YWgmMb",
+        "tab_AEtnPp",
+        "tab_FUf7wD",
+        "tab_fitMzV",
+        "tab_ar6W4T",
+        "tab_d3HXA6"
+      ],
+      "name": "Tabs with heading",
+      "settings": {}
+    },
     "rich_text_DWNrx9": {
       "type": "rich-text",
       "blocks": {
@@ -690,6 +747,7 @@
   },
   "order": [
     "main_banner_section_jpzrg6",
+    "tabs_with_images_ADi6Ve",
     "rich_text_DWNrx9",
     "multicolumn_8B4iGt",
     "two_blocks_section_mAHYCe",
