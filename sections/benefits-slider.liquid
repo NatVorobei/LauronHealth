@@ -169,21 +169,25 @@
 
 {% javascript %}
 document.addEventListener("DOMContentLoaded", function () {
-  new Swiper(".custom-swiper-benefits", {
-    slidesPerView: 3,
-    spaceBetween: 40,
+  const swiperEl = document.querySelector(".custom-swiper-benefits");
+  const slides = parseInt(swiperEl.dataset.slides || "3");
+
+  new Swiper(swiperEl, {
     loop: true,
+    spaceBetween: 40,
+    slidesPerView: slides,
     breakpoints: {
       0: {
-        slidesPerView: 1.5,
-        spaceBetween: 23,
+        slidesPerView: 1.2,
+        spaceBetween: 20
       },
       768: {
-        slidesPerView: 2,
+        slidesPerView: Math.min(slides, 2),
+        spaceBetween: 30
       },
       1024: {
-        slidesPerView: 3,
-      },
+        slidesPerView: slides
+      }
     }
   });
 });
@@ -238,7 +242,16 @@ document.addEventListener("DOMContentLoaded", function () {
           "type": "url",
           "id": "link_url",
           "label": "URL посилання"
-        }
+        },
+        {
+          "type": "range",
+          "id": "slides_per_view",
+          "label": "Кількість слайдів на десктопі",
+          "min": 1,
+          "max": 4,
+          "step": 1,
+          "default": 3
+        },
       ]
     }
   ],
