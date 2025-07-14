@@ -1,0 +1,129 @@
+<div class="tabs-image-section">
+    <div class="tabs-image-section__heading" id="tabs-heading">
+      {% if section.blocks.first.settings.tab_text != blank %}
+        {{ section.blocks.first.settings.tab_text }}
+      {% endif %}
+    </div>
+  
+    <div class="tabs-image-section__tabs">
+      {% for block in section.blocks %}
+        <img
+          src="{{ block.settings.tab_image | image_url }}"
+          alt="Tab image"
+          class="tabs-image-section__tab {% if forloop.index0 == 0 %}active{% endif %}"
+          data-tab="{{ forloop.index0 }}"
+          data-text="{{ block.settings.tab_text | escape }}"
+        >
+      {% endfor %}
+    </div>
+  </div>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const tabs = document.querySelectorAll(".tabs-image-section__tab");
+      const heading = document.getElementById("tabs-heading");
+  
+      tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+          const newText = tab.getAttribute("data-text");
+  
+          tabs.forEach(t => t.classList.remove("active"));
+          tab.classList.add("active");
+  
+          heading.innerText = newText;
+        });
+      });
+    });
+  </script>
+  
+  <style>
+    .tabs-image-section {
+      text-align: center;
+      padding: 100px 0;
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 82px;
+    }
+    
+    .tabs-image-section__tabs {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      width: 100%;
+      margin: 0 auto;
+      justify-items: space-between;
+      align-items: center;
+    }
+    
+    .tabs-image-section__tab {
+      cursor: pointer;
+      max-width: 120px;
+      max-height: 30px;
+      width: 100%;
+      object-fit: contain;
+    }
+    
+    .tabs-image-section__heading {
+      font-family: Montserrat, sans-serif;
+      font-weight: 700;
+      font-size: 26px;
+      line-height: 32px;
+      margin: 0;
+      color: #1F1F21;
+      max-width: 900px;
+    }
+    
+    @media(max-width: 749px) {
+      .tabs-image-section__tabs {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px 30px;
+      }
+      .tabs-image-section__heading {
+        font-size: 20px;
+        line-height: 26px;
+      }
+    
+      .tabs-image-section {
+        padding: 100px 0;
+        gap: 60px;
+      }
+    
+      .tabs-image-section__tabs {
+        gap: 60px 30px;
+      }
+    }
+  </style>
+  
+  {% schema %}
+  {
+    "name": "Tabs with heading",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "tab",
+        "name": "Tab",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "tab_image",
+            "label": "Картинка табу"
+          },
+          {
+            "type": "text",
+            "id": "tab_text",
+            "label": "Текст зверху (контент табу)",
+            "default": "Функціональний напій для покращення самопочуття..."
+          }
+        ]
+      }
+    ],
+    "max_blocks": 6,
+    "presets": [
+      {
+        "name": "Tabs with heading"
+      }
+    ]
+  }
+{% endschema %}
