@@ -59,23 +59,39 @@
                 <button type="submit" class="two-product-card__actions-button">{{ 'lauron-cart.svg' | inline_asset_content }} {{ block.settings.buy_button }}</button>
               </form> -->
 
-              <product-form>
-                <form method="post"
-                      action="{{ routes.cart_add_url }}"
-                      class="product-form"
-                      enctype="multipart/form-data"
-                      data-product-id="{{ product.id }}">
-                      
-                  <input type="hidden" name="id" value="{{ variant.id }}">
-                  <input type="hidden" name="sections" value="cart-icon-bubble,cart-drawer">
-                  <input type="hidden" name="sections_url" value="{{ request.path }}">
-              
-                  <button type="submit" class="two-product-card__actions-button">
-                    {{ 'lauron-cart.svg' | inline_asset_content }}
-                    {{ block.settings.buy_button }}
-                  </button>
-                </form>
-              </product-form>
+              <product-form data-section-id="{{ section.id }}">
+  {% form 'product', product, class: 'product-form', data-type: 'add-to-cart-form' %}
+    <input
+      type="hidden"
+      name="id"
+      value="{{ variant.id }}"
+      class="product-variant-id"
+      {% unless variant.available %}disabled{% endunless %}
+    >
+
+    <button
+      type="submit"
+      name="add"
+      class="two-product-card__actions-button"
+      aria-live="polite"
+      {% unless variant.available %}disabled{% endunless %}
+    >
+      {{ 'lauron-cart.svg' | inline_asset_content }}
+      <span>
+        {% if variant.available %}
+          {{ block.settings.buy_button }}
+        {% else %}
+          {{ 'products.product.sold_out' | t }}
+        {% endif %}
+      </span>
+      <span class="sold-out-message hidden">
+        {{ 'products.product.sold_out' | t }}
+      </span>
+      {% render 'loading-spinner' %}
+    </button>
+  {% endform %}
+</product-form>
+
             </div>
           </div>
           </div>
