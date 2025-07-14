@@ -39,7 +39,7 @@
         "heading_X6aDqK"
       ],
       "custom_css": [
-        ".rich-text {font-family: Montserrat, sans-serif;}",
+        ".rich-text__heading {font-family: Montserrat, sans-serif;}",
         "@media (max-width: 749px) {.rich-text {padding-top: 40px; padding-bottom: 25px; }}"
       ],
       "name": "t:sections.rich-text.presets.name",
