@@ -81,128 +81,6 @@
       "name": "Tabs with heading",
       "settings": {}
     },
-    "rich_text_DWNrx9": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_X6aDqK": {
-          "type": "heading",
-          "settings": {
-            "heading": "<strong>“Функціональний напій для покращення самопочуття, клітинної гідратації та загальної стійкості організму”</strong>",
-            "heading_size": "h2"
-          }
-        }
-      },
-      "block_order": [
-        "heading_X6aDqK"
-      ],
-      "custom_css": [
-        ".rich-text__heading {font-family: Montserrat, sans-serif;}",
-        "@media (max-width: 749px) {.rich-text {padding-top: 40px; padding-bottom: 25px; }}"
-      ],
-      "name": "t:sections.rich-text.presets.name",
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "",
-        "full_width": true,
-        "padding_top": 100,
-        "padding_bottom": 84
-      }
-    },
-    "multicolumn_8B4iGt": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_tWTRhU": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/womens-health.png",
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_qhRUdF": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/vogue.png",
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_pkGwhP": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/marie-claire.png",
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_TUUyRq": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/elle.png",
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_f3y9Mj": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/forbes.png",
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_AfDwEW": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/cosmopolitan.png",
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_tWTRhU",
-        "column_qhRUdF",
-        "column_pkGwhP",
-        "column_TUUyRq",
-        "column_f3y9Mj",
-        "column_AfDwEW"
-      ],
-      "custom_css": [
-        ".multicolumn-card-spacing {margin: 0;}",
-        ".multicolumn-card {background: none;}"
-      ],
-      "name": "t:sections.multicolumn.presets.name",
-      "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "button_label": "",
-        "button_link": "",
-        "columns_desktop": 6,
-        "column_alignment": "center",
-        "background_style": "primary",
-        "color_scheme": "scheme-1",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 0,
-        "padding_bottom": 100
-      }
-    },
     "two_blocks_section_mAHYCe": {
       "type": "two-blocks-section",
       "custom_css": [
@@ -748,8 +626,6 @@
   "order": [
     "main_banner_section_jpzrg6",
     "tabs_with_images_ADi6Ve",
-    "rich_text_DWNrx9",
-    "multicolumn_8B4iGt",
     "two_blocks_section_mAHYCe",
     "benefits_slider_re3TqD",
     "two_blocks_section_jUbPDe",
