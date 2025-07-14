@@ -54,10 +54,36 @@
                 {% endif %}
               </div>
   
-              <form method="post" action="/cart/add" class="two-product-card__actions">
+              <!-- <form method="post" action="/cart/add" class="two-product-card__actions">
                 <input type="hidden" name="id" value="{{ variant.id }}">
                 <button type="submit" class="two-product-card__actions-button">{{ 'lauron-cart.svg' | inline_asset_content }} {{ block.settings.buy_button }}</button>
-              </form>
+              </form> -->
+
+              <product-form>
+                <form method="post"
+                      action="{{ routes.cart_add_url }}"
+                      accept-charset="UTF-8"
+                      enctype="multipart/form-data"
+                      class="product-form two-product-card__actions"
+                      id="ProductForm-{{ product.id }}">
+              
+                  <input type="hidden" name="id" value="{{ variant.id }}">
+                  <input type="hidden" name="sections" value="cart-icon-bubble,cart-drawer">
+                  <input type="hidden" name="sections_url" value="{{ request.path }}">
+              
+                  <div class="product-form__buttons">
+                    <button
+                      id="ProductSubmitButton-{{ product.id }}"
+                      type="submit"
+                      name="add"
+                      class="two-product-card__actions-button"
+                      {% unless variant.available %}disabled{% endunless %}
+                    >
+                      <span>{{ 'lauron-cart.svg' | inline_asset_content }} {{ block.settings.buy_button }}</span>
+                    </button>
+                  </div>
+                </form>
+              </product-form>
             </div>
           </div>
           </div>
