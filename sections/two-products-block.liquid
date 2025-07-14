@@ -59,7 +59,7 @@
                 <button type="submit" class="two-product-card__actions-button">{{ 'lauron-cart.svg' | inline_asset_content }} {{ block.settings.buy_button }}</button>
               </form> -->
 
-              <product-form data-section-id="{{ section.id }}">
+              <product-form data-section-id="{{ section.id }}" class="custom-product-form">
                 {% form 'product', product, class: 'product-form', data-type: 'add-to-cart-form' %}
                   <input
                     type="hidden"
@@ -232,7 +232,7 @@
     cursor: pointer;
     text-transform: uppercase;
   }
-  product-form {
+  .custom-product-form {
     align-self: flex-end;
   }
   
