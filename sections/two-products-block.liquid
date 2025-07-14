@@ -54,10 +54,6 @@
                 {% endif %}
               </div>
   
-              <!-- <form method="post" action="/cart/add" class="two-product-card__actions">
-                <input type="hidden" name="id" value="{{ variant.id }}">
-                <button type="submit" class="two-product-card__actions-button">{{ 'lauron-cart.svg' | inline_asset_content }} {{ block.settings.buy_button }}</button>
-              </form> -->
 
               <product-form data-section-id="{{ section.id }}" class="custom-product-form">
                 {% form 'product', product, class: 'product-form', data-type: 'add-to-cart-form' %}
@@ -93,8 +89,7 @@
               </product-form>
             </div>
           </div>
-          </div>
-        
+      </div>
       {% endif %}
     {% endfor %}
     </div>
