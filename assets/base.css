@@ -3628,4 +3628,12 @@ details-disclosure > details {
 #HeaderDrawer-logo {
   display: none;
 }
+.product__media {
+  aspect-ratio: 1 / 1;
+}
+
+.product-media-container {
+  border: none;
+  border-radius: 20px;
+}
 /* Custom classes end */

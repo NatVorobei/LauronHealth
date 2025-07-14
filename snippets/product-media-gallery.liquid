@@ -1,4 +1,4 @@
-{% comment %}
+{% comment %} {% comment %}
   Renders a product media gallery. Should be used with 'media-gallery.js'
   Also see 'product-media-modal'
 
@@ -329,4 +329,149 @@
       </button>
     </slider-component>
   {%- endif -%}
-</media-gallery>
+</media-gallery> {% endcomment %}
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<div class="product-media-gallery">
+  <div class="swiper main-swiper">
+    <div class="swiper-wrapper">
+      {% for media in product.media %}
+        <div class="swiper-slide">
+          <div class="product-media">
+            {% render 'product-thumbnail', media: media %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+
+  <div class="swiper thumb-swiper">
+    <div class="swiper-wrapper">
+      {% for media in product.media %}
+        <div class="swiper-slide">
+          <img
+            src="{{ media.preview_image | image_url: width: 300 }}"
+            alt="{{ media.alt | escape }}"
+            class="thumbnail-image"
+            loading="lazy"
+          />
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script>
+  const thumbSwiper = new Swiper('.thumb-swiper', {
+    spaceBetween: 8,
+    slidesPerView: 5,
+    freeMode: true,
+    watchSlidesProgress: true,
+    breakpoints: {
+      768: {
+        slidesPerView: 6,
+      },
+    },
+  });
+
+  const mainSwiper = new Swiper('.main-swiper', {
+    spaceBetween: 10,
+    simulateTouch: true,
+    grabCursor: true,
+    loop: true,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    thumbs: {
+      swiper: thumbSwiper,
+    },
+    breakpoints: {
+      0: {
+        slidesPerView: 1.2,
+      },
+      750: {
+        slidesPerView: 1,
+      },
+    },
+  });  
+</script>
+
+
+<style>
+  .product-media-gallery {
+    width: 100%;
+  }
+  
+  .main-swiper {
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+  
+  .main-swiper .swiper-slide {
+    text-align: center;
+  }
+  
+  .thumb-swiper {
+    padding-top: 0.5rem;
+  }
+  
+  .thumb-swiper .swiper-slide {
+    width: auto;
+    height: auto;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+  
+  .thumb-swiper .swiper-slide-thumb-active {
+    border-color: black;
+  }
+  
+  .thumbnail-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    aspect-ratio: 1 / 1;
+  }
+  .main-swiper .swiper-button-next,
+  .main-swiper .swiper-button-prev {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #1F1F21;
+    border-radius: 50%;
+  }
+
+  .main-swiper .swiper-button-next {
+    right: 40px;
+  }
+
+  .main-swiper .swiper-button-prev {
+    left: 40px;
+  }
+
+  .main-swiper .swiper-button-next:after,
+  .main-swiper .swiper-button-prev:after {
+    color: #1F1F21;
+    font-size: 14px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .main-swiper .swiper-button-next,
+    .main-swiper .swiper-button-prev,
+    .thumb-swiper {
+      display: none !important;
+    }
+  }
+  
+</style>

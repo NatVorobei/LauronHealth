@@ -561,7 +561,7 @@ a.product__text {
   padding: 0;
 }
 
-.product__media-toggle::after {
+/* .product__media-toggle::after {
   content: '';
   cursor: pointer;
   display: block;
@@ -573,7 +573,7 @@ a.product__text {
   bottom: calc(var(--border-width) * -1);
   left: calc(var(--border-width) * -1);
   z-index: 2;
-}
+} */
 
 .product__media-toggle:focus-visible {
   outline: 0;
