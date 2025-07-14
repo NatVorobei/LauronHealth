@@ -55,7 +55,7 @@
   
               <form method="post" action="/cart/add" class="two-product-card__actions">
                 <input type="hidden" name="id" value="{{ variant.id }}">
-                <button type="submit" class="two-product-card__actions-button">{{ 'lauron-cart.svg' | inline_asset_content }} {{ section.settings.buy_button }}</button>
+                <button type="submit" class="two-product-card__actions-button">{{ 'lauron-cart.svg' | inline_asset_content }} {{ block.settings.buy_button }}</button>
               </form>
             </div>
           </div>
