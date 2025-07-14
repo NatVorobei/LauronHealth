@@ -8,7 +8,7 @@
     {% endif %}
   </div>
 
-  <div class="swiper custom-swiper-benefits" data-slides="{{ section.settings.slides_per_view }}" data-total="{{ section.blocks.size }}">
+  <div class="swiper custom-swiper-benefits">
     <div class="swiper-wrapper" style="display: flex; align-items: stretch;">
       {% for block in section.blocks %}
         <div class="swiper-slide custom-swiper-benefits-slide">
@@ -44,7 +44,6 @@
   font-weight: 700;
   margin: 0;
   line-height: 30px;
-  font-family: Montserrat, sans-serif;
 }
 .custom-swiper-benefits-subheading {
   font-size: 24px;
@@ -66,17 +65,9 @@
 }
 
 .custom-swiper-benefits-slide {
-  /* display: flex;
+  display: flex;
   flex: 1 0 auto;
-  height: auto; */
-  width: auto;
-  max-width: 400px;
-  flex-shrink: 0;
   height: auto;
-}
-
-.custom-swiper-benefits .swiper-wrapper {
-  justify-content: center;
 }
 
 .custom-swiper-benefits-card {
@@ -110,7 +101,6 @@
   font-weight: 700;
   line-height: 24px;
   margin: 0 0 32px;
-  font-family: Montserrat, sans-serif;
 }
 
 .custom-swiper-benefits-card p {
@@ -132,7 +122,6 @@
   align-items: center;
   gap: 16px;
   align-self: end;
-  font-family: Montserrat, sans-serif;
 }
 
 @media(max-width: 749px) {
@@ -149,9 +138,9 @@
     font-size: 16px;
     line-height: 22px;
   }
-  {% comment %} .custom-swiper-benefits-wrapper {
+  .custom-swiper-benefits-wrapper {
     padding-left: 10px;
-  } {% endcomment %}
+  }
   .custom-swiper-benefits-content {
     padding: 20px;
   }
@@ -169,39 +158,25 @@
     font-size: 14px;
     line-height: 22px;
   }
-  .custom-swiper-benefits .swiper-wrapper {
-    margin-left: 10px;
-  }
 }
 </style>
 
 {% javascript %}
 document.addEventListener("DOMContentLoaded", function () {
-  const swiperEl = document.querySelector(".custom-swiper-benefits");
-  const slides = parseInt(swiperEl.dataset.slides || "3");
-  const total = parseInt(swiperEl.dataset.total || "0");
-
-  const isFewSlides = total <= slides;
-
-  new Swiper(swiperEl, {
-    loop: total > 1, // loop вимикається тільки якщо слайд 1
+  new Swiper(".custom-swiper-benefits", {
+    slidesPerView: 3,
     spaceBetween: 40,
-    centeredSlides: isFewSlides,
-    slidesPerView: isFewSlides ? 'auto' : slides,
     breakpoints: {
       0: {
-        slidesPerView: 1.2,
-        centeredSlides: true,
-        spaceBetween: 20
+        slidesPerView: 1.5,
+        spaceBetween: 23,
       },
       768: {
-        slidesPerView: isFewSlides ? 'auto' : Math.min(slides, 2),
-        centeredSlides: isFewSlides
+        slidesPerView: 2,
       },
       1024: {
-        slidesPerView: isFewSlides ? 'auto' : slides,
-        centeredSlides: isFewSlides
-      }
+        slidesPerView: 3,
+      },
     }
   });
 });
@@ -222,15 +197,6 @@ document.addEventListener("DOMContentLoaded", function () {
       "id": "subtitle",
       "label": "Підзаголовок",
       "default": "Інноваційні рішення, які підвищують ефективність вашої косметики."
-    },
-    {
-      "type": "range",
-      "id": "slides_per_view",
-      "label": "Кількість слайдів на десктопі",
-      "min": 1,
-      "max": 4,
-      "step": 1,
-      "default": 3
     }
   ],
   "blocks": [
@@ -265,7 +231,7 @@ document.addEventListener("DOMContentLoaded", function () {
           "type": "url",
           "id": "link_url",
           "label": "URL посилання"
-        },
+        }
       ]
     }
   ],
