@@ -8,7 +8,7 @@
     {% endif %}
   </div>
 
-  <div class="swiper custom-swiper-benefits">
+  <div class="swiper custom-swiper-benefits" data-slides="{{ section.settings.slides_per_view }}">
     <div class="swiper-wrapper" style="display: flex; align-items: stretch;">
       {% for block in section.blocks %}
         <div class="swiper-slide custom-swiper-benefits-slide">
