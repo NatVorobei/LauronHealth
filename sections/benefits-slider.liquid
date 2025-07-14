@@ -66,9 +66,17 @@
 }
 
 .custom-swiper-benefits-slide {
-  display: flex;
+  /* display: flex;
   flex: 1 0 auto;
+  height: auto; */
+  width: auto;
+  max-width: 400px;
+  flex-shrink: 0;
   height: auto;
+}
+
+.custom-swiper-benefits .swiper-wrapper {
+  justify-content: center;
 }
 
 .custom-swiper-benefits-card {
@@ -171,22 +179,28 @@
 document.addEventListener("DOMContentLoaded", function () {
   const swiperEl = document.querySelector(".custom-swiper-benefits");
   const slides = parseInt(swiperEl.dataset.slides || "3");
+  const total = parseInt(swiperEl.dataset.total || "0");
+
+  const isFewSlides = total <= slides;
 
   new Swiper(swiperEl, {
-    loop: true,
+    loop: total > 1, // loop вимикається тільки якщо слайд 1
     spaceBetween: 40,
-    slidesPerView: slides,
+    centeredSlides: isFewSlides,
+    slidesPerView: isFewSlides ? 'auto' : slides,
     breakpoints: {
       0: {
         slidesPerView: 1.2,
+        centeredSlides: true,
         spaceBetween: 20
       },
       768: {
-        slidesPerView: Math.min(slides, 2),
-        spaceBetween: 30
+        slidesPerView: isFewSlides ? 'auto' : Math.min(slides, 2),
+        centeredSlides: isFewSlides
       },
       1024: {
-        slidesPerView: slides
+        slidesPerView: isFewSlides ? 'auto' : slides,
+        centeredSlides: isFewSlides
       }
     }
   });
