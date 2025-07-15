@@ -23,7 +23,7 @@
           {% endif %}
         </div> {% endcomment %}
         {% if section.settings.button_variant == 'secondary' %}
-          <div class="custom-expandable-text" id="expandable-text-{{ section.id }}">
+          <div class="custom-expandable-text" id="expandable-text-{{ section.id }}" style="color: {{ section.settings.description_2_color }};">
             {{ section.settings.expandable_text }}
           </div>
         {% endif %}
@@ -131,7 +131,8 @@
     margin: 0;
   }
 
-  .custom-text__description_2 {
+  .custom-text__description_2,
+  .custom-expandable-text {
     font-family: Montserrat, sans-serif;
   }
 
@@ -139,6 +140,7 @@
     display: flex;
     gap: 12px;
     align-self: flex-end;
+    margin-top: 50px;
   }
 
   .custom-button {
@@ -168,13 +170,13 @@
   .custom-expandable-text {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.5s ease, padding 0.3s ease;
-    padding: 0;
+    transition: max-height 0.5s ease;
   }
   
   .custom-expandable-text.expanded {
-    max-height: 500px;
+    max-height: 1000px;
   }
+  
   
   .plus-button {
     border: none;
@@ -184,13 +186,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.3s ease;
+    {% comment %} transition: transform 0.3s ease; {% endcomment %}
   }
   
-  .plus-icon,
+  {% comment %} .plus-icon,
   .exit-icon {
     transition: opacity 0.3s ease;
-  }
+  } {% endcomment %}
   
   .plus-icon svg,
   .exit-icon svg {
@@ -221,10 +223,6 @@
 
     .custom-container {
       padding: 0 14px;
-    }
-
-    .custom-text-content {
-      gap: 24px;
     }
 
     .custom-text-content h2 {
