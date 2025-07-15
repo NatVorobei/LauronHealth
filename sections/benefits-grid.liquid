@@ -1,4 +1,4 @@
-<div class="benefits-grid-wrapper test">
+<div class="benefits-grid-wrapper">
   <div class="benefits-grid__header">
     {% if section.settings.title != blank %}
       <h2 class="benefits-grid__heading">{{ section.settings.title }}</h2>
@@ -13,21 +13,26 @@
       {% for block in section.blocks %}
         <div class="benefits-card{% if forloop.index > 4 %} hidden-on-mobile{% endif %}">
           <div class="card-inner">
-            <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.title }}" class="card-image" />
-            <div class="card-content">
-              <h3 class="card-title">{{ block.settings.title }}</h3>
-              <div class="card-description-container">
-                <p class="card-description">{{ block.settings.short_text }}</p>
-                <button class="expand-btn" onclick="this.closest('.benefits-card').classList.add('expanded')">
-                  {{ 'plus-icon.svg' | inline_asset_content }}
-                </button>
+            <div class="card-face card-front">
+              <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.title }}" class="card-image" />
+              <div class="card-content">
+                <h3 class="card-title">{{ block.settings.title }}</h3>
+                <div class="card-description-container">
+                  <p class="card-description">{{ block.settings.short_text }}</p>
+                  <button class="expand-btn" onclick="this.closest('.benefits-card').classList.add('flipped')">
+                    {{ 'plus-icon.svg' | inline_asset_content }}
+                  </button>
+                </div>
               </div>
             </div>
-            <div class="card-expanded">
-              <div class="card-expanded-scroll">
+
+            <div class="card-face card-back">
+              <div class="card-back-content">
                 <p>{{ block.settings.full_text }}</p>
+                <button class="close-btn" onclick="this.closest('.benefits-card').classList.remove('flipped')">
+                  {{ 'exit-button.svg' | inline_asset_content }}
+                </button>
               </div>
-              <button class="close-btn" onclick="this.closest('.benefits-card').classList.remove('expanded')">{{ 'exit-button.svg' | inline_asset_content }}</button>
             </div>
           </div>
         </div>
@@ -54,6 +59,7 @@
   .benefits-grid-wrapper {
     max-width: 1280px;
     margin: 0 auto;
+    padding: 0 10px;
   }
 
   .benefits-grid-container {
@@ -64,9 +70,8 @@
     display: flex;
     flex-direction: column;
     gap: 30px;
-    padding-right: 10px;
-    padding-left: 50px;
     margin-bottom: 60px;
+    padding: 0 10px;
   }
 
   .benefits-grid__heading {
@@ -93,16 +98,51 @@
   }
 
   .benefits-card {
+    perspective: 1000px;
     position: relative;
-    background: #F0F4F5;
-    border-radius: 20px;
-    overflow: hidden;
+    min-height: 360px;
   }
 
-  .benefits-card .card-inner {
+  .card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .card-face {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    backface-visibility: hidden;
+    transition: transform 0.6s ease;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    background: #F0F4F5;
+  }
+
+  .card-front {
+    z-index: 2;
+    transform: rotateY(0deg);
+  }
+
+  .card-back {
+    transform: rotateY(180deg);
+    z-index: 1;
+    justify-content: space-between;
+    padding: 20px;
+  }
+
+  .benefits-card.flipped .card-front {
+    transform: rotateY(-180deg);
+  }
+
+  .benefits-card.flipped .card-back {
+    transform: rotateY(0deg);
+    z-index: 3;
   }
 
   .card-image {
@@ -113,17 +153,19 @@
 
   .card-content {
     padding: 40px 20px;
-    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .card-title {
     font-family: Montserrat, sans-serif;
-    margin: 0;
+    margin: 0 0 20px;
     font-size: 26px;
     line-height: 24px;
     color: #0B1C2F;
     font-weight: 700;
-    margin-bottom: 20px;
   }
 
   .card-description-container {
@@ -145,52 +187,31 @@
     text-overflow: ellipsis;
   }
 
-  .expand-btn {
+  .expand-btn,
+  .close-btn {
     border: none;
-    width: 30px;
-    height: 30px;
     background: transparent;
     cursor: pointer;
-    align-self: flex-start;
-    flex-shrink: 0;
     padding: 0;
-  }
-
-  .card-expanded {
-    position: absolute;
-    inset: 0;
-    background: #F0F4F5;
-    z-index: 10;
-    padding: 20px;
-    display: none;
-    flex-direction: column;
-  }
-
-  .card-expanded-scroll {
-    overflow-y: auto;
-    max-height: calc(100% - 40px);
-    padding-right: 10px;
-  }
-
-  .card-expanded-scroll p {
-    margin: 0;
-  }
-
-  .benefits-card.expanded .card-expanded {
-    display: flex;
-    animation: fadeIn 0.2s ease-in-out;
+    width: 30px;
+    height: 30px;
   }
 
   .close-btn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: transparent;
-    border: none;
-    font-size: 26px;
-    color: #333;
-    cursor: pointer;
-    padding: 0;
+    align-self: flex-end;
+  }
+
+  .card-back-content {
+    display: flex;
+    flex-direction: column-reverse;
+    height: 100%;
+    justify-content: start;
+  }
+
+  .card-back-content p {
+    margin: 0;
+    overflow-y: auto;
+    max-height: calc(100% - 40px);
   }
 
   .hidden-on-mobile {
@@ -215,19 +236,9 @@
     line-height: 16px;
   }
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
-  }
-
   @media (max-width: 749px) {
     .benefits-grid {
       grid-template-columns: 1fr;
-    }
-
-    .benefits-grid__header {
-      padding: 0 10px;
-      margin-bottom: 50px;
     }
 
     .benefits-grid__heading {
@@ -240,13 +251,14 @@
       line-height: 22px;
     }
 
-    .benefits-card .card-inner {
-      flex-direction: row;
+    .card-back-content p {
+      max-height: unset;
     }
 
     .card-title {
       font-size: 16px;
       line-height: 18px;
+      margin: 0;
     }
 
     .card-description {
@@ -256,61 +268,63 @@
 
     .card-content {
       padding: 20px 10px 20px 20px;
-      width: 70%;
+      gap: 6px;
+      justify-content: center;
     }
 
     .card-image {
-      width: 30%;
-      height: 100%;
-      object-fit: cover;
+      height: 120px;
+      max-width: 120px;
     }
 
-    .benefits-grid-wrapper {
-      padding: 0 10px;
+    .card-back {
+      position: relative;
+      padding: 10px 10px 10px 20px;
     }
 
-    .card-expanded {
+    .card-back-content {
+      gap: 0;
+    }
+
+    .card-face {
+      flex-direction: row;
+    }
+
+    .benefits-card {
+      height: 120px;
+      min-height: unset;
+    }
+
+    .expand-btn {
       position: absolute;
-      inset: 0;
-      background: #F0F4F5;
-      z-index: 10;
-      display: none;
-      flex-direction: column;
-      padding: 20px;
-      border-radius: 20px;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
     }
 
-    .card-expanded-scroll {
-      overflow-y: auto;
-      max-height: unset;
-    }
-    .hidden-on-mobile {
-      display: none !important;
-    }
-  
-    .view-all-btn-wrapper {
-      display: block;
-    }
-
-    .benefits-grid-container {
-      margin-bottom: 0;
-    }
-
-    .view-all-btn-wrapper {
-      margin-bottom: 100px;
-    }
     .expand-btn,
     .close-btn {
       width: 24px;
       height: 24px;
     }
-  
+
     .expand-btn svg,
     .close-btn svg {
       width: 100% !important;
       height: 100% !important;
-      max-width: 24px;
-      max-height: 24px;
+    }
+
+    .hidden-on-mobile {
+      display: none !important;
+    }
+
+    .view-all-btn-wrapper {
+      display: block;
+      margin-bottom: 100px;
+    }
+
+    .benefits-grid-container {
+      margin-bottom: 0;
     }
   }
 
@@ -322,17 +336,68 @@
     .view-all-btn-wrapper {
       display: none;
     }
+
+    .benefits-card {
+      transform-style: preserve-3d;
+      transition: transform 0.2s ease;
+      will-change: transform;
+      overflow: hidden;
+    }
+  
+    .card-inner {
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.2s ease;
+    }
+  
+    .benefits-card:hover .card-inner {
+      transform: perspective(1000px);
+    }
+  
+    .card-image {
+      object-fit: cover;
+      width: 100%;
+      height: 180px;
+      pointer-events: none;
+      backface-visibility: hidden;
+    }
   }
 </style>
 
 <script>
+  if (window.innerWidth >= 750) {
+    document.querySelectorAll('.benefits-card').forEach(card => {
+      const inner = card.querySelector('.card-inner');
+  
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+  
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+  
+        const rotateX = ((y - centerY) / centerY) * -8; 
+        const rotateY = ((x - centerX) / centerX) * 8;  
+  
+        inner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+  
+      card.addEventListener('mouseleave', () => {
+        inner.style.transform = `rotateX(0deg) rotateY(0deg)`;
+      });
+    });
+  }
+  
+
+  
   function toggleAllBenefits(button) {
     const hiddenCards = document.querySelectorAll('.benefits-card.hidden-on-mobile');
     const allCards = document.querySelectorAll('.benefits-card');
     const isExpanded = button.getAttribute('data-expanded') === 'true';
     const moreLabel = button.getAttribute('data-more');
     const lessLabel = button.getAttribute('data-less');
-  
+
     if (isExpanded) {
       allCards.forEach((card, index) => {
         if (index >= 4) card.classList.add('hidden-on-mobile');
@@ -344,7 +409,7 @@
       button.textContent = lessLabel;
       button.setAttribute('data-expanded', 'true');
     }
-  }  
+  }
 </script>
 
 {% schema %}
