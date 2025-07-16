@@ -386,6 +386,12 @@ a.product__text {
 }
 
 @media screen and (max-width: 749px) {
+  .product__container {
+    padding: 0;
+  }
+  .product__info-wrapper {
+    padding: 0 10px;
+  }
   .product__media-list {
     margin-left: -2.5rem;
     margin-bottom: 3rem;

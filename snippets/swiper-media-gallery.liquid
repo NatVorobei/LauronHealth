@@ -2,11 +2,28 @@
   <div class="swiper main-swiper">
     <div class="swiper-wrapper">
       {% for media in product.media %}
-        <div class="swiper-slide">
+        {% comment %} <div class="swiper-slide">
           <div class="product-media">
-            {% render 'product-thumbnail', media: media %}
+            {% comment %} {% render 'product-thumbnail', media: media %} {% endcomment %}
+            <div class="product-media-image-wrapper">
+                <img
+                  src="{{ media.preview_image | image_url: width: 1200 }}"
+                  alt="{{ media.alt | escape }}"
+                  loading="lazy"
+                  class="product-media-image"
+                />
+              </div>
           </div>
-        </div>
+        </div> {% endcomment %}
+
+        <div class="swiper-slide">
+            <img
+              src="{{ media.preview_image | image_url: width: 1200 }}"
+              alt="{{ media.alt | escape }}"
+              loading="lazy"
+              class="product-media-image"
+            />
+          </div>
       {% endfor %}
     </div>
     <div class="swiper-button-prev"></div>
@@ -66,20 +83,37 @@
 </script>
 
 <style>
+
+.product-media-image-wrapper {
+    width: 100%;
+    overflow: hidden;
+    }
+
+    
+.product-media-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+    border-radius: 0;
+    }
   .product-media-gallery {
     width: 100%;
   }
 
   .main-swiper {
     width: 100%;
-    border-radius: 10px;
     overflow: hidden;
     margin-bottom: 1rem;
   }
 
   .main-swiper .swiper-slide {
     text-align: center;
+    overflow: hidden;
+    border-radius: 20px; 
   }
+  
 
   .thumb-swiper {
     padding-top: 0.5rem;
@@ -136,5 +170,12 @@
     .thumb-swiper {
       display: none !important;
     }
+
+    .product-media-gallery .swiper-wrapper {
+        margin-left: 10px;
+      }
+      .main-swiper .swiper-slide {
+        border-radius: 16px; 
+      }
   }
 </style>
