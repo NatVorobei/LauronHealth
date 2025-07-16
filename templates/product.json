@@ -323,27 +323,27 @@
         "collapsible_row_eByR43": {
           "type": "collapsible_row",
           "settings": {
-            "heading": "Collapsible row",
-            "icon": "check_mark",
-            "row_content": "",
+            "heading": "Чому Lauron створено саме в рідкому форматі, а не в капсулах чи порошках?",
+            "icon": "none",
+            "row_content": "<p>Рідкий формат дозволяє досягти максимальної розчинності та біодоступності активних речовин. Крім того, інкапсуляція захищає інгредієнти від руйнування в шлунку, що робить Lauron ефективнішим за сухі форми.</p>",
             "page": ""
           }
         },
         "collapsible_row_6hGLMq": {
           "type": "collapsible_row",
           "settings": {
-            "heading": "Collapsible row",
-            "icon": "check_mark",
-            "row_content": "",
+            "heading": "Lauron — це курс чи його можна приймати постійно?",
+            "icon": "none",
+            "row_content": "<p>Lauron краще за все підходить для регулярного щоденного вживання. Завдяки м’якому, фізіологічно сумісному складу він придатний для тривалого використання без перерв.</p>",
             "page": ""
           }
         },
         "collapsible_row_FGmxqb": {
           "type": "collapsible_row",
           "settings": {
-            "heading": "Collapsible row",
-            "icon": "check_mark",
-            "row_content": "",
+            "heading": "Як Lauron вписується в щоденний догляд за здоров’ям?",
+            "icon": "none",
+            "row_content": "<p>Він стає частиною ранкового або денного ритуалу, підтримує водний баланс, стан шкіри та загальне самопочуття. Подібно до щоденного догляду за шкірою ззовні, Lauron діє зсередини — на користь клітинного здоров’я щодня.</p>",
             "page": ""
           }
         }
@@ -359,9 +359,9 @@
         "caption": "",
         "details_link_text": "",
         "details_link": "",
-        "heading": "Collapsible content",
+        "heading": "<strong>Загальні питання</strong>",
         "heading_size": "h1",
-        "heading_alignment": "center",
+        "heading_alignment": "left",
         "layout": "none",
         "container_color_scheme": "",
         "color_scheme": "",
