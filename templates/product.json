@@ -83,6 +83,30 @@
         "padding_bottom": 12
       }
     },
+    "benefits_grid_MPVPXr": {
+      "type": "benefits-grid",
+      "blocks": {
+        "benefit_YYBxrW": {
+          "type": "benefit",
+          "settings": {
+            "title": "Підтримка шкіри",
+            "short_text": "Здоровий вигляд шкіри, еластичність та природне зволоження",
+            "full_text": "Sodium Hyaluronate MW 2MDa, Vitamin C (Ascorbic Acid), Vitamin A – 240 µg (30% of 800 µg), Zinc (as Zinc Gluconate), Copper Gluconate, Vitamin E, Biotin, Proline, Lysine, Alanin"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_YYBxrW"
+      ],
+      "name": "Benefits Grid",
+      "settings": {
+        "title": "Цілеспрямована дія інгредієнтів",
+        "subtitle": "Кожен інгредієнт працює на конкретну потребу організму — для відчутної підтримки зсередини.",
+        "columns": 4,
+        "view_more_label": "ПОКАЗАТИ БІЛЬШЕ",
+        "view_less_label": "ПОКАЗАТИ МЕНШЕ"
+      }
+    },
     "related-products": {
       "type": "related-products",
       "settings": {
@@ -104,6 +128,7 @@
   },
   "order": [
     "main",
+    "benefits_grid_MPVPXr",
     "related-products"
   ]
 }
