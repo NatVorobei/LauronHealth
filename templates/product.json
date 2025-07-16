@@ -28,6 +28,10 @@
           "type": "description",
           "settings": {}
         },
+        "appstle_subscription_appstle_subscription_product_page_widget_patj7g": {
+          "type": "shopify://apps/appstle-subscription/blocks/appstle-subscription-product-page-widget/fe257d39-6f88-4f35-ab08-bd437e3aa94e",
+          "settings": {}
+        },
         "price": {
           "type": "price",
           "settings": {}
@@ -56,6 +60,7 @@
         "vendor",
         "title",
         "description",
+        "appstle_subscription_appstle_subscription_product_page_widget_patj7g",
         "price",
         "variant_picker",
         "quantity_selector",
