@@ -351,7 +351,6 @@
           "type": "product_block",
           "settings": {
             "product": "freeze-age",
-            "custom_image": "shopify://shop_images/freeze-age-transparent_4511bdef-de6e-4975-aadc-2ee1adb5cc45.png",
             "rating": "★ ★ ★ ★ ★",
             "reviews": "31 відгук",
             "discount": "Збережіть",
@@ -364,7 +363,7 @@
           "type": "product_block",
           "settings": {
             "product": "mental-performance",
-            "custom_image": "shopify://shop_images/meltal-transparent.png",
+            "custom_image": "shopify://shop_images/mental-health-product-block.png",
             "rating": "★ ★ ★ ★ ★",
             "reviews": "31 відгук",
             "discount": "Збережіть",
