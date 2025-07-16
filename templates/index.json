@@ -351,6 +351,7 @@
           "type": "product_block",
           "settings": {
             "product": "freeze-age",
+            "custom_image": "shopify://shop_images/freeze-age-product-block.png",
             "rating": "★ ★ ★ ★ ★",
             "reviews": "31 відгук",
             "discount": "Збережіть",
