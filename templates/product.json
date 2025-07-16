@@ -93,10 +93,19 @@
             "short_text": "Здоровий вигляд шкіри, еластичність та природне зволоження",
             "full_text": "Sodium Hyaluronate MW 2MDa, Vitamin C (Ascorbic Acid), Vitamin A – 240 µg (30% of 800 µg), Zinc (as Zinc Gluconate), Copper Gluconate, Vitamin E, Biotin, Proline, Lysine, Alanin"
           }
+        },
+        "benefit_rtP8Cc": {
+          "type": "benefit",
+          "settings": {
+            "title": "Клітинна стійкість",
+            "short_text": "Допомагає захищати клітини від окисного стресу та передчасного старіння",
+            "full_text": "N-acetyl-L-cysteine, Vitamin C (Ascorbic Acid), Vitamin E, L-glycine, Zinc (as Zinc Gluconate), Selenium, Manganese Gluconate, Copper Gluconate, L-Theanine"
+          }
         }
       },
       "block_order": [
-        "benefit_YYBxrW"
+        "benefit_YYBxrW",
+        "benefit_rtP8Cc"
       ],
       "name": "Benefits Grid",
       "settings": {
