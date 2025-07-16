@@ -372,6 +372,16 @@
         "padding_bottom": 36
       }
     },
+    "custom_newsletter_qmdmbR": {
+      "type": "custom-newsletter",
+      "name": "Custom Newsletter",
+      "settings": {
+        "background_image": "shopify://shop_images/newsletter-image.webp",
+        "discount": "-10%",
+        "heading": "на перше замовлення",
+        "subheading": "Підпишіться на розсилку, щоб першими дізнаватись про новинки, спеціальні пропозиції та корисні матеріали — і отримайте знижку 10% на першу покупку."
+      }
+    },
     "related-products": {
       "type": "related-products",
       "disabled": true,
@@ -398,6 +408,7 @@
     "benefits_grid_MPVPXr",
     "benefits_compare_UnCr7E",
     "collapsible_content_fMBfJ3",
+    "custom_newsletter_qmdmbR",
     "related-products"
   ]
 }
