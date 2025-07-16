@@ -1,4 +1,4 @@
-{% comment %} {% comment %}
+{% comment %} 
   Renders a product media gallery. Should be used with 'media-gallery.js'
   Also see 'product-media-modal'
 
@@ -10,6 +10,13 @@
   Usage:
   {% render 'product-media-gallery' %}
 {% endcomment %}
+
+{%- liquid
+  if section.settings.gallery_layout == 'swiper'
+    render 'swiper-media-gallery'
+    break
+  endif
+-%}
 
 {%- liquid
   if section.settings.hide_variants and variant_images.size == product.media.size
@@ -329,10 +336,10 @@
       </button>
     </slider-component>
   {%- endif -%}
-</media-gallery> {% endcomment %}
+</media-gallery>
 
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+{% comment %} <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
 <div class="product-media-gallery">
   <div class="swiper main-swiper">
@@ -474,4 +481,4 @@
     }
   }
   
-</style>
+</style> {% endcomment %}
