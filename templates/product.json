@@ -293,6 +293,9 @@
         "feature_9qRABw",
         "feature_cjXB6B"
       ],
+      "custom_css": [
+        "@media(max-width: 749px) {.benefits-section {margin-top: 100px; }}"
+      ],
       "name": "Benefits Compare",
       "settings": {
         "heading": "Переваги",
