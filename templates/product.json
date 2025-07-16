@@ -101,11 +101,29 @@
             "short_text": "Допомагає захищати клітини від окисного стресу та передчасного старіння",
             "full_text": "N-acetyl-L-cysteine, Vitamin C (Ascorbic Acid), Vitamin E, L-glycine, Zinc (as Zinc Gluconate), Selenium, Manganese Gluconate, Copper Gluconate, L-Theanine"
           }
+        },
+        "benefit_Xqewix": {
+          "type": "benefit",
+          "settings": {
+            "title": "Активне тіло",
+            "short_text": "Підтримує нормальний стан м’язів, суглобів, сполучної тканини та кісток",
+            "full_text": "Sodium Hyaluronate MW 2MDa, Lysine, Proline, Alanin, Sodium alginate, Vitamin D3, Vitamin C (Ascorbic Acid),  Manganese Gluconate, Copper Gluconate"
+          }
+        },
+        "benefit_EdFgab": {
+          "type": "benefit",
+          "settings": {
+            "title": "Захист мозку",
+            "short_text": "Сприяє когнітивній функції, психоемоційній рівновазі та адаптації до навантажень",
+            "full_text": "L-Theanine, N-acetyl-L-cysteine, L-glycine, Vitamin C (Ascorbic Acid), Zinc (as Zinc Gluconate), Vitamin D3, Copper Gluconate, Biotin"
+          }
         }
       },
       "block_order": [
         "benefit_YYBxrW",
-        "benefit_rtP8Cc"
+        "benefit_rtP8Cc",
+        "benefit_Xqewix",
+        "benefit_EdFgab"
       ],
       "name": "Benefits Grid",
       "settings": {
