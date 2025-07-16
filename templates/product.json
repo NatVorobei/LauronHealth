@@ -77,6 +77,51 @@
         "padding_bottom": 12
       }
     },
+    "icon_features_grid_QBn6kb": {
+      "type": "icon-features-grid",
+      "blocks": {
+        "feature_CAVx7T": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/refund.svg",
+            "title": "",
+            "subtitle": "30-денна гарантія повернення коштів"
+          }
+        },
+        "feature_JcNEdC": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/wallet.svg",
+            "title": "",
+            "subtitle": "Заощаджуйте до 20% на підписці"
+          }
+        },
+        "feature_ANdMwN": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/cancel.svg",
+            "title": "",
+            "subtitle": "Змінюйте або скасовуйте у будь-який момент"
+          }
+        },
+        "feature_iHTwiE": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/free-delivery.svg",
+            "title": "",
+            "subtitle": "Безкоштовна доставка від 200 zł"
+          }
+        }
+      },
+      "block_order": [
+        "feature_CAVx7T",
+        "feature_JcNEdC",
+        "feature_ANdMwN",
+        "feature_iHTwiE"
+      ],
+      "name": "Icon Features Grid",
+      "settings": {}
+    },
     "image_with_accordion_LVRiRj": {
       "type": "image-with-accordion",
       "blocks": {
@@ -147,7 +192,7 @@
         "main_accordion_padding_right_mobile": 10,
         "main_accordion_padding_bottom_mobile": 50,
         "main_accordion_padding_left_mobile": 20,
-        "padding_top": 100,
+        "padding_top": 0,
         "padding_bottom": 100
       }
     },
@@ -294,7 +339,7 @@
         "feature_cjXB6B"
       ],
       "custom_css": [
-        "@media(max-width: 749px) {.benefits-section {margin-top: 100px; }}"
+        "@media (max-width: 749px) {.benefits-section {margin-top: 100px; }}"
       ],
       "name": "Benefits Compare",
       "settings": {
@@ -404,6 +449,7 @@
   },
   "order": [
     "main",
+    "icon_features_grid_QBn6kb",
     "image_with_accordion_LVRiRj",
     "benefits_grid_MPVPXr",
     "benefits_compare_UnCr7E",
