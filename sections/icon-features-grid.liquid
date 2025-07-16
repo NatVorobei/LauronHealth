@@ -1,0 +1,105 @@
+<div class="icon-features-wrapper">
+    <div class="icon-features-grid">
+        {% for block in section.blocks %}
+        <div class="icon-feature-block">
+            {% if block.settings.icon %}
+            <img src="{{ block.settings.icon | img_url: '60x' }}" alt="Icon">
+            {% endif %}
+
+            {% if block.settings.title != blank %}
+            <div class="icon-feature-title">{{ block.settings.title }}</div>
+            {% endif %}
+
+            {% if block.settings.subtitle != blank %}
+            <div class="icon-feature-subtitle">{{ block.settings.subtitle }}</div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+.icon-features-wrapper {
+    max-width: 990px;
+    margin: 0 auto;
+    padding: 100px 0;
+}
+.icon-features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  text-align: center;
+}
+.icon-feature-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.icon-feature-block img {
+  width: 60px;
+  height: auto;
+}
+.icon-feature-title {
+  font-weight: 600;
+  font-size: 16px;
+}
+.icon-feature-subtitle {
+  color: #87878D;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+@media(max-width: 749px) {
+    .icon-features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 80px;
+    }
+    .icon-feature-subtitle {
+        font-size: 12px;
+        line-height: 14px;
+    }
+    .icon-feature-block {
+        gap: 16px;
+    }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Icon Features Grid",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Feature title"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "Feature subtitle"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Icon Features Grid",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
