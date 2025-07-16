@@ -357,7 +357,7 @@
       "name": "t:sections.collapsible_content.presets.name",
       "settings": {
         "caption": "",
-        "details_link_text": "",
+        "details_link_text": "ЧИТАТИ БІЛЬШЕ",
         "details_link": "",
         "heading": "<strong>Загальні питання</strong>",
         "heading_size": "h1",
