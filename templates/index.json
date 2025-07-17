@@ -217,9 +217,9 @@
           "type": "benefit",
           "settings": {
             "image": "shopify://shop_images/grid-image-4.webp",
-            "title": "Заголовок картки",
-            "short_text": "Короткий опис переваги",
-            "full_text": "Повний опис переваги, який розкривається при натисканні"
+            "title": "Захист мозку",
+            "short_text": "Сприяє когнітивній функції, психоемоційній рівновазі та адаптації до навантажень",
+            "full_text": "L-Theanine, N-acetyl-L-cysteine, L-glycine, Vitamin C (Ascorbic Acid), Zinc (as Zinc Gluconate), Vitamin D3, Copper Gluconate, Biotin"
           }
         },
         "benefit_nxPWTq": {
