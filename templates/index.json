@@ -71,6 +71,12 @@
           "settings": {
             "word": "стабільної енергії"
           }
+        },
+        "word_6gAfp3": {
+          "type": "word",
+          "settings": {
+            "word": "підтримки метаболізму"
+          }
         }
       },
       "block_order": [
@@ -83,7 +89,8 @@
         "word_jtgFhT",
         "word_ybwWTe",
         "word_NiQjAH",
-        "word_UhftFC"
+        "word_UhftFC",
+        "word_6gAfp3"
       ],
       "name": "Main Banner",
       "settings": {
