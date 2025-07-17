@@ -244,9 +244,9 @@
           "type": "benefit",
           "settings": {
             "image": "shopify://shop_images/grid-image-7.webp",
-            "title": "Заголовок картки",
-            "short_text": "Короткий опис переваги",
-            "full_text": "Повний опис переваги, який розкривається при натисканні"
+            "title": "Стресостійкість",
+            "short_text": "Стійкість до стресу, емоційний баланс і адаптація",
+            "full_text": "Rhodiola Rosea Extract (standardized to 3% rosavins and 1% salidroside), L-Theanine, L-Tyrosine, Bacopa monnieri extract (20% bacosides), Vitamin B6"
           }
         },
         "benefit_ztQ6MB": {
