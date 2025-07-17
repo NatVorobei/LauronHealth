@@ -165,6 +165,7 @@
           "type": "collapsible_row",
           "settings": {
             "heading": "Максимальна біодоступність",
+            "image": "shopify://shop_images/collapsible-content-1.png",
             "row_content": "<p>Висока біодоступність Lauron забезпечує доставку активних інгредієнтів без втрат у процесі травлення — безпосередньо до клітин, саме туди, де вони мають діяти.</p>",
             "background_color": "#ffffff",
             "text_color": "#000000"
