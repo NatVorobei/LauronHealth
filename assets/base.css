@@ -3642,4 +3642,19 @@ h3,
 p {
   margin: 0;
 }
+
+.appstle_subscription_wrapper {
+  margin-bottom: 16px !important;
+}
+
+.appstle_widget_title {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 10px;
+}
+
+#appstle_subscription_widget0 .appstle_subscribe_option {
+  margin-left: 0 !important;
+  gap: 28px;
+}
 /* Custom classes end */
