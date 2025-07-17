@@ -158,6 +158,62 @@
       "name": "Icon Features Grid",
       "settings": {}
     },
+    "collapsible_content_with_image_U6AHjf": {
+      "type": "collapsible-content-with-image",
+      "blocks": {
+        "collapsible_row_8DPgfz": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Максимальна біодоступність",
+            "row_content": "<p>Висока біодоступність Lauron забезпечує доставку активних інгредієнтів без втрат у процесі травлення — безпосередньо до клітин, саме туди, де вони мають діяти.</p>",
+            "background_color": "#ffffff",
+            "text_color": "#000000"
+          }
+        },
+        "collapsible_row_MiVwhr": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Клітинне відновлення",
+            "row_content": "<p>Lauron підтримує здоров’я клітин, доставляючи активні сполуки безпосередньо на рівень тканин. Це сприяє зволоженню, еластичності та структурній цілісності — ключовим чинникам системної рівноваги та довготривалої функціональності.</p>",
+            "background_color": "#ffffff",
+            "text_color": "#000000"
+          }
+        },
+        "collapsible_row_jxqitC": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Клінічна база",
+            "row_content": "<p>Формула Lauron базується на клінічних даних і рецензованих дослідженнях. Кожен компонент підібрано з урахуванням доведеної біологічної дії та об’єднано технологіями, що підвищують ефективність і безпечність у реальному використанні.</p>",
+            "background_color": "#ffffff",
+            "text_color": "#000000"
+          }
+        },
+        "collapsible_row_gY9Fnp": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Зручний формат",
+            "row_content": "<p>Готовий до вживання та простий у використанні. Lauron легко інтегрується в щоденний ритм — без приготування, змішування чи складного планування. Постійна підтримка організму у зручному сучасному форматі.</p>",
+            "background_color": "#ffffff",
+            "text_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_8DPgfz",
+        "collapsible_row_MiVwhr",
+        "collapsible_row_jxqitC",
+        "collapsible_row_gY9Fnp"
+      ],
+      "name": "Collapsible content+image",
+      "settings": {
+        "layout": "none",
+        "container_color_scheme": "",
+        "color_scheme": "",
+        "open_first_collapsible_row": true,
+        "padding_top": 0,
+        "padding_bottom": 100
+      }
+    },
     "image_with_accordion_LVRiRj": {
       "type": "image-with-accordion",
       "blocks": {
@@ -501,6 +557,7 @@
   "order": [
     "main",
     "icon_features_grid_QBn6kb",
+    "collapsible_content_with_image_U6AHjf",
     "image_with_accordion_LVRiRj",
     "benefits_grid_MPVPXr",
     "benefits_compare_UnCr7E",
