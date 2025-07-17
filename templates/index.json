@@ -11,11 +11,36 @@
   "sections": {
     "main_banner_section_jpzrg6": {
       "type": "main-banner-section",
+      "blocks": {
+        "word_kJTBNk": {
+          "type": "word",
+          "settings": {
+            "word": "молодості шкіри"
+          }
+        },
+        "word_U3Airm": {
+          "type": "word",
+          "settings": {
+            "word": "something"
+          }
+        },
+        "word_tNxRXE": {
+          "type": "word",
+          "settings": {
+            "word": "and something"
+          }
+        }
+      },
+      "block_order": [
+        "word_kJTBNk",
+        "word_U3Airm",
+        "word_tNxRXE"
+      ],
       "name": "Main Banner",
       "settings": {
         "banner_image": "shopify://shop_images/lauron-main-banner.webp",
         "mobile_banner_image": "shopify://shop_images/lauron-main-banner.webp",
-        "heading": "<p><strong>Щоденна готова до вживання функціональна добавка для</strong> молодості шкіри</p>",
+        "heading": "<p><strong>Щоденна готова до вживання функціональна добавка для</strong> </p>",
         "description": "<p><strong>Створена на базі 3SDS™</strong> — технології, що забезпечує ефективний вплив активних компонентів на організм на клітинному рівні завдяки їх кратно підвищеній біодоступності.</p>",
         "description2": "<p>Смачний функціональний напій, що глибоко зволожує зсередини, підтримує якість та пружність шкіри, суглобів й загальний баланс, а також допомагає довше зберігати енергію, ясність і відчуття ресурсу.</p>",
         "button1_text": "КУПИТИ ЗАРАЗ",
