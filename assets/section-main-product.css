@@ -1540,3 +1540,33 @@ a.product__text {
     border: none;
   }
 }
+
+
+.cans-format-options__wrapper {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+.cans-format-option {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.cans-format-option__content {
+  display: flex;
+  align-items: center;
+}
+.cans-format-option img {
+  width: 40px;
+  height: auto;
+  margin-right: 10px;
+}
+.cans-format-option input[type="radio"] {
+  display: none;
+}
+.cans-format-option input[type="radio"]:checked + .cans-format-option__content {
+  border: 2px solid black;
+}

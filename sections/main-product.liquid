@@ -96,6 +96,35 @@
                 >
                   {{- block.settings.text -}}
                 </p>
+              {% when 'can_option_cans' %}
+                <div class="cans-format-options" {{ block.shopify_attributes }}>
+                  <p><strong>{{ block.settings.heading }}</strong></p>
+                  <div class="cans-format-options__wrapper">
+                    {% for i in (1..2) %}
+                      {% assign index = i | minus: 1 %}
+                      {% assign label = block.settings["label_" | append: i ] %}
+                      {% assign image = block.settings["image_" | append: i ] %}
+                      {% assign quantity = block.settings["quantity_" | append: i ] %}
+                      {% if label != blank and image != blank and quantity != blank %}
+                        <label class="cans-format-option">
+                          <input
+                            type="radio"
+                            name="cans_format"
+                            value="{{ quantity }}"
+                            onchange="document.querySelector('input[name=quantity]').value = this.value"
+                          >
+                          <div class="cans-format-option__content">
+                            <img src="{{ image | img_url: '100x100' }}" alt="{{ label }}">
+                            <div class="cans-format-option__text">
+                              <div class="label">{{ label }}</div>
+                              <div class="subtext">200 мл кожна</div>
+                            </div>
+                          </div>
+                        </label>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>              
               {%- when 'title' -%}
                 <div class="product__title" {{ block.shopify_attributes }}>
                   <h1>{{ product.title | escape }}</h1>
@@ -463,28 +492,6 @@
                   assign share_url = product.selected_variant.url | default: product.url | prepend: request.origin
                   render 'share-button', block: block, share_link: share_url
                 %}
-              {% when 'can_selector' %}
-                <div class="can-pack-selector-wrapper" style="margin-bottom: 1rem;">
-                  <p style="font-weight: 600;">{{ block.settings.title }}</p>
-                  <div id="can-pack-options-{{ section.id }}" class="can-pack-options" style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                    {% assign can_pack_blocks = section.blocks | where: "type", "can_pack_option" %}
-                    {% for pack in can_pack_blocks %}
-                      <label class="can-pack-option" style="cursor: pointer; border: 1px solid #ccc; padding: 0.5rem; border-radius: 10px; display: flex; align-items: center; gap: 10px;">
-                        <input
-                          type="radio"
-                          name="can_pack_radio_{{ section.id }}"
-                          value="{{ pack.settings.quantity }}"
-                          onchange="document.getElementById('Quantity-{{ section.id }}').value = this.value"
-                          style="accent-color: black;"
-                        >
-                        {% if pack.settings.image %}
-                          <img src="{{ pack.settings.image | image_url: width: 80 }}" alt="{{ pack.settings.label | escape }}" style="width: 60px; height: auto; border-radius: 6px;">
-                        {% endif %}
-                        <span>{{ pack.settings.label }}</span>
-                      </label>
-                    {% endfor %}
-                  </div>
-                </div>
               
               {%- when 'variant_picker' -%}
                 {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
