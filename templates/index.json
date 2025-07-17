@@ -199,9 +199,9 @@
           "type": "benefit",
           "settings": {
             "image": "shopify://shop_images/grid-image-2.webp",
-            "title": "Заголовок картки",
-            "short_text": "Короткий опис переваги",
-            "full_text": "Повний опис переваги, який розкривається при натисканні"
+            "title": "Клітинна стійкість",
+            "short_text": "Допомагає захищати клітини від окисного стресу та передчасного старіння",
+            "full_text": "N-acetyl-L-cysteine, Vitamin C (Ascorbic Acid), Vitamin E, L-glycine, Zinc (as Zinc Gluconate), Selenium, Manganese Gluconate, Copper Gluconate, L-Theanine"
           }
         },
         "benefit_qPde8Q": {
