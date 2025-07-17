@@ -9,6 +9,15 @@
   padding: 20px 0;
 }
 
+.product__accordion .accordion__content p{
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.product__accordion .accordion__content {
+  padding: 0;
+}
+
 .accordion .summary__title {
   font-size: 14px;
   line-height: 14px;

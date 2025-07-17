@@ -34,6 +34,7 @@
         <h2 class="main-banner__heading">
           {{ section.settings.heading }}
         </h2>
+        <div class="main-banner__animated-text" id="rotating-words"></div>
         <div class="main-banner__description">
           {{ section.settings.description }}
         </div>
@@ -227,6 +228,29 @@
   }
 </style>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const words = [
+      {% for block in section.blocks %}
+        {{ block.settings.word | json }}{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ];
+    const el = document.getElementById('rotating-words');
+    let index = 0;
+
+    if (!el || words.length === 0) return;
+
+    function updateWord() {
+      el.textContent = words[index];
+      index = (index + 1) % words.length;
+    }
+
+    updateWord();
+    setInterval(updateWord, 2000);
+  });
+</script>
+
+
 {% schema %}
 {
   "name": "Custom Banner",
@@ -277,6 +301,20 @@
       "label": "Button 2 Link"
     }
   ],
+  "blocks": [
+  {
+    "type": "word",
+    "name": "Rotating Word",
+    "settings": [
+      {
+        "type": "text",
+        "id": "word",
+        "label": "Word"
+      }
+    ]
+  }
+],
+"max_blocks": 10,
   "presets": [
     {
       "name": "Main Banner"
