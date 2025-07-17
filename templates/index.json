@@ -226,9 +226,9 @@
           "type": "benefit",
           "settings": {
             "image": "shopify://shop_images/grid-image-5.webp",
-            "title": "Заголовок картки",
-            "short_text": "Короткий опис переваги",
-            "full_text": "Повний опис переваги, який розкривається при натисканні"
+            "title": "Ментальна ясність",
+            "short_text": "Психічна функція, когнітивна стійкість і ясність мислення",
+            "full_text": "Citicoline (CDP-Choline), Bacopa monnieri extract (20% bacosides), L-Theanine, L-Tyrosine, Vitamin C (Ascorbic Acid), Zinc (as Zinc Gluconate)"
           }
         },
         "benefit_EHKMgP": {
