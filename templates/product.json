@@ -47,6 +47,33 @@
             "show_dynamic_checkout": false,
             "show_gift_card_recipient": true
           }
+        },
+        "collapsible_tab_PziDUK": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Інгредієнти",
+            "icon": "none",
+            "content": "<p>Наша комплексна формула поєднує 19 активних інгредієнтів у формах із підвищеною біодоступністю — вітаміни, мінерали, амінокислоти, антиоксиданти та високомолекулярну гіалуронову кислоту NUTRIHYL® — для глибокої клітинної дії, підтримки шкіри та загального самопочуття.*<br/><br/>Без доданого цукру. Натуральні ароматизатори. Без штучних підсолоджувачів, барвників і консервантів.<br/><strong><br/>Склад і дозування</strong></p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_ReprVF": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Опис смаку",
+            "icon": "none",
+            "content": "<p>Легкий, освіжаючий смак з тонкими цитрусовими й травʼяними нотами. Не солодкий, природний, щоденний.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_FYWTKV": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Як насолоджуватись",
+            "icon": "none",
+            "content": "<p>1️⃣ Найкраще смакує охолодженим — прямо з банки або в келиху.<br/>2️⃣ Щонайменше одна банка до 12:00 — ідеально; дві протягом дня — для більш інтенсивної підтримки.<br/>3️⃣ Вживайте щодня для глибокої, клітинної дії.<br/>Без змішування. Без клопоту. Лише простий, смачний і регулярний спосіб підтримати своє тіло.</p>",
+            "page": ""
+          }
         }
       },
       "block_order": [
@@ -56,7 +83,10 @@
         "price",
         "variant_picker",
         "quantity_selector",
-        "buy_buttons"
+        "buy_buttons",
+        "collapsible_tab_PziDUK",
+        "collapsible_tab_ReprVF",
+        "collapsible_tab_FYWTKV"
       ],
       "settings": {
         "enable_sticky_info": true,
