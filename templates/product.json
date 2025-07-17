@@ -41,13 +41,6 @@
           "disabled": true,
           "settings": {}
         },
-        "vendor": {
-          "type": "text",
-          "settings": {
-            "text": "Рекомендована тривалість прийому — 60 днів. 200 мл L'auron забезпечують добову потребу",
-            "text_style": "subtitle"
-          }
-        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
@@ -63,7 +56,6 @@
         "price",
         "variant_picker",
         "quantity_selector",
-        "vendor",
         "buy_buttons"
       ],
       "settings": {
