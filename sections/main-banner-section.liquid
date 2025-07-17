@@ -2,9 +2,21 @@
   <div class="main-banner__desktop" style="background-image: url('{{ section.settings.banner_image | img_url: 'master' }}');">
     <div class="main-banner__content main-banner__content--desktop">
       <div class="main-banner__inner">
-        <h2 class="main-banner__heading">
-          {{ section.settings.heading }}
-        </h2>
+        <div class="main-banner__heading-container">
+          <h2 class="main-banner__heading">
+            {{ section.settings.heading }}
+          </h2>
+          <div class="main-banner__animated-text-wrapper">
+            <div class="main-banner__animated-text" id="rotating-words">
+              {% for block in section.blocks %}
+                <div class="word-item">{{ block.settings.word }}</div>
+              {% endfor %}
+              {%- if section.blocks.size > 0 -%}
+                <div class="word-item">{{ section.blocks.first.settings.word }}</div>
+              {%- endif -%}
+            </div>
+          </div>  
+        </div>    
         <div class="main-banner__description">
           {{ section.settings.description }}
         </div>
@@ -31,10 +43,21 @@
     </div>
     <div class="main-banner__content main-banner__content--mobile">
       <div class="main-banner__inner">
-        <h2 class="main-banner__heading">
-          {{ section.settings.heading }}
-        </h2>
-        <div class="main-banner__animated-text" id="rotating-words"></div>
+        <div class="main-banner__heading-container">
+          <h2 class="main-banner__heading">
+            {{ section.settings.heading }}
+          </h2>
+          <div class="main-banner__animated-text-wrapper">
+            <div class="main-banner__animated-text" id="rotating-words-mobile">
+              {% for block in section.blocks %}
+                <div class="word-item">{{ block.settings.word }}</div>
+              {% endfor %}
+              {%- if section.blocks.size > 0 -%}
+                <div class="word-item">{{ section.blocks.first.settings.word }}</div>
+              {%- endif -%}
+            </div>
+          </div> 
+        </div>       
         <div class="main-banner__description">
           {{ section.settings.description }}
         </div>
@@ -147,6 +170,27 @@
     display: inline;
   }
 
+  .main-banner__animated-text-wrapper {
+    height: 55px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .main-banner__animated-text {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.7s ease-in-out;
+  }
+  
+  .word-item {
+    height: 55px;
+    font-size: 44px;
+    line-height: 50px;
+    color: #000;
+    display: flex;
+    align-items: center;
+  }
+
   .main-banner__description,
   .main-banner__description2 {
     font-size: 16px;
@@ -202,6 +246,14 @@
       font-size: 24px;
       line-height: 30px;
     }
+    .main-banner__animated-text-wrapper {
+      height: 35px;
+    }
+    .word-item {
+      height: 35px;
+      font-size: 24px;
+      line-height: 30px;
+    }
     .main-banner__description,
     .main-banner__description2 {
       font-size: 12px;
@@ -230,26 +282,35 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const words = [
-      {% for block in section.blocks %}
-        {{ block.settings.word | json }}{% unless forloop.last %},{% endunless %}
-      {% endfor %}
-    ];
-    const el = document.getElementById('rotating-words');
-    let index = 0;
+    function initRotatingWords(containerId, itemHeight) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
 
-    if (!el || words.length === 0) return;
+      const items = container.querySelectorAll('.word-item');
+      const total = items.length;
+      let index = 0;
 
-    function updateWord() {
-      el.textContent = words[index];
-      index = (index + 1) % words.length;
+      function loopWords() {
+        index++;
+        container.style.transition = 'transform 0.7s ease-in-out';
+        container.style.transform = `translateY(-${itemHeight * index}px)`;
+
+        if (index === total - 1) {
+          setTimeout(() => {
+            container.style.transition = 'none';
+            container.style.transform = 'translateY(0)';
+            index = 0;
+          }, 700);
+        }
+      }
+
+      setInterval(loopWords, 2500);
     }
 
-    updateWord();
-    setInterval(updateWord, 2000);
+    initRotatingWords('rotating-words', 55); 
+    initRotatingWords('rotating-words-mobile', 35); 
   });
 </script>
-
 
 {% schema %}
 {
