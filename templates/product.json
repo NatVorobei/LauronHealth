@@ -24,6 +24,14 @@
           "type": "description",
           "settings": {}
         },
+        "can_pack_option_ijRCJ9": {
+          "type": "can_pack_option",
+          "settings": {
+            "image": "shopify://shop_images/freeze-age-product-block_1.png",
+            "label": "28 банок",
+            "quantity": 28
+          }
+        },
         "price": {
           "type": "price",
           "disabled": true,
@@ -80,6 +88,7 @@
         "judge_me_reviews_preview_badge_Jb9i4Y",
         "title",
         "description",
+        "can_pack_option_ijRCJ9",
         "price",
         "variant_picker",
         "quantity_selector",
