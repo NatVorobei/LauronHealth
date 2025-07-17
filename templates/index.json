@@ -21,20 +21,69 @@
         "word_U3Airm": {
           "type": "word",
           "settings": {
-            "word": "something"
+            "word": "зменшення зморшок"
           }
         },
         "word_tNxRXE": {
           "type": "word",
           "settings": {
-            "word": "and something"
+            "word": "глибокого зволоження"
+          }
+        },
+        "word_Gtgccz": {
+          "type": "word",
+          "settings": {
+            "word": "антиоксидантного захисту"
+          }
+        },
+        "word_78zhcX": {
+          "type": "word",
+          "settings": {
+            "word": "гнучкості суглобів"
+          }
+        },
+        "word_VcztfK": {
+          "type": "word",
+          "settings": {
+            "word": "зволоження очей"
+          }
+        },
+        "word_jtgFhT": {
+          "type": "word",
+          "settings": {
+            "word": "фокусу і ясності розуму"
+          }
+        },
+        "word_ybwWTe": {
+          "type": "word",
+          "settings": {
+            "word": "підтримки пам’яті"
+          }
+        },
+        "word_NiQjAH": {
+          "type": "word",
+          "settings": {
+            "word": "стійкості до стресу"
+          }
+        },
+        "word_UhftFC": {
+          "type": "word",
+          "settings": {
+            "word": "стабільної енергії"
           }
         }
       },
       "block_order": [
         "word_kJTBNk",
         "word_U3Airm",
-        "word_tNxRXE"
+        "word_tNxRXE",
+        "word_Gtgccz",
+        "word_78zhcX",
+        "word_VcztfK",
+        "word_jtgFhT",
+        "word_ybwWTe",
+        "word_NiQjAH",
+        "word_UhftFC"
       ],
       "name": "Main Banner",
       "settings": {
