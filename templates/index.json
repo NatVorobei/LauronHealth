@@ -253,9 +253,9 @@
           "type": "benefit",
           "settings": {
             "image": "shopify://shop_images/grid-image-8.webp",
-            "title": "Заголовок картки",
-            "short_text": "Короткий опис переваги",
-            "full_text": "Повний опис переваги, який розкривається при натисканні"
+            "title": "Підтримка енергії",
+            "short_text": "Енергетичний обмін, зменшення втоми та ментальна витривалість",
+            "full_text": "PQQ (Pyrroloquinoline quinone), Rhodiola Rosea Extract (standardized to 3% rosavins and 1% salidroside), Vitamin B6, Vitamin C (Ascorbic Acid)"
           }
         }
       },
