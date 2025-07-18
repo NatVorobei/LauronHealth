@@ -767,22 +767,21 @@
       "type": "@app"
     },
     {
-      "type": "can_selector",
-      "name": "Вибір формату упаковки",
+      "name": "Опція формату банок",
+      "type": "can_pack_option",
       "limit": 1,
+      "settings": []
+    },
+    {
+      "name": "Варіант упаковки",
+      "type": "can_selector",
       "settings": [
         {
           "type": "text",
           "id": "heading",
           "label": "Заголовок",
           "default": "Оберіть формат упаковки"
-        }
-      ]
-    },
-    {
-      "type": "can_pack_option",
-      "name": "Опція формату банок",
-      "settings": [
+        },
         {
           "type": "image_picker",
           "id": "image",
