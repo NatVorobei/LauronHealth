@@ -28,32 +28,35 @@
         endif
       -%}
       {%- if picker_type == 'custom_swatch' -%}
-        <fieldset class="js product-form__input product-form__input--custom-swatch">
-          <legend class="form__label">
-            {{ option.name }}:
-            <span data-selected-value>
-              {{- option.selected_value -}}
-            </span>
-          </legend>
-          {% for value in option.values %}
-            <input
-              type="radio"
-              id="Option-{{ section.id }}-{{ option.name | handleize }}-{{ forloop.index0 }}"
-              name="{{ option.name | handleize }}"
-              value="{{ value | escape }}"
-              form="{{ product_form_id }}"
-              {% if option.selected_value == value %}checked{% endif %}
-            >
-            <label
-              for="Option-{{ section.id }}-{{ option.name | handleize }}-{{ forloop.index0 }}"
-              class="custom-swatch-label"
-            >
-              <img src="{{ product.variants | where: 'option1', value | first | metafield: 'custom.variant_image' | default: 'default-image-url' }}" alt="{{ value }}" class="swatch-image">
-              <span class="swatch-text">{{ value }}</span>
-              <span class="swatch-subtext">200 мл кожна</span>
-            </label>
-          {% endfor %}
-        </fieldset>
+  <fieldset class="js product-form__input product-form__input--custom-swatch" data-index="variant-selectors">
+    <legend class="form__label">
+      {{ option.name }}:
+      <span data-selected-value>
+        {{- option.selected_value -}}
+      </span>
+    </legend>
+    {% for value in option.values %}
+      {% assign variant = product.variants | where: 'option1', value | first %}
+      <input
+        type="radio"
+        id="Option-{{ section.id }}-{{ option.name | handleize }}-{{ forloop.index0 }}"
+        name="{{ option.name | handleize }}"
+        value="{{ value | escape }}"
+        form="{{ product_form_id }}"
+        data-index="option1"
+        {% if option.selected_value == value %}checked{% endif %}
+        onchange="this.form.dispatchEvent(new Event('change'))"
+      >
+      <label
+        for="Option-{{ section.id }}-{{ option.name | handleize }}-{{ forloop.index0 }}"
+        class="custom-swatch-label"
+      >
+        <img src="{{ variant.metafield: 'variant_image' | default: 'https://via.placeholder.com/50' }}" alt="{{ value }}" class="swatch-image">
+        <span class="swatch-text">{{ value }}</span>
+        <span class="swatch-subtext">200 мл кожна</span>
+      </label>
+    {% endfor %}
+  </fieldset>
       {%- elsif picker_type == 'swatch' -%}
         <fieldset class="js product-form__input product-form__input--swatch">
           <legend class="form__label">
