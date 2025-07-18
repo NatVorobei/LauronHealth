@@ -27,7 +27,7 @@
           endif
         endif
       -%}
-      {%- if picker_type == 'custom_swatch' -%}
+  {%- if picker_type == 'custom_swatch' -%}
   <fieldset class="js product-form__input product-form__input--custom-swatch" data-index="variant-selectors">
     <legend class="form__label">
       {{ option.name }}:
@@ -35,8 +35,10 @@
     </legend>
 
     {% for value in option.values %}
-      {%- assign matched_variant = null -%}
+      {%- assign input_id = 'Option-' | append: section.id | append: '-' | append: option.name | handleize | append: '-' | append: forloop.index0 -%}
+      {%- assign checked = option.selected_value == value -%}
 
+      {%- assign matched_variant = nil -%}
       {%- for variant in product.variants -%}
         {%- assign match = true -%}
         {%- for i in (1..product.options.size) -%}
@@ -54,13 +56,6 @@
           {%- break -%}
         {%- endif -%}
       {%- endfor -%}
-
-      {%- assign input_id = 'Option-' | append: section.id | append: '-' | append: option.name | handleize | append: '-' | append: forloop.index0 -%}
-      {%- if option.selected_value == value -%}
-        {%- assign checked = true -%}
-      {%- else -%}
-        {%- assign checked = false -%}
-      {%- endif -%}
 
       <input
         type="radio"
