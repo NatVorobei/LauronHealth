@@ -96,49 +96,32 @@
                 >
                   {{- block.settings.text -}}
                 </p>
-              {% when 'can_selector' %}
-                <div class="cans-format-options" {{ block.shopify_attributes }}>
-                  <p><strong>{{ block.settings.heading }}</strong></p>
-                  <div class="cans-format-options__wrapper">
-                    {% for opt in section.blocks %}
-                      {% if opt.type == 'can_pack_option' %}
-                        {% assign label = opt.settings.label %}
-                        {% assign image = opt.settings.image %}
-                        {% assign quantity = opt.settings.quantity %}
-              
-                        {% if label != blank and image != blank and quantity != blank %}
-                          <label class="cans-format-option {% if forloop.first %}active{% endif %}" data-quantity="{{ quantity }}">
-                            <img src="{{ image | img_url: '100x' }}" alt="{{ label }}">
-                            <div>
-                              <div class="label">{{ label }}</div>
-                              <div class="subtext">200 мл кожна</div>
-                            </div>
-                          </label>
-                        {% endif %}
-                      {% endif %}
+              {% when 'can_pack_option' %}
+                <fieldset class="cans-format" {{ block.shopify_attributes }}>
+                  <legend class="h4">{{ block.settings.heading | default: 'Оберіть формат упаковки' }}</legend>
+                  <div class="cans-format__wrapper">
+                    {% assign all_blocks = section.blocks | where: "type", "can_pack_option" %}
+                    {% for can_block in all_blocks %}
+                      <label class="cans-format__option">
+                        <input
+                          type="radio"
+                          name="quantity"
+                          value="{{ can_block.settings.quantity }}"
+                          {% if forloop.first %}checked{% endif %}
+                          form="{{ product_form_id }}"
+                        >
+                        <div class="cans-format__image">
+                          <img src="{{ can_block.settings.image | img_url: '100x' }}" alt="{{ can_block.settings.label }}">
+                        </div>
+                        <div class="cans-format__label">
+                          <strong>{{ can_block.settings.label }}</strong>
+                          <small>200 мл кожна</small>
+                        </div>
+                      </label>
                     {% endfor %}
                   </div>
-                </div>
-              
-                <script>
-                  document.addEventListener("DOMContentLoaded", function () {
-                    const options = document.querySelectorAll('.cans-format-option');
-                    const quantityInput = document.querySelector('form[action^="/cart"] input[name="quantity"]');
-              
-                    if (options.length > 0 && quantityInput) {
-                      const defaultOption = options[0];
-                      quantityInput.value = defaultOption.dataset.quantity;
-              
-                      options.forEach(option => {
-                        option.addEventListener('click', () => {
-                          options.forEach(o => o.classList.remove('active'));
-                          option.classList.add('active');
-                          quantityInput.value = option.dataset.quantity;
-                        });
-                      });
-                    }
-                  });
-                </script>
+                </fieldset>
+              {% endwhen %}
               
               {%- when 'title' -%}
                 <div class="product__title" {{ block.shopify_attributes }}>
