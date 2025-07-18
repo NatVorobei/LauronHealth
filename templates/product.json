@@ -24,6 +24,13 @@
           "type": "description",
           "settings": {}
         },
+        "can_variant_selector_CRH7Pq": {
+          "type": "can_variant_selector",
+          "settings": {
+            "heading": "Оберіть формат",
+            "product": "freeze-age"
+          }
+        },
         "price": {
           "type": "price",
           "disabled": true,
@@ -80,6 +87,7 @@
         "judge_me_reviews_preview_badge_Jb9i4Y",
         "title",
         "description",
+        "can_variant_selector_CRH7Pq",
         "price",
         "variant_picker",
         "quantity_selector",
