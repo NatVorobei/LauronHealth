@@ -463,12 +463,21 @@
                   assign share_url = product.selected_variant.url | default: product.url | prepend: request.origin
                   render 'share-button', block: block, share_link: share_url
                 %}
-              {% comment %} {% when 'custom_variant_picker' %}
-                {% render 'custom-variant-picker', product: product, block: block, product_form_id: product_form_id %} {% endcomment %}
+              {% when 'custom_variant_picker' %}
+                <variant-selects
+                  id="variant-selects-{{ section.id }}"
+                  data-section="{{ section.id }}"
+                  {{ block.shopify_attributes }}
+                >
+                  {% render 'custom-variant-picker', product: product, product_form_id: product_form_id %}
+                  
+                  <script type="application/json" data-selected-variant>
+                    {{ product.selected_or_first_available_variant | json }}
+                  </script>
+                </variant-selects>
               
               {%- when 'variant_picker' -%}
-                {% render 'custom-variant-picker', product: product, block: block, product_form_id: product_form_id %}
-                {% comment %} {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %} {% endcomment %}
+                {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
               {%- when 'buy_buttons' -%}
                 {%- render 'buy-buttons',
                   block: block,
