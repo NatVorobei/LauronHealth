@@ -29,10 +29,10 @@
       -%}
       {%- if picker_type == 'custom_swatch' -%}
         <fieldset class="js product-form__input product-form__input--custom-swatch" data-index="variant-selectors">
-          <legend class="form__label">
-            <!-- {{ option.name }}: -->
+          <!-- <legend class="form__label">
+            {{ option.name }}:
             <span data-selected-value>{{ option.selected_value }}</span>
-          </legend>
+          </legend> -->
       
           {%- for value in option.values -%}
             {%- assign input_id = 'Option-' | append: section.id | append: '-' | append: option.name | handleize | append: '-' | append: forloop.index0 -%}
