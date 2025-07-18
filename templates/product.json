@@ -34,7 +34,7 @@
         "variant_picker_kmjixa": {
           "type": "variant_picker",
           "settings": {
-            "picker_type": "custom_swatch",
+            "picker_type": "button",
             "swatch_shape": "circle"
           }
         },
