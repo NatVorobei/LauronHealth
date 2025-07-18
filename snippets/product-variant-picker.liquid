@@ -41,12 +41,13 @@
             <input
               type="radio"
               id="Option-{{ section.id }}-{{ option.name | handleize }}-{{ forloop.index0 }}"
-              name="options[{{ option.name }}]"
+              name="options[{{ option.name }}]"  <!-- ВАЖЛИВО -->
               value="{{ value | escape }}"
               form="{{ product_form_id }}"
               {% if option.selected_value == value %}checked{% endif %}
               data-index="option{{ option.position }}"
-            >
+              onchange="this.form.dispatchEvent(new Event('change', { bubbles: true }))"
+            />
             <label
               for="Option-{{ section.id }}-{{ option.name | handleize }}-{{ forloop.index0 }}"
               class="custom-swatch-label"
