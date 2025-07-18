@@ -100,7 +100,8 @@
   <fieldset class="can-quantity-options" {{ block.shopify_attributes }}>
     <legend class="h4">{{ block.settings.heading }}</legend>
     <div class="can-quantity-options__wrapper">
-      {% for i in (1..2) %}
+      {% assign options = (1..2) %}
+      {% for i in options %}
         {% capture image_key %}image_{{ i }}{% endcapture %}
         {% capture label_key %}label_{{ i }}{% endcapture %}
         {% capture quantity_key %}quantity_{{ i }}{% endcapture %}
@@ -109,13 +110,15 @@
         {% assign label = block.settings[label_key] %}
         {% assign quantity = block.settings[quantity_key] %}
 
-        {% if image != blank and label != blank and quantity != blank %}
+        {% if image != blank and label != blank and quantity %}
           <label class="can-quantity-options__item">
             <input
               type="radio"
-              name="can_quantity"
-              value="{{ quantity }}"
+              name="properties[Selected Pack]"
+              value="{{ label }}"
+              form="{{ product_form_id }}"
               {% if forloop.first %}checked{% endif %}
+              onchange="document.querySelector('form[action^=\"/cart\"] input[name=\"quantity\"]').value = {{ quantity }}"
             >
             <div class="can-quantity-options__content">
               <img src="{{ image | img_url: '100x' }}" alt="{{ label }}">
@@ -126,26 +129,6 @@
       {% endfor %}
     </div>
   </fieldset>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const radios = document.querySelectorAll('input[name="can_quantity"]');
-      const quantityInput = document.querySelector('form[action^="/cart"] input[name="quantity"]');
-
-      radios.forEach(radio => {
-        radio.addEventListener('change', () => {
-          if (quantityInput) quantityInput.value = radio.value;
-        });
-      });
-
-      const checked = document.querySelector('input[name="can_quantity"]:checked');
-      if (checked && quantityInput) {
-        quantityInput.value = checked.value;
-      }
-    });
-  </script>
-
-
 
 
               {%- when 'title' -%}
