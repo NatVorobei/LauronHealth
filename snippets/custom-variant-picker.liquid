@@ -54,42 +54,37 @@
 
 
 <style>
-  .custom-variant-options {
+.custom-variant-image-picker {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
 }
 
-.custom-variant-option {
-  cursor: pointer;
-  display: inline-block;
-}
-
-.custom-variant-option input {
-  display: none;
-}
-
-.custom-variant-box {
+.variant-image-button {
   border: 2px solid transparent;
   padding: 0.5rem;
   border-radius: 12px;
+  background: none;
+  cursor: pointer;
   text-align: center;
-  transition: border 0.3s;
+  transition: border 0.2s;
 }
 
-.custom-variant-box img {
-  max-width: 100px;
+.variant-image-button img {
+  width: 100px;
+  height: auto;
   border-radius: 8px;
 }
 
-.custom-variant-option input:checked + .custom-variant-box {
-  border: 2px solid black;
+.variant-image-button.active {
+  border-color: black;
 }
 
-.custom-variant-label {
+.variant-label {
   margin-top: 0.5rem;
   font-weight: bold;
   font-size: 14px;
 }
+
 
 </style>
