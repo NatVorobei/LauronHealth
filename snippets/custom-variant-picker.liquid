@@ -1,30 +1,57 @@
-{%- if product.has_only_default_variant == false -%}
-  <div class="custom-variant-wrapper">
-    <fieldset class="custom-variant-picker">
-      <legend class="form__label">{{ product.options_with_values[0].name }}</legend>
-      <div class="custom-variant-options">
-        {% for variant in product.variants %}
-          {% assign image = variant.featured_image | default: product.featured_image %}
-          <label class="custom-variant-option">
-            <input
-              type="radio"
-              name="id"
-              value="{{ variant.id }}"
-              form="{{ product_form_id }}"
-              {% if variant.id == product.selected_or_first_available_variant.id %}checked{% endif %}
-            >
-            <div class="custom-variant-box">
-              <img src="{{ image | image_url: width: 200 }}" alt="{{ variant.title }}">
-              <div class="custom-variant-label">
-                {{ variant.title }}
-              </div>
-            </div>
-          </label>
-        {% endfor %}
-      </div>
-    </fieldset>
+{%- assign option = product.options_with_values[0] -%}
+<div class="custom-variant-picker-wrapper">
+  <label class="form__label">{{ option.name }}</label>
+  <div class="custom-variant-image-picker">
+    {% for value in option.values %}
+      {% assign variant = product.variants | where: "option1", value | first %}
+      {% assign image = variant.featured_image | default: product.featured_image %}
+      <button
+        type="button"
+        class="variant-image-button {% if forloop.first %}active{% endif %}"
+        data-value="{{ value }}"
+      >
+        <img src="{{ image | image_url: width: 150 }}" alt="{{ value }}">
+        <div class="variant-label">{{ value }}</div>
+      </button>
+    {% endfor %}
   </div>
-{%- endif -%}
+
+  <select
+    class="visually-hidden"
+    name="options[{{ option.name | escape }}]"
+    form="{{ product_form_id }}"
+  >
+    {% for value in option.values %}
+      <option value="{{ value }}" {% if forloop.first %}selected{% endif %}>{{ value }}</option>
+    {% endfor %}
+  </select>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const wrapper = document.querySelector('.custom-variant-picker-wrapper');
+    if (!wrapper) return;
+
+    const buttons = wrapper.querySelectorAll('.variant-image-button');
+    const select = wrapper.querySelector('select');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        button.classList.add('active');
+        const value = button.dataset.value;
+
+        Array.from(select.options).forEach(opt => {
+          opt.selected = opt.value === value;
+        });
+
+        // Trigger change event to notify Shopify + Appstle
+        select.dispatchEvent(new Event('change', { bubbles: true }));
+      });
+    });
+  });
+</script>
+
 
 <style>
   .custom-variant-options {
