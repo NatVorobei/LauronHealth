@@ -96,33 +96,54 @@
                 >
                   {{- block.settings.text -}}
                 </p>
-              {% when 'can_variant_selector' %}
-  {% assign linked_product = all_products[block.settings.product] %}
-  {% if linked_product %}
-    <fieldset class="cans-format" {{ block.shopify_attributes }}>
-      <legend class="h4">{{ block.settings.heading }}</legend>
-      <div class="cans-format__wrapper">
-        {% for variant in linked_product.variants %}
-          <label class="cans-option">
+              {% when 'can_pack_quantity_options' %}
+  <fieldset class="can-quantity-options" {{ block.shopify_attributes }}>
+    <legend class="h4">{{ block.settings.heading }}</legend>
+    <div class="can-quantity-options__wrapper">
+      {% for i in (1..2) %}
+        {% capture image_key %}image_{{ i }}{% endcapture %}
+        {% capture label_key %}label_{{ i }}{% endcapture %}
+        {% capture quantity_key %}quantity_{{ i }}{% endcapture %}
+
+        {% assign image = block.settings[image_key] %}
+        {% assign label = block.settings[label_key] %}
+        {% assign quantity = block.settings[quantity_key] %}
+
+        {% if image != blank and label != blank and quantity != blank %}
+          <label class="can-quantity-options__item">
             <input
               type="radio"
-              name="id"
-              value="{{ variant.id }}"
+              name="can_quantity"
+              value="{{ quantity }}"
               {% if forloop.first %}checked{% endif %}
-              form="{{ product_form_id }}"
             >
-            <div class="cans-option__image">
-              <img src="{{ variant.featured_image | img_url: '100x' }}" alt="{{ variant.title }}">
-            </div>
-            <div class="cans-option__label">
-              <strong>{{ variant.title }}</strong>
-              <small>200 мл кожна</small>
+            <div class="can-quantity-options__content">
+              <img src="{{ image | img_url: '100x' }}" alt="{{ label }}">
+              <div><strong>{{ label }}</strong><br><small>200 мл кожна</small></div>
             </div>
           </label>
-        {% endfor %}
-      </div>
-    </fieldset>
-  {% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </fieldset>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const radios = document.querySelectorAll('input[name="can_quantity"]');
+      const quantityInput = document.querySelector('form[action^="/cart"] input[name="quantity"]');
+
+      radios.forEach(radio => {
+        radio.addEventListener('change', () => {
+          if (quantityInput) quantityInput.value = radio.value;
+        });
+      });
+
+      const checked = document.querySelector('input[name="can_quantity"]:checked');
+      if (checked && quantityInput) {
+        quantityInput.value = checked.value;
+      }
+    });
+  </script>
 
 
 
