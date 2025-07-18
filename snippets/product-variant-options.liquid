@@ -106,9 +106,11 @@
         {% else %}
           <div class="swatch-placeholder">?</div>
         {% endif %}
+    <div class="swatch-content">
       {{ value -}}
       {{ label_unavailable }}
       <span class="swatch-subtext">200 мл кожна</span>
+    </div>
     </label>
   {%- elsif picker_type == 'button' -%}
     <input
