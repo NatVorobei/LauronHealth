@@ -3689,4 +3689,8 @@ input[type="radio"] {
 input[type="radio"]:checked + .custom-swatch-label {
   border-color: #000;
 }
+.swatch-content {
+  display: flex;
+  flex-direction: column;
+}
 /* Custom classes end */
