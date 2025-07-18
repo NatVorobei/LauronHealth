@@ -24,15 +24,6 @@
           "type": "description",
           "settings": {}
         },
-        "can_pack_option_cKcjk4": {
-          "type": "can_pack_option",
-          "settings": {
-            "heading": "Оберіть формат упаковки",
-            "image": "shopify://shop_images/mental-health-product-block_1.png",
-            "label": "28 банок",
-            "quantity": 28
-          }
-        },
         "price": {
           "type": "price",
           "disabled": true,
@@ -89,7 +80,6 @@
         "judge_me_reviews_preview_badge_Jb9i4Y",
         "title",
         "description",
-        "can_pack_option_cKcjk4",
         "price",
         "variant_picker",
         "quantity_selector",
