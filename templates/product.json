@@ -24,20 +24,6 @@
           "type": "description",
           "settings": {}
         },
-        "can_selector_cz7Cp9": {
-          "type": "can_selector",
-          "settings": {
-            "title": "Оберіть формат упаковки"
-          }
-        },
-        "can_pack_option_7JtCDD": {
-          "type": "can_pack_option",
-          "settings": {
-            "image": "shopify://shop_images/benefits-compare-1.png",
-            "label": "28 банок",
-            "quantity": 28
-          }
-        },
         "price": {
           "type": "price",
           "disabled": true,
@@ -94,8 +80,6 @@
         "judge_me_reviews_preview_badge_Jb9i4Y",
         "title",
         "description",
-        "can_selector_cz7Cp9",
-        "can_pack_option_7JtCDD",
         "price",
         "variant_picker",
         "quantity_selector",
