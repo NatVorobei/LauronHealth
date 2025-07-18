@@ -128,16 +128,3 @@
     </script>
   </variant-selects>
 {%- endunless -%}
-
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('input[type="radio"][name^="options"]').forEach(radio => {
-    radio.addEventListener('change', () => {
-      console.log('Вибрано варіант:', radio.value);
-      const form = radio.closest('form');
-      if (form) form.dispatchEvent(new Event('change', { bubbles: true }));
-    });
-  });
-});
-</script>
