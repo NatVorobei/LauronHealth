@@ -3665,8 +3665,7 @@ p {
 .custom-swatch-label {
   display: flex;
   align-items: center;
-  padding: 10px;
-  border: 1px solid #1F1F21;
+  border: 1px solid #ccc;
   border-radius: 20px;
   flex: 1;
   text-align: center;
@@ -3687,7 +3686,7 @@ input[type="radio"] {
   display: none;
 }
 input[type="radio"]:checked + .custom-swatch-label {
-  border-color: #000;
+  border-color: #1F1F21;
 }
 .swatch-content {
   display: flex;
