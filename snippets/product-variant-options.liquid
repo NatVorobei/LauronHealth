@@ -126,21 +126,8 @@
       {{ input_dataset }}
     >
     <label for="{{ input_id }}">
-      {% if variant and variant.metafields.custom.variant_img %}
-          <img
-            src="{{ variant.metafields.custom.variant_img | image_url: width: 100 }}"
-            alt="{{ value }}"
-            class="swatch-image"
-            width="50"
-            height="50"
-            loading="lazy"
-          >
-        {% else %}
-          <div class="swatch-placeholder">?</div>
-        {% endif %}
       {{ value -}}
       {{ label_unavailable }}
-      <span class="swatch-subtext">200 мл кожна</span>
     </label>
   {%- elsif picker_type == 'dropdown' or picker_type == 'swatch_dropdown' -%}
     <option
