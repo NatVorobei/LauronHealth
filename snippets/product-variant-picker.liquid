@@ -33,7 +33,7 @@
     <legend class="form__label">{{ option.name }}</legend>
     {%- for value in option.values -%}
       {%- assign input_id = 'Option-' | append: section.id | append: '-' | append: option.position | append: '-' | append: forloop.index0 -%}
-      {%- assign variant = product.variants | where: 'option1', value | first -%} <!-- Змініть 'option1' на 'option2' або 'option3', якщо потрібно -->
+      {%- assign variant = product.variants | where: 'option1', value | first -%}
       <input
         type="radio"
         id="{{ input_id }}"
