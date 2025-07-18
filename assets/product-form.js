@@ -140,3 +140,9 @@ if (!customElements.get('product-form')) {
     }
   );
 }
+
+
+const addToCartPrice = this.querySelector('[data-button-price]');
+if (addToCartPrice) {
+  addToCartPrice.innerHTML = Shopify.formatMoney(this.currentVariant.price, window.shop.money_format);
+}
