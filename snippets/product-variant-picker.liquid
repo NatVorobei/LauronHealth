@@ -54,19 +54,22 @@
         {% endif %}
       {% endfor %}
 
-      {% assign checked = option.selected_value == value %}
-      {% assign input_id = section.id | append: '-' | append: option.name | handleize | append: '-' | append: forloop.index0 %}
+      {% if option.selected_value == value %}
+  {% assign checked = true %}
+{% else %}
+  {% assign checked = false %}
+{% endif %}
 
-      <input
-        type="radio"
-        id="{{ input_id }}"
-        name="options[{{ option.name | escape }}]"
-        value="{{ value | escape }}"
-        form="{{ product_form_id }}"
-        {% if checked %}checked{% endif %}
-        data-index="option{{ option.position }}"
-        onchange="this.form.dispatchEvent(new Event('change', { bubbles: true }))"
-      />
+<input
+  type="radio"
+  id="{{ input_id }}"
+  name="options[{{ option.name | escape }}]"
+  value="{{ value | escape }}"
+  form="{{ product_form_id }}"
+  {% if checked %}checked{% endif %}
+  data-index="option{{ option.position }}"
+  onchange="this.form.dispatchEvent(new Event('change', { bubbles: true }))"
+/>
 
       <label for="{{ input_id }}" class="custom-swatch-label">
         {% if matched_variant and matched_variant.metafields.custom.variant_img %}
