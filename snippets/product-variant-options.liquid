@@ -94,18 +94,18 @@
       {{ input_dataset }}
     >
     <label for="{{ input_id }}" class="custom-swatch-label">
-      <!-- {% if variant and variant.metafields.custom.variant_img %}
+      {% if variant and variant.metafields.custom.variant_img %}
           <img
             src="{{ variant.metafields.custom.variant_img | image_url: width: 100 }}"
             alt="{{ value }}"
             class="swatch-image"
             width="50"
             height="50"
-            loading="lazy"
+            loading="eager"
           >
         {% else %}
           <div class="swatch-placeholder">?</div>
-        {% endif %} -->
+        {% endif %}
     <div class="swatch-content">
       {{ value -}}
       {{ label_unavailable }}
