@@ -35,41 +35,43 @@
     </legend>
 
     {% for value in option.values %}
-      {% assign matched_variant = null %}
-      {% for variant in product.variants %}
-        {% assign match = true %}
-        {% for i in (1..product.options.size) %}
-          {% assign opt = 'option' | append: i %}
-          {% assign current_val = product.options_with_values[i-1].selected_value %}
-          {% if i == option.position %}
-            {% assign current_val = value %}
-          {% endif %}
-          {% if variant[opt] != current_val %}
-            {% assign match = false %}
-          {% endif %}
-        {% endfor %}
-        {% if match %}
-          {% assign matched_variant = variant %}
-          {% break %}
-        {% endif %}
-      {% endfor %}
+      {%- assign matched_variant = null -%}
 
-      {% if option.selected_value == value %}
-  {% assign checked = true %}
-{% else %}
-  {% assign checked = false %}
-{% endif %}
+      {%- for variant in product.variants -%}
+        {%- assign match = true -%}
+        {%- for i in (1..product.options.size) -%}
+          {%- assign opt = 'option' | append: i -%}
+          {%- assign current_val = product.options_with_values[i-1].selected_value -%}
+          {%- if i == option.position -%}
+            {%- assign current_val = value -%}
+          {%- endif -%}
+          {%- if variant[opt] != current_val -%}
+            {%- assign match = false -%}
+          {%- endif -%}
+        {%- endfor -%}
+        {%- if match -%}
+          {%- assign matched_variant = variant -%}
+          {%- break -%}
+        {%- endif -%}
+      {%- endfor -%}
 
-<input
-  type="radio"
-  id="{{ input_id }}"
-  name="options[{{ option.name | escape }}]"
-  value="{{ value | escape }}"
-  form="{{ product_form_id }}"
-  {% if checked %}checked{% endif %}
-  data-index="option{{ option.position }}"
-  onchange="this.form.dispatchEvent(new Event('change', { bubbles: true }))"
-/>
+      {%- assign input_id = 'Option-' | append: section.id | append: '-' | append: option.name | handleize | append: '-' | append: forloop.index0 -%}
+      {%- if option.selected_value == value -%}
+        {%- assign checked = true -%}
+      {%- else -%}
+        {%- assign checked = false -%}
+      {%- endif -%}
+
+      <input
+        type="radio"
+        id="{{ input_id }}"
+        name="options[{{ option.name | escape }}]"
+        value="{{ value | escape }}"
+        form="{{ product_form_id }}"
+        {% if checked %}checked{% endif %}
+        data-index="option{{ option.position }}"
+        onchange="this.form.dispatchEvent(new Event('change', { bubbles: true }))"
+      />
 
       <label for="{{ input_id }}" class="custom-swatch-label">
         {% if matched_variant and matched_variant.metafields.custom.variant_img %}
@@ -77,6 +79,8 @@
             src="{{ matched_variant.metafields.custom.variant_img | image_url: width: 100 }}"
             alt="{{ value }}"
             class="swatch-image"
+            width="50"
+            height="50"
             loading="lazy"
           >
         {% else %}
