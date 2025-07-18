@@ -80,8 +80,10 @@
               {% else %}
                 <div class="swatch-placeholder">?</div>
               {% endif %}
-              <span class="swatch-text">{{ value }}</span>
-              <span class="swatch-subtext">200 мл кожна</span>
+              <div class="swatch-content">
+                <span class="swatch-text">{{ value }}</span>
+                <span class="swatch-subtext">200 мл кожна</span>
+              </div>   
             </label>
           {%- endfor -%}
         </fieldset>
