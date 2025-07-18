@@ -28,10 +28,12 @@
         endif
       -%}
       {%- if picker_type == 'custom_swatch' -%}
+
   <fieldset class="js product-form__input product-form__input--custom-swatch">
     <legend class="form__label">{{ option.name }}</legend>
     {%- for value in option.values -%}
       {%- assign input_id = 'Option-' | append: section.id | append: '-' | append: option.position | append: '-' | append: forloop.index0 -%}
+      {%- assign variant = product.variants | where: 'option1', value | first -%} <!-- Змініть 'option1' на 'option2' або 'option3', якщо потрібно -->
       <input
         type="radio"
         id="{{ input_id }}"
@@ -42,7 +44,6 @@
         data-index="option{{ option.position }}"
       >
       <label for="{{ input_id }}" class="custom-swatch-label">
-        {%- assign variant = product.variants | where: 'option1', value | first -%}
         {% if variant and variant.metafields.custom.variant_img %}
           <img
             src="{{ variant.metafields.custom.variant_img | image_url: width: 100 }}"
