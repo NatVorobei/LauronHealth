@@ -31,6 +31,13 @@
             "text_style": "body"
           }
         },
+        "variant_picker_kmjixa": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "custom_swatch",
+            "swatch_shape": "circle"
+          }
+        },
         "price": {
           "type": "price",
           "disabled": true,
@@ -81,6 +88,7 @@
         "title",
         "description",
         "text_php7pf",
+        "variant_picker_kmjixa",
         "price",
         "quantity_selector",
         "buy_buttons",
