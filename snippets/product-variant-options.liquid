@@ -93,7 +93,7 @@
       {% endif %}
       {{ input_dataset }}
     >
-    <label for="{{ input_id }}">
+    <label for="{{ input_id }}" class="custom-swatch-lable">
       {% if variant and variant.metafields.custom.variant_img %}
           <img
             src="{{ variant.metafields.custom.variant_img | image_url: width: 100 }}"
