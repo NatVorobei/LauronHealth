@@ -28,6 +28,7 @@
           "type": "can_pack_option",
           "settings": {
             "heading": "Оберіть формат упаковки",
+            "image": "shopify://shop_images/mental-health-product-block_1.png",
             "label": "28 банок",
             "quantity": 28
           }
