@@ -24,10 +24,12 @@
           "type": "description",
           "settings": {}
         },
-        "price": {
-          "type": "price",
-          "disabled": true,
-          "settings": {}
+        "text_php7pf": {
+          "type": "text",
+          "settings": {
+            "text": "Оберіть формат:",
+            "text_style": "body"
+          }
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -35,6 +37,11 @@
             "picker_type": "button",
             "swatch_shape": "circle"
           }
+        },
+        "price": {
+          "type": "price",
+          "disabled": true,
+          "settings": {}
         },
         "quantity_selector": {
           "type": "quantity_selector",
@@ -80,8 +87,9 @@
         "judge_me_reviews_preview_badge_Jb9i4Y",
         "title",
         "description",
-        "price",
+        "text_php7pf",
         "variant_picker",
+        "price",
         "quantity_selector",
         "buy_buttons",
         "collapsible_tab_PziDUK",
