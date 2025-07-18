@@ -1,56 +1,74 @@
-{%- assign option = product.options_with_values[0] -%}
-<div class="custom-variant-picker-wrapper">
-  <label class="form__label">{{ option.name }}</label>
-  <div class="custom-variant-image-picker">
-    {% for value in option.values %}
-      {% assign variant = product.variants | where: "option1", value | first %}
-      {% assign image = variant.featured_image | default: product.featured_image %}
-      <button
-        type="button"
-        class="variant-image-button {% if forloop.first %}active{% endif %}"
-        data-value="{{ value }}"
-      >
-        <img src="{{ image | image_url: width: 150 }}" alt="{{ value }}">
-        <div class="variant-label">{{ value }}</div>
-      </button>
-    {% endfor %}
+{% assign option_index = 0 %}
+{% assign option = product.options_with_values[option_index] %}
+
+<variant-selects
+  id="variant-selects-{{ section.id }}"
+  data-section="{{ section.id }}"
+  data-url="{{ product.url }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="custom-variant-picker">
+    <label class="form__label">{{ option.name }}</label>
+    <div class="custom-variant-options">
+      {% for value in option.values %}
+        {% assign variant = product.variants | where: 'option1', value | first %}
+        {% assign image = variant.featured_image | default: product.featured_image %}
+        <button
+          type="button"
+          class="variant-thumb {% if forloop.first %}active{% endif %}"
+          data-value="{{ value }}"
+          aria-label="{{ value }}"
+        >
+          <img src="{{ image | image_url: width: 120 }}" alt="{{ value }}">
+          <span>{{ value }}</span>
+        </button>
+      {% endfor %}
+    </div>
+
+    <select class="visually-hidden" name="options[{{ option.name | escape }}]">
+      {% for value in option.values %}
+        <option value="{{ value }}" {% if forloop.first %}selected{% endif %}>
+          {{ value }}
+        </option>
+      {% endfor %}
+    </select>
   </div>
 
-  <select
-    class="visually-hidden"
-    name="options[{{ option.name | escape }}]"
-    form="{{ product_form_id }}"
-  >
-    {% for value in option.values %}
-      <option value="{{ value }}" {% if forloop.first %}selected{% endif %}>{{ value }}</option>
-    {% endfor %}
-  </select>
-</div>
+  <script type="application/json" data-product>
+    {{ product | json }}
+  </script>
+  <script type="application/json" data-selected-variant>
+    {{ product.selected_or_first_available_variant | json }}
+  </script>
+</variant-selects>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    const wrapper = document.querySelector('.custom-variant-picker-wrapper');
-    if (!wrapper) return;
+    const container = document.querySelector("#variant-selects-{{ section.id }}");
+    if (!container) return;
 
-    const buttons = wrapper.querySelectorAll('.variant-image-button');
-    const select = wrapper.querySelector('select');
+    const buttons = container.querySelectorAll(".variant-thumb");
+    const select = container.querySelector("select");
 
     buttons.forEach(button => {
-      button.addEventListener('click', () => {
-        buttons.forEach(b => b.classList.remove('active'));
-        button.classList.add('active');
+      button.addEventListener("click", () => {
+        buttons.forEach(b => b.classList.remove("active"));
+        button.classList.add("active");
+
         const value = button.dataset.value;
 
-        Array.from(select.options).forEach(opt => {
+        // Set selected option
+        for (let opt of select.options) {
           opt.selected = opt.value === value;
-        });
+        }
 
-        // Trigger change event to notify Shopify + Appstle
-        select.dispatchEvent(new Event('change', { bubbles: true }));
+        // Dispatch change so Shopify's variant-selects reacts
+        select.dispatchEvent(new Event("change", { bubbles: true }));
       });
     });
   });
 </script>
+
 
 
 <style>
