@@ -3668,7 +3668,7 @@ p {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 20px;
-  width: 50%;
+  flex: 1
   text-align: center;
 }
 .swatch-image {
