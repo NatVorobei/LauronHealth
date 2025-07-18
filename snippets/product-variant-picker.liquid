@@ -28,40 +28,41 @@
         endif
       -%}
       {%- if picker_type == 'custom_swatch' -%}
-        <fieldset class="js product-form__input product-form__input--custom-swatch">
-          <legend class="form__label">{{ option.name }}</legend>
-          {%- for value in option.values -%}
-            {%- assign input_id = 'Option-' | append: section.id | append: '-' | append: option.position | append: '-' | append: forloop.index0 -%}
-            {%- assign variant = product.variants | where: 'option1', value | first -%}
-            <input
-              type="radio"
-              id="{{ input_id }}"
-              name="options[{{ option.name | escape }}]"
-              value="{{ value | escape }}"
-              form="{{ product_form_id }}"
-              {% if option.selected_value == value %}checked{% endif %}
-              data-index="option{{ option.position }}"
-            >
-            <label for="{{ input_id }}" class="custom-swatch-label">
-              {% if variant and variant.metafields.custom.variant_img %}
-                <img
-                  src="{{ variant.metafields.custom.variant_img | image_url: width: 100 }}"
-                  alt="{{ value }}"
-                  class="swatch-image"
-                  width="50"
-                  height="50"
-                  loading="lazy"
-                >
-              {% else %}
-                <div class="swatch-placeholder">?</div>
-              {% endif %}
-              <div class="swatch-content">
-                <span class="swatch-text">{{ value }}</span>
-                <span class="swatch-subtext">200 мл кожна</span>
-              </div>
-            </label>
-          {%- endfor -%}
-        </fieldset>
+
+  <fieldset class="js product-form__input product-form__input--custom-swatch">
+    <legend class="form__label">{{ option.name }}</legend>
+    {%- for value in option.values -%}
+      {%- assign input_id = 'Option-' | append: section.id | append: '-' | append: option.position | append: '-' | append: forloop.index0 -%}
+      {%- assign variant = product.variants | where: 'option1', value | first -%} <!-- Змініть 'option1' на 'option2' або 'option3', якщо потрібно -->
+      <input
+        type="radio"
+        id="{{ input_id }}"
+        name="options[{{ option.name | escape }}]"
+        value="{{ value | escape }}"
+        form="{{ product_form_id }}"
+        {% if option.selected_value == value %}checked{% endif %}
+        data-index="option{{ option.position }}"
+      >
+      <label for="{{ input_id }}" class="custom-swatch-label">
+        {% if variant and variant.metafields.custom.variant_img %}
+          <img
+            src="{{ variant.metafields.custom.variant_img | image_url: width: 100 }}"
+            alt="{{ value }}"
+            class="swatch-image"
+            width="50"
+            height="50"
+            loading="lazy"
+          >
+        {% else %}
+          <div class="swatch-placeholder">?</div>
+        {% endif %}
+        <div class="swatch-content">
+          <span class="swatch-text">{{ value }}</span>
+          <span class="swatch-subtext">200 мл кожна</span>
+        </div>
+      </label>
+    {%- endfor -%}
+  </fieldset>
       {%- elsif picker_type == 'swatch' -%}
         <fieldset class="js product-form__input product-form__input--swatch">
           <legend class="form__label">
@@ -80,35 +81,12 @@
       {%- elsif picker_type == 'button' -%}
         <fieldset class="js product-form__input product-form__input--pill">
           <legend class="form__label">{{ option.name }}</legend>
-          {%- for value in option.values -%}
-            {%- assign input_id = 'Option-' | append: section.id | append: '-' | append: option.position | append: '-' | append: forloop.index0 -%}
-            {%- assign variant = product.variants | where: 'option1', value | first -%}
-            <input
-              type="radio"
-              id="{{ input_id }}"
-              name="options[{{ option.name | escape }}]"
-              value="{{ value | escape }}"
-              form="{{ product_form_id }}"
-              {% if option.selected_value == value %}checked{% endif %}
-              data-index="option{{ option.position }}"
-            >
-            <label for="{{ input_id }}" class="pill-label">
-              {% if variant and variant.metafields.custom.variant_img %}
-                <img
-                  src="{{ variant.metafields.custom.variant_img | image_url: width: 50 }}"
-                  alt="{{ value }}"
-                  class="pill-image"
-                  width="25"
-                  height="25"
-                  loading="lazy"
-                >
-              {% else %}
-                <div class="pill-placeholder">?</div>
-              {% endif %}
-              <span class="pill-text">{{ value }}</span>
-              <span class="pill-subtext">200 мл кожна</span>
-            </label>
-          {%- endfor -%}
+          {% render 'product-variant-options',
+            product: product,
+            option: option,
+            block: block,
+            picker_type: picker_type
+          %}
         </fieldset>
       {%- else -%}
         <div class="product-form__input product-form__input--dropdown">
@@ -151,14 +129,15 @@
   </variant-selects>
 {%- endunless -%}
 
+
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('input[type="radio"][name^="options"]').forEach(radio => {
-      radio.addEventListener('change', () => {
-        console.log('Вибрано варіант:', radio.value);
-        const form = radio.closest('form');
-        if (form) form.dispatchEvent(new Event('change', { bubbles: true }));
-      });
+  document.querySelectorAll('input[type="radio"][name^="options"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      console.log('Вибрано варіант:', radio.value);
+      const form = radio.closest('form');
+      if (form) form.dispatchEvent(new Event('change', { bubbles: true }));
     });
   });
+});
 </script>
