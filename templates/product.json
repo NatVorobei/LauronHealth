@@ -26,6 +26,7 @@
         },
         "can_selector_FUkyfw": {
           "type": "can_selector",
+          "disabled": true,
           "settings": {
             "heading": "Оберіть формат упаковки",
             "image_1": "shopify://shop_images/freeze-age-product-block_1.png",
