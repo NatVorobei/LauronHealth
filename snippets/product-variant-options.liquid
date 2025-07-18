@@ -57,8 +57,13 @@
       {{- 'products.product.variant_sold_out_or_unavailable' | t -}}
     </span>
   {%- endcapture -%}
-
-  {%- if picker_type == 'swatch' -%}
+  {%- if picker_type == 'custom_swatch' -%}
+    {% render 'swatch-image',
+    swatch_product: product,
+    swatch_option_key: option.name,
+    swatch_search_color: value
+  %}
+  {%- elsif picker_type == 'swatch' -%}
     {%- capture help_text -%}
       <span class="visually-hidden">{{ value | escape }}</span>
       {{ label_unavailable }}
