@@ -102,29 +102,46 @@
                   <div class="cans-format-options__wrapper">
                     {% for i in (1..2) %}
                       {% assign index = i | minus: 1 %}
-                      {% assign label = block.settings["label_" | append: i ] %}
-                      {% assign image = block.settings["image_" | append: i ] %}
-                      {% assign quantity = block.settings["quantity_" | append: i ] %}
+                      {% capture label_key %}label_{{ i }}{% endcapture %}
+                      {% capture image_key %}image_{{ i }}{% endcapture %}
+                      {% capture quantity_key %}quantity_{{ i }}{% endcapture %}
+              
+                      {% assign label = block.settings[label_key] %}
+                      {% assign image = block.settings[image_key] %}
+                      {% assign quantity = block.settings[quantity_key] %}
+              
                       {% if label != blank and image != blank and quantity != blank %}
-                        <label class="cans-format-option">
-                          <input
-                            type="radio"
-                            name="cans_format"
-                            value="{{ quantity }}"
-                            onchange="document.querySelector('input[name=quantity]').value = this.value"
-                          >
-                          <div class="cans-format-option__content">
-                            <img src="{{ image | img_url: '100x100' }}" alt="{{ label }}">
-                            <div class="cans-format-option__text">
-                              <div class="label">{{ label }}</div>
-                              <div class="subtext">200 мл кожна</div>
-                            </div>
+                        <label class="cans-format-option {% if i == 1 %}active{% endif %}" data-quantity="{{ quantity }}">
+                          <img src="{{ image | img_url: '100x' }}" alt="{{ label }}">
+                          <div>
+                            <div class="label">{{ label }}</div>
+                            <div class="subtext">200 мл кожна</div>
                           </div>
                         </label>
                       {% endif %}
                     {% endfor %}
                   </div>
-                </div>              
+                </div>
+              
+                <script>
+                  document.addEventListener("DOMContentLoaded", function () {
+                    const options = document.querySelectorAll('.cans-format-option');
+                    const quantityInput = document.querySelector('form[action^="/cart"] input[name="quantity"]');
+              
+                    if (options.length > 0 && quantityInput) {
+                      const defaultOption = options[0];
+                      quantityInput.value = defaultOption.dataset.quantity;
+              
+                      options.forEach(option => {
+                        option.addEventListener('click', () => {
+                          options.forEach(o => o.classList.remove('active'));
+                          option.classList.add('active');
+                          quantityInput.value = option.dataset.quantity;
+                        });
+                      });
+                    }
+                  });
+                </script>
               {%- when 'title' -%}
                 <div class="product__title" {{ block.shopify_attributes }}>
                   <h1>{{ product.title | escape }}</h1>
