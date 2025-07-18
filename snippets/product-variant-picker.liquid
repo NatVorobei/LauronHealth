@@ -51,7 +51,7 @@
         for="Option-{{ section.id }}-{{ option.name | handleize }}-{{ forloop.index0 }}"
         class="custom-swatch-label"
       >
-        <img src="{{ variant.metafield: 'variant_image' | default: 'https://via.placeholder.com/50' }}" alt="{{ value }}" class="swatch-image">
+        <img src="{{ variant.metafields.variant_image | default: 'https://via.placeholder.com/50' }}" alt="{{ value }}" class="swatch-image">
         <span class="swatch-text">{{ value }}</span>
         <span class="swatch-subtext">200 мл кожна</span>
       </label>
