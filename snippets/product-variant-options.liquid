@@ -39,6 +39,8 @@
     endif
   -%}
 
+  {%- assign variant = product.variants | where: 'option1', value | first -%}
+
   {%- capture input_id -%}
     {{ section.id }}-{{ option.position }}-{{ forloop.index0 -}}
   {%- endcapture -%}
