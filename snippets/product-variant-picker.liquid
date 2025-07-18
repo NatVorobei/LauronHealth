@@ -27,16 +27,47 @@
           endif
         endif
       -%}
-      {%- if picker_type == 'custom_swatch' -%}
-        <fieldset class="js product-form__input product-form__input--pill">
-          <legend class="form__label">{{ option.name }}</legend>
-          {% render 'product-variant-options',
-            product: product,
-            option: option,
-            block: block,
-            picker_type: picker_type
-          %}
-        </fieldset>
+  {%- if picker_type == 'custom_swatch' -%}
+  <fieldset class="js product-form__input product-form__input--swatch" data-index="variant-selectors">
+    <legend class="form__label">
+      {{ option.name }}:
+      <span data-selected-value>{{ option.selected_value }}</span>
+    </legend>
+
+    {%- for value in option.values -%}
+      {%- assign input_id = 'Option-' | append: section.id | append: '-' | append: option.name | handleize | append: '-' | append: forloop.index0 -%}
+      <input
+        type="radio"
+        id="{{ input_id }}"
+        name="options[{{ option.name | escape }}]"
+        value="{{ value | escape }}"
+        form="{{ product_form_id }}"
+        {% if option.selected_value == value %}checked{% endif %}
+        data-index="option{{ option.position }}"
+        onchange="this.closest('variant-selects').updateOptions();"
+      >
+
+      {%- assign matched_variant = product.variants | where: 'option' | append: option.position, value | first -%}
+
+      <label for="{{ input_id }}" class="custom-swatch-label">
+        {% if matched_variant and matched_variant.metafields.custom.variant_img %}
+          <img
+            src="{{ matched_variant.metafields.custom.variant_img | image_url: width: 100 }}"
+            alt="{{ value }}"
+            class="swatch-image"
+            width="50"
+            height="50"
+            loading="lazy"
+          >
+        {% else %}
+          <div class="swatch-placeholder">?</div>
+        {% endif %}
+        <span class="swatch-text">{{ value }}</span>
+        <span class="swatch-subtext">200 мл кожна</span>
+      </label>
+    {%- endfor -%}
+  </fieldset>
+
 
       {%- elsif picker_type == 'swatch' -%}
         <fieldset class="js product-form__input product-form__input--swatch">
