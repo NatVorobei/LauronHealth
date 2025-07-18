@@ -96,31 +96,33 @@
                 >
                   {{- block.settings.text -}}
                 </p>
-              {% when 'can_pack_option' %}
-  <fieldset class="cans-format" {{ block.shopify_attributes }}>
-    <legend class="h4">{{ block.settings.heading | default: 'Оберіть формат упаковки' }}</legend>
-    <div class="cans-format__wrapper">
-      {% assign all_blocks = section.blocks | where: "type", "can_pack_option" %}
-      {% for can_block in all_blocks %}
-        <label class="cans-option">
-          <input
-            type="radio"
-            name="quantity"
-            value="{{ can_block.settings.quantity }}"
-            {% if forloop.first %}checked{% endif %}
-            form="{{ product_form_id }}"
-          >
-          <div class="cans-option__image">
-            <img src="{{ can_block.settings.image | img_url: '100x' }}" alt="{{ can_block.settings.label }}">
-          </div>
-          <div class="cans-option__label">
-            <strong>{{ can_block.settings.label }}</strong>
-            <small>200 мл кожна</small>
-          </div>
-        </label>
-      {% endfor %}
-    </div>
-  </fieldset>
+              {% when 'can_variant_selector' %}
+  {% assign linked_product = all_products[block.settings.product] %}
+  {% if linked_product %}
+    <fieldset class="cans-format" {{ block.shopify_attributes }}>
+      <legend class="h4">{{ block.settings.heading }}</legend>
+      <div class="cans-format__wrapper">
+        {% for variant in linked_product.variants %}
+          <label class="cans-option">
+            <input
+              type="radio"
+              name="id"
+              value="{{ variant.id }}"
+              {% if forloop.first %}checked{% endif %}
+              form="{{ product_form_id }}"
+            >
+            <div class="cans-option__image">
+              <img src="{{ variant.featured_image | img_url: '100x' }}" alt="{{ variant.title }}">
+            </div>
+            <div class="cans-option__label">
+              <strong>{{ variant.title }}</strong>
+              <small>200 мл кожна</small>
+            </div>
+          </label>
+        {% endfor %}
+      </div>
+    </fieldset>
+  {% endif %}
 
 
 
@@ -766,34 +768,23 @@
       "type": "@app"
     },
     {
-  "type": "can_pack_option",
-  "name": "Опція формату банок",
-  "settings": [
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Заголовок",
-      "default": "Оберіть формат упаковки"
+      "type": "can_variant_selector",
+      "name": "Формат упаковки",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Заголовок",
+          "default": "Оберіть формат"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Продукт (з варіантами 14/28)"
+        }
+      ]
     },
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Картинка"
-    },
-    {
-      "type": "text",
-      "id": "label",
-      "label": "Підпис",
-      "default": "28 банок"
-    },
-    {
-      "type": "number",
-      "id": "quantity",
-      "label": "Кількість",
-      "default": 28
-    }
-  ]
-},
 
     {
       "type": "text",
