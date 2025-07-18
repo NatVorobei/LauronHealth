@@ -28,20 +28,42 @@
         endif
       -%}
       {%- if picker_type == 'custom_swatch' -%}
-        <fieldset class="js product-form__input product-form__input--custom-swatch">
-          <legend class="form__label">
-            {{ option.name }}:
-            <span data-selected-value>
-              {{- option.selected_value -}}
-            </span>
-          </legend>
-          {% render 'product-variant-options',
-            product: product,
-            option: option,
-            block: block,
-            picker_type: picker_type
+        <fieldset class="js product-form__input product-form__input--swatch">
+  <legend class="form__label">
+    {{ option.name }}:
+    <span data-selected-value>
+      {{- option.selected_value -}}
+    </span>
+  </legend>
+  <ul class="custom-swatch-list">
+    {%- for value in option.values -%}
+      {%- capture input_id -%}
+        {{ section.id }}-{{ option.position }}-{{ forloop.index0 }}
+      {%- endcapture -%}
+      <li>
+        <input
+          type="radio"
+          id="{{ input_id }}"
+          name="options[{{ option.name | escape }}]"
+          value="{{ value | escape }}"
+          form="{{ product_form_id }}"
+          {% if option.selected_value == value %}checked{% endif %}
+          data-index="option{{ option.position }}"
+          onchange="this.form.dispatchEvent(new Event('change', { bubbles: true }))"
+        >
+        <label for="{{ input_id }}">
+          {% render 'swatch-image',
+            swatch_product: product,
+            swatch_option_key: option.name,
+            swatch_search_color: value
           %}
-        </fieldset>
+          <span>{{ value }}</span>
+        </label>
+      </li>
+    {%- endfor -%}
+  </ul>
+</fieldset>
+
       {%- elsif picker_type == 'swatch' -%}
         <fieldset class="js product-form__input product-form__input--swatch">
           <legend class="form__label">
