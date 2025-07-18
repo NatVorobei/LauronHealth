@@ -96,36 +96,33 @@
                 >
                   {{- block.settings.text -}}
                 </p>
-              {% when 'can_selector' %}
-                <div class="cans-heading" {{ block.shopify_attributes }}>
-                  <h3 class="h4">{{ block.settings.heading }}</h3>
-                </div>
-              
               {% when 'can_pack_option' %}
-                {% assign all_blocks = section.blocks | where: "type", "can_pack_option" %}
-                <div class="cans-format-wrapper">
-                  {% for can_block in all_blocks %}
-                    {% assign variant = product.variants | where: "option1", can_block.settings.variant_value | first %}
-                    {% if variant %}
-                      <label class="cans-option">
-                        <input
-                          type="radio"
-                          name="id"
-                          value="{{ variant.id }}"
-                          {% if forloop.first %}checked{% endif %}
-                          form="{{ product_form_id }}"
-                        >
-                        <div class="cans-option__image">
-                          <img src="{{ can_block.settings.image | img_url: '100x' }}" alt="{{ can_block.settings.label }}">
-                        </div>
-                        <div class="cans-option__label">
-                          <strong>{{ can_block.settings.label }}</strong>
-                          <small>200 мл кожна</small>
-                        </div>
-                      </label>
-                    {% endif %}
-                  {% endfor %}
-                </div>
+  <fieldset class="cans-format" {{ block.shopify_attributes }}>
+    <legend class="h4">{{ block.settings.heading | default: 'Оберіть формат упаковки' }}</legend>
+    <div class="cans-format__wrapper">
+      {% assign all_blocks = section.blocks | where: "type", "can_pack_option" %}
+      {% for can_block in all_blocks %}
+        <label class="cans-option">
+          <input
+            type="radio"
+            name="quantity"
+            value="{{ can_block.settings.quantity }}"
+            {% if forloop.first %}checked{% endif %}
+            form="{{ product_form_id }}"
+          >
+          <div class="cans-option__image">
+            <img src="{{ can_block.settings.image | img_url: '100x' }}" alt="{{ can_block.settings.label }}">
+          </div>
+          <div class="cans-option__label">
+            <strong>{{ can_block.settings.label }}</strong>
+            <small>200 мл кожна</small>
+          </div>
+        </label>
+      {% endfor %}
+    </div>
+  </fieldset>
+
+
 
 
               {%- when 'title' -%}
