@@ -31,8 +31,13 @@
             "text_style": "body"
           }
         },
+        "custom_variant_picker_AacitL": {
+          "type": "custom_variant_picker",
+          "settings": {}
+        },
         "variant_picker": {
           "type": "variant_picker",
+          "disabled": true,
           "settings": {
             "picker_type": "button",
             "swatch_shape": "circle"
@@ -88,6 +93,7 @@
         "title",
         "description",
         "text_php7pf",
+        "custom_variant_picker_AacitL",
         "variant_picker",
         "price",
         "quantity_selector",
