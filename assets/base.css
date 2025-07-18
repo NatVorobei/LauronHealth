@@ -3657,4 +3657,36 @@ p {
   margin-left: 0 !important;
   gap: 28px;
 }
+
+.product-form__input--custom-swatch {
+  display: flex;
+  gap: 10px;
+}
+.custom-swatch-label {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 200px;
+  text-align: center;
+}
+.swatch-image {
+  width: 50px;
+  margin-right: 10px;
+}
+.swatch-text {
+  font-weight: bold;
+  margin-right: 5px;
+}
+.swatch-subtext {
+  font-size: 0.8em;
+  color: #666;
+}
+input[type="radio"] {
+  display: none;
+}
+input[type="radio"]:checked + .custom-swatch-label {
+  border-color: #000;
+}
 /* Custom classes end */
