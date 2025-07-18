@@ -1,0 +1,23 @@
+.custom-variant-options {
+    display: flex;
+    gap: 1rem;
+  }
+  .custom-variant-option {
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    border-radius: 12px;
+    cursor: pointer;
+    width: 120px;
+    text-align: center;
+  }
+  .custom-variant-option input {
+    display: none;
+  }
+  .custom-variant-option img {
+    max-width: 100%;
+    height: auto;
+  }
+  .custom-variant-option input:checked + .custom-variant-image {
+    border: 2px solid black;
+  }
+  
