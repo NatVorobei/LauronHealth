@@ -3693,4 +3693,9 @@ input[type="radio"]:checked + .custom-swatch-label {
   display: flex;
   flex-direction: column;
 }
+
+.product-form__input--custom-swatch {
+  display: flex;
+  gap: 14px;
+}
 /* Custom classes end */
