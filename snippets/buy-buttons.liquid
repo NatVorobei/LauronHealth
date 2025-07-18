@@ -93,7 +93,9 @@
               {%- endif -%}
             </span>
             –
-            <span>{{ product.selected_or_first_available_variant.price | money }}</span>
+            <span id="ProductPrice-{{ section_id }}">
+              {{ product.selected_or_first_available_variant.price | money }}
+            </span>
             {%- render 'loading-spinner' -%}
           </button>
           {%- if show_dynamic_checkout -%}
