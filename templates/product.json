@@ -24,11 +24,16 @@
           "type": "description",
           "settings": {}
         },
-        "can_variant_selector_CRH7Pq": {
-          "type": "can_variant_selector",
+        "can_pack_quantity_options_n3eRgT": {
+          "type": "can_pack_quantity_options",
           "settings": {
-            "heading": "Оберіть формат",
-            "product": "freeze-age"
+            "heading": "1. Оберіть формат:",
+            "image_1": "shopify://shop_images/freeze-age-product-block_1.png",
+            "label_1": "28 банок",
+            "quantity_1": 28,
+            "image_2": "shopify://shop_images/freeze-age-product-block_1.png",
+            "label_2": "14 банок",
+            "quantity_2": 14
           }
         },
         "price": {
@@ -87,7 +92,7 @@
         "judge_me_reviews_preview_badge_Jb9i4Y",
         "title",
         "description",
-        "can_variant_selector_CRH7Pq",
+        "can_pack_quantity_options_n3eRgT",
         "price",
         "variant_picker",
         "quantity_selector",
