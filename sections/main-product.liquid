@@ -773,8 +773,9 @@
       "settings": []
     },
     {
-      "name": "Варіант упаковки",
       "type": "can_selector",
+      "name": "Вибір формату упаковки",
+      "limit": 1,
       "settings": [
         {
           "type": "text",
@@ -784,20 +785,37 @@
         },
         {
           "type": "image_picker",
-          "id": "image",
-          "label": "Картинка"
+          "id": "image_1",
+          "label": "Картинка — Опція 1"
         },
         {
           "type": "text",
-          "id": "label",
-          "label": "Підпис",
+          "id": "label_1",
+          "label": "Підпис — Опція 1",
           "default": "28 банок"
         },
         {
           "type": "number",
-          "id": "quantity",
-          "label": "Кількість",
+          "id": "quantity_1",
+          "label": "Кількість — Опція 1",
           "default": 28
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "Картинка — Опція 2"
+        },
+        {
+          "type": "text",
+          "id": "label_2",
+          "label": "Підпис — Опція 2",
+          "default": "14 банок"
+        },
+        {
+          "type": "number",
+          "id": "quantity_2",
+          "label": "Кількість — Опція 2",
+          "default": 14
         }
       ]
     },
