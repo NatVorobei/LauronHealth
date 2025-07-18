@@ -95,19 +95,19 @@
     >
     <label for="{{ input_id }}" class="custom-swatch-label">
       {% if variant and variant.metafields.custom.variant_img %}
+        <div class="swatch-image-container">
           <img
             src="{{ variant.metafields.custom.variant_img | image_url: width: 100 }}"
             alt="{{ value }}"
             class="swatch-image"
-            width="50"
-            height="50"
             loading="eager"
           >
+        </div>
         {% else %}
           <div class="swatch-placeholder">?</div>
         {% endif %}
     <div class="swatch-content">
-      {{ value -}}
+      <span class="swatch-text">{{ value -}}</span>
       {{ label_unavailable }}
       <span class="swatch-subtext">200 мл кожна</span>
     </div>

@@ -3662,6 +3662,7 @@ p {
   display: flex;
   gap: 10px;
 }
+
 .custom-swatch-label {
   display: flex;
   align-items: center;
@@ -3669,18 +3670,29 @@ p {
   border-radius: 20px;
   flex: 1;
   text-align: center;
+  min-height: 76px;
+}
+.swatch-image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35%;
 }
 .swatch-image {
-  width: 50px;
-  height: auto;
+  /* width: 50px;
+  height: auto; */
+  height: 50px;
 }
 .swatch-text {
-  font-weight: bold;
-  margin-right: 5px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 12px;
+  color: #1F1F21;
 }
 .swatch-subtext {
-  font-size: 0.8em;
-  color: #666;
+  font-size: 10px;
+  line-height: 10px;
+  color: #1F1F21;
 }
 input[type="radio"] {
   display: none;
@@ -3688,11 +3700,18 @@ input[type="radio"] {
 input[type="radio"]:checked + .custom-swatch-label {
   border-color: #1F1F21;
 }
+input[type="radio"]:checked + .custom-swatch-label .swatch-content {
+  border-left-color: #1F1F21;
+  background-color: #F0F4F5;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
 .swatch-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  gap: 6px;
+  width: 65%;
   height: 100%;
   justify-content: center;
   border-left: 1px solid #D7D7D7;
@@ -3701,5 +3720,12 @@ input[type="radio"]:checked + .custom-swatch-label {
 .product-form__input--custom-swatch {
   display: flex;
   gap: 14px;
+}
+.product__text {
+  margin: 0 !important;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 10px;
+  color: #1F1F21;
 }
 /* Custom classes end */

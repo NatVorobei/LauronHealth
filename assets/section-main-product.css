@@ -434,6 +434,10 @@ a.product__text {
   .product__info-wrapper {
     padding: 0 10px;
   }
+  .product-form__submit {
+    font-size: 14px;
+    line-height: 12px;
+  } 
   .product__media-list {
     margin-left: -2.5rem;
     margin-bottom: 3rem;
