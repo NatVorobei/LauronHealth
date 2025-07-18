@@ -57,34 +57,8 @@
       {{- 'products.product.variant_sold_out_or_unavailable' | t -}}
     </span>
   {%- endcapture -%}
-  {%- if picker_type == 'custom_swatch' -%}
-    <li
-      class="{{ options_container_class }}__list__item"
-    >
-      <input
-        type="radio"
-        tabindex="-1"
-        id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
-        name="{{ option.name }}"
-        value="{{ value | escape }}"
-        form="{{ product_form_id }}"
-        {% if selected_variant and option.selected_value == value %}
-          checked
-        {% endif %}
-      >
-          <label
-            tabindex="0"
-            class="{{ options_container_class }}__list__link"
-            for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
-          >
-            {% render 'swatch-image',
-              swatch_product: product,
-              swatch_option_key: swatch_option_key,
-              swatch_search_color: value
-            %}
-          </label>
-    </li>
-  {%- elsif picker_type == 'swatch' -%}
+
+  {%- if picker_type == 'swatch' -%}
     {%- capture help_text -%}
       <span class="visually-hidden">{{ value | escape }}</span>
       {{ label_unavailable }}
