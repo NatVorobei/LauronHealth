@@ -165,7 +165,10 @@
     "two_blocks_section_mAHYCe": {
       "type": "two-blocks-section",
       "custom_css": [
-        ".custom-text__description_2 {font-weight: 700;}"
+        ".custom-text__description_2 {font-weight: 700;}",
+        ".custom-text__description_1 {margin: 50px 0 40px 0; font-size: 20px; line-height: 28px; }",
+        " .custom-text__description_2 {font-size: 20px; line-height: 28px; }",
+        " .custom-text-content h2 {font-family: Montserrat, sans-serif; font-size: 42px; line-height: 30px; font-weight: 700; margin: 0; }"
       ],
       "name": "Two Column Section",
       "settings": {
