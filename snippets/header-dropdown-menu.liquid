@@ -68,7 +68,8 @@
             {% assign img = matched_dropdown.settings[image_key] %}
             {% assign title = matched_dropdown.settings[title_key] %}
             {% assign text = matched_dropdown.settings[text_key] %}
-            {%- assign url = matched_dropdown.settings[url_key] -%}
+            {% assign url = matched_dropdown.settings[url_key] %}
+            {% assign is_last = forloop.last %}
             {% if img or title or text %}
               <a href="{{ url | default: '#' }}" class="dropdown-item">
                 <div class="dropdown-item__content">
@@ -76,13 +77,13 @@
                   {% if text %}<p class="dropdown-item__content--text">{{ text }}</p>{% endif %}
                 </div>
                 {% if img %}
-                  <div class="dropdown-item__content--image">
-                    <img src="{{ img | image_url: width: 120 }}" alt="{{ title | escape }}" width="60" height="100">
+                  <div class="dropdown-item__content--image {% if is_last %}is-last{% endif %}">
+                    <img src="{{ img | image_url: width: 200 }}" alt="{{ title | escape }}">
                   </div>
                 {% endif %}
               </a>
             {% endif %}
-          {% endfor %}
+          {% endfor %}          
         </div>
 
       {%- elsif link.links != blank -%}
@@ -244,10 +245,11 @@
   justify-content: space-between;
   border: 1px solid #D7D7D7;
   border-radius: 20px;
-  align-items: center;
+  align-items: stretch;
   min-width: 400px;
   height: 140px;
   text-decoration: none;
+  overflow: hidden;
 }
 
 .dropdown-item:hover {
@@ -258,6 +260,7 @@
 .dropdown-item__content {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 8px;
   width: 75%;
   padding-left: 20px;
@@ -280,7 +283,19 @@
 .dropdown-item__content--image {
   width: 25%;
   display: flex;
+  padding: 18px 10px;
 }
+
+.dropdown-item__content--image.is-last {
+  width: auto;
+  padding: 0;
+}
+
+.dropdown-item__content--image img{
+  width: auto;
+  height: 100%;
+}
+
 .custom-dropdown-toggle span {
   font-size: 16px;
   color: #1F1F21;
