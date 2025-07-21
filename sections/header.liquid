@@ -314,6 +314,37 @@
         {%- case block.type -%}
           {%- when '@app' -%}
             {% render block %}
+
+            {%- for block in section.blocks -%}
+              {%- case block.type -%}
+              
+                {%- when '@app' -%}
+                  {% render block %}
+              
+                {%- when 'custom_dropdown' -%}
+                  <li class="custom-dropdown">
+                    <details>
+                      <summary class="header__menu-item list-menu__item link focus-inset">
+                        <span>{{ block.settings.menu_title }}</span>
+                        {{ 'icon-caret.svg' | inline_asset_content }}
+                      </summary>
+                      <div class="custom-dropdown-content">
+                        {% for i in (1..3) %}
+                          <div class="dropdown-item">
+                            <img src="{{ block.settings["image_" | append: i] | image_url: width: 120 }}" alt="">
+                            <div>
+                              <h4>{{ block.settings["title_" | append: i] }}</h4>
+                              <p>{{ block.settings["text_" | append: i] }}</p>
+                            </div>
+                          </div>
+                        {% endfor %}
+                      </div>
+                    </details>
+                  </li>
+            
+              {%- endcase -%}
+            {%- endfor -%}
+            
         {%- endcase -%}
       {%- endfor -%}
     </div>

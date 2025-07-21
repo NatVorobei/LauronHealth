@@ -1,130 +1,244 @@
 {% comment %}
   Renders a standard dropdown style menu for the header with a dynamic SVG logo in the center.
-
   Usage:
   {% render 'header-dropdown-menu' %}
 {% endcomment %}
 
+{%- assign dropdown_blocks = section.blocks | where: "type", "custom_dropdown" -%}
+
 <nav class="header__inline-menu">
   <ul class="list-menu list-menu--inline lauron-menu" role="list">
-    {%- for link in section.settings.menu.links -%}
-      <li>
-        {%- if link.url == '/pages/logo' -%}
-          <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset logo-link">
-            {%- if settings.logo != blank -%}
-          <div class="header__heading-logo-wrapper">
-            {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
-            {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
-            {% capture sizes %}(min-width: 750px) {{ settings.logo_width }}px, 50vw{% endcapture %}
-            {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
-            {{
-              settings.logo
-              | image_url: width: 600
-              | image_tag:
-                class: 'header__heading-logo',
-                widths: widths,
-                height: logo_height,
-                width: settings.logo_width,
-                alt: logo_alt,
-                sizes: sizes,
-                preload: true
-            }}
-          </div>
-        {%- else -%}
-          <span class="h2">{{ shop.name }}</span>
-        {%- endif -%}
-          </a>
-        {%- else -%}
-          {%- if link.links != blank -%}
-            <header-menu>
-              <details id="Details-HeaderMenu-{{ forloop.index }}">
-                <summary
-                  id="HeaderMenu-{{ link.handle }}"
-                  class="header__menu-item list-menu__item link focus-inset"
-                >
-                  <span
-                    {%- if link.child_active %}
-                      class="header__active-menu-item"
-                    {% endif %}
-                  >
-                    {{- link.title | escape -}}
-                  </span>
-                  {{- 'icon-caret.svg' | inline_asset_content -}}
-                </summary>
-                <ul
-                  id="HeaderMenu-MenuList-{{ forloop.index }}"
-                  class="header__submenu list-menu list-menu--disclosure color-{{ section.settings.menu_color_scheme }} gradient caption-large motion-reduce global-settings-popup"
-                  role="list"
-                  tabindex="-1"
-                >
-                  {%- for childlink in link.links -%}
-                    <li>
-                      {%- if childlink.links == blank -%}
-                        <a
-                          id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
-                          href="{{ childlink.url }}"
-                          class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if childlink.current %} list-menu__item--active{% endif %}"
-                          {% if childlink.current %}
-                            aria-current="page"
-                          {% endif %}
-                        >
-                          {{ childlink.title | escape }}
-                        </a>
-                      {%- else -%}
-                        <details id="Details-HeaderSubMenu-{{ link.handle }}-{{ childlink.handle }}">
-                          <summary
-                            id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
-                            class="header__menu-item link link--text list-menu__item focus-inset caption-large"
-                          >
-                            <span>{{ childlink.title | escape }}</span>
-                            {{- 'icon-caret.svg' | inline_asset_content -}}
-                          </summary>
-                          <ul
-                            id="HeaderMenu-SubMenuList-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
-                            class="header__submenu list-menu motion-reduce"
-                          >
-                            {%- for grandchildlink in childlink.links -%}
-                              <li>
-                                <a
-                                  id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
-                                  href="{{ grandchildlink.url }}"
-                                  class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if grandchildlink.current %} list-menu__item--active{% endif %}"
-                                  {% if grandchildlink.current %}
-                                    aria-current="page"
-                                  {% endif %}
-                                >
-                                  {{ grandchildlink.title | escape }}
-                                </a>
-                              </li>
-                            {%- endfor -%}
-                          </ul>
-                        </details>
-                      {%- endif -%}
-                    </li>
-                  {%- endfor -%}
-                </ul>
-              </details>
-            </header-menu>
+  {%- for link in section.settings.menu.links -%}
+    {%- assign matched_dropdown = nil -%}
+    {%- for block in dropdown_blocks -%}
+      {%- if block.settings.menu_title == link.title -%}
+        {%- assign matched_dropdown = block -%}
+      {%- endif -%}
+    {%- endfor -%}
+
+    <li class="header__menu-item-wrapper custom-dropdown-wrapper">
+      {%- if link.url == '/pages/logo' -%}
+        <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset logo-link">
+          {%- if settings.logo != blank -%}
+            <div class="header__heading-logo-wrapper">
+              {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
+              {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
+              {% capture sizes %}(min-width: 750px) {{ settings.logo_width }}px, 50vw{% endcapture %}
+              {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
+              {{
+                settings.logo
+                | image_url: width: 600
+                | image_tag:
+                  class: 'header__heading-logo',
+                  widths: widths,
+                  height: logo_height,
+                  width: settings.logo_width,
+                  alt: logo_alt,
+                  sizes: sizes,
+                  preload: true
+              }}
+            </div>
           {%- else -%}
-            <a
+            <span class="h2">{{ shop.name }}</span>
+          {%- endif -%}
+        </a>
+
+      {%- elsif matched_dropdown -%}
+        <!-- <a
+          href="{{ link.url }}"
+          class="header__menu-item list-menu__item link link--text focus-inset"
+        >
+          <span>{{ link.title }}</span>
+        </a>
+        <button type="button" class="dropdown-caret-toggle" aria-expanded="false">
+          {{ 'icon-caret.svg' | inline_asset_content }}
+        </button> -->
+        <div class="header__menu-item list-menu__item link link--text focus-inset custom-dropdown-toggle" role="button" tabindex="0">
+          <span>{{ link.title }}</span>
+          {{ 'icon-caret.svg' | inline_asset_content }}
+        </div>
+
+
+        <div class="custom-dropdown-content" hidden>
+          {% for i in (1..3) %}
+            {% assign image_key = "image_" | append: i %}
+            {% assign title_key = "title_" | append: i %}
+            {% assign text_key = "text_" | append: i %}
+            {% assign img = matched_dropdown.settings[image_key] %}
+            {% assign title = matched_dropdown.settings[title_key] %}
+            {% assign text = matched_dropdown.settings[text_key] %}
+
+            {% if img or title or text %}
+              <div class="dropdown-item">
+                <div class="dropdown-item__content">
+                  {% if title %}<h4 class="dropdown-item__content--title">{{ title }}</h4>{% endif %}
+                  {% if text %}<p class="dropdown-item__content--text">{{ text }}</p>{% endif %}
+                </div>
+                {% if img %}
+                  <img class="dropdown-item__content--image" src="{{ img | image_url: width: 120 }}" alt="{{ title | escape }}">
+                {% endif %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+
+      {%- elsif link.links != blank -%}
+        <header-menu>
+          <details id="Details-HeaderMenu-{{ forloop.index }}">
+            <summary
               id="HeaderMenu-{{ link.handle }}"
-              href="{{ link.url }}"
-              class="header__menu-item list-menu__item link link--text focus-inset"
-              {% if link.current %}
-                aria-current="page"
-              {% endif %}
+              class="header__menu-item list-menu__item link focus-inset"
             >
               <span
-                {%- if link.current %}
+                {%- if link.child_active %}
                   class="header__active-menu-item"
                 {% endif %}
               >
                 {{- link.title | escape -}}
               </span>
-            </a>
-          {%- endif -%}
-        {%- endif -%}
-      </li>
-    {%- endfor -%}
-  </ul>
+              {{ 'icon-caret.svg' | inline_asset_content }}
+            </summary>
+            <ul
+              id="HeaderMenu-MenuList-{{ forloop.index }}"
+              class="header__submenu list-menu list-menu--disclosure color-{{ section.settings.menu_color_scheme }} gradient caption-large motion-reduce global-settings-popup"
+              role="list"
+              tabindex="-1"
+            >
+              {%- for childlink in link.links -%}
+                <li>
+                  {%- if childlink.links == blank -%}
+                    <a
+                      id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+                      href="{{ childlink.url }}"
+                      class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if childlink.current %} list-menu__item--active{% endif %}"
+                      {% if childlink.current %}
+                        aria-current="page"
+                      {% endif %}
+                    >
+                      {{ childlink.title | escape }}
+                    </a>
+                  {%- else -%}
+                    <details id="Details-HeaderSubMenu-{{ link.handle }}-{{ childlink.handle }}">
+                      <summary
+                        id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+                        class="header__menu-item link link--text list-menu__item focus-inset caption-large"
+                      >
+                        <span>{{ childlink.title | escape }}</span>
+                        {{ 'icon-caret.svg' | inline_asset_content }}
+                      </summary>
+                      <ul
+                        id="HeaderMenu-SubMenuList-{{ link.handle }}-{{ childlink.handle }}"
+                        class="header__submenu list-menu motion-reduce"
+                      >
+                        {%- for grandchildlink in childlink.links -%}
+                          <li>
+                            <a
+                              id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                              href="{{ grandchildlink.url }}"
+                              class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if grandchildlink.current %} list-menu__item--active{% endif %}"
+                              {% if grandchildlink.current %}
+                                aria-current="page"
+                              {% endif %}
+                            >
+                              {{ grandchildlink.title | escape }}
+                            </a>
+                          </li>
+                        {%- endfor -%}
+                      </ul>
+                    </details>
+                  {%- endif -%}
+                </li>
+              {%- endfor -%}
+            </ul>
+          </details>
+        </header-menu>
+
+      {%- else -%}
+        <a
+          href="{{ link.url }}"
+          class="header__menu-item list-menu__item link link--text focus-inset"
+          {% if link.current %}
+            aria-current="page"
+          {% endif %}
+        >
+          <span
+            {%- if link.current %}
+              class="header__active-menu-item"
+            {% endif %}
+          >
+            {{- link.title | escape -}}
+          </span>
+        </a>
+      {%- endif -%}
+    </li>
+  {%- endfor -%}
+</ul>
+
 </nav>
+
+<script>
+  document.querySelectorAll('.custom-dropdown-toggle').forEach((toggle) => {
+  toggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    const wrapper = toggle.closest('.custom-dropdown-wrapper');
+    const isOpen = wrapper.classList.contains('open');
+
+    document.querySelectorAll('.custom-dropdown-wrapper.open').forEach((el) => {
+      el.classList.remove('open');
+    });
+
+    if (!isOpen) {
+      wrapper.classList.add('open');
+    }
+  });
+});
+
+</script>
+
+<style>
+  .custom-dropdown-wrapper {
+  position: relative;
+}
+
+.custom-dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 30;
+  background-color: white;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  min-width: 300px;
+}
+
+.custom-dropdown-wrapper.open .custom-dropdown-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.custom-dropdown-wrapper.open .custom-dropdown-toggle svg {
+  transform: rotate(180deg);
+}
+
+.custom-dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.custom-dropdown-toggle svg {
+  width: 9px;
+  height: 5px;
+}
+
+.dropdown-item {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #D7D7D7;
+  border-radius: 20px;
+}
+
+</style>
