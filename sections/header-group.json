@@ -47,11 +47,14 @@
             "image_1": "shopify://shop_images/freeze-age-product-block_1.png",
             "title_1": "Freeze Age",
             "text_1": "Функціональний напій для покращення самопочуття, клітинної гідратації та загальної стійкості організму",
+            "url_1": "shopify://products/freeze-age",
             "image_2": "shopify://shop_images/mental-health-product-block_1.png",
             "title_2": "Mental Performance",
             "text_2": "Функціональний напій для покращення самопочуття, клітинної гідратації та загальної стійкості організму",
+            "url_2": "shopify://products/mental-performance",
             "title_3": "Merchandise",
-            "text_3": "Зручні брендовані речі Lauron для повсякденного комфорту"
+            "text_3": "Зручні брендовані речі Lauron для повсякденного комфорту",
+            "url_3": ""
           }
         }
       },
