@@ -64,12 +64,13 @@
             {% assign image_key = "image_" | append: i %}
             {% assign title_key = "title_" | append: i %}
             {% assign text_key = "text_" | append: i %}
+            {% assign url_key = "url_" | append: i %}
             {% assign img = matched_dropdown.settings[image_key] %}
             {% assign title = matched_dropdown.settings[title_key] %}
             {% assign text = matched_dropdown.settings[text_key] %}
-
+            {%- assign url = matched_dropdown.settings[url_key] -%}
             {% if img or title or text %}
-              <div class="dropdown-item">
+              <a href="{{ url | default: '#' }}" class="dropdown-item">
                 <div class="dropdown-item__content">
                   {% if title %}<p class="dropdown-item__content--title">{{ title }}</p>{% endif %}
                   {% if text %}<p class="dropdown-item__content--text">{{ text }}</p>{% endif %}
@@ -79,7 +80,7 @@
                     <img src="{{ img | image_url: width: 120 }}" alt="{{ title | escape }}" width="60" height="100">
                   </div>
                 {% endif %}
-              </div>
+              </a>
             {% endif %}
           {% endfor %}
         </div>
@@ -246,6 +247,7 @@
   align-items: center;
   min-width: 400px;
   height: 140px;
+  text-decoration: none;
 }
 
 .dropdown-item:hover {
