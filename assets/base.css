@@ -3653,6 +3653,28 @@ p {
   line-height: 10px;
 }
 
+.appstle_one_time_text,
+.appstle_subscribe_save_text,
+.appstle_subscription_amount_wrapper,
+.appstle_one_time_price_wrapper,
+.appstle_subscription_amount_compare_at_price {
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  font-size: 18px !important;
+  line-height: 18px;
+}
+
+.appstle_single_option_text {
+  font-size: 12px;
+  line-height: 10px;
+  font-weight: 700;
+  margin-top: 27px;
+}
+
+.appstle_one_time_details_wrapper {
+  align-items: center !important;
+}
+
 #appstle_subscription_widget0 .appstle_subscribe_option {
   margin-left: 0 !important;
   gap: 28px;
@@ -3727,5 +3749,28 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
   font-size: 14px;
   line-height: 10px;
   color: #1F1F21;
+}
+
+@media(max-width: 749px) {
+  .appstle_one_time_text,
+  .appstle_subscribe_save_text,
+  .appstle_subscription_amount_wrapper,
+  .appstle_one_time_price_wrapper,
+  .appstle_subscription_amount_compare_at_price {
+    font-size: 14px !important;
+    line-height: 14px;
+  }
+  .appstle_single_option_text {
+    font-size: 10px;
+    margin-top: 20px;
+  }
+
+  #appstle_subscription_widget0 .appstle_subscribe_option {
+    gap: 20px;
+  }
+
+  .appstleSellingPlanDescription p {
+    font-size: 10px !important;
+  }
 }
 /* Custom classes end */
