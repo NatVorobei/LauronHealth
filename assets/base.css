@@ -3751,7 +3751,23 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
   color: #1F1F21;
 }
 
+#shopify-block-AYXU2Yk5uZHkyRm5sV__judge_me_reviews_preview_badge_Jb9i4Y {
+  display: none;
+}
+#shopify-block-AYXU2Yk5uZHkyRm5sV__judge_me_reviews_preview_badge_Jb9i4Y-1 {
+  display: block;
+}
+
 @media(max-width: 749px) {
+  #shopify-block-AYXU2Yk5uZHkyRm5sV__judge_me_reviews_preview_badge_Jb9i4Y {
+    display: block;
+    padding: 0 14px;
+  }
+
+  #shopify-block-AYXU2Yk5uZHkyRm5sV__judge_me_reviews_preview_badge_Jb9i4Y-1 {
+    display: none;
+  }
+
   .appstle_one_time_text,
   .appstle_subscribe_save_text,
   .appstle_subscription_amount_wrapper,

@@ -304,6 +304,13 @@ a.product__text {
   display: none;
 }
 
+.rating-wrapper.rating-wrapper--mobile {
+  display: none;
+}
+#shopify-block-AOFpKRjhJVWtUaXZqZ__judge_me_reviews_preview_badge_Jb9i4Y {
+  display: none;
+}
+
 .product__title + .product__text.caption-with-letter-spacing {
   margin-top: -1.5rem;
 }
@@ -432,6 +439,7 @@ a.product__text {
 }
 
 @media screen and (max-width: 749px) {
+  
   .product__title,
   .product__description,
   .rating-wrapper {
