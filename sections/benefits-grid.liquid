@@ -19,7 +19,7 @@
                 <h3 class="card-title">{{ block.settings.title }}</h3>
                 <div class="card-description-container">
                   <p class="card-description">{{ block.settings.short_text }}</p>
-                  <button class="expand-btn" onclick="this.closest('.benefits-card').classList.add('flipped')">
+                  <button class="expand-btn">
                     {{ 'plus-icon.svg' | inline_asset_content }}
                   </button>
                 </div>
@@ -29,7 +29,7 @@
             <div class="card-face card-back">
               <div class="card-back-content">
                 <p>{{ block.settings.full_text }}</p>
-                <button class="close-btn" onclick="this.closest('.benefits-card').classList.remove('flipped')">
+                <button class="close-btn">
                   {{ 'exit-button.svg' | inline_asset_content }}
                 </button>
               </div>
@@ -105,6 +105,7 @@
     position: relative;
     min-height: 360px;
     flex: 1 0 calc(25% - 20px);
+    cursor: pointer;
   }
 
   .benefits-grid-wrapper,
@@ -406,23 +407,22 @@
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-  
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
-  
         const rotateX = ((y - centerY) / centerY) * -6; 
         const rotateY = ((x - centerX) / centerX) * 6;  
-  
         inner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
       });
   
       card.addEventListener('mouseleave', () => {
         inner.style.transform = `rotateX(0deg) rotateY(0deg)`;
       });
+  
+      card.addEventListener('click', () => {
+        card.classList.toggle('flipped');
+      });
     });
   }
-  
-
   
   function toggleAllBenefits(button) {
     const hiddenCards = document.querySelectorAll('.benefits-card.hidden-on-mobile');
