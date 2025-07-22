@@ -92,15 +92,19 @@
   }
 
   .benefits-grid {
-    display: grid;
+    {% comment %} display: grid;
+    grid-template-columns: repeat(var(--columns, 4), 1fr); {% endcomment %}
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
     gap: 20px;
-    grid-template-columns: repeat(var(--columns, 4), 1fr);
   }
 
   .benefits-card {
     perspective: 1000px;
     position: relative;
     min-height: 360px;
+    flex: 1 0 calc(25% - 20px);
   }
 
   .benefits-grid-wrapper,
@@ -133,6 +137,7 @@
   }
 
   .card-front {
+    position: static;
     z-index: 2;
     transform: rotateY(0deg);
   }
@@ -188,11 +193,11 @@
     line-height: 22px;
     margin: 0;
     max-width: 220px;
-    display: -webkit-box;
+    {% comment %} display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    text-overflow: ellipsis;
+    text-overflow: ellipsis; {% endcomment %}
   }
 
   .expand-btn,
@@ -252,7 +257,8 @@
       overflow: hidden !important;
     }
     .benefits-grid {
-      grid-template-columns: 1fr;
+      flex-direction: column;
+      {% comment %} grid-template-columns: 1fr; {% endcomment %}
     }
 
     .benefits-grid__header {
@@ -268,6 +274,14 @@
     .benefits-grid__subheading {
       font-size: 16px;
       line-height: 22px;
+    }
+
+    .benefits-card {
+      flex: initial;
+    }
+
+    .card-front {
+      position: absolute;
     }
 
     .card-back-content p {
