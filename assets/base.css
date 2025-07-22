@@ -3758,7 +3758,55 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
   display: block;
 }
 
+.jdgm-prev-badge {
+  font-size: 12px;
+}
+
+.jdgm-prev-badge__text {
+  text-decoration: underline;
+}
+
+.jdgm-write-rev-link {
+  border-radius: 20px !important;
+  text-transform: uppercase;
+  font-size: 14px !important;
+  padding: 18px 28px !important;
+  width: fit-content !important;
+}
+
+.jdgm-rev-widg__title {
+  text-align: start;
+  font-family: Montserrat, sans-serif;
+  font-size: 42px !important;
+  line-height: 30px;
+  font-weight: 700;
+}
+
+.jdgm-rev__author {
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+}
+
+.jdgm-sort-dropdown {
+ font-family: var(--font-body-family);
+}
+
+.jdgm-rev__body {
+  font-size: 14px;
+  color: #1F1F21;
+}
+    
 @media(max-width: 749px) {
+  .jdgm-write-rev-link {
+    font-size: 12px !important;
+    border-radius: 16px !important;
+    padding: 14px 18px !important;
+  }
+
+  .jdgm-rev-widg__title {
+    font-size: 24px !important;
+    line-height: 24px;
+  }
   #shopify-block-AYXU2Yk5uZHkyRm5sV__judge_me_reviews_preview_badge_Jb9i4Y {
     display: block;
     padding: 0 14px;
