@@ -27,7 +27,7 @@
         "text_php7pf": {
           "type": "text",
           "settings": {
-            "text": "Оберіть формат:",
+            "text": "1. Оберіть формат:",
             "text_style": "body"
           }
         },
