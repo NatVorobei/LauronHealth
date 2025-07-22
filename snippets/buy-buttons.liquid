@@ -92,10 +92,10 @@
                 {{ 'products.product.add_to_cart' | t }}
               {%- endif -%}
             </span>
-            –
+            <!-- –
             <span data-product-price id="ProductPrice-{{ section_id }}">
               {{ product.selected_or_first_available_variant.price | money }}
-            </span>
+            </span> -->
             {%- render 'loading-spinner' -%}
           </button>
           {%- if show_dynamic_checkout -%}
