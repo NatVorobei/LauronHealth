@@ -34,12 +34,24 @@
             "heading": "Discover",
             "menu": "footer"
           }
+        },
+        "contact_newsletter_TDyjnV": {
+          "type": "contact_newsletter",
+          "settings": {
+            "heading": "",
+            "email_placeholder": "Введіть ваш email",
+            "button_label": "Підписатися",
+            "phone": "(050) 222-0097",
+            "email": "hello@lauron.com",
+            "show_social": true
+          }
         }
       },
       "block_order": [
         "image_with_text_jUnnXV",
         "link_list_L3gtMD",
-        "link_list_9qdVEk"
+        "link_list_9qdVEk",
+        "contact_newsletter_TDyjnV"
       ],
       "settings": {
         "color_scheme": "scheme-5993e02b-6faf-4bbd-999f-d9ade403fb2e",
