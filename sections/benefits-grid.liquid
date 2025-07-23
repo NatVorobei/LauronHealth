@@ -399,6 +399,12 @@
 </style>
 
 <script>
+  document.querySelectorAll('.benefits-card').forEach(card => {
+    card.addEventListener('click', () => {
+      card.classList.toggle('flipped');
+    });
+  });
+  
   if (window.innerWidth >= 750) {
     document.querySelectorAll('.benefits-card').forEach(card => {
       const inner = card.querySelector('.card-inner');
@@ -409,17 +415,13 @@
         const y = e.clientY - rect.top;
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
-        const rotateX = ((y - centerY) / centerY) * -6; 
-        const rotateY = ((x - centerX) / centerX) * 6;  
+        const rotateX = ((y - centerY) / centerY) * -6;
+        const rotateY = ((x - centerX) / centerX) * 6;
         inner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
       });
   
       card.addEventListener('mouseleave', () => {
         inner.style.transform = `rotateX(0deg) rotateY(0deg)`;
-      });
-  
-      card.addEventListener('click', () => {
-        card.classList.toggle('flipped');
       });
     });
   }
