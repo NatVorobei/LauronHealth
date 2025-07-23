@@ -61,7 +61,7 @@
             endif
           -%}
           <div
-            class="footer__blocks-wrapper grid grid--1-col grid--2-col grid--4-col-tablet {{ footer_grid_class }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            class="footer__blocks-wrapper footer__blocks-wrapper grid grid--1-col grid--2-col grid--4-col-tablet {{ footer_grid_class }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
             {% if settings.animations_reveal_on_scroll %}
               data-cascade
             {% endif %}
@@ -106,7 +106,7 @@
                     {%- if block.settings.menu != blank -%}
                       <ul class="footer-block__details-content list-unstyled">
                         {%- for link in block.settings.menu.links -%}
-                          <li>
+                          <li style="line-height: 18px; letter-spacing: 0;">
                             <a
                               href="{{ link.url }}"
                               class="link link--text list-menu__item list-menu__item--link{% if link.active %} list-menu__item--active{% endif %}"
@@ -170,58 +170,53 @@
                       {%- endif -%}
                     </div>
                   {%- when 'contact_newsletter' -%}
-                    <div class="footer-block__contact-newsletter">
+                    <div class="custom-footer-contact-block">
                       {%- if block.settings.newsletter_heading != blank -%}
                         <h2 class="footer-block__heading inline-richtext">{{ block.settings.newsletter_heading }}</h2>
                       {%- endif -%}
                   
-                      <div class="footer-block__newsletter-wrapper">
-                        {%- form 'customer', id: 'ContactFooterBlock', class: 'footer__newsletter newsletter-form' -%}
+                      <div class="custom-footer-newsletter">
+                        {%- form 'customer', id: 'ContactFooterBlock', class: 'custom-footer-form' -%}
                           <input type="hidden" name="contact[tags]" value="newsletter">
-                          <div class="newsletter-form__field-wrapper">
-                            <div class="field">
-                              <input
-                                id="NewsletterForm--{{ section.id }}--{{ block.id }}"
-                                type="email"
-                                name="contact[email]"
-                                class="field__input"
-                                value="{{ form.email }}"
-                                aria-required="true"
-                                autocorrect="off"
-                                autocapitalize="off"
-                                autocomplete="email"
-                                placeholder="{{ block.settings.email_placeholder }}"
-                                required
-                              >
-                              <label class="field__label" for="NewsletterForm--{{ section.id }}--{{ block.id }}">
-                                {{ block.settings.email_placeholder }}
-                              </label>
-                              <button
-                                type="submit"
-                                class="newsletter-form__button field__button"
-                                name="commit"
-                                aria-label="{{ 'newsletter.button_label' | t }}"
-                              >
-                                {{ block.settings.button_label }}
-                              </button>
-                            </div>
+                          <div class="custom-footer-input-group">
+                            <input
+                              id="NewsletterForm--{{ section.id }}--{{ block.id }}"
+                              type="email"
+                              name="contact[email]"
+                              class="custom-footer-input"
+                              value="{{ form.email }}"
+                              placeholder="{{ block.settings.email_placeholder }}"
+                              required
+                            >
+                            <button
+                              type="submit"
+                              class="custom-footer-button"
+                              name="commit"
+                              aria-label="{{ 'newsletter.button_label' | t }}"
+                            >
+                              {{ block.settings.button_label }}
+                            </button>
                           </div>
                         {%- endform -%}
                       </div>
                   
-                      <div class="footer-block__contact-info">
-                        {%- if block.settings.phone != blank -%}
-                          <p>{{ block.settings.phone }}</p>
-                        {%- endif -%}
-                        {%- if block.settings.email != blank -%}
-                          <p><a href="mailto:{{ block.settings.email }}">{{ block.settings.email }}</a></p>
+                      <div class="custom-footer-bottom">
+                        <div class="custom-footer-contact">
+                          {%- if block.settings.phone != blank -%}
+                            <p>{{ block.settings.phone }}</p>
+                          {%- endif -%}
+                          {%- if block.settings.email != blank -%}
+                            <p><a href="mailto:{{ block.settings.email }}">{{ block.settings.email }}</a></p>
+                          {%- endif -%}
+                        </div>
+                  
+                        {%- if block.settings.show_social and has_social_icons -%}
+                          <div class="custom-footer-social">
+                            {%- render 'social-icons', class: 'footer__list-social' -%}
+                          </div>
                         {%- endif -%}
                       </div>
-                  
-                      {%- if block.settings.show_social and has_social_icons -%}
-                        {%- render 'social-icons', class: 'footer__list-social' -%}
-                      {%- endif -%}
-                    </div>
+                    </div>                  
                 {%- endcase -%}
               </div>
             {%- endfor -%}
