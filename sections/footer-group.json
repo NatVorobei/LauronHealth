@@ -13,6 +13,26 @@
   "sections": {
     "footer": {
       "type": "footer",
+      "blocks": {
+        "link_list_L3gtMD": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Купити Lauron",
+            "menu": "main-menu"
+          }
+        },
+        "link_list_9qdVEk": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Discover",
+            "menu": "footer"
+          }
+        }
+      },
+      "block_order": [
+        "link_list_L3gtMD",
+        "link_list_9qdVEk"
+      ],
       "settings": {
         "color_scheme": "scheme-3",
         "newsletter_enable": false,
