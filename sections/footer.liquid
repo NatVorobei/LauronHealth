@@ -82,6 +82,22 @@
                 {%- case block.type -%}
                   {%- when '@app' -%}
                     {% render block %}
+                  {%- when 'image_with_text' -%}
+                    <div class="footer-block__image-with-text">
+                      {%- if block.settings.image != blank -%}
+                        <div class="footer-block__image-wrapper" style="max-width: 100%;">
+                          <img 
+                            src="{{ block.settings.image | image_url: width: 760 }}" 
+                            alt="{{ block.settings.image.alt | escape }}" 
+                            loading="lazy">
+                        </div>
+                      {%- endif -%}
+                      {%- if block.settings.text != blank -%}
+                        <div class="footer-block__text">
+                          {{ block.settings.text }}
+                        </div>
+                      {%- endif -%}
+                    </div>
                   {%- when 'text' -%}
                     <div class="footer-block__details-content rte">
                       {{ block.settings.subtext }}
@@ -328,6 +344,23 @@
     {
       "type": "@app"
     },
+    {
+      "type": "image_with_text",
+      "name": "Image with text",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "Type to your text..."
+        }
+      ]
+    },    
     {
       "type": "link_list",
       "name": "t:sections.footer.blocks.link_list.name",
