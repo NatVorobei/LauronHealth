@@ -321,6 +321,12 @@
     {% endif %}
   >
     <div class="footer__content-bottom-wrapper page-width">
+      {% if section.settings.outlined_text != blank and section.settings.bottom_text != blank %}
+        <div>
+          <p class="footer__outlined-text">{{ section.settings.outlined_text }}</p>
+          <div class="footer__bottom-text">{{ section.settings.bottom_text }}</div>
+        </div>
+      {% endif %}
       <div class="footer__column footer__localization isolate">
         {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
           <localization-form>
@@ -566,6 +572,18 @@
       "id": "newsletter_heading",
       "default": "t:sections.footer.settings.newsletter_heading.default",
       "label": "t:sections.footer.settings.newsletter_heading.label"
+    },
+    {
+      "type": "text",
+      "id": "outlined_text",
+      "default": "Type your text here...",
+      "label": "Outlined text"
+    },
+    {
+      "type": "richtext",
+      "id": "bottom_text",
+      "default": "<p>Type your text here...</p>",
+      "label": "Outlined text"
     },
     {
       "type": "header",
