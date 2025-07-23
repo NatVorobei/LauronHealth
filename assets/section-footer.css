@@ -11,6 +11,18 @@
   display: block;
 }
 
+.footer-block__text {
+  max-width: 210px;
+  font-size: 10px;
+  line-height: 14px;
+  letter-spacing: 0;
+}
+
+.footer-block__image-wrapper {
+  width: 146px;
+  height: 28px;
+}
+
 @media screen and (max-width: 749px) {
   .footer .grid {
     display: block;
