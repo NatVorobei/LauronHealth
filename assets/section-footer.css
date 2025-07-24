@@ -131,6 +131,29 @@
   gap: 1rem;
 }
 
+.footer__bottom-textblock {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.footer__outlined-text,
+.footer__bottom-text,
+.footer__bottom-richtext p {
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 300;
+  color: #87878D;
+}
+
+.footer__outlined-text {
+  border: 1px solid #87878D;
+  border-radius: 20px;
+  padding: 20px;
+}
+
 
 @media screen and (max-width: 749px) {
   .footer .grid {
@@ -172,6 +195,7 @@
 
 .footer__content-bottom-wrapper {
   display: flex;
+  flex-direction: column;
   width: 100%;
 }
 
