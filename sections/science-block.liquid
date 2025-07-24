@@ -17,6 +17,11 @@
             <img src="{{ section.settings.image_top | image_url: width: 600 }}" alt="Science image top" loading="lazy">
             </div>
         {% endif %}
+        {% if section.settings.image_middle %}
+            <div class="science-block__image science-block__image--bottom">
+            <img src="{{ section.settings.image_middle | image_url: width: 600 }}" alt="Science image bottom" loading="lazy">
+            </div>
+        {% endif %}
         {% if section.settings.image_bottom %}
             <div class="science-block__image science-block__image--bottom">
             <img src="{{ section.settings.image_bottom | image_url: width: 600 }}" alt="Science image bottom" loading="lazy">
@@ -154,6 +159,11 @@
         "type": "image_picker",
         "id": "image_top",
         "label": "Верхнє зображення"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_middle",
+        "label": "Середнє зображення"
       },
       {
         "type": "image_picker",
