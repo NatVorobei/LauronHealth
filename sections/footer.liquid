@@ -324,7 +324,7 @@
       {% if section.settings.outlined_text != blank and section.settings.bottom_text != blank %}
         <div class="footer__bottom-textblock">
           <p class="footer__outlined-text">{{ section.settings.outlined_text }}</p>
-          <p class="footer__bottom-text">{{ section.settings.bottom_text }}</p>
+          <div class="footer__bottom-text">{{ section.settings.bottom_text }}</div>
           <div class="footer__bottom-richtext">{{ section.settings.bottom_richtext }}</div>
         </div>
       {% endif %}
@@ -581,9 +581,9 @@
       "label": "Outlined text"
     },
     {
-      "type": "textarea",
+      "type": "richtext",
       "id": "bottom_text",
-      "default": "Type your text here...",
+      "default": "<p>Type your text here...</p>",
       "label": "Text"
     },
     {
