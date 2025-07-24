@@ -127,6 +127,80 @@
       "settings": {
         "title": "Купуйте зараз"
       }
+    },
+    "collapsible_content_nndY7m": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_WmwPpQ": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Чим Lauron відрізняється від звичайних добавок?",
+            "icon": "none",
+            "row_content": "<p>Lauron поєднує три ключові технології для підвищеної ефективності: високомолекулярну гіалуронову кислоту, м’яку воду та біополімерну інкапсуляцію. Це забезпечує високу біодоступність і точне засвоєння організмом.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_aGHgxz": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Чому Lauron створено в рідкому форматі, а не в капсулах чи порошках?",
+            "icon": "none",
+            "row_content": "",
+            "page": ""
+          }
+        },
+        "collapsible_row_LiDWfj": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "На чому заснована формула Lauron?",
+            "icon": "none",
+            "row_content": "",
+            "page": ""
+          }
+        },
+        "collapsible_row_qj9Qme": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Lauron — це курс чи його можна приймати постійно?",
+            "icon": "none",
+            "row_content": "",
+            "page": ""
+          }
+        },
+        "collapsible_row_XfzEFj": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Як Lauron вписується в щоденний догляд за здоров’ям?",
+            "icon": "none",
+            "row_content": "",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_WmwPpQ",
+        "collapsible_row_aGHgxz",
+        "collapsible_row_LiDWfj",
+        "collapsible_row_qj9Qme",
+        "collapsible_row_XfzEFj"
+      ],
+      "name": "t:sections.collapsible_content.presets.name",
+      "settings": {
+        "caption": "",
+        "details_link_text": "Читати більше",
+        "details_link": "",
+        "heading": "<strong>Загальні питання</strong>",
+        "heading_size": "h1",
+        "heading_alignment": "left",
+        "layout": "none",
+        "container_color_scheme": "",
+        "color_scheme": "",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
@@ -137,6 +211,7 @@
     "science_block_wTJzkB",
     "science_block_f77LFk",
     "science_block_rTmiUJ",
-    "two_products_block_4rf7UK"
+    "two_products_block_4rf7UK",
+    "collapsible_content_nndY7m"
   ]
 }
