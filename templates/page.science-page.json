@@ -40,7 +40,7 @@
     "science_block_qQUdE8": {
       "type": "science-block",
       "custom_css": [
-        ".science-block__images,.science-block__content {padding-top: 0;}"
+        ".science-block__images {padding-top: 0 !important;}"
       ],
       "name": "Custom Science Block",
       "settings": {
