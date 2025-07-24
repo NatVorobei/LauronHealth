@@ -88,6 +88,45 @@
         "text": "<p>Справжня турбота має бути простою. <br/><br/>Lauron не вимагає змінювати рутину чи витрачати час: відкрив — випив — живеш далі.  <br/><br/>Без порошків, без капсул, без складних схем. Легко взяти із собою на роботу, тренування чи у подорож.  <br/><br/>Кілька секунд на день — і ваш організм отримує підтримку, яка справді працює зсередини.<br/><br/></p>",
         "image_top": "shopify://shop_images/science-8.webp"
       }
+    },
+    "two_products_block_4rf7UK": {
+      "type": "two-products-block",
+      "blocks": {
+        "product_block_6bgzYU": {
+          "type": "product_block",
+          "settings": {
+            "product": "freeze-age",
+            "custom_image": "shopify://shop_images/freeze-age-product-block_1.png",
+            "rating": "★ ★ ★ ★ ★",
+            "reviews": "31 відгук",
+            "discount": "Збережіть",
+            "caption": "For a two-week subscription:",
+            "features": "Change or cancel anytime; Change or cancel anytime; Change or cancel anytime",
+            "buy_button": "Купити"
+          }
+        },
+        "product_block_tzJrr9": {
+          "type": "product_block",
+          "settings": {
+            "product": "mental-performance",
+            "custom_image": "shopify://shop_images/mental-health-product-block_1.png",
+            "rating": "★ ★ ★ ★ ★",
+            "reviews": "31 відгук",
+            "discount": "Збережіть",
+            "caption": "For a two-week subscription:",
+            "features": "Change or cancel anytime; Change or cancel anytime; Change or cancel anytime",
+            "buy_button": "Купити"
+          }
+        }
+      },
+      "block_order": [
+        "product_block_6bgzYU",
+        "product_block_tzJrr9"
+      ],
+      "name": "Two Product Promo",
+      "settings": {
+        "title": "Купуйте зараз"
+      }
     }
   },
   "order": [
@@ -97,6 +136,7 @@
     "science_block_6G8LmB",
     "science_block_wTJzkB",
     "science_block_f77LFk",
-    "science_block_rTmiUJ"
+    "science_block_rTmiUJ",
+    "two_products_block_4rf7UK"
   ]
 }
