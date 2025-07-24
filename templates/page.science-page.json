@@ -20,7 +20,9 @@
     "main_banner_section_8JgHd8": {
       "type": "main-banner-section",
       "custom_css": [
-        ".main-banner__animated-text-wrapper,.main-banner__buttons{display: none;}"
+        ".main-banner__animated-text-wrapper,.main-banner__buttons {display: none;}",
+        ".main-banner__heading {font-size: 40px;}",
+        ".main-banner__content--desktop {max-width: 590px;}"
       ],
       "name": "Main Banner",
       "settings": {
