@@ -1,0 +1,168 @@
+<div class="science-block__wrapper">
+    <div class="science-block__container">
+        <div class="science-block__content">
+        {% if section.settings.title != blank %}
+            <h2 class="science-block__title">
+            {{ section.settings.title }}
+            </h2>
+        {% endif %}
+        <div class="science-block__text">
+            {{ section.settings.text }}
+        </div>
+        </div>
+        <div class="science-block__divider"> </div>
+        <div class="science-block__images">
+        {% if section.settings.image_top %}
+            <div class="science-block__image science-block__image--top">
+            <img src="{{ section.settings.image_top | image_url: width: 600 }}" alt="Science image top" loading="lazy">
+            </div>
+        {% endif %}
+        {% if section.settings.image_bottom %}
+            <div class="science-block__image science-block__image--bottom">
+            <img src="{{ section.settings.image_bottom | image_url: width: 600 }}" alt="Science image bottom" loading="lazy">
+            </div>
+        {% endif %}
+        </div>
+    </div>
+</div>
+  
+  <style>
+    .science-block__container {
+      display: flex;
+      max-width: 1280px;
+      margin: 0 auto;
+      justify-content: space-between;
+      align-items: stretch;
+    }
+    
+    .science-block__content {
+      max-width: 720px;
+      border-bottom: 1px solid #1F1F21;
+      padding-bottom: 60px;
+      padding-top: 80px;
+    }
+    
+    .science-block__title {
+      font-size: 30px;
+      line-height: 30px;
+      font-weight: 700;
+      color: #1F1F21;
+      margin-bottom: 40px;
+    }
+    
+    .science-block__text {
+      font-size: 20px;
+      line-height: 28px;
+      color: #1F1F21;
+    }
+    
+    .science-block__divider {
+      width: 1px;
+      background-color: #D7D7D7;
+    }
+    
+    .science-block__images {
+      display: flex;
+      flex-direction: column;
+      gap: 270px;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 80px;
+    }
+    
+    .science-block__image{
+      max-width: 340px;
+    }
+    
+    .science-block__image img {
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      display: block;
+    }
+  
+    @media(max-width: 749px) {
+      .science-block__title {
+        font-size: 20px;
+        line-height: 26px;
+      }
+      
+      .science-block__text {
+        font-size: 16px;
+        line-height: 22px;
+      }
+  
+      .science-block__container {
+        padding: 0 14px;
+      }
+  
+      .science-block__image {
+        max-width: 100%;
+      }
+  
+      .science-block__content {
+        padding-bottom: 0;
+      }
+  
+      .science-block__images {
+        padding-top: 30px;
+      }
+  
+      .science-block__content {
+        border-bottom: none;
+      }
+    }
+  
+    @media(max-width: 989px) {
+      .science-block__container {
+        flex-direction: column;
+      }
+    }
+    
+    @media(max-width: 1279px) {
+      .science-block__divider {
+        display: none;
+      }
+      .science-block__images {
+        gap: 20px;
+      }
+    }
+  </style>
+  
+  {% schema %}
+  {
+    "name": "Custom Science Block",
+    "tag": "section",
+    "class": "science-block",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Заголовок",
+        "default": "Новий формат добавок"
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Опис",
+        "default": "<p>Ваш текст тут...</p>"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_top",
+        "label": "Верхнє зображення"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_bottom",
+        "label": "Нижнє зображення"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Custom Science Block"
+      }
+    ]
+  }
+{% endschema %}
+  
