@@ -19,6 +19,9 @@
     },
     "main_banner_section_8JgHd8": {
       "type": "main-banner-section",
+      "custom_css": [
+        ".main-banner__animated-text-wrapper,.main-banner__buttons{display: none;}"
+      ],
       "name": "Main Banner",
       "settings": {
         "banner_image": "shopify://shop_images/science-banner.webp",
