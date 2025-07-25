@@ -1,0 +1,319 @@
+<div class="research-block">
+    <div class="research-block__container">
+      <div class="research-block__left">
+        {% if section.settings.heading != blank %}
+          <h2 class="research-block__heading">{{ section.settings.heading }}</h2>
+        {% endif %}
+  
+        <div class="research-block__divider"> </div>
+  
+        <div class="research-block__group">
+          <h3>{{ section.settings.title_goal }}</h3>
+          <div class="rte">{{ section.settings.content_goal }}</div>
+        </div>
+  
+        <div class="research-block__group">
+          <h3>{{ section.settings.title_duration }}</h3>
+          <div class="rte">{{ section.settings.content_duration }}</div>
+        </div>
+  
+        <div class="research-block__group">
+          <h3>{{ section.settings.title_participants }}</h3>
+          <div class="rte">{{ section.settings.content_participants }}</div>
+        </div>
+  
+        <div class="research-block__group">
+          <h3>{{ section.settings.title_parameters }}</h3>
+          <div class="rte">{{ section.settings.content_parameters }}</div>
+        </div>
+  
+        <div class="research-block__group">
+          <h3>{{ section.settings.title_expectations }}</h3>
+          <div class="rte">{{ section.settings.content_expectations }}</div>
+        </div>
+  
+        <div class="research-block__group">
+          <h3>{{ section.settings.title_link }}</h3>
+          <a href="{{ section.settings.link_url }}" target="_blank">{{ section.settings.link_text }}</a>
+        </div>
+      </div>
+  
+      <div class="research-block__right">
+        {% if section.settings.image != blank %}
+          <img
+            src="{{ section.settings.image | image_url: width: 500 }}"
+            width="500"
+            height="500"
+            loading="lazy"
+            alt="Research image"
+            class="research-block__image"
+          >
+        {% endif %}
+        {% if section.settings.title_overlay != blank or section.settings.content_overlay != blank %}
+          <div class="research-block__overlay">
+            <h3>{{ section.settings.title_overlay }}</h3>
+            <div class="rte">{{ section.settings.content_overlay }}</div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  
+  <style>
+    .research-block {
+      padding: 40px 0;
+    }
+  
+    .research-block__container {
+      max-width: 1160px;
+      padding: 60px;
+      margin: 0 auto;
+      background: #F0F4F5;
+      border-radius: 20px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  
+    .research-block__left {
+      width: 520px;
+    }
+  
+    .research-block__divider {
+      height: 1px;
+      background: #D7D7D7;
+      max-width: 480px;
+      margin: 20px 0 30px 0;
+    }
+  
+    .research-block__heading {
+      font-family: Montserrat, sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 24px;
+      letter-spacing: 0;
+      color: #1F1F21;
+    }
+  
+    .research-block__group {
+      margin-bottom: 16px;
+    }
+  
+    .research-block__group:last-child {
+      margin-bottom: 0;
+    }
+  
+    .research-block__group h3 {
+      font-family: Montserrat, sans-serif;
+      margin-bottom: 12px;
+      font-size: 14px;
+      line-height: 14px;
+      font-weight: 700;
+      letter-spacing: 0;
+      color: #1F1F21;
+    }
+  
+    .research-block__right {
+      position: relative;
+      width: 500px;
+      height: 500px;
+    }
+  
+    .research-block__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+  
+    .research-block__overlay {
+      position: absolute;
+      bottom: -70px;
+      max-width: 460px;
+      width: 100%;
+      background-color: #1F1F21;
+      color: white;
+      padding: 20px;
+      border-radius: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  
+    .research-block__overlay h3 {
+      font-family: Montserrat, sans-serif;
+      margin-bottom: 12px;
+      font-size: 14px;
+      line-height: 14px;
+      font-weight: 700;
+      letter-spacing: 0;
+      color: #fff;
+    }
+  
+    .research-block__group .rte p,
+    .research-block__group .rte ul li,
+    .research-block__group a{
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 0;
+      max-width: 455px;
+      text-decoration: none;
+      color: #1F1F21;
+    }
+  
+    .research-block__overlay .rte p{
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 0;
+      color: #fff;
+    }
+  
+    @media(max-width: 749px) {
+      .research-block {
+        padding: 0 10px;
+      }
+      
+      .research-block__container {
+        padding: 40px 10px 110px;
+      }
+  
+      .research-block__overlay {
+        max-width: 318px;
+      }
+  
+      .research-block__heading {
+        font-size: 16px;
+        line-height: 20px;
+      }
+  
+      .research-block__group h3 {
+        font-size: 12px;
+        line-height: 13px;
+      }
+  
+      .research-block__divider {
+        margin: 30px 0 30px 0;
+      }
+  
+      .research-block__right {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        height: auto;
+      }
+    }
+  </style>
+  
+  {% schema %}
+  {
+    "name": "Research Block",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Головний заголовок",
+        "default": "Ефективність перорального прийому гіалуронової кислоти..."
+      },
+  
+      {
+        "type": "text",
+        "id": "title_goal",
+        "label": "Заголовок — Мета дослідження",
+        "default": "Мета дослідження"
+      },
+      {
+        "type": "richtext",
+        "id": "content_goal",
+        "label": "Контент — Мета дослідження"
+      },
+  
+      {
+        "type": "text",
+        "id": "title_duration",
+        "label": "Заголовок — Тривалість",
+        "default": "Тривалість"
+      },
+      {
+        "type": "richtext",
+        "id": "content_duration",
+        "label": "Контент — Тривалість"
+      },
+  
+      {
+        "type": "text",
+        "id": "title_participants",
+        "label": "Заголовок — Учасники",
+        "default": "Учасники"
+      },
+      {
+        "type": "richtext",
+        "id": "content_participants",
+        "label": "Контент — Учасники"
+      },
+  
+      {
+        "type": "text",
+        "id": "title_parameters",
+        "label": "Заголовок — Основні параметри",
+        "default": "Основні параметри, що досліджувались"
+      },
+      {
+        "type": "richtext",
+        "id": "content_parameters",
+        "label": "Контент — Основні параметри"
+      },
+  
+      {
+        "type": "text",
+        "id": "title_expectations",
+        "label": "Заголовок — Очікувані результати",
+        "default": "Очікувані результати"
+      },
+      {
+        "type": "richtext",
+        "id": "content_expectations",
+        "label": "Контент — Очікувані результати"
+      },
+  
+      {
+        "type": "text",
+        "id": "title_link",
+        "label": "Заголовок — Посилання",
+        "default": "Link to the source"
+      },
+      {
+        "type": "text",
+        "id": "link_text",
+        "label": "Текст посилання"
+      },
+      {
+        "type": "url",
+        "id": "link_url",
+        "label": "URL посилання"
+      },
+  
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Картинка (500x500)"
+      },
+  
+      {
+        "type": "text",
+        "id": "title_overlay",
+        "label": "Заголовок — Фактичні результати (оверлей)",
+        "default": "Фактичні результати:"
+      },
+      {
+        "type": "richtext",
+        "id": "content_overlay",
+        "label": "Контент — Фактичні результати (оверлей)"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Блок дослідження"
+      }
+    ]
+  }
+  {% endschema %}
