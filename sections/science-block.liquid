@@ -1,29 +1,29 @@
-<div class="custom-sci__wrapper">
-  <div class="custom-sci__container">
-    <div class="custom-sci__content">
+<div class="science-wrapper">
+  <div class="science-container">
+    <div class="science-content">
       {% if section.settings.title != blank %}
-        <h2 class="custom-sci__title">
+        <h2 class="science-title">
           {{ section.settings.title }}
         </h2>
       {% endif %}
-      <div class="custom-sci__text">
+      <div class="science-text">
         {{ section.settings.text }}
       </div>
     </div>
-    <div class="custom-sci__divider"> </div>
-    <div class="custom-sci__images">
+    <div class="science-divider"></div>
+    <div class="science-images">
       {% if section.settings.image_top %}
-        <div class="custom-sci__image custom-sci__image--top">
+        <div class="science-image top">
           <img src="{{ section.settings.image_top | image_url: width: 600 }}" alt="Science image top" loading="lazy">
         </div>
       {% endif %}
       {% if section.settings.image_middle %}
-        <div class="custom-sci__image custom-sci__image--middle">
+        <div class="science-image middle">
           <img src="{{ section.settings.image_middle | image_url: width: 600 }}" alt="Science image middle" loading="lazy">
         </div>
       {% endif %}
       {% if section.settings.image_bottom %}
-        <div class="custom-sci__image custom-sci__image--bottom">
+        <div class="science-image bottom">
           <img src="{{ section.settings.image_bottom | image_url: width: 600 }}" alt="Science image bottom" loading="lazy">
         </div>
       {% endif %}
@@ -32,7 +32,7 @@
 </div>
 
 <style>
-  .custom-sci__container {
+  .science-container {
     display: flex;
     max-width: 1280px;
     margin: 0 auto;
@@ -40,14 +40,14 @@
     align-items: stretch;
   }
 
-  .custom-sci__content {
+  .science-content {
     max-width: 720px;
     border-bottom: 1px solid #1F1F21;
     padding-bottom: 60px;
     padding-top: 80px;
   }
 
-  .custom-sci__title {
+  .science-title {
     font-size: 30px;
     line-height: 30px;
     font-weight: 700;
@@ -55,18 +55,18 @@
     margin-bottom: 40px;
   }
 
-  .custom-sci__text {
+  .science-text {
     font-size: 20px;
     line-height: 28px;
     color: #1F1F21;
   }
 
-  .custom-sci__divider {
+  .science-divider {
     width: 1px;
     background-color: #D7D7D7;
   }
 
-  .custom-sci__images {
+  .science-images {
     display: flex;
     flex-direction: column;
     gap: 270px;
@@ -75,11 +75,11 @@
     padding-top: 80px;
   }
 
-  .custom-sci__image {
+  .science-image {
     max-width: 340px;
   }
 
-  .custom-sci__image img {
+  .science-image img {
     width: 100%;
     height: auto;
     border-radius: 20px;
@@ -89,46 +89,46 @@
   }
 
   @media (max-width: 749px) {
-    .custom-sci__title {
+    .science-title {
       font-size: 20px;
       line-height: 26px;
     }
 
-    .custom-sci__text {
+    .science-text {
       font-size: 16px;
       line-height: 22px;
     }
 
-    .custom-sci__container {
+    .science-container {
       padding: 0 14px;
     }
 
-    .custom-sci__image {
+    .science-image {
       max-width: 100%;
     }
 
-    .custom-sci__content {
+    .science-content {
       padding-bottom: 0;
       border-bottom: none;
     }
 
-    .custom-sci__images {
+    .science-images {
       padding-top: 30px;
     }
   }
 
   @media (max-width: 989px) {
-    .custom-sci__container {
+    .science-container {
       flex-direction: column;
     }
   }
 
   @media (max-width: 1279px) {
-    .custom-sci__divider {
+    .science-divider {
       display: none;
     }
 
-    .custom-sci__images {
+    .science-images {
       gap: 20px;
     }
   }
@@ -136,9 +136,9 @@
 
 {% schema %}
 {
-  "name": "Custom Science Block",
+  "name": "Simple Science Block",
   "tag": "section",
-  "class": "custom-sci",
+  "class": "science-block",
   "settings": [
     {
       "type": "text",
@@ -170,7 +170,7 @@
   ],
   "presets": [
     {
-      "name": "Custom Science Block"
+      "name": "Science Block"
     }
   ]
 }
