@@ -18,6 +18,9 @@
     },
     "researh_block_6Rkn3N": {
       "type": "researh-block",
+      "custom_css": [
+        ".research-block__image {object-position: left;}"
+      ],
       "name": "Блок дослідження",
       "settings": {
         "heading": "Ефективність перорального прийому гіалуронової кислоти високої чистоти у пацієнтів з остеоартритом колінного суглоба",
