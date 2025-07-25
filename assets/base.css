@@ -3796,6 +3796,16 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
   font-size: 14px;
   color: #1F1F21;
 }
+
+.main-page-title {
+  margin: 0;
+  text-align: center;
+  font-size: 44px;
+  line-height: 30px;
+  letter-spacing: 0;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+}
     
 @media(max-width: 749px) {
   .jdgm-write-rev-link {
