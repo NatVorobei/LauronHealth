@@ -85,6 +85,9 @@
     },
     "science_block_rTmiUJ": {
       "type": "science-block",
+      "custom_css": [
+        "@media (max-width: 749px) {.science-container {padding-bottom: 0; }}"
+      ],
       "name": "Custom Science Block",
       "settings": {
         "title": "Зручний формат споживання",
