@@ -12,8 +12,8 @@
     "main": {
       "type": "main-page",
       "settings": {
-        "padding_top": 28,
-        "padding_bottom": 28
+        "padding_top": 20,
+        "padding_bottom": 100
       }
     },
     "researh_block_6Rkn3N": {
