@@ -43,7 +43,7 @@
       "custom_css": [
         ".science-content,.science-images {padding-top: 0;}",
         ".science-container {padding-top: 80px;}",
-        "@media (max-width: 749px) {.science-container {padding-top: 0; }}"
+        "@media (max-width: 749px) {.science-container {padding-top: 0; border-top: none; }}"
       ],
       "name": "Custom Science Block",
       "settings": {
