@@ -1,38 +1,41 @@
-<div class="main-banner">
-  <div class="main-banner__desktop" style="background-image: url('{{ section.settings.banner_image | img_url: 'master' }}');">
-    <div class="main-banner__content main-banner__content--desktop">
-      <div class="main-banner__inner">
-        <div class="main-banner__heading-container">
-          <h2 class="main-banner__heading">
-            {{ section.settings.heading }}
-          </h2>
-          <div class="main-banner__animated-text-wrapper">
-            <div class="main-banner__animated-text" id="rotating-words">
-              {% for block in section.blocks %}
-                <div class="word-item">{{ block.settings.word }}</div>
-              {% endfor %}
-              {%- if section.blocks.size > 0 -%}
-                <div class="word-item">{{ section.blocks.first.settings.word }}</div>
-              {%- endif -%}
-            </div>
-          </div>  
-        </div>    
-        <div class="main-banner__description">
-          {{ section.settings.description }}
-        </div>
-        <div class="main-banner__description2">
-          {{ section.settings.description2 }}
-        </div>
-        <div class="main-banner__buttons">
-          <a href="{{ section.settings.button1_link }}" class="main-banner__button">
-            <img src="https://cdn.shopify.com/s/files/1/0745/8786/5320/files/can.png?v=1751960850" alt="can" width="16" height="32" />
-            {{ section.settings.button1_text }}
-          </a>
-          <a href="{{ section.settings.button2_link }}" class="main-banner__button">{{ section.settings.button2_text }}</a>
-        </div>
+<div class="main-banner__desktop">
+  <div class="main-banner__image-wrapper">
+    <img src="{{ section.settings.banner_image | img_url: 'master' }}" alt="Banner image" class="main-banner__image" />
+  </div>
+
+  <div class="main-banner__content main-banner__content--desktop">
+    <div class="main-banner__inner">
+      <div class="main-banner__heading-container">
+        <h2 class="main-banner__heading">
+          {{ section.settings.heading }}
+        </h2>
+        <div class="main-banner__animated-text-wrapper">
+          <div class="main-banner__animated-text" id="rotating-words">
+            {% for block in section.blocks %}
+              <div class="word-item">{{ block.settings.word }}</div>
+            {% endfor %}
+            {% if section.blocks.size > 0 %}
+              <div class="word-item">{{ section.blocks.first.settings.word }}</div>
+            {% endif %}
+          </div>
+        </div>  
+      </div>    
+      <div class="main-banner__description">
+        {{ section.settings.description }}
+      </div>
+      <div class="main-banner__description2">
+        {{ section.settings.description2 }}
+      </div>
+      <div class="main-banner__buttons">
+        <a href="{{ section.settings.button1_link }}" class="main-banner__button">
+          <img src="https://cdn.shopify.com/s/files/1/0745/8786/5320/files/can.png?v=1751960850" alt="can" width="16" height="32" />
+          {{ section.settings.button1_text }}
+        </a>
+        <a href="{{ section.settings.button2_link }}" class="main-banner__button">{{ section.settings.button2_text }}</a>
       </div>
     </div>
   </div>
+</div>
 
   <div class="main-banner__mobile">
     <div class="main-banner__mobile-image-wrapper">
@@ -236,6 +239,50 @@
   .main-banner__button:hover {
     background-color: #333;
   }
+
+  .main-banner__desktop {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 720px;
+  overflow: hidden;
+}
+
+.main-banner__image-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.main-banner__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.main-banner__content--desktop {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  padding-left: 140px;
+  color: #000;
+}
+
+.main-banner__image-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.6) 15%,
+    rgba(255, 255, 255, 0.15) 30%,
+    rgba(255, 255, 255, 0) 50%);
+  z-index: 1;
+  pointer-events: none;
+}
+
 
   @media (max-width: 749px) {
     .main-banner__desktop {
