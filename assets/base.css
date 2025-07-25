@@ -3847,5 +3847,9 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
   .appstleSellingPlanDescription p {
     font-size: 10px !important;
   }
+
+  .main-page-title {
+    font-size: 24px;
+  }
 }
 /* Custom classes end */
