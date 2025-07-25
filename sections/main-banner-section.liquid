@@ -91,19 +91,21 @@
   }
 
   .main-banner__desktop {
-    display: block;
+    display: flex;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    align-items: center;
     height: 720px;
     position: relative;
   }
 
   .main-banner__content--desktop {
-    position: absolute;
+    /* position: absolute;
     top: 50%;
     left: 140px;
-    transform: translateY(-50%);
+    transform: translateY(-50%); */
+    padding-left: 140px;
     color: #000;
     max-width: 760px;
     z-index: 2;
