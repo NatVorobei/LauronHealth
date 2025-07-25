@@ -48,13 +48,14 @@
             {{ section.settings.heading }}
           </h2>
           <div class="main-banner__animated-text-wrapper">
-            {% if section.blocks.size > 0 %}
-              <div class="main-banner__animated-text" id="rotating-words">
-                {% for block in section.blocks %}
-                  <div class="word-item">{{ block.settings.word }}</div>
-                {% endfor %}
-              </div>
-            {% endif %}
+            <div class="main-banner__animated-text" id="rotating-words-mobile">
+              {% for block in section.blocks %}
+                <div class="word-item">{{ block.settings.word }}</div>
+              {% endfor %}
+              {%- if section.blocks.size > 0 -%}
+                <div class="word-item">{{ section.blocks.first.settings.word }}</div>
+              {%- endif -%}
+            </div>
           </div> 
         </div>       
         <div class="main-banner__description">
@@ -63,16 +64,14 @@
         <div class="main-banner__description2">
           {{ section.settings.description2 }}
         </div>
-        {% if section.settings.button1_link != blank and section.settings.button1_text != blank %}
-          <div class="main-banner__buttons">
-            <a href="{{ section.settings.button1_link }}" class="main-banner__button">
-              <img src="https://cdn.shopify.com/s/files/1/0745/8786/5320/files/can.png?v=1751960850" alt="can" width="16" height="32" />
-              {{ section.settings.button1_text }}
-            </a>
-            {% if section.settings.button2_link != blank and section.settings.button2_text != blank %}
-              <a href="{{ section.settings.button2_link }}" class="main-banner__button">{{ section.settings.button2_text }}</a>
-            {% endif %}
-          </div>
+        {% if section.settings.button1_link != blank and section.settings.button2_text != blank and section.settings.button1_text != blank %}
+        <div class="main-banner__buttons">
+          <a href="{{ section.settings.button1_link }}" class="main-banner__button">
+            <img src="https://cdn.shopify.com/s/files/1/0745/8786/5320/files/can.png?v=1751960850" alt="can" width="16" height="32" />
+            {{ section.settings.button1_text }}
+          </a>
+          <a href="{{ section.settings.button2_link }}" class="main-banner__button">{{ section.settings.button2_text }}</a>
+        </div>
         {% endif %}
       </div>
     </div>
@@ -91,23 +90,21 @@
   }
 
   .main-banner__desktop {
-    display: flex;
+    display: block;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    align-items: center;
     height: 720px;
     position: relative;
   }
 
   .main-banner__content--desktop {
-    /* position: absolute;
+    position: absolute;
     top: 50%;
     left: 140px;
-    transform: translateY(-50%); */
-    padding-left: 140px;
+    transform: translateY(-50%);
     color: #000;
-    max-width: 785px;
+    max-width: 760px;
     z-index: 2;
   }
 
