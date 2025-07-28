@@ -3876,8 +3876,8 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
     padding: 0 14px;
   }
 
-  #shopify-block-AYXU2Yk5uZHkyRm5sV__judge_me_reviews_preview_badge_Jb9i4Y-1 {
-    display: none;
+  #shopify-block-AOFpKRjhJVWtUaXZqZ__judge_me_reviews_preview_badge_Jb9i4Y-1 {
+    display: none !important;
   }
 
   .appstle_one_time_text,
