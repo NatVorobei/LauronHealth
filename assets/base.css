@@ -3753,7 +3753,7 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
 }
 
 #shopify-block-AYXU2Yk5uZHkyRm5sV__judge_me_reviews_preview_badge_Jb9i4Y {
-  display: none;
+  display: none !important;
 }
 #shopify-block-AYXU2Yk5uZHkyRm5sV__judge_me_reviews_preview_badge_Jb9i4Y-1 {
   display: block;
