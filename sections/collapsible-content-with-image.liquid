@@ -138,6 +138,33 @@
   window.addEventListener("resize", setMinWidthForContent);
 </script>
 
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const radios = document.querySelectorAll(".accordion__radio");
+
+    radios.forEach((radio) => {
+      const label = radio.closest(".collapsible-content-with-image__accordion").querySelector(".accordion__label");
+
+      label.addEventListener("click", (e) => {
+        const alreadyChecked = radio.checked;
+        if (alreadyChecked) return;
+
+        const activeRadio = document.querySelector(".accordion__radio:checked");
+        if (activeRadio) {
+          activeRadio.checked = false;
+        }
+
+        setTimeout(() => {
+          radio.checked = true;
+        }, 250);
+
+        e.preventDefault();
+      });
+    });
+  });
+</script>
+
+
 {% schema %}
 {
   "name": "Collapsible content+image",
