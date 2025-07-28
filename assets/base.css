@@ -3908,8 +3908,8 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
   }
 
   .breadcrumbs__item:not(:last-child)::after {
-    width: 8px;
-    height: 8px;
+    width: 5px;
+    height: 5px;
   }
 }
 /* Custom classes end */
