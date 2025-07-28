@@ -251,7 +251,7 @@ product-info {
 }
 
 .product__description p {
-  color: #1F1F21;
+  color: var(--color-main-text);
   font-size: 12px;
   line-height: 16px;
 }
@@ -278,7 +278,7 @@ a.product__text {
 }
 
 .product__title h1 {
-  color: #1F1F21;
+  color: var(--color-main-text);
   font-size: 32px;
   line-height: 24px;
   font-weight: 700;

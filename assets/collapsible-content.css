@@ -17,12 +17,12 @@
 }
 
 .accordion__title {
-  font-family: Montserrat, sans-serif;
+  font-family: var(--font-heading-main);
   font-weight: 700;
   font-size: 14px;
   line-height: 20px;
   margin: 0;
-  color: #1F1F21;
+  color: var(--color-main-text);
 }
 
 .collapsible-content__button {
@@ -33,7 +33,7 @@
   font-weight: 700;
   padding: 20px 28px;
   text-transform: uppercase;
-  background-color: #1F1F21;
+  background-color: var(--color-main-text);
   color: #fff;
   text-decoration: none;
   border-radius: 20px;
@@ -70,7 +70,7 @@ details[open] .accordion-toggle-icon .icon-minus {
   font-family: Inter, sans-serif;
   font-size: 12px;
   line-height: 18px;
-  color: #1F1F21;
+  color: var(--color-main-text);
 }
 
 @media screen and (min-width: 750px) {
@@ -129,9 +129,9 @@ details[open] .accordion-toggle-icon .icon-minus {
 .collapsible-content__heading {
   font-size: 24px;
   line-height: 20px;
-  font-family: Montserrat, sans-serif;
+  font-family: var(--font-heading-main);
   margin: 0;
-  color: #1F1F21;
+  color: var(--color-main-text);
   margin-bottom: 40px;
 }
 

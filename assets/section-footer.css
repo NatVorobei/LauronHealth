@@ -161,7 +161,7 @@
   font-size: 12px;
   line-height: 18px;
   font-weight: 300;
-  color: #87878D;
+  color: var(--color-subtext);
 }
 
 .footer__bottom-richtext p strong {
@@ -750,7 +750,7 @@
   align-items: center;
 }
 
-.policies li::after {
+.policies li:not(:last-child)::after {
   content: '\00B7';
   padding: 0 0.8rem;
 }

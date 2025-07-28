@@ -6,7 +6,7 @@
       align-items: stretch;
       border-radius: 20px;
       border: 1px solid;
-      border-color: #1F1F21;
+      border-color: var(--color-main-text);
       overflow: hidden;
     }
   

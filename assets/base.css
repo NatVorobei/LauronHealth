@@ -243,7 +243,7 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
   /* letter-spacing: 0.06rem; */
   line-height: calc(1 + 0.8 / var(--font-body-scale));
   /* font-family: var(--font-body-family); */
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-body-main);
   font-style: var(--font-body-style);
   font-weight: var(--font-body-weight);
 }
@@ -2797,7 +2797,7 @@ details[open] > .header__submenu {
 .header__menu-item {
   padding: 1.2rem;
   text-decoration: none;
-  color: rgba(var(--color-foreground), 0.75);
+  color: var(--color-main-text);
 }
 
 .header__menu-item:hover {
@@ -3623,7 +3623,7 @@ details-disclosure > details {
 .lauron-header__icons {
   gap: 10px;
 }
-.header__active-menu-item {
+.header__menu-item {
   font-size: 16px;
 }
 #HeaderDrawer-logo {
@@ -3659,7 +3659,7 @@ p {
 .appstle_subscription_amount_wrapper,
 .appstle_one_time_price_wrapper,
 .appstle_subscription_amount_compare_at_price {
-  font-family: Montserrat, sans-serif;
+  font-family: var(--font-heading-main);
   font-weight: 700;
   font-size: 18px !important;
   line-height: 18px;
@@ -3710,21 +3710,21 @@ p {
   font-weight: 600;
   font-size: 14px;
   line-height: 12px;
-  color: #1F1F21;
+  color: var(--color-main-text);
 }
 .swatch-subtext {
   font-size: 10px;
   line-height: 10px;
-  color: #1F1F21;
+  color: var(--color-main-text);
 }
 input[type="radio"] {
   display: none;
 }
 input[type="radio"]:checked + .custom-swatch-label {
-  border-color: #1F1F21;
+  border-color: var(--color-main-text);
 }
 input[type="radio"]:checked + .custom-swatch-label .swatch-content {
-  border-left-color: #1F1F21;
+  border-left-color: var(--color-main-text);
   background-color: #F0F4F5;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
@@ -3749,7 +3749,7 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
   font-weight: 700;
   font-size: 14px;
   line-height: 10px;
-  color: #1F1F21;
+  color: var(--color-main-text);
 }
 
 #shopify-block-AOFpKRjhJVWtUaXZqZ__judge_me_reviews_preview_badge_Jb9i4Y {
@@ -3777,14 +3777,14 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
 
 .jdgm-rev-widg__title {
   text-align: start;
-  font-family: Montserrat, sans-serif;
+  font-family: var(--font-heading-main);
   font-size: 42px !important;
   line-height: 30px;
   font-weight: 700;
 }
 
 .jdgm-rev__author {
-  font-family: Montserrat, sans-serif;
+  font-family: var(--font-heading-main);
   font-weight: 700;
 }
 
@@ -3794,7 +3794,7 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
 
 .jdgm-rev__body {
   font-size: 14px;
-  color: #1F1F21;
+  color: var(--color-main-text);
 }
 
 .main-page-title {
@@ -3814,7 +3814,7 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
   padding: 20px 50px 0;
   max-width: 1280px;
   margin: 0 auto;
-  color: #87878D;
+  color: var(--color-subtext);
 }
 
 .breadcrumbs__list {
@@ -3844,7 +3844,7 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
 
 .breadcrumbs__link {
   text-decoration: none;
-  color: #87878D;
+  color: var(--color-subtext);
 }
 
 .breadcrumbs__link:hover {

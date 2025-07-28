@@ -24,7 +24,7 @@
   font-weight: 700;
   display: flex;
   flex: 1;
-  color: #1F1F21;
+  color: var(--color-main-text);
 }
 
 .accordion .summary__title + .icon-caret {
