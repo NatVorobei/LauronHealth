@@ -3909,7 +3909,7 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
   .breadcrumbs {
     font-size: 8px;
     line-height: 8px;
-    padding: 20px 10px 0;
+    padding: 20px 14px 0;
   }
 
   .breadcrumbs__item:not(:last-child)::after {
