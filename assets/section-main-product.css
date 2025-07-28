@@ -307,9 +307,9 @@ a.product__text {
 .rating-wrapper.rating-wrapper--mobile {
   display: none;
 }
-#shopify-block-AOFpKRjhJVWtUaXZqZ__judge_me_reviews_preview_badge_Jb9i4Y {
+/* #shopify-block-AOFpKRjhJVWtUaXZqZ__judge_me_reviews_preview_badge_Jb9i4Y {
   display: none;
-}
+} */
 
 .product__title + .product__text.caption-with-letter-spacing {
   margin-top: -1.5rem;
