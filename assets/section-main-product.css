@@ -19,6 +19,11 @@ product-info {
   padding-left: 0;
 }
 
+.product-media-gallery {
+  position: sticky;
+  top: 0px;
+}
+
 @media screen and (min-width: 750px) {
   .product__column-sticky {
     display: block;
