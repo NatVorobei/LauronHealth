@@ -78,7 +78,7 @@
             {%- endif -%}
             {{
               section.settings.image
-              | image_url: width: 720
+              | image_url: width: 760
               | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority
             }}
           {%- else -%}
@@ -175,7 +175,7 @@
 
 <style>
   .image-with-accordion-text {
-    height: 720px;
+    height: 760px;
   }
   .main-accordion-padding {
     padding-left: var(--accordion-padding-left);
@@ -183,7 +183,8 @@
   }
 
   .image-with-accordion-media {
-    max-height: 720px;
+    overflow: hidden;
+    max-height: 760px;
   }
   .image-with-accordion-grid.image-with-text__grid {
     row-gap: 80px;
@@ -215,7 +216,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    max-height: 720px;
+    max-height: 760px;
     padding: var(--main-padding-top) var(--main-padding-right) var(--main-padding-bottom) var(--main-padding-left);
   }
 
