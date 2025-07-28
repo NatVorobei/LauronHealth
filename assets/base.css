@@ -3906,5 +3906,10 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
     line-height: 8px;
     padding: 20px 10px 0;
   }
+
+  .breadcrumbs__item:not(:last-child)::after {
+    width: 8px;
+    height: 8px;
+  }
 }
 /* Custom classes end */
