@@ -1,0 +1,142 @@
+{% unless template == 'index' or template == 'cart' %}
+
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <ol class="breadcrumbs__list">
+      <li class="breadcrumbs__item">
+        <a href="{{ shop.url }}" class="breadcrumbs__link">Home</a>
+      </li>
+  
+      {% if template contains 'product' %}
+        {% assign current_collection = collection %}
+        {% if current_collection == nil and product.collections.size > 0 %}
+          {% assign current_collection = product.collections.first %}
+        {% endif %}
+  
+        {% if current_collection %}
+          <li class="breadcrumbs__item">
+            <a href="{{ current_collection.url }}" class="breadcrumbs__link">{{ current_collection.title }}</a>
+          </li>
+        {% endif %}
+        
+        <li class="breadcrumbs__item" aria-current="page">
+          {{ product.title }}
+        </li>
+  
+      {% elsif template contains 'collection' %}
+        <li class="breadcrumbs__item" aria-current="page">
+          {{ collection.title }}
+        </li>
+  
+      {% elsif template contains 'page' %}
+        <li class="breadcrumbs__item" aria-current="page">
+          {{ page.title }}
+        </li>
+  
+      {% elsif template contains 'article' %}
+        <li class="breadcrumbs__item">
+          <a href="{{ blog.url }}" class="breadcrumbs__link">{{ blog.title }}</a>
+        </li>
+        <li class="breadcrumbs__item" aria-current="page">
+          {{ article.title }}
+        </li>
+  
+      {% elsif template contains 'search' %}
+        <li class="breadcrumbs__item" aria-current="page">Search</li>
+  
+      {% elsif template contains 'cart' %}
+        <li class="breadcrumbs__item" aria-current="page">Cart</li>
+      {% endif %}
+    </ol>
+  </nav>
+  
+  
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "{{ shop.url }}"
+      }
+      {% if template contains 'product' %}
+        {% assign current_collection = collection %}
+        {% if current_collection == nil and product.collections.size > 0 %}
+          {% assign current_collection = product.collections.first %}
+        {% endif %}
+        {% if current_collection %}
+          ,{
+            "@type": "ListItem",
+            "position": 2,
+            "name": "{{ current_collection.title | escape }}",
+            "item": "{{ current_collection.url }}"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "{{ product.title | escape }}",
+            "item": "{{ product.url }}"
+          }
+        {% else %}
+          ,{
+            "@type": "ListItem",
+            "position": 2,
+            "name": "{{ product.title | escape }}",
+            "item": "{{ product.url }}"
+          }
+        {% endif %}
+  
+      {% elsif template contains 'collection' %}
+        ,{
+          "@type": "ListItem",
+          "position": 2,
+          "name": "{{ collection.title | escape }}",
+          "item": "{{ collection.url }}"
+        }
+  
+      {% elsif template contains 'page' %}
+        ,{
+          "@type": "ListItem",
+          "position": 2,
+          "name": "{{ page.title | escape }}",
+          "item": "{{ page.url }}"
+        }
+  
+      {% elsif template contains 'article' %}
+        ,{
+          "@type": "ListItem",
+          "position": 2,
+          "name": "{{ blog.title | escape }}",
+          "item": "{{ blog.url }}"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "{{ article.title | escape }}",
+          "item": "{{ article.url }}"
+        }
+  
+      {% elsif template contains 'search' %}
+        ,{
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Search",
+          "item": "{{ shop.url }}/search"
+        }
+  
+      {% elsif template contains 'cart' %}
+        ,{
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Cart",
+          "item": "{{ shop.url }}/cart"
+        }
+      {% endif %}
+    ]
+  }
+  </script>
+  
+  {% endunless %}
+  

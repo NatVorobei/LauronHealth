@@ -3807,6 +3807,53 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
   font-family: 'Montserrat', sans-serif;
   margin-bottom: 0 !important;
 }
+
+.breadcrumbs {
+  font-size: 12px;
+  line-height: 18px;
+  padding: 20px 50px 0;
+  max-width: 1280px;
+  margin: 0 auto;
+  color: #87878D;
+}
+
+.breadcrumbs__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.breadcrumbs__item {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  gap: 8px;
+}
+
+.breadcrumbs__item:not(:last-child)::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background-image: url("https://cdn.shopify.com/s/files/1/0745/8786/5320/files/breadcrumbs-caret.svg?v=1753687597");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.breadcrumbs__link {
+  text-decoration: none;
+  color: #87878D;
+}
+
+.breadcrumbs__link:hover {
+  text-decoration: underline;
+}
+
+.breadcrumbs__item[aria-current="page"] {
+  font-weight: 400;
+}
     
 @media(max-width: 749px) {
   .jdgm-write-rev-link {
@@ -3852,6 +3899,11 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
   .main-page-title {
     font-size: 24px;
     margin-bottom: 0 !important;
+  }
+
+  .breadcrumbs {
+    font-size: 14px;
+    padding: 20px 10px 0;
   }
 }
 /* Custom classes end */
