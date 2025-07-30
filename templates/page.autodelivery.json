@@ -69,11 +69,51 @@
         "step3_title": "Крок 3",
         "step3_text": "Завершіть оформлення замовлення — та отримуйте знижку до 20% на кожну доставку!"
       }
+    },
+    "two_products_block_xE7L9i": {
+      "type": "two-products-block",
+      "blocks": {
+        "product_block_F4kLqi": {
+          "type": "product_block",
+          "settings": {
+            "product": "freeze-age",
+            "custom_image": "shopify://shop_images/freeze-age-product-block_1.png",
+            "rating": "★ ★ ★ ★ ★",
+            "reviews": "31 відгук",
+            "discount": "Збережіть",
+            "caption": "For a two-week subscription:",
+            "features": "Change or cancel anytime; Change or cancel anytime; Change or cancel anytime",
+            "buy_button": "Купити"
+          }
+        },
+        "product_block_p4TD9z": {
+          "type": "product_block",
+          "settings": {
+            "product": "mental-performance",
+            "custom_image": "shopify://shop_images/mental-health-product-block_1.png",
+            "rating": "★ ★ ★ ★ ★",
+            "reviews": "31 відгук",
+            "discount": "Збережіть",
+            "caption": "For a two-week subscription:",
+            "features": "Change or cancel anytime; Change or cancel anytime; Change or cancel anytime",
+            "buy_button": "Купити"
+          }
+        }
+      },
+      "block_order": [
+        "product_block_F4kLqi",
+        "product_block_p4TD9z"
+      ],
+      "name": "Two Product Promo",
+      "settings": {
+        "title": "Купуйте зараз"
+      }
     }
   },
   "order": [
     "main",
     "image_banner_WLYqkw",
-    "autodelicery_steps_q7AGrp"
+    "autodelicery_steps_q7AGrp",
+    "two_products_block_xE7L9i"
   ]
 }
