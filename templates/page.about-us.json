@@ -81,6 +81,12 @@
         "heading_Rm39gg",
         "text_peLUaX"
       ],
+      "custom_css": [
+        ".image-with-text__text {padding-right: 60px;}",
+        ".image-with-text__text p {font-size: 14px; line-height: 22px; color: var(--color-main-text);}",
+        ".image-with-text__content {padding: 0; justify-content: center;}",
+        ".image-with-text__media img {border-radius: 20px;}"
+      ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
         "image": "shopify://shop_images/about-us-1.webp",
