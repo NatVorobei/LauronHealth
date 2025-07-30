@@ -58,10 +58,49 @@
         "mobile_content_alignment": "center",
         "show_text_below": true
       }
+    },
+    "image_with_text_ztYaDB": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_Rm39gg": {
+          "type": "heading",
+          "settings": {
+            "heading": "Наша історія",
+            "heading_size": "h1"
+          }
+        },
+        "text_peLUaX": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Ми почали з простого переконання: справжні зміни в організмі відбуваються не зовні, а зсередини. Усередині клітин, тканин, систем — там, де формується основа фізичного ресурсу та адаптивності. Сьогодні наука вже дозволяє впливати на ці процеси точково, передбачувано, з довготривалим ефектом.<br/><br/>Ми створили Lauron, щоб поєднати цей науковий прогрес зі зручністю щоденного застосування. Щоб дати тілу лише те, що воно здатне засвоїти: точні дозування, сучасні форми нутрієнтів, високу біодоступність. Ми зібрали компоненти, чия ефективність підтверджена. Все заради одного — допомагати людині підтримувати себе в ресурсному стані. Системно, стабільно й зрозуміло. Lauron — це не просто продукт, а формат турботи, якому можна довіряти.<br/><br/></p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_Rm39gg",
+        "text_peLUaX"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "main",
-    "image_banner_EVXcaE"
+    "image_banner_EVXcaE",
+    "image_with_text_ztYaDB"
   ]
 }
