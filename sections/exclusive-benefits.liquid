@@ -1,0 +1,201 @@
+<div class="exclusive-benefits-wrapper">
+    <div class="exclusive-benefits-container">
+      <div class="exclusive-benefits-image">
+        {% if section.settings.image %}
+          <img src="{{ section.settings.image | image_url: width: 800 }}" alt="Benefits image" loading="lazy">
+        {% endif %}
+      </div>
+      <div class="exclusive-benefits-content">
+        {% if section.settings.heading %}
+          <h2 class="exclusive-benefits-heading">{{ section.settings.heading }}</h2>
+        {% endif %}
+  
+        <ul class="exclusive-benefits-list">
+          {% for block in section.blocks %}
+            {% if block.type == 'benefit' and block.settings.text != blank %}
+              <li>
+                <span class="benefit-icon">{{ 'checkbox-promo.svg' | inline_asset_content }}</span>
+                <span class="benefit-text">{{ block.settings.text }}</span>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <style>
+    .exclusive-benefits-wrapper {
+      padding: 40px 20px;
+    }
+  
+    .exclusive-benefits-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: stretch;
+    }
+  
+    .exclusive-benefits-image {
+      width: 50%;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .exclusive-benefits-image img {
+      max-width: 100%;
+      height: auto;
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+    }
+  
+    .exclusive-benefits-content {
+      background-color: #f4f6f8;
+      padding: 60px 0 69px 60px;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+    }
+  
+    .exclusive-benefits-heading {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 38px;
+      line-height: 34px;
+      font-family: var(--font-heading-main);
+      color: var(--color-main-text);
+    }
+  
+    .exclusive-benefits-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+    }
+  
+    .exclusive-benefits-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 18px;
+      line-height: 18px;
+      color: var(--color-main-text);
+    }
+  
+    .benefit-icon svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+  
+    @media (max-width: 768px) {
+      .exclusive-benefits-container {
+        flex-direction: column;
+      }
+  
+      .exclusive-benefits-wrapper {
+        padding: 0 10px;
+      }
+  
+      .exclusive-benefits-image,
+      .exclusive-benefits-content {
+        width: 100%;
+      }
+  
+      .exclusive-benefits-content {
+        padding: 67px 10px;
+      }
+  
+      .exclusive-benefits-heading {
+        font-size: 24px;
+        line-height: 20px;
+      }
+  
+      .exclusive-benefits-list li {
+        font-size: 14px;
+        line-height: 16px;
+      }
+  
+      .exclusive-benefits-image img {
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 0px;
+      }
+  
+      .exclusive-benefits-content {
+        border-top-right-radius: 0px;
+        border-bottom-left-radius: 20px;
+      }
+    }
+  </style>
+  
+  {% schema %}
+  {
+    "name": "Exclusive Benefits",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Зображення"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Заголовок",
+        "default": "Ексклюзивні переваги для вас"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "benefit",
+        "name": "Перевага",
+        "settings": [
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Текст переваги",
+            "default": "Ваша перевага тут"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Exclusive Benefits Section",
+        "blocks": [
+          {
+            "type": "benefit",
+            "settings": {
+              "text": "Сяйте без обмежень — L’auron завжди під рукою"
+            }
+          },
+          {
+            "type": "benefit",
+            "settings": {
+              "text": "Отримуйте до 20% знижки на підписку"
+            }
+          },
+          {
+            "type": "benefit",
+            "settings": {
+              "text": "Гнучкість — корегуйте підписку у будь-який момент"
+            }
+          },
+          {
+            "type": "benefit",
+            "settings": {
+              "text": "Безкоштовна доставка для замовлень від 200 zł"
+            }
+          }
+        ]
+      }
+    ]
+  }
+  {% endschema %}
