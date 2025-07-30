@@ -108,12 +108,44 @@
       "settings": {
         "title": "Купуйте зараз"
       }
+    },
+    "testimonials_hBqhiF": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_y9MkBe": {
+          "type": "testimonial",
+          "settings": {
+            "text": "Я почала пити Lauron, коли втома стала накопичуватися після народження другої дитини. П'ю зранку, поки діти снідають. Стало помітно легше тримати енергію протягом дня. Не очікувала великої різниці, але організм реально дякує.",
+            "avatar": "shopify://shop_images/scientist.webp",
+            "name": "Анна",
+            "role": "Домогосподарка"
+          }
+        },
+        "testimonial_JdgW3T": {
+          "type": "testimonial",
+          "settings": {
+            "text": "Після 40 я почалв відчувати, що відновлення після роботи чи тренувань стало повільнішим. Lauron взяв на тест, без особливих очікувань. Через кілька тижнів зрозуміла, що з'явилося більше витривалості навіть у напружені дні.",
+            "avatar": "shopify://shop_images/testimonials-1.webp",
+            "name": "Бартек",
+            "role": "Керівник з маркетингу"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_y9MkBe",
+        "testimonial_JdgW3T"
+      ],
+      "name": "Testimonials",
+      "settings": {
+        "title": "Відгуки клієнтів"
+      }
     }
   },
   "order": [
     "main",
     "image_banner_WLYqkw",
     "autodelicery_steps_q7AGrp",
-    "two_products_block_xE7L9i"
+    "two_products_block_xE7L9i",
+    "testimonials_hBqhiF"
   ]
 }
