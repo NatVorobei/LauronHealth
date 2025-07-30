@@ -3885,8 +3885,8 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
     line-height: 20px;
   }
   .image-with-text__text {
-    margin-top: 28px;
-    padding-right: 0;
+    margin-top: 28px !important;
+    padding-right: 0 !important;
   }
 }
     
