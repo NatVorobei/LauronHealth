@@ -129,11 +129,21 @@
             "name": "Бартек",
             "role": "Керівник з маркетингу"
           }
+        },
+        "testimonial_Ta9djb": {
+          "type": "testimonial",
+          "settings": {
+            "text": "Зйомки, fitting-и, шоуруми — дні летять швидко. Lauron допоміг мені краще тримати ритм без падіння сил у другій половині дня. Я не змінювала режим харчування, тільки додала Lauron — і відчула різницю.",
+            "avatar": "shopify://shop_images/testimonials-2.webp",
+            "name": "Олівія",
+            "role": "Стилістка"
+          }
         }
       },
       "block_order": [
         "testimonial_y9MkBe",
-        "testimonial_JdgW3T"
+        "testimonial_JdgW3T",
+        "testimonial_Ta9djb"
       ],
       "name": "Testimonials",
       "settings": {
