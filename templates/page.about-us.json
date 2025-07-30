@@ -46,7 +46,7 @@
       ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
-        "image": "shopify://shop_images/gradient-background.jpg",
+        "image": "shopify://shop_images/about-us.webp",
         "image_overlay_opacity": 0,
         "image_height": "medium",
         "image_behavior": "none",
