@@ -190,6 +190,9 @@
         "testimonial_JdgW3T",
         "testimonial_Ta9djb"
       ],
+      "custom_css": [
+        ".testimonials__header {padding: 0 0 40px 60px;}"
+      ],
       "name": "Testimonials",
       "settings": {
         "title": "Відгуки клієнтів"
