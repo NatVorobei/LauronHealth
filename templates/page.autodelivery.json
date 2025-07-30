@@ -70,6 +70,46 @@
         "step3_text": "Завершіть оформлення замовлення — та отримуйте знижку до 20% на кожну доставку!"
       }
     },
+    "exclusive_benefits_VPwFLN": {
+      "type": "exclusive-benefits",
+      "blocks": {
+        "benefit_TxrUJc": {
+          "type": "benefit",
+          "settings": {
+            "text": "Сяйте без обмежень — L’auron завжди під рукою"
+          }
+        },
+        "benefit_Ecktqr": {
+          "type": "benefit",
+          "settings": {
+            "text": "Отримуйте до 20% знижки на підписку"
+          }
+        },
+        "benefit_DCz8iV": {
+          "type": "benefit",
+          "settings": {
+            "text": "Гнучкість — корегуйте підписку у будь-який момент"
+          }
+        },
+        "benefit_Jn68xC": {
+          "type": "benefit",
+          "settings": {
+            "text": "Безкоштовна доставка для замовлень від 200 zł"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_TxrUJc",
+        "benefit_Ecktqr",
+        "benefit_DCz8iV",
+        "benefit_Jn68xC"
+      ],
+      "name": "Exclusive Benefits Section",
+      "settings": {
+        "image": "shopify://shop_images/autodelivery-benefits.webp",
+        "heading": "Ексклюзивні переваги для вас"
+      }
+    },
     "two_products_block_xE7L9i": {
       "type": "two-products-block",
       "blocks": {
@@ -229,6 +269,7 @@
     "main",
     "image_banner_WLYqkw",
     "autodelicery_steps_q7AGrp",
+    "exclusive_benefits_VPwFLN",
     "two_products_block_xE7L9i",
     "testimonials_hBqhiF",
     "collapsible_content_kkPzGf"
