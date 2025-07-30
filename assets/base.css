@@ -3874,7 +3874,7 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
 }
 .image-with-text__content {
   padding: 0 !important;
-  justify-content: center;
+  justify-content: center !important;
 }
 .image-with-text__media img {
   border-radius: 20px;
