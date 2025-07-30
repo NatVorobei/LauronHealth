@@ -23,33 +23,26 @@
         "heading_RLprKi": {
           "type": "heading",
           "settings": {
-            "heading": "Image banner",
+            "heading": "Про нас",
             "heading_size": "h1"
           }
         },
         "text_qAM3XM": {
           "type": "text",
           "settings": {
-            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text": "Wellbel is a physician-formulated functional hair wellness brand that bridges the gap between health and beauty.",
             "text_style": "body"
-          }
-        },
-        "buttons_ebzA8P": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Button label",
-            "button_link_1": "",
-            "button_style_secondary_1": false,
-            "button_label_2": "Button label",
-            "button_link_2": "",
-            "button_style_secondary_2": false
           }
         }
       },
       "block_order": [
         "heading_RLprKi",
-        "text_qAM3XM",
-        "buttons_ebzA8P"
+        "text_qAM3XM"
+      ],
+      "custom_css": [
+        ".banner__heading {font-family: var(--font-heading-main); font-weight: 700; font-size: 40px; line-height: 44px;}",
+        ".banner__text {font-size: 20px; line-height: 24px;}",
+        "@media (max-width: 749px) {.banner__heading, .banner__text {color: var(--color-main-text); } .banner__heading {font-size: 24px; line-height: 30px; } .banner__text {font-size: 14px; line-height: 18px; }}"
       ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
@@ -59,7 +52,7 @@
         "desktop_content_position": "middle-center",
         "desktop_content_alignment": "center",
         "show_text_box": true,
-        "color_scheme": "",
+        "color_scheme": "scheme-be9223ea-4a5c-4062-8a6d-d875df510a31",
         "stack_images_on_mobile": true,
         "mobile_content_alignment": "center",
         "show_text_below": true
