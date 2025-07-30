@@ -82,7 +82,7 @@
         "text_peLUaX"
       ],
       "custom_css": [
-        "@media(max-width: 749px) {.image-with-text__grid {flex-direction: column-reverse; }}"
+        "@media (max-width: 749px) {.image-with-text__grid {flex-direction: column-reverse; }}"
       ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
@@ -98,13 +98,29 @@
         "section_color_scheme": "",
         "color_scheme": "",
         "padding_top": 100,
-        "padding_bottom": 100
+        "padding_bottom": 0
+      }
+    },
+    "our_values_gec8BV": {
+      "type": "our-values",
+      "name": "Наші цінності",
+      "settings": {
+        "section_title": "Наші цінності",
+        "value1_title": "Наукова строгість",
+        "value1_text": "Кожне рішення ми ухвалюємо на основі перевірених джерел, відтворюваних біологічних механізмів та логічно вибудуваних зв’язків між функціями. Система побудована таким чином, щоб підсилювати адаптацію, підтримувати стабільність і покращувати загальний функціональний потенціал організму",
+        "value2_icon": "shopify://shop_images/leaf.svg",
+        "value2_title": "Відповідальність за формулу",
+        "value2_text": "Ми свідомо підбираємо склад. Кожен інгредієнт виконує конкретне завдання. Нічого випадкового, нічого «для об'єму». Формула працює як система, де елементи не просто співіснують, а підсилюють дію один одного.",
+        "value3_icon": "shopify://shop_images/circle-value.svg",
+        "value3_title": "Ритуал, а не режим",
+        "value3_text": "Ми з самого початку проєктували Lauron так, щоб він легко вписувався в повсякденне життя. Без зайвих етапів, умов і обмежень. Це не система, що вимагає зусиль. Це простий і зрозумілий ритуал — той, до якого хочеться повертатись."
       }
     }
   },
   "order": [
     "main",
     "image_banner_EVXcaE",
-    "image_with_text_ztYaDB"
+    "image_with_text_ztYaDB",
+    "our_values_gec8BV"
   ]
 }
