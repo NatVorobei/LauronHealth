@@ -83,7 +83,7 @@
       ],
       "custom_css": [
         ".image-with-text__heading {font-size: 42px; font-weight: 700; margin: 0; line-height: 30px; color: var(--color-main-text); font-family: var(--font-heading-main);}",
-        ".image-with-text__text {margin-top: 40px padding-right: 60px;}",
+        ".image-with-text__text {margin-top: 40px; padding-right: 60px;}",
         ".image-with-text__text p {font-size: 14px; line-height: 22px; color: var(--color-main-text);}",
         ".image-with-text__content {padding: 0; justify-content: center;}",
         ".image-with-text__media img {border-radius: 20px;}"
