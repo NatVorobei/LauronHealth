@@ -191,7 +191,8 @@
         "testimonial_Ta9djb"
       ],
       "custom_css": [
-        ".testimonials__header {padding: 0 0 40px 60px;}"
+        ".testimonials__header {padding: 0 0 40px 60px;}",
+        "@media (max-width: 749px) {.testimonials__header {padding: 0 0 50px 14px; }}"
       ],
       "name": "Testimonials",
       "settings": {
