@@ -53,10 +53,24 @@
         "mobile_content_alignment": "center",
         "show_text_below": true
       }
+    },
+    "autodelicery_steps_q7AGrp": {
+      "type": "autodelicery-steps",
+      "name": "How It Works Section",
+      "settings": {
+        "section_title": "Як це працює?",
+        "step1_title": "Крок 1",
+        "step1_text": "Оберіть продукти, на які хочете оформити підписку, та натисніть автодоставку",
+        "step2_title": "Крок 2",
+        "step2_text": "Вкажіть зручний для себе інтервал доставки та кількість баночок",
+        "step3_title": "Крок 3",
+        "step3_text": "Завершіть оформлення замовлення — та отримуйте знижку до 20% на кожну доставку!"
+      }
     }
   },
   "order": [
     "main",
-    "image_banner_WLYqkw"
+    "image_banner_WLYqkw",
+    "autodelicery_steps_q7AGrp"
   ]
 }
