@@ -48,7 +48,7 @@
       "settings": {
         "image": "shopify://shop_images/autodelivery-banner.webp",
         "image_overlay_opacity": 0,
-        "image_height": "adapt",
+        "image_height": "medium",
         "image_behavior": "none",
         "desktop_content_position": "middle-center",
         "desktop_content_alignment": "center",
