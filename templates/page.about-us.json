@@ -116,12 +116,52 @@
         "value3_title": "Ритуал, а не режим",
         "value3_text": "Ми з самого початку проєктували Lauron так, щоб він легко вписувався в повсякденне життя. Без зайвих етапів, умов і обмежень. Це не система, що вимагає зусиль. Це простий і зрозумілий ритуал — той, до якого хочеться повертатись."
       }
+    },
+    "image_with_text_jEj3Cz": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_NeUV7p": {
+          "type": "heading",
+          "settings": {
+            "heading": "Наш підхід",
+            "heading_size": "h1"
+          }
+        },
+        "text_mwqGpR": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Ми віримо в підхід, де здоров’я — це не тимчасова ціль, а частина стилю життя. Де людина не підлаштовується під режим, а будує навколо себе систему підтримки, адаптовану до власного ритму й потреб. Lauron — це крок у напрямку таких рішень: точних, зрозумілих, вбудованих у повсякденність.<br/><br/>Ми дивимось на продукт не як на засіб «досягнення результату», а як на частину турботи, що формує стійкість. Це не відповідь на окремий запит, а внесок у довготривалу якість життя. Ми створюємо рішення, які можна пояснити, застосувати й інтегрувати — без тиску й перевантаження.<br/><br/></p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_NeUV7p",
+        "text_mwqGpR"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/about-us-1.webp",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 100,
+        "padding_bottom": 0
+      }
     }
   },
   "order": [
     "main",
     "image_banner_EVXcaE",
     "image_with_text_ztYaDB",
-    "our_values_gec8BV"
+    "our_values_gec8BV",
+    "image_with_text_jEj3Cz"
   ]
 }
