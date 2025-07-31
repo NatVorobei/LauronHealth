@@ -3855,7 +3855,7 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
   font-weight: 400;
 }
 
-.image-with-text__heading {
+.custom-image-text .image-with-text__heading {
   font-size: 42px;
   font-weight: 700;
   margin: 0;
@@ -3863,20 +3863,20 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
   color: var(--color-main-text);
   font-family: var(--font-heading-main);
 }
-.image-with-text__text {
+.custom-image-text .image-with-text__text {
   margin-top: 40px;
   padding-right: 60px;
 }
-.image-with-text__text p {
+.custom-image-text .image-with-text__text p {
   font-size: 14px;
   line-height: 22px;
   color: var(--color-main-text);
 }
-.image-with-text__content {
+.custom-image-text .image-with-text__content {
   padding: 0 !important;
   justify-content: center !important;
 }
-.image-with-text__media img {
+.custom-image-text .image-with-text__media img {
   border-radius: 20px;
 }
 .custom-image-text {
