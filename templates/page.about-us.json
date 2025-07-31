@@ -121,7 +121,7 @@
       "type": "about-us-caprion",
       "custom_css": [
         ".about-us-caption {margin-top: 120px; margin-bottom: 120px;}",
-        "@media (max-width: 749px) {.about-us-caption {margin-top: 100px; margin-bottom: 100px; }}"
+        "@media (max-width: 749px) {.about-us-caption {margin-top: 0px; margin-bottom: 100px; }}"
       ],
       "name": "About Us Caption",
       "settings": {
