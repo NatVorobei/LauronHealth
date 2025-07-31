@@ -15,9 +15,59 @@
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "faq_bfTMXM": {
+      "type": "faq",
+      "blocks": {
+        "tab_4dCULd": {
+          "type": "tab",
+          "name": "About L'auron Tab",
+          "settings": {
+            "tab_title": "About L'auron",
+            "tab_id": "about-tab"
+          }
+        },
+        "faq_group_Ui3mBi": {
+          "type": "faq_group",
+          "name": "About L'auron Tab Content",
+          "settings": {
+            "parent_tab": "about-tab",
+            "group_title": "About L'auron",
+            "q1": "How is Lauron different from regular supplements?",
+            "a1": "<p>Bioavailability is a key parameter that determines how much of a nutrient the body can actually absorb and utilize. Without a sufficient level of bioavailability, the active ingredients do not reach the cells and do not provide a tangible physiological effect.</p>",
+            "q2": "",
+            "a2": "",
+            "q3": "",
+            "a3": "",
+            "q4": "",
+            "a4": "",
+            "q5": "",
+            "a5": "",
+            "q6": "",
+            "a6": "",
+            "q7": "",
+            "a7": "",
+            "q8": "",
+            "a8": "",
+            "q9": "",
+            "a9": "",
+            "q10": "",
+            "a10": ""
+          }
+        }
+      },
+      "block_order": [
+        "tab_4dCULd",
+        "faq_group_Ui3mBi"
+      ],
+      "name": "FAQ Tabs",
+      "settings": {
+        "tabs_title": "Category"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "faq_bfTMXM"
   ]
 }
