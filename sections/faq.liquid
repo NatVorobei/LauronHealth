@@ -1,0 +1,359 @@
+<div class="faq-tabs-wrapper">
+    <div class="faq-tabs-menu">
+      {% if section.settings.tabs_title != blank %}
+        <h2 class="faq-tabs-wrapper__title">{{ section.settings.tabs_title }}</h2>
+      {% endif %}
+  
+      <ul class="faq-tabs-list desktop-only">
+        {% assign tabs = section.blocks | where: 'type', 'tab' %}
+        {% for tab in tabs %}
+          <li class="faq-tabs-list-item">
+            <button class="faq-tab-button {% if forloop.first %}active{% endif %}" data-tab="tab-{{ tab.settings.tab_id }}">
+              {{ tab.settings.tab_title }}
+            </button>
+          </li>
+        {% endfor %}
+      </ul>
+  
+      <div class="mobile-only">
+        <select class="faq-tabs-select">
+          {% for tab in tabs %}
+            <option value="tab-{{ tab.settings.tab_id }}">{{ tab.settings.tab_title }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+  
+    <div class="faq-tabs-content">
+      {% for tab in tabs %}
+        {% assign current_tab_id = tab.settings.tab_id %}
+        <div id="tab-{{ current_tab_id }}" class="faq-tab-content {% if forloop.first %}active{% endif %}" style="{% unless forloop.first %}display: none;{% endunless %}">
+          {% for group in section.blocks %}
+            {% if group.type == 'faq_group' and group.settings.parent_tab == current_tab_id %}
+              <div class="faq-group">
+                <h3 class="faq-tabs-content__title">{{ group.settings.group_title }}</h3>
+                {% for i in (1..10) %}
+                  {% capture question_key %}q{{ i }}{% endcapture %}
+                  {% capture answer_key %}a{{ i }}{% endcapture %}
+                  {% assign question = group.settings[question_key] %}
+                  {% assign answer = group.settings[answer_key] %}
+                  {% if question != blank and answer != blank %}
+                    <div class="accordion">
+                      <details>
+                        <summary>
+                          <h4 class="accordion__title">{{ question }}</h4>
+                          <span class="accordion-toggle-icon">
+                            <span class="icon-plus">{{ 'plus-icon.svg' | inline_asset_content }}</span>
+                            <span class="icon-minus">{{ 'exit-button.svg' | inline_asset_content }}</span>
+                          </span>
+                        </summary>
+                        <div class="accordion__content rte">
+                          {{ answer }}
+                        </div>
+                      </details>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const buttons = document.querySelectorAll('.faq-tab-button');
+      const contents = document.querySelectorAll('.faq-tab-content');
+      const select = document.querySelector('.faq-tabs-select');
+  
+      buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+          buttons.forEach((btn) => btn.classList.remove('active'));
+          contents.forEach((cont) => cont.style.display = 'none');
+  
+          button.classList.add('active');
+          const tabId = button.getAttribute('data-tab');
+          const activeTab = document.getElementById(tabId);
+          if (activeTab) activeTab.style.display = 'block';
+  
+          if (select) select.value = tabId;
+        });
+      });
+  
+      if (select) {
+        select.addEventListener('change', function () {
+          const selectedTabId = this.value;
+          contents.forEach((cont) => cont.style.display = 'none');
+          const activeTab = document.getElementById(selectedTabId);
+          if (activeTab) activeTab.style.display = 'block';
+  
+          buttons.forEach((btn) => {
+            btn.classList.toggle('active', btn.getAttribute('data-tab') === selectedTabId);
+          });
+        });
+      }
+    });
+  </script>
+  
+  <style>
+    .faq-tabs-wrapper {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+  
+    .faq-tabs-wrapper__title,
+    .faq-tabs-content__title {
+      font-size: 28px;
+      line-height: 28px;
+      font-weight: 700;
+      color: var(--color-main-text);
+      font-family: var(--font-heading-main);
+      margin-bottom: 40px;
+    }
+  
+    .faq-tabs-content {
+      max-width: 700px;
+      width: 100%;
+    }
+  
+    .faq-tab-button {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      font-size: 16px;
+      line-height: 16px;
+      color: #87878D;
+      font-weight: 500;
+      font-family: var(--font-heading-main);
+    }
+  
+    .faq-tab-button.active {
+      font-size: 20px;
+      line-height: 20px;
+      font-weight: 700;
+      color: var(--color-main-text);
+    }
+  
+    .faq-tabs-menu ul {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+  
+    .faq-tabs-list-item {
+      padding: 16px 0;
+      border-bottom: 1px solid #D7D7D7;
+      min-width: 300px;
+    }
+  
+    .faq-tabs-list-item:first-child {
+      border-top: 1px solid #D7D7D7;
+    }
+  
+    .faq-tab-content {
+      margin-bottom: 32px;
+    }
+  
+    .desktop-only {
+      display: block;
+    }
+  
+    .mobile-only {
+      display: none;
+    }
+  
+    @media screen and (max-width: 749px) {
+      .faq-tabs-wrapper {
+        flex-direction: column;
+        padding: 0 16px;
+      }
+  
+      .faq-tabs-list.desktop-only {
+        display: none;
+      }
+  
+      .mobile-only {
+        display: block;
+        width: 100%;
+        margin-bottom: 24px;
+      }
+  
+      .faq-tabs-select {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        font-family: var(--font-heading-main);
+        border: 1px solid #D7D7D7;
+        border-radius: 6px;
+        background-color: #fff;
+        color: var(--color-main-text);
+      }
+  
+      .faq-tabs-content {
+        max-width: 100%;
+      }
+    }
+  </style>
+  
+  {% schema %}
+  {
+    "name": "FAQ Tabs",
+    "settings": [
+      {
+          "type": "text",
+          "id": "tabs_title",
+          "label": "Tabs Title"
+      },
+    ],
+    "blocks": [
+      {
+        "type": "tab",
+        "name": "FAQ Tab",
+        "settings": [
+          {
+            "type": "text",
+            "id": "tab_title",
+            "label": "Tab Title"
+          },
+          {
+            "type": "text",
+            "id": "tab_id",
+            "label": "Tab ID (handle, must match in FAQ Group)",
+            "default": "example-tab"
+          }
+        ]
+      },
+      {
+        "type": "faq_group",
+        "name": "FAQ Group",
+        "settings": [
+          {
+            "type": "text",
+            "id": "parent_tab",
+            "label": "Parent Tab ID (handle from tab block)"
+          },
+          {
+            "type": "text",
+            "id": "group_title",
+            "label": "Group Title"
+          },
+          {
+            "type": "text",
+            "id": "q1",
+            "label": "Question 1"
+          },
+          {
+            "type": "richtext",
+            "id": "a1",
+            "label": "Answer 1"
+          },
+          {
+            "type": "text",
+            "id": "q2",
+            "label": "Question 2"
+          },
+          {
+            "type": "richtext",
+            "id": "a2",
+            "label": "Answer 2"
+          },
+          {
+            "type": "text",
+            "id": "q3",
+            "label": "Question 3"
+          },
+          {
+            "type": "richtext",
+            "id": "a3",
+            "label": "Answer 3"
+          },
+          {
+            "type": "text",
+            "id": "q4",
+            "label": "Question 4"
+          },
+          {
+            "type": "richtext",
+            "id": "a4",
+            "label": "Answer 4"
+          },
+          {
+            "type": "text",
+            "id": "q5",
+            "label": "Question 5"
+          },
+          {
+            "type": "richtext",
+            "id": "a5",
+            "label": "Answer 5"
+          },
+          {
+            "type": "text",
+            "id": "q6",
+            "label": "Question 6"
+          },
+          {
+            "type": "richtext",
+            "id": "a6",
+            "label": "Answer 6"
+          },
+          {
+            "type": "text",
+            "id": "q7",
+            "label": "Question 7"
+          },
+          {
+            "type": "richtext",
+            "id": "a7",
+            "label": "Answer 7"
+          },
+          {
+            "type": "text",
+            "id": "q8",
+            "label": "Question 8"
+          },
+          {
+            "type": "richtext",
+            "id": "a8",
+            "label": "Answer 8"
+          },
+          {
+            "type": "text",
+            "id": "q9",
+            "label": "Question 9"
+          },
+          {
+            "type": "richtext",
+            "id": "a9",
+            "label": "Answer 9"
+          },
+          {
+            "type": "text",
+            "id": "q10",
+            "label": "Question 10"
+          },
+          {
+            "type": "richtext",
+            "id": "a10",
+            "label": "Answer 10"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "FAQ Tabs",
+        "category": "FAQ"
+      }
+    ]
+  }
+  {% endschema %}
+  
