@@ -119,6 +119,10 @@
     },
     "about_us_caprion_U9AyXA": {
       "type": "about-us-caprion",
+      "custom_css": [
+        ".about-us-caption {margin-top: 120px; margin-bottom: 120px;}",
+        "@media (max-width: 749px) {.about-us-caption {margin-top: 100px; margin-bottom: 100px; }}"
+      ],
       "name": "About Us Caption",
       "settings": {
         "title": "<p><strong>Амелія Новак</strong>, головна науковиця</p>",
@@ -166,7 +170,7 @@
         "mobile_content_alignment": "left",
         "section_color_scheme": "",
         "color_scheme": "",
-        "padding_top": 100,
+        "padding_top": 0,
         "padding_bottom": 100
       }
     }
