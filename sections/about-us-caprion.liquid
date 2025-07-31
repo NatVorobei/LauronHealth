@@ -1,0 +1,92 @@
+<div class="about-us-caption">
+    <hr class="about-us-caption__hr"/>
+    {% if section.settings.title %}
+      <div class="about-us-caption__subtitle">{{ section.settings.title }}</div>
+    {% endif %}
+    {% if section.settings.text %}
+      <p class="about-us-caption__text">{{ section.settings.text }}</p>
+      {% endif %}
+    {% if section.settings.image %}
+      <img class="about-us-caption__sign" src="{{ section.settings.image | image_url: width: 800 }}" alt="About sign" loading="lazy">
+    {% endif %}
+    <hr class="about-us-caption__hr"/>
+</div>
+
+<style>
+.about-us-caption {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 50px;
+}
+.about-us-caption__hr {
+    height: 1px;
+    width: 90%;
+    background: #D7D7D7;
+    margin: 0;
+}
+.about-us-caption__subtitle {
+   font-size: 16px;
+   line-height: 18px;
+   color: var(--color-main-text);
+}
+.about-us-caption__text {
+   font-size: 24px;
+   line-height: 32px;
+   color: var(--color-main-text);
+}
+.about-us-caption__sign {
+    width: 146px;
+    height: auto;
+}
+
+@media(max-width: 749px) {
+.about-us-caption {
+   padding: 0 10px;
+}
+.about-us-caption__subtitle {
+   font-size: 14px;
+   line-height: 16px;
+}
+.about-us-caption__text {
+   font-size: 16px;
+   line-height: 24px;
+}
+.about-us-caption__hr {
+    width: 100%;
+}
+}
+</style>
+
+{% schema %}
+{
+  "name": "About Us Caption",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Title",
+      "default": "<p>Амелія Новак, головна науковиця</p>"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "Ми створили L'auron, щоб відновити один із ключових..."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Зображення"
+    },
+  ],
+  "presets": [
+    {
+      "name": "About Us Caption"
+    }
+  ]
+}
+{% endschema %}
