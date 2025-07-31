@@ -155,7 +155,7 @@
       "custom_css": [
         ".image-with-text__text {margin-top: 40px; padding-right: 0px; padding-left: 60px;}",
         ".image-with-text__heading {padding-left: 60px;}",
-        "@media (max-width: 749px) {.image-with-text__heading, .image-with-text__text {padding-left: 0; }}"
+        "@media (max-width: 749px) {.image-with-text__grid {flex-direction: column-reverse; } .image-with-text__heading, .image-with-text__text {padding-left: 0; }}"
       ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
