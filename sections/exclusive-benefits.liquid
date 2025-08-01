@@ -4,6 +4,7 @@
       <img src="{{ section.settings.image | image_url: width: 800 }}" alt="Benefits image" loading="lazy">
     {% endif %}
   </div>
+
   <div class="exclusive-benefits-content">
     {% if section.settings.heading %}
       <h2 class="exclusive-benefits-heading">{{ section.settings.heading }}</h2>
@@ -20,13 +21,17 @@
       {% endfor %}
     </ul>
 
-    {% if section.settings.additional_text %}
-      <p class="exclusive-benefits-description">{{ section.settings.additional_text }}</p>
-    {% endif %}
+    {% for block in section.blocks %}
+      {% if block.type == 'additional_text' and block.settings.text != blank %}
+        <p class="exclusive-benefits-description">{{ block.settings.text }}</p>
+      {% endif %}
+    {% endfor %}
 
-    {% if section.settings.button_label and section.settings.button_link %}
-      <a href="{{ section.settings.button_link }}" class="exclusive-benefits-button">{{ section.settings.button_label }}</a>
-    {% endif %}
+    {% for block in section.blocks %}
+      {% if block.type == 'button' and block.settings.label != blank and block.settings.link != blank %}
+        <a href="{{ block.settings.link }}" class="exclusive-benefits-button">{{ block.settings.label }}</a>
+      {% endif %}
+    {% endfor %}
   </div>
 </div>
   
@@ -188,6 +193,11 @@
         "id": "heading",
         "label": "Заголовок",
         "default": "Ексклюзивні переваги для вас"
+      },
+      {
+        "type": "checkbox",
+        "id": "reverse_layout",
+        "label": "Розмістити зображення праворуч"
       }
     ],
     "blocks": [
@@ -200,35 +210,46 @@
             "id": "text",
             "label": "Текст переваги",
             "default": "Ваша перевага тут"
-          },
-          {
-            "type": "checkbox",
-            "id": "reverse_layout",
-            "label": "Розмістити зображення праворуч"
-          },
+          }
+        ]
+      },
+      {
+        "type": "additional_text",
+        "name": "Додатковий текст",
+        "settings": [
           {
             "type": "text",
-            "id": "additional_text",
+            "id": "text",
             "label": "Текст",
-            "default": "Текст.."
-          },
+            "default": "Цей текст відображається під списком переваг."
+          }
+        ]
+      },
+      {
+        "type": "button",
+        "name": "Кнопка",
+        "settings": [
           {
             "type": "text",
-            "id": "button_label",
+            "id": "label",
             "label": "Текст кнопки",
             "default": "Дізнатися більше"
           },
           {
             "type": "url",
-            "id": "button_link",
+            "id": "link",
             "label": "Посилання кнопки"
-          }          
+          }
         ]
       }
     ],
     "presets": [
       {
         "name": "Exclusive Benefits Section",
+        "settings": {
+          "heading": "Ексклюзивні переваги для вас",
+          "reverse_layout": false
+        },
         "blocks": [
           {
             "type": "benefit",
@@ -253,9 +274,22 @@
             "settings": {
               "text": "Безкоштовна доставка для замовлень від 200 zł"
             }
+          },
+          {
+            "type": "additional_text",
+            "settings": {
+              "text": "Приєднуйтесь до нашої програми вже сьогодні."
+            }
+          },
+          {
+            "type": "button",
+            "settings": {
+              "label": "Оформити підписку",
+              "link": "/subscribe"
+            }
           }
         ]
       }
     ]
-  }
+  }  
   {% endschema %}
