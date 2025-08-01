@@ -64,18 +64,10 @@
       "settings": {
         "tabs_title": "Category"
       }
-    },
-    "exclusive_benefits_PAmXqD": {
-      "type": "exclusive-benefits",
-      "name": "Exclusive Benefits Section",
-      "settings": {
-        "heading": "Lauron is an innovative product  that has no equal on the market"
-      }
     }
   },
   "order": [
     "main",
-    "faq_bfTMXM",
-    "exclusive_benefits_PAmXqD"
+    "faq_bfTMXM"
   ]
 }
