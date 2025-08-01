@@ -96,11 +96,43 @@
         "padding_top_mobile": 60,
         "padding_bottom_mobile": 80
       }
+    },
+    "rich_text_LUfWQK": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_8bVLze": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Need more help?</strong>",
+            "heading_size": "h1"
+          }
+        },
+        "text_bXHAi7": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Bioavailability is a key parameter that determines how much of a nutrient the body can actually absorb and utilize. Without a sufficient level of bioavailability, the active ingredients do not reach the cells and do not provide a tangible physiological effect.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_8bVLze",
+        "text_bXHAi7"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
     "main",
     "faq_bfTMXM",
-    "exclusive_benefits_LPd7HJ"
+    "exclusive_benefits_LPd7HJ",
+    "rich_text_LUfWQK"
   ]
 }
