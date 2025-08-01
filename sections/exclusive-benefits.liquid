@@ -1,3 +1,9 @@
+<div class="exclusive-benefits-wrapper"
+  style="
+    padding-top: {{ section.settings.padding_top_desktop | default: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop | default: 0 }}px;
+  "
+>
 <div class="exclusive-benefits-container {% if section.settings.reverse_layout %}reverse{% endif %}">
   <div class="exclusive-benefits-image">
     {% if section.settings.image %}
@@ -34,12 +40,9 @@
     {% endfor %}
   </div>
 </div>
+</div>
   
   <style>
-    .exclusive-benefits-wrapper {
-      padding: 40px 0 0;
-    }
-  
     .exclusive-benefits-container {
       max-width: 1280px;
       margin: 0 auto;
@@ -58,9 +61,10 @@
     .exclusive-benefits-image img {
       max-width: 100%;
       height: 100%;
-      object-fit: cover;
       border-top-left-radius: 20px;
       border-bottom-left-radius: 20px;
+      object-fit: cover;
+      object-position: center;
     }
   
     .exclusive-benefits-content {
@@ -109,22 +113,23 @@
     }
 
     .exclusive-benefits-description {
-      margin-top: 30px;
       font-size: 16px;
+      line-height: 20px;
       color: var(--color-main-text);
-      line-height: 1.6;
     }
     
     .exclusive-benefits-button {
       display: inline-block;
-      margin-top: 20px;
-      padding: 12px 24px;
+      margin-top: 40px;
+      padding: 20px 28px;
       background-color: #000;
+      width: fit-content;
       color: #fff;
-      border-radius: 8px;
+      border-radius: 20px;
       text-decoration: none;
-      font-weight: 600;
-      transition: background-color 0.3s ease;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 12px;
     }
     
     .exclusive-benefits-button:hover {
@@ -134,14 +139,38 @@
     .exclusive-benefits-container.reverse {
       flex-direction: row-reverse;
     }
+
+    .exclusive-benefits-container.reverse .exclusive-benefits-image img {
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 0px;
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+    }
+
+    .exclusive-benefits-container.reverse .exclusive-benefits-content {
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+    }
+
+    .exclusive-benefits-container.reverse .exclusive-benefits-content {
+      padding: 60px 60px 69px 60px;
+    }
   
     @media (max-width: 749px) {
+      .exclusive-benefits-wrapper {
+        padding-top: {{ section.settings.padding_top_mobile | default: 0 }}px !important;
+        padding-bottom: {{ section.settings.padding_bottom_mobile | default: 0 }}px !important;
+      }
+
       .exclusive-benefits-container.reverse {
-        flex-direction: column;
+        flex-direction: column-reverse;
       }
 
       .exclusive-benefits-container {
         flex-direction: column;
+        padding: 0 10px;
       }
   
       .exclusive-benefits-wrapper {
@@ -153,13 +182,20 @@
         width: 100%;
       }
   
-      .exclusive-benefits-content {
+      .exclusive-benefits-content,
+      .exclusive-benefits-container.reverse .exclusive-benefits-content {
         padding: 67px 10px;
       }
   
       .exclusive-benefits-heading {
         font-size: 24px;
         line-height: 20px;
+        margin-bottom: 16px;
+      }
+ 
+      .exclusive-benefits-container.reverse .exclusive-benefits-heading {
+        font-size: 20px;
+        line-height: 26px;
       }
   
       .exclusive-benefits-list li {
@@ -170,11 +206,44 @@
       .exclusive-benefits-image img {
         border-top-right-radius: 20px;
         border-bottom-left-radius: 0px;
+        aspect-ratio: 4 / 3;
       }
   
       .exclusive-benefits-content {
         border-top-right-radius: 0px;
         border-bottom-left-radius: 20px;
+      }
+
+      .exclusive-benefits-container.reverse .exclusive-benefits-content {
+        text-align: center;
+      }
+
+      .exclusive-benefits-description {
+        font-size: 12px;
+        line-height: 16px;
+      }
+
+      .exclusive-benefits-button {
+        align-self: center;
+        font-size: 12px;
+        line-height: 16px;
+        padding: 14px 17px;
+        border-radius: 16px;
+        margin-top: 30px;
+      }
+
+      .exclusive-benefits-container.reverse .exclusive-benefits-image img {
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 20px;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 20px;
+      }
+  
+      .exclusive-benefits-container.reverse .exclusive-benefits-content {
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 0px;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 0px;
       }
     }
   </style>
@@ -198,7 +267,51 @@
         "type": "checkbox",
         "id": "reverse_layout",
         "label": "Розмістити зображення праворуч"
-      }
+      },
+      {
+        "type": "header",
+        "content": "Paddings"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_desktop",
+        "label": "Padding зверху (десктоп)",
+        "default": 40,
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_desktop",
+        "label": "Padding знизу (десктоп)",
+        "default": 0,
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Padding зверху (мобілка)",
+        "default": 0,
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Padding знизу (мобілка)",
+        "default": 0,
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "unit": "px"
+      }      
     ],
     "blocks": [
       {
