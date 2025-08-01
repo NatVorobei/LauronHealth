@@ -118,6 +118,10 @@
         "heading_8bVLze",
         "text_bXHAi7"
       ],
+      "custom_css": [
+        ".rich-text__heading {font-family: var(--font-heading-main); font-size: 36px; line-height: 30px; color: var(--color-main-text);}",
+        ".rich-text__text {font-size: 14px; line-height: 20px; color: var(--color-main-text);}"
+      ],
       "name": "t:sections.rich-text.presets.name",
       "settings": {
         "desktop_content_position": "center",
