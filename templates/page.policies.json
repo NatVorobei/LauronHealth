@@ -16,9 +16,33 @@
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "policies_tabs_bdR3aD": {
+      "type": "policies-tabs",
+      "blocks": {
+        "policy_tab_tbaGhc": {
+          "type": "policy_tab",
+          "settings": {
+            "tab_title": "Payment and shipment",
+            "tab_content_richtext": "<p><strong>EU Standard International</strong><br/><br/>FLAT RATE £14.50 OR FREE FOR ORDERS OVER £35<br/><br/>Orders placed before 1:00pm GMT should arrive within 3-17 business days. This is a fully trackable service. This service may take longer to some rural areas.<br/><br/>Orders placed on Saturdays, Sundays or public holidays are handled on the Monday or the first working day after. (Working days exclude Saturdays, Sundays and public holidays).<br/><br/><strong>International Standard Shipping</strong><br/><br/>FLAT RATE £20 OR FREE FOR ORDERS OVER £35<br/><br/>Orders placed before 1:00pm GMT should arrive within 3-17 business days. This is a fully trackable service.<br/><br/>Orders placed on Saturdays, Sundays or public holidays are handled on the Monday or the first working day after. (Working days exclude Saturdays, Sundays and public holidays).<br/></p>",
+            "tab_content_html": "",
+            "content_source": "richtext"
+          }
+        }
+      },
+      "block_order": [
+        "policy_tab_tbaGhc"
+      ],
+      "name": "Policies Tabs",
+      "settings": {
+        "title": "Our Policies",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "policies_tabs_bdR3aD"
   ]
 }
