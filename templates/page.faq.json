@@ -23,7 +23,7 @@
           "type": "tab",
           "name": "About L'auron Tab",
           "settings": {
-            "tab_title": "About L'auron",
+            "tab_title": "Про L'auron",
             "tab_id": "about-tab"
           }
         },
@@ -32,15 +32,15 @@
           "name": "About L'auron Tab Content",
           "settings": {
             "parent_tab": "about-tab",
-            "group_title": "About L'auron",
-            "q1": "How is Lauron different from regular supplements?",
-            "a1": "<p>Bioavailability is a key parameter that determines how much of a nutrient the body can actually absorb and utilize. Without a sufficient level of bioavailability, the active ingredients do not reach the cells and do not provide a tangible physiological effect.</p>",
-            "q2": "",
-            "a2": "",
-            "q3": "",
-            "a3": "",
-            "q4": "",
-            "a4": "",
+            "group_title": "Про L'auron",
+            "q1": "Чим Lauron відрізняється від звичайних добавок?",
+            "a1": "<p>Lauron — це рідкий функціональний продукт із високою біодоступністю, у складі якого три технологічні компоненти: гіалуронова кислота з високою молекулярною масою, м’яка вода та система інкапсуляції (3SDS™). На відміну від капсул чи порошків, Lauron забезпечує стабільне засвоєння активних речовин саме там, де це потрібно — на рівні кишечника, з системним оздоровчим ефектом.</p>",
+            "q2": "Чому Lauron створено саме в рідкому форматі, а не в капсулах чи порошках?",
+            "a2": "<p>Рідкий формат дозволяє досягти максимальної розчинності та біодоступності активних речовин. Крім того, інкапсуляція захищає інгредієнти від руйнування в шлунку, що робить Lauron ефективнішим за сухі форми.</p>",
+            "q3": "Lauron — це курс чи його можна приймати постійно?",
+            "a3": "<p>Lauron краще за все підходить для регулярного щоденного вживання. Завдяки м’якому, фізіологічно сумісному складу він придатний для тривалого використання без перерв.</p>",
+            "q4": "Як Lauron вписується в щоденний догляд за здоров’ям?",
+            "a4": "<p>Він стає частиною ранкового або денного ритуалу, підтримує водний баланс, стан шкіри та загальне самопочуття. Подібно до щоденного догляду за шкірою ззовні, Lauron діє зсередини — на користь клітинного здоров’я щодня.</p>",
             "q5": "",
             "a5": "",
             "q6": "",
@@ -62,7 +62,7 @@
       ],
       "name": "FAQ Tabs",
       "settings": {
-        "tabs_title": "Category"
+        "tabs_title": "Категорія"
       }
     },
     "exclusive_benefits_LPd7HJ": {
