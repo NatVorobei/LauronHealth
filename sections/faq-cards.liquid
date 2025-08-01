@@ -1,4 +1,7 @@
-<section class="faq-card-section">
+<section class="faq-card-section" style="
+    padding-top: {{ section.settings.padding_top_desktop | default: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop | default: 0 }}px;
+  ">
     <div class="faq-card-container">
       <div class="faq-card__header">
         {% if section.settings.section_title != blank %}
@@ -21,7 +24,7 @@
             {% endif %}
             <h3 class="faq-card-title">{{ title }}</h3>
             <p class="faq-card-text">{{ text }}</p>
-            {% if button_text != blank and button_link != blank %}
+            {% if button_text != blank %}
               <a class="faq-card-button" href="{{ button_link }}">{{ button_text }}</a>
             {% endif %}
           </div>
@@ -101,6 +104,13 @@
       .faq-card-button:hover {
         background-color: #444;
       }
+
+      @media(max-width: 749px) {
+        .faq-card-section {
+          padding-top: {{ section.settings.padding_top_mobile | default: 0 }}px !important;
+          padding-bottom: {{ section.settings.padding_bottom_mobile | default: 0 }}px !important;
+        }
+      }
       
       @media(max-width: 989px) {
         .faq-card-list {
@@ -124,6 +134,50 @@
         "id": "section_title",
         "label": "Заголовок секції",
         "default": "Часті запитання"
+      },
+      {
+        "type": "header",
+        "content": "Paddings"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_desktop",
+        "label": "Padding зверху (десктоп)",
+        "default": 40,
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_desktop",
+        "label": "Padding знизу (десктоп)",
+        "default": 0,
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Padding зверху (мобілка)",
+        "default": 0,
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Padding знизу (мобілка)",
+        "default": 0,
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "unit": "px"
       }
     ],
     "blocks": [
