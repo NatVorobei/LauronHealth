@@ -64,10 +64,39 @@
       "settings": {
         "tabs_title": "Category"
       }
+    },
+    "exclusive_benefits_LPd7HJ": {
+      "type": "exclusive-benefits",
+      "blocks": {
+        "additional_text_qDa8bN": {
+          "type": "additional_text",
+          "settings": {
+            "text": "Subscribe to be the first to know about promotions, new products — and get a discount on your first purchase right now."
+          }
+        },
+        "button_jMWAmQ": {
+          "type": "button",
+          "settings": {
+            "label": "DISCOVER MORE",
+            "link": "shopify://pages/дослідження"
+          }
+        }
+      },
+      "block_order": [
+        "additional_text_qDa8bN",
+        "button_jMWAmQ"
+      ],
+      "name": "Exclusive Benefits Section",
+      "settings": {
+        "image": "shopify://shop_images/faqs-1.webp",
+        "heading": "Lauron is an innovative product  that has no equal on the market",
+        "reverse_layout": true
+      }
     }
   },
   "order": [
     "main",
-    "faq_bfTMXM"
+    "faq_bfTMXM",
+    "exclusive_benefits_LPd7HJ"
   ]
 }
