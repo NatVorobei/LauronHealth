@@ -11,7 +11,7 @@
           {% assign icon = block.settings.icon %}
           {% assign title = block.settings.title %}
           {% assign text = block.settings.text %}
-          {% assign show_button = block.settings.show_button %}
+          {% comment %} {% assign show_button = block.settings.show_button %} {% endcomment %}
           {% assign button_text = block.settings.button_text %}
           {% assign button_link = block.settings.button_link %}
   
@@ -21,7 +21,7 @@
             {% endif %}
             <h3 class="faq-card-title">{{ title }}</h3>
             <p class="faq-card-text">{{ text }}</p>
-            {% if show_button %}
+            {% if button_text != blank and button_link != blank %}
               <a class="faq-card-button" href="{{ button_link }}">{{ button_text }}</a>
             {% endif %}
           </div>
@@ -147,12 +147,6 @@
             "id": "text",
             "label": "Опис",
             "default": "Відповідь на запитання"
-          },
-          {
-            "type": "checkbox",
-            "id": "show_button",
-            "label": "Показати кнопку",
-            "default": false
           },
           {
             "type": "text",
