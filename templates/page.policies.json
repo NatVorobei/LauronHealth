@@ -41,11 +41,35 @@
             "content_source": "richtext",
             "additional_html": ""
           }
+        },
+        "policy_tab_YLHwBL": {
+          "type": "policy_tab",
+          "settings": {
+            "tab_title": "Privacy Policy",
+            "tab_content_title": "Privacy Policy",
+            "tab_content_richtext": "",
+            "tab_content_html": "",
+            "content_source": "richtext",
+            "additional_html": ""
+          }
+        },
+        "policy_tab_teaTfx": {
+          "type": "policy_tab",
+          "settings": {
+            "tab_title": "Contact Us",
+            "tab_content_title": "Contact Us",
+            "tab_content_richtext": "",
+            "tab_content_html": "",
+            "content_source": "richtext",
+            "additional_html": ""
+          }
         }
       },
       "block_order": [
         "policy_tab_tbaGhc",
-        "policy_tab_4Ng9Ba"
+        "policy_tab_4Ng9Ba",
+        "policy_tab_YLHwBL",
+        "policy_tab_teaTfx"
       ],
       "name": "Policies Tabs",
       "settings": {
