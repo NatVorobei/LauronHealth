@@ -1,7 +1,7 @@
-<div class="policies-tabs">
-    {% if section.settings.title != blank %}
-      <h2 class="policies-tabs-title">{{ section.settings.title }}</h2>
-    {% endif %}
+<div class="policies-tabs" style="
+    padding-top: {{ section.settings.padding_top_desktop | default: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop | default: 0 }}px;
+  ">
     <div class="policies-tabs-wrapper">
       <div class="policies-tabs-menu">
         <ul class="policies-tabs-list">
@@ -25,6 +25,9 @@
             class="policies-tab-content {% if forloop.first %}active{% endif %}"
             style="{% unless forloop.first %}display: none;{% endunless %}"
           >
+            {% if section.settings.tab_content_title != blank %}
+                <h2 class="policies-tabs-title">{{ block.settings.tab_content_title }}</h2>
+              {% endif %}
             {% if block.settings.content_source == 'richtext' %}
               {{ block.settings.tab_content_richtext }}
             {% else %}
@@ -38,7 +41,7 @@
   
   <style>
     .policies-tabs {
-      max-width: 1360px;
+      max-width: 1180px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
@@ -64,26 +67,23 @@
       gap: 16px;
     }
     .policies-tab-button {
-      color: #014d76;
-      background: #fff;
-      border: 1px solid #014d76;
-      border-radius: 8px;
-      padding: 13px 20px;
+      color: #87878D;
+      background: none;
+      border: none;
       cursor: pointer;
       font-size: 18px;
       font-weight: 400;
+      padding: 0;
       width: max-content;
-      transition: background-color 0.3s ease, color 0.3s ease;
     }
-    .policies-tab-button.active,
-    .policies-tab-button:hover {
-      color: #fff;
-      background: #014d76;
+    .policies-tab-button.active {
+        color: var(--color-main-text);
+        font-weight: 600;
     }
     .policies-tab-content p {
       margin: 0;
       font-weight: 400;
-      color: var(--black-color);
+      color: var(--color-main-text);
       padding-right: 16px;
     }
   
@@ -107,19 +107,17 @@
       display: none;
     }
   
-    @media (width >= 750px) {
+    @media (min-width: 750px) {
       .policies-content-title {
         font-size: 20px;
       }
-      .policies-tabs {
-        padding: 20px;
-      }
+
       .policies-tabs-title {
         font-size: 28px;
       }
       .policies-tabs-wrapper {
         flex-direction: row;
-        gap: 124px;
+        gap: 60px;
         padding: 0;
       }
       .policies-tabs-list {
@@ -129,13 +127,13 @@
       .policies-tab-content p {
         font-size: 16px;
       }
-      .policies-tab-button {
-        width: 305px;
-        padding: 13px 0;
-      }
     }
   
-    @media (width <= 749px) {
+    @media (max-width: 749px) {
+      .policies-tabs {
+        padding-top: {{ section.settings.padding_top_mobile | default: 0 }}px !important;
+        padding-bottom: {{ section.settings.padding_bottom_mobile | default: 0 }}px !important;
+      }
       .policies-tabs-wrapper {
         gap: 32px;
       }
@@ -191,31 +189,49 @@
   "name": "Policies Tabs",
   "settings": [
     {
-      "type": "text",
-      "id": "title",
-      "label": "Section Title",
-      "default": "Our Policies"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "label": "Padding Top",
-      "min": 0,
-      "max": 200,
-      "step": 4,
-      "unit": "px",
-      "default": 40
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "label": "Padding Bottom",
-      "min": 0,
-      "max": 200,
-      "step": 4,
-      "unit": "px",
-      "default": 40
-    }
+        "type": "header",
+        "content": "Paddings"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_desktop",
+        "label": "Padding зверху (десктоп)",
+        "default": 40,
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_desktop",
+        "label": "Padding знизу (десктоп)",
+        "default": 0,
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Padding зверху (мобілка)",
+        "default": 0,
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Padding знизу (мобілка)",
+        "default": 0,
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "unit": "px"
+      }
   ],
   "blocks": [
     {
@@ -226,6 +242,12 @@
           "type": "text",
           "id": "tab_title",
           "label": "Tab Title"
+        },
+        {
+          "type": "text",
+          "id": "tab_content_title",
+          "label": "Tab Content Title",
+          "default": "Payment and shipment"
         },
         {
           "type": "richtext",
