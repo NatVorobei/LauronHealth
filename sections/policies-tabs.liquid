@@ -83,6 +83,7 @@
     .policies-tab-button.active {
         color: var(--color-main-text);
         font-weight: 600;
+        border-bottom: 2px solid var(--color-main-text);
     }
     .policies-tab-content p {
       margin: 0;
@@ -141,6 +142,10 @@
       .policies-tabs-wrapper {
         gap: 32px;
       }
+      .policies-tabs-list {
+        gap: 36px;
+        border-bottom: 1px solid #D7D7D7;
+      }
       .policies-content-wrapper {
         margin-bottom: 24px;
       }
@@ -150,7 +155,7 @@
       .policies-content-text {
         font-size: 14px;
       }
-      .policies-tabs-menu {
+      {% comment %} .policies-tabs-menu {
         margin-left: -16px;
       }
       .policies-tabs-list-item:first-child {
@@ -158,11 +163,15 @@
       }
       .policies-tabs-list-item:last-child {
         padding-right: 16px;
-      }
+      } {% endcomment %}
       .policies-tabs-title {
-        font-size: 20px;
+        font-size: 26px;
+        line-height: 34px;
         margin-bottom: 24px;
-        padding-left: 16px;
+      }
+      .policies-tab-content p {
+        font-size: 16px;
+        line-height: 22px;
       }
     }
   </style>
