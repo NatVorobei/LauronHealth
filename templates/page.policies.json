@@ -41,23 +41,11 @@
             "content_source": "richtext",
             "additional_html": ""
           }
-        },
-        "policy_tab_Rk4LRb": {
-          "type": "policy_tab",
-          "settings": {
-            "tab_title": "Privacy Policy",
-            "tab_content_title": "Payment and shipment",
-            "tab_content_richtext": "<p>FFFFFFFFFFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</p>",
-            "tab_content_html": "",
-            "content_source": "richtext",
-            "additional_html": ""
-          }
         }
       },
       "block_order": [
         "policy_tab_tbaGhc",
-        "policy_tab_4Ng9Ba",
-        "policy_tab_Rk4LRb"
+        "policy_tab_4Ng9Ba"
       ],
       "name": "Policies Tabs",
       "settings": {
