@@ -136,12 +136,57 @@
         "padding_top": 0,
         "padding_bottom": 80
       }
+    },
+    "faq_cards_VNtxUh": {
+      "type": "faq-cards",
+      "blocks": {
+        "faq_card_qNHXnc": {
+          "type": "faq_card",
+          "settings": {
+            "title": "Запитання",
+            "text": "Відповідь на запитання",
+            "show_button": false,
+            "button_text": "Дізнатися більше",
+            "button_link": ""
+          }
+        },
+        "faq_card_b6GnUb": {
+          "type": "faq_card",
+          "settings": {
+            "title": "Запитання",
+            "text": "Відповідь на запитання",
+            "show_button": false,
+            "button_text": "Дізнатися більше",
+            "button_link": ""
+          }
+        },
+        "faq_card_YYArez": {
+          "type": "faq_card",
+          "settings": {
+            "title": "Запитання",
+            "text": "Відповідь на запитання",
+            "show_button": false,
+            "button_text": "Дізнатися більше",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "faq_card_qNHXnc",
+        "faq_card_b6GnUb",
+        "faq_card_YYArez"
+      ],
+      "name": "FAQ Cards",
+      "settings": {
+        "section_title": "Часті запитання"
+      }
     }
   },
   "order": [
     "main",
     "faq_bfTMXM",
     "exclusive_benefits_LPd7HJ",
-    "rich_text_LUfWQK"
+    "rich_text_LUfWQK",
+    "faq_cards_VNtxUh"
   ]
 }
