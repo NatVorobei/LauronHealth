@@ -90,7 +90,11 @@
       "settings": {
         "image": "shopify://shop_images/faqs-1.webp",
         "heading": "Lauron is an innovative product  that has no equal on the market",
-        "reverse_layout": true
+        "reverse_layout": true,
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 120,
+        "padding_top_mobile": 60,
+        "padding_bottom_mobile": 80
       }
     }
   },
