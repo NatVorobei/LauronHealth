@@ -17,13 +17,16 @@
       {% endfor %}
     </ul>
 
-    <div class="mobile-only">
+    <div class="faq-tabs-select-wrapper mobile-only">
       <select class="faq-tabs-select">
         {% for tab in tabs %}
           <option value="tab-{{ tab.settings.tab_id }}">{{ tab.settings.tab_title }}</option>
         {% endfor %}
       </select>
-    </div>
+      <span class="custom-select-icon">
+        {{ 'faqs-caret.svg' | inline_asset_content }}
+      </span>
+    </div>    
   </div>
 
   <div class="faq-tabs-content">
@@ -170,12 +173,22 @@
 
   .mobile-only {
     display: none;
-  }
+  } 
 
   @media screen and (max-width: 749px) {
     .faq-tabs-wrapper {
       flex-direction: column;
       padding: 0 16px;
+    }
+
+    .faq-tabs-wrapper__title,
+    .faq-tabs-content__title {
+      font-size: 20px;
+      line-height: 16px;
+    }
+
+    .faq-tabs-content__title {
+      margin-top: 10px;
     }
 
     .faq-tabs-list.desktop-only {
@@ -196,12 +209,44 @@
       border: 1px solid #D7D7D7;
       border-radius: 16px;
       background-color: #fff;
-      color: var(--color-main-text);
+      color: var(--color-main-subtext);
     }
 
     .faq-tabs-content {
       max-width: 100%;
     }
+
+    .faq-tabs-select-wrapper {
+      position: relative;
+      display: block;
+      width: 100%;
+    }
+    
+    .faq-tabs-select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none; 
+      width: 100%;
+      padding: 12px 40px 12px 12px;
+      font-size: 14px;
+      line-height: 16px;
+      font-family: var(--font-heading-main);
+      border: 1px solid #D7D7D7;
+      border-radius: 16px;
+      background-color: #fff;
+      color: #87878D;
+      cursor: pointer;
+    }
+    
+    .custom-select-icon {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+    } 
   }
 </style>
 
