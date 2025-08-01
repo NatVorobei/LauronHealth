@@ -143,27 +143,30 @@
         "faq_card_qNHXnc": {
           "type": "faq_card",
           "settings": {
-            "title": "Запитання",
-            "text": "Відповідь на запитання",
-            "button_text": "Дізнатися більше",
-            "button_link": "shopify://pages/дослідження"
+            "icon": "shopify://shop_images/mail.svg",
+            "title": "Ticket support",
+            "text": "By combining cutting-edge science with  the most powerful natural ingredients,  Lauron offers a holistic, science-based.",
+            "button_text": "SEND TICKET",
+            "button_link": ""
           }
         },
         "faq_card_b6GnUb": {
           "type": "faq_card",
           "settings": {
-            "title": "Запитання",
-            "text": "Відповідь на запитання",
-            "button_text": "Дізнатися більше",
+            "icon": "shopify://shop_images/comment.svg",
+            "title": "Product Information",
+            "text": "By combining cutting-edge science with  the most powerful natural ingredients,  Lauron offers a holistic, science-based.",
+            "button_text": "CHAT NOW",
             "button_link": ""
           }
         },
         "faq_card_YYArez": {
           "type": "faq_card",
           "settings": {
-            "title": "Запитання",
-            "text": "Відповідь на запитання",
-            "button_text": "Дізнатися більше",
+            "icon": "shopify://shop_images/headphones.svg",
+            "title": "Assistant",
+            "text": "By combining cutting-edge science with  the most powerful natural ingredients,  Lauron offers a holistic, science-based.",
+            "button_text": "CONTACT US",
             "button_link": ""
           }
         }
