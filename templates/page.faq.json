@@ -145,9 +145,8 @@
           "settings": {
             "title": "Запитання",
             "text": "Відповідь на запитання",
-            "show_button": false,
             "button_text": "Дізнатися більше",
-            "button_link": ""
+            "button_link": "shopify://pages/дослідження"
           }
         },
         "faq_card_b6GnUb": {
@@ -155,7 +154,6 @@
           "settings": {
             "title": "Запитання",
             "text": "Відповідь на запитання",
-            "show_button": false,
             "button_text": "Дізнатися більше",
             "button_link": ""
           }
@@ -165,7 +163,6 @@
           "settings": {
             "title": "Запитання",
             "text": "Відповідь на запитання",
-            "show_button": false,
             "button_text": "Дізнатися більше",
             "button_link": ""
           }
