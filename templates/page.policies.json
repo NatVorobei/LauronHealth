@@ -28,17 +28,24 @@
             "tab_content_html": "",
             "content_source": "richtext"
           }
+        },
+        "policy_tab_4Ng9Ba": {
+          "type": "policy_tab",
+          "settings": {
+            "tab_title": "Terms of service",
+            "tab_content_title": "Payment and shipment",
+            "tab_content_richtext": "<p><br/>Payment and shipment<br/><br/><br/>Payment and shipment<br/><br/><br/>Payment and shipment<br/><br/>v<br/>Payment and shipment<br/><br/><br/>Payment and shipment<br/><br/></p>",
+            "tab_content_html": "",
+            "content_source": "richtext"
+          }
         }
       },
       "block_order": [
-        "policy_tab_tbaGhc"
+        "policy_tab_tbaGhc",
+        "policy_tab_4Ng9Ba"
       ],
       "name": "Policies Tabs",
-      "settings": {
-        "title": "Our Policies",
-        "padding_top": 40,
-        "padding_bottom": 40
-      }
+      "settings": {}
     }
   },
   "order": [
