@@ -1,0 +1,270 @@
+<div class="policies-tabs">
+    {% if section.settings.title != blank %}
+      <h2 class="policies-tabs-title">{{ section.settings.title }}</h2>
+    {% endif %}
+    <div class="policies-tabs-wrapper">
+      <div class="policies-tabs-menu">
+        <ul class="policies-tabs-list">
+          {% for block in section.blocks %}
+            <li class="policies-tabs-list-item">
+              <button
+                class="policies-tab-button {% if forloop.first %}active{% endif %}"
+                data-tab="tab-{{ block.id }}"
+              >
+                {{ block.settings.tab_title }}
+              </button>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+  
+      <div class="policies-tabs-content" style="flex: 1;">
+        {% for block in section.blocks %}
+          <div
+            id="tab-{{ block.id }}"
+            class="policies-tab-content {% if forloop.first %}active{% endif %}"
+            style="{% unless forloop.first %}display: none;{% endunless %}"
+          >
+            {% if block.settings.content_source == 'richtext' %}
+              {{ block.settings.tab_content_richtext }}
+            {% else %}
+              {{ block.settings.tab_content_html }}
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  
+  <style>
+    .policies-tabs {
+      max-width: 1360px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .policies-tabs-title {
+      font-weight: 400;
+      margin: 0 0 40px;
+      font-family: var(--font-heading-main);
+    }
+    .policies-tabs-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      padding-left: 16px;
+    }
+    .policies-tabs-list {
+      display: flex;
+      flex-direction: row;
+      overflow-x: scroll;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 16px;
+    }
+    .policies-tab-button {
+      color: #014d76;
+      background: #fff;
+      border: 1px solid #014d76;
+      border-radius: 8px;
+      padding: 13px 20px;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 400;
+      width: max-content;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .policies-tab-button.active,
+    .policies-tab-button:hover {
+      color: #fff;
+      background: #014d76;
+    }
+    .policies-tab-content p {
+      margin: 0;
+      font-weight: 400;
+      color: var(--black-color);
+      padding-right: 16px;
+    }
+  
+    .policies-tabs-list {
+      overflow-x: scroll;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .policies-content-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .policies-content-title {
+      font-family: var(--font-heading-main);
+      font-weight: 500;
+      line-height: normal;
+    }
+    .policies-tabs-list::-webkit-scrollbar {
+      display: none;
+    }
+  
+    @media (width >= 750px) {
+      .policies-content-title {
+        font-size: 20px;
+      }
+      .policies-tabs {
+        padding: 20px;
+      }
+      .policies-tabs-title {
+        font-size: 28px;
+      }
+      .policies-tabs-wrapper {
+        flex-direction: row;
+        gap: 124px;
+        padding: 0;
+      }
+      .policies-tabs-list {
+        flex-direction: column;
+        overflow-x: hidden;
+      }
+      .policies-tab-content p {
+        font-size: 16px;
+      }
+      .policies-tab-button {
+        width: 305px;
+        padding: 13px 0;
+      }
+    }
+  
+    @media (width <= 749px) {
+      .policies-tabs-wrapper {
+        gap: 32px;
+      }
+      .policies-content-wrapper {
+        margin-bottom: 24px;
+      }
+      .policies-content-title {
+        font-size: 16px;
+      }
+      .policies-content-text {
+        font-size: 14px;
+      }
+      .policies-tabs-menu {
+        margin-left: -16px;
+      }
+      .policies-tabs-list-item:first-child {
+        margin-left: 16px;
+      }
+      .policies-tabs-list-item:last-child {
+        padding-right: 16px;
+      }
+      .policies-tabs-title {
+        font-size: 20px;
+        margin-bottom: 24px;
+        padding-left: 16px;
+      }
+    }
+  </style>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const buttons = document.querySelectorAll('.policies-tab-button');
+      const contents = document.querySelectorAll('.policies-tab-content');
+  
+      buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+          buttons.forEach((btn) => btn.classList.remove('active'));
+          contents.forEach((cont) => (cont.style.display = 'none'));
+  
+          button.classList.add('active');
+          const tabId = button.getAttribute('data-tab');
+          const activeTab = document.getElementById(tabId);
+          if (activeTab) {
+            activeTab.style.display = 'block';
+          }
+        });
+      });
+    });
+  </script>
+  
+  {% schema %}
+{
+  "name": "Policies Tabs",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Our Policies"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "policy_tab",
+      "name": "Policy Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_title",
+          "label": "Tab Title"
+        },
+        {
+          "type": "richtext",
+          "id": "tab_content_richtext",
+          "label": "Tab Content (Rich Text)",
+          "info": "Use this for easy formatting (bold, italic, lists, etc.)"
+        },
+        {
+          "type": "html",
+          "id": "tab_content_html",
+          "label": "Tab Content (HTML)",
+          "info": "Use this for custom HTML markup (e.g., <br>, <div>, etc.)"
+        },
+        {
+          "type": "select",
+          "id": "content_source",
+          "label": "Content Source",
+          "options": [
+            {
+              "value": "richtext",
+              "label": "Use Rich Text"
+            },
+            {
+              "value": "html",
+              "label": "Use HTML"
+            }
+          ],
+          "default": "richtext",
+          "info": "Choose which content to display: Rich Text or HTML"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Policies Tabs",
+      "category": "Policies"
+    }
+  ]
+}
+{% endschema %}
