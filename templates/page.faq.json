@@ -175,7 +175,11 @@
       ],
       "name": "FAQ Cards",
       "settings": {
-        "section_title": "Часті запитання"
+        "section_title": "",
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 120,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
       }
     }
   },
