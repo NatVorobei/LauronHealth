@@ -86,6 +86,9 @@
         "additional_text_qDa8bN",
         "button_jMWAmQ"
       ],
+      "custom_css": [
+        ".exclusive-benefits-container {max-width: 1160px;}"
+      ],
       "name": "Exclusive Benefits Section",
       "settings": {
         "image": "shopify://shop_images/faqs-1.webp",
