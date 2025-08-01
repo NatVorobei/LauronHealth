@@ -3,18 +3,16 @@
     padding-bottom: {{ section.settings.padding_bottom_desktop | default: 0 }}px;
   ">
     <div class="faq-card-container">
+      {% if section.settings.section_title != blank %}
       <div class="faq-card__header">
-        {% if section.settings.section_title != blank %}
-          <h2 class="faq-card__heading">{{ section.settings.section_title }}</h2>
-        {% endif %}
+        <h2 class="faq-card__heading">{{ section.settings.section_title }}</h2>
       </div>
-  
+      {% endif %}
       <div class="faq-card-list">
         {% for block in section.blocks %}
           {% assign icon = block.settings.icon %}
           {% assign title = block.settings.title %}
           {% assign text = block.settings.text %}
-          {% comment %} {% assign show_button = block.settings.show_button %} {% endcomment %}
           {% assign button_text = block.settings.button_text %}
           {% assign button_link = block.settings.button_link %}
   
@@ -34,12 +32,8 @@
   </section>
 
   <style>
-    .faq-card-section {
-        padding-top: 120px;
-        background: #fff;
-    }
       .faq-card-container {
-        max-width: 1280px;
+        max-width: 1160px;
         margin: 0 auto;
       }
       .faq-card__header {
@@ -61,29 +55,30 @@
         display: flex;
         justify-content: space-between;
         align-items: stretch;
-        gap: 20px;
         flex-wrap: wrap;
       }
       .faq-card-item {
         display: flex;
         flex-direction: column;
         align-items: center;
-        border: 1px solid var(--color-main-text);
+        border: 1px solid #D7D7D7;
         max-width: 370px;
-        padding: 40px 20px;
-        border-radius: 12px;
+        padding: 30px 20px;
+        border-radius: 20px;
         text-align: center;
       }
       .faq-card-icon {
-        margin-bottom: 27px;
+        margin-bottom: 30px;
         width: 40px;
         height: 40px;
       }
       .faq-card-title {
-        font-size: 20px;
+        font-size: 28px;
+        line-height: 34px;
         font-weight: 700;
-        margin-bottom: 12px;
+        margin-bottom: 20px;
         color: var(--color-main-text);
+        font-family: var(--font-heading-main);
       }
       .faq-card-text {
         font-size: 16px;
@@ -91,12 +86,15 @@
         color: var(--color-main-text);
       }
       .faq-card-button {
-        margin-top: 20px;
-        padding: 10px 20px;
+        margin-top: 40px;
+        padding: 20px 22px;
+        min-width: 134px;
         border: none;
         background-color: var(--color-main-text);
         color: #fff;
-        border-radius: 6px;
+        border-radius: 20px;
+        font-size: 14px;
+        line-height: 12px;
         font-weight: 600;
         text-decoration: none;
         transition: background-color 0.3s ease;
@@ -110,6 +108,26 @@
           padding-top: {{ section.settings.padding_top_mobile | default: 0 }}px !important;
           padding-bottom: {{ section.settings.padding_bottom_mobile | default: 0 }}px !important;
         }
+        .faq-card-item {
+            max-width: 100%;
+        }
+        .faq-card-title {
+            font-size: 24px;
+            line-height: 30px;
+            margin-bottom: 16px;
+        }
+        .faq-card-text {
+            font-size: 14px;
+            line-height: 20px;
+        }
+        .faq-card-icon {
+            margin-bottom: 28px;
+        }
+        .faq-card-button {
+            margin-top: 30px;
+            font-size: 12px;
+            line-height: 12px;
+        }
       }
       
       @media(max-width: 989px) {
@@ -117,6 +135,7 @@
           flex-direction: column;
           align-items: center;
           padding: 0 10px;
+          gap: 20px;
         }
         .faq-card__heading {
           font-size: 28px;
