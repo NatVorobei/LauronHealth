@@ -25,14 +25,18 @@
             class="policies-tab-content {% if forloop.first %}active{% endif %}"
             style="{% unless forloop.first %}display: none;{% endunless %}"
           >
-            {% if section.settings.tab_content_title != blank %}
-                <h2 class="policies-tabs-title">{{ block.settings.tab_content_title }}</h2>
+            {% if block.settings.tab_title != blank %}
+                <h2 class="policies-tabs-title">{{ block.settings.tab_title }}</h2>
               {% endif %}
-            {% if block.settings.content_source == 'richtext' %}
-              {{ block.settings.tab_content_richtext }}
-            {% else %}
-              {{ block.settings.tab_content_html }}
-            {% endif %}
+              {% if block.settings.content_source == 'richtext' %}
+                {{ block.settings.tab_content_richtext }}
+              {% else %}
+                {{ block.settings.tab_content_html }}
+              {% endif %}
+              
+              {% if block.settings.additional_html != blank %}
+                {{ block.settings.additional_html }}
+              {% endif %}              
           </div>
         {% endfor %}
       </div>
@@ -47,9 +51,9 @@
       flex-direction: column;
     }
     .policies-tabs-title {
-      font-weight: 400;
-      margin: 0 0 40px;
+      font-weight: 700;
       font-family: var(--font-heading-main);
+      margin-bottom: 40px;
     }
     .policies-tabs-wrapper {
       display: flex;
@@ -64,17 +68,17 @@
       list-style: none;
       margin: 0;
       padding: 0;
-      gap: 16px;
     }
     .policies-tab-button {
       color: #87878D;
       background: none;
       border: none;
       cursor: pointer;
-      font-size: 18px;
-      font-weight: 400;
+      font-size: 16px;
+      line-height: 32px;
       padding: 0;
       width: max-content;
+      font-family: var(--font-body-main);
     }
     .policies-tab-button.active {
         color: var(--color-main-text);
@@ -82,7 +86,8 @@
     }
     .policies-tab-content p {
       margin: 0;
-      font-weight: 400;
+      font-size: 20px;
+      line-height: 28px;
       color: var(--color-main-text);
       padding-right: 16px;
     }
@@ -95,7 +100,6 @@
     .policies-content-wrapper {
       display: flex;
       flex-direction: column;
-      gap: 16px;
       margin-bottom: 40px;
     }
     .policies-content-title {
@@ -163,7 +167,7 @@
     }
   </style>
   
-  <script>
+<script>
     document.addEventListener('DOMContentLoaded', function () {
       const buttons = document.querySelectorAll('.policies-tab-button');
       const contents = document.querySelectorAll('.policies-tab-content');
@@ -182,9 +186,9 @@
         });
       });
     });
-  </script>
+</script>
   
-  {% schema %}
+{% schema %}
 {
   "name": "Policies Tabs",
   "settings": [
@@ -277,6 +281,12 @@
           ],
           "default": "richtext",
           "info": "Choose which content to display: Rich Text or HTML"
+        },
+        {
+            "type": "html",
+            "id": "additional_html",
+            "label": "Additional HTML Content (optional)",
+            "info": "This will appear below the main tab content if provided"
         }
       ]
     }
