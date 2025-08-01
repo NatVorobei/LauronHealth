@@ -1,28 +1,34 @@
-<div class="exclusive-benefits-wrapper">
-    <div class="exclusive-benefits-container">
-      <div class="exclusive-benefits-image">
-        {% if section.settings.image %}
-          <img src="{{ section.settings.image | image_url: width: 800 }}" alt="Benefits image" loading="lazy">
-        {% endif %}
-      </div>
-      <div class="exclusive-benefits-content">
-        {% if section.settings.heading %}
-          <h2 class="exclusive-benefits-heading">{{ section.settings.heading }}</h2>
-        {% endif %}
-  
-        <ul class="exclusive-benefits-list">
-          {% for block in section.blocks %}
-            {% if block.type == 'benefit' and block.settings.text != blank %}
-              <li>
-                <span class="benefit-icon">{{ 'checkbox-promo.svg' | inline_asset_content }}</span>
-                <span class="benefit-text">{{ block.settings.text }}</span>
-              </li>
-            {% endif %}
-          {% endfor %}
-        </ul>
-      </div>
-    </div>
+<div class="exclusive-benefits-container {% if section.settings.reverse_layout %}reverse{% endif %}">
+  <div class="exclusive-benefits-image">
+    {% if section.settings.image %}
+      <img src="{{ section.settings.image | image_url: width: 800 }}" alt="Benefits image" loading="lazy">
+    {% endif %}
   </div>
+  <div class="exclusive-benefits-content">
+    {% if section.settings.heading %}
+      <h2 class="exclusive-benefits-heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    <ul class="exclusive-benefits-list">
+      {% for block in section.blocks %}
+        {% if block.type == 'benefit' and block.settings.text != blank %}
+          <li>
+            <span class="benefit-icon">{{ 'checkbox-promo.svg' | inline_asset_content }}</span>
+            <span class="benefit-text">{{ block.settings.text }}</span>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+    {% if section.settings.additional_text %}
+      <p class="exclusive-benefits-description">{{ section.settings.additional_text }}</p>
+    {% endif %}
+
+    {% if section.settings.button_label and section.settings.button_link %}
+      <a href="{{ section.settings.button_link }}" class="exclusive-benefits-button">{{ section.settings.button_label }}</a>
+    {% endif %}
+  </div>
+</div>
   
   <style>
     .exclusive-benefits-wrapper {
@@ -96,8 +102,39 @@
       flex-shrink: 0;
       margin-top: 3px;
     }
+
+    .exclusive-benefits-description {
+      margin-top: 30px;
+      font-size: 16px;
+      color: var(--color-main-text);
+      line-height: 1.6;
+    }
+    
+    .exclusive-benefits-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      background-color: #000;
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+    
+    .exclusive-benefits-button:hover {
+      background-color: #333;
+    }
+    
+    .exclusive-benefits-container.reverse {
+      flex-direction: row-reverse;
+    }
   
-    @media (max-width: 768px) {
+    @media (max-width: 749px) {
+      .exclusive-benefits-container.reverse {
+        flex-direction: column;
+      }
+      
       .exclusive-benefits-container {
         flex-direction: column;
       }
@@ -163,7 +200,29 @@
             "id": "text",
             "label": "Текст переваги",
             "default": "Ваша перевага тут"
-          }
+          },
+          {
+            "type": "checkbox",
+            "id": "reverse_layout",
+            "label": "Розмістити зображення праворуч"
+          },
+          {
+            "type": "text",
+            "id": "additional_text",
+            "label": "Додатковий текст під списком",
+            "default": ""
+          },
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Текст кнопки",
+            "default": "Дізнатися більше"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Посилання кнопки"
+          }          
         ]
       }
     ],
