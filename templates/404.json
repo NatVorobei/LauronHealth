@@ -11,7 +11,12 @@
   "sections": {
     "main": {
       "type": "main-404",
-      "settings": {}
+      "settings": {
+        "image": "shopify://shop_images/404.png",
+        "title": "Ой! Ваша сторінка не знайдена...",
+        "button_label": "Повернутись на головну",
+        "button_link": "/"
+      }
     }
   },
   "order": [
