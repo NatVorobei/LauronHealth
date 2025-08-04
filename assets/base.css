@@ -3959,4 +3959,10 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
     padding: 0 10px;
   }
 }
+
+@media(max-width: 989px) {
+  .menu-drawer__menu li #HeaderDrawer-купити-зараз{
+    display: none;
+  }
+}
 /* Custom classes end */
