@@ -11,13 +11,55 @@
 </style>
 
 <div class="template-404 page-width page-margin center">
-  <p>
-    {{ 'templates.404.subtext' | t }}
-  </p>
+  {% if section.settings.image %}
+    <img src="{{ section.settings.image | image_url }}" alt="404 image">
+  {% endif %}
+
   <h1 class="title">
-    {{ 'templates.404.title' | t }}
+    {{ section.settings.title }}
   </h1>
-  <a href="{{ routes.all_products_collection_url }}" class="button">
-    {{ 'general.continue_shopping' | t }}
+
+  <a href="{{ section.settings.button_link }}" class="button">
+    {{ 'home.svg' | inline_asset_content }} {{ section.settings.button_label }}
   </a>
 </div>
+
+
+
+{% schema %}
+{
+  "name": "404 Not Found Page",
+  "tag": "section",
+  "class": "template-404",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "404 Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Oops! Page not found"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Continue Shopping"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link",
+      "default": "/collections/all"
+    }
+  ],
+  "presets": [
+    {
+      "name": "404 Page"
+    }
+  ]
+}
+{% endschema %}
