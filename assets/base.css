@@ -3965,4 +3965,10 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
     display: none;
   }
 }
+
+/* @media(min-width: 990px) {
+  .header__menu-item-wrapper:last-child{
+    display: none;
+  }
+} */
 /* Custom classes end */
