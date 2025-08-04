@@ -9,10 +9,10 @@
         {% assign tab_titles = section.settings.tab_titles | split: ',' %}
         {% for handle in tab_pages %}
           {% assign trimmed_handle = handle | strip %}
-          <li class="policies-tabs-list-item">
+          <li class="policies-tabs-list-item {% if page.handle == trimmed_handle %}active{% endif %}">
             <a
               href="{{ pages[trimmed_handle].url }}"
-              class="policies-tab-button {% if page.handle == trimmed_handle %}active{% endif %}"
+              class="policies-tab-button"
             >
               {{ tab_titles[forloop.index0] | strip }}
             </a>
@@ -58,6 +58,7 @@
     padding: 0;
   }
   .policies-tab-button {
+    text-decoration: none;
     color: #87878D;
     background: none;
     border: none;
@@ -68,7 +69,8 @@
     width: max-content;
     font-family: var(--font-body-main);
   }
-  .policies-tab-button.active {
+  .policies-tabs-list-item.active a{
+    text-decoration: none;
     color: var(--color-main-text);
     font-weight: 600;
   }
@@ -127,11 +129,14 @@
     .policies-tabs-content {
       padding: 0 14px;
     }
-    .policies-tab-button.active {
-      border-bottom: 2px solid var(--color-main-text);
-    }
     .policies-tabs-menu {
       margin-left: -16px;
+    }
+    .policies-tabs-list-item {
+      white-space: nowrap;
+    }
+    .policies-tabs-list-item.active {
+      border-bottom: 2px solid var(--color-main-text);
     }
     .policies-tabs-list-item:first-child {
       margin-left: 16px;
