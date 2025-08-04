@@ -1,0 +1,213 @@
+<div class="policies-tabs" style="
+    padding-top: {{ section.settings.padding_top_desktop | default: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop | default: 0 }}px;
+  ">
+  <div class="policies-tabs-wrapper">
+    <div class="policies-tabs-menu">
+      <ul class="policies-tabs-list">
+        {% assign tab_pages = section.settings.page_handles | split: ',' %}
+        {% assign tab_titles = section.settings.tab_titles | split: ',' %}
+        {% for handle in tab_pages %}
+          {% assign trimmed_handle = handle | strip %}
+          <li class="policies-tabs-list-item">
+            <a
+              href="{{ pages[trimmed_handle].url }}"
+              class="policies-tab-button {% if page.handle == trimmed_handle %}active{% endif %}"
+            >
+              {{ tab_titles[forloop.index0] | strip }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="policies-tabs-content" style="flex: 1;">
+      <div class="policies-tab-content active">
+        {% if page.title != blank %}
+          <h2 class="policies-tabs-title">{{ page.title }}</h2>
+        {% endif %}
+        {{ page.content }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .policies-tabs {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .policies-tabs-title {
+    font-weight: 700;
+    font-family: var(--font-heading-main);
+    margin-bottom: 40px;
+  }
+  .policies-tabs-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .policies-tabs-list {
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .policies-tab-button {
+    color: #87878D;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 32px;
+    padding: 0;
+    width: max-content;
+    font-family: var(--font-body-main);
+  }
+  .policies-tab-button.active {
+    color: var(--color-main-text);
+    font-weight: 600;
+  }
+  .policies-tab-content p {
+    margin: 0;
+    font-size: 20px;
+    line-height: 28px;
+    color: var(--color-main-text);
+    padding-right: 16px;
+  }
+
+  .policies-tabs-list {
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .policies-tabs-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (min-width: 750px) {
+    .policies-tabs-wrapper {
+      flex-direction: row;
+      gap: 60px;
+    }
+    .policies-tabs-list {
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+    .policies-tab-content p {
+      font-size: 16px;
+    }
+    .policies-tabs-title {
+      font-size: 28px;
+    }
+  }
+
+  @media (max-width: 749px) {
+    .policies-tabs {
+      padding-top: {{ section.settings.padding_top_mobile | default: 0 }}px !important;
+      padding-bottom: {{ section.settings.padding_bottom_mobile | default: 0 }}px !important;
+    }
+    .policies-tabs-wrapper {
+      gap: 32px;
+    }
+    .policies-tabs-list {
+      gap: 36px;
+      border-bottom: 1px solid #D7D7D7;
+      padding-right: 14px;
+      margin-left: 14px;
+    }
+    .policies-tab-button {
+      font-size: 12px;
+      line-height: 24px;
+    }
+    .policies-tabs-content {
+      padding: 0 14px;
+    }
+    .policies-tab-button.active {
+      border-bottom: 2px solid var(--color-main-text);
+    }
+    .policies-tabs-menu {
+      margin-left: -16px;
+    }
+    .policies-tabs-list-item:first-child {
+      margin-left: 16px;
+    }
+    .policies-tabs-list-item:last-child {
+      padding-right: 16px;
+    }
+    .policies-tabs-title {
+      font-size: 26px;
+      line-height: 34px;
+      margin-bottom: 24px;
+    }
+    .policies-tab-content p {
+      font-size: 16px;
+      line-height: 22px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Policies Tabs via Pages",
+  "settings": [
+    {
+      "type": "text",
+      "id": "page_handles",
+      "label": "Page handles (comma-separated)",
+      "default": "payment-and-shipment,terms-of-service,privacy-policy,contact-us"
+    },
+    {
+      "type": "text",
+      "id": "tab_titles",
+      "label": "Tab titles (comma-separated)",
+      "default": "Payment and shipment,Terms of service,Privacy Policy,Contact Us"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Top padding (desktop)",
+      "default": 60,
+      "min": 0,
+      "max": 120,
+      "step": 4
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Bottom padding (desktop)",
+      "default": 60,
+      "min": 0,
+      "max": 120,
+      "step": 4
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Top padding (mobile)",
+      "default": 32,
+      "min": 0,
+      "max": 100,
+      "step": 4
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Bottom padding (mobile)",
+      "default": 32,
+      "min": 0,
+      "max": 100,
+      "step": 4
+    }
+  ],
+  "presets": [
+    {
+      "name": "Policies Tabs via Pages"
+    }
+  ]
+}
+{% endschema %}

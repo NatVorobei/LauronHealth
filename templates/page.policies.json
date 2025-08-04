@@ -1,87 +1,13 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
+  "name": "Policies Tabs Page",
   "sections": {
     "main": {
-      "type": "main-page",
-      "disabled": true,
+      "type": "policies-tabs-pages",
       "settings": {
-        "padding_top": 28,
-        "padding_bottom": 28
-      }
-    },
-    "policies_tabs_bdR3aD": {
-      "type": "policies-tabs",
-      "blocks": {
-        "policy_tab_tbaGhc": {
-          "type": "policy_tab",
-          "settings": {
-            "tab_title": "Payment and shipment",
-            "tab_content_title": "Payment and shipment",
-            "tab_content_richtext": "<p><strong>EU Standard International</strong><br/><br/>FLAT RATE £14.50 OR FREE FOR ORDERS OVER £35<br/><br/>Orders placed before 1:00pm GMT should arrive within 3-17 business days. This is a fully trackable service. This service may take longer to some rural areas.<br/><br/>Orders placed on Saturdays, Sundays or public holidays are handled on the Monday or the first working day after. (Working days exclude Saturdays, Sundays and public holidays).<br/><br/><strong>International Standard Shipping</strong><br/><br/>FLAT RATE £20 OR FREE FOR ORDERS OVER £35<br/><br/>Orders placed before 1:00pm GMT should arrive within 3-17 business days. This is a fully trackable service.<br/><br/>Orders placed on Saturdays, Sundays or public holidays are handled on the Monday or the first working day after. (Working days exclude Saturdays, Sundays and public holidays).<br/></p>",
-            "tab_content_html": "",
-            "content_source": "richtext",
-            "additional_html": "<div class=\"payments-block\" style=\"margin-top: 20px;\">\n  <h3>Secure payments</h3>\n  <p>We support the most convenient payment methods.</p>\n  <div style=\"display: flex; gap: 8px; margin-bottom: 24px;\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0745/8786/5320/files/trust-badges.png?v=1754057221\" alt=\"Trust Badges\" style=\"height: 24px;\">\n  </div>\n\n  <h3>Convenient delivery</h3>\n  <ul style=\"list-style: none; padding: 0;\">\n    <li style=\"margin-bottom: 10px;\">\n      • Package lockers \n      <img src=\"https://cdn.shopify.com/s/files/1/0745/8786/5320/files/inpost.png?v=1754057284\" alt=\"InPost\" style=\"height: 31px; vertical-align: middle;\">\n    </li>\n    <li>\n      • Points and vending machines \n      <img src=\"https://cdn.shopify.com/s/files/1/0745/8786/5320/files/dhl.png?v=1754057284\" alt=\"DHL\" style=\"height: 12px; vertical-align: middle;\">\n    </li>\n  </ul>\n</div>"
-          }
-        },
-        "policy_tab_4Ng9Ba": {
-          "type": "policy_tab",
-          "settings": {
-            "tab_title": "Terms of service",
-            "tab_content_title": "Terms of service",
-            "tab_content_richtext": "<p><br/></p>",
-            "tab_content_html": "",
-            "content_source": "richtext",
-            "additional_html": ""
-          }
-        },
-        "policy_tab_YLHwBL": {
-          "type": "policy_tab",
-          "settings": {
-            "tab_title": "Privacy Policy",
-            "tab_content_title": "Privacy Policy",
-            "tab_content_richtext": "",
-            "tab_content_html": "",
-            "content_source": "richtext",
-            "additional_html": ""
-          }
-        },
-        "policy_tab_teaTfx": {
-          "type": "policy_tab",
-          "settings": {
-            "tab_title": "Contact Us",
-            "tab_content_title": "Contact Us",
-            "tab_content_richtext": "",
-            "tab_content_html": "",
-            "content_source": "richtext",
-            "additional_html": ""
-          }
-        }
-      },
-      "block_order": [
-        "policy_tab_tbaGhc",
-        "policy_tab_4Ng9Ba",
-        "policy_tab_YLHwBL",
-        "policy_tab_teaTfx"
-      ],
-      "name": "Policies Tabs",
-      "settings": {
-        "padding_top_desktop": 40,
-        "padding_bottom_desktop": 120,
-        "padding_top_mobile": 40,
-        "padding_bottom_mobile": 100
+        "page_handles": "payment-and-shipment,terms-of-service,privacy-policy,contact-us",
+        "tab_titles": "Payment and shipment,Terms of service,Privacy Policy,Contact Us"
       }
     }
   },
-  "order": [
-    "main",
-    "policies_tabs_bdR3aD"
-  ]
+  "order": ["main"]
 }
