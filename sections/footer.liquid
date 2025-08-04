@@ -383,6 +383,15 @@
             {%- endfor -%}
           </ul>
         {%- endif -%}
+        <ul class="policies list-unstyled">
+          {%- for link in linklists[section.settings.custom_policies_menu].links -%}
+            <li>
+              <small class="copyright__content">
+                <a href="{{ link.url }}">{{ link.title }}</a>
+              </small>
+            </li>
+          {%- endfor -%}
+        </ul>        
         <small class="copyright__content"
           >&copy; {{ shop.name | link_to: routes.root_url -}}, {{ 'now' | date: '%Y' }}
         </small>
@@ -667,6 +676,11 @@
       "label": "t:sections.footer.settings.show_policy.label",
       "info": "t:sections.footer.settings.show_policy.info"
     },
+    {
+      "type": "link_list",
+      "id": "custom_policies_menu",
+      "label": "Custom policies menu"
+    },    
     {
       "type": "header",
       "content": "t:sections.all.spacing"
