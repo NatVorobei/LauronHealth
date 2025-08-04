@@ -19,6 +19,10 @@
     {{ section.settings.title }}
   </h1>
 
+  <p>
+    {{ section.settings.subheading }}
+  </p>
+
   <a href="{{ section.settings.button_link }}" class="button">
     {{ 'home.svg' | inline_asset_content }} {{ section.settings.button_label }}
   </a>
@@ -42,6 +46,12 @@
       "id": "title",
       "label": "Heading",
       "default": "Oops! Page not found"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Looks like you took a wrong turn. But you can always get back to what truly matters — your balance, glow, and the taste of L'auron!"
     },
     {
       "type": "text",
