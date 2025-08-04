@@ -1,21 +1,85 @@
 <style type="text/css">
-  .template-404 .title + * {
-    margin-top: 1rem;
+  .not-found {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
   }
 
-  @media screen and (min-width: 750px) {
-    .template-404 .title + * {
-      margin-top: 2rem;
+  .not-found__image {
+    max-width: 634px;
+    height: auto;
+    margin-bottom: 78px;
+  }
+
+  .not-found__heading {
+    font-family: var(--font-heading-main);
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 30px;
+    margin-bottom: 30px;
+    color: var(--color-main-text);
+  }
+
+  .not-found__subheading {
+    max-width: 520px;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 40px;
+    color: var(--color-main-text);
+  }
+
+  .not-found__button {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 13px 28px;
+    border-radius: 20px;
+    font-size: 14px;
+    line-height: 12px;
+    font-weight: 700;
+    background: var(--color-main-text);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  @media(max-width: 630px) {
+    .not-found__image {
+      max-width: 340px;
+    }
+  }
+
+  @media(max-width: 749px) {
+    .not-found__image {
+      margin-bottom: 40px;
+    }
+    
+    .not-found__heading {
+      font-size: 18px;
+      line-height: 18px;
+      margin-bottom: 20px;
+    }
+
+    .not-found__subheading {
+      font-size: 12px;
+      line-height: 16px;
+      margin-bottom: 30px;
+    }
+
+    .not-found__button {
+      font-size: 12px;
+      line-height: 10px;
     }
   }
 </style>
 
-<div class="template-404 page-width page-margin center">
+<div class="template-404 page-width page-margin center not-found">
   {% if section.settings.image %}
-    <img src="{{ section.settings.image | image_url }}" alt="404 image">
+    <img class="not-found__image" src="{{ section.settings.image | image_url }}" alt="404">
   {% endif %}
 
-  <h1 class="title">
+  <h1 class="not-found__heading">
     {{ section.settings.title }}
   </h1>
 
@@ -23,12 +87,10 @@
     {{ section.settings.subheading }}
   </p>
 
-  <a href="{{ section.settings.button_link }}" class="button">
+  <a href="{{ section.settings.button_link }}" class="not-found__button">
     {{ 'home.svg' | inline_asset_content }} {{ section.settings.button_label }}
   </a>
 </div>
-
-
 
 {% schema %}
 {
