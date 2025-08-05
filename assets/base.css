@@ -3683,8 +3683,8 @@ p {
 
 .appstle-save-badge {
   position: absolute  !important;
-  top: -26px;
-  right: 0;
+  top: -26px  !important;
+  right: 0  !important;
   background-color: #FF2400 !important;
   font-size: 10px !important;
   line-height: 10px  !important;
