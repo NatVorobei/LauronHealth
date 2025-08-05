@@ -57,6 +57,52 @@
   </div>
 {% endif %}
 
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const mainForm = document.querySelector('form[action^="/cart/add"]');
+    const stickyForm = document.querySelector('#sticky-add-to-cart form');
+
+    if (!mainForm || !stickyForm) return;
+
+    const mainVariantInput = mainForm.querySelector('input[name="id"]');
+    const stickyVariantInput = stickyForm.querySelector('input[name="id"]');
+
+    const mainAddBtn = mainForm.querySelector('button[type="submit"]');
+    const stickyAddBtn = stickyForm.querySelector('button[type="submit"]');
+    const stickySoldOut = stickyForm.querySelector('.sold-out-message');
+
+    function syncStickyState() {
+      if (!mainVariantInput || !stickyVariantInput || !mainAddBtn || !stickyAddBtn) return;
+
+      stickyVariantInput.value = mainVariantInput.value;
+
+      const isDisabled = mainAddBtn.disabled;
+      stickyAddBtn.disabled = isDisabled;
+
+      if (isDisabled) {
+        stickySoldOut?.classList.remove('hidden');
+      } else {
+        stickySoldOut?.classList.add('hidden');
+      }
+
+      if (window.AppstleMemberships && typeof window.AppstleMemberships.updateProduct === 'function') {
+        window.AppstleMemberships.updateProduct({ variantId: mainVariantInput.value });
+      }
+    }
+
+    const observer = new MutationObserver(syncStickyState);
+    observer.observe(mainForm, {
+      childList: true,
+      subtree: true,
+      attributes: true
+    });
+
+    mainForm.addEventListener('change', syncStickyState);
+    syncStickyState();
+  });
+</script>
+
+
 
 <style>
 #sticky-add-to-cart {
