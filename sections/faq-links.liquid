@@ -1,172 +1,180 @@
-<div class="faq-links-wrapper">
-    <div class="faq-links-menu">
-      {% if section.settings.tabs_title != blank %}
-        <h2 class="faq-links-wrapper__title">{{ section.settings.tabs_title }}</h2>
-      {% endif %}
-  
-      <ul class="faq-links-list desktop-only">
-        {% assign tabs = section.blocks | where: 'type', 'tab' %}
-        {% for tab in tabs %}
-          <li class="faq-links-list-item">
-            <a class="faq-link-button" href="#tab-{{ tab.settings.tab_id }}">{{ tab.settings.tab_title }}</a>
-          </li>
-        {% endfor %}
-      </ul>
-  
-      <div class="faq-links-select-wrapper mobile-only">
-        <select class="faq-links-select" onchange="if(this.value) window.location.href=this.value">
-          {% for tab in tabs %}
-            <option value="#tab-{{ tab.settings.tab_id }}">{{ tab.settings.tab_title }}</option>
-          {% endfor %}
-        </select>
-        <span class="custom-select-icon">{{ 'faqs-caret.svg' | inline_asset_content }}</span>
-      </div>
-    </div>
-  
-    <div class="faq-links-content">
-      {% assign groups = section.blocks | where: 'type', 'faq_group' %}
-      {% for group in groups %}
-        <div id="tab-{{ group.settings.parent_tab }}" class="faq-group">
-          <h3 class="faq-links-content__title">{{ group.settings.group_title }}</h3>
-          {% for i in (1..10) %}
-            {% capture question_key %}q{{ i }}{% endcapture %}
-            {% capture answer_key %}a{{ i }}{% endcapture %}
-            {% assign question = group.settings[question_key] %}
-            {% assign answer = group.settings[answer_key] %}
-            {% if question != blank and answer != blank %}
-              <div class="accordion">
-                <details>
-                  <summary>
-                    <h4 class="accordion__title">{{ question }}</h4>
-                    <span class="accordion-toggle-icon">
-                      <span class="icon-plus">{{ 'plus-icon.svg' | inline_asset_content }}</span>
-                      <span class="icon-minus">{{ 'exit-button.svg' | inline_asset_content }}</span>
-                    </span>
-                  </summary>
-                  <div class="accordion__content rte">
-                    {{ answer }}
-                  </div>
-                </details>
-              </div>
-            {% endif %}
-          {% endfor %}
-        </div>
+{% comment %} FAQ Tabs with scroll-to behavior, anchor links, and full desktop/mobile style parity {% endcomment %}
+
+{{ 'component-accordion.css' | asset_url | stylesheet_tag }}
+{{ 'collapsible-content.css' | asset_url | stylesheet_tag }}
+
+<div class="faq-tabs-wrapper">
+  <div class="faq-tabs-menu">
+    {% if section.settings.tabs_title != blank %}
+      <h2 class="faq-tabs-wrapper__title">{{ section.settings.tabs_title }}</h2>
+    {% endif %}
+
+    <ul class="faq-tabs-list desktop-only">
+      {% assign tabs = section.blocks | where: 'type', 'tab' %}
+      {% for tab in tabs %}
+        <li class="faq-tabs-list-item">
+          <a class="faq-tab-button" href="#tab-{{ tab.settings.tab_id }}">{{ tab.settings.tab_title }}</a>
+        </li>
       {% endfor %}
+    </ul>
+
+    <div class="faq-tabs-select-wrapper mobile-only">
+      <select class="faq-tabs-select" onchange="if(this.value) window.location.href=this.value">
+        {% for tab in tabs %}
+          <option value="#tab-{{ tab.settings.tab_id }}">{{ tab.settings.tab_title }}</option>
+        {% endfor %}
+      </select>
+      <span class="custom-select-icon">{{ 'faqs-caret.svg' | inline_asset_content }}</span>
     </div>
   </div>
-  
-  <style>
-    .faq-links-wrapper {
-      max-width: 1160px;
-      margin: 0 auto;
-      display: flex;
-      gap: 40px;
-      width: 100%;
-      padding: 40px 16px;
+
+  <div class="faq-tabs-content">
+    {% assign groups = section.blocks | where: 'type', 'faq_group' %}
+    {% for group in groups %}
+      <div id="tab-{{ group.settings.parent_tab }}" class="faq-group">
+        <h3 class="faq-tabs-content__title">{{ group.settings.group_title }}</h3>
+        {% for i in (1..10) %}
+          {% capture question_key %}q{{ i }}{% endcapture %}
+          {% capture answer_key %}a{{ i }}{% endcapture %}
+          {% assign question = group.settings[question_key] %}
+          {% assign answer = group.settings[answer_key] %}
+          {% if question != blank and answer != blank %}
+            <div class="accordion">
+              <details>
+                <summary>
+                  <h4 class="accordion__title">{{ question }}</h4>
+                  <span class="accordion-toggle-icon">
+                    <span class="icon-plus">{{ 'plus-icon.svg' | inline_asset_content }}</span>
+                    <span class="icon-minus">{{ 'exit-button.svg' | inline_asset_content }}</span>
+                  </span>
+                </summary>
+                <div class="accordion__content rte">
+                  {{ answer }}
+                </div>
+              </details>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  .faq-tabs-wrapper {
+    max-width: 1160px;
+    margin: 0 auto;
+    display: flex;
+    gap: 40px;
+    width: 100%;
+    padding: 40px 16px;
+  }
+
+  .faq-tabs-wrapper__title,
+  .faq-tabs-content__title {
+    font-size: 28px;
+    line-height: 28px;
+    font-weight: 700;
+    color: var(--color-main-text);
+    font-family: var(--font-heading-main);
+    margin-bottom: 24px;
+  }
+
+  .faq-tabs-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .faq-tabs-list-item {
+    min-width: 200px;
+  }
+
+  .faq-tab-button {
+    display: inline-block;
+    background: none;
+    border: none;
+    color: #87878D;
+    font-size: 16px;
+    font-family: var(--font-heading-main);
+    text-decoration: underline;
+  }
+
+  .faq-tab-button:hover {
+    color: var(--color-main-text);
+    font-weight: 600;
+  }
+
+  .faq-tab-content {
+    margin-bottom: 32px;
+  }
+
+  .desktop-only {
+    display: block;
+  }
+
+  .mobile-only {
+    display: none;
+  }
+
+  @media screen and (max-width: 749px) {
+    .faq-tabs-wrapper {
+      padding: 0 16px;
     }
-  
-    .faq-links-wrapper__title,
-    .faq-links-content__title {
-      font-size: 28px;
-      line-height: 28px;
-      font-weight: 700;
-      color: var(--color-main-text);
-      font-family: var(--font-heading-main);
-      margin-bottom: 24px;
+
+    .faq-tabs-wrapper__title,
+    .faq-tabs-content__title {
+      font-size: 20px;
+      line-height: 16px;
     }
-  
-    .faq-links-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-  
-    .faq-links-list-item {
-      min-width: 200px;
-    }
-  
-    .faq-link-button {
-      display: inline-block;
-      background: none;
-      border: none;
-      color: #87878D;
-      font-size: 16px;
-      font-family: var(--font-heading-main);
-      text-decoration: underline;
-    }
-  
-    .faq-link-button:hover {
-      color: var(--color-main-text);
-      font-weight: 600;
-    }
-  
-    .desktop-only {
-      display: block;
-    }
-  
-    .mobile-only {
+
+    .faq-tabs-list.desktop-only {
       display: none;
     }
-  
-    @media screen and (max-width: 749px) {
-      .faq-links-wrapper {
-        padding: 0 16px;
-      }
-  
-      .faq-links-wrapper__title,
-      .faq-links-content__title {
-        font-size: 20px;
-        line-height: 16px;
-      }
-  
-      .faq-links-list.desktop-only {
-        display: none;
-      }
-  
-      .mobile-only {
-        display: block;
-        width: 100%;
-        margin-bottom: 24px;
-      }
-  
-      .faq-links-select {
-        width: 100%;
-        padding: 12px 40px 12px 12px;
-        font-size: 14px;
-        line-height: 16px;
-        font-family: var(--font-heading-main);
-        border: 1px solid #D7D7D7;
-        border-radius: 16px;
-        background-color: #fff;
-        color: #87878D;
-        cursor: pointer;
-        appearance: none;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-      }
-  
-      .faq-links-select-wrapper {
-        position: relative;
-        display: block;
-        width: 100%;
-      }
-  
-      .custom-select-icon {
-        position: absolute;
-        right: 16px;
-        top: 50%;
-        transform: translateY(-50%);
-        pointer-events: none;
-        display: flex;
-        align-items: center;
-      }
-    }
-  </style>
 
-  
+    .mobile-only {
+      display: block;
+      width: 100%;
+      margin-bottom: 24px;
+    }
+
+    .faq-tabs-select {
+      width: 100%;
+      padding: 12px 40px 12px 12px;
+      font-size: 14px;
+      line-height: 16px;
+      font-family: var(--font-heading-main);
+      border: 1px solid #D7D7D7;
+      border-radius: 16px;
+      background-color: #fff;
+      color: #87878D;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+    }
+
+    .faq-tabs-select-wrapper {
+      position: relative;
+      display: block;
+      width: 100%;
+    }
+
+    .custom-select-icon {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+    }
+  }
+</style>
+
 {% schema %}
 {
   "name": "FAQ Tabs (Anchor Links)",
