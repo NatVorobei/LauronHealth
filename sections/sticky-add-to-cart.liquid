@@ -117,7 +117,6 @@
     const stickyAddBtn = stickyForm.querySelector('button[type="submit"]');
     const stickySoldOut = stickyForm.querySelector('.sold-out-message');
 
-    // Створюємо (або знаходимо) input для selling_plan
     let stickySellingPlanInput = stickyForm.querySelector('input[name="selling_plan"]');
     if (!stickySellingPlanInput) {
       stickySellingPlanInput = document.createElement('input');
@@ -129,10 +128,8 @@
     function syncStickyState() {
       if (!mainVariantInput || !stickyVariantInput || !mainAddBtn || !stickyAddBtn) return;
 
-      // Синхронізація variantId
       stickyVariantInput.value = mainVariantInput.value;
 
-      // Синхронізація стану кнопки
       const isDisabled = mainAddBtn.disabled;
       stickyAddBtn.disabled = isDisabled;
 
@@ -142,16 +139,12 @@
         stickySoldOut?.classList.add('hidden');
       }
 
-      // Синхронізація selling_plan
       const selectedSellingPlan = mainForm.querySelector('input[name="selling_plan"]:checked');
       if (selectedSellingPlan) {
         stickySellingPlanInput.value = selectedSellingPlan.value;
       } else {
-        // Якщо не вибрано підписку — очищаємо
         stickySellingPlanInput.removeAttribute('value');
       }
-
-      // Виклик Appstle (як було)
       if (window.AppstleMemberships && typeof window.AppstleMemberships.updateProduct === 'function') {
         window.AppstleMemberships.updateProduct({ variantId: mainVariantInput.value });
       }
