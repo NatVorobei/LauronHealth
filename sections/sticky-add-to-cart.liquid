@@ -181,27 +181,51 @@
 
     // Функція для заповнення select
     function updateSellingPlansInSelect() {
-      const realSellingPlans = document.querySelectorAll('input[name="selling_plan"]');
+  const realSellingPlans = document.querySelectorAll('input[name="selling_plan"]');
 
-      // Очистити всі опції крім першої (One-time)
-      customSelect.querySelectorAll('option:not(:first-child)').forEach(opt => opt.remove());
+  // Очистити селект повністю
+  customSelect.innerHTML = '';
 
-      realSellingPlans.forEach((plan) => {
-        const labelText = plan.nextElementSibling?.textContent?.trim() || 'Subscription';
-        const option = document.createElement('option');
-        option.value = plan.value;
-        option.textContent = labelText;
-        customSelect.appendChild(option);
-      });
+  const addedValues = new Set();
 
-      // Синхронізувати selected
-      const checkedPlan = Array.from(realSellingPlans).find(r => r.checked);
-      if (checkedPlan) {
-        customSelect.value = checkedPlan.value;
-      } else {
-        customSelect.value = "";
-      }
-    }
+  // Додаємо лише "одну покупку", якщо вона не є частиною selling_plan
+  const oneTimeLabel = document.querySelector('label[for="purchase-option-one-time"]');
+  if (oneTimeLabel) {
+    const option = document.createElement('option');
+    option.value = '';
+    option.textContent = oneTimeLabel.textContent.trim();
+    customSelect.appendChild(option);
+  }
+
+  // Додаємо selling_plan опції
+  realSellingPlans.forEach((plan) => {
+    const value = plan.value;
+    if (addedValues.has(value)) return;
+    addedValues.add(value);
+
+    const label = plan.nextElementSibling;
+    if (!label) return;
+
+    const labelText = label.textContent?.trim();
+    
+    // 💡 Пропускаємо порожні або підозрілі значення
+    if (!labelText || labelText.toLowerCase() === 'subscription') return;
+
+    const option = document.createElement('option');
+    option.value = value;
+    option.textContent = labelText;
+    customSelect.appendChild(option);
+  });
+
+  // Синхронізувати selected
+  const checkedPlan = Array.from(realSellingPlans).find(r => r.checked);
+  if (checkedPlan) {
+    customSelect.value = checkedPlan.value;
+  } else {
+    customSelect.value = '';
+  }
+}
+
 
     // При зміні select — оновити radio input
     customSelect.addEventListener('change', function () {
