@@ -6,9 +6,8 @@
 
   <div id="sticky-add-to-cart" class="sticky-cart-wrapper">
     <div class="sticky-add-to-cart__container">
-      
       <div class="product-info">
-        <img src="{{ product.featured_image | image_url: width: 100 }}" alt="{{ product.title }}" class="product-image" />
+        <img src="{{ product.featured_image | image_url: width: 100 }}" alt="{{ product.title }}" class="product-image">
         <div class="text-content">
           <h4 class="product-title">{{ product.title }}</h4>
           {% if product.description != blank %}
@@ -27,7 +26,6 @@
           <span class="custom-select-icon">{{ 'faqs-caret.svg' | inline_asset_content }}</span>
         </div>
 
-
         <product-form data-section-id="{{ section.id }}" class="custom-product-form">
           {% form 'product', product, class: 'product-form', data-type: 'add-to-cart-form' %}
             <input
@@ -35,7 +33,9 @@
               name="id"
               value="{{ current_variant.id }}"
               class="product-variant-id"
-              {% unless current_variant.available %}disabled{% endunless %}
+              {% unless current_variant.available %}
+                disabled
+              {% endunless %}
             >
 
             <button
@@ -43,7 +43,9 @@
               name="add"
               class="two-product-card__actions-button add-to-cart-button"
               aria-live="polite"
-              {% unless current_variant.available %}disabled{% endunless %}
+              {% unless current_variant.available %}
+                disabled
+              {% endunless %}
             >
               {{ 'lauron-cart.svg' | inline_asset_content }}
               <span>
@@ -116,7 +118,7 @@
     observer.observe(mainForm, {
       childList: true,
       subtree: true,
-      attributes: true
+      attributes: true,
     });
 
     mainForm.addEventListener('change', syncStickyState);
@@ -132,51 +134,51 @@
     if (!customSelect || !realForm) return;
 
     function updateSellingPlansInSelect() {
-    const realSellingPlans = document.querySelectorAll('input[name="selling_plan"]');
+      const realSellingPlans = document.querySelectorAll('input[name="selling_plan"]');
 
-    customSelect.innerHTML = '';
+      customSelect.innerHTML = '';
 
-    const addedValues = new Set();
+      const addedValues = new Set();
 
-    const oneTimeLabel = document.querySelector('label[for="purchase-option-one-time"]');
-    if (oneTimeLabel) {
-      const option = document.createElement('option');
-      option.value = '';
-      option.textContent = oneTimeLabel.textContent.trim();
-      customSelect.appendChild(option);
+      const oneTimeLabel = document.querySelector('label[for="purchase-option-one-time"]');
+      if (oneTimeLabel) {
+        const option = document.createElement('option');
+        option.value = '';
+        option.textContent = oneTimeLabel.textContent.trim();
+        customSelect.appendChild(option);
+      }
+
+      realSellingPlans.forEach((plan) => {
+        const value = plan.value;
+        if (addedValues.has(value)) return;
+        addedValues.add(value);
+
+        const label = plan.nextElementSibling;
+        if (!label) return;
+
+        const labelText = label.textContent?.trim();
+
+        if (!labelText || labelText.toLowerCase() === 'subscription') return;
+
+        const option = document.createElement('option');
+        option.value = value;
+        option.textContent = labelText;
+        customSelect.appendChild(option);
+      });
+
+      const checkedPlan = Array.from(realSellingPlans).find((r) => r.checked);
+      if (checkedPlan) {
+        customSelect.value = checkedPlan.value;
+      } else {
+        customSelect.value = '';
+      }
     }
-
-    realSellingPlans.forEach((plan) => {
-      const value = plan.value;
-      if (addedValues.has(value)) return;
-      addedValues.add(value);
-
-      const label = plan.nextElementSibling;
-      if (!label) return;
-
-      const labelText = label.textContent?.trim();
-      
-      if (!labelText || labelText.toLowerCase() === 'subscription') return;
-
-      const option = document.createElement('option');
-      option.value = value;
-      option.textContent = labelText;
-      customSelect.appendChild(option);
-    });
-
-    const checkedPlan = Array.from(realSellingPlans).find(r => r.checked);
-    if (checkedPlan) {
-      customSelect.value = checkedPlan.value;
-    } else {
-      customSelect.value = '';
-    }
-  }
 
     customSelect.addEventListener('change', function () {
       const selectedValue = customSelect.value;
       const realSellingPlans = document.querySelectorAll('input[name="selling_plan"]');
-      realSellingPlans.forEach(radio => {
-        radio.checked = (radio.value === selectedValue);
+      realSellingPlans.forEach((radio) => {
+        radio.checked = radio.value === selectedValue;
       });
 
       const event = new Event('change', { bubbles: true });
@@ -200,136 +202,134 @@
   });
 </script>
 
-
 <style>
-#sticky-add-to-cart {
-  display: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: var(--color-main-text);
-  color: white;
-  z-index: 9999;
-}
+  #sticky-add-to-cart {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--color-main-text);
+    color: white;
+    z-index: 9999;
+  }
 
-#sticky-add-to-cart.show {
-  display: block;
-  opacity: 1;
-}
+  #sticky-add-to-cart.show {
+    display: block;
+    opacity: 1;
+  }
 
-.sticky-add-to-cart__container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  max-width: 1280px;
-  width: 100%;
-  margin: 0 auto;
-}
+  .sticky-add-to-cart__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+  }
 
-.product-info {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex: 1;
-}
-
-.product-image {
-  max-width: 100px;
-  height: auto;
-  border-radius: 4px;
-}
-
-.text-content {
-  max-width: 215px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.product-title {
-  font-size: 18px;
-  line-height: 18px;
-  font-family: var(--font-heading-main);
-  font-weight: 700;
-  color: #fff;
-  margin: 0;
-}
-
-.product-description {
-  font-size: 10px;
-  line-height: 12px;
-  color: #fff;
-}
-
-.subscription-and-cart {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.add-to-cart-button {
+  .product-info {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 1rem;
+    flex: 1;
+  }
+
+  .product-image {
+    max-width: 100px;
+    height: auto;
+    border-radius: 4px;
+  }
+
+  .text-content {
+    max-width: 215px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .product-title {
+    font-size: 18px;
+    line-height: 18px;
+    font-family: var(--font-heading-main);
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+  }
+
+  .product-description {
+    font-size: 10px;
+    line-height: 12px;
+    color: #fff;
+  }
+
+  .subscription-and-cart {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .add-to-cart-button {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: none;
+      color: #fff;
+      padding: 15px 30px;
+      border: 1px solid #fff;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 12px;
+      text-transform: uppercase;
+  }
+
+  .custom-subscription-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    color: #fff;
+    min-width: 220px;
+  }
+
+  .custom-subscription-select {
+    padding: 17px 30px;
+    border-radius: 20px;
+    font-size: 14px;
+    border: 1px solid #fff;
     background: none;
     color: #fff;
-    padding: 15px 30px;
-    border: 1px solid #fff;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 14px;
-    line-height: 12px;
-    text-transform: uppercase;
-}
-
-.custom-subscription-wrapper {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  color: #fff;
-  min-width: 220px;
-}
-
-.custom-subscription-select {
-  padding: 17px 30px;
-  border-radius: 20px;
-  font-size: 14px;
-  border: 1px solid #fff;
-  background: none;
-  color: #fff;
-  font-weight: 600;
-}
-
-.custom-select-icon {
-  position: absolute;
-  right: 20px;
-  color: white;
-  top: 10px;
-}
-
-.custom-select-icon svg {
-  color: #fff;
-}
-</style>
-  
-{% schema %}
-  {
-    "name": "Sticky Add to Cart",
-    "tag": "section",
-    "settings": [],
-    "presets": [
-      {
-        "name": "Sticky Add to Cart"
-      }
-    ]
+    font-weight: 600;
   }
+
+  .custom-select-icon {
+    position: absolute;
+    right: 20px;
+    color: white;
+    top: 10px;
+  }
+
+  .custom-select-icon svg {
+    color: #fff;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Sticky Add to Cart",
+  "tag": "section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Sticky Add to Cart"
+    }
+  ]
+}
 {% endschema %}
-  
