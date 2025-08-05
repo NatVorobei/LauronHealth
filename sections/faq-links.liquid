@@ -1,0 +1,322 @@
+<div class="faq-links-wrapper">
+    <div class="faq-links-menu">
+      {% if section.settings.tabs_title != blank %}
+        <h2 class="faq-links-wrapper__title">{{ section.settings.tabs_title }}</h2>
+      {% endif %}
+  
+      <ul class="faq-links-list desktop-only">
+        {% assign tabs = section.blocks | where: 'type', 'tab' %}
+        {% for tab in tabs %}
+          <li class="faq-links-list-item">
+            <a class="faq-link-button" href="#tab-{{ tab.settings.tab_id }}">{{ tab.settings.tab_title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+  
+      <div class="faq-links-select-wrapper mobile-only">
+        <select class="faq-links-select" onchange="if(this.value) window.location.href=this.value">
+          {% for tab in tabs %}
+            <option value="#tab-{{ tab.settings.tab_id }}">{{ tab.settings.tab_title }}</option>
+          {% endfor %}
+        </select>
+        <span class="custom-select-icon">{{ 'faqs-caret.svg' | inline_asset_content }}</span>
+      </div>
+    </div>
+  
+    <div class="faq-links-content">
+      {% assign groups = section.blocks | where: 'type', 'faq_group' %}
+      {% for group in groups %}
+        <div id="tab-{{ group.settings.parent_tab }}" class="faq-group">
+          <h3 class="faq-links-content__title">{{ group.settings.group_title }}</h3>
+          {% for i in (1..10) %}
+            {% capture question_key %}q{{ i }}{% endcapture %}
+            {% capture answer_key %}a{{ i }}{% endcapture %}
+            {% assign question = group.settings[question_key] %}
+            {% assign answer = group.settings[answer_key] %}
+            {% if question != blank and answer != blank %}
+              <div class="accordion">
+                <details>
+                  <summary>
+                    <h4 class="accordion__title">{{ question }}</h4>
+                    <span class="accordion-toggle-icon">
+                      <span class="icon-plus">{{ 'plus-icon.svg' | inline_asset_content }}</span>
+                      <span class="icon-minus">{{ 'exit-button.svg' | inline_asset_content }}</span>
+                    </span>
+                  </summary>
+                  <div class="accordion__content rte">
+                    {{ answer }}
+                  </div>
+                </details>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  
+  <style>
+    .faq-links-wrapper {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      gap: 40px;
+      width: 100%;
+      padding: 40px 16px;
+    }
+  
+    .faq-links-wrapper__title,
+    .faq-links-content__title {
+      font-size: 28px;
+      line-height: 28px;
+      font-weight: 700;
+      color: var(--color-main-text);
+      font-family: var(--font-heading-main);
+      margin-bottom: 24px;
+    }
+  
+    .faq-links-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+  
+    .faq-links-list-item {
+      min-width: 200px;
+    }
+  
+    .faq-link-button {
+      display: inline-block;
+      background: none;
+      border: none;
+      color: #87878D;
+      font-size: 16px;
+      font-family: var(--font-heading-main);
+      text-decoration: underline;
+    }
+  
+    .faq-link-button:hover {
+      color: var(--color-main-text);
+      font-weight: 600;
+    }
+  
+    .desktop-only {
+      display: block;
+    }
+  
+    .mobile-only {
+      display: none;
+    }
+  
+    @media screen and (max-width: 749px) {
+      .faq-links-wrapper {
+        padding: 0 16px;
+      }
+  
+      .faq-links-wrapper__title,
+      .faq-links-content__title {
+        font-size: 20px;
+        line-height: 16px;
+      }
+  
+      .faq-links-list.desktop-only {
+        display: none;
+      }
+  
+      .mobile-only {
+        display: block;
+        width: 100%;
+        margin-bottom: 24px;
+      }
+  
+      .faq-links-select {
+        width: 100%;
+        padding: 12px 40px 12px 12px;
+        font-size: 14px;
+        line-height: 16px;
+        font-family: var(--font-heading-main);
+        border: 1px solid #D7D7D7;
+        border-radius: 16px;
+        background-color: #fff;
+        color: #87878D;
+        cursor: pointer;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+      }
+  
+      .faq-links-select-wrapper {
+        position: relative;
+        display: block;
+        width: 100%;
+      }
+  
+      .custom-select-icon {
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        display: flex;
+        align-items: center;
+      }
+    }
+  </style>
+
+  
+{% schema %}
+{
+  "name": "FAQ Tabs (Anchor Links)",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tabs_title",
+      "label": "Tabs Title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_title",
+          "label": "Tab Title"
+        },
+        {
+          "type": "text",
+          "id": "tab_id",
+          "label": "Tab Anchor ID (matches FAQ Group parent_tab)",
+          "default": "about-lauron"
+        }
+      ]
+    },
+    {
+      "type": "faq_group",
+      "name": "FAQ Group",
+      "settings": [
+        {
+          "type": "text",
+          "id": "parent_tab",
+          "label": "Anchor ID (must match tab_id)"
+        },
+        {
+          "type": "text",
+          "id": "group_title",
+          "label": "Group Title"
+        },
+        {
+          "type": "text",
+          "id": "q1",
+          "label": "Question 1"
+        },
+        {
+          "type": "richtext",
+          "id": "a1",
+          "label": "Answer 1"
+        },
+        {
+          "type": "text",
+          "id": "q2",
+          "label": "Question 2"
+        },
+        {
+          "type": "richtext",
+          "id": "a2",
+          "label": "Answer 2"
+        },
+        {
+          "type": "text",
+          "id": "q3",
+          "label": "Question 3"
+        },
+        {
+          "type": "richtext",
+          "id": "a3",
+          "label": "Answer 3"
+        },
+        {
+          "type": "text",
+          "id": "q4",
+          "label": "Question 4"
+        },
+        {
+          "type": "richtext",
+          "id": "a4",
+          "label": "Answer 4"
+        },
+        {
+          "type": "text",
+          "id": "q5",
+          "label": "Question 5"
+        },
+        {
+          "type": "richtext",
+          "id": "a5",
+          "label": "Answer 5"
+        },
+        {
+          "type": "text",
+          "id": "q6",
+          "label": "Question 6"
+        },
+        {
+          "type": "richtext",
+          "id": "a6",
+          "label": "Answer 6"
+        },
+        {
+          "type": "text",
+          "id": "q7",
+          "label": "Question 7"
+        },
+        {
+          "type": "richtext",
+          "id": "a7",
+          "label": "Answer 7"
+        },
+        {
+          "type": "text",
+          "id": "q8",
+          "label": "Question 8"
+        },
+        {
+          "type": "richtext",
+          "id": "a8",
+          "label": "Answer 8"
+        },
+        {
+          "type": "text",
+          "id": "q9",
+          "label": "Question 9"
+        },
+        {
+          "type": "richtext",
+          "id": "a9",
+          "label": "Answer 9"
+        },
+        {
+          "type": "text",
+          "id": "q10",
+          "label": "Question 10"
+        },
+        {
+          "type": "richtext",
+          "id": "a10",
+          "label": "Answer 10"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Tabs Anchor",
+      "category": "FAQ"
+    }
+  ]
+}
+{% endschema %}
