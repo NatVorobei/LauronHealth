@@ -20,6 +20,16 @@
       <div class="subscription-and-cart">
         <div class="smart-subscription-widget" data-product-id="{{ product.id }}"></div>
 
+        <div class="custom-subscription-wrapper">
+          <label for="custom-subscription-select" class="custom-subscription-label">
+            Purchase option:
+          </label>
+          <select id="custom-subscription-select" name="custom_selling_plan" class="custom-subscription-select">
+            <option value="">One-time purchase</option>
+          </select>
+        </div>
+
+
         <product-form data-section-id="{{ section.id }}" class="custom-product-form">
           {% form 'product', product, class: 'product-form', data-type: 'add-to-cart-form' %}
             <input
