@@ -1,27 +1,70 @@
+// document.addEventListener("DOMContentLoaded", function () {
+//     const stickyBar = document.getElementById("sticky-add-to-cart");
+//     const targetButton = document.querySelector('[id^="ProductSubmitButton-"]');
+
+//     if (!stickyBar || !targetButton) return;
+
+//     const observer = new IntersectionObserver(
+//         function (entries) {
+//             entries.forEach(entry => {
+//                 if (entry.isIntersecting) {
+//                     stickyBar.classList.remove("show");
+//                 } else {
+//                     stickyBar.classList.add("show");
+//                 }
+//             });
+//         },
+//         {
+//             root: null,
+//             threshold: 0
+//         }
+//     );
+
+//     observer.observe(targetButton);
+// });
+
 document.addEventListener("DOMContentLoaded", function () {
-    const stickyBar = document.getElementById("sticky-add-to-cart");
-    const targetButton = document.querySelector('[id^="ProductSubmitButton-"]');
+  const stickyBar = document.getElementById("sticky-add-to-cart");
+  const targetButton = document.querySelector('[id^="ProductSubmitButton-"]');
 
-    if (!stickyBar || !targetButton) return;
+  if (!stickyBar || !targetButton) return;
 
-    const observer = new IntersectionObserver(
-        function (entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    stickyBar.classList.remove("show");
-                } else {
-                    stickyBar.classList.add("show");
-                }
-            });
-        },
-        {
-            root: null,
-            threshold: 0
+  let userHasScrolled = false;
+
+  stickyBar.classList.remove("show");
+
+  const observer = new IntersectionObserver(
+    function (entries) {
+      if (!userHasScrolled) return;
+
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          stickyBar.classList.remove("show");
+        } else {
+          stickyBar.classList.add("show");
         }
-    );
+      });
+    },
+    {
+      root: null,
+      threshold: 0
+    }
+  );
 
-    observer.observe(targetButton);
+  observer.observe(targetButton);
+
+  window.addEventListener("scroll", function onScroll() {
+    if (userHasScrolled) return;
+    userHasScrolled = true;
+    const rect = targetButton.getBoundingClientRect();
+    const isVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
+    if (!isVisible) {
+      stickyBar.classList.add("show");
+    }
+    window.removeEventListener("scroll", onScroll);
+  });
 });
+
 
 //Select variants
 document.addEventListener('DOMContentLoaded', function () {
