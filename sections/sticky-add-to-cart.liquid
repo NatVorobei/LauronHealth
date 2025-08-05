@@ -67,52 +67,6 @@
   </div>
 {% endif %}
 
-{% comment %} <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const mainForm = document.querySelector('form[action^="/cart/add"]');
-    const stickyForm = document.querySelector('#sticky-add-to-cart form');
-
-    if (!mainForm || !stickyForm) return;
-
-    const mainVariantInput = mainForm.querySelector('input[name="id"]');
-    const stickyVariantInput = stickyForm.querySelector('input[name="id"]');
-
-    const mainAddBtn = mainForm.querySelector('button[type="submit"]');
-    const stickyAddBtn = stickyForm.querySelector('button[type="submit"]');
-    const stickySoldOut = stickyForm.querySelector('.sold-out-message');
-
-    function syncStickyState() {
-      if (!mainVariantInput || !stickyVariantInput || !mainAddBtn || !stickyAddBtn) return;
-
-      stickyVariantInput.value = mainVariantInput.value;
-
-      const isDisabled = mainAddBtn.disabled;
-      stickyAddBtn.disabled = isDisabled;
-
-      if (isDisabled) {
-        stickySoldOut?.classList.remove('hidden');
-      } else {
-        stickySoldOut?.classList.add('hidden');
-      }
-
-      if (window.AppstleMemberships && typeof window.AppstleMemberships.updateProduct === 'function') {
-        window.AppstleMemberships.updateProduct({ variantId: mainVariantInput.value });
-      }
-    }
-
-    const observer = new MutationObserver(syncStickyState);
-    observer.observe(mainForm, {
-      childList: true,
-      subtree: true,
-      attributes: true
-    });
-
-    mainForm.addEventListener('change', syncStickyState);
-    syncStickyState();
-  });
-</script> {% endcomment %}
-
-
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const mainForm = document.querySelector('form[action^="/cart/add"]');
@@ -179,55 +133,47 @@
 
     if (!customSelect || !realForm) return;
 
-    // Функція для заповнення select
     function updateSellingPlansInSelect() {
-  const realSellingPlans = document.querySelectorAll('input[name="selling_plan"]');
+    const realSellingPlans = document.querySelectorAll('input[name="selling_plan"]');
 
-  // Очистити селект повністю
-  customSelect.innerHTML = '';
+    customSelect.innerHTML = '';
 
-  const addedValues = new Set();
+    const addedValues = new Set();
 
-  // Додаємо лише "одну покупку", якщо вона не є частиною selling_plan
-  const oneTimeLabel = document.querySelector('label[for="purchase-option-one-time"]');
-  if (oneTimeLabel) {
-    const option = document.createElement('option');
-    option.value = '';
-    option.textContent = oneTimeLabel.textContent.trim();
-    customSelect.appendChild(option);
+    const oneTimeLabel = document.querySelector('label[for="purchase-option-one-time"]');
+    if (oneTimeLabel) {
+      const option = document.createElement('option');
+      option.value = '';
+      option.textContent = oneTimeLabel.textContent.trim();
+      customSelect.appendChild(option);
+    }
+
+    realSellingPlans.forEach((plan) => {
+      const value = plan.value;
+      if (addedValues.has(value)) return;
+      addedValues.add(value);
+
+      const label = plan.nextElementSibling;
+      if (!label) return;
+
+      const labelText = label.textContent?.trim();
+      
+      if (!labelText || labelText.toLowerCase() === 'subscription') return;
+
+      const option = document.createElement('option');
+      option.value = value;
+      option.textContent = labelText;
+      customSelect.appendChild(option);
+    });
+
+    const checkedPlan = Array.from(realSellingPlans).find(r => r.checked);
+    if (checkedPlan) {
+      customSelect.value = checkedPlan.value;
+    } else {
+      customSelect.value = '';
+    }
   }
 
-  // Додаємо selling_plan опції
-  realSellingPlans.forEach((plan) => {
-    const value = plan.value;
-    if (addedValues.has(value)) return;
-    addedValues.add(value);
-
-    const label = plan.nextElementSibling;
-    if (!label) return;
-
-    const labelText = label.textContent?.trim();
-    
-    // 💡 Пропускаємо порожні або підозрілі значення
-    if (!labelText || labelText.toLowerCase() === 'subscription') return;
-
-    const option = document.createElement('option');
-    option.value = value;
-    option.textContent = labelText;
-    customSelect.appendChild(option);
-  });
-
-  // Синхронізувати selected
-  const checkedPlan = Array.from(realSellingPlans).find(r => r.checked);
-  if (checkedPlan) {
-    customSelect.value = checkedPlan.value;
-  } else {
-    customSelect.value = '';
-  }
-}
-
-
-    // При зміні select — оновити radio input
     customSelect.addEventListener('change', function () {
       const selectedValue = customSelect.value;
       const realSellingPlans = document.querySelectorAll('input[name="selling_plan"]');
@@ -239,7 +185,6 @@
       realForm.dispatchEvent(event);
     });
 
-    // MutationObserver для Appstle DOM
     const appstleWidget = document.querySelector('.smart-subscription-widget');
     if (!appstleWidget) return;
 
@@ -251,13 +196,11 @@
 
     observer.observe(appstleWidget, { childList: true, subtree: true });
 
-    // Safety fallback: оновити через 1 секунду (якщо widget повільний)
     setTimeout(() => {
       updateSellingPlansInSelect();
     }, 1000);
   });
 </script>
-
 
 
 <style>
