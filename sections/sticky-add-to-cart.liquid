@@ -204,6 +204,73 @@
   .custom-subscription-select.open + .custom-select-icon {
     transform: translateY(-50%) rotate(180deg);
   }
+
+  @media screen and (max-width: 749px) {
+  #sticky-add-to-cart {
+    padding: 10px 15px;
+  }
+
+  .sticky-add-to-cart__container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .product-info {
+    gap: 0.75rem;
+  }
+
+  .product-image {
+    max-width: 60px;
+  }
+
+  .text-content {
+    max-width: 100%;
+  }
+
+  .product-title {
+    font-size: 16px;
+    line-height: 1.2;
+  }
+
+  .product-description {
+    font-size: 10px;
+    line-height: 1.3;
+  }
+
+  .subscription-and-cart {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .custom-subscription-wrapper {
+    width: 100%;
+  }
+
+  .custom-subscription-select {
+    width: 100%;
+    white-space: normal;
+    word-wrap: break-word;
+    line-height: 1.3;
+    padding: 14px 30px;
+    font-size: 13px;
+  }
+
+  .custom-select-icon {
+    top: 50%;
+    transform: translateY(-50%) rotate(0deg);
+  }
+
+  .add-to-cart-button {
+    width: 100%;
+    justify-content: center;
+    padding: 14px;
+    font-size: 14px;
+    gap: 10px;
+  }
+}
+
 </style>
 
 {% schema %}
