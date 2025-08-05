@@ -208,15 +208,22 @@
 
     if (!select) return;
 
-    select.addEventListener('mousedown', () => {
-      select.classList.add('open');
+    select.addEventListener('pointerdown', () => {
+      setTimeout(() => {
+        select.classList.add('open');
+      }, 0);
     });
 
-    select.addEventListener('change', () => {
+    function closeSelect() {
       select.classList.remove('open');
-    });
+    }
+
+    select.addEventListener('blur', closeSelect);
+    select.addEventListener('change', closeSelect);
+    select.addEventListener('focusout', closeSelect);
   });
 </script>
+
 
 
 <style>
