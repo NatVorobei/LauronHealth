@@ -3689,6 +3689,8 @@ p {
   font-size: 10px !important;
   line-height: 10px  !important;
   font-weight: 400 !important;
+  padding: 4px 9px !important;
+  border-radius: 4px !important;
 }
 
 .product-form__input--custom-swatch {
