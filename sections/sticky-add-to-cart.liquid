@@ -172,6 +172,40 @@
   });
 </script>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const customSelect = document.querySelector('#custom-subscription-select');
+    const realSellingPlans = document.querySelectorAll('input[name="selling_plan"]');
+    const realForm = document.querySelector('form[action^="/cart/add"]');
+
+    if (!customSelect || realSellingPlans.length === 0 || !realForm) return;
+
+    realSellingPlans.forEach((plan) => {
+      const labelText = plan.nextElementSibling?.textContent?.trim() || 'Subscription';
+      const option = document.createElement('option');
+      option.value = plan.value;
+      option.textContent = labelText;
+      customSelect.appendChild(option);
+    });
+
+    customSelect.addEventListener('change', function () {
+      const selectedValue = customSelect.value;
+      realSellingPlans.forEach(radio => {
+        radio.checked = (radio.value === selectedValue);
+      });
+
+      const event = new Event('change', { bubbles: true });
+      realForm.dispatchEvent(event);
+    });
+
+    const checkedPlan = Array.from(realSellingPlans).find(r => r.checked);
+    if (checkedPlan) {
+      customSelect.value = checkedPlan.value;
+    } else {
+      customSelect.value = "";
+    }
+  });
+</script>
 
 
 <style>
