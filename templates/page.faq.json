@@ -98,7 +98,55 @@
         "tab_LcDGhr",
         "faq_group_Laibre"
       ],
+      "disabled": true,
       "name": "FAQ Tabs",
+      "settings": {
+        "tabs_title": "Категорія"
+      }
+    },
+    "faq_links_RBGD4J": {
+      "type": "faq-links",
+      "blocks": {
+        "tab_6KRbAJ": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Про Lauron",
+            "tab_id": "about-lauron"
+          }
+        },
+        "faq_group_HnqcGt": {
+          "type": "faq_group",
+          "settings": {
+            "parent_tab": "about-lauron",
+            "group_title": "Про Lauron",
+            "q1": "Чим Lauron відрізняється від звичайних добавок?",
+            "a1": "<p>Lauron — це рідкий функціональний продукт із високою біодоступністю, у складі якого три технологічні компоненти: гіалуронова кислота з високою молекулярною масою, м’яка вода та система інкапсуляції (3SDS™). На відміну від капсул чи порошків, Lauron забезпечує стабільне засвоєння активних речовин саме там, де це потрібно — на рівні кишечника, з системним оздоровчим ефектом.</p>",
+            "q2": "",
+            "a2": "",
+            "q3": "",
+            "a3": "",
+            "q4": "",
+            "a4": "",
+            "q5": "",
+            "a5": "",
+            "q6": "",
+            "a6": "",
+            "q7": "",
+            "a7": "",
+            "q8": "",
+            "a8": "",
+            "q9": "",
+            "a9": "",
+            "q10": "",
+            "a10": ""
+          }
+        }
+      },
+      "block_order": [
+        "tab_6KRbAJ",
+        "faq_group_HnqcGt"
+      ],
+      "name": "FAQ Tabs Anchor",
       "settings": {
         "tabs_title": "Категорія"
       }
@@ -227,6 +275,7 @@
   "order": [
     "main",
     "faq_bfTMXM",
+    "faq_links_RBGD4J",
     "exclusive_benefits_LPd7HJ",
     "rich_text_LUfWQK",
     "faq_cards_VNtxUh"
