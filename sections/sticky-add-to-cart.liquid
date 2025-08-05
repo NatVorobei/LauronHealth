@@ -175,21 +175,38 @@
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const customSelect = document.querySelector('#custom-subscription-select');
-    const realSellingPlans = document.querySelectorAll('input[name="selling_plan"]');
     const realForm = document.querySelector('form[action^="/cart/add"]');
 
-    if (!customSelect || realSellingPlans.length === 0 || !realForm) return;
+    if (!customSelect || !realForm) return;
 
-    realSellingPlans.forEach((plan) => {
-      const labelText = plan.nextElementSibling?.textContent?.trim() || 'Subscription';
-      const option = document.createElement('option');
-      option.value = plan.value;
-      option.textContent = labelText;
-      customSelect.appendChild(option);
-    });
+    // Функція для заповнення select
+    function updateSellingPlansInSelect() {
+      const realSellingPlans = document.querySelectorAll('input[name="selling_plan"]');
 
+      // Очистити всі опції крім першої (One-time)
+      customSelect.querySelectorAll('option:not(:first-child)').forEach(opt => opt.remove());
+
+      realSellingPlans.forEach((plan) => {
+        const labelText = plan.nextElementSibling?.textContent?.trim() || 'Subscription';
+        const option = document.createElement('option');
+        option.value = plan.value;
+        option.textContent = labelText;
+        customSelect.appendChild(option);
+      });
+
+      // Синхронізувати selected
+      const checkedPlan = Array.from(realSellingPlans).find(r => r.checked);
+      if (checkedPlan) {
+        customSelect.value = checkedPlan.value;
+      } else {
+        customSelect.value = "";
+      }
+    }
+
+    // При зміні select — оновити radio input
     customSelect.addEventListener('change', function () {
       const selectedValue = customSelect.value;
+      const realSellingPlans = document.querySelectorAll('input[name="selling_plan"]');
       realSellingPlans.forEach(radio => {
         radio.checked = (radio.value === selectedValue);
       });
@@ -198,14 +215,25 @@
       realForm.dispatchEvent(event);
     });
 
-    const checkedPlan = Array.from(realSellingPlans).find(r => r.checked);
-    if (checkedPlan) {
-      customSelect.value = checkedPlan.value;
-    } else {
-      customSelect.value = "";
-    }
+    // MutationObserver для Appstle DOM
+    const appstleWidget = document.querySelector('.smart-subscription-widget');
+    if (!appstleWidget) return;
+
+    const observer = new MutationObserver(function () {
+      if (document.querySelector('input[name="selling_plan"]')) {
+        updateSellingPlansInSelect();
+      }
+    });
+
+    observer.observe(appstleWidget, { childList: true, subtree: true });
+
+    // Safety fallback: оновити через 1 секунду (якщо widget повільний)
+    setTimeout(() => {
+      updateSellingPlansInSelect();
+    }, 1000);
   });
 </script>
+
 
 
 <style>
