@@ -20,14 +20,14 @@
       <div class="subscription-and-cart">
         <div class="smart-subscription-widget" data-product-id="{{ product.id }}"></div>
 
-        {% comment %} <div class="custom-subscription-wrapper">
+        <div class="custom-subscription-wrapper">
           <label for="custom-subscription-select" class="custom-subscription-label">
             Purchase option:
           </label>
           <select id="custom-subscription-select" name="custom_selling_plan" class="custom-subscription-select">
             <option value="">One-time purchase</option>
           </select>
-        </div> {% endcomment %}
+        </div>
 
 
         <product-form data-section-id="{{ section.id }}" class="custom-product-form">
@@ -172,7 +172,7 @@
   });
 </script>
 
-<script>
+{% comment %} <script>
   document.addEventListener('DOMContentLoaded', function () {
     const customSelect = document.querySelector('#custom-subscription-select');
     const realForm = document.querySelector('form[action^="/cart/add"]');
@@ -232,6 +232,88 @@
       updateSellingPlansInSelect();
     }, 1000);
   });
+</script> {% endcomment %}
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+  const customSelect = document.querySelector('#custom-subscription-select');
+  const realForm = document.querySelector('form[action^="/cart/add"]');
+
+  if (!customSelect || !realForm) return;
+
+  function updateSellingPlansInSelect() {
+    const realSellingPlans = document.querySelectorAll('input[name="selling_plan"]');
+
+    // Очистити всі старі опції
+    customSelect.innerHTML = '';
+
+    const addedValues = new Set();
+
+    // Додаємо One-time як дефолтну
+    const oneTimeOption = document.createElement('option');
+    oneTimeOption.value = '';
+    oneTimeOption.textContent = 'Єдиноразова покупка';
+    customSelect.appendChild(oneTimeOption);
+
+    realSellingPlans.forEach((plan) => {
+      const value = plan.value;
+      if (addedValues.has(value)) return;
+      addedValues.add(value);
+
+      const rawText = plan.nextElementSibling?.textContent?.trim().toLowerCase() || '';
+      let labelText = 'Підписка';
+
+      if (rawText.includes('підпискою')) {
+        labelText = 'Доставка за підпискою (економія 20%) MOST POPULAR';
+      }
+
+      const option = document.createElement('option');
+      option.value = value;
+      option.textContent = labelText;
+      customSelect.appendChild(option);
+    });
+
+    // Встановити selected, якщо один з реальних checked
+    const checkedPlan = Array.from(realSellingPlans).find(r => r.checked);
+    if (checkedPlan) {
+      customSelect.value = checkedPlan.value;
+    } else {
+      customSelect.value = '';
+    }
+  }
+
+  // При зміні селекту — оновлюємо radio
+  customSelect.addEventListener('change', function () {
+    const selectedValue = customSelect.value;
+    const realSellingPlans = document.querySelectorAll('input[name="selling_plan"]');
+    realSellingPlans.forEach(radio => {
+      radio.checked = (radio.value === selectedValue);
+    });
+
+    // Тригеримо onChange, щоб Appstle/Shopify бачили це
+    const event = new Event('change', { bubbles: true });
+    realForm.dispatchEvent(event);
+  });
+
+  // MutationObserver: оновити селект, коли Appstle вкине input
+  const appstleWidget = document.querySelector('.smart-subscription-widget');
+  if (!appstleWidget) return;
+
+  const observer = new MutationObserver(function () {
+    if (document.querySelector('input[name="selling_plan"]')) {
+      updateSellingPlansInSelect();
+    }
+  });
+
+  observer.observe(appstleWidget, { childList: true, subtree: true });
+
+  // Safety fallback — оновити через 1 сек
+  setTimeout(() => {
+    updateSellingPlansInSelect();
+  }, 1000);
+});
+
 </script>
 
 
