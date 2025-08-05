@@ -208,11 +208,11 @@
 
     if (!select) return;
 
-    select.addEventListener('focus', () => {
+    select.addEventListener('mousedown', () => {
       select.classList.add('open');
     });
 
-    select.addEventListener('blur', () => {
+    select.addEventListener('change', () => {
       select.classList.remove('open');
     });
   });
