@@ -555,6 +555,11 @@
       "settings": {
         "include_margins": true
       }
+    },
+    "sticky_add_to_cart_C7dzcx": {
+      "type": "sticky-add-to-cart",
+      "name": "Sticky Add to Cart",
+      "settings": {}
     }
   },
   "order": [
@@ -567,6 +572,7 @@
     "collapsible_content_fMBfJ3",
     "custom_newsletter_qmdmbR",
     "related-products",
-    "1752733377df3d82a5"
+    "1752733377df3d82a5",
+    "sticky_add_to_cart_C7dzcx"
   ]
 }
