@@ -11,9 +11,16 @@
   "sections": {
     "main": {
       "type": "policies-tabs-pages",
+      "custom_css": [
+        "h2 {font-family: var(--font-heading-main);}"
+      ],
       "settings": {
         "page_handles": "payment-and-shipment,terms-of-service,privacy-policy,contact-us",
-        "tab_titles": "Payment and shipment,Terms of service,Privacy Policy,Contact Us"
+        "tab_titles": "Payment and shipment,Terms of service,Privacy Policy,Contact Us",
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 60,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32
       }
     }
   },
