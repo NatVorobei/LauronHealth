@@ -3697,6 +3697,8 @@ p {
 }
 .appstle_select {
   background: #fff !important;
+  padding: 10px 13px !important;
+  border-radius: 10px !important;
 }
 .product-form__input--custom-swatch {
   display: flex;
