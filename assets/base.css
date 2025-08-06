@@ -3695,6 +3695,9 @@ p {
 .appstle_custom_select {
   margin: 16px 0 28px 0;
 }
+.appstle_select {
+  background: #fff;
+}
 .product-form__input--custom-swatch {
   display: flex;
   gap: 10px;
