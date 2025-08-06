@@ -21,7 +21,7 @@
       </ul>
     </div>
 
-    <div class="policies-tabs-content" style="flex: 1;">
+    <div class="policies-tabs-content">
       <div class="policies-tab-content active">
         {% if page.title != blank %}
           <h2 class="policies-tabs-title">{{ page.title }}</h2>
@@ -56,6 +56,10 @@
     list-style: none;
     margin: 0;
     padding: 0;
+  }
+  .policies-tabs-content {
+    max-width: 720px;
+    flex: 1;
   }
   .policies-tab-button {
     text-decoration: none;
