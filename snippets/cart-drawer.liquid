@@ -480,6 +480,9 @@
 
         <!-- Start blocks -->
         <!-- Subtotals -->
+        {% if cart != empty and settings.show_upsell_offer %}
+          {% render 'upsell-offer' %}
+        {% endif %}
 
         <div class="cart-drawer__footer" {{ block.shopify_attributes }}>
           <div>

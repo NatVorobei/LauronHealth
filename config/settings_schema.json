@@ -1475,5 +1475,27 @@
         "default": "#0546e0"
       }
     ]
-  }
+  },
+  {
+    "name": "Upsell Settings Offer",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_upsell_offer",
+        "label": "Show Upsell Offer in Cart Drawer",
+        "default": true
+      },
+      {
+        "type": "product",
+        "id": "upsell_product",
+        "label": "Upsell Product"
+      },
+      {
+        "type": "text",
+        "id": "upsell_title",
+        "label": "Upsell Title",
+        "default": "Our products work better together:"
+      }
+    ]
+  }   
 ]
