@@ -1488,13 +1488,13 @@
         "type": "text",
         "id": "product_handle_a",
         "label": "Product A Handle (основний)",
-        "default": "lauron-mental-performance"
+        "default": "freeze-age"
       },
       {
         "type": "text",
         "id": "product_handle_b",
         "label": "Product B Handle (upsell до A)",
-        "default": "lauron-mental-focus"
+        "default": "mental-performance"
       },
       {
         "type": "text",
