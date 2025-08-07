@@ -1495,7 +1495,13 @@
         "id": "upsell_title",
         "label": "Upsell Title",
         "default": "Our products work better together:"
-      }
+      },
+      {
+        "type": "text",
+        "id": "upsell_buy_button",
+        "label": "Текст кнопки 'Купити'",
+        "default": "Купити"
+      },
     ]
   }   
 ]

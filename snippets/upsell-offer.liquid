@@ -58,7 +58,7 @@
                   >
                     <span>
                       {% if variant.available %}
-                        {{ block.settings.buy_button }}
+                        {{ settings.upsell_buy_button }}
                       {% else %}
                         {{ 'products.product.sold_out' | t }}
                       {% endif %}
