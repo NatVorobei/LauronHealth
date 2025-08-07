@@ -1483,7 +1483,7 @@
         "type": "checkbox",
         "id": "show_upsell_offer",
         "label": "Show Upsell Offer in Cart Drawer",
-        "default": true
+        "default": false
       },
       {
         "type": "product",
