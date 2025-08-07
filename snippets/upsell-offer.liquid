@@ -1,155 +1,166 @@
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 
-{% if settings.show_upsell_offer %}
-    {% assign cart_contains_upsell = false %}
-    {% for item in cart.items %}
-      {% if item.product.id == settings.upsell_product.id %}
-        {% assign cart_contains_upsell = true %}
-      {% endif %}
-    {% endfor %}
-  
-    {% unless cart_contains_upsell %}
-      <div class="drawer__upsell">
-        <h3 class="drawer__upsell-heading">{{ settings.upsell_title }}</h3>
-  
-        {% assign upsell_product = settings.upsell_product %}
-        {% if upsell_product != blank %}
-          <div class="drawer__upsell-card">
-            <div class="drawer__upsell-image">
-              <img src="{{ upsell_product.featured_image | image_url: width: 200 }}" alt="{{ upsell_product.title }}" loading="lazy">
-            </div>
-            <div class="drawer__upsell-content">
-              {% if upsell_product.metafields.reviews.rating.value %}
-                <div class="drawer__upsell-rating">
-                  ⭐ {{ upsell_product.metafields.reviews.rating.value }} 
-                  <a href="{{ upsell_product.url }}#reviews" target="_blank">{{ upsell_product.metafields.reviews.rating_count.value }} reviews</a>
-                </div>
-              {% endif %}
-  
-              <div class="drawer__upsell-title">{{ upsell_product.title }}</div>
-              {% if upsell_product.description != blank %}
-                <div class="drawer__upsell-subtitle">{{ upsell_product.description | strip_html | truncate: 80 }}</div>
-              {% endif %}
-  
-              <div class="drawer__upsell-prices">
-                {% assign variant = upsell_product.variants.first %}
-                {% if variant.compare_at_price > variant.price %}
-                  <span class="price--compare">{{ variant.compare_at_price | money }}</span>
-                {% endif %}
-                <span class="price--main">{{ variant.price | money }}</span>
-              </div>
-  
-              <product-form data-section-id="{{ section.id }}" class="custom-product-form">
-                {% form 'product', product, class: 'product-form', data-type: 'add-to-cart-form' %}
-                  <input
-                    type="hidden"
-                    name="id"
-                    value="{{ variant.id }}"
-                    class="product-variant-id"
-                    {% unless variant.available %}disabled{% endunless %}
-                  >
-              
-                  <button
-                    type="submit"
-                    name="add"
-                    class="two-product-card__actions-button"
-                    aria-live="polite"
-                    {% unless variant.available %}disabled{% endunless %}
-                  >
-                    <span>
-                      {% if variant.available %}
-                        {{ settings.upsell_buy_button }}
-                      {% else %}
-                        {{ 'products.product.sold_out' | t }}
-                      {% endif %}
-                    </span>
-                    <span class="sold-out-message hidden">
-                      {{ 'products.product.sold_out' | t }}
-                    </span>
-                    {% render 'loading-spinner' %}
-                  </button>
-                {% endform %}
-              </product-form>
-            </div>
+{% assign cart_product_handles = cart.items | map: 'product' | map: 'handle' %}
+{% assign product_handle_a = settings.product_handle_a %}
+{% assign product_handle_b = settings.product_handle_b %}
+
+{% if cart_product_handles contains product_handle_a %}
+  {% assign upsell_handle = product_handle_b %}
+{% elsif cart_product_handles contains product_handle_b %}
+  {% assign upsell_handle = product_handle_a %}
+{% else %}
+  {% assign upsell_handle = null %}
+{% endif %}
+
+{% assign upsell_product = all_products[upsell_handle] %}
+
+{% if settings.show_upsell_offer and upsell_product %}
+  {% assign cart_contains_upsell = false %}
+  {% for item in cart.items %}
+    {% if item.product.handle == upsell_product.handle %}
+      {% assign cart_contains_upsell = true %}
+    {% endif %}
+  {% endfor %}
+
+  {% unless cart_contains_upsell %}
+    <div class="drawer__upsell">
+      <h3 class="drawer__upsell-heading">{{ settings.upsell_title }}</h3>
+
+      <div class="drawer__upsell-card">
+        <div class="drawer__upsell-image">
+          <img
+            src="{{ upsell_product.featured_image | image_url: width: 200 }}"
+            alt="{{ upsell_product.title }}"
+            loading="lazy"
+          >
+        </div>
+        <div class="drawer__upsell-content">
+          <div class="drawer__upsell-title">{{ upsell_product.title }}</div>
+          {% if upsell_product.description != blank %}
+            <div class="drawer__upsell-subtitle">{{ upsell_product.description | strip_html | truncate: 80 }}</div>
+          {% endif %}
+
+          <div class="drawer__upsell-prices">
+            {% assign variant = upsell_product.variants.first %}
+            {% if variant.compare_at_price > variant.price %}
+              <span class="price--compare">{{ variant.compare_at_price | money }}</span>
+            {% endif %}
+            <span class="price--main">{{ variant.price | money }}</span>
           </div>
-        {% endif %}
+
+          <product-form data-section-id="{{ section.id }}" class="custom-product-form">
+            {% form 'product', upsell_product, class: 'product-form', data-type: 'add-to-cart-form' %}
+              <input
+                type="hidden"
+                name="id"
+                value="{{ variant.id }}"
+                class="product-variant-id"
+                {% unless variant.available %}
+                  disabled
+                {% endunless %}
+              >
+
+              <button
+                type="submit"
+                name="add"
+                class="two-product-card__actions-button"
+                aria-live="polite"
+                {% unless variant.available %}
+                  disabled
+                {% endunless %}
+              >
+                <span>
+                  {% if variant.available %}
+                    {{ settings.upsell_buy_button }}
+                  {% else %}
+                    {{ 'products.product.sold_out' | t }}
+                  {% endif %}
+                </span>
+                <span class="sold-out-message hidden">
+                  {{ 'products.product.sold_out' | t }}
+                </span>
+                {% render 'loading-spinner' %}
+              </button>
+            {% endform %}
+          </product-form>
+        </div>
       </div>
-    {% endunless %}
-  {% endif %}
-   
+    </div>
+  {% endunless %}
+{% endif %}
 
 <style>
-    .drawer__upsell {
-        border: 1px solid #ddd;
-        border-radius: 12px;
-        padding: 20px;
-        margin: 20px 0;
-        background-color: #fff;
-      }
-      
-      .drawer__upsell-heading {
-        font-weight: 600;
-        margin-bottom: 1rem;
-      }
-      
-      .drawer__upsell-card {
-        display: flex;
-        gap: 16px;
-        align-items: flex-start;
-      }
-      
-      .drawer__upsell-image img {
-        width: 80px;
-        height: auto;
-        border-radius: 6px;
-      }
-      
-      .drawer__upsell-content {
-        flex: 1;
-      }
-      
-      .drawer__upsell-rating {
-        font-size: 12px;
-        color: #555;
-        margin-bottom: 4px;
-      }
-      
-      .drawer__upsell-title {
-        font-weight: bold;
-        font-size: 16px;
-      }
-      
-      .drawer__upsell-subtitle {
-        font-size: 12px;
-        color: #888;
-        margin-bottom: 8px;
-      }
-      
-      .drawer__upsell-prices {
-        display: flex;
-        gap: 8px;
-        align-items: center;
-        margin-bottom: 8px;
-      }
-      
-      .price--compare {
-        text-decoration: line-through;
-        color: #aaa;
-      }
-      
-      .price--main {
-        font-weight: 600;
-        color: #000;
-      }
-      
-      .drawer__upsell-button {
-        background-color: black;
-        color: white;
-        font-weight: 600;
-        padding: 8px 20px;
-        border-radius: 12px;
-        font-size: 14px;
-        border: none;
-        cursor: pointer;
-      }      
+  .drawer__upsell {
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px 0;
+      background-color: #fff;
+    }
+
+    .drawer__upsell-heading {
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .drawer__upsell-card {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .drawer__upsell-image img {
+      width: 80px;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    .drawer__upsell-content {
+      flex: 1;
+    }
+
+    .drawer__upsell-rating {
+      font-size: 12px;
+      color: #555;
+      margin-bottom: 4px;
+    }
+
+    .drawer__upsell-title {
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .drawer__upsell-subtitle {
+      font-size: 12px;
+      color: #888;
+      margin-bottom: 8px;
+    }
+
+    .drawer__upsell-prices {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .price--compare {
+      text-decoration: line-through;
+      color: #aaa;
+    }
+
+    .price--main {
+      font-weight: 600;
+      color: #000;
+    }
+
+    .drawer__upsell-button {
+      background-color: black;
+      color: white;
+      font-weight: 600;
+      padding: 8px 20px;
+      border-radius: 12px;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+    }
 </style>
