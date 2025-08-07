@@ -40,55 +40,55 @@
             <div class="drawer__upsell-subtitle">
               {{ upsell_product.metafields.custom.cart_drawer_description.value }}
             </div>
-          {% endif %}          
+          {% endif %}
           <div class="drawer__upsell-bottom">
             <div class="darwer__upsell-info">
-                <div class="drawer__upsell-prices">
-                    {% assign variant = upsell_product.variants.first %}
-                    {% if variant.compare_at_price > variant.price %}
-                    <span class="price--compare">{{ variant.compare_at_price | money }}</span>
-                    {% endif %}
-                    <span class="price--main">{{ variant.price | money }}</span>
-                </div>
-                <p class="drawer__upsell-variantDesr">{{ variant.metafields.custom.cart_drawer_description }}</p>
+              <div class="drawer__upsell-prices">
+                {% assign variant = upsell_product.variants.first %}
+                {% if variant.compare_at_price > variant.price %}
+                  <span class="price--compare">{{ variant.compare_at_price | money }}</span>
+                {% endif %}
+                <span class="price--main">{{ variant.price | money }}</span>
+              </div>
+              <p class="drawer__upsell-variantDesr">{{ variant.metafields.custom.variant_description.value }}</p>
             </div>
 
             <product-form data-section-id="{{ section.id }}" class="custom-product-form">
-                {% form 'product', upsell_product, class: 'product-form', data-type: 'add-to-cart-form' %}
+              {% form 'product', upsell_product, class: 'product-form', data-type: 'add-to-cart-form' %}
                 <input
-                    type="hidden"
-                    name="id"
-                    value="{{ variant.id }}"
-                    class="product-variant-id"
-                    {% unless variant.available %}
+                  type="hidden"
+                  name="id"
+                  value="{{ variant.id }}"
+                  class="product-variant-id"
+                  {% unless variant.available %}
                     disabled
-                    {% endunless %}
+                  {% endunless %}
                 >
 
                 <button
-                    type="submit"
-                    name="add"
-                    class="drawer__upsell-button"
-                    aria-live="polite"
-                    {% unless variant.available %}
+                  type="submit"
+                  name="add"
+                  class="drawer__upsell-button"
+                  aria-live="polite"
+                  {% unless variant.available %}
                     disabled
-                    {% endunless %}
+                  {% endunless %}
                 >
-                    <span>
+                  <span>
                     {% if variant.available %}
-                        {{ settings.upsell_buy_button }}
+                      {{ settings.upsell_buy_button }}
                     {% else %}
-                        {{ 'products.product.sold_out' | t }}
+                      {{ 'products.product.sold_out' | t }}
                     {% endif %}
-                    </span>
-                    <span class="sold-out-message hidden">
+                  </span>
+                  <span class="sold-out-message hidden">
                     {{ 'products.product.sold_out' | t }}
-                    </span>
-                    {% render 'loading-spinner' %}
+                  </span>
+                  {% render 'loading-spinner' %}
                 </button>
-                {% endform %}
+              {% endform %}
             </product-form>
-            </div>
+          </div>
         </div>
       </div>
     </div>
