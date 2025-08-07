@@ -95,6 +95,16 @@
   {% endunless %}
 {% endif %}
 
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+  const drawerForm = document.querySelector('.custom-product-form form');
+  if (drawerForm) {
+    drawerForm.setAttribute('data-type', 'upsell-form'); // не буде оброблений Appstle
+  }
+});
+
+</script>
+
 <style>
 .drawer__upsell {
     flex: 1;
