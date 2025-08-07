@@ -132,6 +132,7 @@
     "shipping_bar_color": "#ff2400",
     "show_upsell_offer": true,
     "upsell_product": "mental-performance",
+    "upsell_buy_button": "Купити",
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
