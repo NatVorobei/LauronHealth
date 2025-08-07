@@ -32,35 +32,6 @@
         "info": "t:settings_schema.logo.settings.favicon.info"
       }
     ]
-  },
-  {
-    "name": "Free shipping settings",
-    "settings": [
-      {
-        "type": "number",
-        "id": "free_shipping_goal",
-        "label": "Free shipping threshold (in store currency)",
-        "default": 36
-      },
-      {
-        "type": "text",
-        "id": "free_shipping_text_before",
-        "label": "Text before remaining amount",
-        "default": "Ще"
-      },
-      {
-        "type": "text",
-        "id": "free_shipping_text_after",
-        "label": "Text after remaining amount",
-        "default": "до безкоштовної доставки"
-      },
-      {
-        "type": "text",
-        "id": "free_shipping_text_success",
-        "label": "Text when free shipping achieved",
-        "default": "Ви отримали безкоштовну доставку!"
-      }
-    ]
   },  
   {
     "name": "t:settings_schema.colors.name",
@@ -1478,6 +1449,30 @@
         "id": "cart_color_scheme",
         "label": "t:sections.all.colors.label",
         "default": "scheme-1"
+      }
+    ]
+  },
+  {
+    "name": "Shipping Bar",
+    "settings":
+    [
+      {
+        "type": "checkbox",
+        "id": "show_shipping_bar",
+        "label": "Show Shipping Bar in Cart Drawer",
+        "default": false
+      },
+      {
+        "type": "number",
+        "id": "minimum_free_shipping",
+        "label": "Minimum Free Shipping",
+        "default": 20
+      },
+      {
+        "type": "color",
+        "id": "shipping_bar_color",
+        "label": "Progress Bar Color",
+        "default": "#0546e0"
       }
     ]
   }
