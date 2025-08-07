@@ -130,6 +130,8 @@
     "show_shipping_bar": true,
     "minimum_free_shipping": 200,
     "shipping_bar_color": "#ff2400",
+    "show_upsell_offer": true,
+    "upsell_product": "mental-performance",
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
