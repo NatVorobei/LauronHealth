@@ -32,7 +32,7 @@
         "info": "t:settings_schema.logo.settings.favicon.info"
       }
     ]
-  },  
+  },
   {
     "name": "t:settings_schema.colors.name",
     "settings": [
@@ -1454,8 +1454,7 @@
   },
   {
     "name": "Shipping Bar",
-    "settings":
-    [
+    "settings": [
       {
         "type": "checkbox",
         "id": "show_shipping_bar",
@@ -1486,9 +1485,16 @@
         "default": false
       },
       {
-        "type": "product",
-        "id": "upsell_product",
-        "label": "Upsell Product"
+        "type": "text",
+        "id": "product_handle_a",
+        "label": "Product A Handle (основний)",
+        "default": "lauron-mental-performance"
+      },
+      {
+        "type": "text",
+        "id": "product_handle_b",
+        "label": "Product B Handle (upsell до A)",
+        "default": "lauron-mental-focus"
       },
       {
         "type": "text",
@@ -1503,5 +1509,5 @@
         "default": "Купити"
       }
     ]
-  }   
+  }
 ]
