@@ -34,6 +34,35 @@
     ]
   },
   {
+    "name": "Free shipping settings",
+    "settings": [
+      {
+        "type": "number",
+        "id": "free_shipping_goal",
+        "label": "Free shipping threshold (in store currency)",
+        "default": 36
+      },
+      {
+        "type": "text",
+        "id": "free_shipping_text_before",
+        "label": "Text before remaining amount",
+        "default": "Ще"
+      },
+      {
+        "type": "text",
+        "id": "free_shipping_text_after",
+        "label": "Text after remaining amount",
+        "default": "до безкоштовної доставки"
+      },
+      {
+        "type": "text",
+        "id": "free_shipping_text_success",
+        "label": "Text when free shipping achieved",
+        "default": "Ви отримали безкоштовну доставку!"
+      }
+    ]
+  },  
+  {
     "name": "t:settings_schema.colors.name",
     "settings": [
       {

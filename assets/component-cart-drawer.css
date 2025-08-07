@@ -78,7 +78,6 @@ cart-drawer:not(.is-empty) .cart-drawer__collection {
 }
 
 .drawer__heading {
-  margin: 0 0 1rem;
   font-size: 22px;
   line-height: 20px;
   font-weight: 700;
