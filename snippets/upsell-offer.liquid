@@ -50,7 +50,7 @@
                     {% endif %}
                     <span class="price--main">{{ variant.price | money }}</span>
                 </div>
-                <p class="drawer__upsell-variantDesr">{{ variant.metafields.custom.cart_drawer_description }}</p>
+                <p class="drawer__upsell-variantDesr">{{ variant.metafields.custom.variant_description.value }}</p>
             </div>
 
             <product-form data-section-id="{{ section.id }}" class="custom-product-form">
