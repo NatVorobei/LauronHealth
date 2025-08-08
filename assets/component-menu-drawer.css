@@ -176,7 +176,7 @@ details[open].menu-opening > .menu-drawer__submenu {
 }
 
 .header--has-social .menu-drawer__utility-links {
-  padding: 2rem 3rem;
+  padding: 20px 10px;
 }
 
 @media screen and (max-width: 749px) {
