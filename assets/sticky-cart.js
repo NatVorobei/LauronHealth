@@ -190,7 +190,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (!stickyBar || !stickyBtn || !stickyWidgetMount || !mainForm || !mainSubmitBtn || !defaultATC) return;
 
-  // 1) Кнопка sticky сабмітить головну форму
+  // 1) Сабміт головної форми
   stickyBtn.addEventListener('click', () => {
     if (mainSubmitBtn) {
       mainSubmitBtn.click();
@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   waitForWidget.observe(document.body, { childList: true, subtree: true });
 
-  // 3) Показуємо sticky, коли основна кнопка зникає, і переносимо віджет
+  // 3) Показуємо sticky + переносимо віджет
   const io = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -250,3 +250,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
   io.observe(defaultATC);
 });
+
