@@ -71,7 +71,7 @@
     position: relative;
     max-width: 1280px;
     margin: 0 auto;
-    padding-bottom: 60px;
+    padding: 0 10px 60px 10px;
   }
 
   .facts-slider__header {
@@ -263,6 +263,12 @@
     .facts-slide__text {
       font-size: 10px;
       line-height: 14px;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    .facts-slider-container {
+      padding: 0 0 60px 0;
     }
   }
 </style>
