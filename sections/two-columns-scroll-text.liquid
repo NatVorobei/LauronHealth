@@ -1,316 +1,309 @@
 <section class="two-column {% if section.settings.image_position == 'left' %}two-column--reverse{% endif %}">
-    <div class="two-column__content" style="background-color: {{ section.settings.background_color }};">
-      <div class="two-column__text-wrapper">
-        <h2 class="two-column__heading">{{ section.settings.heading }}</h2>
-      
-        <div class="toggle-wrapper">
-          <div class="two-column__richtext rte">
-            {{ section.settings.rich_description }}
-          </div>
+  <div class="two-column__content" style="background-color: {{ section.settings.background_color }};">
+    <div class="two-column__text-wrapper">
+      <h2 class="two-column__heading">{{ section.settings.heading }}</h2>
+
+      <div class="toggle-wrapper">
+        <div class="two-column__richtext rte">
+          {{ section.settings.rich_description }}
         </div>
-      
-        <button class="toggle-button" type="button" aria-expanded="false">
-          <span class="toggle-button-icon toggle-expand">
-            {{ 'plus-icon.svg' | inline_asset_content }}
-          </span>
-          <span class="toggle-button-icon toggle-collapse hidden">
-            {{ 'exit-button.svg' | inline_asset_content }}
-          </span>
-        </button>
       </div>
-      
+
+      <button class="toggle-button" type="button" aria-expanded="false">
+        <span class="toggle-button-icon toggle-expand">
+          {{ 'plus-icon.svg' | inline_asset_content }}
+        </span>
+        <span class="toggle-button-icon toggle-collapse hidden">
+          {{ 'exit-button.svg' | inline_asset_content }}
+        </span>
+      </button>
     </div>
-  
-    <div class="two-column__image">
-      <img src="{{ section.settings.image | img_url: '800x800' }}" alt="Image" />
-    </div>
-  </section>
-  
-  <style>
+  </div>
+
+  <div class="two-column__image">
+    <img src="{{ section.settings.image | img_url: '800x800' }}" alt="Image">
+  </div>
+</section>
+
+<style>
+      .two-column {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .two-column--reverse {
+        flex-direction: row-reverse;
+      }
+
+      .two-column__content,
+      .two-column__image {
+        width: 50%;
+      }
+
+      .two-column__content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 80px;
+      }
+
+      .two-column__text-wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .two-column__heading {
+        font-family: var(--font-heading-main);
+        font-size: 42px;
+        line-height: 30px;
+        font-weight: 700;
+        margin-bottom: 30px;
+        color: var(--color-main-text);
+      }
+
+      .two-column__richtext {
+        font-size: 18px;
+        line-height: 26px;
+        max-height: 385px;
+        overflow-y: auto;
+        padding-right: 85px;
+        color: var(--color-subtext);
+      }
+
+      .two-column__richtext p strong {
+        color: var(--color-main-text);
+      }
+
+      .two-column__richtext::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      .two-column__richtext::-webkit-scrollbar-thumb {
+        background-color: #bbb;
+        border-radius: 10px;
+      }
+
+      .two-column__image {
+        display: flex;
+        align-items: stretch;
+      }
+
+      .two-column__image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .toggle-button {
+        display: none;
+      }
+
+  .two-column__content,
+  .two-column__image {
+    min-width: 0;
+  }
+
+  @media (min-width: 750px) and (max-width: 1023px) {
     .two-column {
-      display: flex;
-      flex-wrap: wrap;
+      align-items: stretch;
     }
-  
-    .two-column--reverse {
-      flex-direction: row-reverse;
-    }
-  
+
     .two-column__content,
     .two-column__image {
       width: 50%;
+      flex: 0 0 50%;
     }
-  
+
     .two-column__content {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 80px;
+      padding: 48px 36px;
     }
-  
+
     .two-column__text-wrapper {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
+      max-width: 760px;
     }
-  
+
     .two-column__heading {
-      font-family: var(--font-heading-main);
-      font-size: 42px;
-      line-height: 30px;
-      font-weight: 700;
-      margin-bottom: 30px;
-      color: var(--color-main-text);
+      font-size: 32px;
+      line-height: 1.25;
+      margin-bottom: 20px;
     }
-  
+
     .two-column__richtext {
-      font-size: 18px;
-      line-height: 26px;
-      max-height: 385px;
-      overflow-y: auto;
-      padding-right: 85px;
-      color: var(--color-subtext);
+      font-size: 16.5px;
+      line-height: 25px;
+      padding-right: 32px;
+      max-height: 350px;
     }
-  
-    .two-column__richtext p strong {
-      color: var(--color-main-text);
-    }
-  
-    .two-column__richtext::-webkit-scrollbar {
-      width: 6px;
-    }
-  
-    .two-column__richtext::-webkit-scrollbar-thumb {
-      background-color: #bbb;
-      border-radius: 10px;
-    }
-  
+
     .two-column__image {
-      display: flex;
-      align-items: stretch;
+      min-height: 350px;
     }
-  
+
     .two-column__image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
+  }
 
-    .toggle-button {
-      display: none;
+  @media (min-width: 1024px) and (max-width: 1340px) {
+    .two-column__content {
+      padding: 56px;
     }
 
-    /* запобігає переповненню колонок на «незручних» ширинах */
-.two-column__content,
-.two-column__image {
-  min-width: 0; /* важливо для flex, щоб текст не вилазив */
-}
-
-/* 750–1023px: компактні планшети і landscape-смартфони */
-@media (min-width: 750px) and (max-width: 1023px) {
-  .two-column {
-    align-items: stretch;
-  }
-
-  .two-column__content,
-  .two-column__image {
-    width: 50%;
-    flex: 0 0 50%;
-  }
-
-  .two-column__content {
-    padding: 48px 36px; /* менше паддінги, щоб не ламало рядок */
-  }
-
-  .two-column__text-wrapper {
-    max-width: 760px; /* щоб текст не тиснув зображення */
-  }
-
-  .two-column__heading {
-    font-size: 32px;
-    line-height: 1.25;
-    margin-bottom: 20px;
-  }
-
-  .two-column__richtext {
-    font-size: 16.5px;
-    line-height: 25px;
-    padding-right: 32px; /* зменшив, щоб не з’їдало ширину */
-    max-height: 350px;   /* трохи нижче за десктоп */
-  }
-
-  .two-column__image {
-    /* страхуємо висоту картинки від «сплющення» */
-    min-height: 350px;
-  }
-
-  .two-column__image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-}
-
-/* 1024–1340px: великі планшети / невеликі ноутбуки */
-@media (min-width: 1024px) and (max-width: 1340px) {
-  .two-column__content {
-    padding: 56px; /* трохи менше за твої 80px */
-  }
-
-  .two-column__heading {
-    font-size: 36px;
-    line-height: 1.22;
-    margin-bottom: 24px;
-  }
-
-  .two-column__richtext {
-    font-size: 17px;
-    line-height: 26px;
-    padding-right: 48px; /* щоб лишився комфортний скрол */
-    max-height: 370px;
-  }
-
-  .two-column__image {
-    min-height: 420px; /* стабільніша композиція */
-  }
-}
-
-  
-    @media (max-width: 749px) {
-      .two-column {
-        flex-direction: column-reverse;
-      }
-  
-      .two-column__content,
-      .two-column__image {
-        width: 100%;
-      }
-  
-      .two-column__image {
-        display: flex;
-        align-items: stretch;
-        aspect-ratio: 1 / 1;
-      }
-  
-      .two-column__content {
-        padding: 40px 0;
-      }
-  
-      .two-column__text-wrapper {
-        padding: 0 14px;
-      }
-  
-      .two-column__heading {
-        font-size: 24px;
-        line-height: 1.3;
-      }
-  
-      .two-column__richtext {
-        max-height: none;
-        overflow: visible;
-        font-size: 16px;
-        line-height: 24px;
-        padding: 0;
-      }
-
-      .toggle-wrapper {
-        max-height: 360px;
-        overflow: hidden;
-        transition: max-height 0.8s ease;
-      }
-    
-      .toggle-wrapper.expanded {
-        max-height: 1200px;
-      }
-    
-      .toggle-button {
-        margin-top: 12px;
-        background: none;
-        border: none;
-        cursor: pointer;
-        display: block;
-        align-self: flex-end;
-      }
-
-      .toggle-button-icon svg {
-        width: 24px;
-        height: 24px;
-      }
-    
-      .hidden {
-        display: none !important;
-      }
+    .two-column__heading {
+      font-size: 36px;
+      line-height: 1.22;
+      margin-bottom: 24px;
     }
-  </style>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const toggleButton = document.querySelector('.toggle-button');
-      const toggleWrapper = document.querySelector('.toggle-wrapper');
-      const expandIcon = document.querySelector('.toggle-expand');
-      const collapseIcon = document.querySelector('.toggle-collapse');
-  
-      if (toggleButton && toggleWrapper) {
-        toggleButton.addEventListener('click', function () {
-          const isExpanded = toggleWrapper.classList.toggle('expanded');
-          toggleButton.setAttribute('aria-expanded', isExpanded);
-          expandIcon.classList.toggle('hidden', isExpanded);
-          collapseIcon.classList.toggle('hidden', !isExpanded);
-        });
-      }
-    });
-  </script>
-  
-  
-  {% schema %}
-  {
-    "name": "Two Column Scrollable",
-    "settings": [
-      {
-        "type": "text",
-        "id": "heading",
-        "label": "Heading",
-        "default": "Заголовок секції"
-      },
-      {
-        "type": "richtext",
-        "id": "rich_description",
-        "label": "Description",
-        "default": "<p>Ваш описовий текст...</p>"
-      },
-      {
-        "type": "image_picker",
-        "id": "image",
-        "label": "Image"
-      },
-      {
-        "type": "color",
-        "id": "background_color",
-        "label": "Background Color",
-        "default": "#ffffff"
-      },
-      {
-        "type": "select",
-        "id": "image_position",
-        "label": "Image Position",
-        "default": "right",
-        "options": [
-          {
-            "label": "Left",
-            "value": "left"
-          },
-          {
-            "label": "Right",
-            "value": "right"
-          }
-        ]
-      }
-    ],
-    "presets": [
-      {
-        "name": "Two Column - Richtext Scroll",
-        "category": "Custom"
-      }
-    ]
+    .two-column__richtext {
+      font-size: 17px;
+      line-height: 26px;
+      padding-right: 48px;
+      max-height: 370px;
+    }
+
+    .two-column__image {
+      min-height: 420px;
+    }
   }
+
+      @media (max-width: 749px) {
+        .two-column {
+          flex-direction: column-reverse;
+        }
+
+        .two-column__content,
+        .two-column__image {
+          width: 100%;
+        }
+
+        .two-column__image {
+          display: flex;
+          align-items: stretch;
+          aspect-ratio: 1 / 1;
+        }
+
+        .two-column__content {
+          padding: 40px 0;
+        }
+
+        .two-column__text-wrapper {
+          padding: 0 14px;
+        }
+
+        .two-column__heading {
+          font-size: 24px;
+          line-height: 1.3;
+        }
+
+        .two-column__richtext {
+          max-height: none;
+          overflow: visible;
+          font-size: 16px;
+          line-height: 24px;
+          padding: 0;
+        }
+
+        .toggle-wrapper {
+          max-height: 360px;
+          overflow: hidden;
+          transition: max-height 0.8s ease;
+        }
+
+        .toggle-wrapper.expanded {
+          max-height: 1200px;
+        }
+
+        .toggle-button {
+          margin-top: 12px;
+          background: none;
+          border: none;
+          cursor: pointer;
+          display: block;
+          align-self: flex-end;
+        }
+
+        .toggle-button-icon svg {
+          width: 24px;
+          height: 24px;
+        }
+
+        .hidden {
+          display: none !important;
+        }
+      }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const toggleButton = document.querySelector('.toggle-button');
+    const toggleWrapper = document.querySelector('.toggle-wrapper');
+    const expandIcon = document.querySelector('.toggle-expand');
+    const collapseIcon = document.querySelector('.toggle-collapse');
+
+    if (toggleButton && toggleWrapper) {
+      toggleButton.addEventListener('click', function () {
+        const isExpanded = toggleWrapper.classList.toggle('expanded');
+        toggleButton.setAttribute('aria-expanded', isExpanded);
+        expandIcon.classList.toggle('hidden', isExpanded);
+        collapseIcon.classList.toggle('hidden', !isExpanded);
+      });
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Two Column Scrollable",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Заголовок секції"
+    },
+    {
+      "type": "richtext",
+      "id": "rich_description",
+      "label": "Description",
+      "default": "<p>Ваш описовий текст...</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image Position",
+      "default": "right",
+      "options": [
+        {
+          "label": "Left",
+          "value": "left"
+        },
+        {
+          "label": "Right",
+          "value": "right"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Two Column - Richtext Scroll",
+      "category": "Custom"
+    }
+  ]
+}
 {% endschema %}
