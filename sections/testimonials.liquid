@@ -1,287 +1,287 @@
 <div class="testimonials" id="testimonials">
-    <div class="testimonials__header">
-      {% if section.settings.title != blank %}
-        <h2 class="testimonials__heading">{{ section.settings.title }}</h2>
-      {% endif %}
-    </div>
-  
-    <div class="testimonials-swiper-wrapper">
-      <div class="swiper testimonials-swiper">
-        <div class="swiper-wrapper">
-          {% for block in section.blocks %}
-            <div class="swiper-slide testimonial-card">
-              <p class="testimonial-text">{{ block.settings.text }}</p>
-  
-              <div class="testimonial-footer-wrapper">
-                <hr class="testimonial-divider" />
-                <div class="testimonial-footer">
-                  <div class="testimonial-rewiever">
-                    <div class="testimonial-avatar">
-                      <img src="{{ block.settings.avatar | img_url: '80x80' }}" alt="{{ block.settings.name }}" />
-                    </div>
-                    <div class="testimonial-info">
-                      <p class="testimonial-rewiever-name">{{ block.settings.name }}</p>
-                      <p class="testimonial-role">{{ block.settings.role }}</p>
-                    </div>
-                  </div>
-                  <div class="testimonial-rating"><span class="testimonial-star">★</span> 5.0</div>
-                </div>
-              </div>
-            </div>
-          {% endfor %}
-        </div>
-      </div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
-    </div>
+  <div class="testimonials__header">
+    {% if section.settings.title != blank %}
+      <h2 class="testimonials__heading">{{ section.settings.title }}</h2>
+    {% endif %}
   </div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      new Swiper(".testimonials-swiper", {
-        loop: true,
-        // slidesPerView: 3,
-        spaceBetween: 25,
-        centeredSlides: false,
-        autoplay: {
-          delay: 3000,
+  <div class="testimonials-swiper-wrapper">
+    <div class="swiper testimonials-swiper">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          <div class="swiper-slide testimonial-card">
+            <p class="testimonial-text">{{ block.settings.text }}</p>
+
+            <div class="testimonial-footer-wrapper">
+              <hr class="testimonial-divider">
+              <div class="testimonial-footer">
+                <div class="testimonial-rewiever">
+                  <div class="testimonial-avatar">
+                    <img src="{{ block.settings.avatar | img_url: '80x80' }}" alt="{{ block.settings.name }}">
+                  </div>
+                  <div class="testimonial-info">
+                    <p class="testimonial-rewiever-name">{{ block.settings.name }}</p>
+                    <p class="testimonial-role">{{ block.settings.role }}</p>
+                  </div>
+                </div>
+                <div class="testimonial-rating"><span class="testimonial-star">★</span> 5.0</div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    new Swiper('.testimonials-swiper', {
+      loop: true,
+      // slidesPerView: 3,
+      spaceBetween: 25,
+      centeredSlides: false,
+      autoplay: {
+        delay: 3000,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        0: {
+          slidesPerView: 1.5,
+          spaceBetween: 16,
         },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
+        750: {
+          slidesPerView: 3,
+          spaceBetween: 25,
         },
-        breakpoints: {
-          0: {
-            slidesPerView: 1.5,
-            spaceBetween: 16,
-          },
-          750: {
-            slidesPerView: 3,
-            spaceBetween: 25,
-          }
-        }
-      });
+      },
     });
-  </script>
-  
-  <style>
-    .testimonials {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding-bottom: 120px;
-    }
-    /* .testimonials .swiper-wrapper {
-      cursor: grab;
-    } */
+  });
+</script>
+
+<style>
+  .testimonials {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-bottom: 120px;
+  }
+  /* .testimonials .swiper-wrapper {
+    cursor: grab;
+  } */
+  .testimonials__header {
+    padding: 60px 0 40px 60px;
+  }
+  .testimonials__heading {
+    font-size: 42px;
+    font-weight: 700;
+    font-family: var(--font-heading-main);
+    margin: 0;
+    line-height: 30px;
+    color: var(--color-main-text);
+  }
+  .testimonials-swiper-wrapper {
+    position: relative;
+    padding-inline: 60px;
+  }
+  .testimonial-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #1F1F21;
+    padding: 20px;
+    border-radius: 12px;
+    background: #fff;
+    height: auto;
+    user-select: none;
+    box-sizing: border-box;
+    cursor: grab;
+  }
+  .testimonial-text {
+    font-size: 16px;
+    line-height: 22px;
+    margin: 0;
+    font-family: Inter, sans-serif;
+    text-align: start;
+    color: var(--color-main-text);
+  }
+  .testimonial-footer-wrapper {
+    margin-top: auto;
+  }
+  .testimonial-divider {
+    margin: 30px 0 20px;
+  }
+  .testimonial-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .testimonial-avatar {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+  }
+  .testimonial-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .testimonial-rewiever {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .testimonial-info {
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .testimonial-rewiever-name {
+    font-family: var(--font-heading-main);
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 700;
+    margin: 0;
+    color: var(--color-main-text);
+  }
+  .testimonial-role {
+    font-size: 16px;
+    line-height: 16px;
+    margin: 0;
+    color: var(--color-subtext);
+    font-family: Inter, sans-serif;
+  }
+  .testimonial-rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+    line-height: 12px;
+    margin: 0;
+    font-family: Inter, sans-serif;
+    font-weight: 500;
+    color: var(--color-main-text);
+  }
+  .testimonial-star {
+    color: #ffc300;
+    font-size: 22px;
+  }
+  .testimonials .swiper-button-prev,
+  .testimonials .swiper-button-next {
+    position: absolute;
+    top: 55%;
+    transform: translateY(-50%);
+    z-index: 2;
+    color: #000;
+    width: 30px;
+    height: 30px;
+    border: 1px solid;
+    color: #d7d7d7;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+  }
+  .testimonials .swiper-button-prev {
+    left: 0;
+  }
+  .testimonials .swiper-button-next {
+    right: 0;
+  }
+  .testimonials .swiper-button-prev::after,
+  .testimonials .swiper-button-next::after {
+    font-size: 12px;
+    color: #d7d7d7;
+  }
+
+  @media (max-width: 749px) {
     .testimonials__header {
-      padding: 60px 0 40px 60px;
+      padding: 100px 0 50px 14px;
     }
     .testimonials__heading {
-      font-size: 42px;
-      font-weight: 700;
-      font-family: var(--font-heading-main);
-      margin: 0;
-      line-height: 30px;
-      color: var(--color-main-text);
+      font-size: 24px;
     }
     .testimonials-swiper-wrapper {
-      position: relative;
-      padding-inline: 60px;
+      padding: 0;
+    }
+    .testimonials .swiper-slide:first-child {
+      margin-left: 14px;
     }
     .testimonial-card {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      border: 1px solid #1F1F21;
-      padding: 20px;
-      border-radius: 12px;
-      background: #fff;
-      height: auto;
-      user-select: none;
-      box-sizing: border-box;
-      cursor: grab;
+      padding: 28px 14px;
     }
-    .testimonial-text {
-      font-size: 16px;
-      line-height: 22px;
-      margin: 0;
-      font-family: Inter, sans-serif;
-      text-align: start;
-      color: var(--color-main-text);
-    }
-    .testimonial-footer-wrapper {
-      margin-top: auto;
-    }
-    .testimonial-divider {
-      margin: 30px 0 20px;
-    }
-    .testimonial-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .testimonial-avatar {
-      width: 60px;
-      height: 60px;
-      flex-shrink: 0;
-    }
-    .testimonial-avatar img {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-    .testimonial-rewiever {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .testimonial-info {
-      text-align: start;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .testimonial-rewiever-name {
-      font-family: var(--font-heading-main);
-      font-size: 16px;
-      line-height: 22px;
-      font-weight: 700;
-      margin: 0;
-      color: var(--color-main-text);
-    }
+    .testimonial-text,
+    .testimonial-rewiever-name,
     .testimonial-role {
-      font-size: 16px;
-      line-height: 16px;
-      margin: 0;
-      color: var(--color-subtext);
-      font-family: Inter, sans-serif;
-    }
-    .testimonial-rating {
-      display: flex;
-      align-items: center;
-      gap: 4px;
       font-size: 14px;
-      line-height: 12px;
-      margin: 0;
-      font-family: Inter, sans-serif;
-      font-weight: 500;
-      color: var(--color-main-text);
-    }
-    .testimonial-star {
-      color: #ffc300;
-      font-size: 22px;
+      line-height: 18px;
     }
     .testimonials .swiper-button-prev,
     .testimonials .swiper-button-next {
-      position: absolute;
-      top: 55%;
-      transform: translateY(-50%);
-      z-index: 2;
-      color: #000;
-      width: 30px;
-      height: 30px;
-      border: 1px solid;
-      color: #d7d7d7;
-      border-radius: 50%;
-      padding: 0;
-      display: flex;
+      display: none !important;
     }
-    .testimonials .swiper-button-prev {
-      left: 0;
+    .testimonial-avatar {
+      width: 50px;
+      height: 50px;
     }
-    .testimonials .swiper-button-next {
-      right: 0;
+    .testimonial-divider {
+      margin: 25px 0 18px;
     }
-    .testimonials .swiper-button-prev::after,
-    .testimonials .swiper-button-next::after {
-      font-size: 12px;
-      color: #d7d7d7;
-    } 
-  
-    @media (max-width: 749px) {
-      .testimonials__header {
-        padding: 100px 0 50px 14px;
-      }
-      .testimonials__heading {
-        font-size: 24px;
-      }
-      .testimonials-swiper-wrapper {
-        padding: 0;
-      }
-      .testimonials .swiper-slide:first-child {
-        margin-left: 14px;
-      }
-      .testimonial-card {
-        padding: 28px 14px;
-      }
-      .testimonial-text,
-      .testimonial-rewiever-name,
-      .testimonial-role {
-        font-size: 14px;
-        line-height: 18px;
-      }
-      .testimonials .swiper-button-prev,
-      .testimonials .swiper-button-next {
-        display: none !important;
-      }
-      .testimonial-avatar {
-        width: 50px;
-        height: 50px;
-      }
-      .testimonial-divider {
-        margin: 25px 0 18px;
-      }
-    }
-  </style>
-  
-  {% schema %}
-  {
-    "name": "Testimonials",
-    "settings": [
-      {
-        "type": "text",
-        "id": "title",
-        "label": "Заголовок",
-        "default": "Відгуки клієнтів"
-      }
-    ],
-    "blocks": [
-      {
-        "type": "testimonial",
-        "name": "Відгук",
-        "settings": [
-          {
-            "type": "textarea",
-            "id": "text",
-            "label": "Текст відгуку",
-            "default": "Це текст відгуку."
-          },
-          {
-            "type": "image_picker",
-            "id": "avatar",
-            "label": "Аватар"
-          },
-          {
-            "type": "text",
-            "id": "name",
-            "label": "Імʼя",
-            "default": "Ім’я"
-          },
-          {
-            "type": "text",
-            "id": "role",
-            "label": "Роль / професія",
-            "default": "Посада"
-          }
-        ]
-      }
-    ],
-    "presets": [
-      {
-        "name": "Testimonials",
-        "category": "Custom"
-      }
-    ]
   }
+</style>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Заголовок",
+      "default": "Відгуки клієнтів"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Відгук",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Текст відгуку",
+          "default": "Це текст відгуку."
+        },
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "Аватар"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Імʼя",
+          "default": "Ім’я"
+        },
+        {
+          "type": "text",
+          "id": "role",
+          "label": "Роль / професія",
+          "default": "Посада"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "category": "Custom"
+    }
+  ]
+}
 {% endschema %}
