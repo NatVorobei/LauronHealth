@@ -121,331 +121,319 @@
 </script>
 
 <style>
-  .two-product-section {
-    max-width: 1280px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 120px;
-  }
-  .two-product-section__header {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    padding-right: 10px;
-    padding-left: 50px;
-    margin-bottom: 60px;
-    margin-top: 120px;
-  }
-  .two-product-section__heading {
-    font-family: var(--font-heading-main);
-    font-size: 42px;
-    font-weight: 700;
-    margin: 0;
-    line-height: 30px;
-  }
-  .two-product-card__container {
-    display: flex;
-    gap: 58px;
-    align-items: center;
-  }
-  .two-product-cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-  }
-  .two-product-card {
-    background: #F0F4F5;
-    padding: 40px 30px 40px 40px;
-    border-radius: 20px;
-    flex: 1 1 45%;
-  }
-  .two-product-card__title {
-    font-family: var(--font-heading-main);
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 24px;
-    margin: 0;
-  }
-  .two-product-card__title a {
-    color: inherit;
-    text-decoration: none;
-  }
-  .two-product-card__ratings {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-  }
-  .two-product-card__ratings-text {
-    font-size: 12px;
-    line-height: 12px;
-    font-weight: 500;
-    font-family: Inter, sans-serif;
-    color: var(--color-subtext);
-    text-decoration: underline;
-  }
-  .two-product-card__divider {
-    margin-top: 16px;
-    margin-bottom: 20px;
-    background: #D7D7D7;
-  }
-  .two-product-card img {
-    max-width: 160px;
-    height: auto;
-  }
-  .two-product-card__features-list {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 30px;
-    margin-top: 0;
-  }
-  .two-product-card__features-list li {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 14px;
-    line-height: 12px;
-    font-family: Inter, sans-serif;
-    color: var(--color-main-text);
-  }
-  .two-product-card__caption {
-    font-family: Inter, sans-serif;
-    font-size: 12px;
-    line-height: 12px;
-    color: var(--color-subtext);
-  }
-  .two-product-card__discount-badge {
-    font-family: var(--font-heading-main);
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 12px;
-    color: #FF2400;
-  }
-  .two-product-card__price-row  {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 32px;
-  }
-  .two-product-card__prices {
-    font-family: var(--font-heading-main);
-    font-weight: 700;
-    color: var(--color-main-text);
-    margin: 0;
-  }
-  .two-product-card__content {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-  .two-product-card__caption {
-    margin-bottom: 20px;
-  }
-  .two-product-card__actions-button {
-    font-size: 14px;
-    line-height: 12px;
-    font-family: Inter, sans-serif;
-    color: #fff;
-    font-weight: 700;
-    background-color: var(--color-main-text);
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    padding: 13px 28px;
-    cursor: pointer;
-    text-transform: uppercase;
-  }
-  .custom-product-form {
-    align-self: flex-end;
-  }
-
-    @media (max-width: 749px) {
-      .two-product-section__header {
-        padding: 0 10px;
-        margin-bottom: 50px;
-      }
-      .two-product-section__heading {
-        font-size: 24px;
-        line-height: 24px;
-      }
-      .two-product-cards {
-        flex-direction: column;
-        gap: 30px;
-      }
-      .two-product-card {
-        padding: 16px;
-      }
-      .two-product-card__container {
-        flex-direction: column;
-        align-items: center;
-        gap: 30px;
-      }
-      .two-product-card__title {
-        font-size: 18px;
-        line-height: 20px;
-      }
-      .two-product-card__features-list li {
-        font-size: 12px;
-        line-height: 12px;
-      }
-      .two-product-card__divider {
-        margin-top: 14px;
-        margin-bottom: 16px;
-      }
-      .two-product-card__caption {
-        font-size: 10px;
-        line-height: 12px;
-        margin-bottom: 15px;
-      }
-      .two-product-card__discount-badge,
-      .two-product-card__prices {
-        font-size: 14px;
-        line-height: 12px;
-      }
-      .two-product-card__features-list {
-        margin-bottom: 24px;
-      }
-      .two-product-card__actions-button {
-        font-size: 10px;
-        line-height: 12px;
-        padding: 12px 24px;
-      }
+    .two-product-section {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 120px;
     }
-    @media (max-width: 1279px) {
-      .two-product-section {
-        padding: 0 10px;
-      }
+    .two-product-section__header {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      padding-right: 10px;
+      padding-left: 50px;
+      margin-bottom: 60px;
+      margin-top: 120px;
+    }
+    .two-product-section__heading {
+      font-family: var(--font-heading-main);
+      font-size: 42px;
+      font-weight: 700;
+      margin: 0;
+      line-height: 30px;
+    }
+    .two-product-card__container {
+      display: flex;
+      gap: 58px;
+      align-items: center;
+    }
+    .two-product-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+    .two-product-card {
+      background: #F0F4F5;
+      padding: 40px 30px 40px 40px;
+      border-radius: 20px;
+      flex: 1 1 45%;
+    }
+    .two-product-card__title {
+      font-family: var(--font-heading-main);
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 24px;
+      margin: 0;
+    }
+    .two-product-card__title a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .two-product-card__ratings {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .two-product-card__ratings-text {
+      font-size: 12px;
+      line-height: 12px;
+      font-weight: 500;
+      font-family: Inter, sans-serif;
+      color: var(--color-subtext);
+      text-decoration: underline;
+    }
+    .two-product-card__divider {
+      margin-top: 16px;
+      margin-bottom: 20px;
+      background: #D7D7D7;
+    }
+    .two-product-card img {
+      max-width: 160px;
+      height: auto;
+    }
+    .two-product-card__features-list {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 30px;
+      margin-top: 0;
+    }
+    .two-product-card__features-list li {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      line-height: 12px;
+      font-family: Inter, sans-serif;
+      color: var(--color-main-text);
+    }
+    .two-product-card__caption {
+      font-family: Inter, sans-serif;
+      font-size: 12px;
+      line-height: 12px;
+      color: var(--color-subtext);
+    }
+    .two-product-card__discount-badge {
+      font-family: var(--font-heading-main);
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 12px;
+      color: #FF2400;
+    }
+    .two-product-card__price-row  {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+    .two-product-card__prices {
+      font-family: var(--font-heading-main);
+      font-weight: 700;
+      color: var(--color-main-text);
+      margin: 0;
+    }
+    .two-product-card__content {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .two-product-card__caption {
+      margin-bottom: 20px;
+    }
+    .two-product-card__actions-button {
+      font-size: 14px;
+      line-height: 12px;
+      font-family: Inter, sans-serif;
+      color: #fff;
+      font-weight: 700;
+      background-color: var(--color-main-text);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 13px 28px;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+    .custom-product-form {
+      align-self: flex-end;
     }
 
-    /* 750–1240px — тільки проміжні екрани */
-@media (min-width: 750px) and (max-width: 1240px) {
-  /* Стабільна сітка 2 картки в ряд */
-  .two-product-cards {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
-    align-items: stretch;
-  }
+      @media (max-width: 749px) {
+        .two-product-section__header {
+          padding: 0 10px;
+          margin-bottom: 50px;
+        }
+        .two-product-section__heading {
+          font-size: 24px;
+          line-height: 24px;
+        }
+        .two-product-cards {
+          flex-direction: column;
+          gap: 30px;
+        }
+        .two-product-card {
+          padding: 16px;
+        }
+        .two-product-card__container {
+          flex-direction: column;
+          align-items: center;
+          gap: 30px;
+        }
+        .two-product-card__title {
+          font-size: 18px;
+          line-height: 20px;
+        }
+        .two-product-card__features-list li {
+          font-size: 12px;
+          line-height: 12px;
+        }
+        .two-product-card__divider {
+          margin-top: 14px;
+          margin-bottom: 16px;
+        }
+        .two-product-card__caption {
+          font-size: 10px;
+          line-height: 12px;
+          margin-bottom: 15px;
+        }
+        .two-product-card__discount-badge,
+        .two-product-card__prices {
+          font-size: 14px;
+          line-height: 12px;
+        }
+        .two-product-card__features-list {
+          margin-bottom: 24px;
+        }
+        .two-product-card__actions-button {
+          font-size: 10px;
+          line-height: 12px;
+          padding: 12px 24px;
+        }
+      }
+      @media (max-width: 1279px) {
+        .two-product-section {
+          padding: 0 10px;
+        }
+      }
 
-  .two-product-card {
-    height: 100%;
-  }
+  @media (min-width: 750px) and (max-width: 1240px) {
+    .two-product-cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      align-items: stretch;
+    }
 
-  .two-product-card__container {
-    display: grid;
-    grid-template-rows: auto 1fr;
-    /* Якщо в тебе картинка і контент в ряд — заміни на grid-template-columns */
-    gap: 16px;
-    padding: 16px;
-    border-radius: 16px;
-  }
+    .two-product-card {
+      height: 100%;
+    }
 
-  /* Картинка трохи компактніша, щоб не тиснула текст */
-  .two-product-card__container > a img {
-    width: 100%;
-    height: 260px;
-    object-fit: cover;
-    border-radius: 12px;
-    display: block;
-  }
+    .two-product-card__container {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 16px;
+      padding: 16px;
+      border-radius: 16px;
+    }
 
-  /* Заголовок не ламає сітку */
-  .two-product-card__title {
-    margin: 0 0 8px;
-  }
-  .two-product-card__title a {
-    font-size: 22px;
-    line-height: 1.25;
-    word-break: break-word;
-    hyphens: auto;
-    display: inline-block;
-    text-decoration: none;
-  }
+    .two-product-card__container > a img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 12px;
+      display: block;
+    }
 
-  /* Рейтинги в один ряд, але компактно */
-  .two-product-card__ratings {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-  }
-  .two-product-card__ratings-text {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+    .two-product-card__title {
+      margin: 0 0 8px;
+    }
+    .two-product-card__title a {
+      font-size: 22px;
+      line-height: 1.25;
+      word-break: break-word;
+      hyphens: auto;
+      display: inline-block;
+      text-decoration: none;
+    }
 
-  .two-product-card__divider {
-    margin: 12px 0;
-  }
+    .two-product-card__ratings {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+    }
+    .two-product-card__ratings-text {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
-  /* Список фіч — трохи щільніше */
-  .two-product-card__features-list {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 8px;
-    margin: 0 0 10px;
-    padding: 0;
-    list-style: none;
-  }
-  .two-product-card__features-list li svg {
-    margin-right: 8px;
-  }
+    .two-product-card__divider {
+      margin: 12px 0;
+    }
 
-  .two-product-card__caption {
-    margin: 6px 0 0;
-    font-size: 14px;
-    line-height: 1.4;
-    color: var(--color-subtext);
-  }
+    .two-product-card__features-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      margin: 0 0 10px;
+      padding: 0;
+      list-style: none;
+    }
+    .two-product-card__features-list li svg {
+      margin-right: 8px;
+    }
 
-  /* === ГОЛОВНЕ: знижка + ціна в стовпчик, щоб не «плавало» === */
-  .two-product-card__price-row {
-    display: flex;
-    flex-direction: column;      /* було: row */
-    align-items: flex-start;
-    gap: 8px;
-    margin-top: 12px;
-  }
+    .two-product-card__caption {
+      margin: 6px 0 0;
+      font-size: 14px;
+      line-height: 1.4;
+      color: var(--color-subtext);
+    }
 
-  .two-product-card__discount-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 14px;
-    white-space: nowrap;
-  }
+    .two-product-card__price-row {
+      display: flex;
+      flex-direction: column;      /* було: row */
+      align-items: flex-start;
+      gap: 8px;
+      margin-top: 12px;
+    }
 
-  /* Кнопка — на всю ширину і компактніша */
-  .two-product-card__actions-button {
-    width: 100%;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-top: 14px;
-    min-height: 44px;
-    border-radius: 12px;
-    padding: 10px 14px;
-  }
+    .two-product-card__discount-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      white-space: nowrap;
+    }
 
-  /* Заголовок секції — трішки менший і без зайвих відступів */
-  .two-product-section__heading {
-    font-size: 32px;
-    line-height: 1.25;
-    margin: 0 0 16px;
-    word-break: break-word;
-    hyphens: auto;
-  }
+    .two-product-card__actions-button {
+      width: 100%;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 14px;
+      min-height: 44px;
+      border-radius: 12px;
+      padding: 10px 14px;
+    }
 
-  /* Контейнер секції — трохи щільніше, щоб не розповзалось */
-  .two-product-section__header {
-    padding: 0 16px;
-  }
-}
+    .two-product-section__heading {
+      font-size: 32px;
+      line-height: 1.25;
+      margin: 0 0 16px;
+      word-break: break-word;
+      hyphens: auto;
+    }
 
+    .two-product-section__header {
+      padding: 0 16px;
+    }
+  }
 </style>
 
 {% schema %}
