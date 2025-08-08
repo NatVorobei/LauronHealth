@@ -2589,6 +2589,11 @@ input[type='checkbox'] {
   --shop-avatar-size: 2.8rem;
 }
 
+.header__icon.header__icon--account {
+  justify-content: flex-end;
+  width: 30px;
+}
+
 .header__icon--account .svg-wrapper{
   justify-content: flex-end;
 }
