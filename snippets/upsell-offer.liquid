@@ -24,7 +24,7 @@
   {% endfor %}
 
   {% unless cart_contains_upsell %}
-    <div class="drawer__upsell">
+    <div class="drawer__upsell" data-appstle-ignore="true">
       <h3 class="drawer__upsell-heading">{{ settings.upsell_title }}</h3>
 
       <div class="drawer__upsell-card">
@@ -62,7 +62,8 @@
               <p class="rating-count caption">
                 <span aria-hidden="true">{{ upsell_product.metafields.reviews.rating_count }} reviews</span>
                 <span class="visually-hidden">
-                  {{ upsell_product.metafields.reviews.rating_count }} {{ 'accessibility.total_reviews' | t }}
+                  {{ upsell_product.metafields.reviews.rating_count }}
+                  {{ 'accessibility.total_reviews' | t }}
                 </span>
               </p>
             </div>
@@ -87,7 +88,13 @@
             </div>
 
             <product-form data-section-id="{{ section.id }}" class="custom-product-form">
-              {% form 'product', upsell_product, class: 'product-form', data-type: 'add-to-cart-form', data-appstle: 'disable' %}
+              {% form 'product',
+                upsell_product,
+                class: 'product-form',
+                data-type: 'upsell-form',
+                data-appstle: 'disable',
+                data-appstle-ignore: 'true'
+              %}
                 <input
                   type="hidden"
                   name="id"
@@ -128,123 +135,125 @@
   {% endunless %}
 {% endif %}
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-  const drawerForm = document.querySelector('.custom-product-form form');
-  if (drawerForm) {
-    drawerForm.setAttribute('data-type', 'upsell-form'); // не буде оброблений Appstle
-  }
-});
+{% comment %}
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const drawerForm = document.querySelector('.custom-product-form form');
+    if (drawerForm) {
+      drawerForm.setAttribute('data-type', 'upsell-form');
+    }
+  });
 
-</script>
+  </script>
+{% endcomment %}
 
 <style>
-.drawer__upsell {
-    flex: 1;
-    margin-bottom: 20px;
+  .drawer__upsell {
+      flex: 1;
+      margin-bottom: 20px;
+    }
+
+  .drawer__upsell-heading {
+    font-weight: 700;
+    font-family: var(--font-heading-main);
+    font-size: 10px;
+    line-height: 10px;
+    color: #000;
+    margin-bottom: 16px;
   }
 
-.drawer__upsell-heading {
-  font-weight: 700;
-  font-family: var(--font-heading-main);
-  font-size: 10px;
-  line-height: 10px;
-  color: #000;
-  margin-bottom: 16px;
-}
+  .drawer__upsell-card {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    border: 1px solid #D7D7D7;
+    border-radius: 14px;
+    padding: 14px;
+  }
 
-.drawer__upsell-card {
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-  border: 1px solid #D7D7D7;
-  border-radius: 14px;
-  padding: 14px;
-}
+  .drawer__upsell-image img {
+    width: 80px;
+    height: auto;
+    border-radius: 6px;
+  }
 
-.drawer__upsell-image img {
-  width: 80px;
-  height: auto;
-  border-radius: 6px;
-}
+  .drawer__upsell-content {
+    flex: 1;
+  }
 
-.drawer__upsell-content {
-  flex: 1;
-}
+  .drawer__upsell-rating {
+    font-size: 12px;
+    color: #555;
+  }
 
-.drawer__upsell-rating {
-  font-size: 12px;
-  color: #555;
-}
+  .drawer__upsell-title {
+    font-weight: 700;
+    font-family: var(--font-heading-main);
+    font-size: 12px;
+    line-height: 8px;
+    color: var(--color-main-text);
+    margin-bottom: 6px;
+  }
 
-.drawer__upsell-title {
-  font-weight: 700;
-  font-family: var(--font-heading-main);
-  font-size: 12px;
-  line-height: 8px;
-  color: var(--color-main-text);
-  margin-bottom: 6px;
-}
+  .drawer__upsell-subtitle {
+    font-size: 8px;
+    line-height: 8px;
+    color: var(--color-main-text);
+    margin-bottom: 12px;
+    white-space: nowrap;
+  }
 
-.drawer__upsell-subtitle {
-  font-size: 8px;
-  line-height: 8px;
-  color: var(--color-main-text);
-  margin-bottom: 12px;
-  white-space: nowrap;
-}
+  .drawer__upsell-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
-.drawer__upsell-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+  .drawer__upsell-prices {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 10px;
+  }
+  .drawer__upsell-variantDesr {
+    color: #87878D;
+    font-size: 8px;
+    line-height: 12px;
+  }
 
-.drawer__upsell-prices {
-  display: flex;
-  gap: 6px;
-  align-items: center;
-  margin-bottom: 8px;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 10px;
-}
-.drawer__upsell-variantDesr {
-  color: #87878D;
-  font-size: 8px;
-  line-height: 12px;
-}
+  .drawer__upsell-button {
+    font-size: 14px;
+    line-height: 12px;
+    color: #fff;
+    font-weight: 700;
+    background-color: var(--color-main-text);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    width: 80px;
+    height: 48px;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
 
-.drawer__upsell-button {
-  font-size: 14px;
-  line-height: 12px;
-  color: #fff;
-  font-weight: 700;
-  background-color: var(--color-main-text);
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  width: 80px;
-  height: 48px;
-  cursor: pointer;
-  text-transform: uppercase;
-}
+  .price--compare {
+    text-decoration: line-through;
+    color: #aaa;
+  }
 
-.price--compare {
-  text-decoration: line-through;
-  color: #aaa;
-}
+  .price--main {
+    font-weight: 600;
+    color: #000;
+  }
 
-.price--main {
-  font-weight: 600;
-  color: #000;
-}
-
-.drawer__upsell .rating-count.caption {
-  color: #87878D;
-  font-size: 8px;
-  line-height: 8px;
-}
+  .drawer__upsell .rating-count.caption {
+    color: #87878D;
+    font-size: 8px;
+    line-height: 8px;
+  }
 </style>
