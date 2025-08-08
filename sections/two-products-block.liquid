@@ -1,11 +1,11 @@
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 <section class="two-product-section">
-    <div class="two-product-section__header">
-      {% if section.settings.title != blank %}
-        <h2 class="two-product-section__heading">{{ section.settings.title }}</h2>
-      {% endif %}
-    </div>
-   <div class="two-product-cards">
+  <div class="two-product-section__header">
+    {% if section.settings.title != blank %}
+      <h2 class="two-product-section__heading">{{ section.settings.title }}</h2>
+    {% endif %}
+  </div>
+  <div class="two-product-cards">
     {% for block in section.blocks %}
       {% assign product = all_products[block.settings.product] %}
       {% if product %}
@@ -18,14 +18,14 @@
         {% else %}
           {% assign has_discount = false %}
         {% endif %}
-       
-          <div class="two-product-card">
-            <div class="two-product-card__container">
+
+        <div class="two-product-card">
+          <div class="two-product-card__container">
             {% if block.settings.custom_image != blank %}
               <a href="{{ product.url }}"><img src="{{ block.settings.custom_image | img_url: '400x' }}" alt=""></a>
             {% endif %}
-  
-            <div class="two-product-card__content"> 
+
+            <div class="two-product-card__content">
               <h3 class="two-product-card__title">
                 <a href="{{ product.url }}">{{ product.title }}</a>
               </h3>
@@ -33,18 +33,24 @@
                 <div style="color: #FFC300;">{{ block.settings.rating }}</div>
                 <div class="two-product-card__ratings-text">{{ block.settings.reviews }}</div>
               </div>
-              <hr class="two-product-card__divider" />
+              <hr class="two-product-card__divider">
               <ul class="two-product-card__features-list">
                 {% assign features = block.settings.features | split: ';' %}
                 {% for item in features %}
-                  <li>{{ 'checkbox-promo.svg' | inline_asset_content }} {{ item | strip }}</li>
+                  <li>
+                    {{ 'checkbox-promo.svg' | inline_asset_content }}
+                    {{ item | strip }}
+                  </li>
                 {% endfor %}
               </ul>
-      
+
               <p class="two-product-card__caption">{{ block.settings.caption }}</p>
               <div class="two-product-card__price-row">
                 {% if has_discount %}
-                  <div class="two-product-card__discount-badge">{{ block.settings.discount }} {{ discount }}%</div>
+                  <div class="two-product-card__discount-badge">
+                    {{ block.settings.discount }}
+                    {{ discount }}%
+                  </div>
                   <p class="two-product-card__prices">
                     <s>{{ compare_price | money }}</s>
                     <strong>{{ price | money }}</strong>
@@ -55,7 +61,6 @@
                   </p>
                 {% endif %}
               </div>
-  
 
               <product-form data-section-id="{{ section.id }}" class="custom-product-form">
                 {% form 'product', product, class: 'product-form', data-type: 'add-to-cart-form' %}
@@ -64,15 +69,19 @@
                     name="id"
                     value="{{ variant.id }}"
                     class="product-variant-id"
-                    {% unless variant.available %}disabled{% endunless %}
+                    {% unless variant.available %}
+                      disabled
+                    {% endunless %}
                   >
-              
+
                   <button
                     type="submit"
                     name="add"
                     class="two-product-card__actions-button"
                     aria-live="polite"
-                    {% unless variant.available %}disabled{% endunless %}
+                    {% unless variant.available %}
+                      disabled
+                    {% endunless %}
                   >
                     {{ 'lauron-cart.svg' | inline_asset_content }}
                     <span>
@@ -91,13 +100,27 @@
               </product-form>
             </div>
           </div>
-      </div>
+        </div>
       {% endif %}
     {% endfor %}
-    </div>
-  </section>
-  
-  <style>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.two-product-card__ratings-text').forEach((el) => {
+      el.style.cursor = 'pointer';
+      el.addEventListener('click', () => {
+        const target = document.querySelector('#testimonials');
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  });
+</script>
+
+<style>
   .two-product-section {
     max-width: 1280px;
     margin: 0 auto;
@@ -237,7 +260,7 @@
   .custom-product-form {
     align-self: flex-end;
   }
-  
+
     @media (max-width: 749px) {
       .two-product-section__header {
         padding: 0 10px;
@@ -295,86 +318,86 @@
         padding: 0 10px;
       }
     }
-  </style>
-  
-  {% schema %}
-  {
-    "name": "Two Product Promo",
-    "settings": [
-      {
-        "type": "text",
-        "id": "title",
-        "label": "Заголовок",
-        "default": "Купуйте зараз"
-      }
-    ],
-    "blocks": [
-      {
-        "type": "product_block",
-        "name": "Product Block",
-        "settings": [
-          {
-            "type": "product",
-            "id": "product",
-            "label": "Виберіть товар"
-          },
-          {
-            "type": "image_picker",
-            "id": "custom_image",
-            "label": "Своя картинка товару"
-          },
-          {
-            "type": "text",
-            "id": "rating",
-            "label": "Рейтинг",
-            "default": "★ ★ ★ ★ ★"
-          },
-          {
-            "type": "text",
-            "id": "reviews",
-            "label": "К-сть відгуків",
-            "default": "31 відгук"
-          },
-          {
-            "type": "text",
-            "id": "discount",
-            "label": "Знижка",
-            "default": "Збережіть"
-          },
-          {
-            "type": "text",
-            "id": "caption",
-            "label": "Підписка",
-            "default": "For a two-week subscription:"
-          },
-          {
-            "type": "text",
-            "id": "features",
-            "label": "Список переваг (через крапку з комою)",
-            "default": "Change or cancel anytime; Change or cancel anytime; Change or cancel anytime"
-          },
-          {
-            "type": "text",
-            "id": "buy_button",
-            "label": "Текст кнопки 'Купити'",
-            "default": "Купити"
-          },
-        ]
-      }
-    ],
-    "max_blocks": 2,
-    "presets": [
-      {
-        "name": "Two Product Promo",
-        "blocks": [
-          {
-            "type": "product_block"
-          },
-          {
-            "type": "product_block"
-          }
-        ]
-      }
-    ]
-  }
+</style>
+
+{% schema %}
+{
+  "name": "Two Product Promo",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Заголовок",
+      "default": "Купуйте зараз"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product_block",
+      "name": "Product Block",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Виберіть товар"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_image",
+          "label": "Своя картинка товару"
+        },
+        {
+          "type": "text",
+          "id": "rating",
+          "label": "Рейтинг",
+          "default": "★ ★ ★ ★ ★"
+        },
+        {
+          "type": "text",
+          "id": "reviews",
+          "label": "К-сть відгуків",
+          "default": "31 відгук"
+        },
+        {
+          "type": "text",
+          "id": "discount",
+          "label": "Знижка",
+          "default": "Збережіть"
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Підписка",
+          "default": "For a two-week subscription:"
+        },
+        {
+          "type": "text",
+          "id": "features",
+          "label": "Список переваг (через крапку з комою)",
+          "default": "Change or cancel anytime; Change or cancel anytime; Change or cancel anytime"
+        },
+        {
+          "type": "text",
+          "id": "buy_button",
+          "label": "Текст кнопки 'Купити'",
+          "default": "Купити"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 2,
+  "presets": [
+    {
+      "name": "Two Product Promo",
+      "blocks": [
+        {
+          "type": "product_block"
+        },
+        {
+          "type": "product_block"
+        }
+      ]
+    }
+  ]
+}
 {% endschema %}
