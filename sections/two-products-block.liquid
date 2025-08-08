@@ -22,7 +22,7 @@
         <div class="two-product-card">
           <div class="two-product-card__container">
             {% if block.settings.custom_image != blank %}
-              <a href="{{ product.url }}"><img src="{{ block.settings.custom_image | img_url: '400x' }}" alt=""></a>
+              <a href="{{ product.url }}" class="two-product-card__image"><img src="{{ block.settings.custom_image | img_url: '400x' }}" alt=""></a>
             {% endif %}
 
             <div class="two-product-card__content">
@@ -371,6 +371,10 @@
       text-overflow: ellipsis;
     }
 
+    .two-product-card__image {
+      justify-self: center;
+    }
+
     .two-product-card__divider {
       margin: 12px 0;
     }
@@ -393,7 +397,7 @@
 
     .two-product-card__price-row {
       display: flex;
-      flex-direction: column;      /* було: row */
+      flex-direction: column;
       align-items: flex-start;
       gap: 8px;
       margin-top: 12px;
