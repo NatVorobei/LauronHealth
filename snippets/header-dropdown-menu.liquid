@@ -283,7 +283,10 @@
 .dropdown-item:hover {
   border: 1px solid #1F1F21;
   {% comment %} background-color: #F5F5F7; {% endcomment %}
-   background: linear-gradient(315deg, rgba(66, 207, 190, 1) 0%, rgba(182, 218, 215, 1) 52%, rgba(209, 232, 230, 1) 100%);
+}
+
+a.dropdown-item[href*="/products/freeze-age"]:hover {
+  background: linear-gradient(315deg, rgba(66, 207, 190, 1) 0%, rgba(182, 218, 215, 1) 52%, rgba(209, 232, 230, 1) 100%);
 }
 
 .dropdown-item__content {
