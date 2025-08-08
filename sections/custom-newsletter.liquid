@@ -44,7 +44,6 @@
       border-radius: 20px;
       overflow: hidden;
       padding: 0;
-      max-height: 298px;
     }
   
     .custom-newsletter-image {
@@ -143,7 +142,8 @@
       .custom-newsletter-image img {
         height: auto;
       }
-      .custom-newsletter-content__heading {
+      .custom-newsletter-content__heading,
+      .custom-newsletter-content__discount {
         font-size: 22px;
         line-height: 28px;
         text-align: center;
@@ -168,6 +168,12 @@
         font-size: 14px;
         line-height: 16px;
         border-radius: 16px;
+      }
+    }
+
+    @media(min-width: 1180px) {
+      .custom-newsletter-inner {
+        max-height: 298px;
       }
     }
   </style>
