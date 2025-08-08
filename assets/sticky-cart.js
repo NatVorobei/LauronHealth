@@ -181,27 +181,56 @@
 
 document.addEventListener('DOMContentLoaded', function () {
   const stickyBar = document.getElementById('sticky-add-to-cart');
-  const stickyBtn = stickyBar?.querySelector('.js-sticky-atc');
-  const stickyWidgetMount = stickyBar?.querySelector('.smart-subscription-widget');
+  if (!stickyBar) return;
 
-  const mainForm = document.querySelector('form.product-form[data-type="add-to-cart-form"]');
-  const mainSubmitBtn = mainForm?.querySelector('button[type="submit"][name="add"]');
-  const defaultATC = document.querySelector('[id^="ProductSubmitButton-"]') || mainSubmitBtn;
+  const stickyBtn = stickyBar.querySelector('.js-sticky-atc');
+  const stickyWidgetMount = stickyBar.querySelector('.smart-subscription-widget');
 
-  if (!stickyBar || !stickyBtn || !stickyWidgetMount || !mainForm || !mainSubmitBtn || !defaultATC) return;
+  // Головна product-form
+  let mainForm = document.querySelector('form.product-form[data-type="add-to-cart-form"]')
+             || document.querySelector('form.product-form[action^="/cart/add"]');
+  let mainSubmitBtn = mainForm?.querySelector('button[type="submit"][name="add"]')
+                  || mainForm?.querySelector('button[name="add"]')
+                  || document.querySelector('button[id^="ProductSubmitButton-"]');
 
-  // 1) Сабміт головної форми
-  stickyBtn.addEventListener('click', () => {
-    if (mainSubmitBtn) {
-      mainSubmitBtn.click();
-    } else if (mainForm.requestSubmit) {
-      mainForm.requestSubmit();
-    } else {
-      mainForm.submit();
+  // Кілька селекторів для рідної кнопки
+  function findDefaultATC() {
+    return (
+      document.querySelector('button[id^="ProductSubmitButton-"]') ||
+      document.querySelector('form.product-form[data-type="add-to-cart-form"] button[name="add"]') ||
+      document.querySelector('form.product-form[action^="/cart/add"] button[name="add"]') ||
+      document.querySelector('.product-form__submit[name="add"]') ||
+      mainSubmitBtn
+    );
+  }
+
+  // Якщо щось із ключових вузлів відсутнє — дочекаємось
+  if (!stickyBtn || !stickyWidgetMount) return;
+
+  // Сабміт головної форми зі sticky
+  function wireSubmit() {
+    if (!mainForm) {
+      mainForm = document.querySelector('form.product-form[data-type="add-to-cart-form"]')
+             || document.querySelector('form.product-form[action^="/cart/add"]');
     }
-  });
+    if (!mainForm) return;
 
-  // 2) Знаходимо Appstle-віджет
+    if (!mainSubmitBtn) {
+      mainSubmitBtn = mainForm.querySelector('button[type="submit"][name="add"]')
+                  || mainForm.querySelector('button[name="add"]')
+                  || document.querySelector('button[id^="ProductSubmitButton-"]');
+    }
+
+    stickyBtn.onclick = () => {
+      if (mainSubmitBtn) mainSubmitBtn.click();
+      else if (mainForm.requestSubmit) mainForm.requestSubmit();
+      else mainForm.submit();
+    };
+  }
+
+  wireSubmit();
+
+  // -------- Appstle переносимо між головним місцем і sticky --------
   const APPSTLE_SELECTORS = [
     '.appstle_subscription_widget',
     '.appstle-inline-widget',
@@ -229,25 +258,66 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   waitForWidget.observe(document.body, { childList: true, subtree: true });
 
-  // 3) Показуємо sticky + переносимо віджет
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        stickyBar.classList.remove('show');
-        // Повертаємо віджет назад
-        if (appstleWidget && mainWidgetContainer && appstleWidget.parentElement !== mainWidgetContainer) {
-          mainWidgetContainer.appendChild(appstleWidget);
+  // -------- IntersectionObserver для рідної кнопки --------
+  let defaultATC = findDefaultATC();
+
+  function ensureObserver() {
+    if (!defaultATC) return;
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          stickyBar.classList.remove('show');
+          // повертаємо Appstle до основної форми
+          if (appstleWidget && mainWidgetContainer && appstleWidget.parentElement !== mainWidgetContainer) {
+            mainWidgetContainer.appendChild(appstleWidget);
+          }
+        } else {
+          stickyBar.classList.add('show');
+          // переносимо Appstle у sticky
+          if (appstleWidget && stickyWidgetMount && appstleWidget.parentElement !== stickyWidgetMount) {
+            stickyWidgetMount.appendChild(appstleWidget);
+          }
         }
-      } else {
+      });
+    }, { root: null, threshold: 0 });
+
+    io.observe(defaultATC);
+
+    // Початкова перевірка (на випадок, якщо кнопка вже "поза екраном")
+    setTimeout(() => {
+      const rect = defaultATC.getBoundingClientRect();
+      const inViewport = rect.top < window.innerHeight && rect.bottom >= 0;
+      if (!inViewport) {
         stickyBar.classList.add('show');
-        // Переносимо віджет у sticky
-        if (appstleWidget && stickyWidgetMount && appstleWidget.parentElement !== stickyWidgetMount) {
-          stickyWidgetMount.appendChild(appstleWidget);
-        }
+      }
+    }, 0);
+  }
+
+  if (defaultATC) {
+    ensureObserver();
+  } else {
+    // Чекаємо появи кнопки (динамічні рендери, зміни теми, тощо)
+    const waitForATC = new MutationObserver(() => {
+      defaultATC = findDefaultATC();
+      if (defaultATC) {
+        waitForATC.disconnect();
+        wireSubmit();
+        ensureObserver();
       }
     });
-  }, { root: null, threshold: 0 });
+    waitForATC.observe(document.body, { childList: true, subtree: true });
+  }
 
-  io.observe(defaultATC);
+  // На випадок, якщо Shopify перерендерить секцію продукту
+  document.addEventListener('shopify:section:load', () => {
+    mainForm = document.querySelector('form.product-form[data-type="add-to-cart-form"]')
+           || document.querySelector('form.product-form[action^="/cart/add"]');
+    mainSubmitBtn = mainForm?.querySelector('button[type="submit"][name="add"]')
+                    || mainForm?.querySelector('button[name="add"]');
+    defaultATC = findDefaultATC();
+    wireSubmit();
+  });
 });
+
 
