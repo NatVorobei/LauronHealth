@@ -2510,7 +2510,7 @@ input[type='checkbox'] {
   display: flex;
   grid-area: icons;
   justify-self: end;
-  padding-right: 0.8rem;
+  /* padding-right: 0.8rem; */
 }
 
 .header__icons .shopify-app-block {
@@ -2580,6 +2580,10 @@ input[type='checkbox'] {
 
 .header__icon--account shop-user-avatar {
   --shop-avatar-size: 2.8rem;
+}
+
+.header__icon--account .svg-wrapper{
+  justify-content: flex-end;
 }
 
 details .header__icon-close {
