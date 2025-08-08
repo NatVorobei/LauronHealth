@@ -99,7 +99,7 @@
   document.addEventListener("DOMContentLoaded", function () {
   const drawerForm = document.querySelector('.custom-product-form form');
   if (drawerForm) {
-    drawerForm.setAttribute('data-type', 'upsell-form');
+    drawerForm.setAttribute('data-type', 'upsell-form'); // не буде оброблений Appstle
   }
 });
 
@@ -159,6 +159,7 @@
   line-height: 8px;
   color: var(--color-main-text);
   margin-bottom: 12px;
+  white-space: nowrap;
 }
 
 .drawer__upsell-bottom {
@@ -180,7 +181,6 @@
   color: #87878D;
   font-size: 8px;
   line-height: 12px;
-  max-width: 110px;
 }
 
 .drawer__upsell-button {
