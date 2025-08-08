@@ -77,7 +77,7 @@
                   {% if text %}<p class="dropdown-item__content--text">{{ text }}</p>{% endif %}
                 </div>
                 {% if img %}
-                  <div class="dropdown-item__content--image {% if is_last %}is-last{% endif %}">
+                  <div class="dropdown-item__content--image">
                     <img src="{{ img | image_url: width: 200 }}" alt="{{ title | escape }}">
                   </div>
                 {% endif %}
