@@ -3911,6 +3911,11 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
   padding: 24px 0 !important;
 }
 
+.svg-wrapper.trash-bin {
+  width: 16px;
+  height: 16px;
+}
+
 @media (max-width: 749px) {
   .image-with-text__heading {
     font-size: 26px;
