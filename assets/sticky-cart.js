@@ -181,143 +181,34 @@
 
 document.addEventListener('DOMContentLoaded', function () {
   const stickyBar = document.getElementById('sticky-add-to-cart');
-  if (!stickyBar) return;
+  const stickyMount = stickyBar?.querySelector('.sticky-form-mount');
 
-  const stickyBtn = stickyBar.querySelector('.js-sticky-atc');
-  const stickyWidgetMount = stickyBar.querySelector('.smart-subscription-widget');
+  const productForm = document.querySelector('form.product-form[data-type="add-to-cart-form"]');
+  if (!stickyBar || !stickyMount || !productForm) return;
 
-  // Головна product-form
-  let mainForm = document.querySelector('form.product-form[data-type="add-to-cart-form"]')
-             || document.querySelector('form.product-form[action^="/cart/add"]');
-  let mainSubmitBtn = mainForm?.querySelector('button[type="submit"][name="add"]')
-                  || mainForm?.querySelector('button[name="add"]')
-                  || document.querySelector('button[id^="ProductSubmitButton-"]');
+  const originalParent = productForm.parentElement;
+  const defaultATC = document.querySelector('[id^="ProductSubmitButton-"]') || productForm.querySelector('button[name="add"]');
 
-  // Кілька селекторів для рідної кнопки
-  function findDefaultATC() {
-    return (
-      document.querySelector('button[id^="ProductSubmitButton-"]') ||
-      document.querySelector('form.product-form[data-type="add-to-cart-form"] button[name="add"]') ||
-      document.querySelector('form.product-form[action^="/cart/add"] button[name="add"]') ||
-      document.querySelector('.product-form__submit[name="add"]') ||
-      mainSubmitBtn
-    );
-  }
+  if (!defaultATC) return;
 
-  // Якщо щось із ключових вузлів відсутнє — дочекаємось
-  if (!stickyBtn || !stickyWidgetMount) return;
-
-  // Сабміт головної форми зі sticky
-  function wireSubmit() {
-    if (!mainForm) {
-      mainForm = document.querySelector('form.product-form[data-type="add-to-cart-form"]')
-             || document.querySelector('form.product-form[action^="/cart/add"]');
-    }
-    if (!mainForm) return;
-
-    if (!mainSubmitBtn) {
-      mainSubmitBtn = mainForm.querySelector('button[type="submit"][name="add"]')
-                  || mainForm.querySelector('button[name="add"]')
-                  || document.querySelector('button[id^="ProductSubmitButton-"]');
-    }
-
-    stickyBtn.onclick = () => {
-      if (mainSubmitBtn) mainSubmitBtn.click();
-      else if (mainForm.requestSubmit) mainForm.requestSubmit();
-      else mainForm.submit();
-    };
-  }
-
-  wireSubmit();
-
-  // -------- Appstle переносимо між головним місцем і sticky --------
-  const APPSTLE_SELECTORS = [
-    '.appstle_subscription_widget',
-    '.appstle-inline-widget',
-    '[id^="appstle_widget_"]'
-  ];
-  function findAppstleWidget() {
-    for (const sel of APPSTLE_SELECTORS) {
-      const el = document.querySelector(sel);
-      if (el) return el;
-    }
-    return null;
-  }
-
-  let appstleWidget = null;
-  let mainWidgetContainer = null;
-
-  const waitForWidget = new MutationObserver(() => {
-    if (!appstleWidget) {
-      appstleWidget = findAppstleWidget();
-      if (appstleWidget) {
-        mainWidgetContainer = appstleWidget.parentElement;
-        waitForWidget.disconnect();
-      }
-    }
-  });
-  waitForWidget.observe(document.body, { childList: true, subtree: true });
-
-  // -------- IntersectionObserver для рідної кнопки --------
-  let defaultATC = findDefaultATC();
-
-  function ensureObserver() {
-    if (!defaultATC) return;
-
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          stickyBar.classList.remove('show');
-          // повертаємо Appstle до основної форми
-          if (appstleWidget && mainWidgetContainer && appstleWidget.parentElement !== mainWidgetContainer) {
-            mainWidgetContainer.appendChild(appstleWidget);
-          }
-        } else {
-          stickyBar.classList.add('show');
-          // переносимо Appstle у sticky
-          if (appstleWidget && stickyWidgetMount && appstleWidget.parentElement !== stickyWidgetMount) {
-            stickyWidgetMount.appendChild(appstleWidget);
-          }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        stickyBar.classList.remove('show');
+        if (productForm.parentElement !== originalParent) {
+          originalParent.appendChild(productForm);
         }
-      });
-    }, { root: null, threshold: 0 });
-
-    io.observe(defaultATC);
-
-    // Початкова перевірка (на випадок, якщо кнопка вже "поза екраном")
-    setTimeout(() => {
-      const rect = defaultATC.getBoundingClientRect();
-      const inViewport = rect.top < window.innerHeight && rect.bottom >= 0;
-      if (!inViewport) {
+      } else {
         stickyBar.classList.add('show');
-      }
-    }, 0);
-  }
-
-  if (defaultATC) {
-    ensureObserver();
-  } else {
-    // Чекаємо появи кнопки (динамічні рендери, зміни теми, тощо)
-    const waitForATC = new MutationObserver(() => {
-      defaultATC = findDefaultATC();
-      if (defaultATC) {
-        waitForATC.disconnect();
-        wireSubmit();
-        ensureObserver();
+        if (productForm.parentElement !== stickyMount) {
+          stickyMount.appendChild(productForm);
+        }
       }
     });
-    waitForATC.observe(document.body, { childList: true, subtree: true });
-  }
+  }, { root: null, threshold: 0 });
 
-  // На випадок, якщо Shopify перерендерить секцію продукту
-  document.addEventListener('shopify:section:load', () => {
-    mainForm = document.querySelector('form.product-form[data-type="add-to-cart-form"]')
-           || document.querySelector('form.product-form[action^="/cart/add"]');
-    mainSubmitBtn = mainForm?.querySelector('button[type="submit"][name="add"]')
-                    || mainForm?.querySelector('button[name="add"]');
-    defaultATC = findDefaultATC();
-    wireSubmit();
-  });
+  io.observe(defaultATC);
 });
+
 
 
