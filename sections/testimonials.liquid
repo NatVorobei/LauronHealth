@@ -51,15 +51,11 @@
         prevEl: '.swiper-button-prev',
       },
       breakpoints: {
-        0: {
-          slidesPerView: 1.5,
-          spaceBetween: 16,
-        },
-        750: {
-          slidesPerView: 3,
-          spaceBetween: 25,
-        },
-      },
+  0:   { slidesPerView: 1.5, spaceBetween: 16 },
+  750: { slidesPerView: 2.2, spaceBetween: 20 },  // 750–899
+  900: { slidesPerView: 2.6, spaceBetween: 22 },  // 900–1079
+  1080:{ slidesPerView: 3,   spaceBetween: 25 },  // ≥1080 як на ПК
+},
     });
   });
 </script>
