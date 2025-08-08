@@ -179,6 +179,58 @@
       max-height: 298px;
     }
   }
+  /* 750–1060px: планшети та середні екрани */
+@media (min-width: 750px) and (max-width: 1060px) {
+  .custom-newsletter-inner {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  /* Зображення трохи менше, щоб більше місця для тексту */
+  .custom-newsletter-image {
+    width: 40%;
+  }
+
+  /* Контент */
+  .custom-newsletter-content {
+    padding: 32px 40px;
+  }
+
+  .custom-newsletter-content__heading {
+    font-size: 24px;
+    line-height: 1.3;
+    margin-bottom: 16px;
+  }
+
+  .custom-newsletter-content__discount {
+    font-size: 30px;
+  }
+
+  .custom-newsletter-content p {
+    font-size: 15px;
+    line-height: 22px;
+    margin-bottom: 28px;
+  }
+
+  /* Форма */
+  .custom-newsletter-form-container {
+    gap: 8px;
+  }
+
+  .custom-newsletter-form-container input[type="email"] {
+    padding: 14px;
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .custom-newsletter-form-container button {
+    padding: 16px 22px;
+    font-size: 13px;
+    line-height: 16px;
+    border-radius: 16px;
+  }
+}
+
 </style>
 
 {% schema %}
