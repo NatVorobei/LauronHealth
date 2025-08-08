@@ -328,6 +328,14 @@
   background-color: currentColor;
 }
 
+.customer__heading {
+  font-size: 28px;
+  line-height: 28px;
+  font-weight: 700;
+  font-family: var(--font-heading-main);
+  color: var(--color-main-text);
+}
+
 /* Login */
 .login a {
   display: block;
