@@ -154,6 +154,71 @@
       padding: 46px 0;
     }
   }
+
+  /* 750–1080px: фіксимо двоколонку + таблицю порівняння */
+@media (min-width: 750px) and (max-width: 1080px) {
+  .benefits-container {
+    display: grid;
+    grid-template-columns: minmax(280px, 38%) minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+    max-width: 1160px; /* як і було, просто не даємо ламатись */
+  }
+
+  /* прибираємо жорсткі max-width, щоб працювало з grid */
+  .benefits-left,
+  .benefits-right {
+    max-width: none;
+  }
+
+  /* заголовок і описи — трохи компактніше */
+  .benefits-heading {
+    font-size: 32px;
+    line-height: 1.25;
+  }
+  .benefits-description-top,
+  .benefits-description-bottom {
+    font-size: 18px;
+    line-height: 26px;
+  }
+  .benefits-left {
+    gap: 28px;
+  }
+
+  /* шапка з картинками продуктів */
+  .benefits-headers {
+    grid-template-columns: 1fr 40px 40px;
+    gap: 32px;
+    margin-bottom: 8px;
+  }
+  .product-img {
+    width: 36px;
+  }
+
+  /* рядки таблиці: стискаємо відступи, але зберігаємо читабельність */
+  .benefits-row {
+    grid-template-columns: 1fr 40px 40px;
+    gap: 32px;
+    padding: 12px 0;
+  }
+
+  /* лейбл може переноситись, не ламаючи макет */
+  .benefit-label {
+    font-size: 13px;
+    line-height: 20px;
+    text-align: right;
+    white-space: normal;
+    word-break: break-word;
+    hyphens: auto;
+  }
+
+  .benefit-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
   </style>
   
   {% schema %}
