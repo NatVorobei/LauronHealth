@@ -233,6 +233,74 @@
       margin: 25px 0 18px;
     }
   }
+  /* 750–1080px: планшети/landscape телефони */
+@media (min-width: 750px) and (max-width: 1080px) {
+  .testimonials {
+    padding-bottom: 80px;
+  }
+
+  .testimonials__header {
+    padding: 40px 0 24px 32px;
+  }
+
+  .testimonials__heading {
+    font-size: 32px;
+    line-height: 1.25;
+  }
+
+  .testimonials-swiper-wrapper {
+    padding-inline: 32px; /* було 60px — стискаємо, щоб влізали 2–3 карти */
+  }
+
+  .testimonial-card {
+    padding: 18px;
+    border-radius: 12px;
+  }
+
+  .testimonial-text {
+    font-size: 15px;
+    line-height: 22px;
+  }
+
+  .testimonial-divider {
+    margin: 22px 0 16px;
+  }
+
+  .testimonial-avatar {
+    width: 54px;
+    height: 54px;
+  }
+
+  .testimonial-rewiever-name {
+    font-size: 15px;
+    line-height: 20px;
+  }
+
+  .testimonial-role {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .testimonial-rating {
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  /* Стрілки ближче до країв контейнера і трохи менші */
+  .testimonials .swiper-button-prev,
+  .testimonials .swiper-button-next {
+    width: 28px;
+    height: 28px;
+    top: 52%;
+  }
+  .testimonials .swiper-button-prev { left: 6px; }
+  .testimonials .swiper-button-next { right: 6px; }
+  .testimonials .swiper-button-prev::after,
+  .testimonials .swiper-button-next::after {
+    font-size: 12px;
+  }
+}
+
 </style>
 
 {% schema %}
