@@ -200,7 +200,13 @@
     display: block;
   }
 
-  @media (max-width: 749px) {
+  @media(max-width: 1280px) {
+    .custom-text-block {
+      padding: 50px;
+    }
+  }
+
+  @media (max-width: 989px) {
     .custom-two-column-section {
       flex-direction: column-reverse;
     }
@@ -293,9 +299,10 @@
       "default": "Детальніше"
     },
     {
-      "type": "url",
+      "type": "text",
       "id": "button_1_link",
       "label": "Primary Button Link",
+      "default": "#"
     },
     {
       "type": "text",
@@ -304,9 +311,10 @@
       "default": "Купити"
     },
     {
-      "type": "url",
+      "type": "text",
       "id": "button_2_link",
       "label": "Secondary Button Link",
+      "default": "#"
     },
     {
       "type": "textarea",
