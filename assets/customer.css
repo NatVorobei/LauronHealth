@@ -336,6 +336,11 @@
   color: var(--color-main-text);
 }
 
+.customer .field::after,
+.customer .field::before {
+  content: none;
+}
+
 /* Login */
 .login a {
   display: block;
