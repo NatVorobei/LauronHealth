@@ -20,7 +20,7 @@
         <div class="main-banner__description">{{ section.settings.description }}</div>
         <div class="main-banner__description2">{{ section.settings.description2 }}</div>
         <div class="main-banner__buttons">
-          <a href="{{ section.settings.button1_link }}" class="main-banner__button">
+          <a href="#two-product-section" class="main-banner__button">
             <img src="https://cdn.shopify.com/s/files/1/0745/8786/5320/files/can.png?v=1751960850" alt="can" width="16" height="32" />
             {{ section.settings.button1_text }}
           </a>
@@ -64,7 +64,7 @@
         </div>
         {% if section.settings.button1_link != blank and section.settings.button2_text != blank and section.settings.button1_text != blank %}
         <div class="main-banner__buttons">
-          <a href="{{ section.settings.button1_link }}" class="main-banner__button">
+          <a href="#two-product-section" class="main-banner__button">
             <img src="https://cdn.shopify.com/s/files/1/0745/8786/5320/files/can.png?v=1751960850" alt="can" width="16" height="32" />
             {{ section.settings.button1_text }}
           </a>
@@ -74,6 +74,24 @@
       </div>
     </div>
   </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const targetId = this.getAttribute('href');
+      if (targetId.length > 1) {
+        e.preventDefault();
+        const el = document.querySelector(targetId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    });
+  });
+});
+</script>
+
 
 <style>
   .main-banner {
@@ -405,11 +423,6 @@
       "type": "text",
       "id": "button1_text",
       "label": "Button 1 Text"
-    },
-    {
-      "type": "url",
-      "id": "button1_link",
-      "label": "Button 1 Link"
     },
     {
       "type": "text",
