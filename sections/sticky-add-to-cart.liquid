@@ -19,14 +19,14 @@
       <div class="subscription-and-cart">
         <div class="smart-subscription-widget" data-product-id="{{ product.id }}"></div>
 
-        <div class="custom-subscription-wrapper">
+        {% comment %} <div class="custom-subscription-wrapper">
           <select id="custom-subscription-select" name="custom_selling_plan" class="custom-subscription-select">
             <option value="">One-time purchase</option>
           </select>
           <span class="custom-select-icon">{{ 'faqs-caret.svg' | inline_asset_content }}</span>
-        </div>
+        </div> {% endcomment %}
 
-        <product-form data-section-id="{{ section.id }}" class="custom-product-form">
+        {% comment %} <product-form data-section-id="{{ section.id }}" class="custom-product-form">
           {% form 'product', product, class: 'product-form', data-type: 'add-to-cart-form' %}
             <input
               type="hidden"
@@ -61,7 +61,12 @@
               {% render 'loading-spinner' %}
             </button>
           {% endform %}
-        </product-form>
+        </product-form> {% endcomment %}
+
+        <button type="button" class="add-to-cart-button js-sticky-atc">
+          {{ 'lauron-cart.svg' | inline_asset_content }}
+          <span>{{ 'products.product.add_to_cart' | t }}</span>
+        </button>
       </div>
     </div>
   </div>
