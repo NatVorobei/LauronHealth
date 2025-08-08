@@ -26,7 +26,7 @@
           <span class="custom-select-icon">{{ 'faqs-caret.svg' | inline_asset_content }}</span>
         </div>
 
-        <product-form data-section-id="іешслн-сфке" class="custom-product-form">
+        <product-form data-section-id="{{ section.id }}" class="custom-product-form">
           {% form 'product', product, class: 'product-form', data-type: 'add-to-cart-form' %}
             <input
               type="hidden"
