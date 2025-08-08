@@ -125,10 +125,10 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
 }
 
 @media screen and (min-width: 990px) {
-  .header:not(.drawer-menu).page-width {
+  /* .header:not(.drawer-menu).page-width {
     padding-left: 0;
     padding-right: 0;
-  }
+  } */
 
   .page-width--narrow {
     max-width: 72.6rem;
@@ -148,6 +148,13 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
 
 .section + .section {
   margin-top: var(--spacing-sections-mobile);
+}
+
+@media(min-width: 1300px) {
+  .header:not(.drawer-menu).page-width {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 @media screen and (min-width: 750px) {
