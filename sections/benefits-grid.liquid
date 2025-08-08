@@ -11,7 +11,7 @@
   <div class="benefits-grid-container">
     <div class="benefits-grid" style="--columns: {{ section.settings.columns }}">
       {% for block in section.blocks %}
-        <div class="benefits-card{% if forloop.index > 4 %} hidden-on-mobile{% endif %}">
+        <div class="benefits-card">
           <div class="card-inner">
             <div class="card-face card-front">
               <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.title }}" class="card-image" />
@@ -39,7 +39,7 @@
       {% endfor %}
     </div>
 
-    {% if section.blocks.size > 4 %}
+    {% comment %} {% if section.blocks.size > 4 %}
       <div class="view-all-btn-wrapper">
         <button
           class="view-all-btn"
@@ -51,7 +51,7 @@
           {{ section.settings.view_more_label }}
         </button>
       </div>
-    {% endif %}
+    {% endif %} {% endcomment %}
   </div>
 </div>
 
