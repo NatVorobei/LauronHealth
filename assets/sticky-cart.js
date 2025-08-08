@@ -305,6 +305,11 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+const bar=document.getElementById('sticky-add-to-cart');
+const mount=bar?.querySelector('.sticky-form-mount');
+const form=document.querySelector('form.product-form[data-type="add-to-cart-form"]')||document.querySelector('form.product-form');
+bar.classList.add('show');
+if(mount && form && form.parentElement!==mount) mount.appendChild(form);
 
 
 

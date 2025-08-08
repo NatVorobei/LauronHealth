@@ -319,137 +319,39 @@
 {% endif %}
 
 <style>
-/* ====== БАЗА ПАНЕЛІ ====== */
-#sticky-add-to-cart {
-  display: none;
-  opacity: 0;
-  transition: opacity .25s ease;
-  position: fixed;
-  left: 0; right: 0; bottom: 0;
-  background: #111; /* темна плашка */
-  color: #fff;
-  z-index: 999;
-  padding: 14px 16px;
-  box-shadow: 0 -8px 24px rgba(0,0,0,.25);
-}
-#sticky-add-to-cart.show { display: block; opacity: 1; }
+/* базова панель */
+#sticky-add-to-cart{display:none;opacity:0;transition:opacity .25s;position:fixed;left:0;right:0;bottom:0;background:#111;color:#fff;z-index:999;padding:14px 16px;box-shadow:0 -8px 24px rgba(0,0,0,.25)}
+#sticky-add-to-cart.show{display:block;opacity:1}
 
-.sticky-add-to-cart__container{
-  max-width: 1280px; margin: 0 auto;
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 16px; flex-wrap: wrap;
-}
-.product-info{ display:flex; align-items:center; gap:12px; min-width:280px; flex:1 1 auto; }
-.product-image{ width:72px; height:auto; border-radius:6px; flex:0 0 72px; }
-.text-content{ min-width:0; }
-.product-title{
-  margin:0; font-family: var(--font-heading-main);
-  font-weight:700; font-size:18px; line-height:1.1; color:#fff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
-}
-.product-description{ margin:.25rem 0 0; font-size:12px; line-height:1.3; opacity:.8; color:#fff; }
+.sticky-add-to-cart__container{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.product-info{display:flex;align-items:center;gap:12px;min-width:280px;flex:1 1 auto}
+.product-image{width:72px;height:auto;border-radius:6px}
+.product-title{margin:0;font-weight:700;font-size:18px;line-height:1.1;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.product-description{margin:.25rem 0 0;font-size:12px;line-height:1.3;opacity:.8;color:#fff}
 
-/* МІСЦЕ ДЛЯ ФОРМИ */
-.sticky-form-mount { flex: 1 1 auto; display:flex; justify-content:flex-end; min-width:360px; }
+.sticky-form-mount{flex:1 1 auto;display:flex;justify-content:flex-end;min-width:360px}
 
-/* ====== КОМПАКТНИЙ РЯД ДЛЯ ФОРМИ У СТІКІ ====== */
+/* ЛИШЕ розкладка: нічого не ховаємо! */
 .sticky-cart-wrapper form.product-form{
-  display:flex; align-items:center; justify-content:flex-end; gap:12px; margin:0;
+  display:flex; align-items:center; gap:12px; margin:0; flex-wrap:wrap; justify-content:flex-end;
 }
 
-/* Ховаємо зайве у формі, коли вона в стікі (варіант-пікери, кількість, аплати тощо) */
-.sticky-cart-wrapper form.product-form .product-form__input,
-.sticky-cart-wrapper form.product-form .quantity__wrapper,
-.sticky-cart-wrapper form.product-form .shopify-payment-button,
-.sticky-cart-wrapper form.product-form .product__tax,
-.sticky-cart-wrapper form.product-form .product__sku,
-.sticky-cart-wrapper form.product-form [data-product-block="pickup-availability"],
-.sticky-cart-wrapper form.product-form [data-block-type="inventory_status"]{
-  display:none !important;
-}
-
-/* Кнопка Add to cart у стікі – стилізована під скрін */
-.sticky-cart-wrapper form.product-form button[name="add"],
-.sticky-cart-wrapper .product-form__submit[name="add"]{
+/* зробимо стандартну ATC помітною на темному фоні */
+.sticky-cart-wrapper form.product-form button[name="add"]{
   display:flex; align-items:center; gap:12px;
-  background: transparent; color:#fff;
+  background:transparent; color:#fff;
   border:1px solid #fff; border-radius:999px;
-  padding:16px 22px; font-weight:700; text-transform:uppercase;
+  padding:14px 20px; font-weight:700; text-transform:uppercase;
   font-size:14px; line-height:1; height:48px;
 }
 
-/* ====== СТИЛІ ДЛЯ APPSTLE У СТІКІ ======
-   Підігнані під "Subscription (Save 15%)" у вигляді капсули з дропдауном
-   Селектори покривають найтиповіші класи Appstle: */
-.sticky-cart-wrapper .appstle_subscription_widget,
-.sticky-cart-wrapper .appstle-inline-widget,
-.sticky-cart-wrapper [id^="appstle_widget_"]{
-  display:flex; align-items:center; gap:12px; margin:0; padding:0;
+/* не чіпаємо Appstle взагалі — нехай з’явиться */
+@media (max-width:749px){
+  .product-info{display:none}
+  .sticky-form-mount{min-width:100%}
+  .sticky-cart-wrapper form.product-form{justify-content:space-between}
 }
 
-/* Ховаємо великі описи/списки переваг у стікі */
-.sticky-cart-wrapper .appstle_subscription_widget .appstle-benefits,
-.sticky-cart-wrapper .appstle_subscription_widget .appstle_widget_mini_cart_line_break,
-.sticky-cart-wrapper .appstle_subscription_widget .appstle-purchase-options-title,
-.sticky-cart-wrapper .appstle_subscription_widget .appstle-delivery-options-title,
-.sticky-cart-wrapper .appstle_subscription_widget .appstle-tooltip,
-.sticky-cart-wrapper .appstle_subscription_widget .appstle-purchase-options-container > label{
-  display:none !important;
-}
-
-/* Рядок з радіокнопками/покупкою -> лише "Subscription" активний */
-.sticky-cart-wrapper .appstle_subscription_widget .appstle-purchase-options-container{
-  display:flex; align-items:center; gap:8px; margin:0;
-}
-.sticky-cart-wrapper .appstle_subscription_widget .appstle-one-time-option{
-  display:none !important; /* у стікі тільки підписка; one-time сховано */
-}
-
-/* Капсула з написом "SUBSCRIPTION (SAVE 15%)" */
-.sticky-cart-wrapper .appstle_subscription_widget .appstle-subscription-option,
-.sticky-cart-wrapper .appstle-inline-widget .appstle-subscription-option{
-  display:flex; align-items:center; gap:8px;
-  border:1px solid #fff; color:#fff; background:transparent;
-  padding:14px 18px; height:48px; border-radius:999px;
-  font-weight:700; font-size:12px; text-transform:uppercase;
-  white-space:nowrap;
-}
-
-/* Дропдаун частоти (кастомний селект Appstle) */
-.sticky-cart-wrapper .appstle_subscription_widget select,
-.sticky-cart-wrapper .appstle-inline-widget select,
-.sticky-cart-wrapper .appstle__plan_dropdown{
-  appearance:none; -webkit-appearance:none; -moz-appearance:none;
-  background:transparent; color:#fff;
-  border:1px solid #fff; border-radius:999px;
-  height:48px; padding:0 42px 0 14px;
-  font-weight:600; font-size:12px; line-height:1;
-  min-width:210px;
-}
-.sticky-cart-wrapper .appstle__plan_dropdown option{
-  color:#fff; background:#111;
-}
-
-/* Маленький сабтекст типу "12.00 zł / serving" праворуч від капсули */
-.sticky-cart-wrapper .appstle-price-per-serving,
-.sticky-cart-wrapper .appstle_subscription_widget .appstle-selling-plan-price{
-  font-size:12px; opacity:.8; margin-left:4px; color:#fff;
-}
-
-/* Вирівнювання всього ряду: [SUBSCRIPTION] [dropdown] [ADD TO CART] */
-.sticky-cart-wrapper .appstle_row{
-  display:flex; align-items:center; gap:12px; margin:0; padding:0;
-}
-
-/* ====== Мобільна адаптація ====== */
-@media (max-width: 749px){
-  .product-info{ display:none; }
-  .sticky-form-mount{ min-width:100%; }
-  .sticky-cart-wrapper form.product-form{ justify-content:space-between; gap:8px; width:100%; }
-  .sticky-cart-wrapper .appstle_subscription_widget,
-  .sticky-cart-wrapper .appstle-inline-widget{ flex-wrap:wrap; gap:8px; }
-  .sticky-cart-wrapper .appstle__plan_dropdown{ min-width:160px; }
-  .sticky-cart-wrapper form.product-form button[name="add"]{ flex:0 0 auto; }
-}
 </style>
 
 {% schema %}
