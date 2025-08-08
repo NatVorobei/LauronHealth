@@ -341,6 +341,11 @@
   content: none;
 }
 
+.customer .field {
+  border: 1px solid #D7D7D7;
+  border-radius: 20px;
+}
+
 /* Login */
 .login a {
   display: block;
