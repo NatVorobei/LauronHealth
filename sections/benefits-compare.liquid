@@ -103,59 +103,8 @@
   .benefit-icon {
     text-align: center;
   }
-  @media (max-width: 768px) {
-    .benefits-container {
-      flex-direction: column;
-    }
-    .benefits-section {
-      background-color: transparent;
-      padding: 0;
-    }
-    .benefits-row {
-      gap: 55px;
-      padding: 11px 0;
-    }
-    .benefits-headers {
-      gap: 55px;
-    }
-    .benefit-label {
-      font-size: 10px;
-      line-height: 16px;
-    }
-    .benefits-heading {
-      font-size: 24px;
-      line-height: 24px;
-    }
-    .benefits-description-top,
-    .benefits-description-bottom {
-      font-size: 16px;
-      line-height: 22px;
-    }
-    .benefits-container {
-      gap: 80px;
-    }
-    .benefits-left {
-      gap: 30px;
-      max-width: 100%;
-      padding: 0 14px;
-    }
-    .benefits-right {
-      background-color: #F0F4F5;
-      padding: 40px 20px;
-    }
-  }
-  @media(min-width: 990px) {
-    .benefit-label {
-      white-space: nowrap;
-    }
-  }
-  @media(min-width: 1180px) {
-    .benefits-section {
-      padding: 46px 0;
-    }
-  }
 
-  /* 750–1080px: фіксимо двоколонку + таблицю порівняння */
+    /* 750–1080px: фіксимо двоколонку + таблицю порівняння */
 @media (min-width: 750px) and (max-width: 1080px) {
   .benefits-container {
     display: grid;
@@ -218,6 +167,60 @@
     justify-content: center;
   }
 }
+
+  @media (max-width: 749px) {
+    .benefits-container {
+      flex-direction: column;
+    }
+    .benefits-section {
+      background-color: transparent;
+      padding: 0;
+    }
+    .benefits-row {
+      gap: 55px;
+      padding: 11px 0;
+    }
+    .benefits-headers {
+      gap: 55px;
+    }
+    .benefit-label {
+      font-size: 10px;
+      line-height: 16px;
+    }
+    .benefits-heading {
+      font-size: 24px;
+      line-height: 24px;
+    }
+    .benefits-description-top,
+    .benefits-description-bottom {
+      font-size: 16px;
+      line-height: 22px;
+    }
+    .benefits-container {
+      gap: 80px;
+    }
+    .benefits-left {
+      gap: 30px;
+      max-width: 100%;
+      padding: 0 14px;
+    }
+    .benefits-right {
+      background-color: #F0F4F5;
+      padding: 40px 20px;
+    }
+  }
+  @media(min-width: 990px) {
+    .benefit-label {
+      white-space: nowrap;
+    }
+  }
+  @media(min-width: 1180px) {
+    .benefits-section {
+      padding: 46px 0;
+    }
+  }
+
+
 
   </style>
   
