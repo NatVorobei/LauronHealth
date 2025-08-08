@@ -133,6 +133,14 @@ cart-drawer:not(.is-empty) .cart-drawer__collection {
   margin-bottom: 25px;
 }
 
+.drawer__upsell-subtitle {
+  font-size: 8px;
+  line-height: 8px;
+  color: var(--color-main-text);
+  margin-bottom: 12px;
+  white-space: nowrap;
+}
+
 cart-drawer-items.is-empty + .drawer__footer {
   display: none;
 }
