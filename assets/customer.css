@@ -68,6 +68,10 @@
   cursor: pointer;
 }
 
+.customer button:hover {
+  background: #333;
+}
+
 .customer button::before,
 .customer button::after {
   content: none;
