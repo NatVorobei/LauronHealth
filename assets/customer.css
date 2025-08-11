@@ -403,11 +403,13 @@
   content: none;
 }
 
-.customer .field input:focus {
+.customer .field input:focus,
+.customer .select input:focus {
   box-shadow: none;
 }
 
-.customer .field {
+.customer .field,
+.customer .select {
   border: 1px solid #D7D7D7;
   border-radius: 20px;
 }
