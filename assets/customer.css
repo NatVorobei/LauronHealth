@@ -24,7 +24,8 @@
 }
 
 .customer__orders,
-.customer__details-heading {
+.customer__details-heading,
+.customer__default-adress {
   font-size: 20px;
   line-height: 28px;
   font-weight: 700;
