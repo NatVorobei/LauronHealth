@@ -16,6 +16,14 @@
   }
 {%- endstyle -%}
 
+{% if template == 'customers/addresses' %}
+  {%- style -%}
+  body br {
+    display: none;
+  }
+  {%- endstyle -%}
+{% endif %}
+
 {%- paginate customer.addresses by 5 -%}
   <div class="customer addresses section-{{ section.id }}-padding" data-customer-addresses>
     <h1>{{ 'customer.addresses.title' | t }}</h1>
