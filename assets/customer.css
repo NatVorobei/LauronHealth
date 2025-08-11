@@ -23,7 +23,8 @@
   color: var(--color-main-text);
 }
 
-.customer__orders {
+.customer__orders,
+.customer__details {
   font-size: 20px;
   line-height: 28px;
   font-weight: 700;
