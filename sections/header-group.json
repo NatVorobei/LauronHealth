@@ -42,6 +42,7 @@
         "custom_dropdown_iJwnBp": {
           "type": "custom_dropdown",
           "settings": {
+            "burger_menu_text": "Позитивний відгук",
             "menu_handle": "",
             "menu_title": "Купити зараз",
             "image_1": "shopify://shop_images/freeze-age-product-block_1.png",
