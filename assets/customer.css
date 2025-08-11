@@ -398,7 +398,7 @@
 
 .customer .field::after,
 .customer .field::before,
-.customer .field:focus {
+.customer .field input:focus {
   content: none;
 }
 
