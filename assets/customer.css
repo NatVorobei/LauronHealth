@@ -38,6 +38,9 @@
   line-height: 16px;
   color: var(--color-main-text);
 }
+.customer__details p {
+ line-height: 32px;
+}
 
 .customer form {
   margin-top: 4rem;
