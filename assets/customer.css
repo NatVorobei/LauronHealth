@@ -288,6 +288,13 @@
 
 /* mobile table overrides */
 @media screen and (max-width: 749px) {
+  .customer__orders,
+  .customer__details-heading,
+  .customer__default-adress {
+    font-size: 18px;
+    line-height: 18px;
+  }
+
   .customer thead,
   .customer th,
   .customer tfoot td:first-of-type {
