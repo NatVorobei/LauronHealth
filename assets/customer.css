@@ -24,7 +24,7 @@
 }
 
 .customer__orders,
-.customer__details {
+.customer__details-heading {
   font-size: 20px;
   line-height: 28px;
   font-weight: 700;
@@ -32,7 +32,8 @@
   color: var(--color-main-text);
 }
 
-.customer__orders-text {
+.customer__orders-text,
+.customer__details p {
   font-size: 16px;
   line-height: 16px;
   color: var(--color-main-text);

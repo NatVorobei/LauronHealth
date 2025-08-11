@@ -138,8 +138,8 @@
       {% endpaginate %}
     </div>
 
-    <div>
-      <h2 class="customer__details">{{ 'customer.account.details' | t }}</h2>
+    <div class="customer__details">
+      <h2 class="customer__details-heading">{{ 'customer.account.details' | t }}</h2>
 
       {{ customer.default_address | format_address }}
 
