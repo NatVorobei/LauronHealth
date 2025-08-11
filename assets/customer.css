@@ -42,6 +42,10 @@
  line-height: 32px;
 }
 
+.customer a {
+  text-decoration: none;
+}
+
 .customer form {
   margin-top: 4rem;
 }
