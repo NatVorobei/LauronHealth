@@ -112,7 +112,12 @@
       "name": "Exclusive Benefits Section",
       "settings": {
         "image": "shopify://shop_images/autodelivery-benefits.webp",
-        "heading": "Ексклюзивні переваги для вас"
+        "heading": "Ексклюзивні переваги для вас",
+        "reverse_layout": false,
+        "padding_top_desktop": 40,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
       }
     },
     "two_products_block_xE7L9i": {
@@ -126,8 +131,8 @@
             "rating": "★ ★ ★ ★ ★",
             "reviews": "31 відгук",
             "discount": "Збережіть",
-            "caption": "For a two-week subscription:",
-            "features": "Change or cancel anytime; Change or cancel anytime; Change or cancel anytime",
+            "caption": "",
+            "features": "Підтримує загальну стійкість організму; Уповільнює вікові зміни; Покращує здоров'я шкіри та суглобів",
             "buy_button": "Купити"
           }
         },
@@ -139,8 +144,8 @@
             "rating": "★ ★ ★ ★ ★",
             "reviews": "31 відгук",
             "discount": "Збережіть",
-            "caption": "For a two-week subscription:",
-            "features": "Change or cancel anytime; Change or cancel anytime; Change or cancel anytime",
+            "caption": "",
+            "features": "Щоденно підтримує ясність мислення; Знижує рівень стресу; Надає енергію для розумової витривалості",
             "buy_button": "Купити"
           }
         }
