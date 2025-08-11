@@ -118,7 +118,7 @@
         "feature_CAVx7T": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/refund.svg",
+            "icon": "shopify://shop_images/product-icon-1.svg",
             "title": "",
             "subtitle": "30-денна гарантія повернення коштів"
           }
@@ -126,7 +126,7 @@
         "feature_JcNEdC": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/wallet.svg",
+            "icon": "shopify://shop_images/product-icon-2.svg",
             "title": "",
             "subtitle": "Заощаджуйте до 20% на підписці"
           }
@@ -134,7 +134,7 @@
         "feature_ANdMwN": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/cancel.svg",
+            "icon": "shopify://shop_images/product-icon-3.svg",
             "title": "",
             "subtitle": "Змінюйте або скасовуйте у будь-який момент"
           }
@@ -142,7 +142,7 @@
         "feature_iHTwiE": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/free-delivery.svg",
+            "icon": "shopify://shop_images/product-icon-4.svg",
             "title": "",
             "subtitle": "Безкоштовна доставка від 200 zł"
           }
