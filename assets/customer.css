@@ -302,7 +302,7 @@
 
   .customer__orders-text,
   .customer__details p {
-    font-size: 14px;
+    font-size: 14px !important;
   }
 
   .customer thead,
@@ -552,7 +552,7 @@
 
 :is(.account, .order) p {
   margin: 0 0 2rem;
-  font-size: 1.6rem;
+  /* font-size: 1.6rem; */
 }
 
 :is(.account, .order) h1 {
