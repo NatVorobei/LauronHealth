@@ -300,6 +300,11 @@
     line-height: 24px;
   }
 
+  .customer__orders-text,
+  .customer__details p {
+    font-size: 14px;
+  }
+
   .customer thead,
   .customer th,
   .customer tfoot td:first-of-type {
