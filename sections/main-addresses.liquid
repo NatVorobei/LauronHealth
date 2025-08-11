@@ -18,9 +18,13 @@
 
 {% if template == 'customers/addresses' %}
   {%- style -%}
-  body br {
-    display: none;
-  }
+  a.appstle_manageSubBtn + br,
+    a.appstle_manageSubBtn + br + br,
+    a[href*="/apps/subscriptions"] + br,
+    a[href*="/apps/subscriptions"] + br + br {
+      display: none !important;
+    }
+
   {%- endstyle -%}
 {% endif %}
 
