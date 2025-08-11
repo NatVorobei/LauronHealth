@@ -3945,6 +3945,10 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
   cursor: pointer;
 }
 
+.appstle_manageSubBtn button:hover {
+  background: #333;
+}
+
 @media (max-width: 749px) {
   .image-with-text__heading {
     font-size: 26px;
