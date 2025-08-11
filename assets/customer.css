@@ -52,6 +52,11 @@
 
 .customer button {
   margin: 4rem 0 1.5rem;
+}
+
+.customer__adress-edit,
+.customer__adress-delete,
+.customer button  {
   padding: 20px;
   background: var(--color-main-text);
   color: #fff;
