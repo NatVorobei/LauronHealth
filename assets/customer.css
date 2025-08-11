@@ -419,6 +419,10 @@
   background: transparent;
 }
 
+.customer .select .svg-wrapper {
+  right: 15px;
+}
+
 /* Login */
 .login a {
   display: block;
