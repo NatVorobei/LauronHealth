@@ -404,7 +404,7 @@
 }
 
 .customer .field input:focus,
-.customer .select input:focus {
+.customer .select select:focus {
   box-shadow: none;
 }
 
