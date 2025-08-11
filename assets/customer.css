@@ -16,6 +16,11 @@
 .customer > h1,
 .customer__title {
   margin-top: 0;
+  font-size: 28px;
+  line-height: 28px;
+  color: var(--color-main-text);
+  font-weight: 700px;
+  font-family: var(--font-heading-main);
 }
 
 .customer form {
