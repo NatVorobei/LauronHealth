@@ -179,6 +179,7 @@
             aria-controls="EditAddress_{{ address.id }}"
             aria-expanded="false"
             data-address-id="{{ address.id }}"
+            class="customer__adress-edit"
           >
             {{ 'customer.addresses.edit' | t }}
           </button>
@@ -187,6 +188,7 @@
             aria-label="{{ 'customer.addresses.delete' | t }} {{ forloop.index }}"
             data-target="{{ address.url }}"
             data-confirm-message="{{ 'customer.addresses.delete_confirm' | t }}"
+            class="customer__adress-delete"
           >
             {{ 'customer.addresses.delete' | t }}
           </button>
