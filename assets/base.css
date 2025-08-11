@@ -3679,6 +3679,7 @@ p {
   font-weight: 700;
   font-size: 18px !important;
   line-height: 18px;
+  letter-spacing: 0;
 }
 
 .appstle_single_option_text {
