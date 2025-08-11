@@ -68,6 +68,11 @@
   cursor: pointer;
 }
 
+.customer__adress-edit,
+.customer__adress-delete {
+  min-width: 94px;
+}
+
 .customer button:hover {
   background: #333;
 }
