@@ -295,6 +295,11 @@
     line-height: 18px;
   }
 
+  .customer__heading {
+    font-size: 24px;
+    line-height: 24px;
+  }
+
   .customer thead,
   .customer th,
   .customer tfoot td:first-of-type {
