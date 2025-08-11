@@ -81,8 +81,7 @@
 }
 
 .customer button::before,
-.customer button::after,
-.customer button:focus {
+.customer button::after {
   content: none;
 }
 
@@ -398,7 +397,8 @@
 }
 
 .customer .field::after,
-.customer .field::before {
+.customer .field::before,
+.customer .field:focus {
   content: none;
 }
 
