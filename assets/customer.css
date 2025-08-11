@@ -312,6 +312,10 @@
     margin-bottom: 16px;
   }
 
+  .customer ul {
+    margin-bottom: 0;
+  }
+
   .customer thead,
   .customer th,
   .customer tfoot td:first-of-type {
