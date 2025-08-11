@@ -305,6 +305,13 @@
     font-size: 14px !important;
   }
 
+  .customer > h1,
+  .customer__title {
+    font-size: 24px;
+    line-height: 24px;
+    margin-bottom: 16px;
+  }
+
   .customer thead,
   .customer th,
   .customer tfoot td:first-of-type {
