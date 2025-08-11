@@ -810,7 +810,7 @@ li[data-address] {
 li[data-address] > h2 {
   text-align: center;
   font-size: calc(var(--font-heading-scale) * 1.8rem);
-  margin-bottom: 0;
+  margin-bottom: 20px;
 }
 
 @media only screen and (min-width: 750px) {
