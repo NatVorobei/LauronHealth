@@ -70,7 +70,7 @@
 
 .customer__adress-edit,
 .customer__adress-delete {
-  min-width: 94px;
+  min-width: 94px !important;
 }
 
 .customer button:hover {
