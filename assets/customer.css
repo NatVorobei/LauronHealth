@@ -397,7 +397,9 @@
 }
 
 .customer .field::after,
-.customer .field::before{
+.customer .field::before,
+.customer .select::after,
+.customer .select::before {
   content: none;
 }
 
