@@ -44,6 +44,7 @@
 
 .customer a {
   text-decoration: none;
+  color: var(--color-main-text);
 }
 
 .customer form {
