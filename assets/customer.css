@@ -47,6 +47,10 @@
   color: var(--color-main-text);
 }
 
+.view-adresses {
+ text-decoration: underline;
+}
+
 .customer form {
   margin-top: 4rem;
 }
