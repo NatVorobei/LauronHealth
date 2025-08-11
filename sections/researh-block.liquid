@@ -41,7 +41,7 @@
       <div class="research-block__right">
         {% if section.settings.image != blank %}
           <img
-            src="{{ section.settings.image | image_url: width: 800 }}"
+            src="{{ section.settings.image | image_url: width: 500 }}"
             width="500"
             height="500"
             loading="lazy"
@@ -61,7 +61,7 @@
   
   <style>
     .research-block {
-      padding-bottom: 40px;
+      padding: 40px 0;
     }
   
     .research-block__container {
@@ -72,6 +72,7 @@
       border-radius: 20px;
       display: flex;
       gap: 20px;
+      flex-wrap: wrap;
       justify-content: space-between;
     }
   
@@ -87,12 +88,12 @@
     }
   
     .research-block__heading {
-      font-family: var(--font-heading-main);
+      font-family: Montserrat, sans-serif;
       font-size: 20px;
       font-weight: 700;
       line-height: 24px;
       letter-spacing: 0;
-      color: var(--color-main-text);
+      color: #1F1F21;
     }
   
     .research-block__group {
@@ -104,13 +105,13 @@
     }
   
     .research-block__group h3 {
-      font-family: var(--font-heading-main);
+      font-family: Montserrat, sans-serif;
       margin-bottom: 12px;
       font-size: 14px;
       line-height: 14px;
       font-weight: 700;
       letter-spacing: 0;
-      color: var(--color-main-text);
+      color: #1F1F21;
     }
   
     .research-block__right {
@@ -131,7 +132,7 @@
       bottom: -70px;
       max-width: 460px;
       width: 100%;
-      background-color: var(--color-main-text);
+      background-color: #1F1F21;
       color: white;
       padding: 20px;
       border-radius: 20px;
@@ -140,7 +141,7 @@
     }
   
     .research-block__overlay h3 {
-      font-family: var(--font-heading-main);
+      font-family: Montserrat, sans-serif;
       margin-bottom: 12px;
       font-size: 14px;
       line-height: 14px;
@@ -157,7 +158,7 @@
       letter-spacing: 0;
       max-width: 455px;
       text-decoration: none;
-      color: var(--color-main-text);
+      color: #1F1F21;
     }
   
     .research-block__overlay .rte p{
@@ -170,12 +171,10 @@
     @media(max-width: 749px) {
       .research-block {
         padding: 0 10px;
-        margin-bottom: 30px;
       }
       
       .research-block__container {
         padding: 40px 10px 110px;
-        flex-direction: column;
       }
   
       .research-block__overlay {
