@@ -48,7 +48,7 @@
 }
 
 .view-adresses {
- text-decoration: underline;
+  text-decoration: underline !important;
 }
 
 .customer form {
