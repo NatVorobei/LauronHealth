@@ -414,7 +414,8 @@
   border-radius: 20px;
 }
 
-.customer .field input {
+.customer .field input,
+.customer .select select {
   background: transparent;
 }
 
