@@ -43,12 +43,7 @@
 }
 
 .customer a {
-  text-decoration: none;
   color: var(--color-main-text);
-}
-
-.view-adresses {
-  text-decoration: underline !important;
 }
 
 .customer form {
