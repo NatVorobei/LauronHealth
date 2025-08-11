@@ -81,7 +81,8 @@
 }
 
 .customer button::before,
-.customer button::after {
+.customer button::after,
+.customer button:focus {
   content: none;
 }
 
