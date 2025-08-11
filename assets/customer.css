@@ -397,9 +397,12 @@
 }
 
 .customer .field::after,
-.customer .field::before,
-.customer .field input:focus {
+.customer .field::before{
   content: none;
+}
+
+.customer .field input:focus {
+  box-shadow: none;
 }
 
 .customer .field {
