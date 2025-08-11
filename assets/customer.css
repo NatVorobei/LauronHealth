@@ -34,7 +34,8 @@
 }
 
 .customer__orders-text,
-.customer__details p {
+.customer__details p,
+.customer__reset-password {
   font-size: 16px;
   line-height: 16px;
   color: var(--color-main-text);
