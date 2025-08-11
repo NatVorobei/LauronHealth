@@ -58,8 +58,8 @@
 .customer__adress-delete,
 .customer button  {
   padding: 20px;
-  background: var(--color-main-text);
-  color: #fff;
+  background: var(--color-main-text) !important;
+  color: #fff !important;
   border-radius: 20px; 
   font-size: 14px;
   line-height: 12px;
