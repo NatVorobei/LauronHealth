@@ -74,9 +74,9 @@
 }
 
 .customer button:hover,
-.customer__adress-edit,
-.customer__adress-delete {
-  background: #333;
+.customer__adress-edit:hover,
+.customer__adress-delete:hover {
+  background: #333 !important;
 }
 
 .customer button::before,
