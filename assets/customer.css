@@ -18,9 +18,17 @@
   margin-top: 0;
   font-size: 28px;
   line-height: 28px;
-  color: var(--color-main-text);
   font-weight: 700;
   font-family: var(--font-heading-main);
+  color: var(--color-main-text);
+}
+
+.customer__orders {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 700;
+  font-family: var(--font-heading-main);
+  color: var(--color-main-text);
 }
 
 .customer form {
