@@ -815,7 +815,7 @@ li[data-address] > h2 {
 
 li[data-address] > p {
   font-size: 16px;
-  line-height: 26px;
+  line-height: 32px;
   color: var(--color-main-text);
 }
 
