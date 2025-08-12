@@ -63,7 +63,8 @@
   }
 
   .label__title {
-    writing-mode: vertical-rl;
+    /* writing-mode: vertical-rl; */
+    writing-mode: sideways-lr;
     text-orientation: sideways;
   }
 
