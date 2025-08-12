@@ -65,6 +65,16 @@ product-info {
   }
 }
 
+@media screen and (min-width: 750px) and (max-width:989px) {
+  .product__info-wrapper {
+    padding: 0 0 0 2rem;
+  }
+
+  .page-width {
+    padding: 0 2rem;
+  }
+}
+
 @media screen and (min-width: 990px) {
   .product--large:not(.product--no-media) .product__media-wrapper {
     max-width: 65%;
