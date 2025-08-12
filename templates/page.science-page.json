@@ -28,8 +28,8 @@
       ],
       "name": "Main Banner",
       "settings": {
-        "banner_image": "shopify://shop_images/science-banner.webp",
-        "mobile_banner_image": "shopify://shop_images/science-moblie.webp",
+        "banner_image": "shopify://shop_images/Science_hero_screen.webp",
+        "mobile_banner_image": "shopify://shop_images/Science_hero_screen.webp",
         "heading": "<p><strong>Lauron — функціональний напій нового покоління</strong></p>",
         "description": "<p>В основі — запатентована технологія 3SDS, яка забезпечує високу біодоступність, точну доставку активних речовин і глибоку клітинну підтримку. Технології майбутнього для реальної турботи про здоров’я вже сьогодні.</p>",
         "description2": "",
