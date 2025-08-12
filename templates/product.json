@@ -174,8 +174,8 @@
           "type": "collapsible_row",
           "settings": {
             "heading": "Клітинне відновлення",
-            "image": "shopify://shop_images/image-text-block.png",
-            "row_content": "<p>Lauron підтримує здоров’я клітин, доставляючи активні сполуки безпосередньо на рівень тканин. Це сприяє зволоженню, еластичності та структурній цілісності — ключовим чинникам системної рівноваги та довготривалої функціональності.</p>",
+            "image": "shopify://shop_images/product-accordion-2.webp",
+            "row_content": "Lauron підтримує здоров’я клітин, доставляючи активні сполуки безпосередньо на рівень тканин. Це сприяє зволоженню, еластичності та структурній цілісності — ключовим чинникам системної рівноваги та довготривалої функціональності.",
             "background_color": "#f0f4f5",
             "text_color": "#000000"
           }
@@ -184,7 +184,7 @@
           "type": "collapsible_row",
           "settings": {
             "heading": "Клінічна база",
-            "image": "shopify://shop_images/benefits-slider-3.png",
+            "image": "shopify://shop_images/product-accordion-3.webp",
             "row_content": "Формула Lauron базується на клінічних даних і рецензованих дослідженнях. Кожен компонент підібрано з урахуванням доведеної біологічної дії та об’єднано технологіями, що підвищують ефективність і безпечність у реальному використанні.",
             "background_color": "#87878d",
             "text_color": "#ffffff"
@@ -194,7 +194,7 @@
           "type": "collapsible_row",
           "settings": {
             "heading": "Зручний формат",
-            "image": "shopify://shop_images/collapsible-content-4.png",
+            "image": "shopify://shop_images/science-1.webp",
             "row_content": "Готовий до вживання та простий у використанні. Lauron легко інтегрується в щоденний ритм — без приготування, змішування чи складного планування. Постійна підтримка організму у зручному сучасному форматі.",
             "background_color": "#1f1f21",
             "text_color": "#ffffff"
