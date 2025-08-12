@@ -2,28 +2,16 @@
   <div class="swiper main-swiper">
     <div class="swiper-wrapper">
       {% for media in product.media %}
-        {% comment %} <div class="swiper-slide">
-          <div class="product-media">
-            {% comment %} {% render 'product-thumbnail', media: media %} {% endcomment %}
-            <div class="product-media-image-wrapper">
-                <img
-                  src="{{ media.preview_image | image_url: width: 1200 }}"
-                  alt="{{ media.alt | escape }}"
-                  loading="lazy"
-                  class="product-media-image"
-                />
-              </div>
-          </div>
-        </div> {% endcomment %}
-
         <div class="swiper-slide">
+          <a href="{{ media.preview_image | image_url: width: 2000 }}" class="glightbox" data-gallery="product-gallery">
             <img
               src="{{ media.preview_image | image_url: width: 1200 }}"
               alt="{{ media.alt | escape }}"
               loading="lazy"
               class="product-media-image"
             />
-          </div>
+          </a>
+        </div>
       {% endfor %}
     </div>
     <div class="swiper-button-prev"></div>
@@ -45,6 +33,10 @@
     </div>
   </div>
 </div>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
 
 <script>
   const thumbSwiper = new Swiper('.thumb-swiper', {
@@ -82,26 +74,21 @@
   });
 
   document.addEventListener('DOMContentLoaded', function () {
-    const mainSwiperEl = document.querySelector('.main-swiper');
-
-    mainSwiperEl.addEventListener('click', function () {
-      setTimeout(() => {
-        mainSwiperEl.blur();
-      }, 100);
-    });
-
-    const navButtons = mainSwiperEl.querySelectorAll('.swiper-button-next, .swiper-button-prev');
-    navButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        setTimeout(() => {
-          button.blur();
-        }, 100);
-      });
+    const lightbox = GLightbox({
+      selector: '.glightbox',
+      touchNavigation: true,
+      loop: true,
+      zoomable: true,
     });
   });
 </script>
 
+
 <style>
+
+.glightbox-container {
+  background-color: #fff !important;
+}
 
 .product-media-image-wrapper {
     width: 100%;
