@@ -94,6 +94,9 @@
     },
     "researh_block_pGHiez": {
       "type": "researh-block",
+      "custom_css": [
+        ".research-block {margin-bottom: 120px;}"
+      ],
       "name": "Блок дослідження",
       "settings": {
         "heading": "Пероральне вживання гіалуронової кислоти високої молекулярної маси: покращення зволоженості, тону та структури шкіри (Gao et al., 2023)",
