@@ -1,4 +1,4 @@
-{% comment %} {{ 'component-image-with-text.css' | asset_url | stylesheet_tag }} {% endcomment %}
+{{ 'component-image-with-text.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -375,6 +375,25 @@
       padding: var(--main-padding-top-mobile) var(--main-padding-right-mobile) var(--main-padding-bottom-mobile)
         var(--main-padding-left-mobile);
       max-height: initial;
+    }
+
+    @media screen and (min-width: 951px) and (max-width: 1200px) {
+      .image-with-accordion-text {
+        height: auto;
+        min-height: 760px;
+      }
+      .image-with-accordion-media {
+        max-height: none;
+      }
+    }
+
+    @media screen and (min-width: 751px) and (max-width: 950px) {
+      .image-with-accordion-text {
+        height: auto;
+      }
+      .image-with-accordion-media {
+        max-height: none;
+      }
     }
   }
 </style>

@@ -3956,11 +3956,11 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
 }
 
 @media (max-width: 749px) {
-  .image-with-text__heading {
+  .custom-image-text .image-with-text__heading {
     font-size: 26px;
     line-height: 20px;
   }
-  .image-with-text__text {
+  .custom-image-text .image-with-text__text {
     margin-top: 28px !important;
     padding-right: 0 !important;
   }
@@ -4030,6 +4030,10 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
 
   .custom-image-text {
     padding: 0 10px;
+  }
+
+  .appstle_subscribe_save_text p span {
+    font-size: 12px;
   }
 }
 
