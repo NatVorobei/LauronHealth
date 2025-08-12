@@ -182,25 +182,6 @@
 
 </nav>
 
-{% comment %} <script>
-  document.querySelectorAll('.custom-dropdown-toggle').forEach((toggle) => {
-  toggle.addEventListener('click', (e) => {
-    e.preventDefault();
-    const wrapper = toggle.closest('.custom-dropdown-wrapper');
-    const isOpen = wrapper.classList.contains('open');
-
-    document.querySelectorAll('.custom-dropdown-wrapper.open').forEach((el) => {
-      el.classList.remove('open');
-    });
-
-    if (!isOpen) {
-      wrapper.classList.add('open');
-    }
-  });
-});
-
-</script> {% endcomment %}
-
 <style>
   .custom-dropdown-wrapper {
     position: relative;
@@ -246,21 +227,17 @@
     transform: rotate(180deg);
   }
 
-{% comment %} .custom-dropdown-wrapper.open .custom-dropdown-content {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.custom-dropdown-wrapper.open .custom-dropdown-toggle svg {
-  transform: rotate(180deg);
-} {% endcomment %}
-
 .custom-dropdown-toggle {
   display: flex;
   align-items: center;
   gap: 8px;
   cursor: pointer;
+}
+
+.custom-dropdown-wrapper:hover .custom-dropdown-toggle,
+.custom-dropdown-wrapper:focus-within .custom-dropdown-toggle {
+  text-decoration: underline;
+}
 }
 
 .custom-dropdown-toggle svg {
