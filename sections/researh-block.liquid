@@ -170,7 +170,7 @@
   
     @media(max-width: 749px) {
       .research-block {
-        padding: 0 10px 40px;
+        padding: 0 10px;
       }
       
       .research-block__container {
@@ -201,6 +201,67 @@
         height: auto;
       }
     }
+
+@media (min-width: 750px) and (max-width: 1160px) {
+
+  .research-block {
+    padding: 0 10px;
+  }
+  .research-block__container {
+    display: grid;
+    grid-template-columns: minmax(320px, 52%) minmax(280px, 48%);
+    gap: 24px;
+    padding: 40px 24px 100px;
+    align-items: center;
+  }
+
+  .research-block__left,
+  .research-block__right {
+    width: auto;
+  }
+
+  .research-block__divider {
+    max-width: 100%;
+  }
+
+  .research-block__right {
+    position: relative;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+  .research-block__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+
+  .research-block__overlay {
+    bottom: -56px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: clamp(280px, 88%, 520px);
+    max-width: none;
+    padding: 16px 18px;
+    border-radius: 16px;
+  }
+
+  .research-block__heading {
+    font-size: 18px;
+    line-height: 22px;
+  }
+  .research-block__group h3 {
+    font-size: 13px;
+    line-height: 14px;
+    margin-bottom: 10px;
+  }
+  .research-block__group .rte p,
+  .research-block__group .rte ul li,
+  .research-block__group a {
+    max-width: none; 
+  }
+}
+
   </style>
   
   {% schema %}
