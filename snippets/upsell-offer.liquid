@@ -1,4 +1,4 @@
-<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+{% comment %} <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script> {% endcomment %}
 {{ 'component-rating.css' | asset_url | stylesheet_tag }}
 
 {% assign cart_product_handles = cart.items | map: 'product' | map: 'handle' %}
@@ -87,7 +87,7 @@
               <p class="drawer__upsell-variantDesr">{{ variant.metafields.custom.variant_description.value }}</p>
             </div>
 
-            <product-form data-section-id="upsell-form" class="custom-product-form" data-appstle-ignore="true">
+            {% comment %} <product-form data-section-id="upsell-form" class="custom-product-form" data-appstle-ignore="true">
               {% form 'product',
                 upsell_product,
                 class: 'drawer-product-form appstle-ignore-in-drawer',
@@ -127,7 +127,19 @@
                   </button>
                 </div>
               {% endform %}
-            </product-form>
+            </product-form> {% endcomment %}
+
+            <div class="drawer__upsell-actions">
+              <form class="upsell-add-form" novalidate>
+                <input type="hidden" name="id" value="{{ variant.id }}">
+                <input type="hidden" name="quantity" value="1">
+                <button type="submit" class="drawer__upsell-button js-upsell-submit">
+                  <span>{{ settings.upsell_buy_button }}</span>
+                  <span class="loading__spinner hidden">{% render 'loading-spinner' %}</span>
+                </button>
+              </form>
+            </div>
+
 
           </div>
         </div>
@@ -135,6 +147,92 @@
     </div>
   {% endunless %}
 {% endif %}
+
+
+<script>
+(function () {
+  if (window.__upsellInit) return; // щоб не інітилось двічі, якщо снипет вставляється кілька разів
+  window.__upsellInit = true;
+
+  document.addEventListener('submit', function (e) {
+    const form = e.target.closest('.upsell-add-form');
+    if (!form) return;
+
+    e.preventDefault();
+
+    const cartEl = document.querySelector('cart-drawer') || document.querySelector('cart-notification');
+    const submitBtn = form.querySelector('.js-upsell-submit') || form.querySelector('[type="submit"]');
+    const spinner = form.querySelector('.loading__spinner');
+
+    // UI loading
+    if (submitBtn) {
+      submitBtn.setAttribute('aria-disabled', 'true');
+      submitBtn.classList.add('loading');
+    }
+    if (spinner) spinner.classList.remove('hidden');
+
+    // будуємо FormData як у product-form.js
+    const fd = new FormData(form);
+    if (cartEl && typeof cartEl.getSectionsToRender === 'function') {
+      try {
+        const sections = cartEl.getSectionsToRender().map(s => s.id);
+        fd.append('sections', sections);
+        fd.append('sections_url', window.location.pathname);
+        if (typeof cartEl.setActiveElement === 'function') cartEl.setActiveElement(document.activeElement);
+      } catch (_) {}
+    }
+
+    // запит як у Dawn
+    fetch(`${routes.cart_add_url}`, {
+      method: 'POST',
+      headers: { 'X-Requested-With': 'XMLHttpRequest' }, // важливо
+      body: fd,
+      credentials: 'same-origin'
+    })
+    .then(r => r.json())
+    .then(resp => {
+      // помилка додавання (sold out тощо)
+      if (resp && resp.status) {
+        console.warn('[Upsell] cart/add error:', resp);
+        // можна показати своє повідомлення помилки тут
+        return;
+      }
+
+      // якщо нема елемента дравера — fallback
+      if (!cartEl || typeof cartEl.renderContents !== 'function') {
+        location.reload();
+        return;
+      }
+
+      // оновити вміст дравера по-даунівськи
+      cartEl.renderContents(resp);
+
+      // переконатися, що дравер відкритий
+      if (typeof cartEl.open === 'function') cartEl.open();
+      cartEl.classList.remove('is-empty');
+
+      // підчистити оверлейні залежності, якщо треба (якщо лишався)
+      const overlay = document.getElementById('CartDrawer-Overlay') || document.querySelector('.cart-drawer__overlay');
+      if (overlay) overlay.classList.remove('is-visible');
+      document.documentElement.classList.add('cart-open');
+
+    })
+    .catch(err => {
+      console.error('[Upsell] add failed:', err);
+      // крайній варіант — перезавантаження
+      try { location.reload(); } catch (_) {}
+    })
+    .finally(() => {
+      if (submitBtn) {
+        submitBtn.classList.remove('loading');
+        submitBtn.removeAttribute('aria-disabled');
+      }
+      if (spinner) spinner.classList.add('hidden');
+    });
+  });
+})();
+</script>
+
 
 <style>
   .drawer__upsell .appstle_subscription_widget,
