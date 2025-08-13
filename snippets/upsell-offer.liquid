@@ -87,11 +87,10 @@
               <p class="drawer__upsell-variantDesr">{{ variant.metafields.custom.variant_description.value }}</p>
             </div>
 
-            <product-form data-section-id="upsell-form" class="custom-product-form">
+            <product-form data-section-id="upsell-form" class="custom-product-form" data-appstle-ignore="true">
               {% form 'product', upsell_product,
                 class: 'drawer-product-form appstle-ignore-in-drawer',
                 data-type: 'upsell-form'
-                data-appstle-ignore="true"
               %}
                 <input
                   type="hidden"
