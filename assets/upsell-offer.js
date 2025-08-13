@@ -90,39 +90,23 @@
 //   });
 // })();
 
-
-(function () {
-  // захист від подвійної ініціалізації
-  if (window.__upsellClickBound) return;
-  window.__upsellClickBound = true;
-
-  function handleUpsellClick(e) {
-    const btn = e.target.closest('.js-upsell-submit');
-    if (!btn) return;
-
-    e.preventDefault();
-
-    const form = btn.closest('.upsell-add-form');
-    if (!form) return;
-
-    const id = form.querySelector('input[name="id"]')?.value;
-    const quantity = form.querySelector('input[name="quantity"]')?.value || '1';
-    if (!id) return;
-
-    const spinner = form.querySelector('.loading__spinner');
+window.__upsellAdd = window.__upsellAdd || async function(variantId, qty, btnEl){
+  try {
     const cart = document.querySelector('cart-drawer') || document.querySelector('cart-notification');
 
-    // loading UI
-    btn.setAttribute('aria-disabled', 'true');
-    btn.classList.add('loading');
-    spinner?.classList.remove('hidden');
+    // UI loading
+    if (btnEl){
+      btnEl.setAttribute('aria-disabled','true');
+      btnEl.classList.add('loading');
+      const sp = btnEl.querySelector('.loading__spinner'); if (sp) sp.classList.remove('hidden');
+    }
 
     const fd = new FormData();
-    fd.append('id', id);
-    fd.append('quantity', quantity);
+    fd.append('id', String(variantId));
+    fd.append('quantity', String(qty || 1));
 
     if (cart && typeof cart.getSectionsToRender === 'function') {
-      const ids = cart.getSectionsToRender().map(s => s.id);
+      const ids = cart.getSectionsToRender().map(s => s.id); // ['cart-drawer','cart-icon-bubble']
       fd.append('sections', ids);
       fd.append('sections_url', window.location.pathname);
       if (typeof cart.setActiveElement === 'function') cart.setActiveElement(document.activeElement);
@@ -130,44 +114,36 @@
       fd.append('sections_url', window.location.pathname);
     }
 
-    fetch(`${routes.cart_add_url}`, {
+    const addUrl = (window.routes && window.routes.cart_add_url) || '/cart/add';
+    const res = await fetch(addUrl, {
       method: 'POST',
       credentials: 'same-origin',
       headers: { 'X-Requested-With': 'XMLHttpRequest', 'Accept': 'application/json' },
       body: fd
-    })
-    .then(res => res.json())
-    .then(parsedState => {
-      if (parsedState?.status) {
-        console.warn('[Upsell] Add error:', parsedState);
-        return;
-      }
-      if (cart && typeof cart.renderContents === 'function') {
-        cart.renderContents(parsedState);
-      } else {
-        location.reload();
-      }
-    })
-    .catch(err => console.error('[Upsell] Failure:', err))
-    .finally(() => {
-      btn.classList.remove('loading');
-      btn.removeAttribute('aria-disabled');
-      spinner?.classList.add('hidden');
     });
-  }
+    const parsedState = await res.json();
 
-  // делегування — працює навіть при першому завантаженні
-  document.addEventListener('click', handleUpsellClick);
-
-  // на випадок, якщо треба підв’язатись після першого відкриття дравера
-  document.addEventListener('DOMContentLoaded', () => {
-    const cartDrawer = document.querySelector('cart-drawer');
-    if (cartDrawer) {
-      cartDrawer.addEventListener('transitionend', () => {
-        // гарантує, що кнопки, вставлені після рендера, теж будуть клікабельні
-      });
+    if (parsedState?.status) {
+      console.warn('[Upsell] add error:', parsedState);
+      return; // Можеш показати тост помилки
     }
-  });
-})();
+
+    if (cart && typeof cart.renderContents === 'function') {
+      cart.renderContents(parsedState); // ✅ як у Dawn/product-form.js
+    } else {
+      // фолбек на дуже кастомних темах
+      location.reload();
+    }
+  } catch (e) {
+    console.error('[Upsell] failure:', e);
+  } finally {
+    if (btnEl){
+      btnEl.classList.remove('loading');
+      btnEl.removeAttribute('aria-disabled');
+      const sp = btnEl.querySelector('.loading__spinner'); if (sp) sp.classList.add('hidden');
+    }
+  }
+};
+
 
 
