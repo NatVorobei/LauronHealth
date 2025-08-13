@@ -90,60 +90,60 @@
 //   });
 // })();
 
-window.__upsellAdd = window.__upsellAdd || async function(variantId, qty, btnEl){
-  try {
-    const cart = document.querySelector('cart-drawer') || document.querySelector('cart-notification');
+// window.__upsellAdd = window.__upsellAdd || async function(variantId, qty, btnEl){
+//   try {
+//     const cart = document.querySelector('cart-drawer') || document.querySelector('cart-notification');
 
-    // UI loading
-    if (btnEl){
-      btnEl.setAttribute('aria-disabled','true');
-      btnEl.classList.add('loading');
-      const sp = btnEl.querySelector('.loading__spinner'); if (sp) sp.classList.remove('hidden');
-    }
+//     // UI loading
+//     if (btnEl){
+//       btnEl.setAttribute('aria-disabled','true');
+//       btnEl.classList.add('loading');
+//       const sp = btnEl.querySelector('.loading__spinner'); if (sp) sp.classList.remove('hidden');
+//     }
 
-    const fd = new FormData();
-    fd.append('id', String(variantId));
-    fd.append('quantity', String(qty || 1));
+//     const fd = new FormData();
+//     fd.append('id', String(variantId));
+//     fd.append('quantity', String(qty || 1));
 
-    if (cart && typeof cart.getSectionsToRender === 'function') {
-      const ids = cart.getSectionsToRender().map(s => s.id); // ['cart-drawer','cart-icon-bubble']
-      fd.append('sections', ids);
-      fd.append('sections_url', window.location.pathname);
-      if (typeof cart.setActiveElement === 'function') cart.setActiveElement(document.activeElement);
-    } else {
-      fd.append('sections_url', window.location.pathname);
-    }
+//     if (cart && typeof cart.getSectionsToRender === 'function') {
+//       const ids = cart.getSectionsToRender().map(s => s.id); // ['cart-drawer','cart-icon-bubble']
+//       fd.append('sections', ids);
+//       fd.append('sections_url', window.location.pathname);
+//       if (typeof cart.setActiveElement === 'function') cart.setActiveElement(document.activeElement);
+//     } else {
+//       fd.append('sections_url', window.location.pathname);
+//     }
 
-    const addUrl = (window.routes && window.routes.cart_add_url) || '/cart/add';
-    const res = await fetch(addUrl, {
-      method: 'POST',
-      credentials: 'same-origin',
-      headers: { 'X-Requested-With': 'XMLHttpRequest', 'Accept': 'application/json' },
-      body: fd
-    });
-    const parsedState = await res.json();
+//     const addUrl = (window.routes && window.routes.cart_add_url) || '/cart/add';
+//     const res = await fetch(addUrl, {
+//       method: 'POST',
+//       credentials: 'same-origin',
+//       headers: { 'X-Requested-With': 'XMLHttpRequest', 'Accept': 'application/json' },
+//       body: fd
+//     });
+//     const parsedState = await res.json();
 
-    if (parsedState?.status) {
-      console.warn('[Upsell] add error:', parsedState);
-      return; // Можеш показати тост помилки
-    }
+//     if (parsedState?.status) {
+//       console.warn('[Upsell] add error:', parsedState);
+//       return; // Можеш показати тост помилки
+//     }
 
-    if (cart && typeof cart.renderContents === 'function') {
-      cart.renderContents(parsedState); // ✅ як у Dawn/product-form.js
-    } else {
-      // фолбек на дуже кастомних темах
-      location.reload();
-    }
-  } catch (e) {
-    console.error('[Upsell] failure:', e);
-  } finally {
-    if (btnEl){
-      btnEl.classList.remove('loading');
-      btnEl.removeAttribute('aria-disabled');
-      const sp = btnEl.querySelector('.loading__spinner'); if (sp) sp.classList.add('hidden');
-    }
-  }
-};
+//     if (cart && typeof cart.renderContents === 'function') {
+//       cart.renderContents(parsedState); // ✅ як у Dawn/product-form.js
+//     } else {
+//       // фолбек на дуже кастомних темах
+//       location.reload();
+//     }
+//   } catch (e) {
+//     console.error('[Upsell] failure:', e);
+//   } finally {
+//     if (btnEl){
+//       btnEl.classList.remove('loading');
+//       btnEl.removeAttribute('aria-disabled');
+//       const sp = btnEl.querySelector('.loading__spinner'); if (sp) sp.classList.add('hidden');
+//     }
+//   }
+// };
 
 
 
