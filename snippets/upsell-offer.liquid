@@ -1,4 +1,4 @@
-{% comment %} <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'upsell-offer.js' | asset_url }}" defer="defer"></script>
 {{ 'component-rating.css' | asset_url | stylesheet_tag }}
 
@@ -129,6 +129,50 @@
                 </div>
               {% endform %}
             </product-form> {% endcomment %}
+
+            <product-form
+  data-hide-errors="true"
+  class="custom-product-form"
+  data-appstle-ignore="true"
+  data-appstle="disable"
+>
+  <form
+    class="upsell-native-form"
+    action="{{ routes.cart_add_url }}"
+    method="post"
+    data-type="add-to-cart-form"
+    data-appstle-ignore="true"
+    novalidate
+  >
+    <input
+      type="hidden"
+      name="id"
+      value="{{ variant.id }}"
+      {% unless variant.available %}disabled{% endunless %}
+    >
+    <input type="hidden" name="quantity" value="1">
+
+    <button
+      type="submit"
+      class="drawer__upsell-button"
+      aria-live="polite"
+      {% unless variant.available %}disabled{% endunless %}
+    >
+      <span>
+        {% if variant.available %}
+          {{ settings.upsell_buy_button }}
+        {% else %}
+          {{ 'products.product.sold_out' | t }}
+        {% endif %}
+      </span>
+      <span class="sold-out-message hidden">
+        {{ 'products.product.sold_out' | t }}
+      </span>
+      {% render 'loading-spinner' %}
+    </button>
+  </form>
+</product-form>
+
 
             {% comment %} <div class="drawer__upsell-actions">
               <form class="upsell-add-form" novalidate>
