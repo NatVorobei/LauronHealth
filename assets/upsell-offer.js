@@ -91,105 +91,49 @@
 // })();
 
 
-<script>
-(function () {
-  if (window.__upsellClickBind) return;
-  window.__upsellClickBind = true;
+document.addEventListener('submit', function(e) {
+  const form = e.target.closest('form.drawer-product-form');
+  if (!form) return;
 
-  const SECTIONS = (document.querySelector('.js-upsell-add')?.dataset.sections || 'cart-drawer,cart-icon-bubble')
-    .split(',').map(s => s.trim());
+  e.preventDefault(); // блокуємо нативний submit
 
-  async function fetchSections(sections) {
-    const res = await fetch(`/?sections=${encodeURIComponent(sections.join(','))}`, {
-      credentials: 'same-origin',
+  const variantId = form.querySelector('[name="id"]').value;
+  const fd = new FormData(form);
+  fd.append('id', variantId);
+  fd.append('sections_url', window.location.pathname);
+
+  fetch('/cart/add.js', {
+    method: 'POST',
+    body: fd,
+    headers: { 'Accept': 'application/json' },
+    credentials: 'same-origin'
+  })
+  .then(res => res.json())
+  .then(() => {
+    return fetch(`/?sections=cart-drawer,cart-icon-bubble`, {
       headers: { 'Accept': 'application/json' }
     });
-    if (!res.ok) throw new Error('Sections fetch failed');
-    return res.json();
-  }
-
-  function replaceCartDrawer(htmlMap) {
-    const html = htmlMap['cart-drawer'];
-    if (!html) return false;
-
+  })
+  .then(res => res.json())
+  .then(sections => {
+    // оновлюємо cart drawer
     const temp = document.createElement('div');
-    temp.innerHTML = html;
-
+    temp.innerHTML = sections['cart-drawer'];
     const newDrawer = temp.querySelector('#CartDrawer');
-    const curDrawer = document.querySelector('#CartDrawer');
+    const oldDrawer = document.querySelector('#CartDrawer');
+    if (newDrawer && oldDrawer) oldDrawer.replaceWith(newDrawer);
 
-    if (newDrawer && curDrawer) {
-      curDrawer.replaceWith(newDrawer);
-      const drawerEl = document.querySelector('cart-drawer');
-      if (drawerEl && typeof drawerEl.open === 'function') drawerEl.open();
-      document.documentElement.classList.add('cart-open');
-      const overlay = document.getElementById('CartDrawer-Overlay') || document.querySelector('.cart-drawer__overlay');
-      if (overlay) overlay.classList.add('is-visible');
-      return true;
-    }
-    return false;
-  }
+    // оновлюємо bubble
+    const tempBubble = document.createElement('div');
+    tempBubble.innerHTML = sections['cart-icon-bubble'];
+    const newBubble = tempBubble.querySelector('#cart-icon-bubble');
+    const oldBubble = document.querySelector('#cart-icon-bubble');
+    if (newBubble && oldBubble) oldBubble.replaceWith(newBubble);
 
-  function replaceBubble(htmlMap) {
-    const html = htmlMap['cart-icon-bubble'];
-    if (!html) return;
-    const temp = document.createElement('div');
-    temp.innerHTML = html;
-    const newBubble = temp.querySelector('#cart-icon-bubble');
-    const curBubble = document.getElementById('cart-icon-bubble');
-    if (newBubble && curBubble) curBubble.replaceWith(newBubble);
-  }
-
-  document.addEventListener('click', async (e) => {
-    const btn = e.target.closest('.js-upsell-add');
-    if (!btn) return;
-
-    const variantId = parseInt(btn.dataset.variantId, 10);
-    if (!variantId) return;
-
-    // UI: loading
-    btn.setAttribute('aria-disabled', 'true');
-    btn.classList.add('loading');
-    const spinner = btn.querySelector('.loading__spinner');
-    if (spinner) spinner.classList.remove('hidden');
-
-    try {
-      // 1) додати в кошик (без submit)
-      const fd = new FormData();
-      fd.append('id', variantId);
-      fd.append('quantity', '1');
-      fd.append('sections_url', window.location.pathname);
-
-      const addRes = await fetch('/cart/add.js', {
-        method: 'POST',
-        credentials: 'same-origin',
-        headers: { 'Accept': 'application/json' },
-        body: fd
-      });
-      const addJson = await addRes.json();
-      if (!addRes.ok || addJson?.status) {
-        console.warn('[Upsell] Add error:', addJson);
-        return;
-      }
-
-      // 2) підтягнути свіжі секції і оновити дравер
-      const sectionsJson = await fetchSections(SECTIONS);
-      const replaced = replaceCartDrawer(sectionsJson);
-      replaceBubble(sectionsJson);
-
-      if (!replaced) {
-        // якщо з якоїсь причини не замінився — просто відкриємо існуючий
-        const drawerEl = document.querySelector('cart-drawer');
-        if (drawerEl && typeof drawerEl.open === 'function') drawerEl.open();
-        document.documentElement.classList.add('cart-open');
-      }
-    } catch (err) {
-      console.error('[Upsell] Failure:', err);
-    } finally {
-      btn.classList.remove('loading');
-      btn.removeAttribute('aria-disabled');
-      if (spinner) spinner.classList.add('hidden');
-    }
-  });
-})();
-</script>
+    // відкриваємо дравер
+    document.documentElement.classList.add('cart-open');
+    document.querySelector('#CartDrawer')?.classList.add('is-open');
+    document.querySelector('.cart-drawer__overlay')?.classList.add('is-visible');
+  })
+  .catch(err => console.error('Upsell add error:', err));
+});
