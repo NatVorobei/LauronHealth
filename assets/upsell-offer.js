@@ -90,7 +90,7 @@
 //   });
 // })();
 
-<script>
+
 (function () {
   const SECTIONS = ['cart-drawer', 'cart-icon-bubble'];
 
@@ -185,7 +185,6 @@
   // Перший раз — чіпляємо одразу при завантаженні
   attachUpsellListeners();
 })();
-</script>
 
 
 
