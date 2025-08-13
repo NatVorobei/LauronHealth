@@ -130,7 +130,7 @@
     "show_shipping_bar": true,
     "minimum_free_shipping": 270,
     "shipping_bar_color": "#ff2400",
-    "show_upsell_offer": false,
+    "show_upsell_offer": true,
     "upsell_buy_button": "Купити",
     "upsell_product": "mental-performance",
     "sections": {
