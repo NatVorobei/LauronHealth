@@ -22,17 +22,21 @@
         <div class="two-product-card">
           <div class="two-product-card__container">
             {% if block.settings.custom_image != blank %}
-              <a href="{{ product.url }}" class="two-product-card__image"><img src="{{ block.settings.custom_image | img_url: '400x' }}" alt=""></a>
+              <a href="{{ product.url }}" class="two-product-card__image"
+                ><img src="{{ block.settings.custom_image | img_url: '400x' }}" alt=""
+              ></a>
             {% endif %}
 
             <div class="two-product-card__content">
               <h3 class="two-product-card__title">
                 <a href="{{ product.url }}">{{ product.title }}</a>
               </h3>
-              {% comment %} <div class="two-product-card__ratings">
-                <div style="color: #FFC300;">{{ block.settings.rating }}</div>
-                <div class="two-product-card__ratings-text">{{ block.settings.reviews }}</div>
-              </div> {% endcomment %}
+              {% comment %}
+                <div class="two-product-card__ratings">
+                  <div style="color: #FFC300;">{{ block.settings.rating }}</div>
+                  <div class="two-product-card__ratings-text">{{ block.settings.reviews }}</div>
+                </div>
+              {% endcomment %}
               <div class="two-product-card__ratings">
                 {%- if product.metafields.reviews.rating.value != blank -%}
                   {% liquid
@@ -58,13 +62,8 @@
                   </div>
 
                   <p class="two-product-card__ratings-text">
-                    <span aria-hidden="true">
-                      {{ product.metafields.reviews.rating.value }} / {{ product.metafields.reviews.rating.value.scale_max }}
-                      ({{ product.metafields.reviews.rating_count }})
-                    </span>
-                    <span class="visually-hidden">
-                      {{ product.metafields.reviews.rating_count }} {{ 'accessibility.total_reviews' | t }}
-                    </span>
+                    ({{ product.metafields.reviews.rating_count }}
+                    {{ 'accessibility.total_reviews' | t }})
                   </p>
                 {%- endif -%}
               </div>
