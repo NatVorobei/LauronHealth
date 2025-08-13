@@ -84,7 +84,7 @@
       "external": "Відкривається зовнішній вебсайт."
     },
     "loading": "Завантаження...",
-    "total_reviews": "усього відгуків",
+    "total_reviews": "відгуків",
     "star_reviews_info": "{{ rating_value }} із {{ rating_max }} зірок",
     "collapsible_content_title": "Згортаний вміст",
     "complementary_products": "Супутні товари"
