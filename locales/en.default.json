@@ -534,5 +534,10 @@
       "send_on": "YYYY-MM-DD",
       "send_on_label": "Send on (optional)"
     }
+  },
+  "shipping_bar": {
+    "before_number": "You are",
+    "after_number": "away from free shipping!",
+    "free_delivery": "Congrats, you have uncloked free shipping!"
   }
 }
