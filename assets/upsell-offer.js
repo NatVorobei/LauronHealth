@@ -91,69 +91,83 @@
 // })();
 
 
-
 (function () {
+  // захист від подвійної ініціалізації
   if (window.__upsellClickBound) return;
   window.__upsellClickBound = true;
 
-  document.addEventListener('click', async (e) => {
+  function handleUpsellClick(e) {
     const btn = e.target.closest('.js-upsell-submit');
     if (!btn) return;
 
+    e.preventDefault();
+
     const form = btn.closest('.upsell-add-form');
-    const id = form?.querySelector('input[name="id"]')?.value;
-    const quantity = form?.querySelector('input[name="quantity"]')?.value || '1';
+    if (!form) return;
+
+    const id = form.querySelector('input[name="id"]')?.value;
+    const quantity = form.querySelector('input[name="quantity"]')?.value || '1';
     if (!id) return;
 
     const spinner = form.querySelector('.loading__spinner');
     const cart = document.querySelector('cart-drawer') || document.querySelector('cart-notification');
 
-    // UI: loading
+    // loading UI
     btn.setAttribute('aria-disabled', 'true');
     btn.classList.add('loading');
     spinner?.classList.remove('hidden');
 
-    try {
-      const fd = new FormData();
-      fd.append('id', id);
-      fd.append('quantity', quantity);
+    const fd = new FormData();
+    fd.append('id', id);
+    fd.append('quantity', quantity);
 
-      // Попросимо сервер повернути секції для renderContents
-      if (cart && typeof cart.getSectionsToRender === 'function') {
-        const ids = cart.getSectionsToRender().map(s => s.id); // ['cart-drawer','cart-icon-bubble']
-        fd.append('sections', ids);
-        fd.append('sections_url', window.location.pathname);
-        if (typeof cart.setActiveElement === 'function') cart.setActiveElement(document.activeElement);
-      } else {
-        fd.append('sections_url', window.location.pathname);
-      }
+    if (cart && typeof cart.getSectionsToRender === 'function') {
+      const ids = cart.getSectionsToRender().map(s => s.id);
+      fd.append('sections', ids);
+      fd.append('sections_url', window.location.pathname);
+      if (typeof cart.setActiveElement === 'function') cart.setActiveElement(document.activeElement);
+    } else {
+      fd.append('sections_url', window.location.pathname);
+    }
 
-      // ⬇️ ВАЖЛИВО: саме /cart/add (НЕ .js), як у product-form.js
-      const res = await fetch(`${routes.cart_add_url}`, {
-        method: 'POST',
-        credentials: 'same-origin',
-        headers: { 'X-Requested-With': 'XMLHttpRequest', 'Accept': 'application/json' },
-        body: fd
-      });
-      const parsedState = await res.json();
-
+    fetch(`${routes.cart_add_url}`, {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: { 'X-Requested-With': 'XMLHttpRequest', 'Accept': 'application/json' },
+      body: fd
+    })
+    .then(res => res.json())
+    .then(parsedState => {
       if (parsedState?.status) {
         console.warn('[Upsell] Add error:', parsedState);
-        return; // тут можна показати свій тост із помилкою
+        return;
       }
-
       if (cart && typeof cart.renderContents === 'function') {
-        cart.renderContents(parsedState);   // ✅ стандартна логіка Dawn
+        cart.renderContents(parsedState);
       } else {
-        // Фолбек, якщо раптом кастомізація теми незвична
         location.reload();
       }
-    } catch (err) {
-      console.error('[Upsell] Failure:', err);
-    } finally {
+    })
+    .catch(err => console.error('[Upsell] Failure:', err))
+    .finally(() => {
       btn.classList.remove('loading');
       btn.removeAttribute('aria-disabled');
       spinner?.classList.add('hidden');
+    });
+  }
+
+  // делегування — працює навіть при першому завантаженні
+  document.addEventListener('click', handleUpsellClick);
+
+  // на випадок, якщо треба підв’язатись після першого відкриття дравера
+  document.addEventListener('DOMContentLoaded', () => {
+    const cartDrawer = document.querySelector('cart-drawer');
+    if (cartDrawer) {
+      cartDrawer.addEventListener('transitionend', () => {
+        // гарантує, що кнопки, вставлені після рендера, теж будуть клікабельні
+      });
     }
   });
 })();
+
+
