@@ -3957,6 +3957,15 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
   line-height: 10px;
 }
 
+.pp_tracking_title h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-family: var(--font-heading-main);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 30px;
+}
+
 @media (max-width: 749px) {
   .custom-image-text .image-with-text__heading {
     font-size: 26px;
