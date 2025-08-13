@@ -194,7 +194,7 @@
       "settings": {
         "caption": "",
         "details_link_text": "Читати більше",
-        "details_link": "",
+        "details_link": "shopify://pages/faq",
         "heading": "<strong>Загальні питання</strong>",
         "heading_size": "h1",
         "heading_alignment": "left",
