@@ -128,17 +128,20 @@
                 </div>
               {% endform %}
             </product-form> {% endcomment %}
-            <div class="drawer__upsell-actions">
-              <button
-                type="button"
-                class="drawer__upsell-button js-upsell-add"
-                data-variant-id="{{ variant.id }}"
-                {% unless variant.available %}disabled{% endunless %}
-              >
-                <span>{{ settings.upsell_buy_button }}</span>
-                {% render 'loading-spinner' %}
-              </button>
-            </div>
+            <product-form data-hide-errors="true" class="custom-upsell-form">
+              {% form 'product', upsell_product, class: 'custom-upsell-inner-form' %}
+                <input type="hidden" name="id" value="{{ upsell_product.selected_or_first_available_variant.id }}">
+                <input type="hidden" name="quantity" value="1">
+
+                <button type="submit" class="button button--primary">
+                  <span>{{ 'products.product.add_to_cart' | t }}</span>
+                  <div class="loading__spinner hidden">
+                    {% render 'loading-spinner' %}
+                  </div>
+                </button>
+              {% endform %}
+            </product-form>
+
 
           </div>
         </div>
@@ -146,52 +149,6 @@
     </div>
   {% endunless %}
 {% endif %}
-
-<script>
-document.addEventListener('click', async (e) => {
-  const btn = e.target.closest('.js-upsell-add');
-  if (!btn) return;
-
-  const variantId = btn.getAttribute('data-variant-id');
-  if (!variantId) return;
-
-  btn.disabled = true;
-  btn.classList.add('is-loading');
-
-  try {
-    // додаємо товар у кошик
-    const res = await fetch('/cart/add.js', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id: Number(variantId), quantity: 1 })
-    });
-    if (!res.ok) throw new Error('Add to cart failed');
-
-    // оновлюємо контент дравера (секцію) — Dawn стандарт
-    const sections = ['cart-drawer']; // якщо у тебе інша назва секції — підстав тут
-    const url = `/?sections=${sections.join(',')}`;
-    const html = await (await fetch(url)).json();
-
-    // заміна вмісту дравера
-    const drawer = document.getElementById('CartDrawer');
-    if (drawer && html['cart-drawer']) {
-      drawer.outerHTML = html['cart-drawer'];
-      // відкриємо дравер, якщо тема це підтримує
-      const el = document.querySelector('cart-drawer');
-      if (el && typeof el.open === 'function') el.open();
-    } else {
-      // запасний варіант
-      location.reload();
-    }
-  } catch (err) {
-    console.error(err);
-  } finally {
-    btn.disabled = false;
-    btn.classList.remove('is-loading');
-  }
-});
-</script>
-
 
 <style>
   .drawer__upsell .appstle_subscription_widget,
