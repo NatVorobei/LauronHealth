@@ -151,11 +151,9 @@
 
 <script>
 (function () {
-  // Не підключати двічі
   if (window.__upsellBind) return; 
   window.__upsellBind = true;
 
-  // Які секції підтягувати з сервера (Dawn)
   const SECTIONS = ['cart-drawer', 'cart-icon-bubble'];
 
   async function fetchSections(sections) {
@@ -177,7 +175,6 @@
 
     if (newDrawer && curDrawer) {
       curDrawer.replaceWith(newDrawer);
-      // відкрити дравер
       const drawerEl = document.querySelector('cart-drawer');
       if (drawerEl && typeof drawerEl.open === 'function') drawerEl.open();
       document.documentElement.classList.add('cart-open');
@@ -207,14 +204,11 @@
     const btn = form.querySelector('.js-upsell-submit') || form.querySelector('[type="submit"]');
     const spinner = form.querySelector('.loading__spinner');
 
-    // disable UI
     if (btn) { btn.setAttribute('aria-disabled', 'true'); btn.classList.add('loading'); }
     if (spinner) spinner.classList.remove('hidden');
 
     try {
-      // 1) add to cart (як Dawn)
       const fd = new FormData(form);
-      // Додаємо sections_url, щоб сервер знав контекст
       fd.append('sections_url', window.location.pathname);
 
       const addRes = await fetch('/cart/add.js', {
@@ -226,15 +220,13 @@
       const addJson = await addRes.json();
       if (!addRes.ok || (addJson && addJson.status)) {
         console.warn('[Upsell] Add error:', addJson);
-        return; // можна показати toast помилки
+        return;
       }
 
-      // 2) підтягнути свіжі секції і замінити
       const sectionsJson = await fetchSections(SECTIONS);
       const drawerReplaced = replaceCartDrawer(sectionsJson);
       replaceBubble(sectionsJson);
 
-      // якщо з якоїсь причини drawer не замінився — спробуємо хоча б відкрити існуючий
       if (!drawerReplaced) {
         const drawerEl = document.querySelector('cart-drawer');
         if (drawerEl && typeof drawerEl.open === 'function') drawerEl.open();
@@ -242,7 +234,7 @@
       }
     } catch (err) {
       console.error('[Upsell] Failure:', err);
-      // НІЯКОГО reload — просто не закриваємо дравер
+
     } finally {
       if (btn) { btn.classList.remove('loading'); btn.removeAttribute('aria-disabled'); }
       if (spinner) spinner.classList.add('hidden');
