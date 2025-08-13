@@ -3957,7 +3957,7 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
   line-height: 10px;
 }
 
-.pp_tracking_title h1 {
+.pp_tracking_title {
   text-align: center;
   margin-bottom: 30px;
   font-family: var(--font-heading-main);
