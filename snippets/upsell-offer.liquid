@@ -89,8 +89,9 @@
 
             <product-form data-section-id="upsell-form" class="custom-product-form">
               {% form 'product', upsell_product,
-                class: 'product-form appstle-ignore-in-drawer',
+                class: 'drawer-product-form appstle-ignore-in-drawer',
                 data-type: 'upsell-form'
+                data-appstle-ignore="true"
               %}
                 <input
                   type="hidden"
