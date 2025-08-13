@@ -130,7 +130,7 @@
               {% endform %}
             </product-form> {% endcomment %}
 
-            {% comment %} <div class="drawer__upsell-actions">
+            <div class="drawer__upsell-actions">
               <form class="upsell-add-form" novalidate>
                 <input type="hidden" name="id" value="{{ variant.id }}">
                 <input type="hidden" name="quantity" value="1">
@@ -139,19 +139,7 @@
                   <span class="loading__spinner hidden">{% render 'loading-spinner' %}</span>
                 </button>
               </form>
-            </div> {% endcomment %}
-            <div class="drawer__upsell-actions">
-              <form class="upsell-add-form" novalidate
-                    onsubmit="return window.__upsellSubmit(this, event);">
-                <input type="hidden" name="id" value="{{ variant.id }}">
-                <input type="hidden" name="quantity" value="1">
-                <button type="submit" class="drawer__upsell-button js-upsell-submit" {% unless variant.available %}disabled{% endunless %}>
-                  <span>{{ settings.upsell_buy_button }}</span>
-                  <span class="loading__spinner hidden">{% render 'loading-spinner' %}</span>
-                </button>
-              </form>
             </div>
-
           </div>
         </div>
       </div>
