@@ -90,7 +90,6 @@
 //   });
 // })();
 
-
 (function () {
   const SECTIONS = ['cart-drawer', 'cart-icon-bubble'];
 
@@ -110,7 +109,7 @@
     const curDrawer = document.querySelector('#CartDrawer');
     if (newDrawer && curDrawer) {
       curDrawer.replaceWith(newDrawer);
-      attachUpsellListeners(); // <--- тут чіпляємо знову
+      attachUpsellListeners(); // Повторно прив’язуємо обробники
       const drawerEl = document.querySelector('cart-drawer');
       if (drawerEl && typeof drawerEl.open === 'function') drawerEl.open();
       document.documentElement.classList.add('cart-open');
@@ -132,12 +131,15 @@
   }
 
   async function handleUpsellSubmit(e) {
-    e.preventDefault();
+    e.preventDefault(); // Завжди блокуємо стандартну поведінку форми
     const form = e.currentTarget;
     const btn = form.querySelector('.js-upsell-submit') || form.querySelector('[type="submit"]');
     const spinner = form.querySelector('.loading__spinner');
 
-    if (btn) { btn.setAttribute('aria-disabled', 'true'); btn.classList.add('loading'); }
+    if (btn) {
+      btn.setAttribute('aria-disabled', 'true');
+      btn.classList.add('loading');
+    }
     if (spinner) spinner.classList.remove('hidden');
 
     try {
@@ -148,7 +150,7 @@
         method: 'POST',
         credentials: 'same-origin',
         headers: { 'Accept': 'application/json' },
-        body: fd
+        body: fd,
       });
       const addJson = await addRes.json();
       if (!addRes.ok || (addJson && addJson.status)) {
@@ -168,7 +170,10 @@
     } catch (err) {
       console.error('[Upsell] Failure:', err);
     } finally {
-      if (btn) { btn.classList.remove('loading'); btn.removeAttribute('aria-disabled'); }
+      if (btn) {
+        btn.classList.remove('loading');
+        btn.removeAttribute('aria-disabled');
+      }
       if (spinner) spinner.classList.add('hidden');
     }
   }
@@ -177,13 +182,24 @@
     document.querySelectorAll('.upsell-add-form').forEach(form => {
       if (!form.dataset.upsellBound) {
         form.dataset.upsellBound = 'true';
+        // Видаляємо атрибут onsubmit, щоб уникнути виклику window.__upsellSubmit
+        form.removeAttribute('onsubmit');
         form.addEventListener('submit', handleUpsellSubmit);
       }
     });
   }
 
-  // Перший раз — чіпляємо одразу при завантаженні
-  attachUpsellListeners();
+  // Перевизначаємо window.__upsellSubmit, щоб використовувати наш обробник
+  window.__upsellSubmit = function (form, event) {
+    event.preventDefault(); // Блокуємо стандартну поведінку
+    handleUpsellSubmit(event); // Викликаємо наш обробник
+    return false; // Завжди повертаємо false, щоб зупинити відправку форми
+  };
+
+  // Ініціалізація при завантаженні
+  document.addEventListener('DOMContentLoaded', () => {
+    attachUpsellListeners();
+  });
 })();
 
 
