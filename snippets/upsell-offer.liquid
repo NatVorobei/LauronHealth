@@ -87,7 +87,7 @@
               <p class="drawer__upsell-variantDesr">{{ variant.metafields.custom.variant_description.value }}</p>
             </div>
 
-            {% comment %} <product-form data-section-id="upsell-form" class="custom-product-form" data-appstle-ignore="true">
+            <product-form data-section-id="upsell-form" class="custom-product-form" data-appstle-ignore="true">
               {% form 'product',
                 upsell_product,
                 class: 'drawer-product-form appstle-ignore-in-drawer',
@@ -127,21 +127,7 @@
                   </button>
                 </div>
               {% endform %}
-            </product-form> {% endcomment %}
-            <product-form data-hide-errors="true" class="custom-upsell-form">
-              {% form 'product', upsell_product, class: 'custom-upsell-inner-form' %}
-                <input type="hidden" name="id" value="{{ upsell_product.selected_or_first_available_variant.id }}">
-                <input type="hidden" name="quantity" value="1">
-
-                <button type="submit" class="button button--primary">
-                  <span>{{ 'products.product.add_to_cart' | t }}</span>
-                  <div class="loading__spinner hidden">
-                    {% render 'loading-spinner' %}
-                  </div>
-                </button>
-              {% endform %}
             </product-form>
-
 
           </div>
         </div>
