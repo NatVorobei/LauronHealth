@@ -4021,9 +4021,9 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
     margin-top: 20px;
   }
 
-  #appstle_subscription_widget0 .appstle_subscribe_option {
+  /* #appstle_subscription_widget0 .appstle_subscribe_option {
     gap: 20px;
-  }
+  } */
 
   .appstleSellingPlanDescription p {
     font-size: 10px !important;
