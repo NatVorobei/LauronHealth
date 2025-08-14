@@ -405,10 +405,98 @@
         "fact_tk7NRT",
         "fact_7Ha9XK"
       ],
+      "disabled": true,
       "name": "Facts slider",
       "settings": {
         "title": "Факти про добавку",
         "subtitle": "Сьогодні нові дослідження підтверджують: внутрішнє споживання гіалуронової кислоти високої молекулярної маси (HMW-HA) має системний вплив на організм."
+      }
+    },
+    "facts_grid_Bzitx4": {
+      "type": "facts-grid",
+      "blocks": {
+        "benefit_4UmCLD": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/facts-grid-1.svg",
+            "title": "Змінюємо стандарт рідких добавок",
+            "description": "Кожен компонент, його доза, форма й спосіб доставки працюють не для вигляду, а для результату."
+          }
+        },
+        "benefit_pVfYy3": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/facts-grid-2.svg",
+            "title": "Ефективна система",
+            "description": "Склад, форма, обʼєм, дози й спосіб доставки побудовані як єдиний механізм для досягнення ефекту."
+          }
+        },
+        "benefit_4kwNni": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/facts-grid-3.svg",
+            "title": "Доведено клінічно",
+            "description": "Тільки активні добавки з доведеною ефективністю."
+          }
+        },
+        "benefit_bMhKmD": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/facts-grid-4.svg",
+            "title": "Біологічна сумісність",
+            "description": "Інгредієнти у формах, які організм легко сприймає та засвоює."
+          }
+        },
+        "benefit_ftUmzn": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/facts-grid-5.svg",
+            "title": "Науково обґрунтовані дози",
+            "description": "Лише ті кількості, які справді працюють. Не для списку, а для результату."
+          }
+        },
+        "benefit_DheePf": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/facts-grid-6.svg",
+            "title": "Сертифікована безпечність",
+            "description": "Виробництво відповідає стандартам ISO, HACCP."
+          }
+        },
+        "benefit_qnCBJt": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/facts-grid-7.svg",
+            "title": "Чистий склад",
+            "description": "Без цукру, барвників, підсолоджувачів, штучних добавок чи маркетингових сумішей."
+          }
+        },
+        "benefit_ECnCeK": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/facts-grid-8.svg",
+            "title": "Стандарти ЄС",
+            "description": "Кожен інгредієнт проходить тестування відповідно до європейських норм."
+          }
+        }
+      },
+      "block_order": [
+        "benefit_4UmCLD",
+        "benefit_pVfYy3",
+        "benefit_4kwNni",
+        "benefit_bMhKmD",
+        "benefit_ftUmzn",
+        "benefit_DheePf",
+        "benefit_qnCBJt",
+        "benefit_ECnCeK"
+      ],
+      "name": "Facts Grid",
+      "settings": {
+        "title": "Факти про добавку",
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 60,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32
       }
     },
     "two_products_block_AMVERG": {
@@ -701,6 +789,7 @@
     "scientist_caption_block_jbJ3kJ",
     "benefits_grid_9eCkJq",
     "facts_slider_wLAYh7",
+    "facts_grid_Bzitx4",
     "two_products_block_AMVERG",
     "benefits_compare_dG49nV",
     "testimonials_Ym7QRD",
