@@ -16,6 +16,7 @@
       "blocks": {
         "image_with_text_jUnnXV": {
           "type": "image_with_text",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/logo-footer-white.svg",
             "text": "Щоденна функціональна добавка, готова до вживання, створена за підходом Aqua Smart NutriTech™ для глибокої, цільової дії"
@@ -35,6 +36,13 @@
             "menu": "footer"
           }
         },
+        "link_list_UgEENK": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Підтримка",
+            "menu": "footer-menu-3"
+          }
+        },
         "contact_newsletter_TDyjnV": {
           "type": "contact_newsletter",
           "settings": {
@@ -51,6 +59,7 @@
         "image_with_text_jUnnXV",
         "link_list_L3gtMD",
         "link_list_9qdVEk",
+        "link_list_UgEENK",
         "contact_newsletter_TDyjnV"
       ],
       "settings": {
