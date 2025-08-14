@@ -1,8 +1,10 @@
-<div class="facts-grid-wrapper" 
-     style="
-        padding-top: {{ section.settings.padding_top_desktop | default: 0 }}px;
-        padding-bottom: {{ section.settings.padding_bottom_desktop | default: 0 }}px;
-     ">
+<div
+  class="facts-grid-wrapper"
+  style="
+    padding-top: {{ section.settings.padding_top_desktop | default: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop | default: 0 }}px;
+  "
+>
   {% if section.settings.title != blank %}
     <h2 class="facts-grid__heading">{{ section.settings.title }}</h2>
   {% endif %}
@@ -11,7 +13,11 @@
     {% for block in section.blocks %}
       <div class="facts-grid__item">
         {% if block.settings.image != blank %}
-          <img src="{{ block.settings.image | img_url: '100x' }}" alt="{{ block.settings.title }}" class="facts-grid__icon">
+          <img
+            src="{{ block.settings.image | img_url: '100x' }}"
+            alt="{{ block.settings.title }}"
+            class="facts-grid__icon"
+          >
         {% endif %}
         <h3 class="facts-grid__title">{{ block.settings.title }}</h3>
         <p class="facts-grid__desc">{{ block.settings.description }}</p>
@@ -89,7 +95,6 @@
   }
 </style>
 
-
 {% schema %}
 {
   "name": "Facts Grid",
@@ -101,47 +106,47 @@
       "default": "Наші переваги"
     },
     {
-        "type": "range",
-        "id": "padding_top_desktop",
-        "label": "Padding зверху (десктоп)",
-        "default": 40,
-        "min": 0,
-        "max": 160,
-        "step": 4,
-        "unit": "px"
-      },
-      {
-        "type": "range",
-        "id": "padding_bottom_desktop",
-        "label": "Padding знизу (десктоп)",
-        "default": 0,
-        "min": 0,
-        "max": 160,
-        "step": 4,
-        "unit": "px"
-      },
-      {
-        "type": "range",
-        "id": "padding_top_mobile",
-        "label": "Padding зверху (мобілка)",
-        "default": 0,
-        "min": 0,
-        "max": 160,
-        "step": 4,
-        "unit": "px"
-      },
-      {
-        "type": "range",
-        "id": "padding_bottom_mobile",
-        "label": "Padding знизу (мобілка)",
-        "default": 0,
-        "min": 0,
-        "max": 160,
-        "step": 4,
-        "unit": "px"
-      }
-],
-"blocks": [
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding зверху (десктоп)",
+      "default": 40,
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding знизу (десктоп)",
+      "default": 0,
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding зверху (мобілка)",
+      "default": 0,
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding знизу (мобілка)",
+      "default": 0,
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
     {
       "type": "benefit",
       "name": "Картка переваги",
