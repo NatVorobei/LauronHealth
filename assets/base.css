@@ -3697,7 +3697,7 @@ p {
 
 #appstle_subscription_widget0 .appstle_subscribe_option {
   margin-left: 0 !important;
-  gap: 28px;
+  /* gap: 28px; */
 }
 
 .appstle-save-badge {
