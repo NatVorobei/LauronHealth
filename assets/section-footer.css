@@ -205,7 +205,16 @@
   line-height: 18px;
   color: #fff;
 }
-
+.footer__priority-text a {
+  color: #fff;
+}
+@media screen and (max-width: 649px) {
+  .footer__priority-text {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 260px;
+  }
+}
 @media screen and (max-width: 749px) {
   .footer-block--menu .footer-block__heading {
     cursor: pointer;
