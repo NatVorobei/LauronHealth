@@ -27,6 +27,9 @@
 </div>
 
 <style>
+  .facts-grid-wrapper {
+    background-color: #F0F4F5;
+  }
   .facts-grid__heading {
     font-size: 42px;
     font-weight: 700;
@@ -34,19 +37,21 @@
     color: var(--color-main-text);
     text-align: center;
     margin-bottom: 80px;
+    letter-spacing: 0;
   }
 
   .facts-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 40px 30px;
-    max-width: 1200px;
+    gap: 60px 90px;
+    max-width: 1160px;
     margin: 0 auto;
   }
 
   .facts-grid__item {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 20px;
   }
 
@@ -62,12 +67,22 @@
     font-family: var(--font-heading-main);
     line-height: 24px;
     color: var(--color-main-text);
+    text-align: center;
+    letter-spacing: 0;
   }
 
   .facts-grid__desc {
     font-size: 14px;
     line-height: 18px;
     color: #87878D;
+    text-align: center;
+    letter-spacing: 0;
+  }
+
+  @media (max-width: 1240px) {
+    .facts-grid {
+        padding: 0 10px;
+    }
   }
 
   @media (max-width: 1024px) {
@@ -85,12 +100,17 @@
 
     .facts-grid {
       grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
+      gap: 20px;   
     }
 
     .facts-grid__heading {
-      font-size: 28px;
-      margin-bottom: 20px;
+      font-size: 24px;
+       line-height: 24px;
+      margin-bottom: 30px;
+    }
+    .facts-grid__title {
+        font-size: 16px;
+        line-height: 16px;
     }
   }
 </style>
