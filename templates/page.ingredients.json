@@ -152,7 +152,7 @@
         "scope": "ingredients",
         "tags_select_mode": "multi",
         "padding_top_desktop": 40,
-        "padding_bottom_desktop": 0,
+        "padding_bottom_desktop": 92,
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 0
       }
