@@ -58,10 +58,105 @@
         "mobile_content_alignment": "center",
         "show_text_below": true
       }
+    },
+    "ingredients_filter_zBnjXz": {
+      "type": "ingredients-filter",
+      "blocks": {
+        "product_button_XwieYL": {
+          "type": "product_button",
+          "settings": {
+            "handle": "all",
+            "label": "All",
+            "default_active": true
+          }
+        },
+        "product_button_DMWEY3": {
+          "type": "product_button",
+          "settings": {
+            "handle": "freeze-age",
+            "label": "Freeze Age",
+            "default_active": false
+          }
+        },
+        "product_button_4HXqyb": {
+          "type": "product_button",
+          "settings": {
+            "handle": "mental-performance",
+            "label": "Mental Performance",
+            "default_active": false
+          }
+        },
+        "tag_button_dUHBYH": {
+          "type": "tag_button",
+          "settings": {
+            "handle": "All",
+            "label": "All",
+            "default_active": true
+          }
+        },
+        "tag_button_dUUQNN": {
+          "type": "tag_button",
+          "settings": {
+            "handle": "vitamins",
+            "label": "Vitamins",
+            "default_active": false
+          }
+        },
+        "tag_button_EdGTej": {
+          "type": "tag_button",
+          "settings": {
+            "handle": "minerals",
+            "label": "Minerals",
+            "default_active": false
+          }
+        },
+        "tag_button_igWhee": {
+          "type": "tag_button",
+          "settings": {
+            "handle": "botanicals",
+            "label": "Botanicals & Mushrooms",
+            "default_active": false
+          }
+        },
+        "tag_button_T78gxw": {
+          "type": "tag_button",
+          "settings": {
+            "handle": "bioactive",
+            "label": "Bioactive Compounds",
+            "default_active": false
+          }
+        },
+        "tag_button_3GMtdt": {
+          "type": "tag_button",
+          "settings": {
+            "handle": "polysaccharides",
+            "label": "Polysaccharides & Hydrogels",
+            "default_active": false
+          }
+        }
+      },
+      "block_order": [
+        "product_button_XwieYL",
+        "product_button_DMWEY3",
+        "product_button_4HXqyb",
+        "tag_button_dUHBYH",
+        "tag_button_dUUQNN",
+        "tag_button_EdGTej",
+        "tag_button_igWhee",
+        "tag_button_T78gxw",
+        "tag_button_3GMtdt"
+      ],
+      "name": "Filters (2 rows)",
+      "settings": {
+        "heading": "",
+        "scope": "ingredients",
+        "tags_select_mode": "multi"
+      }
     }
   },
   "order": [
     "main",
-    "image_banner_m8zqwR"
+    "image_banner_m8zqwR",
+    "ingredients_filter_zBnjXz"
   ]
 }
