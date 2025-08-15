@@ -54,7 +54,6 @@
     .ingredients-grid-wrapper {
       max-width: 1280px;
       margin: 0 auto;
-      padding: 0 10px;
     }
   
     .ingredients-grid-container {
@@ -88,10 +87,11 @@
     }
   
     .ingredients-grid {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: stretch;
-      gap: 20px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);           
+        gap: 20px;
+        align-items: stretch;
+        justify-items: stretch;
     }
   
     .ingredients-card {
@@ -163,16 +163,16 @@
       flex: 1;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
     }
   
     .card-title {
       font-family: var(--font-heading-main);
       margin: 0 0 20px;
-      font-size: 24px;
-      line-height: 24px;
-      color: #0B1C2F;
+      font-size: 16px;
+      line-height: 20px;
+      color: var(--color-main-text);
       font-weight: 700;
+      letter-spacing: 0;
     }
   
     .card-description-container {
@@ -183,9 +183,18 @@
   
     .card-description {
       color: var(--color-subtext);
-      font-size: 16px;
-      line-height: 22px;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: 0;
       margin: 0;
+    }
+
+    .card-image {
+        object-fit: cover;
+        width: 100%;
+        height: 160px;
+        pointer-events: none;
+        backface-visibility: hidden;
     }
   
     .expand-btn,
@@ -220,6 +229,10 @@
       margin: 0;
       overflow-y: auto;
       max-height: calc(100% - 40px);
+      color: var(--color-subtext);
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: 0;
     }
   
     .hidden-on-mobile {
@@ -351,13 +364,7 @@
         transform: perspective(1000px);
       }
   
-      .card-image {
-        object-fit: cover;
-        width: 100%;
-        height: 180px;
-        pointer-events: none;
-        backface-visibility: hidden;
-      }
+      
     }
   </style>
   
@@ -405,7 +412,7 @@
         "settings": [
           { "type": "image_picker", "id": "image", "label": "Зображення" },
           { "type": "text", "id": "title", "label": "Назва", "default": "Назва інгредієнта" },
-          { "type": "textarea", "id": "short_text", "label": "Короткий опис", "default": "Короткий опис інгредієнта" },
+          { "type": "richtext", "id": "short_text", "label": "Короткий опис", "default": "<p>Короткий опис інгредієнта</p>" },
           { "type": "textarea", "id": "full_text", "label": "Повний опис", "default": "Повний опис інгредієнта" },
           { "type": "text", "id": "products_csv", "label": "Продукти (CSV хендли)" },
           { "type": "text", "id": "tags_csv", "label": "Теги (CSV хендли)" },

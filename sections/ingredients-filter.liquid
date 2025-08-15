@@ -13,12 +13,14 @@
 
 {%- assign scope = section.settings.scope | default: 'ingredients' | strip -%}
 
-<div class="filters2rows" data-scope="{{ scope }}" id="filters-{{ section.id }}">
+<div class="filters2rows" data-scope="{{ scope }}" id="filters-{{ section.id }}" style="
+    padding-top: {{ section.settings.padding_top_desktop | default: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop | default: 0 }}px;
+  ">
   {% if section.settings.heading != blank %}
     <div class="filters2rows__heading">{{ section.settings.heading }}</div>
   {% endif %}
 
-  <!-- Row 1: Products -->
   <div class="filters2rows__row filters2rows__row--products">
     {%- for block in section.blocks -%}
       {%- if block.type == 'product_button' -%}
@@ -33,12 +35,11 @@
     {%- endfor -%}
   </div>
 
-  <!-- Row 2: Tags -->
   <div class="filters2rows__row filters2rows__row--tags">
     {%- for block in section.blocks -%}
       {%- if block.type == 'tag_button' -%}
         <button
-          class="filters2rows__btn js-filter-btn{% if block.settings.default_active %} is-active{% endif %}"
+          class="filters2rows__btn filterTab__btn js-filter-btn{% if block.settings.default_active %} is-active{% endif %}"
           data-type="tag"
           data-value="{{ block.settings.handle | downcase | strip }}"
           aria-pressed="{% if block.settings.default_active %}true{% else %}false{% endif %}">
@@ -56,7 +57,7 @@
     padding: 0 10px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 45px;
   }
   .filters2rows__heading {
     font-weight: 700;
@@ -69,22 +70,32 @@
     gap: 10px;
   }
   .filters2rows__btn {
-    padding: 10px 14px;
-    border-radius: 999px;
-    border: 1px solid #E2E8F0;
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid #D7D7D7;
     background: #fff;
     cursor: pointer;
-    font-size: 13px;
-    line-height: 1;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 12px;
+    font-family: var(--font-heading-main);
     transition: background-color .15s ease, color .15s ease, border-color .15s ease;
   }
+  .filters2rows__btn.filterTab__btn {
+    padding: 13px 20px;
+    border-radius: 16px;
+  }
   .filters2rows__btn.is-active {
-    background: #0B1C2F;
+    background: var(--color-main-text);
     color: #fff;
-    border-color: #0B1C2F;
+    border-color: var(--color-main-text);
     font-weight: 600;
   }
   @media (max-width: 749px) {
+    .filters2rows {
+        padding-top: {{ section.settings.padding_top_mobile | default: 0 }}px !important;
+        padding-bottom: {{ section.settings.padding_bottom_mobile | default: 0 }}px !important;
+      }
     .filters2rows__heading { font-size: 18px; }
     .filters2rows__btn { font-size: 12px; padding: 8px 12px; }
   }
@@ -96,7 +107,7 @@
   if (!root) return;
 
   const scope = root.dataset.scope || 'ingredients';
-  const tagsSelectMode = "{{ section.settings.tags_select_mode }}"; // 'multi' | 'single'
+  const tagsSelectMode = "{{ section.settings.tags_select_mode }}";
 
   let activeProduct = 'all';
   let activeTags = new Set();
@@ -111,7 +122,6 @@
   const productBtns = qsa('.js-filter-btn[data-type="product"]', root);
   const tagBtns = qsa('.js-filter-btn[data-type="tag"]', root);
 
-  // init default states
   const prodDefault = productBtns.find(b => b.classList.contains('is-active'));
   if (prodDefault) activeProduct = prodDefault.dataset.value || 'all';
   else productBtns.find(b => (b.dataset.value||'')==='all')?.classList.add('is-active');
@@ -200,7 +210,47 @@
         { "value": "multi", "label": "Multi-select" },
         { "value": "single", "label": "Single-select" }
       ]
-    }
+    },
+    {
+        "type": "range",
+        "id": "padding_top_desktop",
+        "label": "Padding зверху (десктоп)",
+        "default": 40,
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_desktop",
+        "label": "Padding знизу (десктоп)",
+        "default": 0,
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Padding зверху (мобілка)",
+        "default": 0,
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Padding знизу (мобілка)",
+        "default": 0,
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "unit": "px"
+      }
   ],
   "blocks": [
     {
