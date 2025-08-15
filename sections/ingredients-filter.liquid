@@ -78,6 +78,13 @@
     border-color: var(--color-main-text);
     font-weight: 600;
   }
+
+  @media(max-width: 1240px) {
+    .filters2rows {
+      padding: 0 10px;
+    }
+  }
+  
   @media (max-width: 749px) {
     .filters2rows {
         padding-top: {{ section.settings.padding_top_mobile | default: 0 }}px !important;
