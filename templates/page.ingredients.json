@@ -329,6 +329,34 @@
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 0
       }
+    },
+    "ingredients_grid_DA4QVE": {
+      "type": "ingredients-grid",
+      "blocks": {
+        "ingredient_JcG64z": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify://shop_images/L-Theanine.jpg",
+            "title": "L-Theanine",
+            "short_text": "<p>Амінокислота з зеленого чаю, яка підтримує ментальну ясність і спокій без сонливості, сприяючи розумовому фокусу навіть у стресових ситуаціях.<br/><br/>Кількість на порцію: 200 мг<br/>Біодоступність: висока</p>",
+            "full_text": "<p>L-Theanine — натуральна амінокислота, яка міститься переважно в зеленому чаї. Її унікальна дія полягає у м’якій регуляції нейромедіаторів, зокрема GABA, дофаміну та серотоніну, що може сприяти зниженню нервового напруження й покращенню фокусу.<br/>Наукові спостереження показують, що L-Theanine може сприяти α-хвильовій активності мозку — стану, який асоціюється з розумовою концентрацією в умовах спокою. Саме це робить L-Theanine популярною серед людей, які хочуть зберігати зосередженість під тиском або мати \"спокійну продуктивність\".<br/>Він також вивчається як засіб для підтримки адаптації нервової системи до щоденного емоційного навантаження.</p>",
+            "products_csv": "freeze-age, mental-performance",
+            "tags_csv": "",
+            "handle": ""
+          }
+        }
+      },
+      "block_order": [
+        "ingredient_JcG64z"
+      ],
+      "name": "Ingredients Grid",
+      "settings": {
+        "title": "Амінокислоти",
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 80,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
     }
   },
   "order": [
@@ -336,6 +364,7 @@
     "image_banner_m8zqwR",
     "ingredients_filter_zBnjXz",
     "ingredients_grid_jmp8Jz",
-    "ingredients_grid_THHyd9"
+    "ingredients_grid_THHyd9",
+    "ingredients_grid_DA4QVE"
   ]
 }
