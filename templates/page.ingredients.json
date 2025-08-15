@@ -150,7 +150,7 @@
       "settings": {
         "heading": "",
         "scope": "ingredients",
-        "tags_select_mode": "multi",
+        "tags_select_mode": "single",
         "padding_top_desktop": 40,
         "padding_bottom_desktop": 92,
         "padding_top_mobile": 0,
