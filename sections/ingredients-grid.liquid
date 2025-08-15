@@ -43,7 +43,7 @@
 
             <div class="card-face card-back">
               <div class="card-back-content">
-                <div>{{ block.settings.full_text }}</div>
+                <div class="card-back-content__descr">{{ block.settings.full_text }}</div>
                 <button class="close-btn" aria-label="Close">
                   {{ 'exit-button.svg' | inline_asset_content }}
                 </button>
@@ -231,7 +231,7 @@
     justify-content: start;
   }
 
-  .card-back-content p {
+  .card-back-content__descr p {
     margin: 0;
     overflow-y: auto;
     max-height: calc(100% - 40px);
@@ -360,7 +360,7 @@
           "default": "<p>Короткий опис інгредієнта</p>"
         },
         {
-          "type": "textarea",
+          "type": "richtext",
           "id": "full_text",
           "label": "Повний опис",
           "default": "<p>Повний опис інгредієнта</p>"
