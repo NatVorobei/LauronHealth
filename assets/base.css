@@ -3994,6 +3994,7 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
   font-weight: 500;
   text-align: center;
   padding: 0 20px 16px;
+  letter-spacing: 0;
 }
 
 @media (max-width: 749px) {

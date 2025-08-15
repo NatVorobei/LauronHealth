@@ -100,7 +100,9 @@
             </span> -->
             {%- render 'loading-spinner' -%}
           </button>
-          <p class="product-form__bottom-text">{{ under_button_text }}</p>
+          {% if under_button_text %}
+            <p class="product-form__bottom-text">{{ under_button_text }}</p>
+          {% endif %}
         </div>
           {%- if show_dynamic_checkout -%}
             {{ form | payment_button }}
