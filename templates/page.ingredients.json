@@ -231,7 +231,10 @@
       "name": "Ingredients Grid",
       "settings": {
         "title": "Вітаміни",
-        "subtitle": ""
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
       }
     }
   },
