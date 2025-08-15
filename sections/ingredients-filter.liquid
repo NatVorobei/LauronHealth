@@ -1,16 +1,3 @@
-{% comment %}
-  Filters (2 rows): Products (top) + Tags (bottom)
-  - Add this section на сторінку один раз.
-  - Вкажи однаковий data-scope у цій секції та у грідах, які потрібно фільтрувати.
-  - У грідах кожна картка має:
-      data-products="freeze-age,mental-performance"
-      data-tags="vitamins,bioactive"
-  - У цій секції просто додавай блоки:
-      * Product button — попаде у верхній ряд
-      * Tag button — попаде у нижній ряд
-  - Кнопки "All" додаються як звичайні кнопки з handle="all" і, бажано, Active by default.
-{% endcomment %}
-
 {%- assign scope = section.settings.scope | default: 'ingredients' | strip -%}
 
 <div class="filters2rows" data-scope="{{ scope }}" id="filters-{{ section.id }}" style="
@@ -53,8 +40,7 @@
 <style>
   .filters2rows {
     max-width: 1280px;
-    margin: 0 auto;
-    {% comment %} padding: 0 10px; {% endcomment %}
+    padding: 0 10px;
     display: flex;
     flex-direction: column;
     gap: 45px;
@@ -90,11 +76,6 @@
     color: #fff;
     border-color: var(--color-main-text);
     font-weight: 600;
-  }
-  @media(max-width: 1240px) {
-    .filters2rows {
-      padding: 0 10px;
-    }
   }
   @media (max-width: 749px) {
     .filters2rows {
