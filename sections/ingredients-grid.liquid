@@ -9,7 +9,7 @@
   </div>
 
   <div class="ingredients-grid-container">
-    <div class="ingredients-grid" style="--columns: {{ section.settings.columns }}">
+    <div class="ingredients-grid">
       {% for block in section.blocks %}
         {% assign products_csv = block.settings.products_csv | downcase | strip %}
         {% assign tags_csv = block.settings.tags_csv | downcase | strip %}
@@ -241,144 +241,61 @@
     letter-spacing: 0;
   }
 
-  .hidden-on-mobile {
-    display: none;
-  }
-
-  @media (max-width: 749px) {
-    .ingredients-grid-wrapper,
-    .ingredients-grid-container,
-    .ingredients-grid,
-    .ingredients-card {
-      overflow: hidden !important;
-    }
-
+  /* ≤1260px — 3 колонки */
+@media (max-width: 1260px) {
     .ingredients-grid {
-      flex-direction: column;
-    }
-
-    .ingredients-grid__header {
+      grid-template-columns: repeat(3, 1fr);
       padding: 0 10px;
-      margin-bottom: 50px;
     }
-
-    .ingredients-grid__heading {
-      font-size: 24px;
-      line-height: 24px;
-    }
-
-    .ingredients-grid__subheading {
-      font-size: 16px;
-      line-height: 22px;
-    }
-
     .ingredients-card {
-      flex: initial;
+      min-height: 320px;
     }
-
-    .card-front {
-      position: absolute;
+  }
+  
+  /* ≤1024px — 2 колонки */
+  @media (max-width: 1024px) {
+    .ingredients-grid {
+      grid-template-columns: repeat(2, 1fr);
     }
-
-    .card-back-content p {
-      max-height: unset;
+    .ingredients-card {
+      min-height: 300px;
     }
-
-    .card-title {
-      font-size: 16px;
-      line-height: 18px;
-      margin: 0;
-    }
-
-    .card-description {
-      font-size: 12px;
-      line-height: 16px;
-    }
-
     .card-content {
-      padding: 20px 10px 20px 20px;
-      gap: 6px;
-      justify-content: center;
+      padding: 32px 16px;
     }
-
+  }
+  
+  /* ≤749px — 1 колонка (телефон) */
+  @media (max-width: 749px) {
+    .ingredients-grid {
+      grid-template-columns: 1fr;
+    }
+    .ingredients-card {
+      min-height: 220px;
+    }
     .card-image {
       height: 120px;
-      max-width: 120px;
     }
-
-    .card-back {
-      position: relative;
-      padding: 10px 10px 10px 20px;
+    .card-title {
+      font-size: 16px;
+      line-height: 20px;
     }
-
-    .card-back-content {
-      gap: 0;
+    .card-description {
+      font-size: 13px;
+      line-height: 18px;
     }
-
-    .card-face {
-      flex-direction: row;
-    }
-
-    .ingredients-card {
-      height: 120px;
-      min-height: unset;
-    }
-
-    .expand-btn {
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    .expand-btn,
-    .close-btn {
+    .expand-btn svg,
+    .close-btn svg{
       width: 24px;
       height: 24px;
     }
-
-    .expand-btn svg,
-    .close-btn svg {
-      width: 100% !important;
-      height: 100% !important;
-    }
-
-    .hidden-on-mobile {
-      display: none !important;
-    }
   }
-
-  @media (min-width: 750px) {
-    .hidden-on-mobile {
-      display: block !important;
-    }
-
-    .ingredients-card {
-      transform-style: preserve-3d;
-      transition: transform 0.2s ease;
-      will-change: transform;
-      overflow: hidden;
-    }
-
-    .card-inner {
-      height: 100%;
-      transform-style: preserve-3d;
-      transition: transform 0.2s ease;
-    }
-
-    .ingredients-card:hover .card-inner {
-      transform: perspective(1000px);
-    }
-
-
-  }
+  
 </style>
 
 <script>
     document.querySelectorAll('.ingredients-card').forEach((card) => {
       card.addEventListener('click', (e) => {
-        {% comment %} const isBtn = e.target.closest('.expand-btn, .close-btn');
-        if (!isBtn) return; {% endcomment %}
         card.classList.toggle('flipped');
       });
     });
@@ -418,15 +335,6 @@
       "id": "subtitle",
       "label": "Підзаголовок",
       "default": "Складові продукту"
-    },
-    {
-      "type": "range",
-      "id": "columns",
-      "label": "Кількість колонок",
-      "default": 4,
-      "min": 1,
-      "max": 6,
-      "step": 1
     }
   ],
   "blocks": [
