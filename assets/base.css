@@ -3973,6 +3973,29 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
   white-space: nowrap;
 }
 
+.product-form__button-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.appstle_sub_widget {
+  order: 1;
+}
+
+.product-form__product-button {
+  order: 3;
+}
+
+.product-form__bottom-text {
+  order: 2;
+  font-size: 10px;
+  line-height: 14px;
+  color: var(--color-subtext);
+  font-weight: 500;
+  text-align: center;
+  padding: 0 20px 16px;
+}
+
 @media (max-width: 749px) {
   .custom-image-text .image-with-text__heading {
     font-size: 26px;

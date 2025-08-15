@@ -186,7 +186,6 @@
       font-size: 16px;
       line-height: 22px;
       margin: 0;
-      max-width: 200px;
     }
   
     .expand-btn,
@@ -198,12 +197,19 @@
       width: 30px;
       height: 30px;
     }
+
+    .expand-btn {
+      position: absolute;
+      right: 20px;
+      bottom: 15px;
+    }
   
     .close-btn {
       align-self: flex-end;
     }
   
     .card-back-content {
+      position: relative;
       display: flex;
       flex-direction: column-reverse;
       height: 100%;
@@ -358,8 +364,8 @@
   <script>
     document.querySelectorAll('.ingredients-card').forEach((card) => {
       card.addEventListener('click', (e) => {
-        const isBtn = e.target.closest('.expand-btn, .close-btn');
-        if (!isBtn) return;
+        {% comment %} const isBtn = e.target.closest('.expand-btn, .close-btn');
+        if (!isBtn) return; {% endcomment %}
         card.classList.toggle('flipped');
       });
     });
