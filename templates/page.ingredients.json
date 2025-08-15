@@ -262,12 +262,40 @@
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 0
       }
+    },
+    "ingredients_grid_THHyd9": {
+      "type": "ingredients-grid",
+      "blocks": {
+        "ingredient_jcd8XR": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Zinc (як Zinc Gluconate)",
+            "short_text": "<p>Життєво важливий мінерал, який підтримує роботу імунної системи, ясність мислення і концентрацію, допомагає захищати клітини від пошкоджень та покращує шкіру. <br/><br/>Кількість на порцію: 7 мг<br/>Добова норма: 70 %<br/>Біодоступність: висока</p>",
+            "full_text": "<p>Zinc — незамінний мікроелемент, що підтримує імунну систему та захищає клітини від пошкоджень. Він діє як кофактор для сотень ферментів, які забезпечують життєво важливі процеси в організмі, а також бере участь у підтримці стабільності теломер — захисних структур ДНК, пов'язаних із клітинним старінням - і синтезі BDNF, фактора росту, необхідного для адаптації мозку та когнітивної гнучкості. У мозку він виконує роль нейроактивного кофактора — регулює баланс нейротрансмітерів, що впливають на ясність мислення, стресостійкість і настрій.</p>",
+            "products_csv": "",
+            "tags_csv": "",
+            "handle": ""
+          }
+        }
+      },
+      "block_order": [
+        "ingredient_jcd8XR"
+      ],
+      "name": "Ingredients Grid",
+      "settings": {
+        "title": "Мінерали",
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
     }
   },
   "order": [
     "main",
     "image_banner_m8zqwR",
     "ingredients_filter_zBnjXz",
-    "ingredients_grid_jmp8Jz"
+    "ingredients_grid_jmp8Jz",
+    "ingredients_grid_THHyd9"
   ]
 }
