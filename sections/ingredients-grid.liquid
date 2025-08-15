@@ -33,7 +33,7 @@
               <div class="card-content">
                 <h3 class="card-title">{{ block.settings.title }}</h3>
                 <div class="card-description-container">
-                  <p class="card-description">{{ block.settings.short_text }}</p>
+                  <div class="card-description">{{ block.settings.short_text }}</div>
                   <button class="expand-btn" aria-label="Expand">
                     {{ 'plus-icon.svg' | inline_asset_content }}
                   </button>
@@ -43,7 +43,7 @@
 
             <div class="card-face card-back">
               <div class="card-back-content">
-                <p>{{ block.settings.full_text }}</p>
+                <div>{{ block.settings.full_text }}</div>
                 <button class="close-btn" aria-label="Close">
                   {{ 'exit-button.svg' | inline_asset_content }}
                 </button>
@@ -187,7 +187,7 @@
     align-items: flex-end;
   }
 
-  .card-description {
+  .card-description p {
     color: var(--color-subtext);
     font-size: 14px;
     line-height: 20px;
@@ -280,7 +280,7 @@
       font-size: 16px;
       line-height: 20px;
     }
-    .card-description {
+    .card-description p{
       font-size: 13px;
       line-height: 18px;
     }
@@ -354,16 +354,16 @@
           "default": "Назва інгредієнта"
         },
         {
-          "type": "textarea",
+          "type": "richtext",
           "id": "short_text",
           "label": "Короткий опис",
-          "default": "Короткий опис інгредієнта"
+          "default": "<p>Короткий опис інгредієнта</p>"
         },
         {
           "type": "textarea",
           "id": "full_text",
           "label": "Повний опис",
-          "default": "Повний опис інгредієнта"
+          "default": "<p>Повний опис інгредієнта</p>"
         },
         { "type": "text", "id": "products_csv", "label": "Продукти (CSV хендли)" },
         { "type": "text", "id": "tags_csv", "label": "Теги (CSV хендли)" },
