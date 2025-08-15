@@ -1,374 +1,380 @@
 <div class="ingredients-grid-wrapper" data-scope="ingredients">
-    <div class="ingredients-grid__header">
-      {% if section.settings.title != blank %}
-        <h2 class="ingredients-grid__heading">{{ section.settings.title }}</h2>
-      {% endif %}
-      {% if section.settings.subtitle != blank %}
-        <p class="ingredients-grid__subheading">{{ section.settings.subtitle }}</p>
-      {% endif %}
-    </div>
-  
-    <div class="ingredients-grid-container">
-      <div class="ingredients-grid" style="--columns: {{ section.settings.columns }}">
-        {% for block in section.blocks %}
-          {% assign products_csv = block.settings.products_csv | downcase | strip %}
-          {% assign tags_csv = block.settings.tags_csv | downcase | strip %}
-          {% assign card_handle = block.settings.handle | default: block.settings.title | handleize %}
-  
-          <div class="ingredients-card"
-               data-products="{{ products_csv }}"
-               data-tags="{{ tags_csv }}"
-               data-handle="{{ card_handle }}">
-            <div class="card-inner">
-              <div class="card-face card-front">
-                {% if block.settings.image != blank %}
-                  <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.title | escape }}" class="card-image">
-                {% endif %}
-                <div class="card-content">
-                  <h3 class="card-title">{{ block.settings.title }}</h3>
-                  <div class="card-description-container">
-                    <p class="card-description">{{ block.settings.short_text }}</p>
-                    <button class="expand-btn" aria-label="Expand">
-                      {{ 'plus-icon.svg' | inline_asset_content }}
-                    </button>
-                  </div>
-                </div>
-              </div>
-  
-              <div class="card-face card-back">
-                <div class="card-back-content">
-                  <p>{{ block.settings.full_text }}</p>
-                  <button class="close-btn" aria-label="Close">
-                    {{ 'exit-button.svg' | inline_asset_content }}
+  <div class="ingredients-grid__header">
+    {% if section.settings.title != blank %}
+      <h2 class="ingredients-grid__heading">{{ section.settings.title }}</h2>
+    {% endif %}
+    {% if section.settings.subtitle != blank %}
+      <p class="ingredients-grid__subheading">{{ section.settings.subtitle }}</p>
+    {% endif %}
+  </div>
+
+  <div class="ingredients-grid-container">
+    <div class="ingredients-grid" style="--columns: {{ section.settings.columns }}">
+      {% for block in section.blocks %}
+        {% assign products_csv = block.settings.products_csv | downcase | strip %}
+        {% assign tags_csv = block.settings.tags_csv | downcase | strip %}
+        {% assign card_handle = block.settings.handle | default: block.settings.title | handleize %}
+
+        <div
+          class="ingredients-card"
+          data-products="{{ products_csv }}"
+          data-tags="{{ tags_csv }}"
+          data-handle="{{ card_handle }}"
+        >
+          <div class="card-inner">
+            <div class="card-face card-front">
+              {% if block.settings.image != blank %}
+                <img
+                  src="{{ block.settings.image | image_url }}"
+                  alt="{{ block.settings.title | escape }}"
+                  class="card-image"
+                >
+              {% endif %}
+              <div class="card-content">
+                <h3 class="card-title">{{ block.settings.title }}</h3>
+                <div class="card-description-container">
+                  <p class="card-description">{{ block.settings.short_text }}</p>
+                  <button class="expand-btn" aria-label="Expand">
+                    {{ 'plus-icon.svg' | inline_asset_content }}
                   </button>
                 </div>
               </div>
             </div>
+
+            <div class="card-face card-back">
+              <div class="card-back-content">
+                <p>{{ block.settings.full_text }}</p>
+                <button class="close-btn" aria-label="Close">
+                  {{ 'exit-button.svg' | inline_asset_content }}
+                </button>
+              </div>
+            </div>
           </div>
-        {% endfor %}
-      </div>
+        </div>
+      {% endfor %}
     </div>
   </div>
-  
-  <style>
-    .ingredients-grid-wrapper {
-      max-width: 1280px;
-      margin: 0 auto;
-    }
-  
-    .ingredients-grid-container {
-      margin-bottom: 120px;
-    }
-  
-    .ingredients-grid__header {
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-      padding-right: 10px;
-      padding-left: 50px;
-      margin-bottom: 60px;
-    }
-  
-    .ingredients-grid__heading {
-      font-size: 42px;
-      font-weight: 700;
-      margin: 0;
-      line-height: 30px;
-      font-family: var(--font-heading-main);
-    }
-  
-    .ingredients-grid__subheading {
-      font-size: 24px;
-      color: var(--color-subtext);
-      max-width: 1100px;
-      line-height: 30px;
-      font-weight: 700;
-      margin: 0;
-    }
-  
-    .ingredients-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);           
-        gap: 20px;
-        align-items: stretch;
-        justify-items: stretch;
-    }
-  
-    .ingredients-card {
-      perspective: 1000px;
-      position: relative;
-      min-height: 360px;
-      flex: 1 0 calc(25% - 20px);
-      cursor: pointer;
-    }
-  
+</div>
+
+<style>
+  .ingredients-grid-wrapper {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .ingredients-grid-container {
+    margin-bottom: 120px;
+  }
+
+  .ingredients-grid__header {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-right: 10px;
+    padding-left: 50px;
+    margin-bottom: 60px;
+  }
+
+  .ingredients-grid__heading {
+    font-size: 42px;
+    font-weight: 700;
+    margin: 0;
+    line-height: 30px;
+    font-family: var(--font-heading-main);
+  }
+
+  .ingredients-grid__subheading {
+    font-size: 24px;
+    color: var(--color-subtext);
+    max-width: 1100px;
+    line-height: 30px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .ingredients-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      align-items: stretch;
+      justify-items: stretch;
+  }
+
+  .ingredients-card {
+    perspective: 1000px;
+    position: relative;
+    min-height: 360px;
+    flex: 1 0 calc(25% - 20px);
+    cursor: pointer;
+  }
+
+  .ingredients-grid-wrapper,
+  .ingredients-grid-container,
+  .ingredients-grid,
+  .ingredients-card {
+    overflow: visible !important;
+  }
+
+  .card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .card-face {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    backface-visibility: hidden;
+    transition: transform 0.6s ease;
+    display: flex;
+    flex-direction: column;
+    background: #F0F4F5;
+  }
+
+  .card-front {
+    position: static;
+    z-index: 2;
+    transform: rotateY(0deg);
+  }
+
+  .card-back {
+    transform: rotateY(180deg);
+    z-index: 1;
+    justify-content: space-between;
+    padding: 20px;
+  }
+
+  .ingredients-card.flipped .card-front {
+    transform: rotateY(-180deg);
+  }
+
+  .ingredients-card.flipped .card-back {
+    transform: rotateY(0deg);
+    z-index: 3;
+  }
+
+  .card-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+
+  .card-content {
+    padding: 40px 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-title {
+    font-family: var(--font-heading-main);
+    margin: 0 0 20px;
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--color-main-text);
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  .card-description-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .card-description {
+    color: var(--color-subtext);
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+    margin: 0;
+  }
+
+  .card-image {
+      object-fit: cover;
+      width: 100%;
+      height: 160px;
+      pointer-events: none;
+      backface-visibility: hidden;
+  }
+
+  .expand-btn,
+  .close-btn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+  }
+
+  .expand-btn {
+    position: absolute;
+    right: 20px;
+    bottom: 15px;
+  }
+
+  .close-btn {
+    align-self: flex-end;
+  }
+
+  .card-back-content {
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse;
+    height: 100%;
+    justify-content: start;
+  }
+
+  .card-back-content p {
+    margin: 0;
+    overflow-y: auto;
+    max-height: calc(100% - 40px);
+    color: var(--color-subtext);
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+  }
+
+  .hidden-on-mobile {
+    display: none;
+  }
+
+  @media (max-width: 749px) {
     .ingredients-grid-wrapper,
     .ingredients-grid-container,
     .ingredients-grid,
     .ingredients-card {
-      overflow: visible !important;
+      overflow: hidden !important;
     }
-  
-    .card-inner {
-      width: 100%;
-      height: 100%;
-      position: relative;
-    }
-  
-    .card-face {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border-radius: 20px;
-      overflow: hidden;
-      backface-visibility: hidden;
-      transition: transform 0.6s ease;
-      display: flex;
-      flex-direction: column;
-      background: #F0F4F5;
-    }
-  
-    .card-front {
-      position: static;
-      z-index: 2;
-      transform: rotateY(0deg);
-    }
-  
-    .card-back {
-      transform: rotateY(180deg);
-      z-index: 1;
-      justify-content: space-between;
-      padding: 20px;
-    }
-  
-    .ingredients-card.flipped .card-front {
-      transform: rotateY(-180deg);
-    }
-  
-    .ingredients-card.flipped .card-back {
-      transform: rotateY(0deg);
-      z-index: 3;
-    }
-  
-    .card-image {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-  
-    .card-content {
-      padding: 40px 20px;
-      flex: 1;
-      display: flex;
+
+    .ingredients-grid {
       flex-direction: column;
     }
-  
-    .card-title {
-      font-family: var(--font-heading-main);
-      margin: 0 0 20px;
+
+    .ingredients-grid__header {
+      padding: 0 10px;
+      margin-bottom: 50px;
+    }
+
+    .ingredients-grid__heading {
+      font-size: 24px;
+      line-height: 24px;
+    }
+
+    .ingredients-grid__subheading {
       font-size: 16px;
-      line-height: 20px;
-      color: var(--color-main-text);
-      font-weight: 700;
-      letter-spacing: 0;
+      line-height: 22px;
     }
-  
-    .card-description-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
+
+    .ingredients-card {
+      flex: initial;
     }
-  
-    .card-description {
-      color: var(--color-subtext);
-      font-size: 14px;
-      line-height: 20px;
-      letter-spacing: 0;
+
+    .card-front {
+      position: absolute;
+    }
+
+    .card-back-content p {
+      max-height: unset;
+    }
+
+    .card-title {
+      font-size: 16px;
+      line-height: 18px;
       margin: 0;
     }
 
-    .card-image {
-        object-fit: cover;
-        width: 100%;
-        height: 160px;
-        pointer-events: none;
-        backface-visibility: hidden;
+    .card-description {
+      font-size: 12px;
+      line-height: 16px;
     }
-  
-    .expand-btn,
-    .close-btn {
-      border: none;
-      background: transparent;
-      cursor: pointer;
-      padding: 0;
-      width: 30px;
-      height: 30px;
+
+    .card-content {
+      padding: 20px 10px 20px 20px;
+      gap: 6px;
+      justify-content: center;
+    }
+
+    .card-image {
+      height: 120px;
+      max-width: 120px;
+    }
+
+    .card-back {
+      position: relative;
+      padding: 10px 10px 10px 20px;
+    }
+
+    .card-back-content {
+      gap: 0;
+    }
+
+    .card-face {
+      flex-direction: row;
+    }
+
+    .ingredients-card {
+      height: 120px;
+      min-height: unset;
     }
 
     .expand-btn {
       position: absolute;
-      right: 20px;
-      bottom: 15px;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
     }
-  
+
+    .expand-btn,
     .close-btn {
-      align-self: flex-end;
+      width: 24px;
+      height: 24px;
     }
-  
-    .card-back-content {
-      position: relative;
-      display: flex;
-      flex-direction: column-reverse;
-      height: 100%;
-      justify-content: start;
+
+    .expand-btn svg,
+    .close-btn svg {
+      width: 100% !important;
+      height: 100% !important;
     }
-  
-    .card-back-content p {
-      margin: 0;
-      overflow-y: auto;
-      max-height: calc(100% - 40px);
-      color: var(--color-subtext);
-      font-size: 14px;
-      line-height: 20px;
-      letter-spacing: 0;
-    }
-  
+
     .hidden-on-mobile {
-      display: none;
+      display: none !important;
     }
-  
-    @media (max-width: 749px) {
-      .ingredients-grid-wrapper,
-      .ingredients-grid-container,
-      .ingredients-grid,
-      .ingredients-card {
-        overflow: hidden !important;
-      }
-  
-      .ingredients-grid {
-        flex-direction: column;
-      }
-  
-      .ingredients-grid__header {
-        padding: 0 10px;
-        margin-bottom: 50px;
-      }
-  
-      .ingredients-grid__heading {
-        font-size: 24px;
-        line-height: 24px;
-      }
-  
-      .ingredients-grid__subheading {
-        font-size: 16px;
-        line-height: 22px;
-      }
-  
-      .ingredients-card {
-        flex: initial;
-      }
-  
-      .card-front {
-        position: absolute;
-      }
-  
-      .card-back-content p {
-        max-height: unset;
-      }
-  
-      .card-title {
-        font-size: 16px;
-        line-height: 18px;
-        margin: 0;
-      }
-  
-      .card-description {
-        font-size: 12px;
-        line-height: 16px;
-      }
-  
-      .card-content {
-        padding: 20px 10px 20px 20px;
-        gap: 6px;
-        justify-content: center;
-      }
-  
-      .card-image {
-        height: 120px;
-        max-width: 120px;
-      }
-  
-      .card-back {
-        position: relative;
-        padding: 10px 10px 10px 20px;
-      }
-  
-      .card-back-content {
-        gap: 0;
-      }
-  
-      .card-face {
-        flex-direction: row;
-      }
-  
-      .ingredients-card {
-        height: 120px;
-        min-height: unset;
-      }
-  
-      .expand-btn {
-        position: absolute;
-        right: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-      }
-  
-      .expand-btn,
-      .close-btn {
-        width: 24px;
-        height: 24px;
-      }
-  
-      .expand-btn svg,
-      .close-btn svg {
-        width: 100% !important;
-        height: 100% !important;
-      }
-  
-      .hidden-on-mobile {
-        display: none !important;
-      }
+  }
+
+  @media (min-width: 750px) {
+    .hidden-on-mobile {
+      display: block !important;
     }
-  
-    @media (min-width: 750px) {
-      .hidden-on-mobile {
-        display: block !important;
-      }
-  
-      .ingredients-card {
-        transform-style: preserve-3d;
-        transition: transform 0.2s ease;
-        will-change: transform;
-        overflow: hidden;
-      }
-  
-      .card-inner {
-        height: 100%;
-        transform-style: preserve-3d;
-        transition: transform 0.2s ease;
-      }
-  
-      .ingredients-card:hover .card-inner {
-        transform: perspective(1000px);
-      }
-  
-      
+
+    .ingredients-card {
+      transform-style: preserve-3d;
+      transition: transform 0.2s ease;
+      will-change: transform;
+      overflow: hidden;
     }
-  </style>
-  
-  <script>
+
+    .card-inner {
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.2s ease;
+    }
+
+    .ingredients-card:hover .card-inner {
+      transform: perspective(1000px);
+    }
+
+
+  }
+</style>
+
+<script>
     document.querySelectorAll('.ingredients-card').forEach((card) => {
       card.addEventListener('click', (e) => {
         {% comment %} const isBtn = e.target.closest('.expand-btn, .close-btn');
@@ -395,35 +401,73 @@
         });
       });
     }
-  </script>
-  
-  {% schema %}
-  {
-    "name": "Ingredients Grid",
-    "settings": [
-      { "type": "text", "id": "title", "label": "Заголовок", "default": "Інгредієнти" },
-      { "type": "textarea", "id": "subtitle", "label": "Підзаголовок", "default": "Складові продукту" },
-      { "type": "range", "id": "columns", "label": "Кількість колонок", "default": 4, "min": 1, "max": 6, "step": 1 }
-    ],
-    "blocks": [
-      {
-        "type": "ingredient",
-        "name": "Картка інгредієнта",
-        "settings": [
-          { "type": "image_picker", "id": "image", "label": "Зображення" },
-          { "type": "text", "id": "title", "label": "Назва", "default": "Назва інгредієнта" },
-          { "type": "richtext", "id": "short_text", "label": "Короткий опис", "default": "<p>Короткий опис інгредієнта</p>" },
-          { "type": "textarea", "id": "full_text", "label": "Повний опис", "default": "Повний опис інгредієнта" },
-          { "type": "text", "id": "products_csv", "label": "Продукти (CSV хендли)" },
-          { "type": "text", "id": "tags_csv", "label": "Теги (CSV хендли)" },
-          { "type": "text", "id": "handle", "label": "Хендл картки (опційно)" }
-        ]
-      }
-    ],
-    "max_blocks": 30,
-    "presets": [
-      { "name": "Ingredients Grid", "category": "Custom" }
-    ]
-  }
-  {% endschema %}
-  
+</script>
+
+{% schema %}
+{
+  "name": "Ingredients Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Заголовок",
+      "default": "Інгредієнти"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Підзаголовок",
+      "default": "Складові продукту"
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "Кількість колонок",
+      "default": 4,
+      "min": 1,
+      "max": 6,
+      "step": 1
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Картка інгредієнта",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Зображення"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Назва",
+          "default": "Назва інгредієнта"
+        },
+        {
+          "type": "textarea",
+          "id": "short_text",
+          "label": "Короткий опис",
+          "default": "Короткий опис інгредієнта"
+        },
+        {
+          "type": "textarea",
+          "id": "full_text",
+          "label": "Повний опис",
+          "default": "Повний опис інгредієнта"
+        },
+        { "type": "text", "id": "products_csv", "label": "Продукти (CSV хендли)" },
+        { "type": "text", "id": "tags_csv", "label": "Теги (CSV хендли)" },
+        {
+          "type": "text",
+          "id": "handle",
+          "label": "Хендл картки (опційно)"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 30,
+  "presets": [{ "name": "Ingredients Grid", "category": "Custom" }]
+}
+{% endschema %}
