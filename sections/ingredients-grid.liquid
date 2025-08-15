@@ -3,9 +3,6 @@
     {% if section.settings.title != blank %}
       <h2 class="ingredients-grid__heading">{{ section.settings.title }}</h2>
     {% endif %}
-    {% if section.settings.subtitle != blank %}
-      <p class="ingredients-grid__subheading">{{ section.settings.subtitle }}</p>
-    {% endif %}
   </div>
 
   <div class="ingredients-grid-container">
@@ -81,15 +78,6 @@
     margin: 0;
     line-height: 30px;
     font-family: var(--font-heading-main);
-  }
-
-  .ingredients-grid__subheading {
-    font-size: 24px;
-    color: var(--color-subtext);
-    max-width: 1100px;
-    line-height: 30px;
-    font-weight: 700;
-    margin: 0;
   }
 
   .ingredients-grid {
