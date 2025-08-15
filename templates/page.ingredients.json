@@ -289,11 +289,24 @@
             "tags_csv": "minerals",
             "handle": ""
           }
+        },
+        "ingredient_6FpQQx": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify://shop_images/copper.png",
+            "title": "Copper Gluconate",
+            "short_text": "<p>Кофактор ключових ферментів, що підтримують антиоксидантний захист, клітинну енергію та здоров’я шкіри й нервової системи.<br/><br/>Кількість на порцію: 0,3 мг<br/>Біодоступність: висока</p>",
+            "full_text": "<p>Copper Gluconate — хелатна форма міді з високою біодоступністю і м’яким впливом на травлення. Мідь допомагає ферментам знешкоджувати вільні радикали, підтримує вироблення енергії в мітохондріях, а також стимулює синтез колагену та нейромедіаторів. Завдяки цьому вона сприяє здоров’ю нервової, імунної систем і шкіри, що важливо для підтримки балансу й активності в сучасному ритмі життя</p>",
+            "products_csv": "freeze-age",
+            "tags_csv": "minerals",
+            "handle": ""
+          }
         }
       },
       "block_order": [
         "ingredient_jcd8XR",
-        "ingredient_TARy67"
+        "ingredient_TARy67",
+        "ingredient_6FpQQx"
       ],
       "name": "Minerals",
       "settings": {
