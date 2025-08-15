@@ -1,4 +1,7 @@
-<div class="ingredients-grid-wrapper" data-scope="ingredients">
+<div class="ingredients-grid-wrapper" data-scope="ingredients" style="
+    padding-top: {{ section.settings.padding_top_desktop | default: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop | default: 0 }}px;
+  ">
   <div class="ingredients-grid__header">
     {% if section.settings.title != blank %}
       <h2 class="ingredients-grid__heading">{{ section.settings.title }}</h2>
@@ -57,10 +60,6 @@
   .ingredients-grid-wrapper {
     max-width: 1280px;
     margin: 0 auto;
-  }
-
-  .ingredients-grid-container {
-    margin-bottom: 120px;
   }
 
   .ingredients-grid__header {
@@ -207,29 +206,41 @@
     bottom: 15px;
   }
 
-  .close-btn {
+  {% comment %} .close-btn {
     align-self: flex-end;
+  } {% endcomment %}
+
+  .close-btn {
+    order: -1;
+    align-self: flex-end;
+    flex: 0 0 auto;
   }
 
   .card-back-content {
     position: relative;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     height: 100%;
-    justify-content: start;
+    gap: 6px;
+  }
+
+  .card-back-content__descr {
+    flex: 1 1 auto;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    {% comment %} scrollbar-gutter: stable both-edges;{% endcomment %}
   }
 
   .card-back-content__descr p {
     margin: 0;
-    overflow-y: auto;
-    max-height: calc(100% - 40px);
+    {% comment %} overflow-y: auto;
+    max-height: calc(100% - 40px); {% endcomment %}
     color: var(--color-subtext);
     font-size: 14px;
     line-height: 20px;
     letter-spacing: 0;
   }
 
-  /* ≤1260px — 3 колонки */
 @media (max-width: 1260px) {
     .ingredients-grid {
       grid-template-columns: repeat(3, 1fr);
@@ -240,7 +251,6 @@
     }
   }
   
-  /* ≤1024px — 2 колонки */
   @media (max-width: 1024px) {
     .ingredients-grid {
       grid-template-columns: repeat(2, 1fr);
@@ -253,17 +263,19 @@
     }
   }
   
-  /* ≤749px — 1 колонка (телефон) */
   @media (max-width: 749px) {
+    .ingredients-grid-wrapper {
+        padding-top: {{ section.settings.padding_top_mobile | default: 0 }}px !important;
+        padding-bottom: {{ section.settings.padding_bottom_mobile | default: 0 }}px !important;
+      }
+
     .ingredients-grid {
       grid-template-columns: 1fr;
     }
     .ingredients-card {
       min-height: 220px;
     }
-    .card-image {
-      height: 120px;
-    }
+
     .card-title {
       font-size: 16px;
       line-height: 20px;
@@ -277,8 +289,11 @@
       width: 24px;
       height: 24px;
     }
+
+    .expand-btn {
+      right: 15px;
+    }
   }
-  
 </style>
 
 <script>
@@ -319,11 +334,45 @@
       "default": "Інгредієнти"
     },
     {
-      "type": "textarea",
-      "id": "subtitle",
-      "label": "Підзаголовок",
-      "default": "Складові продукту"
-    }
+        "type": "range",
+        "id": "padding_top_desktop",
+        "label": "Padding зверху (десктоп)",
+        "default": 0,
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_desktop",
+        "label": "Padding знизу (десктоп)",
+        "default": 0,
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "label": "Padding зверху (мобілка)",
+        "default": 0,
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "label": "Padding знизу (мобілка)",
+        "default": 0,
+        "min": 0,
+        "max": 160,
+        "step": 4,
+        "unit": "px"
+      }
   ],
   "blocks": [
     {

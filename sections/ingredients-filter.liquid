@@ -53,7 +53,8 @@
 <style>
   .filters2rows {
     max-width: 1280px;
-    padding: 0 10px;
+    margin: 0 auto;
+    {% comment %} padding: 0 10px; {% endcomment %}
     display: flex;
     flex-direction: column;
     gap: 45px;
@@ -89,6 +90,11 @@
     color: #fff;
     border-color: var(--color-main-text);
     font-weight: 600;
+  }
+  @media(max-width: 1240px) {
+    .filters2rows {
+      padding: 0 10px;
+    }
   }
   @media (max-width: 749px) {
     .filters2rows {
