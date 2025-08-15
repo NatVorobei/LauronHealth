@@ -1,65 +1,56 @@
 {% comment %}
-  Universal Filters section
-  - Add once per page (or multiple times with different scopes).
-  - Filters only cards within containers that have matching data-scope (see "scope" setting).
-  - Each button is a block with type (product/tag), handle (value), and label/i18n key.
-  - Products behave as single-select; Tags can be single- or multi-select (setting).
-  - Cards must have data-products / data-tags CSV with handles, e.g.:
-      <div class="ingredients-card" data-products="freeze-age,mental-performance" data-tags="vitamins,bioactive"></div>
-  - Wrapping grid container must have data-scope="your-scope"
+  Filters (2 rows): Products (top) + Tags (bottom)
+  - Add this section на сторінку один раз.
+  - Вкажи однаковий data-scope у цій секції та у грідах, які потрібно фільтрувати.
+  - У грідах кожна картка має:
+      data-products="freeze-age,mental-performance"
+      data-tags="vitamins,bioactive"
+  - У цій секції просто додавай блоки:
+      * Product button — попаде у верхній ряд
+      * Tag button — попаде у нижній ряд
+  - Кнопки "All" додаються як звичайні кнопки з handle="all" і, бажано, Active by default.
 {% endcomment %}
 
-{%- assign _scope = section.settings.scope | default: 'global' | strip -%}
-<div class="filters-bar" data-scope="{{ _scope }}" id="filters-{{ section.id }}">
+{%- assign scope = section.settings.scope | default: 'ingredients' | strip -%}
+
+<div class="filters2rows" data-scope="{{ scope }}" id="filters-{{ section.id }}">
   {% if section.settings.heading != blank %}
-    <div class="filters-heading">{{ section.settings.heading }}</div>
+    <div class="filters2rows__heading">{{ section.settings.heading }}</div>
   {% endif %}
 
-  {%- comment -%}
-    Optional group titles via "group_title" blocks; buttons rendered under the latest group title.
-  {%- endcomment -%}
-
-  {%- assign current_group_index = 0 -%}
-  <div class="filters-groups">
+  <!-- Row 1: Products -->
+  <div class="filters2rows__row filters2rows__row--products">
     {%- for block in section.blocks -%}
-      {%- case block.type -%}
-        {%- when 'group_title' -%}
-          {%- if forloop.index != 1 -%}
-            </div>
-          {%- endif -%}
-          {%- assign current_group_index = current_group_index | plus: 1 -%}
-          <div class="filters-group">
-            <div class="filters-group-title">
-              {{ block.settings.title | escape }}
-            </div>
-            <div class="filters-row">
-        {%- when 'filter_button' -%}
-          {%- assign label = block.settings.i18n_key | strip -%}
-          {%- if label != blank -%}
-            {%- assign label = block.settings.i18n_key | t -%}
-          {%- else -%}
-            {%- assign label = block.settings.label -%}
-          {%- endif -%}
-
-          <button
-            class="js-filter-btn{% if block.settings.default_active %} is-active{% endif %}"
-            data-type="{{ block.settings.filter_type }}"
-            data-value="{{ block.settings.handle | downcase | strip }}"
-            aria-pressed="{% if block.settings.default_active %}true{% else %}false{% endif %}">
-            {{ label }}
-          </button>
-
-        {%- endcase -%}
-      {%- endfor -%}
-      {%- if section.blocks.size > 0 -%}
-        </div></div>
+      {%- if block.type == 'product_button' -%}
+        <button
+          class="filters2rows__btn js-filter-btn{% if block.settings.default_active %} is-active{% endif %}"
+          data-type="product"
+          data-value="{{ block.settings.handle | downcase | strip }}"
+          aria-pressed="{% if block.settings.default_active %}true{% else %}false{% endif %}">
+          {{ block.settings.label }}
+        </button>
       {%- endif -%}
+    {%- endfor -%}
+  </div>
+
+  <!-- Row 2: Tags -->
+  <div class="filters2rows__row filters2rows__row--tags">
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'tag_button' -%}
+        <button
+          class="filters2rows__btn js-filter-btn{% if block.settings.default_active %} is-active{% endif %}"
+          data-type="tag"
+          data-value="{{ block.settings.handle | downcase | strip }}"
+          aria-pressed="{% if block.settings.default_active %}true{% else %}false{% endif %}">
+          {{ block.settings.label }}
+        </button>
+      {%- endif -%}
+    {%- endfor -%}
   </div>
 </div>
 
 <style>
-  /* Container */
-  .filters-bar {
+  .filters2rows {
     max-width: 1280px;
     margin: 0 auto 28px;
     padding: 0 10px;
@@ -67,59 +58,35 @@
     flex-direction: column;
     gap: 12px;
   }
-
-  .filters-heading {
+  .filters2rows__heading {
     font-weight: 700;
     font-size: 20px;
     line-height: 1.3;
   }
-
-  .filters-groups {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .filters-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .filters-group-title {
-    font-size: 14px;
-    font-weight: 600;
-    opacity: 0.8;
-  }
-
-  /* Rows & buttons */
-  .filters-row {
+  .filters2rows__row {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 10px;
   }
-
-  .js-filter-btn {
-    padding: 8px 12px;
+  .filters2rows__btn {
+    padding: 10px 14px;
     border-radius: 999px;
     border: 1px solid #E2E8F0;
-    background: #ffffff;
+    background: #fff;
     cursor: pointer;
     font-size: 13px;
     line-height: 1;
-    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    transition: background-color .15s ease, color .15s ease, border-color .15s ease;
   }
-
-  .js-filter-btn.is-active {
+  .filters2rows__btn.is-active {
     background: #0B1C2F;
-    color: #ffffff;
+    color: #fff;
     border-color: #0B1C2F;
+    font-weight: 600;
   }
-
   @media (max-width: 749px) {
-    .filters-heading { font-size: 18px; }
-    .filters-group-title { font-size: 13px; }
-    .js-filter-btn { font-size: 12px; padding: 8px 10px; }
+    .filters2rows__heading { font-size: 18px; }
+    .filters2rows__btn { font-size: 12px; padding: 8px 12px; }
   }
 </style>
 
@@ -128,49 +95,30 @@
   const root = document.getElementById('filters-{{ section.id }}');
   if (!root) return;
 
-  // Scope: filter only cards within containers that share this scope
-  const scope = root.dataset.scope || 'global';
-
-  // Settings from admin
+  const scope = root.dataset.scope || 'ingredients';
   const tagsSelectMode = "{{ section.settings.tags_select_mode }}"; // 'multi' | 'single'
-  const treatAllButtons = {{ section.settings.render_all_buttons | json }}; // render "All" buttons per-group?
 
-  // Initial state (from default_active)
   let activeProduct = 'all';
   let activeTags = new Set();
 
-  function qsa(sel, ctx=document){ return Array.from(ctx.querySelectorAll(sel)); }
-  function parseCSV(s){ return (s || '').split(',').map(v => v.trim().toLowerCase()).filter(Boolean); }
+  const qs = (sel, ctx=document)=>ctx.querySelector(sel);
+  const qsa = (sel, ctx=document)=>Array.from(ctx.querySelectorAll(sel));
+  const parseCSV = s => (s||'').split(',').map(v=>v.trim().toLowerCase()).filter(Boolean);
 
-  // Cards limited to the scope
   const cardsSelector = `[data-scope="${scope}"] .benefits-card, [data-scope="${scope}"] .ingredients-card`;
-  function allCards(){ return qsa(cardsSelector); }
+  const allCards = ()=> qsa(cardsSelector);
 
-  // Ensure there is at least one group row open; (already in Liquid)
-  // Gather buttons
   const productBtns = qsa('.js-filter-btn[data-type="product"]', root);
   const tagBtns = qsa('.js-filter-btn[data-type="tag"]', root);
 
-  // Set initial state based on default_active flags
-  // products: single-select — if more than one default_active, keep the first
-  const initiallyActiveProduct = productBtns.find(b => b.classList.contains('is-active'));
-  if (initiallyActiveProduct) {
-    activeProduct = (initiallyActiveProduct.dataset.value || 'all');
-  } else {
-    // if not set via admin, default to 'all' if such button exists, else keep 'all'
-    const allP = productBtns.find(b => (b.dataset.value || '') === 'all');
-    if (allP) allP.classList.add('is-active');
-  }
+  // init default states
+  const prodDefault = productBtns.find(b => b.classList.contains('is-active'));
+  if (prodDefault) activeProduct = prodDefault.dataset.value || 'all';
+  else productBtns.find(b => (b.dataset.value||'')==='all')?.classList.add('is-active');
 
-  // tags: can be multi or single; if none active -> consider 'all' active visually
-  const initiallyActiveTags = tagBtns.filter(b => b.classList.contains('is-active')).map(b => b.dataset.value);
-  initiallyActiveTags.forEach(v => { if (v && v !== 'all') activeTags.add(v); });
-
-  // If no tags selected, mark 'all' as active (UI)
-  if (activeTags.size === 0) {
-    const allT = tagBtns.find(b => (b.dataset.value || '') === 'all');
-    if (allT) allT.classList.add('is-active');
-  }
+  tagBtns.filter(b => b.classList.contains('is-active'))
+         .forEach(b => { const v=b.dataset.value; if(v && v!=='all') activeTags.add(v); });
+  if (activeTags.size===0) tagBtns.find(b => (b.dataset.value||'')==='all')?.classList.add('is-active');
 
   function applyFilters(){
     allCards().forEach(card => {
@@ -178,68 +126,53 @@
       const tags = parseCSV(card.dataset.tags);
 
       const productOK = (activeProduct === 'all') || products.includes(activeProduct);
-      const tagsOK = (activeTags.size === 0) || ([...activeTags].every(tag => tags.includes(tag)));
+      const tagsOK = (activeTags.size === 0) || ([...activeTags].every(t => tags.includes(t)));
 
       card.style.display = (productOK && tagsOK) ? '' : 'none';
     });
   }
 
-  function clickProduct(btn){
-    const value = btn.dataset.value || 'all';
-    activeProduct = value;
-    productBtns.forEach(b => b.classList.toggle('is-active', b === btn));
+  function onProductClick(btn){
+    activeProduct = btn.dataset.value || 'all';
+    productBtns.forEach(b => b.classList.toggle('is-active', b===btn));
     applyFilters();
   }
 
-  function clickTag(btn){
+  function onTagClick(btn){
     const value = btn.dataset.value || '';
     const isAll = (value === 'all');
 
     if (tagsSelectMode === 'single') {
-      // single select: either 'all' or one tag
       tagBtns.forEach(b => b.classList.remove('is-active'));
       activeTags.clear();
       if (!isAll) {
         btn.classList.add('is-active');
         activeTags.add(value);
       } else {
-        const allBtn = tagBtns.find(b => (b.dataset.value || '') === 'all');
-        if (allBtn) allBtn.classList.add('is-active');
+        tagBtns.find(b => (b.dataset.value||'')==='all')?.classList.add('is-active');
       }
     } else {
-      // multi select
       if (isAll) {
-        // clicking "All" clears tags
         activeTags.clear();
-        tagBtns.forEach(b => b.classList.toggle('is-active', (b.dataset.value || '') === 'all'));
+        tagBtns.forEach(b => b.classList.toggle('is-active', (b.dataset.value||'')==='all'));
       } else {
-        // toggle this tag
-        const isNowOn = !btn.classList.contains('is-active');
-        btn.classList.toggle('is-active', isNowOn);
-        if (isNowOn) activeTags.add(value);
-        else activeTags.delete(value);
-
-        // update 'All' visual
-        const allBtn = tagBtns.find(b => (b.dataset.value || '') === 'all');
-        if (allBtn) {
-          if (activeTags.size === 0) {
-            allBtn.classList.add('is-active');
-          } else {
-            allBtn.classList.remove('is-active');
-          }
-        }
+        const nowOn = !btn.classList.contains('is-active');
+        btn.classList.toggle('is-active', nowOn);
+        if (nowOn) activeTags.add(value); else activeTags.delete(value);
+        const allBtn = tagBtns.find(b => (b.dataset.value||'')==='all');
+        if (allBtn) allBtn.classList.toggle('is-active', activeTags.size===0);
       }
     }
 
     applyFilters();
   }
 
-  root.addEventListener('click', (e) => {
+  root.addEventListener('click', (e)=>{
     const btn = e.target.closest('.js-filter-btn');
     if (!btn) return;
     const type = btn.dataset.type;
-    if (type === 'product') return clickProduct(btn);
-    if (type === 'tag') return clickTag(btn);
+    if (type==='product') onProductClick(btn);
+    if (type==='tag') onTagClick(btn);
   });
 
   applyFilters();
@@ -248,19 +181,15 @@
 
 {% schema %}
 {
-  "name": "Universal Filters",
+  "name": "Filters (2 rows)",
   "settings": [
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Заголовок (необов'язково)"
-    },
+    { "type": "text", "id": "heading", "label": "Заголовок (опціонально)" },
     {
       "type": "text",
       "id": "scope",
       "label": "Scope (data-scope)",
       "default": "ingredients",
-      "info": "Той самий data-scope повинен бути на грідах, які треба фільтрувати."
+      "info": "Такий самий data-scope має бути на обгортці гріда(ів), які треба фільтрувати."
     },
     {
       "type": "select",
@@ -268,77 +197,33 @@
       "label": "Режим вибору тегів",
       "default": "multi",
       "options": [
-        { "value": "multi", "label": "Мульти-вибір" },
-        { "value": "single", "label": "Одиночний вибір" }
+        { "value": "multi", "label": "Multi-select" },
+        { "value": "single", "label": "Single-select" }
       ]
-    },
-    {
-      "type": "checkbox",
-      "id": "render_all_buttons",
-      "label": "Рендерити кнопки 'All' як звичайні блоки",
-      "default": true,
-      "info": "Можеш додати кнопки 'All' як окремі блоки (handle=all)."
     }
   ],
   "blocks": [
     {
-      "type": "group_title",
-      "name": "Заголовок групи",
-      "limit": 6,
+      "type": "product_button",
+      "name": "Product button",
       "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Текст заголовка групи",
-          "default": "Група фільтрів"
-        }
+        { "type": "text", "id": "handle", "label": "Handle (value)", "info": "напр.: all, freeze-age, mental-performance" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Button" },
+        { "type": "checkbox", "id": "default_active", "label": "Active by default", "default": false }
       ]
     },
     {
-      "type": "filter_button",
-      "name": "Кнопка фільтра",
+      "type": "tag_button",
+      "name": "Tag button",
       "settings": [
-        {
-          "type": "select",
-          "id": "filter_type",
-          "label": "Тип фільтра",
-          "default": "product",
-          "options": [
-            { "value": "product", "label": "Продукт" },
-            { "value": "tag", "label": "Тег" }
-          ]
-        },
-        {
-          "type": "text",
-          "id": "handle",
-          "label": "Хендл (value)",
-          "info": "Латиниця/дефіси: напр. freeze-age, mental-performance, vitamins, minerals, all"
-        },
-        {
-          "type": "text",
-          "id": "label",
-          "label": "Текст на кнопці",
-          "default": "Назва фільтра"
-        },
-        {
-          "type": "text",
-          "id": "i18n_key",
-          "label": "Ключ перекладу (опціонально)",
-          "info": "Якщо вказано, використає {{ 'key' | t }} замість тексту"
-        },
-        {
-          "type": "checkbox",
-          "id": "default_active",
-          "label": "Активна за замовчуванням",
-          "default": false
-        }
+        { "type": "text", "id": "handle", "label": "Handle (value)", "info": "напр.: all, vitamins, minerals, botanicals, bioactive, polysaccharides" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Button" },
+        { "type": "checkbox", "id": "default_active", "label": "Active by default", "default": false }
       ]
     }
   ],
   "presets": [
-    {
-      "name": "Universal Filters"
-    }
+    { "name": "Filters (2 rows)" }
   ]
 }
 {% endschema %}
