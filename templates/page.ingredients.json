@@ -207,6 +207,7 @@
         "ingredient_cmRPby",
         "ingredient_nTmgUf"
       ],
+      "disabled": true,
       "name": "Ingredients Grid",
       "settings": {
         "title": "Вітаміни",
