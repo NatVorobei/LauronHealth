@@ -57,6 +57,11 @@
 </div>
 
 <style>
+  .ingredients-grid-wrapper:not(:has(.ingredients-card:not([hidden]))),
+  .benefits-grid-wrapper:not(:has(.benefits-card:not([hidden]))) {
+    display: none !important;
+  }
+
   .ingredients-grid-wrapper {
     max-width: 1280px;
     margin: 0 auto;

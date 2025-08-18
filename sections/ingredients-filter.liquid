@@ -132,8 +132,10 @@
       const productOK = (activeProduct === 'all') || products.includes(activeProduct);
       {% comment %} const tagsOK = (activeTags.size === 0) || ([...activeTags].every(t => tags.includes(t))); {% endcomment %}
       const tagsOK = (activeTags.size === 0) || ([...activeTags].some(t => tags.includes(t)));
-      
-      card.style.display = (productOK && tagsOK) ? '' : 'none';
+
+      {% comment %} card.style.display = (productOK && tagsOK) ? '' : 'none'; {% endcomment %}
+      const visible = (productOK && tagsOK);
+      card.toggleAttribute('hidden', !visible);
     });
   }
 
