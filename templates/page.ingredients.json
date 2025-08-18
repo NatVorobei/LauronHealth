@@ -552,6 +552,47 @@
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 0
       }
+    },
+    "ingredients_grid_xaNA7m": {
+      "type": "ingredients-grid",
+      "blocks": {
+        "ingredient_pchBkG": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify://shop_images/gyaloronic-acid-image.webp",
+            "title": "Nutrihyl® (Sodium Hyaluronate)",
+            "short_text": "<p>Високомолекулярна гіалуронова кислота, що сприяє зволоженню шкіри, комфорту суглобів та бар’єрній функції слизових.<br/><br/>Кількість на порцію: 120 мг<br/>Біодоспупність: висока</p>",
+            "full_text": "<p>Nutrihyl® — це запатентована форма гіалуронової кислоти з молекулярною масою 2 MDa, розроблена спеціально для перорального застосування. Завдяки великому розміру молекул, вона довше утримується в тканинах і вивчається як засіб для підтримки зволоження не лише шкіри, а й слизових оболонок — наприклад, у ротовій порожнині та очах.<br/><br/>Цей тип гіалуронату натрію також досліджується щодо його здатності підтримувати функціональність суглобів, сприяти механічному захисту тканин, зменшенню тертя в суглобових зʼєднаннях та сприяти загальному клітинному комфорту. Його дія може бути особливо цінною в умовах вікових змін, сухості шкіри або зниженого тонусу сполучних тканин.</p>",
+            "products_csv": "freeze-age, mental-performance",
+            "tags_csv": "polysaccharides",
+            "handle": ""
+          }
+        },
+        "ingredient_W6fXaN": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify://shop_images/sodium.jpg",
+            "title": "Sodium alginate",
+            "short_text": "<p>Адаптоген, що може підтримувати ясність розуму, стійкість до ментального навантаження та загальне відчуття внутрішньої стабільності.<br/><br/>Кількість на порцію: 200 мг<br/>Біодоспупність: середня</p>",
+            "full_text": "<p>Повний опис інгредієнта</p>",
+            "products_csv": "freeze-age",
+            "tags_csv": "polysaccharides",
+            "handle": ""
+          }
+        }
+      },
+      "block_order": [
+        "ingredient_pchBkG",
+        "ingredient_W6fXaN"
+      ],
+      "name": "Polysaccharides & Hydrogels",
+      "settings": {
+        "title": "Полісахариди та гідрогелі",
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 80,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
     }
   },
   "order": [
@@ -562,6 +603,7 @@
     "ingredients_grid_THHyd9",
     "ingredients_grid_DA4QVE",
     "ingredients_grid_QKTBXF",
-    "ingredients_grid_7EJHDA"
+    "ingredients_grid_7EJHDA",
+    "ingredients_grid_xaNA7m"
   ]
 }
