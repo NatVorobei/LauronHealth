@@ -1,4 +1,5 @@
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+ {{ 'component-rating.css' | asset_url | stylesheet_tag }}
 <section class="two-product-section" id="two-product-section">
   <div class="two-product-section__header">
     {% if section.settings.title != blank %}
