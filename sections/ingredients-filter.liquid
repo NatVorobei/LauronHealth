@@ -179,6 +179,20 @@
 })();
 </script>
 
+<script>
+(function(){
+  if (window.__globalCardFlipBound) return;
+  window.__globalCardFlipBound = true;
+
+  document.addEventListener('click', function(e){
+    const card = e.target.closest('.ingredients-card');
+    if (!card) return;
+    card.classList.toggle('flipped');
+  });
+})();
+</script>
+
+
 {% schema %}
 {
   "name": "Filters (2 rows)",
