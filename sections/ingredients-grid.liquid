@@ -13,7 +13,7 @@
       {% for block in section.blocks %}
         {% assign products_csv = block.settings.products_csv | downcase | strip %}
         {% assign tags_csv = block.settings.tags_csv | downcase | strip %}
-        {% assign card_handle = block.settings.handle | default: block.settings.title | handleize %}
+        {% comment %} {% assign card_handle = block.settings.handle | default: block.settings.title | handleize %} {% endcomment %}
 
         <div
           class="ingredients-card"
@@ -407,12 +407,15 @@
           "label": "Повний опис",
           "default": "<p>Повний опис інгредієнта</p>"
         },
-        { "type": "text", "id": "products_csv", "label": "Продукти (CSV хендли)" },
-        { "type": "text", "id": "tags_csv", "label": "Теги (CSV хендли)" },
-        {
-          "type": "text",
-          "id": "handle",
-          "label": "Хендл картки (опційно)"
+        { 
+          "type": "text", 
+          "id": "products_csv", 
+          "label": "Продукти (CSV хендли)" 
+        },
+        { 
+          "type": "text", 
+          "id": "tags_csv", 
+          "label": "Теги (CSV хендли)" 
         }
       ]
     }
