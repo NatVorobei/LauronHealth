@@ -130,8 +130,9 @@
       const tags = parseCSV(card.dataset.tags);
 
       const productOK = (activeProduct === 'all') || products.includes(activeProduct);
-      const tagsOK = (activeTags.size === 0) || ([...activeTags].every(t => tags.includes(t)));
-
+      {% comment %} const tagsOK = (activeTags.size === 0) || ([...activeTags].every(t => tags.includes(t))); {% endcomment %}
+      const tagsOK = (activeTags.size === 0) || ([...activeTags].some(t => tags.includes(t)));
+      
       card.style.display = (productOK && tagsOK) ? '' : 'none';
     });
   }
