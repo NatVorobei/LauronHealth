@@ -327,10 +327,10 @@
         "padding_bottom_mobile": 0
       }
     },
-    "ingredients_grid_DA4QVE": {
+    "ingredients_grid_KjMtmp": {
       "type": "ingredients-grid",
       "blocks": {
-        "ingredient_JcG64z": {
+        "ingredient_EpMM4n": {
           "type": "ingredient",
           "settings": {
             "image": "shopify://shop_images/L-Theanine.jpg",
@@ -341,7 +341,7 @@
             "tags_csv": "aminoacids"
           }
         },
-        "ingredient_YgYBWB": {
+        "ingredient_MkLEFQ": {
           "type": "ingredient",
           "settings": {
             "image": "shopify://shop_images/L-Glycine.png",
@@ -352,7 +352,7 @@
             "tags_csv": "aminoacids"
           }
         },
-        "ingredient_Nd89Nr": {
+        "ingredient_QbnXXa": {
           "type": "ingredient",
           "settings": {
             "image": "shopify://shop_images/L-Tyrosine.webp",
@@ -363,7 +363,7 @@
             "tags_csv": "aminoacids"
           }
         },
-        "ingredient_qNKLwk": {
+        "ingredient_ThkQwm": {
           "type": "ingredient",
           "settings": {
             "image": "shopify://shop_images/L-Lysine.webp",
@@ -374,7 +374,7 @@
             "tags_csv": "aminoacids"
           }
         },
-        "ingredient_RVxjGr": {
+        "ingredient_FTxPzb": {
           "type": "ingredient",
           "settings": {
             "image": "shopify://shop_images/L-Proline.jpg",
@@ -385,7 +385,7 @@
             "tags_csv": "aminoacids"
           }
         },
-        "ingredient_npxztQ": {
+        "ingredient_fVABTC": {
           "type": "ingredient",
           "settings": {
             "image": "shopify://shop_images/L-Alanine.jpg",
@@ -396,7 +396,7 @@
             "tags_csv": "aminoacids"
           }
         },
-        "ingredient_RN4m4m": {
+        "ingredient_bTeBCF": {
           "type": "ingredient",
           "settings": {
             "image": "shopify://shop_images/N-acetyl-L-cysteine.jpg",
@@ -407,7 +407,7 @@
             "tags_csv": "aminoacids"
           }
         },
-        "ingredient_yKRa6e": {
+        "ingredient_wyxkJf": {
           "type": "ingredient",
           "settings": {
             "image": "shopify://shop_images/Acetyl-L-Carnitine.png",
@@ -420,14 +420,14 @@
         }
       },
       "block_order": [
-        "ingredient_JcG64z",
-        "ingredient_YgYBWB",
-        "ingredient_Nd89Nr",
-        "ingredient_qNKLwk",
-        "ingredient_RVxjGr",
-        "ingredient_npxztQ",
-        "ingredient_RN4m4m",
-        "ingredient_yKRa6e"
+        "ingredient_EpMM4n",
+        "ingredient_MkLEFQ",
+        "ingredient_QbnXXa",
+        "ingredient_ThkQwm",
+        "ingredient_FTxPzb",
+        "ingredient_fVABTC",
+        "ingredient_bTeBCF",
+        "ingredient_wyxkJf"
       ],
       "name": "Amino Acids",
       "settings": {
@@ -438,10 +438,10 @@
         "padding_bottom_mobile": 0
       }
     },
-    "ingredients_grid_QKTBXF": {
+    "ingredients_grid_LkUxUe": {
       "type": "ingredients-grid",
       "blocks": {
-        "ingredient_W9fXdq": {
+        "ingredient_Y4T8Jd": {
           "type": "ingredient",
           "settings": {
             "image": "shopify://shop_images/bacopa.webp",
@@ -452,7 +452,7 @@
             "tags_csv": "botanicals"
           }
         },
-        "ingredient_pzthmy": {
+        "ingredient_C9ceyT": {
           "type": "ingredient",
           "settings": {
             "image": "shopify://shop_images/rhofiola.jpg",
@@ -463,7 +463,7 @@
             "tags_csv": "botanicals"
           }
         },
-        "ingredient_gdxpH3": {
+        "ingredient_m4YEpd": {
           "type": "ingredient",
           "settings": {
             "image": "shopify://shop_images/hericium.jpg",
@@ -476,9 +476,9 @@
         }
       },
       "block_order": [
-        "ingredient_W9fXdq",
-        "ingredient_pzthmy",
-        "ingredient_gdxpH3"
+        "ingredient_Y4T8Jd",
+        "ingredient_C9ceyT",
+        "ingredient_m4YEpd"
       ],
       "name": "Botanicals & Mushrooms",
       "settings": {
@@ -489,10 +489,10 @@
         "padding_bottom_mobile": 0
       }
     },
-    "ingredients_grid_7EJHDA": {
+    "ingredients_grid_HgNekA": {
       "type": "ingredients-grid",
       "blocks": {
-        "ingredient_R6bd9Y": {
+        "ingredient_pFdKeU": {
           "type": "ingredient",
           "settings": {
             "image": "shopify://shop_images/Citicoline.jpg",
@@ -503,7 +503,7 @@
             "tags_csv": "bioactive"
           }
         },
-        "ingredient_riWUAr": {
+        "ingredient_gPamH6": {
           "type": "ingredient",
           "settings": {
             "image": "shopify://shop_images/pqq.png",
@@ -516,8 +516,8 @@
         }
       },
       "block_order": [
-        "ingredient_R6bd9Y",
-        "ingredient_riWUAr"
+        "ingredient_pFdKeU",
+        "ingredient_gPamH6"
       ],
       "name": "Bioactive Compounds",
       "settings": {
@@ -528,10 +528,10 @@
         "padding_bottom_mobile": 0
       }
     },
-    "ingredients_grid_xaNA7m": {
+    "ingredients_grid_V9fqLK": {
       "type": "ingredients-grid",
       "blocks": {
-        "ingredient_pchBkG": {
+        "ingredient_bECq66": {
           "type": "ingredient",
           "settings": {
             "image": "shopify://shop_images/gyaloronic-acid-image.webp",
@@ -542,7 +542,7 @@
             "tags_csv": "polysaccharides"
           }
         },
-        "ingredient_W6fXaN": {
+        "ingredient_HAjzhp": {
           "type": "ingredient",
           "settings": {
             "image": "shopify://shop_images/sodium.jpg",
@@ -555,8 +555,8 @@
         }
       },
       "block_order": [
-        "ingredient_pchBkG",
-        "ingredient_W6fXaN"
+        "ingredient_bECq66",
+        "ingredient_HAjzhp"
       ],
       "name": "Polysaccharides & Hydrogels",
       "settings": {
@@ -687,10 +687,10 @@
     "ingredients_filter_zBnjXz",
     "ingredients_grid_8jCjmj",
     "ingredients_grid_f6kyAU",
-    "ingredients_grid_DA4QVE",
-    "ingredients_grid_QKTBXF",
-    "ingredients_grid_7EJHDA",
-    "ingredients_grid_xaNA7m",
+    "ingredients_grid_KjMtmp",
+    "ingredients_grid_LkUxUe",
+    "ingredients_grid_HgNekA",
+    "ingredients_grid_V9fqLK",
     "two_products_block_BeVKJe",
     "collapsible_content_FyqQQx"
   ]
