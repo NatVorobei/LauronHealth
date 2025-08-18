@@ -102,6 +102,14 @@
             "default_active": false
           }
         },
+        "tag_button_h3rH6R": {
+          "type": "tag_button",
+          "settings": {
+            "handle": "aminoacids",
+            "label": "Amino acids",
+            "default_active": false
+          }
+        },
         "tag_button_EdGTej": {
           "type": "tag_button",
           "settings": {
@@ -141,6 +149,7 @@
         "product_button_4HXqyb",
         "tag_button_dUHBYH",
         "tag_button_dUUQNN",
+        "tag_button_h3rH6R",
         "tag_button_EdGTej",
         "tag_button_igWhee",
         "tag_button_T78gxw",
