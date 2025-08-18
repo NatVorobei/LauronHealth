@@ -457,6 +457,34 @@
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 0
       }
+    },
+    "ingredients_grid_QKTBXF": {
+      "type": "ingredients-grid",
+      "blocks": {
+        "ingredient_W9fXdq": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify://shop_images/bacopa.webp",
+            "title": "Екстракт Bacopa monnieri",
+            "short_text": "<p>Стандартизований екстракт Bacopa monnieri підтримує нейропластичність, сприяючи формуванню нових нейронних зв’язків, що пов’язано з процесами пам’яті й адаптації до стресу.<br/><br/>Кількість на порцію: 150 мг<br/>Біодоступність: низька</p>",
+            "full_text": "<p>Містить бакозиди — активні фітонутрієнти, які пов’язані з підтримкою нервової системи. Дослідження показують що вони стимулюють синтез білків, важливих для нейропластичності — процесу формування нових зв’язків між нейронами, що пов’язано з навчанням і пам’яттю.<br/><br/>Також може впливати на регуляцію нейромедіаторів, зокрема серотоніну і дофаміну, що пов’язано з емоційною стабільністю та адаптацією до стресових станів. Також виявляє антиоксидантні властивості, що можуть допомагати зменшувати окисний стрес у мозку — один із чинників когнітивного здоров’я з віком.<br/><br/>Bacopa не синтезується в організмі, тому бакозиди надходять лише ззовні. Клінічні дослідження демонструють зв’язок екстракту з підтримкою робочої пам’яті, зменшенням ментальної втоми та впливом на якість сну, що робить його популярним серед людей із сучасним активним способом життя.</p>",
+            "products_csv": "freeze-age, mental-performance",
+            "tags_csv": "",
+            "handle": ""
+          }
+        }
+      },
+      "block_order": [
+        "ingredient_W9fXdq"
+      ],
+      "name": "Botanicals & Mushrooms",
+      "settings": {
+        "title": "Рослини та гриби",
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 80,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
     }
   },
   "order": [
@@ -465,6 +493,7 @@
     "ingredients_filter_zBnjXz",
     "ingredients_grid_jmp8Jz",
     "ingredients_grid_THHyd9",
-    "ingredients_grid_DA4QVE"
+    "ingredients_grid_DA4QVE",
+    "ingredients_grid_QKTBXF"
   ]
 }
