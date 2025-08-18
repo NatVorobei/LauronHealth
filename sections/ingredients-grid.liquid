@@ -302,11 +302,11 @@
 </style>
 
 <script>
-    document.querySelectorAll('.ingredients-card').forEach((card) => {
+    {% comment %} document.querySelectorAll('.ingredients-card').forEach((card) => {
       card.addEventListener('click', (e) => {
         card.classList.toggle('flipped');
       });
-    });
+    }); {% endcomment %}
   
     if (window.innerWidth >= 750) {
       document.querySelectorAll('.ingredients-card').forEach((card) => {
