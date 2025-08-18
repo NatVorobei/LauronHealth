@@ -413,6 +413,18 @@
             "tags_csv": "aminoacids",
             "handle": ""
           }
+        },
+        "ingredient_RN4m4m": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify://shop_images/N-acetyl-L-cysteine.jpg",
+            "title": "N-acetyl-L-cysteine",
+            "short_text": "<p>Підтримує клітинний захист від вікових змін через антиоксидантну дію — впливає на шкіру, когнітивну функцію, м'язовий тонус і загальну витривалість.<br/><br/>Кількість на порцію: 1000 мг<br/>Біодоступність: помірна</p>",
+            "full_text": "<p>N-acetyl-L-cysteine (NAC) — стабільна форма амінокислоти L-cysteine, що слугує попередником глутатіону, важливого внутрішньоклітинного антиоксиданту. Підтримує клітинний захист від окисного стресу — одного з чинників вікових змін.<br/><br/>Його роль охоплює нервову, м’язову, імунну та шкірну системи, де він залучений у процеси відновлення, клітинного балансу та підтримки самопочуття. NAC часто розглядається як частина щоденного підходу до нутрітивної підтримки організму в умовах навантажень і з віком.</p>",
+            "products_csv": "freeze-age",
+            "tags_csv": "aminoacids",
+            "handle": ""
+          }
         }
       },
       "block_order": [
@@ -421,7 +433,8 @@
         "ingredient_Nd89Nr",
         "ingredient_qNKLwk",
         "ingredient_RVxjGr",
-        "ingredient_npxztQ"
+        "ingredient_npxztQ",
+        "ingredient_RN4m4m"
       ],
       "name": "Amino Acids",
       "settings": {
