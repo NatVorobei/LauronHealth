@@ -511,6 +511,34 @@
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 0
       }
+    },
+    "ingredients_grid_7EJHDA": {
+      "type": "ingredients-grid",
+      "blocks": {
+        "ingredient_R6bd9Y": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify://shop_images/Citicoline.jpg",
+            "title": "Citicoline (CDP-Choline)",
+            "short_text": "<p>Сприяє покращенню концентрації, памʼяті та обробки інформації, особливо в умовах інтелектуального навантаження.<br/><br/>Кількість на порцію: 250 мг<br/>Добова норма: не встановлена<br/>Біодоспупність: висока</p>",
+            "full_text": "<p>Citicoline — активна речовина яка бере участь у синтезі фосфоліпідів та нейротрансмітерів, зокрема ацетилхоліну. Саме тому він вивчається як мʼяка когнітивна підтримка — для уваги, швидкості мислення, ментальної витривалості.<br/><br/>Його вплив найтісніше повʼязаний із центральною нервовою системою: мозком, зоровими шляхами, а також з обміном енергії в нейронах. Дослідження показують, що Citicoline може допомагати у збереженні цілісності клітинних мембран та підтримці когнітивної функції з віком або при стресі.<br/><br/>Комплексний ефект Citicoline також розглядається в контексті нейропластичності та функціонального відновлення — ключових процесів для адаптації мозку до нових викликів.</p>",
+            "products_csv": "mental-performance",
+            "tags_csv": "bioactive",
+            "handle": ""
+          }
+        }
+      },
+      "block_order": [
+        "ingredient_R6bd9Y"
+      ],
+      "name": "Bioactive Compounds",
+      "settings": {
+        "title": "Біоактивні сполуки",
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 80,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
     }
   },
   "order": [
@@ -520,6 +548,7 @@
     "ingredients_grid_jmp8Jz",
     "ingredients_grid_THHyd9",
     "ingredients_grid_DA4QVE",
-    "ingredients_grid_QKTBXF"
+    "ingredients_grid_QKTBXF",
+    "ingredients_grid_7EJHDA"
   ]
 }
