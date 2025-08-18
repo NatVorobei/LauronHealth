@@ -389,13 +389,26 @@
             "tags_csv": "aminoacids",
             "handle": ""
           }
+        },
+        "ingredient_RVxjGr": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify://shop_images/L-Proline.jpg",
+            "title": "L-Proline",
+            "short_text": "<p>Умовно незамінна амінокислота, що відіграє ключову роль у формуванні колагену I та III типу — білків, які забезпечують міцність, еластичність і цілісність шкіри, суглобів, судин і слизових оболонок.<br/><br/>Кількість на порцію: 1333 мг Біодоступність: висока</p>",
+            "full_text": "<p>L-Proline може синтезуватися з глутамінової кислоти, але в умовах стресу, травм, старіння або недостатнього білкового раціону її ендогенний синтез знижується. Залучена в процеси відновлення після фізичного чи оксидативного стресу. Є однією з амінокислот, присутніх у складі NMF — природного зволожувального бар’єра шкіри.</p>",
+            "products_csv": "freeze-age",
+            "tags_csv": "aminoacids",
+            "handle": ""
+          }
         }
       },
       "block_order": [
         "ingredient_JcG64z",
         "ingredient_YgYBWB",
         "ingredient_Nd89Nr",
-        "ingredient_qNKLwk"
+        "ingredient_qNKLwk",
+        "ingredient_RVxjGr"
       ],
       "name": "Amino Acids",
       "settings": {
