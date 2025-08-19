@@ -273,11 +273,6 @@
   }
   
   @media (max-width: 749px) {
-    .ingredients-grid-wrapper {
-      padding-top: {{ section.settings.padding_top_mobile | default: 0 }}px !important;
-      padding-bottom: {{ section.settings.padding_bottom_mobile | default: 0 }}px !important;
-    }
-
     .ingredients-grid {
       grid-template-columns: 1fr;
     }
@@ -388,45 +383,25 @@ if (window.innerWidth >= 750) {
       "default": "Інгредієнти"
     },
     {
-        "type": "range",
-        "id": "padding_top_desktop",
-        "label": "Padding зверху (десктоп)",
-        "default": 0,
-        "min": 0,
-        "max": 160,
-        "step": 4,
-        "unit": "px"
-      },
-      {
-        "type": "range",
-        "id": "padding_bottom_desktop",
-        "label": "Padding знизу (десктоп)",
-        "default": 0,
-        "min": 0,
-        "max": 160,
-        "step": 4,
-        "unit": "px"
-      },
-      {
-        "type": "range",
-        "id": "padding_top_mobile",
-        "label": "Padding зверху (мобілка)",
-        "default": 0,
-        "min": 0,
-        "max": 160,
-        "step": 4,
-        "unit": "px"
-      },
-      {
-        "type": "range",
-        "id": "padding_bottom_mobile",
-        "label": "Padding знизу (мобілка)",
-        "default": 0,
-        "min": 0,
-        "max": 160,
-        "step": 4,
-        "unit": "px"
-      }
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding зверху (десктоп)",
+      "default": 0,
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding знизу (десктоп)",
+      "default": 0,
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px"
+    }
   ],
   "blocks": [
     {
