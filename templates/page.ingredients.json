@@ -41,7 +41,7 @@
       ],
       "custom_css": [
         ".banner__heading {font-family: var(--font-heading-main); font-weight: 700; font-size: 40px; line-height: 44px; max-width: 490px;}",
-        ".banner__text {font-size: 20px; line-height: 24px; color: #fff;}",
+        ".banner__text {font-size: 20px; line-height: 24px; font-weight: 300; color: #fff; max-width: 570px;}",
         ".banner__box {display: flex; flex-direction: column;}",
         "@media (max-width: 749px) {.banner__heading, .banner__text {color: var(--color-main-text); } .banner__heading {font-size: 24px; line-height: 30px; } .banner__text {font-size: 14px; line-height: 18px; }}"
       ],
