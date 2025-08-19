@@ -425,12 +425,12 @@
       padding-top: {{ section.settings.padding_top_mobile | default: 0 }}px !important;
       padding-bottom: {{ section.settings.padding_bottom_mobile | default: 0 }}px !important;
     }
-
     .filters2rows {
       gap: 0;
     }
-
-    .filters2rows__acc { display: flex; }
+    .filters2rows__acc { 
+      display: flex; 
+    }
     .filters2rows__row {
       display: none;
       padding: 0;
@@ -438,7 +438,6 @@
       flex-wrap: nowrap;
       flex-direction: column;
     }
-
     .filters2rows__acc[aria-expanded="true"]{
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
