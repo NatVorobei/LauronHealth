@@ -4005,6 +4005,10 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
   font-family: var(--font-body-main);
 }
 
+.shopify-pc__banner__body-title {
+  font-family: var(--font-heading-main);
+}
+
 .shopify-pc__banner__dialog button {
   border-radius: 16px !important;
   text-transform: uppercase !important;
