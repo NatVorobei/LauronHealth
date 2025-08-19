@@ -1,4 +1,4 @@
-<div class="science-wrapper">
+<div class="science-wrapper" id="{{ section.settings.science_id }}">
   <div class="science-container">
     <div class="science-content">
       {% if section.settings.title != blank %}
@@ -149,6 +149,11 @@
   "tag": "section",
   "class": "science-block",
   "settings": [
+    {
+      "type": "text",
+      "id": "science_id",
+      "label": "Science Id"
+    },
     {
       "type": "text",
       "id": "title",
