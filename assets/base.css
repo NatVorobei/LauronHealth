@@ -4006,15 +4006,15 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
 }
 
 .shopify-pc__banner__dialog button {
-  border-radius: 16px;
-  text-transform: uppercase;
-  font-size: 12px;
-  line-height: 20px;
-  font-weight: 600;
+  border-radius: 16px !important;
+  text-transform: uppercase !important;
+  font-size: 12px !important;
+  line-height: 20px !important;
+  font-weight: 600 !important;
 }
 .shopify-pc__banner__dialog button.shopify-pc__banner__btn-decline {
-  background: var(--color-main-text);
-  color: #fff;
+  background: var(--color-main-text) !important;
+  color: #fff !important;
 }
 
 
