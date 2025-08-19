@@ -421,86 +421,97 @@
   }
 
   /* ===== Mobile accordion look (≤749px) ===== */
+/* ===== Mobile accordion polish (≤749px) ===== */
 @media (max-width: 749px) {
-  /* Показуємо заголовки-акордеони, а ряди сховані */
-  .filters2rows__acc { display: flex; }
 
-  .filters2rows__row {
-    display: none;
-    padding: 0;                 /* скинемо падінги — додамо нижче */
-    gap: 0;                     /* бо буде вертикальний список */
-    flex-wrap: nowrap;
-    flex-direction: column;
+  /* Шапка акордеона */
+  .filters2rows__acc{
+    display:flex;
+    width:100%;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:14px 16px;
+    border:1px solid #D7D7D7;
+    background:#fff;
+    border-radius:20px;
+    font-family:var(--font-heading-main);
+    font-weight:700;
+    font-size:14px;
+    line-height:1;
+    cursor:pointer;
+  }
+  .filters2rows__acc-icon{ transition:transform .2s ease; }
+  .filters2rows__acc[aria-expanded="true"] .filters2rows__acc-icon{ transform:rotate(180deg); }
+
+  /* Коли відкрито: зливаємо шапку з панеллю (без подвійної рамки і кутів) */
+  .filters2rows__acc[aria-expanded="true"]{
+    border-bottom-left-radius:0;
+    border-bottom-right-radius:0;
+    border-bottom-color:transparent; /* щоб не було подвоєної лінії між хедером і панеллю */
   }
 
-  /* Коли акордеон відкритий — показуємо контент і робимо спільну рамку з хедером */
+  /* Панель акордеона */
   .filters2rows__acc[aria-expanded="true"] + .filters2rows__row,
-  .filters2rows__row.is-open {                    /* на випадок якщо лишилась стара логіка з is-open */
-    display: block;
-    border: 1px solid #D7D7D7;
-    border-top: none;                              /* зливаємося з хедером */
-    border-radius: 0 0 20px 20px;
-    padding: 12px 16px;
+  .filters2rows__row.is-open{
+    display:block;                 /* вертикальний список */
+    border:1px solid #D7D7D7;
+    border-top:0;                  /* злив із хедером */
+    border-bottom-left-radius:20px;
+    border-bottom-right-radius:20px;
+    padding:12px 16px;
   }
 
-  /* Кнопки всередині — як елементи списку, без піллю-стилю */
-  .filters2rows__row .filters2rows__btn {
-    display: flex;
-    width: 100%;
-    padding: 10px 0;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    font-size: 14px;
-    line-height: 1.35;
-    font-weight: 700;
-    color: var(--color-main-text);
-    justify-content: space-between;  /* щоб можна було показати чек зправа */
-    align-items: center;
+  /* Скидання «пілюль» і вертикальний список */
+  .filters2rows__row{
+    display:none;                  /* приховано за замовчуванням */
+    padding:0;
+    gap:0;
+    flex-wrap:nowrap;
+    flex-direction:column;
   }
 
-  /* розділювачі між пунктами */
-  .filters2rows__row .filters2rows__btn + .filters2rows__btn {
-    border-top: 1px solid #EFEFEF;
+  .filters2rows__row .filters2rows__btn{
+    display:flex;
+    width:100%;
+    padding:12px 0;
+    background:transparent;
+    border:0;
+    border-radius:0;
+    font-size:14px;
+    line-height:1.35;
+    font-weight:700;
+    color:var(--color-main-text);
+    justify-content:space-between; /* місце під “галочку” справа */
+    align-items:center;
+  }
+  .filters2rows__row .filters2rows__btn + .filters2rows__btn{
+    border-top:1px solid #EFEFEF;  /* роздільники між пунктами */
   }
 
-  /* Активний пункт: просто підсвітимо текст і покажемо “галочку” */
-  .filters2rows__row .filters2rows__btn.is-active {
-    color: var(--color-main-text);
-    background: transparent;
-    border-color: transparent;
+  /* Активний пункт: текст + проста галочка справа */
+  .filters2rows__row .filters2rows__btn.is-active{
+    color:var(--color-main-text);
   }
-  .filters2rows__row .filters2rows__btn.is-active::after {
-    content: "";
-    width: 12px; height: 6px;
-    margin-left: 12px;
-    border: 2px solid currentColor;
-    border-top: 0; border-left: 0;
-    transform: rotate(45deg);
+  .filters2rows__row .filters2rows__btn.is-active::after{
+    content:"";
+    width:12px; height:6px;
+    margin-left:12px;
+    border:2px solid currentColor;
+    border-top:0; border-left:0;
+    transform:rotate(45deg);
   }
 
-  /* Підрівняємо сам заголовок-акордеон */
-  .filters2rows__acc {
-    width: 100%;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 14px 16px;
-    border: 1px solid #D7D7D7;
-    background: #fff;
-    border-radius: 20px;
-    font-family: var(--font-heading-main);
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 1;
-    cursor: pointer;
+  /* Трохи стискаємо відступи секції */
+  .filters2rows{
+    padding-top:{{ section.settings.padding_top_mobile | default: 0 }}px !important;
+    padding-bottom:{{ section.settings.padding_bottom_mobile | default: 0 }}px !important;
   }
-  .filters2rows__acc-icon { transition: transform .2s ease; }
-  .filters2rows__acc[aria-expanded="true"] .filters2rows__acc-icon { transform: rotate(180deg); }
 
-  /* не потрібні чіпи на мобілці */
-  .filters2rows__btn.filterTab__btn { padding: 10px 0; border-radius: 0; }
+  /* Приберемо колізії зі старими мобільними правилами, якщо лишилися */
+  .filters2rows__btn.filterTab__btn{ padding:12px 0; border-radius:0; }
 }
+
 
 </style>
 
