@@ -40,8 +40,9 @@
         "text_TLqhej"
       ],
       "custom_css": [
-        ".banner__heading {font-family: var(--font-heading-main); font-weight: 700; font-size: 40px; line-height: 44px;}",
+        ".banner__heading {font-family: var(--font-heading-main); font-weight: 700; font-size: 40px; line-height: 44px; max-width: 490px;}",
         ".banner__text {font-size: 20px; line-height: 24px; color: #fff;}",
+        ".banner__box {display: flex; flex-direction: column;}",
         "@media (max-width: 749px) {.banner__heading, .banner__text {color: var(--color-main-text); } .banner__heading {font-size: 24px; line-height: 30px; } .banner__text {font-size: 14px; line-height: 18px; }}"
       ],
       "name": "t:sections.image-banner.presets.name",
@@ -157,8 +158,11 @@
       ],
       "name": "Filters (2 rows)",
       "settings": {
+        "heading": "",
         "scope": "ingredients",
         "tags_select_mode": "multi",
+        "mobile_products_title": "Products",
+        "mobile_tags_title": "All ingredients",
         "padding_top_desktop": 40,
         "padding_bottom_desktop": 92,
         "padding_top_mobile": 40,
@@ -259,9 +263,7 @@
       "settings": {
         "title": "Вітаміни",
         "padding_top_desktop": 0,
-        "padding_bottom_desktop": 80,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 80
+        "padding_bottom_desktop": 80
       }
     },
     "ingredients_grid_f6kyAU": {
@@ -322,9 +324,7 @@
       "settings": {
         "title": "Мінерали",
         "padding_top_desktop": 0,
-        "padding_bottom_desktop": 80,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0
+        "padding_bottom_desktop": 80
       }
     },
     "ingredients_grid_KjMtmp": {
@@ -433,9 +433,7 @@
       "settings": {
         "title": "Амінокислоти",
         "padding_top_desktop": 0,
-        "padding_bottom_desktop": 80,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0
+        "padding_bottom_desktop": 80
       }
     },
     "ingredients_grid_LkUxUe": {
@@ -484,9 +482,7 @@
       "settings": {
         "title": "Рослини та гриби",
         "padding_top_desktop": 0,
-        "padding_bottom_desktop": 80,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0
+        "padding_bottom_desktop": 80
       }
     },
     "ingredients_grid_HgNekA": {
@@ -523,9 +519,7 @@
       "settings": {
         "title": "Біоактивні сполуки",
         "padding_top_desktop": 0,
-        "padding_bottom_desktop": 80,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0
+        "padding_bottom_desktop": 80
       }
     },
     "ingredients_grid_V9fqLK": {
@@ -562,9 +556,7 @@
       "settings": {
         "title": "Полісахариди та гідрогелі",
         "padding_top_desktop": 0,
-        "padding_bottom_desktop": 0,
-        "padding_top_mobile": 0,
-        "padding_bottom_mobile": 0
+        "padding_bottom_desktop": 0
       }
     },
     "two_products_block_BeVKJe": {
