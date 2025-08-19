@@ -4002,7 +4002,7 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
 }
 
 .shopify-pc__banner__wrapper {
-  font-family: var(--font-heading-main);
+  font-family: var(--font-body-main);
 }
 
 @media (max-width: 749px) {
