@@ -466,7 +466,14 @@
 
     }
 
-    .filters2rows__btn.filterTab__btn { padding: 12px 0; border-radius: 0; }
+    .filters2rows__btn.filterTab__btn { 
+      padding: 12px 0; 
+      border-radius: 0; 
+    }
+  }
+
+  .filters2rows__row--products .js-filter-btn[data-type="product"][data-value="all"]{
+    display: none !important;
   }
 </style>
 
@@ -522,6 +529,33 @@
       });
       updateAccordionLabels();
     }
+
+    // після визначення productBtns, tagBtns ... та первинної ініціалізації activeProduct
+    function ensureMobileProductSelection(){
+      // лише для мобілки
+      if (!window.matchMedia('(max-width: 749px)').matches) return;
+
+      const allBtn = productBtns.find(b => (b.dataset.value || '') === 'all');
+      const firstReal = productBtns.find(b => (b.dataset.value || '') !== 'all');
+      const current = productBtns.find(b => b.classList.contains('is-active'));
+
+      // якщо активний all (або нічого не активне) — перемикаємо на перший реальний
+      if (firstReal && (!current || current === allBtn)) {
+        productBtns.forEach(b => b.classList.remove('is-active'));
+        firstReal.classList.add('is-active');
+        activeProduct = firstReal.dataset.value || 'all';
+      }
+    }
+
+    // викликаємо одразу після ініціалізації
+    ensureMobileProductSelection();
+
+    // і на зміну брейкпоінту (якщо юзер ресайзить)
+    const mql = window.matchMedia('(max-width: 749px)');
+    const onMobileChange = e => { if (e.matches) { ensureMobileProductSelection(); applyFilters(); } };
+    if (mql.addEventListener) mql.addEventListener('change', onMobileChange);
+    else mql.addListener(onMobileChange);
+
 
     function onProductClick(btn) {
       activeProduct = btn.dataset.value || 'all';
