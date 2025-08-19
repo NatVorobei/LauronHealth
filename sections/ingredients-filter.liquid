@@ -302,7 +302,9 @@
   <!-- Mobile accordion header: PRODUCTS -->
   <button class="filters2rows__acc" data-target="products" aria-expanded="false">
     <span class="filters2rows__acc-text">{{ section.settings.mobile_products_title | default: 'Products' }}</span>
-    <svg class="filters2rows__acc-icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <svg class="filters2rows__acc-icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
   </button>
 
   <!-- Row 1: Products -->
@@ -323,7 +325,9 @@
   <!-- Mobile accordion header: TAGS -->
   <button class="filters2rows__acc" data-target="tags" aria-expanded="false">
     <span class="filters2rows__acc-text">{{ section.settings.mobile_tags_title | default: 'All ingredients' }}</span>
-    <svg class="filters2rows__acc-icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <svg class="filters2rows__acc-icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
   </button>
 
   <!-- Row 2: Tags -->
@@ -343,6 +347,12 @@
 </div>
 
 <style>
+  /* Ховаємо wrapper-и грідів, якщо в них немає видимих карток (працює з нашим [hidden]) */
+  .ingredients-grid-wrapper:not(:has(.ingredients-card:not([hidden]))),
+  .benefits-grid-wrapper:not(:has(.benefits-card:not([hidden]))) {
+    display: none !important;
+  }
+
   .filters2rows {
     max-width: 1280px;
     margin: 0 auto;
@@ -403,116 +413,75 @@
   .filters2rows__acc-icon { transition: transform .2s ease; }
   .filters2rows__acc[aria-expanded="true"] .filters2rows__acc-icon { transform: rotate(180deg); }
 
-  /* Mobile: show accordion headers; rows collapsed by default */
-  {% comment %} @media (max-width: 749px) {
-    .filters2rows {
-      padding-top: {{ section.settings.padding_top_mobile | default: 0 }}px !important;
-      padding-bottom: {{ section.settings.padding_bottom_mobile | default: 0 }}px !important;
-    }
-    .filters2rows__acc { display: flex; }
-    .filters2rows__row { display: none; padding: 10px 4px 0; }
-    .filters2rows__row.is-open { display: flex; }
-    .filters2rows__btn { font-size: 12px; padding: 10px 12px; }
-    .filters2rows__heading { font-size: 18px; }
-  } {% endcomment %}
-
   @media (max-width: 1240px) {
     .filters2rows { padding: 0 10px; }
   }
 
-  /* ===== Mobile accordion look (≤749px) ===== */
-/* ===== Mobile accordion polish (≤749px) ===== */
-@media (max-width: 749px) {
+  /* ===== Mobile accordion (≤749px) ===== */
+  @media (max-width: 749px) {
+    .filters2rows {
+      padding-top: {{ section.settings.padding_top_mobile | default: 0 }}px !important;
+      padding-bottom: {{ section.settings.padding_bottom_mobile | default: 0 }}px !important;
+    }
 
-  /* Шапка акордеона */
-  .filters2rows__acc{
-    display:flex;
-    width:100%;
-    align-items:center;
-    justify-content:space-between;
-    gap:12px;
-    padding:14px 16px;
-    border:1px solid #D7D7D7;
-    background:#fff;
-    border-radius:20px;
-    font-family:var(--font-heading-main);
-    font-weight:700;
-    font-size:14px;
-    line-height:1;
-    cursor:pointer;
+    /* показуємо шапки, приховуємо ряди за замовчуванням */
+    .filters2rows__acc { display: flex; }
+    .filters2rows__row {
+      display: none;
+      padding: 0;
+      gap: 0;
+      flex-wrap: nowrap;
+      flex-direction: column;
+    }
+
+    /* відкритий акордеон: одна спільна «карточка» зі шапкою */
+    .filters2rows__acc[aria-expanded="true"]{
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      border-bottom-color: transparent;
+    }
+    .filters2rows__acc[aria-expanded="true"] + .filters2rows__row {
+      display: block;
+      border: 1px solid #D7D7D7;
+      border-top: 0;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      padding: 12px 16px;
+      background: #fff;
+    }
+
+    /* елементи списку (без піллю) */
+    .filters2rows__row .filters2rows__btn {
+      display: flex;
+      width: 100%;
+      padding: 12px 0;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      font-size: 14px;
+      line-height: 1.35;
+      font-weight: 700;
+      color: var(--color-main-text);
+      justify-content: space-between;
+      align-items: center;
+    }
+    .filters2rows__row .filters2rows__btn + .filters2rows__btn {
+      border-top: 1px solid #EFEFEF;
+    }
+
+    /* активний пункт — галочка праворуч */
+    .filters2rows__row .filters2rows__btn.is-active::after {
+      content: "";
+      width: 12px; height: 6px;
+      margin-left: 12px;
+      border: 2px solid currentColor;
+      border-top: 0; border-left: 0;
+      transform: rotate(45deg);
+    }
+
+    /* теги не мають капсул на мобілці */
+    .filters2rows__btn.filterTab__btn { padding: 12px 0; border-radius: 0; }
   }
-  .filters2rows__acc-icon{ transition:transform .2s ease; }
-  .filters2rows__acc[aria-expanded="true"] .filters2rows__acc-icon{ transform:rotate(180deg); }
-
-  /* Коли відкрито: зливаємо шапку з панеллю (без подвійної рамки і кутів) */
-  .filters2rows__acc[aria-expanded="true"]{
-    border-bottom-left-radius:0;
-    border-bottom-right-radius:0;
-    border-bottom-color:transparent; /* щоб не було подвоєної лінії між хедером і панеллю */
-  }
-
-  /* Панель акордеона */
-  .filters2rows__acc[aria-expanded="true"] + .filters2rows__row,
-  .filters2rows__row.is-open{
-    display:block;                 /* вертикальний список */
-    border:1px solid #D7D7D7;
-    border-top:0;                  /* злив із хедером */
-    border-bottom-left-radius:20px;
-    border-bottom-right-radius:20px;
-    padding:12px 16px;
-  }
-
-  /* Скидання «пілюль» і вертикальний список */
-  .filters2rows__row{
-    display:none;                  /* приховано за замовчуванням */
-    padding:0;
-    gap:0;
-    flex-wrap:nowrap;
-    flex-direction:column;
-  }
-
-  .filters2rows__row .filters2rows__btn{
-    display:flex;
-    width:100%;
-    padding:12px 0;
-    background:transparent;
-    border:0;
-    border-radius:0;
-    font-size:14px;
-    line-height:1.35;
-    font-weight:700;
-    color:var(--color-main-text);
-    justify-content:space-between; /* місце під “галочку” справа */
-    align-items:center;
-  }
-  .filters2rows__row .filters2rows__btn + .filters2rows__btn{
-    border-top:1px solid #EFEFEF;  /* роздільники між пунктами */
-  }
-
-  /* Активний пункт: текст + проста галочка справа */
-  .filters2rows__row .filters2rows__btn.is-active{
-    color:var(--color-main-text);
-  }
-  .filters2rows__row .filters2rows__btn.is-active::after{
-    content:"";
-    width:12px; height:6px;
-    margin-left:12px;
-    border:2px solid currentColor;
-    border-top:0; border-left:0;
-    transform:rotate(45deg);
-  }
-
-  /* Трохи стискаємо відступи секції */
-  .filters2rows{
-    padding-top:{{ section.settings.padding_top_mobile | default: 0 }}px !important;
-    padding-bottom:{{ section.settings.padding_bottom_mobile | default: 0 }}px !important;
-  }
-
-  /* Приберемо колізії зі старими мобільними правилами, якщо лишилися */
-  .filters2rows__btn.filterTab__btn{ padding:12px 0; border-radius:0; }
-}
-
-
 </style>
 
 <script>
@@ -530,7 +499,7 @@
   const qsa = (sel, ctx=document)=>Array.from(ctx.querySelectorAll(sel));
   const parseCSV = s =>
     (s || '')
-      .split(/[,;]+/) /* підтримка ком і крапок з комою */
+      .split(/[,;]+/)       // кома або ;
       .map(v => v.trim().toLowerCase())
       .filter(Boolean);
 
@@ -538,13 +507,12 @@
   const allCards = ()=> qsa(cardsSelector);
 
   const productBtns = qsa('.js-filter-btn[data-type="product"]', root);
-  const tagBtns = qsa('.js-filter-btn[data-type="tag"]', root);
+  const tagBtns     = qsa('.js-filter-btn[data-type="tag"]', root);
 
-  // Accordion toggles (mobile)
   const accProducts = root.querySelector('.filters2rows__acc[data-target="products"]');
   const accTags     = root.querySelector('.filters2rows__acc[data-target="tags"]');
 
-  // initial states
+  /* ----- init active states ----- */
   const prodDefault = productBtns.find(b => b.classList.contains('is-active'));
   if (prodDefault) activeProduct = prodDefault.dataset.value || 'all';
   else productBtns.find(b => (b.dataset.value||'')==='all')?.classList.add('is-active');
@@ -553,21 +521,21 @@
          .forEach(b => { const v=b.dataset.value; if(v && v!=='all') activeTags.add(v); });
   if (activeTags.size===0) tagBtns.find(b => (b.dataset.value||'')==='all')?.classList.add('is-active');
 
+  /* ----- filtering ----- */
   function applyFilters(){
     allCards().forEach(card => {
       const products = parseCSV(card.dataset.products);
       const tags     = parseCSV(card.dataset.tags);
-
       const productOK = (activeProduct === 'all') || products.includes(activeProduct);
-      // OR-логіка для тегів
-      const tagsOK = (activeTags.size === 0) || ([...activeTags].some(t => tags.includes(t)));
+      const tagsOK    = (activeTags.size === 0) || ([...activeTags].some(t => tags.includes(t)));
 
       const visible = (productOK && tagsOK);
-      card.toggleAttribute('hidden', !visible);
+      card.toggleAttribute('hidden', !visible); // для :has() ховання wrapper-ів
     });
     updateAccordionLabels();
   }
 
+  /* ----- handlers ----- */
   function onProductClick(btn){
     activeProduct = btn.dataset.value || 'all';
     productBtns.forEach(b => b.classList.toggle('is-active', b===btn));
@@ -602,20 +570,20 @@
     applyFilters();
   }
 
-  // Accordion open/close (works only visually on mobile, harmless on desktop)
+  /* ----- accordion ----- */
   function bindAccordion(btn, targetClass){
     if (!btn) return;
     const panel = root.querySelector(`.filters2rows__row--${targetClass}`);
     btn.addEventListener('click', () => {
       const expanded = btn.getAttribute('aria-expanded') === 'true';
       btn.setAttribute('aria-expanded', String(!expanded));
-      panel?.classList.toggle('is-open', !expanded);
+      // показ/приховування самої панелі робиться CSS через :adjacent
     });
   }
   bindAccordion(accProducts, 'products');
   bindAccordion(accTags, 'tags');
 
-  // Dynamic labels inside accordion headers (show current selection)
+  // Динамічні лейбли в шапках (показують вибір)
   function updateAccordionLabels(){
     if (accProducts) {
       const activeP = productBtns.find(b => b.classList.contains('is-active'));
@@ -629,15 +597,21 @@
     }
   }
 
+  // події на кнопках
   root.addEventListener('click', (e)=>{
     const btn = e.target.closest('.js-filter-btn');
-    if (!btn) return;
+    if (!btn || !root.contains(btn)) return;
     const type = btn.dataset.type;
     if (type==='product') onProductClick(btn);
     if (type==='tag') onTagClick(btn);
   });
 
-  // initial render
+  // Автовідкриття першого акордеона на мобілці (як на скріні)
+  if (window.matchMedia('(max-width: 749px)').matches && accProducts) {
+    accProducts.setAttribute('aria-expanded', 'true');
+  }
+
+  // стартовий рендер
   applyFilters();
 })();
 </script>
@@ -648,7 +622,7 @@
   "settings": [
     { "type": "text", "id": "heading", "label": "Заголовок (опціонально)" },
     { "type": "text", "id": "scope", "label": "Scope (data-scope)", "default": "ingredients", "info": "Такий самий data-scope має бути на обгортці гріда(ів), які треба фільтрувати." },
-    { "type": "select", "id": "tags_select_mode", "label": "Режим вибору тегів", "default": "multi", "options": [ { "value": "multi", "label": "Multi-select" }, { "value": "single", "label": "Single-select" } ] },
+    { "type": "select", "id": "tags_select_mode", "label": "Режим вибору тегів", "default": "multi", "options": [ { "value": "multi", "label": "Multi-select (OR)" }, { "value": "single", "label": "Single-select" } ] },
 
     { "type": "text", "id": "mobile_products_title", "label": "Мобільний заголовок (Products)", "default": "Products" },
     { "type": "text", "id": "mobile_tags_title", "label": "Мобільний заголовок (Ingredients)", "default": "All ingredients" },
@@ -665,3 +639,4 @@
   "presets": [ { "name": "Filters (2 rows)" } ]
 }
 {% endschema %}
+
