@@ -404,7 +404,7 @@
   .filters2rows__acc[aria-expanded="true"] .filters2rows__acc-icon { transform: rotate(180deg); }
 
   /* Mobile: show accordion headers; rows collapsed by default */
-  @media (max-width: 749px) {
+  {% comment %} @media (max-width: 749px) {
     .filters2rows {
       padding-top: {{ section.settings.padding_top_mobile | default: 0 }}px !important;
       padding-bottom: {{ section.settings.padding_bottom_mobile | default: 0 }}px !important;
@@ -414,7 +414,7 @@
     .filters2rows__row.is-open { display: flex; }
     .filters2rows__btn { font-size: 12px; padding: 10px 12px; }
     .filters2rows__heading { font-size: 18px; }
-  }
+  } {% endcomment %}
 
   @media (max-width: 1240px) {
     .filters2rows { padding: 0 10px; }
