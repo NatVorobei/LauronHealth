@@ -300,7 +300,6 @@
     <div class="filters2rows__heading">{{ section.settings.heading }}</div>
   {% endif %}
 
-  <!-- Mobile accordion header: PRODUCTS -->
   <button class="filters2rows__acc" data-target="products" aria-expanded="false">
     <span class="filters2rows__acc-text">{{ section.settings.mobile_products_title | default: 'Products' }}</span>
     <svg class="filters2rows__acc-icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
@@ -308,7 +307,6 @@
     </svg>
   </button>
 
-  <!-- Row 1: Products -->
   <div class="filters2rows__row filters2rows__row--products">
     {%- for block in section.blocks -%}
       {%- if block.type == 'product_button' -%}
@@ -324,7 +322,6 @@
     {%- endfor -%}
   </div>
 
-  <!-- Mobile accordion header: TAGS -->
   <button class="filters2rows__acc" data-target="tags" aria-expanded="false">
     <span class="filters2rows__acc-text">{{ section.settings.mobile_tags_title | default: 'All ingredients' }}</span>
     <svg class="filters2rows__acc-icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
@@ -332,7 +329,6 @@
     </svg>
   </button>
 
-  <!-- Row 2: Tags -->
   <div class="filters2rows__row filters2rows__row--tags">
     {%- for block in section.blocks -%}
       {%- if block.type == 'tag_button' -%}
@@ -350,7 +346,6 @@
 </div>
 
 <style>
-  /* Ховаємо wrapper-и грідів, якщо в них немає видимих карток (працює з нашим [hidden]) */
   .ingredients-grid-wrapper:not(:has(.ingredients-card:not([hidden]))),
   .benefits-grid-wrapper:not(:has(.benefits-card:not([hidden]))) {
     display: none !important;
@@ -396,7 +391,6 @@
     font-weight: 600;
   }
 
-  /* Accordion header (hidden on desktop) */
   .filters2rows__acc {
     display: none;
     width: 100%;
@@ -420,14 +414,12 @@
     .filters2rows { padding: 0 10px; }
   }
 
-  /* ===== Mobile accordion (≤749px) ===== */
   @media (max-width: 749px) {
     .filters2rows {
       padding-top: {{ section.settings.padding_top_mobile | default: 0 }}px !important;
       padding-bottom: {{ section.settings.padding_bottom_mobile | default: 0 }}px !important;
     }
 
-    /* показуємо шапки, приховуємо ряди за замовчуванням */
     .filters2rows__acc { display: flex; }
     .filters2rows__row {
       display: none;
@@ -437,7 +429,6 @@
       flex-direction: column;
     }
 
-    /* відкритий акордеон: одна спільна «карточка» зі шапкою */
     .filters2rows__acc[aria-expanded="true"]{
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
@@ -453,7 +444,6 @@
       background: #fff;
     }
 
-    /* елементи списку (без піллю) */
     .filters2rows__row .filters2rows__btn {
       display: flex;
       width: 100%;
@@ -472,7 +462,6 @@
       border-top: 1px solid #EFEFEF;
     }
 
-    /* активний пункт — галочка праворуч */
     .filters2rows__row .filters2rows__btn.is-active {
 
     }
@@ -496,7 +485,7 @@
     const qsa = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
     const parseCSV = (s) =>
       (s || '')
-        .split(/[,;]+/) // кома або ;
+        .split(/[,;]+/)
         .map((v) => v.trim().toLowerCase())
         .filter(Boolean);
 
@@ -509,7 +498,6 @@
     const accProducts = root.querySelector('.filters2rows__acc[data-target="products"]');
     const accTags = root.querySelector('.filters2rows__acc[data-target="tags"]');
 
-    /* ----- init active states ----- */
     const prodDefault = productBtns.find((b) => b.classList.contains('is-active'));
     if (prodDefault) activeProduct = prodDefault.dataset.value || 'all';
     else productBtns.find((b) => (b.dataset.value || '') === 'all')?.classList.add('is-active');
@@ -522,7 +510,6 @@
       });
     if (activeTags.size === 0) tagBtns.find((b) => (b.dataset.value || '') === 'all')?.classList.add('is-active');
 
-    /* ----- filtering ----- */
     function applyFilters() {
       allCards().forEach((card) => {
         const products = parseCSV(card.dataset.products);
@@ -531,12 +518,11 @@
         const tagsOK = activeTags.size === 0 || [...activeTags].some((t) => tags.includes(t));
 
         const visible = productOK && tagsOK;
-        card.toggleAttribute('hidden', !visible); // для :has() ховання wrapper-ів
+        card.toggleAttribute('hidden', !visible); 
       });
       updateAccordionLabels();
     }
 
-    /* ----- handlers ----- */
     function onProductClick(btn) {
       activeProduct = btn.dataset.value || 'all';
       productBtns.forEach((b) => b.classList.toggle('is-active', b === btn));
@@ -572,20 +558,17 @@
       applyFilters();
     }
 
-    /* ----- accordion ----- */
     function bindAccordion(btn, targetClass) {
       if (!btn) return;
       const panel = root.querySelector(`.filters2rows__row--${targetClass}`);
       btn.addEventListener('click', () => {
         const expanded = btn.getAttribute('aria-expanded') === 'true';
         btn.setAttribute('aria-expanded', String(!expanded));
-        // показ/приховування самої панелі робиться CSS через :adjacent
       });
     }
     bindAccordion(accProducts, 'products');
     bindAccordion(accTags, 'tags');
 
-    // Динамічні лейбли в шапках (показують вибір)
     function updateAccordionLabels() {
       if (accProducts) {
         const activeP = productBtns.find((b) => b.classList.contains('is-active'));
@@ -599,7 +582,6 @@
       }
     }
 
-    // події на кнопках
     root.addEventListener('click', (e) => {
       const btn = e.target.closest('.js-filter-btn');
       if (!btn || !root.contains(btn)) return;
@@ -608,12 +590,10 @@
       if (type === 'tag') onTagClick(btn);
     });
 
-    // Автовідкриття першого акордеона на мобілці (як на скріні)
     if (window.matchMedia('(max-width: 749px)').matches && accProducts) {
       accProducts.setAttribute('aria-expanded', 'true');
     }
 
-    // стартовий рендер
     applyFilters();
   })();
 </script>
