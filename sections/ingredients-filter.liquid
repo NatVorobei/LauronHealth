@@ -483,8 +483,12 @@
   }
 
   @media (max-width: 749px){
-  .filters2rows__row .filters2rows__btn[hidden]{display:none !important;}
+  .filters2rows__row .filters2rows__btn[hidden],
+  .tabs .tabs__btn[hidden]{
+    display: none !important;
+  }
 }
+
 </style>
 
 {% comment %} <script>
