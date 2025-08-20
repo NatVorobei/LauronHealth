@@ -483,7 +483,7 @@
   }
 </style>
 
-<script>
+{% comment %} <script>
   (function () {
     const root = document.getElementById('filters-{{ section.id }}');
     if (!root) return;
@@ -609,7 +609,152 @@
 
     applyFilters();
   })();
+</script> {% endcomment %}
+
+<script>
+  (function () {
+    const root = document.getElementById('filters-{{ section.id }}');
+    if (!root) return;
+
+    const scope = root.dataset.scope || 'ingredients';
+    const tagsSelectMode = '{{ section.settings.tags_select_mode }}';
+    const tagsDefaultLabel = root.dataset.tagsDefaultLabel || 'All ingredients';
+
+    let activeProduct = 'all';
+    let activeTags = new Set();
+
+    const qsa = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+    const parseCSV = (s) =>
+      (s || '')
+        .split(/[,;]+/)
+        .map((v) => v.trim().toLowerCase())
+        .filter(Boolean);
+    const isMobile = () => window.matchMedia('(max-width: 749px)').matches;
+
+    const cardsSelector = `[data-scope="${scope}"] .benefits-card, [data-scope="${scope}"] .ingredients-card`;
+    const allCards = () => qsa(cardsSelector);
+
+    const productBtns = qsa('.js-filter-btn[data-type="product"]', root);
+    const tagBtns = qsa('.js-filter-btn[data-type="tag"]', root);
+
+    const accProducts = root.querySelector('.filters2rows__acc[data-target="products"]');
+    const accTags = root.querySelector('.filters2rows__acc[data-target="tags"]');
+
+    const prodDefault = productBtns.find((b) => b.classList.contains('is-active'));
+    if (prodDefault) activeProduct = prodDefault.dataset.value || 'all';
+    else productBtns.find((b) => (b.dataset.value || '') === 'all')?.classList.add('is-active');
+
+    tagBtns.filter((b) => b.classList.contains('is-active')).forEach((b) => {
+      const v = b.dataset.value;
+      if (v && v !== 'all') activeTags.add(v);
+    });
+    if (activeTags.size === 0) tagBtns.find((b) => (b.dataset.value || '') === 'all')?.classList.add('is-active');
+
+    function applyFilters() {
+      allCards().forEach((card) => {
+        const products = parseCSV(card.dataset.products);
+        const tags = parseCSV(card.dataset.tags);
+        const productOK = activeProduct === 'all' || products.includes(activeProduct);
+        const tagsOK = activeTags.size === 0 || [...activeTags].some((t) => tags.includes(t));
+        card.toggleAttribute('hidden', !(productOK && tagsOK));
+      });
+      updateAccordionLabels();
+    }
+
+    function onProductClick(btn) {
+      activeProduct = btn.dataset.value || 'all';
+      productBtns.forEach((b) => b.classList.toggle('is-active', b === btn));
+      applyFilters();
+    }
+
+    function onTagClick(btn) {
+      const value = btn.dataset.value || '';
+      const isAll = value === 'all';
+
+      if (tagsSelectMode === 'single') {
+        tagBtns.forEach((b) => b.classList.remove('is-active'));
+        activeTags.clear();
+        if (!isAll) {
+          btn.classList.add('is-active');
+          activeTags.add(value);
+        } else {
+          tagBtns.find((b) => (b.dataset.value || '') === 'all')?.classList.add('is-active');
+        }
+      } else {
+        if (isAll) {
+          activeTags.clear();
+          tagBtns.forEach((b) => b.classList.toggle('is-active', (b.dataset.value || '') === 'all'));
+        } else {
+          const nowOn = !btn.classList.contains('is-active');
+          btn.classList.toggle('is-active', nowOn);
+          if (nowOn) activeTags.add(value); else activeTags.delete(value);
+          const allBtn = tagBtns.find((b) => (b.dataset.value || '') === 'all');
+          if (allBtn) allBtn.classList.toggle('is-active', activeTags.size === 0);
+        }
+      }
+      applyFilters();
+    }
+
+    function bindAccordion(btn, targetClass) {
+      if (!btn) return;
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+      });
+    }
+    bindAccordion(accProducts, 'products');
+    bindAccordion(accTags, 'tags');
+
+    function updateActiveOptionVisibility() {
+      if (!isMobile()) {
+        productBtns.forEach((b) => (b.hidden = false));
+        tagBtns.forEach((b) => (b.hidden = false));
+        return;
+      }
+      const activeP = productBtns.find((b) => b.classList.contains('is-active'));
+      productBtns.forEach((b) => (b.hidden = b === activeP));
+
+      if (tagsSelectMode === 'single') {
+        const activeT = tagBtns.find((b) => b.classList.contains('is-active'));
+        tagBtns.forEach((b) => (b.hidden = b === activeT));
+      } else {
+        tagBtns.forEach((b) => (b.hidden = false));
+      }
+    }
+
+    function updateAccordionLabels() {
+      if (accProducts) {
+        const activeP = productBtns.find((b) => b.classList.contains('is-active'));
+        if (activeP) accProducts.querySelector('.filters2rows__acc-text').textContent = activeP.textContent.trim();
+      }
+      if (accTags) {
+        const sel = tagBtns.filter((b) => b.classList.contains('is-active') && (b.dataset.value || '') !== 'all');
+        accTags.querySelector('.filters2rows__acc-text').textContent = sel.length
+          ? sel.map((b) => b.textContent.trim()).join(', ')
+          : tagsDefaultLabel || 'All ingredients';
+      }
+      updateActiveOptionVisibility();
+    }
+
+    root.addEventListener('click', (e) => {
+      const btn = e.target.closest('.js-filter-btn');
+      if (!btn || !root.contains(btn)) return;
+      const type = btn.dataset.type;
+      if (type === 'product') onProductClick(btn);
+      if (type === 'tag') onTagClick(btn);
+    });
+
+    [accProducts, accTags].forEach((btn) => btn && btn.setAttribute('aria-expanded', 'false'));
+
+    const mql = window.matchMedia('(max-width: 749px)');
+    if (mql.addEventListener) mql.addEventListener('change', updateActiveOptionVisibility);
+    else if (mql.addListener) mql.addListener(updateActiveOptionVisibility);
+
+    applyFilters();
+    updateActiveOptionVisibility();
+  })();
 </script>
+
 
 <script>
   (function(){
