@@ -408,6 +408,7 @@
     cursor: pointer;
   }
   .filters2rows__acc-icon { 
+    flex-shrink: 0;
     color: #87878D; 
     transition: transform .2s ease; 
   }
@@ -782,11 +783,9 @@
       }
     }
 
-    // якщо таби/кнопки самі міняють .is-active — просто реагуємо
     const mo = new MutationObserver(update);
     mo.observe(root, { attributes: true, attributeFilter: ['class'], subtree: true });
 
-    // підстрахуємось на клік (раптом класи міняються пізніше)
     root.addEventListener('click', e => {
       if (!e.target.closest(btnSel)) return;
       requestAnimationFrame(update);
@@ -798,22 +797,18 @@
     update();
   }
 
-  // ПРИКЛАД 1: продукти у твоєму фільтрі
   hideActiveInList(
     '#filters-{{ section.id }} .filters2rows__row--products',
     '.js-filter-btn[data-type="product"]',
     '#filters-{{ section.id }} .filters2rows__acc[data-target="products"] .filters2rows__acc-text'
   );
 
-  // ПРИКЛАД 2: теги, якщо у тебе tabs-подібна шапка для тегів (single-select)
   hideActiveInList(
     '#filters-{{ section.id }} .filters2rows__row--tags',
     '.js-filter-btn[data-type="tag"]',
     '#filters-{{ section.id }} .filters2rows__acc[data-target="tags"] .filters2rows__acc-text'
   );
 
-  // ПРИКЛАД 3: будь-які інші таби
-  // hideActiveInList('.tabs', '.tabs__btn', '.tabs .tabs__acc-text');
 })();
 </script>
 
