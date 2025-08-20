@@ -484,7 +484,11 @@
   }
 
   @media (max-width: 749px){
-  .filters2rows__row .filters2rows__btn[hidden] {
+  {% comment %} .filters2rows__row .filters2rows__btn[hidden] {
+    display: none !important;
+  } {% endcomment %}
+  .filters2rows__row .filters2rows__btn[hidden],
+  .tabs .tabs__btn[hidden]{
     display: none !important;
   }
 }
@@ -676,7 +680,7 @@
     const value = btn.dataset.value || '';
     const isAll = value === 'all';
 
-    if ('{{ section.settings.tags_select_mode }}' === 'single') {
+    if (tagsSelectMode === 'single') {
       tagBtns.forEach(b => b.classList.remove('is-active'));
       activeTags.clear();
       if (!isAll) {
@@ -711,18 +715,17 @@
   bindAccordion(accProducts);
   bindAccordion(accTags);
 
-  function syncHiddenForGroup(btns, mode) {
+  // 🔧 Ховаємо всі активні кнопки групи на мобільному (і продукти, і теги)
+  function syncHiddenForGroup(btns) {
     btns.forEach(b => { b.hidden = false; b.style.display = ''; });
     if (!isMobile()) return;
-    if (mode === 'single') {
-      const active = btns.find(b => b.classList.contains('is-active')) || btns[0];
-      if (active) { active.hidden = true; active.style.display = 'none'; }
-    }
+    const actives = btns.filter(b => b.classList.contains('is-active'));
+    actives.forEach(a => { a.hidden = true; a.style.display = 'none'; });
   }
 
   function syncHiddenOptions() {
-    syncHiddenForGroup(productBtns, 'single');
-    syncHiddenForGroup(tagBtns, (tagsSelectMode === 'single') ? 'single' : 'multi');
+    syncHiddenForGroup(productBtns);
+    syncHiddenForGroup(tagBtns);
   }
 
   function updateAccordionLabels() {
@@ -756,6 +759,7 @@
   syncHiddenOptions();
 })();
 </script>
+
 
 <script>
   (function(){
