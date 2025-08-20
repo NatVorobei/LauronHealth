@@ -96,11 +96,11 @@
     margin-bottom: 24px;
   }
 
-  .faq-tabs-menu {
+  {% comment %} .faq-tabs-menu {
     position: sticky;
     top: 60px;
     align-self: flex-start;
-  }  
+  }   {% endcomment %}
 
   .faq-tabs-content {
     max-width: 736px;
@@ -224,9 +224,9 @@
     .faq-tabs-menu {
       width: 100%;
       background: #fff;
-      top: 0;
-      padding-top: 20px;
-      z-index: 40;
+      {% comment %} top: 0;
+      padding-top: 20px; {% endcomment %}
+      {% comment %} z-index: 40; {% endcomment %}
     }
   }
 </style>
