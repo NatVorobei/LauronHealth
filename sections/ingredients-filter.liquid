@@ -484,8 +484,7 @@
   }
 
   @media (max-width: 749px){
-  .filters2rows__row .filters2rows__btn[hidden],
-  .tabs .tabs__btn[hidden]{
+  .filters2rows__row .filters2rows__btn[hidden] {
     display: none !important;
   }
 }
@@ -757,61 +756,6 @@
   syncHiddenOptions();
 })();
 </script>
-
-<script>
-(function(){
-  function hideActiveInList(rootSel, btnSel, labelSel, mq='(max-width: 749px)'){
-    const root = document.querySelector(rootSel);
-    if (!root) return;
-
-    const mql   = window.matchMedia(mq);
-    const label = labelSel ? root.querySelector(labelSel) : null;
-
-    const getBtns   = () => Array.from(root.querySelectorAll(btnSel));
-    const getActive = () => getBtns().find(b => b.classList.contains('is-active')) || getBtns()[0];
-
-    function update(){
-      const btns = getBtns();
-      btns.forEach(b => { b.hidden = false; b.style.display = ''; });
-
-      const active = getActive();
-      if (label && active) label.textContent = active.textContent.trim();
-
-      if (mql.matches && active){
-        active.hidden = true;
-        active.style.display = 'none';
-      }
-    }
-
-    const mo = new MutationObserver(update);
-    mo.observe(root, { attributes: true, attributeFilter: ['class'], subtree: true });
-
-    root.addEventListener('click', e => {
-      if (!e.target.closest(btnSel)) return;
-      requestAnimationFrame(update);
-    });
-
-    if (mql.addEventListener) mql.addEventListener('change', update);
-    else if (mql.addListener) mql.addListener(update);
-
-    update();
-  }
-
-  hideActiveInList(
-    '#filters-{{ section.id }} .filters2rows__row--products',
-    '.js-filter-btn[data-type="product"]',
-    '#filters-{{ section.id }} .filters2rows__acc[data-target="products"] .filters2rows__acc-text'
-  );
-
-  hideActiveInList(
-    '#filters-{{ section.id }} .filters2rows__row--tags',
-    '.js-filter-btn[data-type="tag"]',
-    '#filters-{{ section.id }} .filters2rows__acc[data-target="tags"] .filters2rows__acc-text'
-  );
-
-})();
-</script>
-
 
 <script>
   (function(){
