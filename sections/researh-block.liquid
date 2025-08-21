@@ -205,105 +205,119 @@
 
     /* ============================
    Tablet portrait: 750–1023px
-   — стекаємо колонки, даємо простір під оверлей
+   — стекаємо колонки, але зберігаємо
+   фіксовану коробку 500×500 для стабільного оверлею
    ============================ */
 @media (min-width: 750px) and (max-width: 1023px) {
   .research-block {
     padding: 0 16px;
-    margin-bottom: 80px;
+    margin-bottom: 100px; /* запас під оверлей */
   }
 
   .research-block__container {
-    padding: 40px 20px 120px;
-    gap: 20px;
-  }
-
-  .research-block__left,
-  .research-block__right {
-    width: 100%;
-  }
-
-  .research-block__right {
-    height: auto;
-    aspect-ratio: 1 / 1;
-  }
-
-  .research-block__image {
-    height: auto;
-  }
-
-  .research-block__overlay {
-    max-width: 90%;
-    bottom: -60px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-}
-
-@media (min-width: 1024px) and (max-width: 1279px) {
-  .research-block__container {
-    padding: 50px 30px 80px;
-    gap: 24px;
-  }
-
-  .research-block__left,
-  .research-block__right {
-    flex: 1 1 48%;
-    max-width: 48%;
-    width: 48%;
-  }
-
-  .research-block__right {
-    height: auto;
-    aspect-ratio: 1 / 1;
-  }
-
-  .research-block__image {
-    height: auto;
-  }
-
-  .research-block__overlay {
-    max-width: 85%;
-    bottom: -60px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-}
-
-@media (min-width: 1280px) and (max-width: 1439px) {
-  .research-block__container {
-    padding: 60px 40px 80px;
+    padding: 40px 16px 140px; /* додатковий низ під оверлей */
     gap: 20px;
   }
 
   .research-block__left {
-    width: 52%;
-    max-width: 52%;
+    width: 100%;
   }
+
   .research-block__right {
-    width: 46%;
-    max-width: 46%;
-    height: auto;
-    aspect-ratio: 1 / 1;
+    position: relative;
+    width: 100%;
+    max-width: 500px;   /* не ширше за саме зображення */
+    height: 500px;      /* як у дефолті, щоб математика оверлею збігалася */
+    margin: 0 auto;     /* центрируємо блок із картинкою */
   }
 
   .research-block__image {
-    height: auto;
+    height: 100%;
   }
 
   .research-block__overlay {
-    max-width: 90%;
+    max-width: 460px;   /* як у десктопі */
+    bottom: -70px;      /* залипає під картинку, не відривається */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* ============================
+   Small desktop / tablet landscape: 1024–1279px
+   — повертаємося до «піксельних» 520/500,
+   без aspect-ratio, щоб оверлей не плавав
+   ============================ */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .research-block__container {
+    padding: 50px 30px 120px; /* низ під оверлей */
+    gap: 24px;
+  }
+
+  .research-block__left {
+    width: 520px;
+  }
+
+  .research-block__right {
+    width: 500px;
+    height: 500px;  /* фіксована висота як у базових стилях */
+    position: relative;
+  }
+
+  .research-block__image {
+    height: 100%;
+  }
+
+  .research-block__overlay {
+    max-width: 460px;
     bottom: -70px;
     left: 50%;
     transform: translateX(-50%);
   }
 }
 
-@media (min-width: 1440px) {
+/* ============================
+   Medium desktop: 1280–1439px
+   — також тримаємо 520/500 для стабільності оверлею
+   ============================ */
+@media (min-width: 1280px) and (max-width: 1439px) {
   .research-block__container {
-    padding-bottom: 80px; 
+    padding: 60px 40px 120px; /* трохи більше місця знизу */
+    gap: 20px;
+  }
+
+  .research-block__left {
+    width: 520px;
+  }
+
+  .research-block__right {
+    width: 500px;
+    height: 500px;
+    position: relative;
+  }
+
+  .research-block__image {
+    height: 100%;
+  }
+
+  .research-block__overlay {
+    max-width: 460px;
+    bottom: -70px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
+
+/* ============================
+   Large desktop: ≥1440px
+   — додаємо невеликий «буфер» знизу контейнера
+   ============================ */
+@media (min-width: 1440px) {
+  .research-block__container {
+    padding-bottom: 120px;
+  }
+}
+
 
   </style>
   
