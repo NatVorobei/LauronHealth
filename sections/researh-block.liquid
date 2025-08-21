@@ -206,29 +206,26 @@
 
 @media (min-width: 750px) and (max-width: 1023px) {
   .research-block {
-    padding: 0 16px;
-    margin-bottom: 100px;
+    padding: 0 10px;
+    margin-bottom: 80px;
   }
 
-  {% comment %} .research-block__container {
-    padding: 40px 16px 140px;
+  .research-block__container {
+    padding: 40px 10px 120px;
     gap: 20px;
-  } {% endcomment %}
+    flex-direction: column; 
+    align-items: center;
+  }
 
-  .research-block__left {
+  .research-block__left,
+  .research-block__right {
     width: 100%;
+    max-width: 500px;
   }
 
   .research-block__right {
-    position: relative;
-    width: 100%;
-    max-width: 500px;
     height: 500px;
     margin: 0 auto;
-  }
-
-  .research-block__image {
-    height: 100%;
   }
 
   .research-block__overlay {
@@ -240,23 +237,25 @@
 }
 
 @media (min-width: 1024px) and (max-width: 1279px) {
+  .research-block {
+    padding: 0 10px;
+  }
+
   .research-block__container {
-    padding: 50px 30px 120px;
-    gap: 24px;
+    padding: 50px 20px 120px;
+    gap: 20px;
+    justify-content: center;
   }
 
   .research-block__left {
-    width: 520px;
+    flex: 1 1 48%;
+    max-width: 520px;
   }
 
   .research-block__right {
-    width: 500px;
+    flex: 1 1 48%;
+    max-width: 500px;
     height: 500px;
-    position: relative;
-  }
-
-  .research-block__image {
-    height: 100%;
   }
 
   .research-block__overlay {
@@ -268,23 +267,25 @@
 }
 
 @media (min-width: 1280px) and (max-width: 1439px) {
-  {% comment %} .research-block__container {
-    padding: 60px 40px 120px;
+  .research-block {
+    padding: 0 10px;
+  }
+
+  .research-block__container {
+    padding: 60px 20px 120px;
     gap: 20px;
-  } {% endcomment %}
+    justify-content: space-between;
+  }
 
   .research-block__left {
-    width: 520px;
+    flex: 1 1 52%;
+    max-width: 520px;
   }
 
   .research-block__right {
-    width: 500px;
+    flex: 1 1 46%;
+    max-width: 500px;
     height: 500px;
-    position: relative;
-  }
-
-  .research-block__image {
-    height: 100%;
   }
 
   .research-block__overlay {
