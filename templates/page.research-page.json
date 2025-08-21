@@ -20,7 +20,8 @@
     "researh_block_6Rkn3N": {
       "type": "researh-block",
       "custom_css": [
-        ".research-block__image {object-position: left;}"
+        ".research-block__image {object-position: left;}",
+        ".research-block {padding: 0 0 40px;}"
       ],
       "name": "Блок дослідження",
       "settings": {
