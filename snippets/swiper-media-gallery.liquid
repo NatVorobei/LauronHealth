@@ -16,6 +16,8 @@
     </div>
     <div class="swiper-button-prev"></div>
     <div class="swiper-button-next"></div>
+
+    <div class="swiper-pagination"></div>
   </div>
 
   <div class="swiper thumb-swiper">
@@ -66,9 +68,14 @@
     breakpoints: {
       0: {
         slidesPerView: 1.2,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
       },
       750: {
         slidesPerView: 1,
+        pagination: false,
       },
     },
   });
@@ -193,10 +200,19 @@
     }
 
     .product-media-gallery .swiper-wrapper {
-        margin-left: 10px;
-      }
-      .main-swiper .swiper-slide {
-        border-radius: 16px; 
-      }
+      margin-left: 10px;
+    }
+    .main-swiper .swiper-slide {
+      border-radius: 16px; 
+    }
+
+    .main-swiper {
+      margin-bottom: 0;
+      padding-bottom: 40px;
+    }
+
+    .main-swiper .swiper-pagination-bullet-active {
+      background: var(--color-main-text);
+    }
   }
 </style>
