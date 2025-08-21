@@ -202,6 +202,109 @@
         height: auto;
       }
     }
+
+    /* ============================
+   Tablet portrait: 750–1023px
+   — стекаємо колонки, даємо простір під оверлей
+   ============================ */
+@media (min-width: 750px) and (max-width: 1023px) {
+  .research-block {
+    padding: 0 16px;
+    margin-bottom: 80px;
+  }
+
+  .research-block__container {
+    padding: 40px 20px 120px;
+    gap: 20px;
+  }
+
+  .research-block__left,
+  .research-block__right {
+    width: 100%;
+  }
+
+  .research-block__right {
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .research-block__image {
+    height: auto;
+  }
+
+  .research-block__overlay {
+    max-width: 90%;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .research-block__container {
+    padding: 50px 30px 80px;
+    gap: 24px;
+  }
+
+  .research-block__left,
+  .research-block__right {
+    flex: 1 1 48%;
+    max-width: 48%;
+    width: 48%;
+  }
+
+  .research-block__right {
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .research-block__image {
+    height: auto;
+  }
+
+  .research-block__overlay {
+    max-width: 85%;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .research-block__container {
+    padding: 60px 40px 80px;
+    gap: 20px;
+  }
+
+  .research-block__left {
+    width: 52%;
+    max-width: 52%;
+  }
+  .research-block__right {
+    width: 46%;
+    max-width: 46%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .research-block__image {
+    height: auto;
+  }
+
+  .research-block__overlay {
+    max-width: 90%;
+    bottom: -70px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (min-width: 1440px) {
+  .research-block__container {
+    padding-bottom: 80px; 
+  }
+}
+
   </style>
   
   {% schema %}
