@@ -21,7 +21,8 @@
       "type": "researh-block",
       "custom_css": [
         ".research-block__image {object-position: left;}",
-        ".research-block {padding: 0 0 40px;}"
+        ".research-block {padding: 0 0 40px;}",
+        "@media (max-width: 749px) {.research-block {padding: 0 10px; }}"
       ],
       "name": "Блок дослідження",
       "settings": {
