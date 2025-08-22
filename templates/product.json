@@ -167,8 +167,8 @@
             "heading": "Максимальна біодоступність",
             "image": "shopify://shop_images/product-accordion-1.webp",
             "row_content": "Висока біодоступність Lauron забезпечує доставку активних інгредієнтів без втрат у процесі травлення — безпосередньо до клітин, саме туди, де вони мають діяти.",
-            "background_color": "#ffffff",
-            "text_color": "#000000"
+            "background_color": "#f0f4f5",
+            "text_color": "#121212"
           }
         },
         "collapsible_row_MiVwhr": {
@@ -187,8 +187,8 @@
             "heading": "Клінічна база",
             "image": "shopify://shop_images/product-accordion-3.webp",
             "row_content": "Формула Lauron базується на клінічних даних і рецензованих дослідженнях. Кожен компонент підібрано з урахуванням доведеної біологічної дії та об’єднано технологіями, що підвищують ефективність і безпечність у реальному використанні.",
-            "background_color": "#87878d",
-            "text_color": "#ffffff"
+            "background_color": "#f0f4f5",
+            "text_color": "#121212"
           }
         },
         "collapsible_row_gY9Fnp": {
@@ -197,8 +197,8 @@
             "heading": "Зручний формат",
             "image": "shopify://shop_images/science-1.webp",
             "row_content": "Готовий до вживання та простий у використанні. Lauron легко інтегрується в щоденний ритм — без приготування, змішування чи складного планування. Постійна підтримка організму у зручному сучасному форматі.",
-            "background_color": "#1f1f21",
-            "text_color": "#ffffff"
+            "background_color": "#f0f4f5",
+            "text_color": "#121212"
           }
         }
       },
