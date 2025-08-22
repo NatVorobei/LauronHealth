@@ -79,7 +79,7 @@
               </ul>
               <div class="actions__container">
               <p class="two-product-card__caption">{{ block.settings.caption }}</p>
-              <div class="two-product-card__price-row">
+              {% comment %} <div class="two-product-card__price-row">
                 {% if has_discount %}
                   <div class="two-product-card__discount-badge">
                     {{ block.settings.discount }}
@@ -94,8 +94,23 @@
                     <strong>{{ price | money }}</strong>
                   </p>
                 {% endif %}
-              </div>
+              </div> {% endcomment %}
+              <div class="two-product-card__price-row">
+                {% if has_discount %}
+                  <div class="two-product-card__discount-badge">
+                    {{ block.settings.discount }}
+                    {{ discount }}%
+                  </div>
+                {% else %}
+                  <div class="two-product-card__discount-placeholder" aria-hidden="true"></div>
+                {% endif %}
 
+                <p class="two-product-card__prices">
+                  {% if has_discount %}<s>{{ compare_price | money }}</s>{% endif %}
+                  <strong>{{ price | money }}</strong>
+                </p>
+              </div>
+              
               <product-form data-section-id="{{ section.id }}" class="custom-product-form">
                 {% form 'product', product, class: 'product-form', data-type: 'add-to-cart-form' %}
                   <input
@@ -260,6 +275,13 @@
       font-size: 16px;
       line-height: 12px;
       color: #FF2400;
+      min-height: 12px;
+      display: inline-flex;
+      align-items: center;
+    }
+    .two-product-card__discount-placeholder {
+      min-height: 12px;    
+      display: inline-block;
     }
     .two-product-card__price-row  {
       display: flex;
