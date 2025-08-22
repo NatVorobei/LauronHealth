@@ -179,8 +179,14 @@
     </li>
   {%- endfor -%}
 </ul>
-
 </nav>
+
+<script>
+  document.querySelectorAll("header-menu details").forEach((el) => {
+    el.addEventListener("mouseenter", () => el.setAttribute("open", true));
+    el.addEventListener("mouseleave", () => el.removeAttribute("open"));
+  });  
+</script>
 
 <style>
   .custom-dropdown-wrapper {
