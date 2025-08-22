@@ -7,7 +7,14 @@
   <div id="sticky-add-to-cart" class="sticky-cart-wrapper">
     <div class="sticky-add-to-cart__container">
       <div class="product-info">
-        <img src="{{ product.featured_image | image_url: width: 100 }}" alt="{{ product.title }}" class="product-image">
+        {% comment %} <img src="{{ product.featured_image | image_url: width: 100 }}" alt="{{ product.title }}" class="product-image"> {% endcomment %}
+         {% if product.metafields.custom.sticky_cart_image != blank %}
+          {{ product.metafields.custom.sticky_cart_image
+            | image_url: width: 100
+            | image_tag: alt: product.title, class: 'product-image' }}
+        {% else %}
+          <img src="{{ product.featured_image | image_url: width: 100 }}" alt="{{ product.title }}" class="product-image">
+        {% endif %}
         <div class="text-content">
           <h4 class="product-title">{{ product.title }}</h4>
           {% if product.description != blank %}
