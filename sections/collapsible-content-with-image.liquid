@@ -17,7 +17,7 @@
 <div class="color-{{ section.settings.color_scheme }} gradient collapsible-content-with-image isolate content-container page-width">
   <div class="collapsible-content-with-image__container section-{{ section.id }}-padding">
     {% assign last_block = section.blocks | last %}
-    <div class="collapsible-content-with-image__wrapper {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}" style="border-color: {{last_block.settings.background_color}}">
+    <div class="collapsible-content-with-image__wrapper {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
       {% assign group_name = 'accordion-' | append: section.id %}
       {% for block in section.blocks %}
         {% assign input_id = 'accordion-input-' | append: block.id | append: '-' | append: section.id %}
