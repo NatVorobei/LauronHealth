@@ -399,3 +399,7 @@
     }
   }
 }
+
+.collapsible-content-with-image__accordion:has(.accordion__radio:checked) {
+  background-color: #fff !important;
+}
