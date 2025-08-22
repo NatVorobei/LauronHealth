@@ -3702,7 +3702,7 @@ p {
   /* gap: 28px; */
 }
 
-.appstle-save-badge {
+/* .appstle-save-badge {
   position: absolute  !important;
   top: -33px !important;
   right: 0 !important;
@@ -3712,7 +3712,7 @@ p {
   font-weight: 400 !important;
   padding: 4px 9px !important;
   border-radius: 4px !important;
-}
+} */
 .appstle_custom_select {
   margin: 16px 0 28px 0;
 }
@@ -3948,6 +3948,20 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
   text-transform: uppercase;
   font-weight: 600;
   cursor: pointer;
+}
+
+.appstle_include_dropdown::after{
+  content: "MOST POPULAR";
+  position: absolute;
+  top: -10px;
+  right: 18px;
+  background-color: #FF2400;
+  font-size: 10px;
+  line-height: 10px;
+  font-weight: 400;
+  padding: 4px 9px;
+  border-radius: 4px;
+  color: #fff;
 }
 
 .appstle_manageSubBtn button:hover {
