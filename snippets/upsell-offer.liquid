@@ -142,19 +142,18 @@
             </div> {% endcomment %}
 
             <div class="drawer__upsell-actions">
+              {% assign v = upsell_product.variants.first %}
               <button
                 type="button"
                 class="drawer__upsell-button js-upsell-submit"
-                data-variant-id="{{ variant.id }}"
-                {% unless variant.available %}disabled{% endunless %}
+                data-variant-id="{{ v.id }}"
+                {% if v.available == false %}disabled{% endif %}
                 aria-live="polite"
               >
                 <span>{{ settings.upsell_buy_button }}</span>
                 <span class="loading__spinner hidden">{% render 'loading-spinner' %}</span>
               </button>
             </div>
-
-
           </div>
         </div>
       </div>
