@@ -144,20 +144,13 @@
             <div class="drawer__upsell-actions">
               {% assign v = upsell_product.variants.first %}
               <upsell-add
-                variant-id="{{ v.id }}"
+                variant-id="{{ upsell_product.variants.first.id }}"
+                data-available="{{ upsell_product.variants.first.available }}"
                 button-text="{{ settings.upsell_buy_button | escape }}"
-                {% if v.available == false %}disabled{% endif %}
                 data-appstle-ignore="true"
                 class="appstle-ignore-in-drawer"
-              >
-                <style>
-                  upsell-add:not(:defined) .fallback-upsell{display:inline-block}
-                  upsell-add:defined .fallback-upsell{display:none}
-                </style>
-                <button class="fallback-upsell drawer__upsell-button" type="button" disabled>
-                  {{ settings.upsell_buy_button }}
-                </button>
-              </upsell-add>
+              ></upsell-add>
+
 
             </div>
 
