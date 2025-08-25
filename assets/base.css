@@ -3715,11 +3715,15 @@ p {
 } */
 .appstle_custom_select {
   margin: 16px 0 28px 0;
+  max-width: 215px !important;
 }
 .appstle_select {
   background: #fff !important;
   padding: 10px 13px !important;
   border-radius: 10px !important;
+  font-size: 12px !important;
+  line-height: 10px !important;
+  font-weight: 700 !important;
 }
 .product-form__input--custom-swatch {
   display: flex;
@@ -3982,7 +3986,8 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
   line-height: 28px;
 }
 
-.appstle_subscription_amount_wrapper {
+.appstle_subscription_amount_wrapper,
+.appstle_one_time_price_wrapper {
   display: flex;
   flex-direction: row-reverse;
   gap: 16px;
