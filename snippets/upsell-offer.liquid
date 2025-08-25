@@ -130,7 +130,7 @@
               {% endform %}
             </product-form> {% endcomment %}
 
-            <div class="drawer__upsell-actions">
+            {% comment %} <div class="drawer__upsell-actions">
               <form class="upsell-add-form" novalidate>
                 <input type="hidden" name="id" value="{{ variant.id }}">
                 <input type="hidden" name="quantity" value="1">
@@ -139,7 +139,47 @@
                   <span class="loading__spinner hidden">{% render 'loading-spinner' %}</span>
                 </button>
               </form>
-            </div>
+            </div> {% endcomment %}
+
+
+            <upsell-product-form data-section-id="upsell-form" class="custom-product-form" data-appstle-ignore="true">
+  {% form 'product',
+    upsell_product,
+    class: 'drawer-product-form appstle-ignore-in-drawer',
+    data-type: 'upsell-form'
+  %}
+    <div data-appstle-ignore="true">
+      <input
+        type="hidden"
+        name="id"
+        value="{{ variant.id }}"
+        class="product-variant-id"
+        {% unless variant.available %}disabled{% endunless %}
+      >
+
+      <button
+        type="submit"
+        name="add"
+        class="drawer__upsell-button"
+        aria-live="polite"
+        {% unless variant.available %}disabled{% endunless %}
+      >
+        <span>
+          {% if variant.available %}
+            {{ settings.upsell_buy_button }}
+          {% else %}
+            {{ 'products.product.sold_out' | t }}
+          {% endif %}
+        </span>
+        <span class="sold-out-message hidden">
+          {{ 'products.product.sold_out' | t }}
+        </span>
+        {% render 'loading-spinner' %}
+      </button>
+    </div>
+  {% endform %}
+</upsell-product-form>
+
 
           </div>
         </div>
