@@ -1,5 +1,5 @@
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
-<script src="{{ 'upsell-offer.js' | asset_url }}" defer="defer"></script>
+{% comment %} <script src="{{ 'upsell-offer.js' | asset_url }}" defer="defer"></script> {% endcomment %}
 {{ 'component-rating.css' | asset_url | stylesheet_tag }}
 
 {% assign cart_product_handles = cart.items | map: 'product' | map: 'handle' %}
