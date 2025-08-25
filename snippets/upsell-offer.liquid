@@ -1,4 +1,4 @@
-{% comment %} <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'upsell-offer.js' | asset_url }}" defer="defer"></script>
 {{ 'component-rating.css' | asset_url | stylesheet_tag }}
 
@@ -142,12 +142,12 @@
             </div> {% endcomment %}
 
 
-            <upsell-product-form data-section-id="upsell-form" class="custom-product-form" data-appstle-ignore="true">
-  {% form 'product',
-    upsell_product,
-    class: 'drawer-product-form appstle-ignore-in-drawer',
-    data-type: 'upsell-form'
-  %}
+            <product-form data-section-id="upsell-form" class="custom-product-form" data-appstle-ignore="true">
+  <form method="post"
+        class="drawer-product-form appstle-ignore-in-drawer"
+        data-type="upsell-form"
+        data-appstle-ignore="true"
+        novalidate>
     <div data-appstle-ignore="true">
       <input
         type="hidden"
@@ -177,8 +177,9 @@
         {% render 'loading-spinner' %}
       </button>
     </div>
-  {% endform %}
-</upsell-product-form>
+  </form>
+</product-form>
+
 
 
           </div>
