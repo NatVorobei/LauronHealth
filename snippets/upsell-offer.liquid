@@ -149,7 +149,16 @@
                 {% if v.available == false %}disabled{% endif %}
                 data-appstle-ignore="true"
                 class="appstle-ignore-in-drawer"
-              ></upsell-add>
+              >
+                <style>
+                  upsell-add:not(:defined) .fallback-upsell{display:inline-block}
+                  upsell-add:defined .fallback-upsell{display:none}
+                </style>
+                <button class="fallback-upsell drawer__upsell-button" type="button" disabled>
+                  {{ settings.upsell_buy_button }}
+                </button>
+              </upsell-add>
+
             </div>
 
           </div>
