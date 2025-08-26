@@ -42,7 +42,7 @@
       "custom_css": [
         ".banner__heading {font-family: var(--font-heading-main); font-weight: 700; font-size: 40px; line-height: 44px;}",
         ".banner__text {font-size: 20px; line-height: 24px;}",
-        "@media (max-width: 749px) {.banner__heading, .banner__text {color: var(--color-main-text); } .banner__heading {font-size: 24px; line-height: 30px; } .banner__text {font-size: 14px; line-height: 18px; }}"
+        "@media (max-width: 749px) {.banner__heading, .banner__text {color: #fff; } .banner__heading {font-size: 24px; line-height: 30px; } .banner__text {font-size: 14px; line-height: 18px; }}"
       ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
@@ -56,7 +56,7 @@
         "color_scheme": "scheme-ab26d84e-25c7-4fc1-a950-fa0115015fc4",
         "stack_images_on_mobile": true,
         "mobile_content_alignment": "center",
-        "show_text_below": true
+        "show_text_below": false
       }
     },
     "autodelicery_steps_q7AGrp": {
