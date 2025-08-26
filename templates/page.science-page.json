@@ -19,6 +19,7 @@
     },
     "main_banner_section_8JgHd8": {
       "type": "main-banner-section",
+      "disabled": true,
       "custom_css": [
         ".main-banner__animated-text-wrapper,.main-banner__buttons {display: none;}",
         ".main-banner__heading {font-size: 40px;}",
@@ -38,12 +39,50 @@
         "button2_link": ""
       }
     },
+    "image_banner_rcL9Wf": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_UJ9y67": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Lauron — функціональний напій нового покоління</strong>",
+            "heading_size": "h1"
+          }
+        },
+        "text_gyAE7E": {
+          "type": "text",
+          "settings": {
+            "text": "В основі — запатентована технологія 3SDS, яка забезпечує високу біодоступність, точну доставку активних речовин і глибоку клітинну підтримку. Технології майбутнього для реальної турботи про здоров’я вже сьогодні.",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_UJ9y67",
+        "text_gyAE7E"
+      ],
+      "custom_css": [],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/Science_hero_screen.webp",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-left",
+        "desktop_content_alignment": "left",
+        "show_text_box": false,
+        "color_scheme": "scheme-be9223ea-4a5c-4062-8a6d-d875df510a31",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
     "science_block_qQUdE8": {
       "type": "science-block",
       "custom_css": [
         ".science-content,.science-images {padding-top: 0;}",
         ".science-container {padding-top: 80px;}",
-        "@media (max-width: 749px) {.science-container {padding-top: 0; } .science-content {border-top: none; }}"
+        "@media (max-width: 749px) {.science-container {padding-top: 40px; } .science-content {border-top: none; }}"
       ],
       "name": "Custom Science Block",
       "settings": {
@@ -217,6 +256,7 @@
   "order": [
     "main",
     "main_banner_section_8JgHd8",
+    "image_banner_rcL9Wf",
     "science_block_qQUdE8",
     "science_block_6G8LmB",
     "science_block_wTJzkB",
