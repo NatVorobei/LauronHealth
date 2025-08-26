@@ -63,8 +63,8 @@
       ],
       "custom_css": [
         ".banner__heading {font-size: 20px; line-height: 30px; font-family: var(--font-heading-main); letter-spacing: 0; color: #fff;}",
-        ".banner__text {font-size: 14px; line-height: 20px; color: #fff; letter-spacing: 0; }",
-        "@media screen and (min-width: 990px) {.banner__content {padding: 0; } .banner__heading {font-size: 40px; line-height: 44px; } .banner__text {font-size: 16px; line-height: 22px; margin-top: 26px; }}"
+        ".banner__text p{font-size: 14px; line-height: 20px; color: #fff; letter-spacing: 0;}",
+        "@media screen and (min-width: 990px) {.banner__content {padding: 0; } .banner__heading {font-size: 40px; line-height: 44px; } .banner__text p{font-size: 16px; line-height: 22px; margin-top: 26px; }}"
       ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
