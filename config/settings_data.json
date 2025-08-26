@@ -128,7 +128,7 @@
     "cart_drawer_collection": "",
     "cart_color_scheme": "scheme-1",
     "show_shipping_bar": true,
-    "minimum_free_shipping": 270,
+    "minimum_free_shipping": 1000,
     "shipping_bar_color": "#ff2400",
     "show_upsell_offer": true,
     "upsell_title": "Наші продукти працюють краще разом:",
