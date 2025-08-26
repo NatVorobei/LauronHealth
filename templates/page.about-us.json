@@ -56,7 +56,7 @@
         "color_scheme": "scheme-be9223ea-4a5c-4062-8a6d-d875df510a31",
         "stack_images_on_mobile": true,
         "mobile_content_alignment": "center",
-        "show_text_below": true
+        "show_text_below": false
       }
     },
     "image_with_text_ztYaDB": {
