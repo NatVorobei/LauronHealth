@@ -505,7 +505,7 @@
         "product_block_RedqR9": {
           "type": "product_block",
           "settings": {
-            "product": "mental-performance",
+            "product": "freeze-age",
             "custom_image": "shopify://shop_images/freeze-age-product-block_1.png",
             "rating": "★ ★ ★ ★ ★",
             "reviews": "31 відгук",
@@ -699,7 +699,7 @@
       "type": "custom-newsletter",
       "name": "Custom Newsletter",
       "settings": {
-        "background_image": "shopify://shop_images/newsletter-image.webp",
+        "background_image": "shopify://shop_images/email.png",
         "discount": "-10%",
         "heading": "на перше замовлення",
         "subheading": "Підпишіться на розсилку, щоб першими дізнаватись про новинки, спеціальні пропозиції та корисні матеріали — і отримайте знижку 10% на першу покупку."
