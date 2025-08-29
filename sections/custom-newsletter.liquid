@@ -1,3 +1,6 @@
+{{ 'component-newsletter.css' | asset_url | stylesheet_tag }}
+{{ 'newsletter-section.css' | asset_url | stylesheet_tag }}
+
 <div class="custom-newsletter-wrapper">
   <div class="custom-newsletter-inner page-width">
     <div class="custom-newsletter-image">
@@ -14,7 +17,7 @@
         <p>{{ section.settings.subheading }}</p>
       {% endif %}
 
-      {% form 'customer', class: 'custom-newsletter-form' %}
+      {% comment %} {% form 'customer', class: 'custom-newsletter-form' %}
         <input type="hidden" name="contact[tags]" value="newsletter">
         <div class="custom-newsletter-form-container">
           <input
@@ -25,6 +28,55 @@
           >
           <button type="submit">Підписатися</button>
         </div>
+      {% endform %} {% endcomment %}
+      {% assign fid = 'CustomNewsletter-' | append: section.id %}
+
+      {% form 'customer', id: fid, class: 'custom-newsletter-form' %}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+      
+        <div class="custom-newsletter-form-container">
+          <label class="visually-hidden" for="{{ fid }}-Email">{{ 'newsletter.label' | t }}</label>
+          <input
+            id="{{ fid }}-Email"
+            type="email"
+            name="contact[email]"
+            value="{{ form.email }}"
+            aria-required="true"
+            autocorrect="off"
+            autocapitalize="off"
+            autocomplete="email"
+            {% if form.errors %}
+              autofocus aria-invalid="true" aria-describedby="{{ fid }}-Error"
+            {% elsif form.posted_successfully? %}
+              aria-describedby="{{ fid }}-Success"
+            {% endif %}
+            placeholder="Введіть ваш email"
+            required
+          >
+          <button
+            type="submit"
+            class="custom-newsletter-submit"
+            id="{{ fid }}-Submit"
+            name="commit"
+            aria-label="{{ 'newsletter.button_label' | t }}"
+          >
+            {{ section.settings.button }}
+          </button>
+        </div>
+      
+        {%- if form.errors -%}
+          <small class="form__message" id="{{ fid }}-Error">
+            <span class="svg-wrapper">{{- 'icon-error.svg' | inline_asset_content -}}</span>
+            {{- form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email -}}
+          </small>
+        {%- endif -%}
+      
+        {%- if form.posted_successfully? -%}
+          <h3 class="form__message form__message--success" id="{{ fid }}-Success" tabindex="-1" autofocus>
+            <span class="svg-wrapper">{{- 'icon-success.svg' | inline_asset_content -}}</span>
+            {{- 'newsletter.success' | t -}}
+          </h3>
+        {%- endif -%}
       {% endform %}
     </div>
   </div>
@@ -178,6 +230,12 @@
     }
   }
 
+  @media (max-width: 400px) {
+    .custom-newsletter-form-container {
+      flex-direction: column;
+    }
+  }
+
   @media(min-width: 1180px) {
     .custom-newsletter-inner {
       max-height: 298px;
@@ -233,7 +291,6 @@
     border-radius: 16px;
   }
 }
-
 </style>
 
 {% schema %}
@@ -264,7 +321,13 @@
       "id": "subheading",
       "label": "Підзаголовок",
       "default": "Підпишіться на розсилку, щоб першими дізнаватися про новинки..."
-    }
+    },
+    {
+      "type": "text",
+      "id": "button",
+      "label": "Текст кнопки",
+      "default": "Підписатися"
+    },
   ],
   "presets": [
     {
