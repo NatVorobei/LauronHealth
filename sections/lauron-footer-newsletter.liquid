@@ -1,0 +1,350 @@
+{{ 'component-newsletter.css' | asset_url | stylesheet_tag }}
+{{ 'newsletter-section.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+.section-{{ section.id }}-padding {
+  padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+  padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+}
+@media (min-width: 750px) {
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+}
+
+.lauron-newsletter--{{ section.id }} {
+  position: relative;
+  isolation: isolate;
+}
+@media (min-width: 750px) { 
+  .lauron-newsletter--{{ section.id }} { display: none; }
+}
+
+.lauron-newsletter--{{ section.id }} .newsletter__wrapper {
+  position: relative;
+  overflow: hidden;
+  padding: 60px 15px;
+  background: transparent;
+}
+
+.lauron-newsletter--{{ section.id }} .lnl-media {
+  position: absolute; inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+.lauron-newsletter--{{ section.id }} .lnl-media video,
+.lauron-newsletter--{{ section.id }} .lnl-media iframe {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+.lauron-newsletter--{{ section.id }} .lnl-bg {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.lauron-newsletter--{{ section.id }} .lnl-overlay {
+  position: absolute; inset: 0;
+  z-index: 1;
+  background: {{ section.settings.overlay_color }};
+  opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+}
+
+.lauron-newsletter--{{ section.id }} .newsletter__inner {
+  position: relative;
+  z-index: 2;
+  max-width: 520px;
+  margin: 0 auto;
+  text-align: center;
+}
+.lauron-newsletter--{{ section.id }} .newsletter__title,
+.lauron-newsletter--{{ section.id }} .newsletter__subheading {
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+  color: var(--color-main-text);
+}
+.lauron-newsletter--{{ section.id }} .newsletter__subheading {
+  margin: 0 0 18px 0;
+  padding: 0 30px;
+  letter-spacing: 0;
+  color: var(--color-main-text);
+}
+
+.lauron-newsletter--{{ section.id }} .lnl-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+.lauron-newsletter--{{ section.id }} .lnl-input {
+  width: 100%;
+  height: 48px;
+  border-radius: 16px;
+  border: 1px solid #D7D7D7;
+  background: #fff;
+  color: var(--color-main-text);
+  padding: 0 16px;
+  font: inherit;
+  -webkit-appearance: none;
+}
+.lauron-newsletter--{{ section.id }} .lnl-input::placeholder {
+  opacity: .8;
+}
+.lauron-newsletter--{{ section.id }} .lnl-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0,0,0,.12);
+  border-color: rgba(0,0,0,.25);
+}
+
+.lauron-newsletter--{{ section.id }} .lnl-button {
+  width: 100%;
+  height: 48px;
+  border: 0;
+  border-radius: 16px;
+  background: var(--color-main-text);
+  color: #fff;
+  text-transform: uppercase;
+  line-height: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .06s ease, opacity .2s ease;
+}
+.lauron-newsletter--{{ section.id }} .lnl-button:hover {
+  opacity: .92;
+}
+.lauron-newsletter--{{ section.id }} .lnl-button:active {
+  transform: translateY(1px);
+}
+.lauron-newsletter--{{ section.id }} .lnl-button:disabled {
+  opacity: .5; cursor: not-allowed;
+}
+
+.lauron-newsletter--{{ section.id }} .form__message {
+  margin-top: 10px;
+  display: flex; align-items: center; justify-content: center;
+  gap: 6px; text-align: center;
+}
+.lauron-newsletter--{{ section.id }} .form__message .svg-wrapper {
+  display: inline-flex; line-height: 0;
+}
+
+.lauron-newsletter--{{ section.id }} .visually-hidden { 
+  position: absolute !important; 
+  height: 1px; width: 1px; 
+  overflow: hidden; clip: rect(1px, 1px, 1px, 1px); 
+  white-space: nowrap; 
+}
+
+.lauron-newsletter--{{ section.id }} { 
+  --lnl-alpha: 0.6; 
+  --lnl-blur: 2px; 
+  --lnl-bright: 1.15; 
+  --lnl-sat: 0.92; 
+}
+
+.lauron-newsletter--{{ section.id }} .lnl-overlay{ display:none !important; }
+
+.lauron-newsletter--{{ section.id }} .lnl-media{
+  position:absolute; inset:0; z-index:0; overflow:hidden;
+}
+.lauron-newsletter--{{ section.id }} .lnl-media video,
+.lauron-newsletter--{{ section.id }} .lnl-media iframe{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+}
+
+.lauron-newsletter--{{ section.id }} .lnl-media::after{
+  content:"";
+  position:absolute; inset:0;
+  z-index:1; pointer-events:none;
+  background: rgba(255,255,255, var(--lnl-alpha)) !important;
+  backdrop-filter: blur(var(--lnl-blur)) brightness(var(--lnl-bright)) saturate(var(--lnl-sat));
+  -webkit-backdrop-filter: blur(var(--lnl-blur)) brightness(var(--lnl-bright)) saturate(var(--lnl-sat));
+}
+
+.lauron-newsletter--{{ section.id }} .newsletter__inner{ 
+  position:relative; z-index:2; 
+}
+
+@supports not ((backdrop-filter: blur(2px)) or (-webkit-backdrop-filter: blur(2px))) {
+  .lauron-newsletter--{{ section.id }} .lnl-media::after{
+    background: rgba(255,255,255, 0.82) !important;
+  }
+  .lauron-newsletter--{{ section.id }} .lnl-media video,
+  .lauron-newsletter--{{ section.id }} .lnl-media iframe{
+    filter: brightness(1.12) saturate(0.95);
+  }
+}
+
+{%- endstyle -%}
+
+
+<div class="newsletter lauron-newsletter--{{ section.id }} {% if section.settings.full_width == false %}newsletter--narrow page-width{% endif %}">
+  <div class="newsletter__wrapper content-container isolate{% if section.settings.full_width %} content-container--full-width{% endif %} section-{{ section.id }}-padding color-{{ section.settings.color_scheme }} gradient">
+    <div class="lnl-media" aria-hidden="true">
+        {%- if section.settings.bg_video != blank -%}
+            {{ section.settings.bg_video
+            | video_tag:
+                autoplay: true,
+                loop: true,
+                muted: true,
+                controls: false,
+                playsinline: true,
+                preload: "metadata"
+            }}
+        {%- elsif section.settings.bg_video_url != blank -%}
+            {{ section.settings.bg_video_url
+            | external_video_tag:
+                autoplay: true,
+                loop: true,
+                muted: true,
+                controls: false,
+                playsinline: true
+            }}
+        {%- else -%}
+            <div class="lnl-bg"
+                style="background-image:url('{% if section.settings.bg_image %}{{ section.settings.bg_image | image_url: width: 1600 }}{% endif %}');">
+            </div>
+        {%- endif -%}
+    </div>
+    <div class="lnl-overlay" aria-hidden="true"></div>
+
+    <div class="newsletter__inner">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when '@app' -%}
+            {% render block %}
+          {%- when 'heading' -%}
+            <h2
+              class="newsletter__title inline-richtext {{ block.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+              {{ block.shopify_attributes }}
+              {% if settings.animations_reveal_on_scroll %} data-cascade style="--animation-order: {{ forloop.index }};"{% endif %}
+            >
+              {{ block.settings.heading }}
+            </h2>
+
+          {%- when 'paragraph' -%}
+            <div
+              class="newsletter__subheading rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+              {{ block.shopify_attributes }}
+              {% if settings.animations_reveal_on_scroll %} data-cascade style="--animation-order: {{ forloop.index }};"{% endif %}
+            >
+              {{ block.settings.text }}
+            </div>
+
+          {%- when 'email_form' -%}
+            <div {{ block.shopify_attributes }}>
+              {% form 'customer', id: 'NewsletterForm-{{ section.id }}', class: 'newsletter-form lnl-form' %}
+                <input type="hidden" name="contact[tags]" value="newsletter">
+
+                <div class="lnl-field{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                  {% if settings.animations_reveal_on_scroll %} data-cascade style="--animation-order: {{ forloop.index }};"{% endif %}>
+                  <label class="visually-hidden" for="NewsletterEmail-{{ section.id }}">{{ 'newsletter.label' | t }}</label>
+                  <input
+                    id="NewsletterEmail-{{ section.id }}"
+                    type="email"
+                    name="contact[email]"
+                    class="lnl-input"
+                    value="{{ form.email }}"
+                    aria-required="true"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    autocomplete="email"
+                    {% if form.errors %} autofocus aria-invalid="true" aria-describedby="Newsletter-error--{{ section.id }}"{% elsif form.posted_successfully? %} aria-describedby="Newsletter-success--{{ section.id }}"{% endif %}
+                    placeholder="{{ section.settings.placeholder | default: 'Введіть ваш e-mail' }}"
+                    required
+                  >
+                </div>
+
+                <button
+                  type="submit"
+                  class="lnl-button"
+                  name="commit"
+                  id="Subscribe-{{ section.id }}"
+                  aria-label="{{ section.settings.button_label | default: 'Підписатись' }}"
+                >
+                  {{ section.settings.button_label | default: 'ПІДПИСАТИСЬ' }}
+                </button>
+
+                {%- if form.errors -%}
+                  <small class="newsletter-form__message form__message" id="Newsletter-error--{{ section.id }}">
+                    <span class="svg-wrapper">{{- 'icon-error.svg' | inline_asset_content -}}</span>
+                    {{- form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email -}}
+                  </small>
+                {%- endif -%}
+
+                {%- if form.posted_successfully? -%}
+                  <h3 class="newsletter-form__message newsletter-form__message--success form__message"
+                      id="Newsletter-success--{{ section.id }}" tabindex="-1" autofocus>
+                    <span class="svg-wrapper">{{- 'icon-success.svg' | inline_asset_content -}}</span>
+                    {{- 'newsletter.success' | t }}
+                  </h3>
+                {%- endif -%}
+              {% endform %}
+            </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Newsletter (Mobile hero)",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": { "groups": ["header"] },
+  "settings": [
+    { "type": "paragraph", "content": "Мобільний варіант з фоном. Автоматично прихований на десктопі." },
+    { "type": "image_picker", "id": "bg_image", "label": "Фонове зображення (mobile)" },
+    { "type": "video", "id": "bg_video", "label": "Фонове відео (локальне)" },
+    { "type": "video_url", "id": "bg_video_url", "label": "Фонове відео (YouTube/Vimeo)", "accept": ["youtube","vimeo"] },
+    { "type": "color", "id": "overlay_color", "label": "Колір оверлею", "default": "#FFFFFF" },
+    { "type": "range", "id": "overlay_opacity", "min": 0, "max": 100, "step": 5, "unit": "%", "label": "Прозорість оверлею", "default": 60 },
+    { "type": "text", "id": "placeholder", "label": "Плейсхолдер інпуту", "default": "Введіть ваш e-mail" },
+    { "type": "text", "id": "button_label", "label": "Текст кнопки", "default": "ПІДПИСАТИСЬ" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Кольорова схема", "default": "scheme-1" },
+    { "type": "checkbox", "id": "full_width", "default": true, "label": "На всю ширину" },
+    { "type": "header", "content": "Відступи" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Верхній відступ", "default": 36 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Нижній відступ", "default": 36 }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Заголовок",
+      "limit": 1,
+      "settings": [
+        { "type": "inline_richtext", "id": "heading", "default": "Доєднуйтесь до ком'юніті Lauron", "label": "Текст" },
+        { "type": "select", "id": "heading_size", "options": [
+          { "value": "h2", "label": "H2" },
+          { "value": "h1", "label": "H1" },
+          { "value": "h0", "label": "H0" }
+        ], "default": "h1", "label": "Розмір" }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "name": "Підзаголовок",
+      "limit": 1,
+      "settings": [
+        { "type": "richtext", "id": "text", "default": "<p>та отримуйте поради по здоров'ю та красі</p>", "label": "Текст" }
+      ]
+    },
+    { "type": "email_form", "name": "Форма", "limit": 1 },
+    { "type": "@app" }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter (Mobile hero)",
+      "blocks": [
+        { "type": "heading" },
+        { "type": "paragraph" },
+        { "type": "email_form" }
+      ]
+    }
+  ]
+}
+{% endschema %}
