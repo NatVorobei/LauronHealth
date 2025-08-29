@@ -169,7 +169,7 @@
                         {{ 'image' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
                       {%- endif -%}
                     </div>
-                  {%- when 'contact_newsletter' -%}
+                  {% comment %} {%- when 'contact_newsletter' -%}
                     <div class="custom-footer-contact-block">
                       {%- if block.settings.newsletter_heading != blank -%}
                         <h2 class="footer-block__heading inline-richtext">{{ block.settings.newsletter_heading }}</h2>
@@ -208,6 +208,78 @@
                           {%- if block.settings.email != blank -%}
                             <p><a href="mailto:{{ block.settings.email }}">{{ block.settings.email }}</a></p>
                           {%- endif -%}
+                        </div>
+                  
+                        {%- if block.settings.show_social and has_social_icons -%}
+                          <div class="custom-footer-social">
+                            {%- render 'social-icons', class: 'footer__list-social' -%}
+                          </div>
+                        {%- endif -%}
+                      </div>
+                    </div>{% endcomment %}
+                  {%- when 'contact_newsletter' -%}
+                    {%- assign fid = 'ContactFooter-' | append: section.id | append: '-' | append: block.id -%}
+                  
+                    <div class="custom-footer-contact-block" {{ block.shopify_attributes }}>
+                      {%- if block.settings.newsletter_heading != blank -%}
+                        <h2 class="footer-block__heading inline-richtext">{{ block.settings.newsletter_heading }}</h2>
+                      {%- endif -%}
+                  
+                      <div class="custom-footer-newsletter">
+                        {%- form 'customer', id: fid, class: 'custom-footer-form' -%}
+                          <input type="hidden" name="contact[tags]" value="newsletter">
+                  
+                          <div class="custom-footer-input-group">
+                            <input
+                              id="{{ fid }}-Email"
+                              type="email"
+                              name="contact[email]"
+                              class="custom-footer-input"
+                              value="{{ form.email }}"
+                              aria-required="true"
+                              autocorrect="off"
+                              autocapitalize="off"
+                              autocomplete="email"
+                              {% if form.errors %}
+                                autofocus aria-invalid="true" aria-describedby="{{ fid }}-Error"
+                              {% elsif form.posted_successfully? %}
+                                aria-describedby="{{ fid }}-Success"
+                              {% endif %}
+                              placeholder="{{ block.settings.email_placeholder }}"
+                              required
+                            >
+                  
+                            <button
+                              type="submit"
+                              class="custom-footer-button"
+                              name="commit"
+                              id="{{ fid }}-Submit"
+                              aria-label="{{ 'newsletter.button_label' | t }}"
+                            >
+                              {{ block.settings.button_label }}
+                            </button>
+                          </div>
+                  
+                          {%- if form.errors -%}
+                            <small class="form__message" id="{{ fid }}-Error">
+                              <span class="svg-wrapper">{{- 'icon-error.svg' | inline_asset_content -}}</span>
+                              {{- form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email -}}
+                            </small>
+                          {%- endif -%}
+                  
+                          {%- if form.posted_successfully? -%}
+                            <h3 class="form__message form__message--success" id="{{ fid }}-Success" tabindex="-1" autofocus>
+                              <span class="svg-wrapper">{{- 'icon-success.svg' | inline_asset_content -}}</span>
+                              {{- 'newsletter.success' | t -}}
+                            </h3>
+                          {%- endif -%}
+                        {%- endform -%}
+                      </div>
+                  
+                      <div class="custom-footer-bottom">
+                        <div class="custom-footer-contact">
+                          {%- if block.settings.phone != blank -%}<p>{{ block.settings.phone }}</p>{%- endif -%}
+                          {%- if block.settings.email != blank -%}<p><a href="mailto:{{ block.settings.email }}">{{ block.settings.email }}</a></p>{%- endif -%}
                         </div>
                   
                         {%- if block.settings.show_social and has_social_icons -%}
