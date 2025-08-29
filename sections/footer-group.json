@@ -11,6 +11,45 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
+    "lauron_footer_newsletter_tehgNH": {
+      "type": "lauron-footer-newsletter",
+      "blocks": {
+        "heading_hELAXJ": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Доєднуйтесь до ком'юніті Lauron</strong>",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph_VcXyMh": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>та отримуйте поради по здоров'ю та красі</p>"
+          }
+        },
+        "email_form_P7JBHn": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading_hELAXJ",
+        "paragraph_VcXyMh",
+        "email_form_P7JBHn"
+      ],
+      "name": "Newsletter (Mobile hero)",
+      "settings": {
+        "bg_video": "shopify://files/videos/form-bg.mp4",
+        "overlay_color": "#FFFFFF",
+        "overlay_opacity": 0,
+        "placeholder": "Введіть ваш e-mail",
+        "button_label": "ПІДПИСАТИСЬ",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "footer": {
       "type": "footer",
       "blocks": {
@@ -84,6 +123,7 @@
     }
   },
   "order": [
+    "lauron_footer_newsletter_tehgNH",
     "footer"
   ]
 }
