@@ -17,8 +17,8 @@
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "Заощаджуйте більше при замовленнях. Зв'яжіться з нами!",
-            "icon_image": "shopify://shop_images/announcement-icon.svg",
+            "text": "Безкоштовна доставка на всі замовлення від 300 zł",
+            "icon_image": "shopify://shop_images/12_2807c2f2-61c3-498d-8e13-703e46a13afb.svg",
             "link": ""
           }
         }
@@ -42,7 +42,6 @@
         "custom_dropdown_iJwnBp": {
           "type": "custom_dropdown",
           "settings": {
-            "burger_menu_text": "Позитивний відгук",
             "menu_handle": "",
             "menu_title": "Купити зараз",
             "image_1": "shopify://shop_images/freeze-age-product-block_1.png",
