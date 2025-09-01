@@ -325,7 +325,7 @@
         "benefit_EdFgab": {
           "type": "benefit",
           "settings": {
-            "image": "shopify://shop_images/grid-image-4.webp",
+            "image": "shopify://shop_images/Image3.png",
             "title": "Захист мозку",
             "short_text": "Сприяє когнітивній функції, психоемоційній рівновазі та адаптації до навантажень",
             "full_text": "L-Theanine, N-acetyl-L-cysteine, L-glycine, Vitamin C (Ascorbic Acid), Zinc (as Zinc Gluconate), Vitamin D3, Copper Gluconate, Biotin"
@@ -520,7 +520,8 @@
         "background_image": "shopify://shop_images/email.png",
         "discount": "-10%",
         "heading": "на перше замовлення",
-        "subheading": "Підпишіться на розсилку, щоб першими дізнаватись про новинки, спеціальні пропозиції та корисні матеріали — і отримайте знижку 10% на першу покупку."
+        "subheading": "Підпишіться на розсилку, щоб першими дізнаватись про новинки, спеціальні пропозиції та корисні матеріали — і отримайте знижку 10% на першу покупку.",
+        "button": "Підписатися"
       }
     },
     "related-products": {
