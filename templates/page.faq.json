@@ -417,13 +417,13 @@
         "additional_text_qDa8bN": {
           "type": "additional_text",
           "settings": {
-            "text": "Subscribe to be the first to know about promotions, new products — and get a discount on your first purchase right now."
+            "text": "Це просто текст, котрий ще не був написаний та чекає свого часу, щоб заповнити цей блок та радувати користувачів інформацією"
           }
         },
         "button_jMWAmQ": {
           "type": "button",
           "settings": {
-            "label": "DISCOVER MORE",
+            "label": "ДІЗНАТИСЯ БІЛЬШЕ",
             "link": "shopify://pages/дослідження"
           }
         }
@@ -437,8 +437,8 @@
       ],
       "name": "Exclusive Benefits Section",
       "settings": {
-        "image": "shopify://shop_images/faqs-1.webp",
-        "heading": "Lauron is an innovative product  that has no equal on the market",
+        "image": "shopify://shop_images/autodelivery-benefits.webp",
+        "heading": "Дізнайтеся більше про технології Lauron",
         "reverse_layout": true,
         "padding_top_desktop": 80,
         "padding_bottom_desktop": 120,
