@@ -17,8 +17,7 @@
         "heading_hELAXJ": {
           "type": "heading",
           "settings": {
-            "heading": "<strong>Доєднуйтесь до ком'юніті Lauron</strong>",
-            "heading_size": "h1"
+            "heading": "<strong>Доєднуйтесь до ком'юніті Lauron</strong>"
           }
         },
         "paragraph_VcXyMh": {
@@ -39,8 +38,9 @@
       ],
       "name": "Newsletter (Mobile hero)",
       "settings": {
-        "bg_video": "shopify://files/videos/form-bg.mp4",
-        "overlay_color": "#FFFFFF",
+        "bg_video": "shopify://files/videos/GettyImages-683539204_1.mp4",
+        "bg_video_url": "",
+        "overlay_color": "#ffffff",
         "overlay_opacity": 0,
         "placeholder": "Введіть ваш e-mail",
         "button_label": "ПІДПИСАТИСЬ",
