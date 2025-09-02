@@ -70,7 +70,7 @@
       "settings": {
         "image": "shopify://shop_images/Science_hero_screen.webp",
         "image_overlay_opacity": 0,
-        "image_height": "large",
+        "image_height": "small",
         "image_behavior": "none",
         "desktop_content_position": "middle-left",
         "desktop_content_alignment": "left",
