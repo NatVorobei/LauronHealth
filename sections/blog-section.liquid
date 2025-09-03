@@ -1,409 +1,457 @@
-<div class="kb-wrap">
-  <div class="kb-nav">
-    {% if section.settings.tabs_title != blank %}
-      <h2 class="kb-nav__title">{{ section.settings.tabs_title }}</h2>
-    {% endif %}
+{% assign per_page = section.settings.per_page | default: 4 %}
+{% assign active_tag = current_tags | first %}
 
-    {% assign tabs = section.blocks | where: 'type', 'tab' %}
-    <ul class="kb-nav__list is-desktop">
-      {% for tab in tabs %}
-        <li class="kb-nav__item">
-          <a class="kb-nav__link" href="#kb-tab-{{ tab.settings.tab_id }}">{{ tab.settings.tab_title }}</a>
+{% style %}
+
+.section-{{ section.id }}-padding {
+  padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+  padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+}
+
+@media screen and (min-width: 750px) {
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+}
+
+.blog-wrap {
+  max-width: 1160px;
+  margin: 0 auto;
+  display: flex;
+  gap: 40px;
+  justify-content: space-between;
+}
+
+.blog-nav {
+  position: sticky;
+  top: 60px;
+  align-self: flex-start;
+}
+
+.blog-title,
+.blog-nav__title {
+  font-size: 28px;
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--color-main-text);
+  font-family: var(--font-heading-main);
+  margin-bottom: 24px;
+}
+
+.blog-nav__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.blog-nav__item {
+  min-width: 300px;
+  padding: 16px 0;
+  border-bottom: 1px solid #D7D7D7;
+}
+
+.blog-nav__item:first-child {
+  border-top: 1px solid #D7D7D7;
+}
+
+.blog-nav__link {
+  text-decoration: none;
+  background: none;
+  border: 0;
+  color: #87878D;
+  font-size: 16px;
+  line-height: 16px;
+  font-family: var(--font-heading-main);
+  transition: color 0.2s ease, font-weight 0.2s ease;
+}
+
+.blog-nav__link:hover,
+.blog-nav__link.is-active {
+  color: var(--color-main-text);
+  font-weight: 600;
+}
+
+.is-desktop {
+  display: block;
+}
+
+.is-mobile {
+  display: none;
+}
+
+.blog-select-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.blog-select {
+  width: 100%;
+  padding: 12px 40px 12px 12px;
+  font-size: 14px;
+  line-height: 16px;
+  font-family: var(--font-heading-main);
+  border: 1px solid #D7D7D7;
+  border-radius: 16px;
+  background: #fff;
+  color: #87878D;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.blog-select__icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.blog-content {
+  max-width: 736px;
+  width: 100%;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+}
+
+.blog-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  text-decoration: none;
+  background: #fff;
+  border: 1px solid #EDEDED;
+  border-radius: 16px;
+  padding: 14px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.blog-card__media {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.blog-card__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.blog-card__meta {
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--color-main-text);
+  opacity: 0.7;
+  margin: 0 0 6px 0;
+}
+
+.blog-card__title {
+  font-size: 18px;
+  line-height: 1.3;
+  font-weight: 700;
+  color: var(--color-main-text);
+  margin: 2px 0 6px 0;
+}
+
+.blog-card__text {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-main-text);
+  opacity: 0.85;
+  margin: 0;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.pagination a,
+.pagination span {
+  min-width: 34px;
+  height: 34px;
+  padding: 0 10px;
+  border-radius: 10px;
+  border: 1px solid #D7D7D7;
+  background: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  line-height: 32px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.pagination .current {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+
+@media screen and (max-width: 749px) {
+  .blog-wrap {
+    padding: 0 10px;
+    flex-direction: column;
+  }
+
+  .blog-nav {
+    position: static;
+    top: auto;
+  }
+
+  .blog-title,
+  .blog-nav__title {
+    font-size: 20px;
+    line-height: 16px;
+  }
+
+  .is-desktop {
+    display: none;
+  }
+
+  .is-mobile {
+    display: block;
+    margin-bottom: 24px;
+  }
+}
+{% endstyle %}
+
+<div class="section-{{ section.id }}-padding">
+  <div class="blog-wrap">
+    <aside class="blog-nav">
+      <h1 class="blog-title">
+        {{ blog.title | escape }}
+      </h1>
+
+      {%- if section.settings.sidebar_title != blank -%}
+        <h2 class="blog-nav__title">
+          {{ section.settings.sidebar_title }}
+        </h2>
+      {%- endif -%}
+
+      <ul class="blog-nav__list is-desktop">
+        <li class="blog-nav__item">
+          <a
+            class="blog-nav__link {% if active_tag == blank %}is-active{% endif %}"
+            href="{{ blog.url }}"
+          >
+            {{ section.settings.all_label | default: 'All' }}
+          </a>
         </li>
-      {% endfor %}
-    </ul>
 
-    <div class="kb-nav__select is-mobile">
-      <select class="kb-select" onchange="if(this.value) location.href=this.value">
-        {% for tab in tabs %}
-          <option value="#kb-tab-{{ tab.settings.tab_id }}">{{ tab.settings.tab_title }}</option>
-        {% endfor %}
-      </select>
-      <span class="kb-select__icon">{{ 'faqs-caret.svg' | inline_asset_content }}</span>
-    </div>
-  </div>
-
-  <div class="kb-content">
-    {% for tab in tabs %}
-      {% assign cards = section.blocks
-        | where: 'type', 'post_card'
-        | where: 'settings.parent_tab', tab.settings.tab_id
-      %}
-      <section id="kb-tab-{{ tab.settings.tab_id }}" class="kb-tab" data-tab="{{ tab.settings.tab_id }}">
-        {% if tab.settings.tab_title != blank %}
-          <h3 class="kb-content__title">{{ tab.settings.tab_title }}</h3>
-        {% endif %}
-
-        <div class="kb-grid" data-per-page="4">
-          {% for card in cards %}
+        {%- for tag in blog.all_tags -%}
+          <li class="blog-nav__item">
             <a
-              class="kb-card"
-              href="{{ card.settings.article_url | default: '#' }}"
-              aria-label="{{ card.settings.title | escape }}"
+              class="blog-nav__link {% if active_tag == tag %}is-active{% endif %}"
+              href="{{ blog.url }}/tagged/{{ tag | handle }}"
             >
-              {% if card.settings.image != blank %}
-                <div class="kb-card__media">
+              {{ tag }}
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+
+      <div class="blog-select-wrap is-mobile">
+        <select
+          class="blog-select"
+          onchange="if(this.value) window.location.href=this.value"
+          aria-label="Select blog category"
+        >
+          <option
+            value="{{ blog.url }}"
+            {% if active_tag == blank %}selected{% endif %}
+          >
+            {{ section.settings.all_label | default: 'All' }}
+          </option>
+
+          {%- for tag in blog.all_tags -%}
+            <option
+              value="{{ blog.url }}/tagged/{{ tag | handle }}"
+              {% if active_tag == tag %}selected{% endif %}
+            >
+              {{ tag }}
+            </option>
+          {%- endfor -%}
+        </select>
+
+        <span class="blog-select__icon" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" role="img" focusable="false">
+            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </div>
+    </aside>
+
+    <main class="blog-content" role="main">
+      {% paginate blog.articles by per_page %}
+        <div class="blog-grid">
+          {%- for article in blog.articles -%}
+            <a
+              class="blog-card"
+              href="{{ article.url }}"
+              aria-label="{{ article.title | escape }}"
+            >
+              {%- if section.settings.show_image and article.image -%}
+                <div class="blog-card__media">
                   <img
-                    src="{{ card.settings.image | img_url: '800x' }}"
-                    alt="{{ card.settings.title | escape }}"
+                    src="{{ article.image | img_url: '800x' }}"
+                    alt="{{ article.image.alt | default: article.title | escape }}"
                     loading="lazy"
                   >
                 </div>
-              {% endif %}
+              {%- endif -%}
 
-              <div class="kb-card__body">
-                {% if card.settings.title != blank %}
-                  <h4 class="kb-card__title">{{ card.settings.title }}</h4>
-                {% endif %}
-                {% if card.settings.text != blank %}
-                  <p class="kb-card__text">{{ card.settings.text }}</p>
-                {% endif %}
-              </div>
+              {%- if section.settings.show_date or section.settings.show_author -%}
+                <p class="blog-card__meta">
+                  {%- if section.settings.show_date -%}
+                    {{ article.published_at | date: format: 'abbreviated_date' }}
+                  {%- endif -%}
+                  {%- if section.settings.show_author and article.author != blank -%}
+                    {%- if section.settings.show_date -%} • {%- endif -%}
+                    {{ article.author }}
+                  {%- endif -%}
+                </p>
+              {%- endif -%}
+
+              <h3 class="blog-card__title">
+                {{ article.title }}
+              </h3>
+
+              {%- if section.settings.show_excerpt -%}
+                <p class="blog-card__text">
+                  {{ article.excerpt_or_content | strip_html | truncate: 140 }}
+                </p>
+              {%- endif -%}
             </a>
-          {% endfor %}
+          {%- endfor -%}
         </div>
 
-        <nav class="kb-pagination" aria-label="Pagination" hidden></nav>
-      </section>
-    {% endfor %}
+        {%- if paginate.pages > 1 -%}
+          <nav class="pagination" role="navigation" aria-label="Pagination">
+            {%- if paginate.previous -%}
+              <a href="{{ paginate.previous.url }}" aria-label="Previous page">‹</a>
+            {%- endif -%}
+
+            {%- for part in paginate.parts -%}
+              {%- if part.is_link -%}
+                <a href="{{ part.url }}">{{ part.title }}</a>
+              {%- else -%}
+                <span class="{% if part.title == paginate.current_page %}current{% endif %}">
+                  {{ part.title }}
+                </span>
+              {%- endif -%}
+            {%- endfor -%}
+
+            {%- if paginate.next -%}
+              <a href="{{ paginate.next.url }}" aria-label="Next page">›</a>
+            {%- endif -%}
+          </nav>
+        {%- endif -%}
+      {% endpaginate %}
+    </main>
   </div>
 </div>
 
-<script>
-  (function () {
-    document.querySelectorAll('.kb-nav__link').forEach((link) => {
-      link.addEventListener('click', function (e) {
-        const target = document.querySelector(this.getAttribute('href'));
-        if (!target) return;
-        e.preventDefault();
-        const offset = 100;
-        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-        window.scrollTo({ top, behavior: 'smooth' });
-        history.replaceState(null, '', this.getAttribute('href'));
-      });
-    });
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const id = entry.target.getAttribute('id');
-          if (entry.isIntersecting) {
-            document
-              .querySelectorAll('.kb-nav__link')
-              .forEach((a) => a.classList.toggle('is-active', a.getAttribute('href') === '#' + id));
-            const select = document.querySelector('.kb-select');
-            if (select) select.value = '#' + id;
-          }
-        });
-      },
-      { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
-    );
-
-    document.querySelectorAll('.kb-tab').forEach((sec) => observer.observe(sec));
-
-    function buildPagination(container, perPage) {
-      const cards = Array.from(container.querySelectorAll('.kb-card'));
-      const pagination = container.parentElement.querySelector('.kb-pagination');
-      perPage = Number(container.dataset.perPage || perPage || 4);
-      const pages = Math.ceil(cards.length / perPage);
-
-      function renderPage(page) {
-        const start = (page - 1) * perPage;
-        const end = start + perPage;
-        cards.forEach((el, idx) => {
-          el.style.display = idx >= start && idx < end ? '' : 'none';
-        });
-        if (pages <= 1) {
-          pagination.hidden = true;
-          pagination.innerHTML = '';
-          return;
-        }
-        pagination.hidden = false;
-        let html = '';
-        html += `<button class="kb-page kb-page--prev" data-page="${Math.max(1, page - 1)}" aria-label="Prev" ${
-          page === 1 ? 'disabled' : ''
-        }>&lsaquo;</button>`;
-        for (let i = 1; i <= pages; i++) {
-          html += `<button class="kb-page ${i === page ? 'is-current' : ''}" data-page="${i}">${i}</button>`;
-        }
-        html += `<button class="kb-page kb-page--next" data-page="${Math.min(pages, page + 1)}" aria-label="Next" ${
-          page === pages ? 'disabled' : ''
-        }>&rsaquo;</button>`;
-        pagination.innerHTML = html;
-      }
-
-      renderPage(1);
-
-      pagination.addEventListener('click', (e) => {
-        const btn = e.target.closest('.kb-page');
-        if (!btn) return;
-        const targetPage = Number(btn.dataset.page);
-        renderPage(targetPage);
-
-        const section = container.closest('.kb-tab');
-        const offset = 100;
-        const top = section.getBoundingClientRect().top + window.pageYOffset - offset;
-        window.scrollTo({ top, behavior: 'smooth' });
-      });
-    }
-
-    document.querySelectorAll('.kb-grid').forEach((grid) => buildPagination(grid, 4));
-
-    const initialHash = location.hash;
-    if (initialHash && document.querySelector(initialHash)) {
-      const offset = 100;
-      const top = document.querySelector(initialHash).getBoundingClientRect().top + window.pageYOffset - offset;
-      setTimeout(() => window.scrollTo({ top, behavior: 'smooth' }), 0);
-      const select = document.querySelector('.kb-select');
-      if (select) select.value = initialHash;
-    }
-  })();
-</script>
-
-<style>
-  .kb-wrap {
-    max-width: 1160px;
-    margin: 0 auto;
-    display: flex;
-    gap: 40px;
-    justify-content: space-between;
-  }
-  .kb-nav {
-    position: sticky;
-    top: 60px;
-    align-self: flex-start;
-  }
-  .kb-content {
-    max-width: 736px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 60px;
-  }
-  .kb-nav__title,
-  .kb-content__title {
-    font-size: 28px;
-    line-height: 1.2;
-    font-weight: 700;
-    color: var(--color-main-text);
-    font-family: var(--font-heading-main);
-    margin-bottom: 24px;
-  }
-  .kb-nav__list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-  .kb-nav__item {
-    min-width: 300px;
-    padding: 16px 0;
-    border-bottom: 1px solid #D7D7D7;
-  }
-  .kb-nav__item:first-child {
-    border-top: 1px solid #D7D7D7;
-  }
-  .kb-nav__link {
-    text-decoration: none;
-    background: none;
-    border: 0;
-    color: #87878D;
-    font-size: 16px;
-    line-height: 16px;
-    font-family: var(--font-heading-main);
-    transition: color .2s ease, font-weight .2s ease;
-  }
-  .kb-nav__link:hover,
-  .kb-nav__link.is-active {
-    color: var(--color-main-text);
-    font-weight: 600;
-  }
-  .is-desktop { display: block; }
-  .is-mobile  { display: none; }
-  .kb-nav__select { position: relative; }
-  .kb-select {
-    width: 100%;
-    padding: 12px 40px 12px 12px;
-    font-size: 14px;
-    line-height: 16px;
-    font-family: var(--font-heading-main);
-    border: 1px solid #D7D7D7;
-    border-radius: 16px;
-    background: #fff;
-    color: #87878D;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-  }
-  .kb-select__icon {
-    position: absolute;
-    right: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-    display: inline-flex;
-    align-items: center;
-  }
-
-  /* Cards */
-  .kb-grid {
-    display: grid;
-    gap: 28px;
-  }
-  .kb-card {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 14px;
-    text-decoration: none;
-    background: #fff;
-    border: 1px solid #EDEDED;
-    border-radius: 16px;
-    padding: 14px;
-    transition: transform .2s ease, box-shadow .2s ease;
-  }
-  .kb-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0,0,0,.06);
-  }
-  .kb-card__media {
-    width: 100%;
-    overflow: hidden;
-    border-radius: 12px;
-  }
-  .kb-card__media img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-  }
-  .kb-card__title {
-    font-size: 18px;
-    line-height: 1.3;
-    font-weight: 700;
-    color: var(--color-main-text);
-    margin: 2px 0 6px;
-  }
-  .kb-card__text {
-    font-size: 14px;
-    line-height: 20px;
-    color: var(--color-main-text);
-    opacity: .85;
-    margin: 0;
-  }
-  .kb-pagination {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    justify-content: center;
-    margin-top: 8px;
-    user-select: none;
-  }
-  .kb-page {
-    min-width: 34px;
-    height: 34px;
-    padding: 0 10px;
-    border-radius: 10px;
-    border: 1px solid #D7D7D7;
-    background: #fff;
-    font-size: 14px;
-    line-height: 32px;
-    cursor: pointer;
-  }
-  .kb-page.is-current {
-    background: #111;
-    color: #fff;
-    border-color: #111;
-  }
-  .kb-page[disabled] {
-    opacity: .5;
-    cursor: not-allowed;
-  }
-
-  @media screen and (max-width: 749px) {
-    .kb-wrap {
-      padding: 0 10px;
-      flex-direction: column;
-    }
-    .kb-nav { position: static; top: auto; }
-    .kb-nav__title,
-    .kb-content__title { font-size: 20px; line-height: 16px; }
-    .is-desktop { display: none; }
-    .is-mobile  { display: block; margin-bottom: 24px; }
-  }
-</style>
-
 {% schema %}
 {
-  "name": "KB Tabs with Cards",
+  "name": "Blog cards with sidebar",
+  "tag": "section",
+  "class": "section",
   "settings": [
     {
       "type": "text",
-      "id": "tabs_title",
+      "id": "sidebar_title",
       "label": "Sidebar title",
       "default": "Category"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "tab",
-      "name": "Tab (category)",
-      "settings": [
-        {
-          "type": "text",
-          "id": "tab_id",
-          "label": "Tab ID (slug, unique)",
-          "default": "health"
-        },
-        {
-          "type": "text",
-          "id": "tab_title",
-          "label": "Tab title",
-          "default": "Health"
-        }
-      ]
     },
     {
-      "type": "post_card",
-      "name": "Post card",
-      "settings": [
-        {
-          "type": "text",
-          "id": "parent_tab",
-          "label": "Parent Tab ID (match Tab ID)",
-          "default": "health"
-        },
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Title",
-          "default": "Medical study of the effect of Lauron"
-        },
-        {
-          "type": "textarea",
-          "id": "text",
-          "label": "Short text",
-          "default": "A short preview of the article text goes here..."
-        },
-        {
-          "type": "url",
-          "id": "article_url",
-          "label": "Article link"
-        }
-      ]
+      "type": "text",
+      "id": "all_label",
+      "label": "Label for 'All'",
+      "default": "All"
+    },
+    {
+      "type": "range",
+      "id": "per_page",
+      "label": "Posts per page",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "label": "Show featured image",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_excerpt",
+      "label": "Show excerpt",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "label": "Show publish date",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_author",
+      "label": "Show author",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 36
     }
   ],
   "presets": [
-    {
-      "name": "KB Tabs with Cards",
-      "category": "Custom"
-    }
+    { "name": "Blog cards with sidebar" }
   ]
 }
 {% endschema %}
