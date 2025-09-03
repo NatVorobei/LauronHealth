@@ -42,6 +42,7 @@
         "text_aYedaf"
       ],
       "custom_css": [
+        ".banner {margin-bottom: 60px;}",
         ".banner__heading {font-family: var(--font-heading-main); font-weight: 700; font-size: 40px; line-height: 44px; max-width: 490px;}",
         ".banner__text {font-size: 20px; line-height: 24px; font-weight: 300; color: #fff; max-width: 570px;}",
         ".banner__box {display: flex; flex-direction: column;}",
