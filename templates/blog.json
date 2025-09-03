@@ -12,6 +12,7 @@
     "main": {
       "type": "blog-section",
       "settings": {
+        "blog_source": "blog",
         "sidebar_title": "Category",
         "all_label": "All",
         "per_page": 4,
