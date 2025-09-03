@@ -12,7 +12,11 @@
     "main": {
       "type": "blog-section",
       "settings": {
+        "sidebar_title": "Category",
+        "all_label": "All",
+        "per_page": 4,
         "show_image": true,
+        "show_excerpt": true,
         "show_date": true,
         "show_author": false,
         "padding_top": 36,
