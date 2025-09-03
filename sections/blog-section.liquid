@@ -350,17 +350,17 @@
       "type": "tab",
       "name": "Tab (category)",
       "settings": [
-        { 
-            "type": "text", 
-            "id": "tab_id", 
-            "label": "Tab ID (slug, unique)", 
-            "default": "health" 
+        {
+          "type": "text",
+          "id": "tab_id",
+          "label": "Tab ID (slug, unique)",
+          "default": "health"
         },
-        { 
-            "type": "text", 
-            "id": "tab_title", 
-            "label": "Tab title", 
-            "default": "Health" 
+        {
+          "type": "text",
+          "id": "tab_title",
+          "label": "Tab title",
+          "default": "Health"
         }
       ]
     },
@@ -368,22 +368,22 @@
       "type": "post_card",
       "name": "Post card",
       "settings": [
-        { 
-            "type": "text", 
-            "id": "parent_tab", 
-            "label": "Parent Tab ID (match Tab ID)", 
-            "default": "health" 
+        {
+          "type": "text",
+          "id": "parent_tab",
+          "label": "Parent Tab ID (match Tab ID)",
+          "default": "health"
         },
-        { 
-            "type": "image_picker", 
-            "id": "image", 
-            "label": "Image" 
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
         },
-        { 
-            "type": "text", 
-            "id": "title", 
-            "label": "Title", 
-            "default": "Medical study of the effect of Lauron" 
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Medical study of the effect of Lauron"
         },
         {
           "type": "textarea",
@@ -391,14 +391,19 @@
           "label": "Short text",
           "default": "A short preview of the article text goes here..."
         },
-        { 
-            "type": "url", 
-            "id": "article_url", 
-            "label": "Article link" 
+        {
+          "type": "url",
+          "id": "article_url",
+          "label": "Article link"
         }
       ]
     }
   ],
-  "presets": [{ "name": "KB Tabs with Cards" }]
+  "presets": [
+    {
+      "name": "KB Tabs with Cards",
+      "category": "Custom"
+    }
+  ]
 }
 {% endschema %}
