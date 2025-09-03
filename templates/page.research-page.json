@@ -17,6 +17,50 @@
         "padding_bottom": 100
       }
     },
+    "image_banner_AcPMD8": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_xeJVPR": {
+          "type": "heading",
+          "settings": {
+            "heading": "Дослідження",
+            "heading_size": "h1"
+          }
+        },
+        "text_aYedaf": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_xeJVPR",
+        "text_aYedaf"
+      ],
+      "custom_css": [
+        ".banner__heading {font-family: var(--font-heading-main); font-weight: 700; font-size: 40px; line-height: 44px; max-width: 490px;}",
+        ".banner__text {font-size: 20px; line-height: 24px; font-weight: 300; color: #fff; max-width: 570px;}",
+        ".banner__box {display: flex; flex-direction: column;}",
+        "@media (max-width: 749px) {.banner__heading {font-size: 24px; line-height: 30px; } .banner__text {font-size: 14px; line-height: 18px; } .banner__box {padding: 40px 14px; }}"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/ingredients-banner.webp",
+        "image_overlay_opacity": 0,
+        "image_height": "small",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": true,
+        "color_scheme": "scheme-ab26d84e-25c7-4fc1-a950-fa0115015fc4",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
     "researh_block_6Rkn3N": {
       "type": "researh-block",
       "custom_css": [
@@ -123,6 +167,7 @@
   },
   "order": [
     "main",
+    "image_banner_AcPMD8",
     "researh_block_6Rkn3N",
     "researh_block_3cD7Ne",
     "researh_block_eCULcr",
