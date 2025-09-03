@@ -160,7 +160,7 @@
       "settings": {
         "heading": "",
         "scope": "ingredients",
-        "tags_select_mode": "multi",
+        "tags_select_mode": "single",
         "mobile_products_title": "Products",
         "mobile_tags_title": "All ingredients",
         "padding_top_desktop": 40,
