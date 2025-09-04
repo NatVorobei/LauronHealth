@@ -14,11 +14,10 @@
       "settings": {
         "blog_source": "blog",
         "sidebar_title": "Категорія",
-        "all_label": "Всі",
         "per_page": 4,
         "show_image": true,
         "show_excerpt": true,
-        "show_date": true,
+        "show_date": false,
         "show_author": false,
         "padding_top": 36,
         "padding_bottom": 36
