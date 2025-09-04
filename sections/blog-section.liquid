@@ -120,6 +120,7 @@
 .blog-card {
   display: flex;
   flex-direction: column;
+  max-width: 600px;
   gap: 14px;
   text-decoration: none;
   background: #fff;
@@ -133,9 +134,11 @@
 }
 .blog-card__media img {
   display: block;
+  max-width: 600px;
   width: 100%;
-  height: auto;
-  border-radius: 12px;
+  object-fit: cover;
+  height: 338px;
+  border-radius: 20px;
 }
 .blog-card__meta {
   font-size: 12px;
