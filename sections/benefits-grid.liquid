@@ -280,6 +280,22 @@
       line-height: 16px;
     }
 
+    .hidden-on-mobile {
+      display: block;
+    }
+    .hidden-on-desktop {
+      display: none;
+    }
+
+    @media (max-width: 749px) {
+      .hidden-on-mobile {
+        display: none !important;
+      }
+      .hidden-on-desktop {
+        display: block !important;
+      }
+    }
+
     @media (max-width: 749px) {
       .benefits-grid-wrapper,
       .benefits-grid-container,
