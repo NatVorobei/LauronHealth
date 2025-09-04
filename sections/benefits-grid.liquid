@@ -14,7 +14,7 @@
         <div class="benefits-card">
           <div class="card-inner">
             <div class="card-face card-front">
-              <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.title }}" class="card-image" style="object-position: {{ block.settings.image_position }};">
+              <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.title }}" class="card-image" data-mobile-position="{{ block.settings.image_position }}">
               <div class="card-content">
                 <h3 class="card-title">{{ block.settings.title }}</h3>
                 <div class="card-description-container">
