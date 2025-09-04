@@ -13,7 +13,7 @@
       {% for block in section.blocks %}
         <div class="benefits-card">
           <div class="card-inner">
-            <div class="card-face card-front">
+            {% comment %} <div class="card-face card-front">
               <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.title }}" class="card-image" data-mobile-position="{{ block.settings.image_position }}">
               <div class="card-content">
                 <h3 class="card-title">{{ block.settings.title }}</h3>
@@ -24,8 +24,34 @@
                   </button>
                 </div>
               </div>
-            </div>
+            </div> {% endcomment %}
+            <div class="card-face card-front">
+              {% if block.settings.image != blank %}
+                <img 
+                  src="{{ block.settings.image | image_url }}" 
+                  alt="{{ block.settings.title }}" 
+                  class="card-image hidden-on-mobile"
+                >
+              {% endif %}
 
+              {% if block.settings.image_mobile != blank %}
+                <img 
+                  src="{{ block.settings.image_mobile | image_url }}" 
+                  alt="{{ block.settings.title }}" 
+                  class="card-image hidden-on-desktop"
+                >
+              {% endif %}
+
+              <div class="card-content">
+                <h3 class="card-title">{{ block.settings.title }}</h3>
+                <div class="card-description-container">
+                  <p class="card-description">{{ block.settings.short_text }}</p>
+                  <button class="expand-btn">
+                    {{ 'plus-icon.svg' | inline_asset_content }}
+                  </button>
+                </div>
+              </div>
+            </div>
             <div class="card-face card-back">
               <div class="card-back-content">
                 <p>{{ block.settings.full_text }}</p>
