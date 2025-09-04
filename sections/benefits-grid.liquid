@@ -26,19 +26,22 @@
               </div>
             </div> {% endcomment %}
             <div class="card-face card-front">
-              {% if block.settings.image != blank %}
+              {% if block.settings.image_mobile != blank %}
                 <img 
                   src="{{ block.settings.image | image_url }}" 
                   alt="{{ block.settings.title }}" 
                   class="card-image hidden-on-mobile"
                 >
-              {% endif %}
-
-              {% if block.settings.image_mobile != blank %}
                 <img 
                   src="{{ block.settings.image_mobile | image_url }}" 
                   alt="{{ block.settings.title }}" 
                   class="card-image hidden-on-desktop"
+                >
+              {% else %}
+                <img 
+                  src="{{ block.settings.image | image_url }}" 
+                  alt="{{ block.settings.title }}" 
+                  class="card-image"
                 >
               {% endif %}
 
