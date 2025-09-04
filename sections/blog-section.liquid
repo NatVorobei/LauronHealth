@@ -1,26 +1,13 @@
-{% comment %}
-  Section: Blog cards with sidebar (centered title, categories-only sidebar)
-  - На шаблоні блогу (blog.json) використовує вбудований `blog` із URL
-  - На інших сторінках можна обрати блог через settings.blog_source (type: blog)
-  - Пагінація показується ТІЛЬКИ якщо загальна кількість статей > 4 (paginate.items > 4)
-  - Заголовок блогу по центру зверху
-  - У сайдбарі тільки "Категорії" (теги блогу)
-{% endcomment %}
-
 {%- assign blog_obj = nil -%}
 {%- if blog -%}
   {%- assign blog_obj = blog -%}
 {%- elsif section.settings.blog_source != blank -%}
   {%- assign blog_obj = section.settings.blog_source -%}
 {%- endif -%}
-
 {%- assign per_page = section.settings.per_page | default: 4 -%}
 {%- assign active_tag = current_tags | first -%}
 
 {% style %}
-/* ------------------------------
-   Section padding (configurable)
------------------------------- */
 .section-{{ section.id }}-padding {
   padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
   padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
@@ -31,10 +18,6 @@
     padding-bottom: {{ section.settings.padding_bottom }}px;
   }
 }
-
-/* ------------------------------
-   Title (centered)
------------------------------- */
 .blog-title--center {
   text-align: center;
   font-size: 32px;
@@ -44,10 +27,6 @@
   font-family: var(--font-heading-main);
   margin: 0 0 28px 0;
 }
-
-/* ------------------------------
-   Layout
------------------------------- */
 .blog-wrap {
   max-width: 1160px;
   margin: 0 auto;
@@ -55,16 +34,11 @@
   gap: 40px;
   justify-content: space-between;
 }
-
-/* ------------------------------
-   Sidebar (categories only)
------------------------------- */
 .blog-nav {
   position: sticky;
   top: 60px;
   align-self: flex-start;
 }
-
 .blog-nav__title {
   font-size: 24px;
   line-height: 1.2;
@@ -73,7 +47,6 @@
   font-family: var(--font-heading-main);
   margin: 0 0 16px 0;
 }
-
 .blog-nav__list {
   list-style: none;
   padding: 0;
@@ -82,17 +55,14 @@
   flex-wrap: wrap;
   gap: 12px;
 }
-
 .blog-nav__item {
   min-width: 300px;
   padding: 16px 0;
   border-bottom: 1px solid #D7D7D7;
 }
-
 .blog-nav__item:first-child {
   border-top: 1px solid #D7D7D7;
 }
-
 .blog-nav__link {
   text-decoration: none;
   background: none;
@@ -103,23 +73,17 @@
   font-family: var(--font-heading-main);
   transition: color 0.2s ease, font-weight 0.2s ease;
 }
-
 .blog-nav__link:hover,
 .blog-nav__link.is-active {
   color: var(--color-main-text);
   font-weight: 600;
 }
-
-/* Desktop/Mobile toggles */
 .is-desktop { display: block; }
 .is-mobile  { display: none; }
-
-/* Mobile select */
 .blog-select-wrap {
   position: relative;
   width: 100%;
 }
-
 .blog-select {
   width: 100%;
   padding: 12px 40px 12px 12px;
@@ -135,7 +99,6 @@
   -webkit-appearance: none;
   -moz-appearance: none;
 }
-
 .blog-select__icon {
   position: absolute;
   right: 16px;
@@ -145,21 +108,15 @@
   display: inline-flex;
   align-items: center;
 }
-
-/* ------------------------------
-   Content
------------------------------- */
 .blog-content {
   max-width: 736px;
   width: 100%;
 }
-
 .blog-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 28px;
 }
-
 .blog-card {
   display: grid;
   grid-template-columns: 1fr;
@@ -171,25 +128,21 @@
   padding: 14px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
 .blog-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 }
-
 .blog-card__media {
   width: 100%;
   overflow: hidden;
   border-radius: 12px;
 }
-
 .blog-card__media img {
   display: block;
   width: 100%;
   height: auto;
   border-radius: 12px;
 }
-
 .blog-card__meta {
   font-size: 12px;
   line-height: 1.4;
@@ -197,7 +150,6 @@
   opacity: 0.7;
   margin: 0 0 6px 0;
 }
-
 .blog-card__title {
   font-size: 18px;
   line-height: 1.3;
@@ -205,7 +157,6 @@
   color: var(--color-main-text);
   margin: 2px 0 6px 0;
 }
-
 .blog-card__text {
   font-size: 14px;
   line-height: 20px;
@@ -213,10 +164,6 @@
   opacity: 0.85;
   margin: 0;
 }
-
-/* ------------------------------
-   Pagination
------------------------------- */
 .pagination {
   display: flex;
   align-items: center;
@@ -224,7 +171,6 @@
   justify-content: center;
   margin-top: 16px;
 }
-
 .pagination a,
 .pagination span {
   min-width: 34px;
@@ -241,30 +187,22 @@
   text-decoration: none;
   color: inherit;
 }
-
 .pagination .current {
   background: #111;
   color: #fff;
   border-color: #111;
 }
-
-/* ------------------------------
-   Mobile
------------------------------- */
 @media screen and (max-width: 749px) {
   .blog-wrap {
     padding: 0 10px;
     flex-direction: column;
   }
-
   .blog-nav {
     position: static;
     top: auto;
   }
-
   .is-desktop { display: none; }
   .is-mobile  { display: block; margin-bottom: 24px; }
-
   .blog-title--center {
     font-size: 24px;
   }
@@ -272,41 +210,24 @@
 {% endstyle %}
 
 <div class="section-{{ section.id }}-padding">
-  {%- if blog_obj == blank -%}
+  {% if blog_obj == blank %}
     <div class="page-width">
-      <h1 class="blog-title--center">Blog</h1>
-      <p style="opacity:.7; text-align:center;">
-        No blog found. If this section is placed on a non-blog page, please select a <strong>Blog Source</strong> in the section settings.
-      </p>
+      <h1 class="blog-title--center">{{ blog.title | escape }}</h1>
+      <p style="opacity:.7; text-align:center;">No blog found. If this section is placed on a non-blog page, please select a <strong>Blog Source</strong> in the section settings.</p>
     </div>
-  {%- else -%}
-    <!-- Centered blog title -->
+  {% else %}
     <div class="page-width">
-      <h1 class="blog-title--center">
-        {{ blog_obj.title | escape }}
-      </h1>
+      <h1 class="blog-title--center">{{ blog_obj.title | escape }}</h1>
     </div>
 
     <div class="blog-wrap page-width">
-      <!-- Sidebar: categories (tags) only -->
       <aside class="blog-nav" aria-label="Blog categories">
-        <h2 class="blog-nav__title">
-          {{ section.settings.sidebar_title | default: 'Category' }}
-        </h2>
+        <h2 class="blog-nav__title">{{ section.settings.sidebar_title | default: 'Category' }}</h2>
 
-        {%- assign sidebar_active_tag = active_tag -%}
+        {% assign sidebar_active_tag = active_tag %}
 
         <ul class="blog-nav__list is-desktop">
-          <li class="blog-nav__item">
-            <a
-              class="blog-nav__link {% if sidebar_active_tag == blank %}is-active{% endif %}"
-              href="{{ blog_obj.url }}"
-            >
-              {{ section.settings.all_label | default: 'All' }}
-            </a>
-          </li>
-
-          {%- for tag in blog_obj.all_tags -%}
+          {% for tag in blog_obj.all_tags %}
             <li class="blog-nav__item">
               <a
                 class="blog-nav__link {% if sidebar_active_tag == tag %}is-active{% endif %}"
@@ -315,31 +236,23 @@
                 {{ tag }}
               </a>
             </li>
-          {%- endfor -%}
+          {% endfor %}
         </ul>
 
-        <!-- Mobile select -->
         <div class="blog-select-wrap is-mobile">
           <select
             class="blog-select"
             onchange="if(this.value) window.location.href=this.value"
             aria-label="Select blog category"
           >
-            <option
-              value="{{ blog_obj.url }}"
-              {% if sidebar_active_tag == blank %}selected{% endif %}
-            >
-              {{ section.settings.all_label | default: 'All' }}
-            </option>
-
-            {%- for tag in blog_obj.all_tags -%}
+            {% for tag in blog_obj.all_tags %}
               <option
                 value="{{ blog_obj.url }}/tagged/{{ tag | handle }}"
                 {% if sidebar_active_tag == tag %}selected{% endif %}
               >
                 {{ tag }}
               </option>
-            {%- endfor -%}
+            {% endfor %}
           </select>
 
           <span class="blog-select__icon" aria-hidden="true">
@@ -350,17 +263,12 @@
         </div>
       </aside>
 
-      <!-- Content with native pagination -->
       <main class="blog-content" role="main">
         {% paginate blog_obj.articles by per_page %}
           <div class="blog-grid">
-            {%- for article in blog_obj.articles -%}
-              <a
-                class="blog-card"
-                href="{{ article.url }}"
-                aria-label="{{ article.title | escape }}"
-              >
-                {%- if section.settings.show_image and article.image -%}
+            {% for article in blog_obj.articles %}
+              <a class="blog-card" href="{{ article.url }}" aria-label="{{ article.title | escape }}">
+                {% if section.settings.show_image and article.image %}
                   <div class="blog-card__media">
                     <img
                       src="{{ article.image | img_url: '800x' }}"
@@ -368,64 +276,54 @@
                       loading="lazy"
                     >
                   </div>
-                {%- endif -%}
+                {% endif %}
 
-                {%- if section.settings.show_date or section.settings.show_author -%}
+                {% if section.settings.show_date or section.settings.show_author %}
                   <p class="blog-card__meta">
-                    {%- if section.settings.show_date -%}
+                    {% if section.settings.show_date %}
                       {{ article.published_at | date: format: 'abbreviated_date' }}
-                    {%- endif -%}
-                    {%- if section.settings.show_author and article.author != blank -%}
-                      {%- if section.settings.show_date -%} • {%- endif -%}
+                    {% endif %}
+                    {% if section.settings.show_author and article.author != blank %}
+                      {% if section.settings.show_date %} • {% endif %}
                       {{ article.author }}
-                    {%- endif -%}
+                    {% endif %}
                   </p>
-                {%- endif -%}
+                {% endif %}
 
-                <h3 class="blog-card__title">
-                  {{ article.title }}
-                </h3>
+                <h3 class="blog-card__title">{{ article.title }}</h3>
 
-                {%- if section.settings.show_excerpt -%}
+                {% if section.settings.show_excerpt %}
                   <p class="blog-card__text">
                     {{ article.excerpt_or_content | strip_html | truncate: 140 }}
                   </p>
-                {%- endif -%}
+                {% endif %}
               </a>
-            {%- endfor -%}
+            {% endfor %}
           </div>
 
-          {%- comment -%}
-            Показуємо пагінацію тільки якщо:
-            - загальна кількість елементів у пагінації > 4
-            - і сторінок більше ніж 1
-            Це покриває сценарій фільтрації тегом (total рахує вже відфільтровані статті)
-          {%- endcomment -%}
-          {%- if paginate.items > 4 and paginate.pages > 1 -%}
+          {% if paginate.items > 4 and paginate.pages > 1 %}
             <nav class="pagination" role="navigation" aria-label="Pagination">
-              {%- if paginate.previous -%}
+              {% if paginate.previous %}
                 <a href="{{ paginate.previous.url }}" aria-label="Previous page">‹</a>
-              {%- endif -%}
+              {% endif %}
 
-              {%- for part in paginate.parts -%}
-                {%- if part.is_link -%}
+              {% for part in paginate.parts %}
+                {% if part.is_link %}
                   <a href="{{ part.url }}">{{ part.title }}</a>
-                {%- else -%}
-                  <span class="{% if part.title == paginate.current_page %}current{% endif %}">
-                    {{ part.title }}
-                  </span>
-                {%- endif -%}
-              {%- endfor -%}
+                {% else %}
+                  <span class="{% if part.title == paginate.current_page %}current{% endif %}">{{ part.title }}</span>
+                {% endif %}
+              {% endfor %}
 
-              {%- if paginate.next -%}
+              {% if paginate.next %}
                 <a href="{{ paginate.next.url }}" aria-label="Next page">›</a>
-              {%- endif -%}
+              {% endif %}
             </nav>
-          {%- endif -%}
+          {% endif %}
         {% endpaginate %}
       </main>
     </div>
-  {%- endif -%}
+  {% endif %}
 </div>
 
 {% schema %}
@@ -445,12 +343,6 @@
       "id": "sidebar_title",
       "label": "Sidebar title",
       "default": "Category"
-    },
-    {
-      "type": "text",
-      "id": "all_label",
-      "label": "Label for 'All'",
-      "default": "All"
     },
     {
       "type": "range",
