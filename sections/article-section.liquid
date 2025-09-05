@@ -220,7 +220,7 @@
             {% endif %}
         </div>
       {% when 'title' %}
-        <header class="page-width page-width--narrow" {{ block.shopify_attributes }}>
+        <header class="page-width page-width--narrow article-header" {{ block.shopify_attributes }}>
           <h1 class="article-title">{{ article.title | escape }}</h1>
           {% if block.settings.blog_show_date %}
             <span class="circle-divider caption-with-letter-spacing">
