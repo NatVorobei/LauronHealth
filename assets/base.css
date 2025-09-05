@@ -3752,6 +3752,7 @@ p {
   height: auto; */
   /* height: 50px; */
   width: 100%;
+  height: 100%;
   object-fit: cover;
   border-bottom-left-radius: 20px;
   border-top-left-radius: 20px
