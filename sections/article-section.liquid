@@ -486,12 +486,13 @@ document.addEventListener('DOMContentLoaded', function () {
   const bodyEl = document.getElementById('article-body');
   const tocListEl = document.getElementById('article-toc-list');
   const tocSelectEl = document.getElementById('article-toc-select');
-  if (!bodyEl || !tocListEl) return;
+  if (!bodyEl || !tocListEl) {
+    return;
+  }
 
   const includeH3 = {{ include_h3_value | json }};
   const tocMode = {{ toc_mode_value | json }};
   const modeManual = (tocMode === 'manual');
-  const scrollOffset = Number({{ section.settings.scroll_offset | default: 100 | json }});
 
   function slugify(text) {
     const s = String(text)
@@ -506,15 +507,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const selector = includeH3 ? 'h2, h3' : 'h2';
   const headings = Array.from(bodyEl.querySelectorAll(selector));
-  if (headings.length === 0) { tocListEl.innerHTML = ''; return; }
+  if (headings.length === 0) {
+    tocListEl.innerHTML = '';
+    if (tocSelectEl) {
+      tocSelectEl.innerHTML = '';
+    }
+    return;
+  }
 
   const usedIds = new Set();
   function ensureId(el) {
     let id = el.getAttribute('id');
-    if (!id || id.trim() === '') id = slugify(el.textContent || '');
+    if (!id || id.trim() === '') {
+      id = slugify(el.textContent || '');
+    }
     const base = id;
     let i = 2;
-    while (usedIds.has(id) || document.getElementById(id)) { id = base + '-' + i; i += 1; }
+    while (usedIds.has(id) || document.getElementById(id)) {
+      id = base + '-' + i;
+      i += 1;
+    }
     usedIds.add(id);
     el.setAttribute('id', id);
     return id;
@@ -542,17 +554,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function renderManualToc() {
     const planned = Array.from(tocListEl.querySelectorAll('[data-toc-label]'));
-    if (planned.length === 0) { renderAutoToc(); return; }
+    if (planned.length === 0) {
+      renderAutoToc();
+      return;
+    }
     const items = [];
     planned.forEach(function (node) {
       const label = (node.getAttribute('data-toc-label') || '').trim();
-      if (!label) return;
-      let target = headings.find(function (h) { return (h.textContent || '').trim().toLowerCase() === label.toLowerCase(); });
-      if (!target) target = headings.find(function (h) { return (h.textContent || '').toLowerCase().includes(label.toLowerCase()); });
-      if (!target) return;
+      if (!label) {
+        return;
+      }
+      let target = headings.find(function (h) {
+        return (h.textContent || '').trim().toLowerCase() === label.toLowerCase();
+      });
+      if (!target) {
+        target = headings.find(function (h) {
+          return (h.textContent || '').toLowerCase().includes(label.toLowerCase());
+        });
+      }
+      if (!target) {
+        return;
+      }
       const id = ensureId(target);
       items.push({ id: id, label: label });
     });
+
     tocListEl.innerHTML = '';
     items.forEach(function (it) {
       const li = document.createElement('li');
@@ -563,10 +589,19 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  if (modeManual) { renderManualToc(); } else { renderAutoToc(); }
+  if (modeManual) {
+    renderManualToc();
+  } else {
+    renderAutoToc();
+  }
 
-  function smoothScrollTo(targetY) {
-    window.scrollTo({ top: targetY, behavior: 'smooth' });
+  function smoothScrollToEl(el) {
+    if (!el) return;
+    el.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'nearest'
+    });
   }
 
   tocListEl.addEventListener('click', function (e) {
@@ -577,9 +612,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const el = document.querySelector(hash);
     if (!el) return;
     e.preventDefault();
-    const rect = el.getBoundingClientRect();
-    const targetY = window.pageYOffset + rect.top - scrollOffset;
-    smoothScrollTo(targetY);
+    smoothScrollToEl(el);
     history.replaceState(null, '', hash);
   });
 
@@ -596,20 +629,20 @@ document.addEventListener('DOMContentLoaded', function () {
       opt.value = a.getAttribute('href');
       opt.textContent = a.textContent.trim();
       tocSelectEl.appendChild(opt);
-      if (idx === 0) tocSelectEl.value = opt.value;
+      if (idx === 0) {
+        tocSelectEl.value = opt.value;
+      }
     });
   }
   rebuildSelectFromToc();
 
   if (tocSelectEl) {
     tocSelectEl.addEventListener('change', function () {
-      var v = tocSelectEl.value;
+      const v = tocSelectEl.value;
       if (!v) return;
-      var el = document.querySelector(v);
+      const el = document.querySelector(v);
       if (!el) return;
-      var rect = el.getBoundingClientRect();
-      var targetY = window.pageYOffset + rect.top - scrollOffset;
-      smoothScrollTo(targetY);
+      smoothScrollToEl(el);
       history.replaceState(null, '', v);
     });
   }
@@ -617,7 +650,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const linkMap = new Map();
   Array.from(tocListEl.querySelectorAll('a.article-toc__link')).forEach(function (link) {
     const hash = link.getAttribute('href');
-    if (hash && hash.startsWith('#')) linkMap.set(hash.slice(1), link);
+    if (hash && hash.startsWith('#')) {
+      linkMap.set(hash.slice(1), link);
+    }
   });
 
   const observer = new IntersectionObserver(function (entries) {
@@ -627,16 +662,39 @@ document.addEventListener('DOMContentLoaded', function () {
       if (!link) return;
       if (entry.isIntersecting) {
         link.classList.add('is-active');
-        if (tocSelectEl) tocSelectEl.value = '#' + id;
+        if (tocSelectEl) {
+          tocSelectEl.value = '#' + id;
+        }
       } else {
         link.classList.remove('is-active');
       }
     });
-  }, { root: null, rootMargin: '-50% 0px -40% 0px', threshold: 0 });
+  }, {
+    root: null,
+    rootMargin: '-50% 0px -40% 0px',
+    threshold: 0
+  });
 
   headings.forEach(function (h) { observer.observe(h); });
+
+  if (location.hash) {
+    const target = document.querySelector(location.hash);
+    if (target) {
+      setTimeout(function () {
+        smoothScrollToEl(target);
+      }, 0);
+    }
+  }
+
+  window.addEventListener('hashchange', function () {
+    const target = document.querySelector(location.hash);
+    if (target) {
+      smoothScrollToEl(target);
+    }
+  });
 });
 </script>
+
 
 <script type="application/ld+json">
   {{ article | structured_data }}
