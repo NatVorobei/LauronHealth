@@ -3748,7 +3748,11 @@ p {
 .swatch-image {
   /* width: 50px;
   height: auto; */
-  height: 50px;
+  /* height: 50px; */
+  width: 100%;
+  object-fit: cover;
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px
 }
 .swatch-text {
   font-weight: 600;
@@ -3933,7 +3937,7 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
 
 .menu-drawer__menu-item {
   border-bottom: 1px solid #D7D7D7;
-  padding: 24px 0 !important;
+  padding: 24px 20px !important;
 }
 
 .svg-wrapper.trash-bin {
@@ -4059,6 +4063,9 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
 }
     
 @media(max-width: 749px) {
+  .custom-page-title {
+    padding-bottom: 30px !important;
+  }
   .jdgm-write-rev-link {
     font-size: 12px !important;
     border-radius: 16px !important;
