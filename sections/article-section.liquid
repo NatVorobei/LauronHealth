@@ -5,7 +5,7 @@
   {% assign include_h3_value = section.settings.include_h3 %}
 
   {% style %}
-  .article-header {
+.article-header {
   max-width: 100%;
 }
 
@@ -26,29 +26,22 @@
   overflow: hidden;
 }
 
-.article-wrap {
-  max-width: 1160px;
-  margin: 0 auto;
-  display: flex;
-  gap: 74px;
-}
-
+.article-wrap,
 .article-wrap--2,
 .article-wrap--3 {
   max-width: 1160px;
   margin: 0 auto;
   display: flex;
+  align-items: flex-start;
   gap: 74px;
 }
 
-.article-wrap--2 {
-  grid-template-columns: 240px 1fr;
-}
+/* ширини колонок */
+.article-toc { flex: 0 0 240px; }
+.article-body { flex: 1 1 auto; max-width: 600px; }
+.article-aside-right { flex: 0 0 320px; }
 
-.article-wrap--3 {
-  grid-template-columns: 240px 1fr 320px;
-}
-
+/* TOC */
 .article-toc {
   position: sticky;
   top: 60px;
@@ -63,21 +56,19 @@
   font-family: var(--font-heading-main);
 }
 
+/* десктопний список */
 .article-toc__list {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: grid;
-  gap: 12px;
+  display: block;
   border-top: 1px solid #D7D7D7;
 }
-
 .article-toc__item {
   padding: 16px 0;
   border-bottom: 1px solid #D7D7D7;
   max-width: 190px;
 }
-
 .article-toc__link {
   text-decoration: none;
   color: #87878D;
@@ -85,24 +76,52 @@
   line-height: 1.3;
   font-family: var(--font-heading-main);
 }
-
 .article-toc__link:hover,
 .article-toc__link.is-active {
   color: var(--color-main-text);
   font-weight: 600;
 }
 
-.article-body {
-  max-width: 600px;
-  color: var(--color-main-text);
+/* мобільний селект (як у блозі) */
+.is-desktop { display: block; }
+.is-mobile { display: none; }
+
+.toc-select-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 190px;
+  margin-bottom: 12px;
+}
+.toc-select {
+  width: 100%;
+  padding: 12px 40px 12px 12px;
+  font-size: 14px;
+  line-height: 16px;
+  font-family: var(--font-heading-main);
+  border: 1px solid #D7D7D7;
+  border-radius: 16px;
+  background: #fff;
+  color: #87878D;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+.toc-select__icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  display: inline-flex;
 }
 
+/* контент */
+.article-body { color: var(--color-main-text); }
 .article-body p {
   font-size: 16px;
   line-height: 24px;
   color: var(--color-main-text);
 }
-
 .article-body.rte h2 {
   margin-top: 28px;
   font-size: 28px;
@@ -111,7 +130,6 @@
   font-family: var(--font-heading-main);
   font-weight: 700;
 }
-
 .article-body.rte h3 {
   margin-top: 18px;
   font-size: 28px;
@@ -121,22 +139,21 @@
   font-weight: 700;
 }
 
+/* футер */
 .article-footer {
   max-width: 1160px;
   margin: 24px auto 0 auto;
 }
 
+/* мета-як у макеті */
 .article-meta {
   max-width: 1160px;
   margin: 0 auto 16px auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
   gap: 24px;
   padding: 0;
 }
-
-.article-meta__item { }
-
+.article-meta__item { flex: 1 1 0; }
 .article-meta__label {
   font-size: 12px;
   line-height: 1.2;
@@ -145,25 +162,23 @@
   display: block;
   font-family: var(--font-heading-main);
 }
-
 .article-meta__value {
   font-size: 14px;
   line-height: 1.3;
   color: var(--color-main-text);
 }
 
+/* права колонка з підпискою */
 .article-aside-right {
   position: sticky;
   top: 60px;
   align-self: start;
 }
-
 .article-subscribe {
   background: #fff;
   border-radius: 16px;
   padding: 16px;
 }
-
 .article-subscribe__title {
   font-size: 16px;
   line-height: 1.2;
@@ -172,16 +187,13 @@
   color: var(--color-main-text);
   font-family: var(--font-heading-main);
 }
-
 .article-subscribe__form { }
-
 .article-subscribe__input-group {
   display: flex;
   flex-direction: column;
   max-width: 190px;
   gap: 8px;
 }
-
 .article-subscribe__input {
   flex: 1;
   height: 44px;
@@ -193,7 +205,6 @@
   color: var(--color-main-text);
   background: #fff;
 }
-
 .article-subscribe__button {
   height: 44px;
   padding: 0 16px;
@@ -205,57 +216,49 @@
   color: #fff;
   cursor: pointer;
 }
-
-.article-subscribe__button:hover {
-  opacity: .9;
-}
-
+.article-subscribe__button:hover { opacity: .9; }
 .article-subscribe__msg {
   display: block;
   margin-top: 8px;
   font-size: 12px;
   line-height: 1.3;
 }
-
-.article-subscribe__msg--error {
-  color: #b00020;
-}
-
-.article-subscribe__msg--success {
-  color: #0a7f2e;
-}
+.article-subscribe__msg--error { color: #b00020; }
+.article-subscribe__msg--success { color: #0a7f2e; }
 
 @media (max-width: 749px) {
-  .article-title {
-    font-size: 24px;
-  }
-  .article-wrap {
-    padding: 0 10px;
-    grid-template-columns: 1fr;
-  }
+  .article-title { font-size: 24px; }
+
+  .article-wrap,
   .article-wrap--2,
   .article-wrap--3 {
     padding: 0 10px;
-    grid-template-columns: 1fr;
+    flex-direction: column;
     gap: 24px;
   }
+
   .article-toc {
     position: static;
     order: -1;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
+    flex: 1 1 auto;
   }
+
+  .article-body { max-width: 100%; }
+
+  .is-desktop { display: none; }
+  .is-mobile { display: block; }
+
   .article-meta {
     padding: 0 10px;
-    grid-template-columns: 1fr;
+    flex-direction: column;
     gap: 12px;
     margin-bottom: 20px;
   }
-  .article-aside-right {
-    position: static;
-  }
-}
 
-  {% endstyle %}
+  .article-aside-right { position: static; }
+}
+{% endstyle %}
 
   {% for block in section.blocks %}
     {% case block.type %}
