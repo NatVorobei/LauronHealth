@@ -246,7 +246,13 @@
         </div>
 
       {% when 'content' %}
-        <div class="article-wrap" {{ block.shopify_attributes }}>
+        {% assign has_newsletter = false %}
+        {% for b in section.blocks %}
+          {% if b.type == 'newsletter' %}
+            {% assign has_newsletter = true %}
+          {% endif %}
+        {% endfor %}
+        <div class="{% if has_newsletter %}article-wrap--3{% else %}article-wrap--2{% endif %}" {{ block.shopify_attributes }}>
           <aside class="article-toc">
             <h2 class="article-toc__title">{{ section.settings.toc_title }}</h2>
 
@@ -274,74 +280,73 @@
           <div class="article-body rte" id="article-body">
             {{ article.content }}
           </div>
-
+        {% if has_newsletter %}
           {% assign newsletter_blocks = section.blocks | where: 'type', 'newsletter' %}
-{% if newsletter_blocks.size > 0 %}
-  <aside class="article-aside-right">
-    {% for nb in newsletter_blocks %}
-      {% assign fid = 'ArticleSubscribe-' | append: section.id | append: '-' | append: nb.id %}
-      <section class="article-subscribe" {{ nb.shopify_attributes }}>
-        {% if nb.settings.newsletter_heading != blank %}
-          <h3 class="article-subscribe__title">{{ nb.settings.newsletter_heading }}</h3>
-        {% endif %}
+            {% if newsletter_blocks.size > 0 %}
+            <aside class="article-aside-right">
+              {% for nb in newsletter_blocks %}
+                {% assign fid = 'ArticleSubscribe-' | append: section.id | append: '-' | append: nb.id %}
+                <section class="article-subscribe" {{ nb.shopify_attributes }}>
+                  {% if nb.settings.newsletter_heading != blank %}
+                    <h3 class="article-subscribe__title">{{ nb.settings.newsletter_heading }}</h3>
+                  {% endif %}
 
-        <div class="article-subscribe__form-wrap">
-          {%- form 'customer', id: fid, class: 'article-subscribe__form' -%}
-            <input type="hidden" name="contact[tags]" value="newsletter">
-            <div class="article-subscribe__input-group">
-              <input
-                id="{{ fid }}-Email"
-                type="email"
-                name="contact[email]"
-                class="article-subscribe__input"
-                value="{{ form.email }}"
-                aria-required="true"
-                autocorrect="off"
-                autocapitalize="off"
-                autocomplete="email"
-                {% if form.errors %}
-                  autofocus aria-invalid="true" aria-describedby="{{ fid }}-Error"
-                {% elsif form.posted_successfully? %}
-                  aria-describedby="{{ fid }}-Success"
-                {% endif %}
-                placeholder="{{ nb.settings.email_placeholder }}"
-                required
-              >
-              <button
-                type="submit"
-                class="article-subscribe__button"
-                name="commit"
-                id="{{ fid }}-Submit"
-                aria-label="{{ 'newsletter.button_label' | t }}"
-              >
-                {{ nb.settings.button_label }}
-              </button>
-            </div>
+                  <div class="article-subscribe__form-wrap">
+                    {%- form 'customer', id: fid, class: 'article-subscribe__form' -%}
+                      <input type="hidden" name="contact[tags]" value="newsletter">
+                      <div class="article-subscribe__input-group">
+                        <input
+                          id="{{ fid }}-Email"
+                          type="email"
+                          name="contact[email]"
+                          class="article-subscribe__input"
+                          value="{{ form.email }}"
+                          aria-required="true"
+                          autocorrect="off"
+                          autocapitalize="off"
+                          autocomplete="email"
+                          {% if form.errors %}
+                            autofocus aria-invalid="true" aria-describedby="{{ fid }}-Error"
+                          {% elsif form.posted_successfully? %}
+                            aria-describedby="{{ fid }}-Success"
+                          {% endif %}
+                          placeholder="{{ nb.settings.email_placeholder }}"
+                          required
+                        >
+                        <button
+                          type="submit"
+                          class="article-subscribe__button"
+                          name="commit"
+                          id="{{ fid }}-Submit"
+                          aria-label="{{ 'newsletter.button_label' | t }}"
+                        >
+                          {{ nb.settings.button_label }}
+                        </button>
+                      </div>
 
-            {% if form.errors %}
-              <small class="article-subscribe__msg article-subscribe__msg--error" id="{{ fid }}-Error">
-                <span class="svg-wrapper">{{ 'icon-error.svg' | inline_asset_content }}</span>
-                {{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}
-              </small>
-            {% endif %}
+                      {% if form.errors %}
+                        <small class="article-subscribe__msg article-subscribe__msg--error" id="{{ fid }}-Error">
+                          <span class="svg-wrapper">{{ 'icon-error.svg' | inline_asset_content }}</span>
+                          {{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}
+                        </small>
+                      {% endif %}
 
-            {% if form.posted_successfully? %}
-              <p class="article-subscribe__msg article-subscribe__msg--success" id="{{ fid }}-Success" tabindex="-1">
-                <span class="svg-wrapper">{{ 'icon-success.svg' | inline_asset_content }}</span>
-                {{ 'newsletter.success' | t }}
-              </p>
-            {% endif %}
-          {%- endform -%}
-        </div>
-      </section>
-    {% endfor %}
-  </aside>
-{% endif %}
-
+                      {% if form.posted_successfully? %}
+                        <p class="article-subscribe__msg article-subscribe__msg--success" id="{{ fid }}-Success" tabindex="-1">
+                          <span class="svg-wrapper">{{ 'icon-success.svg' | inline_asset_content }}</span>
+                          {{ 'newsletter.success' | t }}
+                        </p>
+                      {% endif %}
+                    {%- endform -%}
+                  </div>
+                </section>
+              {% endfor %}
+            </aside>
+          {% endif %}
+          {% endif %}
         </div>
     {% endcase %}
   {% endfor %}
-
   <div class="article-template__back element-margin-top center">
     <a href="{{ blog.url }}" class="article-template__link link animate-arrow">
       <span class="icon-wrap">
