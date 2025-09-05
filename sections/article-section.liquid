@@ -361,8 +361,19 @@
     <aside class="article-toc">
       <h2 class="article-toc__title">{{ section.settings.toc_title }}</h2>
 
+      <div class="toc-select-wrap is-mobile">
+        <select id="article-toc-select" class="toc-select" aria-label="{{ section.settings.toc_title }}">
+          <option value="">{{ section.settings.toc_title }}</option>
+        </select>
+        <span class="toc-select__icon" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" role="img" focusable="false">
+            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </div>
+
       {% if toc_mode_value == 'manual' %}
-        <ol class="article-toc__list" id="article-toc-list">
+        <ol class="article-toc__list is-desktop" id="article-toc-list">
           {% for b in section.blocks %}
             {% if b.type == 'toc_item' %}
               <li class="article-toc__item">
@@ -374,7 +385,7 @@
           {% endfor %}
         </ol>
       {% else %}
-        <ol class="article-toc__list" id="article-toc-list"></ol>
+        <ol class="article-toc__list is-desktop" id="article-toc-list"></ol>
       {% endif %}
     </aside>
 
