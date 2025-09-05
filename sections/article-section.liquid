@@ -4,7 +4,16 @@
   {% assign toc_mode_value = section.settings.toc_mode %}
   {% assign include_h3_value = section.settings.include_h3 %}
 
-  {% style %}
+{% style %}
+.article-with-toc {
+  --article-scroll-offset: {{ section.settings.scroll_offset | default: 100 }}px;
+}
+
+.article-body.rte h2,
+.article-body.rte h3 {
+  scroll-margin-top: var(--article-scroll-offset);
+}
+
 .article-header {
   max-width: 100%;
 }
@@ -168,7 +177,6 @@
   color: var(--color-main-text);
 }
 
-/* права колонка з підпискою */
 .article-aside-right {
   position: sticky;
   top: 60px;
