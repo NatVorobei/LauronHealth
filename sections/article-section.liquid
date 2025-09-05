@@ -1,0 +1,384 @@
+{{ 'section-blog-post.css' | asset_url | stylesheet_tag }}
+
+<article class="article-template article-with-toc">
+  {% assign active_toc_mode = section.settings.toc_mode %}
+  {% assign include_h3 = section.settings.include_h3 %}
+
+  {% style %}
+  .article-wrap {
+    max-width: 1160px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 240px 1fr 0px;
+    gap: 40px;
+  }
+
+  .article-title {
+    max-width: 1160px;
+    margin: 0 auto 24px auto;
+    font-size: 32px;
+    line-height: 1.2;
+    font-weight: 700;
+    color: var(--color-main-text);
+    font-family: var(--font-heading-main);
+  }
+
+  .article-hero {
+    max-width: 1160px;
+    margin: 0 auto 24px auto;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .article-toc {
+    position: sticky;
+    top: 60px;
+    align-self: start;
+  }
+
+  .article-toc__title {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 12px 0;
+    color: var(--color-main-text);
+    font-family: var(--font-heading-main);
+  }
+
+  .article-toc__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 12px;
+    border-top: 1px solid #D7D7D7;
+  }
+  .article-toc__item {
+    padding: 16px 0;
+    border-bottom: 1px solid #D7D7D7;
+  }
+  .article-toc__link {
+    text-decoration: none;
+    color: #87878D;
+    font-size: 14px;
+    line-height: 1.3;
+    font-family: var(--font-heading-main);
+  }
+  .article-toc__link:hover,
+  .article-toc__link.is-active {
+    color: var(--color-main-text);
+    font-weight: 600;
+  }
+
+  .article-body {
+    max-width: 736px;
+    width: 100%;
+  }
+  .article-body.rte h2 {
+    margin-top: 28px;
+  }
+  .article-body.rte h3 {
+    margin-top: 18px;
+  }
+
+  .article-footer {
+    max-width: 1160px;
+    margin: 24px auto 0 auto;
+  }
+
+  @media (max-width: 749px) {
+    .article-title { font-size: 24px; }
+    .article-wrap {
+      padding: 0 10px;
+      grid-template-columns: 1fr;
+    }
+    .article-toc {
+      position: static;
+      order: -1;
+      margin-bottom: 16px;
+    }
+  }
+  {% endstyle %}
+
+  <header class="page-width">
+    <h1 class="article-title">
+      {{ article.title | escape }}
+    </h1>
+    {% if section.settings.show_meta %}
+      <p style="margin:0 0 12px 0; opacity:.7;">
+        {% if section.settings.show_date %}
+          {{ article.published_at | time_tag: format: 'date' }}
+        {% endif %}
+        {% if section.settings.show_author and article.author != blank %}
+          {% if section.settings.show_date %} • {% endif %} {{ article.author }}
+        {% endif %}
+      </p>
+    {% endif %}
+  </header>
+
+  {% if article.image %}
+    <div class="article-hero page-width">
+      <img
+        src="{{ article.image | image_url: width: 1600 }}"
+        alt="{{ article.image.alt | default: article.title | escape }}"
+        loading="eager"
+        width="{{ article.image.width }}"
+        height="{{ article.image.height }}"
+        style="display:block; width:100%; height:auto;"
+      >
+    </div>
+  {% endif %}
+
+  <div class="article-wrap">
+    <aside class="article-toc">
+      <h2 class="article-toc__title">{{ section.settings.toc_title }}</h2>
+
+      {% if active_toc_mode == 'manual' %}
+        <ol class="article-toc__list" id="article-toc-list">
+          {% for b in section.blocks %}
+            {% if b.type == 'toc_item' %}
+              <li class="article-toc__item">
+                <a class="article-toc__link"
+                   href="#"
+                   data-toc-label="{{ b.settings.label | escape }}"
+                >
+                  {{ b.settings.label }}
+                </a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ol>
+      {% else %}
+        <ol class="article-toc__list" id="article-toc-list">
+
+        </ol>
+      {% endif %}
+    </aside>
+
+    <div class="article-body rte" id="article-body">
+      {{ article.content }}
+    </div>
+
+    <div></div> 
+  </div>
+
+  {% if section.settings.show_share %}
+    <div class="article-footer page-width">
+      {% assign share_url = request.origin | append: article.url %}
+      {% render 'share-button', share_link: share_url %}
+    </div>
+  {% endif %}
+
+  {% if blog.comments_enabled? %}
+    {{- '' -}}
+  {% endif %}
+
+</article>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const bodyEl = document.getElementById('article-body');
+  const tocListEl = document.getElementById('article-toc-list');
+  if (!bodyEl || !tocListEl) {
+    return;
+  }
+
+  // з Liquid віддаємо значення налаштувань
+  const includeH3 = {{ include_h3 | json }};
+  const tocMode = {{ active_toc_mode | json }};            // "auto" або "manual"
+  const modeManual = (tocMode === 'manual');               // порівняння робимо в JS
+  const scrollOffset = Number({{ section.settings.scroll_offset | default: 100 | json }});
+
+  // slugify з підтримкою кирилиці/латини (Unicode)
+  function slugify(text) {
+    const s = String(text)
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^\p{L}\p{N}\s-]/gu, '')
+      .trim()
+      .replace(/\s+/g, '-')
+      .toLowerCase();
+    return s || 'section';
+  }
+
+  const selector = includeH3 ? 'h2, h3' : 'h2';
+  const headings = Array.from(bodyEl.querySelectorAll(selector));
+  if (headings.length === 0) {
+    tocListEl.innerHTML = '';
+    return;
+  }
+
+  const usedIds = new Set();
+
+  function ensureId(el) {
+    let id = el.getAttribute('id');
+    if (!id || id.trim() === '') {
+      id = slugify(el.textContent || '');
+    }
+    let base = id;
+    let i = 2;
+    while (usedIds.has(id) || document.getElementById(id)) {
+      id = base + '-' + i;
+      i += 1;
+    }
+    usedIds.add(id);
+    el.setAttribute('id', id);
+    return id;
+  }
+
+  headings.forEach(function (h) { ensureId(h); });
+
+  function makeLink(id, label) {
+    const a = document.createElement('a');
+    a.className = 'article-toc__link';
+    a.href = '#' + id;
+    a.textContent = label;
+    return a;
+  }
+
+  function renderAutoToc() {
+    tocListEl.innerHTML = '';
+    headings.forEach(function (h) {
+      const li = document.createElement('li');
+      li.className = 'article-toc__item';
+      const id = h.id;
+      const title = (h.textContent || '').trim();
+      const link = makeLink(id, title);
+      li.appendChild(link);
+      tocListEl.appendChild(li);
+    });
+  }
+
+  function renderManualToc() {
+    const planned = Array.from(tocListEl.querySelectorAll('[data-toc-label]'));
+    if (planned.length === 0) {
+      renderAutoToc();
+      return;
+    }
+    const items = [];
+    planned.forEach(function (node) {
+      const label = (node.getAttribute('data-toc-label') || '').trim();
+      if (!label) {
+        return;
+      }
+      let target = headings.find(function (h) { return (h.textContent || '').trim().toLowerCase() === label.toLowerCase(); });
+      if (!target) {
+        target = headings.find(function (h) { return (h.textContent || '').toLowerCase().includes(label.toLowerCase()); });
+      }
+      if (!target) {
+        return;
+      }
+      const id = ensureId(target);
+      items.push({ id: id, label: label });
+    });
+
+    tocListEl.innerHTML = '';
+    if (items.length === 0) {
+      renderAutoToc();
+      return;
+    }
+    items.forEach(function (it) {
+      const li = document.createElement('li');
+      li.className = 'article-toc__item';
+      const link = makeLink(it.id, it.label);
+      li.appendChild(link);
+      tocListEl.appendChild(li);
+    });
+  }
+
+  if (modeManual) {
+    renderManualToc();
+  } else {
+    renderAutoToc();
+  }
+
+  function smoothScrollTo(targetY) {
+    window.scrollTo({
+      top: targetY,
+      behavior: 'smooth'
+    });
+  }
+
+  tocListEl.addEventListener('click', function (e) {
+    const a = e.target.closest('a.article-toc__link');
+    if (!a) {
+      return;
+    }
+    const hash = a.getAttribute('href');
+    if (!hash || !hash.startsWith('#')) {
+      return;
+    }
+    const el = document.querySelector(hash);
+    if (!el) {
+      return;
+    }
+    e.preventDefault();
+    const rect = el.getBoundingClientRect();
+    const targetY = window.pageYOffset + rect.top - scrollOffset;
+    smoothScrollTo(targetY);
+    history.replaceState(null, '', hash);
+  });
+
+  const linkMap = new Map();
+  Array.from(tocListEl.querySelectorAll('a.article-toc__link')).forEach(function (link) {
+    const hash = link.getAttribute('href');
+    if (hash && hash.startsWith('#')) {
+      linkMap.set(hash.slice(1), link);
+    }
+  });
+
+  const observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      const id = entry.target.id;
+      const link = linkMap.get(id);
+      if (!link) {
+        return;
+      }
+      if (entry.isIntersecting) {
+        link.classList.add('is-active');
+      } else {
+        link.classList.remove('is-active');
+      }
+    });
+  }, {
+    root: null,
+    rootMargin: '-50% 0px -40% 0px',
+    threshold: 0
+  });
+
+  headings.forEach(function (h) { observer.observe(h); });
+});
+</script>
+
+
+<script type="application/ld+json">
+  {{ article | structured_data }}
+</script>
+
+{% schema %}
+{
+  "name": "Article with TOC",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "toc_title", "label": "TOC title", "default": "Content" },
+    { "type": "select", "id": "toc_mode", "label": "TOC mode", "default": "auto", "options": [
+      { "value": "auto", "label": "Auto (H2/H3 from content)" },
+      { "value": "manual", "label": "Manual (blocks below)" }
+    ]},
+    { "type": "checkbox", "id": "include_h3", "label": "Include H3 in TOC", "default": true },
+    { "type": "range", "id": "scroll_offset", "label": "Scroll offset (px)", "min": 0, "max": 200, "step": 5, "default": 100 },
+    { "type": "checkbox", "id": "show_meta", "label": "Show meta (date/author)", "default": true },
+    { "type": "checkbox", "id": "show_date", "label": "Show date", "default": true },
+    { "type": "checkbox", "id": "show_author", "label": "Show author", "default": false },
+    { "type": "checkbox", "id": "show_share", "label": "Show share buttons", "default": false }
+  ],
+  "blocks": [
+    { "type": "toc_item", "name": "TOC пункт (manual mode)", "settings": [
+      { "type": "text", "id": "label", "label": "Заголовок розділу (як у контенті)", "default": "What is biohacking?" }
+    ]}
+  ],
+  "presets": [
+    { "name": "Article with TOC" }
+  ]
+}
+{% endschema %}
