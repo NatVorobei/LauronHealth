@@ -871,18 +871,22 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 
-  document.querySelectorAll('[data-related-swiper]').forEach(function (el) {
-  const swiper = new Swiper(el, {
-    slidesPerView: 1,
-    spaceBetween: 20,
-    speed: 400,
-    loop: false,
-    pagination: {
-      el: el.querySelector('.swiper-pagination'),
-      clickable: true
-    }
-  });
-});
+  function initRelatedSwipers() {
+    document.querySelectorAll('[data-related-swiper]').forEach(function (el) {
+      new Swiper(el, {
+        slidesPerView: 1.2,
+        spaceBetween: 20,
+        speed: 400,
+        loop: false,
+        watchOverflow: true,
+        pagination: {
+          el: el.querySelector('.swiper-pagination'),
+          clickable: true
+        }
+      });
+    });
+  }
+  if (window.Swiper) { initRelatedSwipers(); } else { window.addEventListener('load', initRelatedSwipers); }
 
 });
 </script>
