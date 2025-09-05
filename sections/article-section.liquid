@@ -234,6 +234,88 @@
 .article-subscribe__msg--error { color: #b00020; }
 .article-subscribe__msg--success { color: #0a7f2e; }
 
+.article-related {
+  max-width: 1160px;
+  margin: 40px auto 0 auto;
+}
+.article-related__title {
+  font-size: 22px;
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--color-main-text);
+  font-family: var(--font-heading-main);
+  margin: 0 0 16px 0;
+}
+.article-related__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.related-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+.related-card__media {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.related-card__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.related-card__date {
+  font-size: 12px;
+  line-height: 1.3;
+  opacity: .7;
+  margin: 0 0 6px 0;
+}
+.related-card__title {
+  font-size: 18px;
+  line-height: 1.3;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  color: var(--color-main-text);
+}
+.related-card__tags {
+  font-size: 12px;
+  line-height: 1.3;
+  opacity: .7;
+  margin: 0;
+}
+
+.article-related__slider { display: none; }
+.article-related .swiper { overflow: hidden; border-radius: 16px; }
+.article-related .swiper-wrapper { align-items: stretch; }
+.article-related .swiper-slide { width: 100%; }
+.article-related .swiper-pagination {
+  position: static;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+.article-related .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: 1px solid #111;
+  background: transparent;
+  opacity: 1;
+}
+.article-related .swiper-pagination-bullet-active { background: #111; }
+
+@media (max-width: 989px) {
+  .article-related__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 749px) {
+  .article-related__grid { display: none; }
+  .article-related__slider { display: block; }
+}
+
 @media (max-width: 749px) {
   .article-title { font-size: 24px; }
 
@@ -464,6 +546,107 @@
       </aside>
     {% endif %}
   </div>
+  {% when 'related' %}
+  {% assign want = block.settings.max_items | default: 6 %}
+  {% assign first_pass = 0 %}
+  {% assign related_handles = '' %}
+
+  {% for art in blog.articles %}
+    {% if art.id != article.id and first_pass < want %}
+      {% assign matched = false %}
+      {% for t in article.tags %}
+        {% if art.tags contains t %}
+          {% assign matched = true %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+      {% if matched %}
+        {% assign related_handles = related_handles | append: art.handle | append: '|' %}
+        {% assign first_pass = first_pass | plus: 1 %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+
+  {% assign remaining = want | minus: first_pass %}
+  {% if remaining > 0 %}
+    {% assign second_pass = 0 %}
+    {% for art in blog.articles %}
+      {% if art.id != article.id and second_pass < remaining %}
+        {% unless related_handles contains art.handle %}
+          {% assign related_handles = related_handles | append: art.handle | append: '|' %}
+          {% assign second_pass = second_pass | plus: 1 %}
+        {% endunless %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  {% assign related_list = related_handles | split: '|' %}
+  {% assign clean_list = '' %}
+  {% for h in related_list %}
+    {% if h != '' %}
+      {% assign clean_list = clean_list | append: h | append: '|' %}
+    {% endif %}
+  {% endfor %}
+  {% assign clean_list = clean_list | split: '|' | uniq %}
+
+  <section class="article-related page-width" {{ block.shopify_attributes }}>
+    <h2 class="article-related__title">{{ block.settings.title | default: 'Read more:' }}</h2>
+
+    <div class="article-related__grid">
+      {% assign shown = 0 %}
+      {% for h in clean_list %}
+        {% if shown >= 3 %}{% break %}{% endif %}
+        {% for art in blog.articles %}
+          {% if art.handle == h %}
+            <a class="related-card" href="{{ art.url }}">
+              {% if art.image %}
+                <div class="related-card__media">
+                  <img src="{{ art.image | image_url: width: 720 }}" alt="{{ art.image.alt | default: art.title | escape }}">
+                </div>
+              {% endif %}
+              <p class="related-card__date">{{ art.published_at | date: format: 'abbreviated_date' }}</p>
+              <h3 class="related-card__title">{{ art.title }}</h3>
+              {% if art.tags.size > 0 %}
+                <p class="related-card__tags">{{ art.tags | join: ', ' }}</p>
+              {% endif %}
+            </a>
+            {% assign shown = shown | plus: 1 %}
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    </div>
+
+    <div class="article-related__slider">
+      <div class="swiper" data-related-swiper>
+        <div class="swiper-wrapper">
+          {% assign slide_count = 0 %}
+          {% for h in clean_list %}
+            {% if slide_count >= want %}{% break %}{% endif %}
+            {% for art in blog.articles %}
+              {% if art.handle == h %}
+                <div class="swiper-slide">
+                  <a class="related-card" href="{{ art.url }}">
+                    {% if art.image %}
+                      <div class="related-card__media">
+                        <img src="{{ art.image | image_url: width: 900 }}" alt="{{ art.image.alt | default: art.title | escape }}">
+                      </div>
+                    {% endif %}
+                    <p class="related-card__date">{{ art.published_at | date: format: 'abbreviated_date' }}</p>
+                    <h3 class="related-card__title">{{ art.title }}</h3>
+                    {% if art.tags.size > 0 %}
+                      <p class="related-card__tags">{{ art.tags | join: ', ' }}</p>
+                    {% endif %}
+                  </a>
+                </div>
+                {% assign slide_count = slide_count | plus: 1 %}
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </section>
     {% endcase %}
   {% endfor %}
 
@@ -676,6 +859,21 @@ document.addEventListener('DOMContentLoaded', function () {
       setActiveById(target.id);
     }
   });
+
+
+  document.querySelectorAll('[data-related-swiper]').forEach(function (el) {
+  const swiper = new Swiper(el, {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    speed: 400,
+    loop: false,
+    pagination: {
+      el: el.querySelector('.swiper-pagination'),
+      clickable: true
+    }
+  });
+});
+
 });
 </script>
 
@@ -747,6 +945,15 @@ document.addEventListener('DOMContentLoaded', function () {
         { "type": "text", "id": "label", "label": "Heading text (as in content)", "default": "What is biohacking?" }
       ]
     },
+    {
+  "type": "related",
+  "name": "Read more",
+  "limit": 1,
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Read more:" },
+    { "type": "range", "id": "max_items", "label": "Items to fetch", "min": 3, "max": 12, "step": 1, "default": 6 }
+  ]
+},
     {
   "type": "meta",
   "name": "Top meta",
