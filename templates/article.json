@@ -46,13 +46,21 @@
             "email_placeholder": "Введіть email",
             "button_label": "Підпишіться"
           }
+        },
+        "related_3Ey6Hr": {
+          "type": "related",
+          "settings": {
+            "title": "Читати більше:",
+            "max_items": 4
+          }
         }
       },
       "block_order": [
         "meta_feYUNL",
         "title",
         "content",
-        "newsletter_T7MLgH"
+        "newsletter_T7MLgH",
+        "related_3Ey6Hr"
       ],
       "settings": {
         "toc_title": "Контент",
