@@ -42,7 +42,12 @@
         "share",
         "content"
       ],
-      "settings": {}
+      "settings": {
+        "toc_title": "Контент",
+        "toc_mode": "auto",
+        "include_h3": true,
+        "scroll_offset": 100
+      }
     }
   },
   "order": [
