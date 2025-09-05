@@ -12,6 +12,22 @@
     "main": {
       "type": "article-section",
       "blocks": {
+        "meta_feYUNL": {
+          "type": "meta",
+          "settings": {
+            "show_date": true,
+            "date_label": "Дата:",
+            "date_format": "abbreviated_date",
+            "show_categories": true,
+            "categories_label": "Категорія:",
+            "max_tags": 0,
+            "empty_categories_fallback": "-",
+            "show_reading_time": true,
+            "reading_label": "Час читання:",
+            "words_per_minute": 200,
+            "minutes_suffix": "min"
+          }
+        },
         "title": {
           "type": "title",
           "settings": {
@@ -25,6 +41,7 @@
         }
       },
       "block_order": [
+        "meta_feYUNL",
         "title",
         "content"
       ],
