@@ -126,7 +126,49 @@
             >
           </div>
         {% endif %}
+        {% when 'meta' %}
+        <div class="article-meta page-width" {{ block.shopify_attributes }}>
+            {% if block.settings.show_date %}
+            <div class="article-meta__item">
+                <span class="article-meta__label">{{ block.settings.date_label }}</span>
+                <div class="article-meta__value">
+                {{ article.published_at | time_tag: format: block.settings.date_format }}
+                </div>
+            </div>
+            {% endif %}
 
+            {% if block.settings.show_categories %}
+            <div class="article-meta__item">
+                <span class="article-meta__label">{{ block.settings.categories_label }}</span>
+                <div class="article-meta__value">
+                {% if article.tags.size > 0 %}
+                    {% if block.settings.max_tags > 0 %}
+                    {% for t in article.tags limit: block.settings.max_tags %}
+                        {{- t -}}{% unless forloop.last %}, {% endunless %}
+                    {% endfor %}
+                    {% else %}
+                    {{ article.tags | join: ', ' }}
+                    {% endif %}
+                {% else %}
+                    {{ block.settings.empty_categories_fallback }}
+                {% endif %}
+                </div>
+            </div>
+            {% endif %}
+
+            {% if block.settings.show_reading_time %}
+            <div class="article-meta__item">
+                <span class="article-meta__label">{{ block.settings.reading_label }}</span>
+                <div class="article-meta__value">
+                {% assign words = article.content | strip_html | replace: '&nbsp;', ' ' | split: ' ' | size %}
+                {% assign wpm = block.settings.words_per_minute | default: 200 %}
+                {% assign minutes = words | times: 1.0 | divided_by: wpm | ceil %}
+                {% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}
+                {{ minutes }} {{ block.settings.minutes_suffix }}
+                </div>
+            </div>
+            {% endif %}
+        </div>
       {% when 'title' %}
         <header class="page-width page-width--narrow" {{ block.shopify_attributes }}>
           <h1 class="article-title">{{ article.title | escape }}</h1>
@@ -193,7 +235,7 @@
   </div>
 
   {% if blog.comments_enabled? %}
-    {# залиш: можеш перенести дефолтні коментарі сюди за потреби #}
+
   {% endif %}
 </article>
 
@@ -206,7 +248,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   const includeH3 = {{ include_h3_value | json }};
-  const tocMode = {{ toc_mode_value | json }};      // "auto" або "manual"
+  const tocMode = {{ toc_mode_value | json }};
   const modeManual = (tocMode === 'manual');
   const scrollOffset = Number({{ section.settings.scroll_offset | default: 100 | json }});
 
