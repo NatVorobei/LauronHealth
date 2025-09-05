@@ -3745,6 +3745,7 @@ p {
   align-items: center;
   justify-content: center;
   width: 35%;
+  height: 100%;
 }
 .swatch-image {
   /* width: 50px;
