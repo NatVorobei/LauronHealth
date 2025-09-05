@@ -7,6 +7,137 @@
 {%- assign per_page = section.settings.per_page | default: 4 -%}
 {%- assign active_tag = current_tags | first -%}
 
+
+<div class="section-{{ section.id }}-padding">
+  {% if blog_obj == blank %}
+    <div class="page-width">
+      <h1 class="blog-title--center">{{ blog.title | escape }}</h1>
+      <p style="opacity:.7; text-align:center;">No blog found. If this section is placed on a non-blog page, please select a <strong>Blog Source</strong> in the section settings.</p>
+    </div>
+  {% else %}
+    <div class="page-width">
+      <h1 class="blog-title--center">{{ blog_obj.title | escape }}</h1>
+    </div>
+
+    <div class="blog-wrap page-width">
+      <aside class="blog-nav" aria-label="Blog categories">
+        <h2 class="blog-nav__title">{{ section.settings.sidebar_title | default: 'Category' }}</h2>
+
+        {% assign sidebar_active_tag = active_tag %}
+
+        <ul class="blog-nav__list is-desktop">
+          {% for tag in blog_obj.all_tags %}
+            {% assign is_active = false %}
+            {% if sidebar_active_tag == tag %}
+              {% assign is_active = true %}
+            {% elsif sidebar_active_tag == blank and forloop.first %}
+              {% assign is_active = true %}
+            {% endif %}
+            <li class="blog-nav__item">
+              <a
+                class="blog-nav__link {% if is_active %}is-active{% endif %}"
+                href="{{ blog_obj.url }}/tagged/{{ tag | handle }}"
+                {% if is_active %}aria-current="true"{% endif %}
+              >
+                {{ tag }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+
+        <div class="blog-select-wrap is-mobile">
+          <select
+            class="blog-select"
+            onchange="if(this.value) window.location.href=this.value"
+            aria-label="Select blog category"
+          >
+            {% for tag in blog_obj.all_tags %}
+              {% assign is_selected = false %}
+              {% if sidebar_active_tag == tag %}
+                {% assign is_selected = true %}
+              {% elsif sidebar_active_tag == blank and forloop.first %}
+                {% assign is_selected = true %}
+              {% endif %}
+              <option
+                value="{{ blog_obj.url }}/tagged/{{ tag | handle }}"
+                {% if is_selected %}selected{% endif %}
+              >
+                {{ tag }}
+              </option>
+            {% endfor %}
+          </select>
+
+          <span class="blog-select__icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" role="img" focusable="false">
+              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </div>
+      </aside>
+
+      <main class="blog-content" role="main">
+        {% paginate blog_obj.articles by per_page %}
+          <div class="blog-grid">
+            {% for article in blog_obj.articles %}
+              <a class="blog-card" href="{{ article.url }}" aria-label="{{ article.title | escape }}">
+                {% if section.settings.show_image and article.image %}
+                  <div class="blog-card__media">
+                    <img
+                      src="{{ article.image | img_url: '800x' }}"
+                      alt="{{ article.image.alt | default: article.title | escape }}"
+                      loading="lazy"
+                    >
+                  </div>
+                {% endif %}
+
+                {% if section.settings.show_date or section.settings.show_author %}
+                  <p class="blog-card__meta">
+                    {% if section.settings.show_date %}
+                      {{ article.published_at | date: format: 'abbreviated_date' }}
+                    {% endif %}
+                    {% if section.settings.show_author and article.author != blank %}
+                      {% if section.settings.show_date %} • {% endif %}
+                      {{ article.author }}
+                    {% endif %}
+                  </p>
+                {% endif %}
+
+                <h3 class="blog-card__title">{{ article.title }}</h3>
+
+                {% if section.settings.show_excerpt %}
+                  <p class="blog-card__text">
+                    {{ article.excerpt_or_content | strip_html | truncate: 240 }}
+                  </p>
+                {% endif %}
+              </a>
+            {% endfor %}
+          </div>
+
+          {% if paginate.items > 4 and paginate.pages > 1 %}
+            <nav class="pagination" role="navigation" aria-label="Pagination">
+              {% if paginate.previous %}
+                <a href="{{ paginate.previous.url }}" aria-label="Previous page">‹</a>
+              {% endif %}
+
+              {% for part in paginate.parts %}
+                {% if part.is_link %}
+                  <a href="{{ part.url }}">{{ part.title }}</a>
+                {% else %}
+                  <span class="{% if part.title == paginate.current_page %}current{% endif %}">{{ part.title }}</span>
+                {% endif %}
+              {% endfor %}
+
+              {% if paginate.next %}
+                <a href="{{ paginate.next.url }}" aria-label="Next page">›</a>
+              {% endif %}
+            </nav>
+          {% endif %}
+        {% endpaginate %}
+      </main>
+    </div>
+  {% endif %}
+</div>
+
 {% style %}
 .section-{{ section.id }}-padding {
   padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
@@ -221,136 +352,6 @@
   }
 }
 {% endstyle %}
-
-<div class="section-{{ section.id }}-padding">
-  {% if blog_obj == blank %}
-    <div class="page-width">
-      <h1 class="blog-title--center">{{ blog.title | escape }}</h1>
-      <p style="opacity:.7; text-align:center;">No blog found. If this section is placed on a non-blog page, please select a <strong>Blog Source</strong> in the section settings.</p>
-    </div>
-  {% else %}
-    <div class="page-width">
-      <h1 class="blog-title--center">{{ blog_obj.title | escape }}</h1>
-    </div>
-
-    <div class="blog-wrap page-width">
-      <aside class="blog-nav" aria-label="Blog categories">
-        <h2 class="blog-nav__title">{{ section.settings.sidebar_title | default: 'Category' }}</h2>
-
-        {% assign sidebar_active_tag = active_tag %}
-
-        <ul class="blog-nav__list is-desktop">
-          {% for tag in blog_obj.all_tags %}
-            {% assign is_active = false %}
-            {% if sidebar_active_tag == tag %}
-              {% assign is_active = true %}
-            {% elsif sidebar_active_tag == blank and forloop.first %}
-              {% assign is_active = true %}
-            {% endif %}
-            <li class="blog-nav__item">
-              <a
-                class="blog-nav__link {% if is_active %}is-active{% endif %}"
-                href="{{ blog_obj.url }}/tagged/{{ tag | handle }}"
-                {% if is_active %}aria-current="true"{% endif %}
-              >
-                {{ tag }}
-              </a>
-            </li>
-          {% endfor %}
-        </ul>
-
-        <div class="blog-select-wrap is-mobile">
-          <select
-            class="blog-select"
-            onchange="if(this.value) window.location.href=this.value"
-            aria-label="Select blog category"
-          >
-            {% for tag in blog_obj.all_tags %}
-              {% assign is_selected = false %}
-              {% if sidebar_active_tag == tag %}
-                {% assign is_selected = true %}
-              {% elsif sidebar_active_tag == blank and forloop.first %}
-                {% assign is_selected = true %}
-              {% endif %}
-              <option
-                value="{{ blog_obj.url }}/tagged/{{ tag | handle }}"
-                {% if is_selected %}selected{% endif %}
-              >
-                {{ tag }}
-              </option>
-            {% endfor %}
-          </select>
-
-          <span class="blog-select__icon" aria-hidden="true">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" role="img" focusable="false">
-              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </span>
-        </div>
-      </aside>
-
-      <main class="blog-content" role="main">
-        {% paginate blog_obj.articles by per_page %}
-          <div class="blog-grid">
-            {% for article in blog_obj.articles %}
-              <a class="blog-card" href="{{ article.url }}" aria-label="{{ article.title | escape }}">
-                {% if section.settings.show_image and article.image %}
-                  <div class="blog-card__media">
-                    <img
-                      src="{{ article.image | img_url: '800x' }}"
-                      alt="{{ article.image.alt | default: article.title | escape }}"
-                      loading="lazy"
-                    >
-                  </div>
-                {% endif %}
-
-                {% if section.settings.show_date or section.settings.show_author %}
-                  <p class="blog-card__meta">
-                    {% if section.settings.show_date %}
-                      {{ article.published_at | date: format: 'abbreviated_date' }}
-                    {% endif %}
-                    {% if section.settings.show_author and article.author != blank %}
-                      {% if section.settings.show_date %} • {% endif %}
-                      {{ article.author }}
-                    {% endif %}
-                  </p>
-                {% endif %}
-
-                <h3 class="blog-card__title">{{ article.title }}</h3>
-
-                {% if section.settings.show_excerpt %}
-                  <p class="blog-card__text">
-                    {{ article.excerpt_or_content | strip_html | truncate: 240 }}
-                  </p>
-                {% endif %}
-              </a>
-            {% endfor %}
-          </div>
-
-          {% if paginate.items > 4 and paginate.pages > 1 %}
-            <nav class="pagination" role="navigation" aria-label="Pagination">
-              {% if paginate.previous %}
-                <a href="{{ paginate.previous.url }}" aria-label="Previous page">‹</a>
-              {% endif %}
-
-              {% for part in paginate.parts %}
-                {% if part.is_link %}
-                  <a href="{{ part.url }}">{{ part.title }}</a>
-                {% else %}
-                  <span class="{% if part.title == paginate.current_page %}current{% endif %}">{{ part.title }}</span>
-                {% endif %}
-              {% endfor %}
-
-              {% if paginate.next %}
-                <a href="{{ paginate.next.url }}" aria-label="Next page">›</a>
-              {% endif %}
-            </nav>
-          {% endif %}
-        {% endpaginate %}
-      </main>
-    </div>
-  {% endif %}
-</div>
 
 {% schema %}
 {
