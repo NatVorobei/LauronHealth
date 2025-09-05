@@ -275,7 +275,69 @@
             {{ article.content }}
           </div>
 
-          <div></div>
+          {% assign newsletter_blocks = section.blocks | where: 'type', 'newsletter' %}
+{% if newsletter_blocks.size > 0 %}
+  <aside class="article-aside-right">
+    {% for nb in newsletter_blocks %}
+      {% assign fid = 'ArticleSubscribe-' | append: section.id | append: '-' | append: nb.id %}
+      <section class="article-subscribe" {{ nb.shopify_attributes }}>
+        {% if nb.settings.newsletter_heading != blank %}
+          <h3 class="article-subscribe__title">{{ nb.settings.newsletter_heading }}</h3>
+        {% endif %}
+
+        <div class="article-subscribe__form-wrap">
+          {%- form 'customer', id: fid, class: 'article-subscribe__form' -%}
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            <div class="article-subscribe__input-group">
+              <input
+                id="{{ fid }}-Email"
+                type="email"
+                name="contact[email]"
+                class="article-subscribe__input"
+                value="{{ form.email }}"
+                aria-required="true"
+                autocorrect="off"
+                autocapitalize="off"
+                autocomplete="email"
+                {% if form.errors %}
+                  autofocus aria-invalid="true" aria-describedby="{{ fid }}-Error"
+                {% elsif form.posted_successfully? %}
+                  aria-describedby="{{ fid }}-Success"
+                {% endif %}
+                placeholder="{{ nb.settings.email_placeholder }}"
+                required
+              >
+              <button
+                type="submit"
+                class="article-subscribe__button"
+                name="commit"
+                id="{{ fid }}-Submit"
+                aria-label="{{ 'newsletter.button_label' | t }}"
+              >
+                {{ nb.settings.button_label }}
+              </button>
+            </div>
+
+            {% if form.errors %}
+              <small class="article-subscribe__msg article-subscribe__msg--error" id="{{ fid }}-Error">
+                <span class="svg-wrapper">{{ 'icon-error.svg' | inline_asset_content }}</span>
+                {{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}
+              </small>
+            {% endif %}
+
+            {% if form.posted_successfully? %}
+              <p class="article-subscribe__msg article-subscribe__msg--success" id="{{ fid }}-Success" tabindex="-1">
+                <span class="svg-wrapper">{{ 'icon-success.svg' | inline_asset_content }}</span>
+                {{ 'newsletter.success' | t }}
+              </p>
+            {% endif %}
+          {%- endform -%}
+        </div>
+      </section>
+    {% endfor %}
+  </aside>
+{% endif %}
+
         </div>
     {% endcase %}
   {% endfor %}
@@ -564,7 +626,18 @@ document.addEventListener('DOMContentLoaded', function () {
     { "type": "range", "id": "words_per_minute", "label": "Words per minute", "min": 120, "max": 300, "step": 10, "default": 200 },
     { "type": "text", "id": "minutes_suffix", "label": "Minutes suffix", "default": "min" }
   ]
+},
+{
+  "type": "newsletter",
+  "name": "Subscribe box",
+  "limit": 1,
+  "settings": [
+    { "type": "text", "id": "newsletter_heading", "label": "Heading", "default": "Отримуйте якісний контент" },
+    { "type": "text", "id": "email_placeholder", "label": "Email placeholder", "default": "Введіть email" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Підпишіться" }
+  ]
 }
+
 
   ]
 }
