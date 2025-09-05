@@ -81,6 +81,31 @@
     margin: 24px auto 0 auto;
   }
 
+  .article-meta {
+  max-width: 1160px;
+  margin: 0 auto 16px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+}
+
+.article-meta__item { }
+
+.article-meta__label {
+  font-size: 12px;
+  line-height: 1.2;
+  color: #9DA3AF;
+  margin-bottom: 6px;
+  display: block;
+  font-family: var(--font-heading-main);
+}
+
+.article-meta__value {
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--color-main-text);
+}
+
   @media (max-width: 749px) {
     .article-title { font-size: 24px; }
     .article-wrap {
@@ -91,6 +116,12 @@
       position: static;
       order: -1;
       margin-bottom: 16px;
+    }
+    .article-meta {
+        padding: 0 10px;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-bottom: 20px;
     }
   }
   {% endstyle %}
