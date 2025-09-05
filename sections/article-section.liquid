@@ -1,18 +1,10 @@
 {{ 'section-blog-post.css' | asset_url | stylesheet_tag }}
 
 <article class="article-template article-with-toc">
-  {% assign active_toc_mode = section.settings.toc_mode %}
-  {% assign include_h3 = section.settings.include_h3 %}
+  {% assign toc_mode_value = section.settings.toc_mode %}
+  {% assign include_h3_value = section.settings.include_h3 %}
 
   {% style %}
-  .article-wrap {
-    max-width: 1160px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 240px 1fr 0px;
-    gap: 40px;
-  }
-
   .article-title {
     max-width: 1160px;
     margin: 0 auto 24px auto;
@@ -28,6 +20,14 @@
     margin: 0 auto 24px auto;
     border-radius: 16px;
     overflow: hidden;
+  }
+
+  .article-wrap {
+    max-width: 1160px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 240px 1fr 0px;
+    gap: 40px;
   }
 
   .article-toc {
@@ -73,12 +73,8 @@
     max-width: 736px;
     width: 100%;
   }
-  .article-body.rte h2 {
-    margin-top: 28px;
-  }
-  .article-body.rte h3 {
-    margin-top: 18px;
-  }
+  .article-body.rte h2 { margin-top: 28px; }
+  .article-body.rte h3 { margin-top: 18px; }
 
   .article-footer {
     max-width: 1160px;
@@ -99,79 +95,106 @@
   }
   {% endstyle %}
 
-  <header class="page-width">
-    <h1 class="article-title">
-      {{ article.title | escape }}
-    </h1>
-    {% if section.settings.show_meta %}
-      <p style="margin:0 0 12px 0; opacity:.7;">
-        {% if section.settings.show_date %}
-          {{ article.published_at | time_tag: format: 'date' }}
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when '@app' %}
+        <div class="page-width page-width--narrow">
+          {% render block %}
+        </div>
+
+      {% when 'featured_image' %}
+        {% if article.image %}
+          <div class="article-hero" {{ block.shopify_attributes }}>
+            <img
+              srcset="
+                {% if article.image.width >= 350 %}{{ article.image | image_url: width: 350 }} 350w,{% endif %}
+                {% if article.image.width >= 750 %}{{ article.image | image_url: width: 750 }} 750w,{% endif %}
+                {% if article.image.width >= 1100 %}{{ article.image | image_url: width: 1100 }} 1100w,{% endif %}
+                {% if article.image.width >= 1500 %}{{ article.image | image_url: width: 1500 }} 1500w,{% endif %}
+                {% if article.image.width >= 2200 %}{{ article.image | image_url: width: 2200 }} 2200w,{% endif %}
+                {% if article.image.width >= 3000 %}{{ article.image | image_url: width: 3000 }} 3000w,{% endif %}
+                {{ article.image | image_url }} {{ article.image.width }}w
+              "
+              sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 }}px, (min-width: 750px) calc(100vw - 10rem), 100vw"
+              src="{{ article.image | image_url: width: 1600 }}"
+              loading="eager"
+              fetchpriority="high"
+              width="{{ article.image.width }}"
+              height="{{ article.image.height }}"
+              alt="{{ article.image.alt | default: article.title | escape }}"
+              style="display:block; width:100%; height:auto;"
+            >
+          </div>
         {% endif %}
-        {% if section.settings.show_author and article.author != blank %}
-          {% if section.settings.show_date %} • {% endif %} {{ article.author }}
-        {% endif %}
-      </p>
-    {% endif %}
-  </header>
 
-  {% if article.image %}
-    <div class="article-hero page-width">
-      <img
-        src="{{ article.image | image_url: width: 1600 }}"
-        alt="{{ article.image.alt | default: article.title | escape }}"
-        loading="eager"
-        width="{{ article.image.width }}"
-        height="{{ article.image.height }}"
-        style="display:block; width:100%; height:auto;"
-      >
-    </div>
-  {% endif %}
+      {% when 'title' %}
+        <header class="page-width page-width--narrow" {{ block.shopify_attributes }}>
+          <h1 class="article-title">{{ article.title | escape }}</h1>
+          {% if block.settings.blog_show_date %}
+            <span class="circle-divider caption-with-letter-spacing">
+              {{ article.published_at | time_tag: format: 'date' }}
+            </span>
+          {% endif %}
+          {% if block.settings.blog_show_author %}
+            <span class="caption-with-letter-spacing">
+              <span>{{ article.author }}</span>
+            </span>
+          {% endif %}
+        </header>
 
-  <div class="article-wrap">
-    <aside class="article-toc">
-      <h2 class="article-toc__title">{{ section.settings.toc_title }}</h2>
+      {% when 'share' %}
+        <div class="article-footer page-width page-width--narrow" {{ block.shopify_attributes }}>
+          {% assign share_url = request.origin | append: article.url %}
+          {% render 'share-button', block: block, share_link: share_url %}
+        </div>
 
-      {% if active_toc_mode == 'manual' %}
-        <ol class="article-toc__list" id="article-toc-list">
-          {% for b in section.blocks %}
-            {% if b.type == 'toc_item' %}
-              <li class="article-toc__item">
-                <a class="article-toc__link"
-                   href="#"
-                   data-toc-label="{{ b.settings.label | escape }}"
-                >
-                  {{ b.settings.label }}
-                </a>
-              </li>
+      {% when 'content' %}
+        <div class="article-wrap" {{ block.shopify_attributes }}>
+          <aside class="article-toc">
+            <h2 class="article-toc__title">{{ section.settings.toc_title }}</h2>
+
+            {% if toc_mode_value == 'manual' %}
+              <ol class="article-toc__list" id="article-toc-list">
+                {% for b in section.blocks %}
+                  {% if b.type == 'toc_item' %}
+                    <li class="article-toc__item">
+                      <a
+                        class="article-toc__link"
+                        href="#"
+                        data-toc-label="{{ b.settings.label | escape }}"
+                      >
+                        {{ b.settings.label }}
+                      </a>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              </ol>
+            {% else %}
+              <ol class="article-toc__list" id="article-toc-list"></ol>
             {% endif %}
-          {% endfor %}
-        </ol>
-      {% else %}
-        <ol class="article-toc__list" id="article-toc-list">
+          </aside>
 
-        </ol>
-      {% endif %}
-    </aside>
+          <div class="article-body rte" id="article-body">
+            {{ article.content }}
+          </div>
 
-    <div class="article-body rte" id="article-body">
-      {{ article.content }}
-    </div>
+          <div></div>
+        </div>
+    {% endcase %}
+  {% endfor %}
 
-    <div></div> 
+  <div class="article-template__back element-margin-top center">
+    <a href="{{ blog.url }}" class="article-template__link link animate-arrow">
+      <span class="icon-wrap">
+        <span class="svg-wrapper">{{ 'icon-arrow.svg' | inline_asset_content }}</span>
+      </span>
+      {{ 'blogs.article.back_to_blog' | t: title: blog.title | escape }}
+    </a>
   </div>
 
-  {% if section.settings.show_share %}
-    <div class="article-footer page-width">
-      {% assign share_url = request.origin | append: article.url %}
-      {% render 'share-button', share_link: share_url %}
-    </div>
-  {% endif %}
-
   {% if blog.comments_enabled? %}
-    {{- '' -}}
+    {# залиш: можеш перенести дефолтні коментарі сюди за потреби #}
   {% endif %}
-
 </article>
 
 <script>
@@ -182,13 +205,11 @@ document.addEventListener('DOMContentLoaded', function () {
     return;
   }
 
-  // з Liquid віддаємо значення налаштувань
-  const includeH3 = {{ include_h3 | json }};
-  const tocMode = {{ active_toc_mode | json }};            // "auto" або "manual"
-  const modeManual = (tocMode === 'manual');               // порівняння робимо в JS
+  const includeH3 = {{ include_h3_value | json }};
+  const tocMode = {{ toc_mode_value | json }};      // "auto" або "manual"
+  const modeManual = (tocMode === 'manual');
   const scrollOffset = Number({{ section.settings.scroll_offset | default: 100 | json }});
 
-  // slugify з підтримкою кирилиці/латини (Unicode)
   function slugify(text) {
     const s = String(text)
       .normalize('NFD')
@@ -349,7 +370,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
-
 <script type="application/ld+json">
   {{ article | structured_data }}
 </script>
@@ -366,19 +386,58 @@ document.addEventListener('DOMContentLoaded', function () {
       { "value": "manual", "label": "Manual (blocks below)" }
     ]},
     { "type": "checkbox", "id": "include_h3", "label": "Include H3 in TOC", "default": true },
-    { "type": "range", "id": "scroll_offset", "label": "Scroll offset (px)", "min": 0, "max": 200, "step": 5, "default": 100 },
-    { "type": "checkbox", "id": "show_meta", "label": "Show meta (date/author)", "default": true },
-    { "type": "checkbox", "id": "show_date", "label": "Show date", "default": true },
-    { "type": "checkbox", "id": "show_author", "label": "Show author", "default": false },
-    { "type": "checkbox", "id": "show_share", "label": "Show share buttons", "default": false }
+    { "type": "range", "id": "scroll_offset", "label": "Scroll offset (px)", "min": 0, "max": 200, "step": 5, "default": 100 }
   ],
   "blocks": [
-    { "type": "toc_item", "name": "TOC пункт (manual mode)", "settings": [
-      { "type": "text", "id": "label", "label": "Заголовок розділу (як у контенті)", "default": "What is biohacking?" }
-    ]}
-  ],
-  "presets": [
-    { "name": "Article with TOC" }
+    { "type": "@app" },
+    {
+      "type": "featured_image",
+      "name": "Featured image",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "image_height",
+          "label": "Image height",
+          "default": "adapt",
+          "options": [
+            { "value": "adapt", "label": "Adapt to image" },
+            { "value": "small", "label": "Small" },
+            { "value": "medium", "label": "Medium" },
+            { "value": "large", "label": "Large" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "name": "Title",
+      "limit": 1,
+      "settings": [
+        { "type": "checkbox", "id": "blog_show_date", "default": true, "label": "Show date" },
+        { "type": "checkbox", "id": "blog_show_author", "default": false, "label": "Show author" }
+      ]
+    },
+    {
+      "type": "content",
+      "name": "Content",
+      "limit": 1
+    },
+    {
+      "type": "share",
+      "name": "Share",
+      "limit": 2,
+      "settings": [
+        { "type": "text", "id": "share_label", "label": "Share label", "default": "Share" }
+      ]
+    },
+    {
+      "type": "toc_item",
+      "name": "TOC item (manual mode)",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Heading text (as in content)", "default": "What is biohacking?" }
+      ]
+    }
   ]
 }
 {% endschema %}
