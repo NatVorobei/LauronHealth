@@ -6,105 +6,127 @@
 
   {% style %}
   .article-header {
-    max-width: 100%;
-  }
+  max-width: 100%;
+}
 
-  .article-title {
-    max-width: 1160px;
-    margin: 0 auto 24px auto;
-    font-size: 32px;
-    line-height: 1.2;
-    font-weight: 700;
-    color: var(--color-main-text);
-    font-family: var(--font-heading-main);
-  }
+.article-title {
+  max-width: 1160px;
+  margin: 0 auto 24px auto;
+  font-size: 32px;
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--color-main-text);
+  font-family: var(--font-heading-main);
+}
 
-  .article-hero {
-    max-width: 1160px;
-    margin: 0 auto 24px auto;
-    border-radius: 16px;
-    overflow: hidden;
-  }
+.article-hero {
+  max-width: 1160px;
+  margin: 0 auto 24px auto;
+  border-radius: 16px;
+  overflow: hidden;
+}
 
-  .article-wrap {
-    max-width: 1160px;
-    margin: 0 auto;
-    display: flex;
-    gap: 74px;
-  }
+.article-wrap {
+  max-width: 1160px;
+  margin: 0 auto;
+  display: flex;
+  gap: 74px;
+}
 
-  .article-toc {
-    position: sticky;
-    top: 60px;
-    align-self: start;
-  }
+.article-wrap--2,
+.article-wrap--3 {
+  max-width: 1160px;
+  margin: 0 auto;
+  display: grid;
+  gap: 74px;
+}
 
-  .article-toc__title {
-    font-size: 16px;
-    font-weight: 700;
-    margin: 0 0 12px 0;
-    color: var(--color-main-text);
-    font-family: var(--font-heading-main);
-  }
+.article-wrap--2 {
+  grid-template-columns: 240px 1fr;
+}
 
-  .article-toc__list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    gap: 12px;
-    border-top: 1px solid #D7D7D7;
-  }
-  .article-toc__item {
-    padding: 16px 0;
-    border-bottom: 1px solid #D7D7D7;
-    max-width: 190px;
-  }
-  .article-toc__link {
-    text-decoration: none;
-    color: #87878D;.article-body.rte h2
-    font-size: 14px;
-    line-height: 1.3;
-    font-family: var(--font-heading-main);
-  }
-  .article-toc__link:hover,
-  .article-toc__link.is-active {
-    color: var(--color-main-text);
-    font-weight: 600;
-  }
+.article-wrap--3 {
+  grid-template-columns: 240px 1fr 320px;
+}
 
-  .article-body {
-    max-width: 600px;
-    color: var(--color-main-text);
-  }
-  .article-body p {
-    font-size: 16px;
-    line-height: 24px;
-    color: var(--color-main-text);
-  }
-  .article-body.rte h2 { 
-    margin-top: 28px;
-    font-size: 28px;
-    line-height: 34px;
-    color: var(--color-main-text);
-    font-family: var(--font-heading-main);
-    font-weight: 700;
-  }
-  .article-body.rte h3 { 
-    margin-top: 18px;
-    font-size: 28px;
-    line-height: 34px;
-    color: var(--color-main-text);
-    font-family: var(--font-heading-main);
-    font-weight: 700;
-  }
+.article-toc {
+  position: sticky;
+  top: 60px;
+  align-self: start;
+}
 
-  .article-footer {
-    max-width: 1160px;
-    margin: 24px auto 0 auto;
-  }
+.article-toc__title {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+  color: var(--color-main-text);
+  font-family: var(--font-heading-main);
+}
 
-  .article-meta {
+.article-toc__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+  border-top: 1px solid #D7D7D7;
+}
+
+.article-toc__item {
+  padding: 16px 0;
+  border-bottom: 1px solid #D7D7D7;
+  max-width: 190px;
+}
+
+.article-toc__link {
+  text-decoration: none;
+  color: #87878D;
+  font-size: 14px;
+  line-height: 1.3;
+  font-family: var(--font-heading-main);
+}
+
+.article-toc__link:hover,
+.article-toc__link.is-active {
+  color: var(--color-main-text);
+  font-weight: 600;
+}
+
+.article-body {
+  max-width: 600px;
+  color: var(--color-main-text);
+}
+
+.article-body p {
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--color-main-text);
+}
+
+.article-body.rte h2 {
+  margin-top: 28px;
+  font-size: 28px;
+  line-height: 34px;
+  color: var(--color-main-text);
+  font-family: var(--font-heading-main);
+  font-weight: 700;
+}
+
+.article-body.rte h3 {
+  margin-top: 18px;
+  font-size: 28px;
+  line-height: 34px;
+  color: var(--color-main-text);
+  font-family: var(--font-heading-main);
+  font-weight: 700;
+}
+
+.article-footer {
+  max-width: 1160px;
+  margin: 24px auto 0 auto;
+}
+
+.article-meta {
   max-width: 1160px;
   margin: 0 auto 16px auto;
   display: grid;
@@ -130,24 +152,108 @@
   color: var(--color-main-text);
 }
 
-  @media (max-width: 749px) {
-    .article-title { font-size: 24px; }
-    .article-wrap {
-      padding: 0 10px;
-      grid-template-columns: 1fr;
-    }
-    .article-toc {
-      position: static;
-      order: -1;
-      margin-bottom: 16px;
-    }
-    .article-meta {
-        padding: 0 10px;
-        grid-template-columns: 1fr;
-        gap: 12px;
-        margin-bottom: 20px;
-    }
+.article-aside-right {
+  position: sticky;
+  top: 60px;
+  align-self: start;
+}
+
+.article-subscribe {
+  border: 1px solid #EDEDED;
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.article-subscribe__title {
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+  color: var(--color-main-text);
+  font-family: var(--font-heading-main);
+}
+
+.article-subscribe__form { }
+
+.article-subscribe__input-group {
+  display: flex;
+  gap: 8px;
+}
+
+.article-subscribe__input {
+  flex: 1;
+  height: 44px;
+  padding: 0 12px;
+  font-size: 14px;
+  line-height: 44px;
+  border: 1px solid #D7D7D7;
+  border-radius: 12px;
+  color: var(--color-main-text);
+  background: #fff;
+}
+
+.article-subscribe__button {
+  height: 44px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  background: #111;
+  color: #fff;
+  cursor: pointer;
+}
+
+.article-subscribe__button:hover {
+  opacity: .9;
+}
+
+.article-subscribe__msg {
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.article-subscribe__msg--error {
+  color: #b00020;
+}
+
+.article-subscribe__msg--success {
+  color: #0a7f2e;
+}
+
+@media (max-width: 749px) {
+  .article-title {
+    font-size: 24px;
   }
+  .article-wrap {
+    padding: 0 10px;
+    grid-template-columns: 1fr;
+  }
+  .article-wrap--2,
+  .article-wrap--3 {
+    padding: 0 10px;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .article-toc {
+    position: static;
+    order: -1;
+    margin-bottom: 16px;
+  }
+  .article-meta {
+    padding: 0 10px;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .article-aside-right {
+    position: static;
+  }
+}
+
   {% endstyle %}
 
   {% for block in section.blocks %}
@@ -246,99 +352,95 @@
         </div>
 
       {% when 'content' %}
-        <div class="article-wrap" {{ block.shopify_attributes }}>
-          <aside class="article-toc">
-            <h2 class="article-toc__title">{{ section.settings.toc_title }}</h2>
+  {% assign newsletter_blocks = section.blocks | where: 'type', 'newsletter' %}
+  <div class="{% if newsletter_blocks.size > 0 %}article-wrap--3{% else %}article-wrap--2{% endif %}" {{ block.shopify_attributes }}>
+    <aside class="article-toc">
+      <h2 class="article-toc__title">{{ section.settings.toc_title }}</h2>
 
-            {% if toc_mode_value == 'manual' %}
-              <ol class="article-toc__list" id="article-toc-list">
-                {% for b in section.blocks %}
-                  {% if b.type == 'toc_item' %}
-                    <li class="article-toc__item">
-                      <a
-                        class="article-toc__link"
-                        href="#"
-                        data-toc-label="{{ b.settings.label | escape }}"
-                      >
-                        {{ b.settings.label }}
-                      </a>
-                    </li>
-                  {% endif %}
-                {% endfor %}
-              </ol>
-            {% else %}
-              <ol class="article-toc__list" id="article-toc-list"></ol>
+      {% if toc_mode_value == 'manual' %}
+        <ol class="article-toc__list" id="article-toc-list">
+          {% for b in section.blocks %}
+            {% if b.type == 'toc_item' %}
+              <li class="article-toc__item">
+                <a class="article-toc__link" href="#" data-toc-label="{{ b.settings.label | escape }}">
+                  {{ b.settings.label }}
+                </a>
+              </li>
             {% endif %}
-          </aside>
+          {% endfor %}
+        </ol>
+      {% else %}
+        <ol class="article-toc__list" id="article-toc-list"></ol>
+      {% endif %}
+    </aside>
 
-          <div class="article-body rte" id="article-body">
-            {{ article.content }}
-          </div>
+    <div class="article-body rte" id="article-body">
+      {{ article.content }}
+    </div>
 
-          {% assign newsletter_blocks = section.blocks | where: 'type', 'newsletter' %}
-{% if newsletter_blocks.size > 0 %}
-  <aside class="article-aside-right">
-    {% for nb in newsletter_blocks %}
-      {% assign fid = 'ArticleSubscribe-' | append: section.id | append: '-' | append: nb.id %}
-      <section class="article-subscribe" {{ nb.shopify_attributes }}>
-        {% if nb.settings.newsletter_heading != blank %}
-          <h3 class="article-subscribe__title">{{ nb.settings.newsletter_heading }}</h3>
-        {% endif %}
+    {% if newsletter_blocks.size > 0 %}
+      <aside class="article-aside-right">
+        {% for nb in newsletter_blocks %}
+          {% assign fid = 'ArticleSubscribe-' | append: section.id | append: '-' | append: nb.id %}
+          <section class="article-subscribe" {{ nb.shopify_attributes }}>
+            {% if nb.settings.newsletter_heading != blank %}
+              <h3 class="article-subscribe__title">{{ nb.settings.newsletter_heading }}</h3>
+            {% endif %}
 
-        <div class="article-subscribe__form-wrap">
-          {%- form 'customer', id: fid, class: 'article-subscribe__form' -%}
-            <input type="hidden" name="contact[tags]" value="newsletter">
-            <div class="article-subscribe__input-group">
-              <input
-                id="{{ fid }}-Email"
-                type="email"
-                name="contact[email]"
-                class="article-subscribe__input"
-                value="{{ form.email }}"
-                aria-required="true"
-                autocorrect="off"
-                autocapitalize="off"
-                autocomplete="email"
+            <div class="article-subscribe__form-wrap">
+              {%- form 'customer', id: fid, class: 'article-subscribe__form' -%}
+                <input type="hidden" name="contact[tags]" value="newsletter">
+
+                <div class="article-subscribe__input-group">
+                  <input
+                    id="{{ fid }}-Email"
+                    type="email"
+                    name="contact[email]"
+                    class="article-subscribe__input"
+                    value="{{ form.email }}"
+                    aria-required="true"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    autocomplete="email"
+                    {% if form.errors %}
+                      autofocus aria-invalid="true" aria-describedby="{{ fid }}-Error"
+                    {% elsif form.posted_successfully? %}
+                      aria-describedby="{{ fid }}-Success"
+                    {% endif %}
+                    placeholder="{{ nb.settings.email_placeholder }}"
+                    required
+                  >
+                  <button
+                    type="submit"
+                    class="article-subscribe__button"
+                    name="commit"
+                    id="{{ fid }}-Submit"
+                    aria-label="{{ 'newsletter.button_label' | t }}"
+                  >
+                    {{ nb.settings.button_label }}
+                  </button>
+                </div>
+
                 {% if form.errors %}
-                  autofocus aria-invalid="true" aria-describedby="{{ fid }}-Error"
-                {% elsif form.posted_successfully? %}
-                  aria-describedby="{{ fid }}-Success"
+                  <small class="article-subscribe__msg article-subscribe__msg--error" id="{{ fid }}-Error">
+                    <span class="svg-wrapper">{{ 'icon-error.svg' | inline_asset_content }}</span>
+                    {{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}
+                  </small>
                 {% endif %}
-                placeholder="{{ nb.settings.email_placeholder }}"
-                required
-              >
-              <button
-                type="submit"
-                class="article-subscribe__button"
-                name="commit"
-                id="{{ fid }}-Submit"
-                aria-label="{{ 'newsletter.button_label' | t }}"
-              >
-                {{ nb.settings.button_label }}
-              </button>
+
+                {% if form.posted_successfully? %}
+                  <p class="article-subscribe__msg article-subscribe__msg--success" id="{{ fid }}-Success" tabindex="-1">
+                    <span class="svg-wrapper">{{ 'icon-success.svg' | inline_asset_content }}</span>
+                    {{ 'newsletter.success' | t }}
+                  </p>
+                {% endif %}
+              {%- endform -%}
             </div>
-
-            {% if form.errors %}
-              <small class="article-subscribe__msg article-subscribe__msg--error" id="{{ fid }}-Error">
-                <span class="svg-wrapper">{{ 'icon-error.svg' | inline_asset_content }}</span>
-                {{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}
-              </small>
-            {% endif %}
-
-            {% if form.posted_successfully? %}
-              <p class="article-subscribe__msg article-subscribe__msg--success" id="{{ fid }}-Success" tabindex="-1">
-                <span class="svg-wrapper">{{ 'icon-success.svg' | inline_asset_content }}</span>
-                {{ 'newsletter.success' | t }}
-              </p>
-            {% endif %}
-          {%- endform -%}
-        </div>
-      </section>
-    {% endfor %}
-  </aside>
-{% endif %}
-
-        </div>
+          </section>
+        {% endfor %}
+      </aside>
+    {% endif %}
+  </div>
     {% endcase %}
   {% endfor %}
 
