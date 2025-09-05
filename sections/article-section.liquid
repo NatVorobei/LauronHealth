@@ -869,16 +869,27 @@ document.addEventListener('DOMContentLoaded', function () {
       setActiveById(target.id);
     }
   });
+});
+</script>
 
-
+<script>
+(function () {
   function initRelatedSwipers() {
-    document.querySelectorAll('[data-related-swiper]').forEach(function (el) {
+    const nodes = document.querySelectorAll('[data-related-swiper]');
+    if (!nodes.length) return;
+
+    nodes.forEach(function (el) {
+      if (el.__swiper_init) return;
+      el.__swiper_init = true;
+
       new Swiper(el, {
         slidesPerView: 1.2,
         spaceBetween: 20,
         speed: 400,
         loop: false,
         watchOverflow: true,
+        observer: true,
+        observeParents: true,
         pagination: {
           el: el.querySelector('.swiper-pagination'),
           clickable: true
@@ -886,10 +897,21 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   }
-  if (window.Swiper) { initRelatedSwipers(); } else { window.addEventListener('load', initRelatedSwipers); }
 
-});
+  if (window.Swiper) {
+    initRelatedSwipers();
+  } else {
+    window.addEventListener('load', initRelatedSwipers);
+  }
+
+  window.addEventListener('resize', function () {
+    document.querySelectorAll('[data-related-swiper]').forEach(function (el) {
+      if (el.swiper) el.swiper.update();
+    });
+  });
+})();
 </script>
+
 <script type="application/ld+json">
   {{ article | structured_data }}
 </script>
