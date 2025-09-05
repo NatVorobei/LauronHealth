@@ -97,6 +97,9 @@
         "collapsible_tab_ReprVF",
         "collapsible_tab_FYWTKV"
       ],
+      "custom_css": [
+        ".accordion__content p {font-size: 14px;}"
+      ],
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",
