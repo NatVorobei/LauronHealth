@@ -510,7 +510,38 @@ document.addEventListener('DOMContentLoaded', function () {
       "settings": [
         { "type": "text", "id": "label", "label": "Heading text (as in content)", "default": "What is biohacking?" }
       ]
-    }
+    },
+    {
+  "type": "meta",
+  "name": "Top meta",
+  "limit": 1,
+  "settings": [
+    { "type": "checkbox", "id": "show_date", "label": "Show date", "default": true },
+    { "type": "text", "id": "date_label", "label": "Date label", "default": "Date:" },
+    {
+      "type": "select",
+      "id": "date_format",
+      "label": "Date format",
+      "default": "date",
+      "options": [
+        { "value": "date", "label": "Long date" },
+        { "value": "abbreviated_date", "label": "Short date" }
+      ]
+    },
+
+    { "type": "checkbox", "id": "show_categories", "label": "Show categories (tags)", "default": true },
+    { "type": "text", "id": "categories_label", "label": "Categories label", "default": "Category:" },
+
+    { "type": "range", "id": "max_tags", "label": "Max tags to show (0 = all)", "min": 0, "max": 20, "step": 1, "default": 0 },
+    { "type": "text", "id": "empty_categories_fallback", "label": "If no tags", "default": "-" },
+
+    { "type": "checkbox", "id": "show_reading_time", "label": "Show reading time", "default": true },
+    { "type": "text", "id": "reading_label", "label": "Reading label", "default": "Reading time:" },
+    { "type": "range", "id": "words_per_minute", "label": "Words per minute", "min": 120, "max": 300, "step": 10, "default": 200 },
+    { "type": "text", "id": "minutes_suffix", "label": "Minutes suffix", "default": "min" }
+  ]
+}
+
   ]
 }
 {% endschema %}
