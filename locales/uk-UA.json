@@ -609,7 +609,10 @@
         "ship_to_company": "Доставити до {{ comapanyName}}"
       },
       "payment": {
-        "purchase_options_agreement_label_wallets": "Продовжуючи оплату, ви погоджуєтеся з майбутніми витратами, зазначеними на цій сторінці, та політикою скасування."
+        "purchase_options_agreement_label_wallets": "Продовжуючи оплату, ви погоджуєтеся з майбутніми витратами, зазначеними на цій сторінці, та політикою скасування.",
+        "preview_not_available": {
+          "content": "Не хвилюйтеся, ця експрес-оплата працює для ваших клієнтів."
+        }
       },
       "order_summary": {
         "discount_title_stacking": {
@@ -619,6 +622,9 @@
       },
       "marketing": {
         "accept_marketing_checkbox_label": "Надішліть мені email з новинами та пропозиціями"
+      },
+      "alternative_payment_method_banner": {
+        "express_checkout": "Експрес-оформлення замовлення"
       }
     }
   },
