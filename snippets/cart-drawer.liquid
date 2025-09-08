@@ -77,11 +77,7 @@
       {% if cart != empty and settings.show_shipping_bar %}
         {% render 'free-shipping-progress' %}
       {% endif %}
-      <cart-drawer-items
-        {% if cart == empty %}
-          class=" is-empty"
-        {% endif %}
-      >
+      <cart-drawer-items class="{% if cart == empty %}is-empty{% endif %}{% if cart.item_count > 1 %} has-multiple{% endif %}">
         <form
           action="{{ routes.cart_url }}"
           id="CartDrawer-Form"
