@@ -607,6 +607,9 @@
         "change_company_location_link_label": "Змінити місцезнаходження компанії",
         "change_location_link_label": "Змінити місцезнаходження",
         "ship_to_company": "Доставити до {{ comapanyName}}"
+      },
+      "payment": {
+        "purchase_options_agreement_label_wallets": "Продовжуючи оплату, ви погоджуєтеся з майбутніми витратами, зазначеними на цій сторінці, та політикою скасування."
       }
     }
   }
