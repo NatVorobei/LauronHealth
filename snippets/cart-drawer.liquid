@@ -77,7 +77,17 @@
       {% if cart != empty and settings.show_shipping_bar %}
         {% render 'free-shipping-progress' %}
       {% endif %}
-      <cart-drawer-items class="{% if cart == empty %}is-empty{% endif %}{% if cart.item_count > 1 %} has-multiple{% endif %}">
+      {%- assign upsell_present = false -%}
+      {%- if cart.item_count > 0 and settings.show_upsell_offer -%}
+        {%- assign upsell_present = true -%}
+      {%- endif -%}
+
+      {% capture drawer_items_classes -%}
+        {% if cart == empty %}is-empty{% endif %}
+        {% if cart.item_count > 1 and upsell_present == false %} has-multiple{% endif %}
+        {% if upsell_present %} has-upsell{% endif %}
+      {%- endcapture %}
+      <cart-drawer-items{% unless drawer_items_classes | strip == '' %} class="{{ drawer_items_classes | strip }}"{% endunless %}>
         <form
           action="{{ routes.cart_url }}"
           id="CartDrawer-Form"
@@ -477,9 +487,12 @@
           <div id="CartDrawer-CartErrors" role="alert"></div>
         </form>
       </cart-drawer-items>
-      {% if cart != empty and settings.show_upsell_offer %}
+      {% comment %} {% if cart != empty and settings.show_upsell_offer %}
           {% render 'upsell-offer' %}
-        {% endif %}
+        {% endif %} {% endcomment %}
+      {% if upsell_present %}
+        {% render 'upsell-offer' %}
+      {% endif %}
       <div class="drawer__footer">
         {%- if settings.show_cart_note -%}
           <details id="Details-CartDrawer">
