@@ -45,12 +45,10 @@
   gap: 74px;
 }
 
-/* ширини колонок */
 .article-toc { flex: 0 0 190px; }
 .article-body { flex: 1 1 auto; max-width: 600px; }
 .article-aside-right { flex: 0 0 190px; }
 
-/* TOC */
 .article-toc {
   position: sticky;
   top: 60px;
@@ -65,7 +63,6 @@
   font-family: var(--font-heading-main);
 }
 
-/* десктопний список */
 .article-toc__list {
   list-style: none;
   padding: 0;
@@ -91,7 +88,6 @@
   font-weight: 600;
 }
 
-/* мобільний селект (як у блозі) */
 .is-desktop { display: block; }
 .is-mobile { display: none; }
 
@@ -124,7 +120,6 @@
   display: inline-flex;
 }
 
-/* контент */
 .article-body { color: var(--color-main-text); }
 .article-body p {
   font-size: 16px;
@@ -148,13 +143,11 @@
   font-weight: 700;
 }
 
-/* футер */
 .article-footer {
   max-width: 1160px;
   margin: 24px auto 0 auto;
 }
 
-/* мета-як у макеті */
 .article-meta {
   max-width: 1160px;
   margin-top: 40px;
@@ -327,6 +320,9 @@
 }
 
 @media (max-width: 749px) {
+  .toc-select-wrap {
+    max-width: 100%;
+  }
   .article-title { font-size: 24px; }
 
   .article-wrap,
