@@ -77,7 +77,12 @@
       {% if cart != empty and settings.show_shipping_bar %}
         {% render 'free-shipping-progress' %}
       {% endif %}
-      <cart-drawer-items class="{% if cart == empty %}is-empty{% endif %}{% if cart.item_count > 1 %} has-multiple{% endif %}">
+      {% capture drawer_items_classes -%}
+        {% if cart == empty %}is-empty{% endif %}
+        {% if cart.item_count > 1 and upsell_present == false %} has-multiple{% endif %}
+        {% if upsell_present %} has-upsell{% endif %}
+      {%- endcapture %}
+      <cart-drawer-items{% unless drawer_items_classes | strip == '' %} class="{{ drawer_items_classes | strip }}"{% endunless %}>
         <form
           action="{{ routes.cart_url }}"
           id="CartDrawer-Form"
