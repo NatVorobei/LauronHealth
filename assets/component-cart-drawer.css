@@ -270,10 +270,6 @@ cart-drawer-items {
   overflow: auto;
 }
 
-cart-drawer:has(.upsell-offer) cart-drawer-items:not(.is-empty) {
-  flex: 0 1 auto;
-}
-
 @media screen and (max-height: 650px) {
   cart-drawer-items {
     overflow: visible;
