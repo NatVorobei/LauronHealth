@@ -267,6 +267,10 @@ cart-drawer {
 
 cart-drawer-items {
   overflow: auto;
+  /* flex: 1; */
+}
+
+.has-multiple {
   flex: 1;
 }
 
