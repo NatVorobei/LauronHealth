@@ -606,7 +606,8 @@
         "different_shipping_address_text": "Використовуйте одноразову адресу для цього замовлення",
         "change_company_location_link_label": "Змінити місцезнаходження компанії",
         "change_location_link_label": "Змінити місцезнаходження",
-        "ship_to_company": "Доставити до {{ comapanyName}}"
+        "ship_to_company": "Доставити до {{ comapanyName}}",
+        "contact_method_title": "Спосіб зв'язку"
       },
       "payment": {
         "purchase_options_agreement_label_wallets": "Продовжуючи оплату, ви погоджуєтеся з майбутніми витратами, зазначеними на цій сторінці, та політикою скасування.",
