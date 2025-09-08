@@ -671,7 +671,8 @@
         "pay_with_payment_method": "Оплатити за допомогою {{ payment_method }}",
         "different_credit_card_label": "Використати іншу кредитну картку",
         "same_billing_address_label": "Така сама, як адреса доставки",
-        "different_billing_address_label": "Використати іншу адресу для виставлення рахунку"
+        "different_billing_address_label": "Використати іншу адресу для виставлення рахунку",
+        "same_billing_address_checkbox_label": "Використовувати адресу доставки як адресу для виставлення рахунку"
       },
       "order_summary": {
         "discount_title_stacking": {
