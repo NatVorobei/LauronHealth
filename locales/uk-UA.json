@@ -610,6 +610,12 @@
       },
       "payment": {
         "purchase_options_agreement_label_wallets": "Продовжуючи оплату, ви погоджуєтеся з майбутніми витратами, зазначеними на цій сторінці, та політикою скасування."
+      },
+      "order_summary": {
+        "discount_title_stacking": {
+          "one": "Знижка",
+          "other": "Знижки"
+        }
       }
     }
   }
