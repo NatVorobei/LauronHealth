@@ -685,7 +685,8 @@
         "accept_marketing_checkbox_label": "Надішліть мені email з новинами та пропозиціями"
       },
       "alternative_payment_method_banner": {
-        "express_checkout": "Експрес-оформлення замовлення"
+        "express_checkout": "Експрес-оформлення замовлення",
+        "or_pay_with_credit_card": "Або оплатіть карткою"
       },
       "general": {
         "choose_delivery_strategy": "Вибрати спосіб доставки",
@@ -765,7 +766,8 @@
           "no_access": {
             "link": "Увійти"
           }
-        }
+        },
+        "credit_card_label": "Картка"
       }
     }
   },
