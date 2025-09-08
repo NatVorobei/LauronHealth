@@ -1,6 +1,6 @@
 {% unless template == 'index' or template == 'cart' or template == '404' or template == 'customers/account' or template == 'customers/addresses' or template == 'customers/login' or template == 'customers/register' or page.handle == 'science' or page.handle == 'auto-delivery' or page.handle == 'about-us' or page.handle == 'ingredients' or page.handle == 'дослідження' or request.path contains '/apps/parcelpanel' %}
 
-    <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <nav class="breadcrumbs{% if request.page_type == 'blog' or request.page_type == 'article' %} breadcrumbs--blogpage{% endif %}" aria-label="Breadcrumb">
     <ol class="breadcrumbs__list">
       <li class="breadcrumbs__item">
         <a href="{{ shop.url }}" class="breadcrumbs__link">Home</a>
