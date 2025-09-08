@@ -266,12 +266,13 @@ cart-drawer {
 }
 
 cart-drawer-items {
+  flex: 1 1 auto;
+  min-width: 0;
   overflow: auto;
-  /* flex: 1; */
 }
 
-.has-multiple {
-  flex: 1;
+cart-drawer-items.has-upsell {
+  flex: 0 1 auto;
 }
 
 @media screen and (max-height: 650px) {
