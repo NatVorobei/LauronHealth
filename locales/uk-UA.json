@@ -616,7 +616,15 @@
           "one": "Знижка",
           "other": "Знижки"
         }
+      },
+      "marketing": {
+        "accept_marketing_checkbox_label": "Надішліть мені email з новинами та пропозиціями"
       }
+    }
+  },
+  "customer_accounts": {
+    "order_details": {
+      "marketing_checkbox_label": "Надішліть мені email з новинами та пропозиціями"
     }
   }
 }
