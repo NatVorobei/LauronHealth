@@ -625,6 +625,42 @@
       },
       "alternative_payment_method_banner": {
         "express_checkout": "Експрес-оформлення замовлення"
+      },
+      "general": {
+        "choose_delivery_strategy": "Вибрати спосіб доставки"
+      },
+      "delivery_options": {
+        "free_total_label": "Безкоштовно",
+        "ship": "Доставити",
+        "ship_to_address": "Доставити на адресу",
+        "shipping_address": "Адреса доставки",
+        "pick_up": "Забрати",
+        "pick_up_from_store": "Забрати в магазині",
+        "pick_up_locations": "Точки видачі",
+        "pick_up_in_one_hour": "Зазвичай готово за 1 годину",
+        "pick_up_in_two_hours": "Зазвичай готово за 2 години",
+        "pick_up_in_four_hours": "Зазвичай готово за 4 години",
+        "pick_up_in_twenty_four_hours": "Зазвичай готово за 24 години",
+        "pick_up_in_two_to_four_days": "Зазвичай готово за 2-4 дні",
+        "pick_up_in_five_or_more_days": "Зазвичай готово за 5+ днів",
+        "pick_up_in_zero_to_two_hours": "Готово до видачі через 2 години",
+        "pick_up_in_two_to_four_hours": "Готово до видачі через 4 години",
+        "pick_up_immediately": "Готово до видачі зараз",
+        "pick_up_next_day": "Готово до видачі наступного дня",
+        "pickup_point_method_definition": "Доставити до пункту видачі",
+        "retail_method_definition": "Роздрібна доставка",
+        "company_location_no_address_banner": "Замовлення, що відправляються в місця без адреси, будуть передані на розгляд.",
+        "none_method_definition": "Без доставки",
+        "subscription_pickup_information": "Цей спосіб доставки застосовуватиметься до всіх товарів у цьому замовленні та до всіх майбутніх замовлень за цією підпискою."
+      },
+      "stock": {
+        "unfulfillable_product": {
+          "title": "Доставка недоступна"
+        }
+      },
+      "shipping": {
+        "delivery_title": "Доставка",
+        "subscription_local_delivery": "Підписка на місцеву доставку"
       }
     }
   },
