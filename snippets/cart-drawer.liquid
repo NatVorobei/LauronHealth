@@ -81,7 +81,7 @@
       {%- if cart.item_count > 0 and settings.show_upsell_offer -%}
         {%- assign upsell_present = true -%}
       {%- endif -%}
-      <cart-drawer-items class="{% if cart == empty %}is-empty{% endif %}{% if cart.item_count > 1 %} has-multiple{% endif %}">
+      <cart-drawer-items class="{% if cart == empty %}is-empty{% endif %}{% if upsell_present %} has-upsell{% endif %}">
         <form
           action="{{ routes.cart_url }}"
           id="CartDrawer-Form"
@@ -481,9 +481,9 @@
           <div id="CartDrawer-CartErrors" role="alert"></div>
         </form>
       </cart-drawer-items>
-      {% if cart != empty and settings.show_upsell_offer %}
-          {% render 'upsell-offer' %}
-        {% endif %}
+      {%- if upsell_present -%}
+        {% render 'upsell-offer' %}
+      {%- endif -%}
       <div class="drawer__footer">
         {%- if settings.show_cart_note -%}
           <details id="Details-CartDrawer">
