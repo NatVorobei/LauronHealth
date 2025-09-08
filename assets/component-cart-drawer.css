@@ -270,7 +270,7 @@ cart-drawer-items {
   overflow: auto;
 }
 
-cart-drawer-items.has-upsell {
+cart-drawer:has(.upsell-offer) cart-drawer-items:not(.is-empty) {
   flex: 0 1 auto;
 }
 
