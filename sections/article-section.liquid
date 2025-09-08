@@ -310,11 +310,13 @@
 
 @media (max-width: 989px) {
   .article-related__grid { grid-template-columns: repeat(2, 1fr); }
-
 }
 @media (max-width: 749px) {
   .article-related__grid { display: none; }
   .article-related__slider { display: block; }
+  .article-related__slider .swiper {
+    padding: 0 10px;
+  }
 }
 
 @media (max-width: 749px) {
