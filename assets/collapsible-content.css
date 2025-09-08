@@ -84,7 +84,18 @@ details[open] .accordion-toggle-icon .icon-minus {
   }
   .collapsible-content__button {
     align-self: flex-end;
-    margin: 0;
+  }
+}
+@media (min-width: 750px) and (max-width: 1179px) {
+  .collapsible-content__button {
+    align-self: flex-end;
+    margin-left: 10px;
+  }
+}
+
+@media (min-width: 1180px) {
+  .collapsible-content__button {
+    margin-left: 0;
   }
 }
 
