@@ -4123,16 +4123,14 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
     margin-bottom: 0 !important;
   }
 
-  .breadcrumbs--blogpage {
-    padding: 20px 10px 0;
-  }
-
   .breadcrumbs {
     font-size: 8px;
     line-height: 8px;
     padding: 20px 17px 0;
   }
-
+  .breadcrumbs--blogpage {
+    padding: 20px 10px 0;
+  }
   .breadcrumbs__item:not(:last-child)::after {
     width: 5px;
     height: 5px;
