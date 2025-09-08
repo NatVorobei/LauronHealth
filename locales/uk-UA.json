@@ -613,7 +613,8 @@
         "preview_not_available": {
           "content": "Не хвилюйтеся, ця експрес-оплата працює для ваших клієнтів."
         },
-        "klarna_pay_now_label": "Оплатити за допомогою Klarna"
+        "klarna_pay_now_label": "Оплатити за допомогою Klarna",
+        "shipping_rate_updated": "Доступні способи доставки були оновлені. Підтвердьте свій вибір перед оформленням замовлення."
       },
       "order_summary": {
         "discount_title_stacking": {
@@ -669,7 +670,10 @@
           "ddp_title": "Оплатити зараз"
         },
         "shipping_method_title": "Спосіб доставки",
-        "shipping_method_rollup_accessibility_label": "Варіанти способів доставки"
+        "shipping_method_rollup_accessibility_label": "Варіанти способів доставки",
+        "no_rates_for_cart_or_destination_notice": "Для вашого кошика або адреси немає доступних способів доставки",
+        "different_shipping_method_summary": "Введіть іншу адресу доставки, щоб переглянути доступні способи доставки",
+        "invalid_shipping_method_summary": "Введіть дійсну адресу доставки, щоб переглянути доступні способи доставки"
       },
       "order_payment_collection": {
         "pay_now": "Оплатити зараз"
@@ -685,6 +689,12 @@
           "shipping_method_title": "Спосіб доставки",
           "change_shipping_method_link_label": "Змінити спосіб доставки"
         }
+      },
+      "field_errors": {
+        "delivery_line_detail_changed": "Деякі деталі доставки могли змінитися. Перевірте спосіб доставки та спробуйте ще раз."
+      },
+      "shipping_errors": {
+        "empty_state": "Введіть свою адресу доставки, щоб переглянути доступні способи доставки."
       }
     }
   },
