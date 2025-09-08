@@ -676,12 +676,24 @@
       },
       "customer_account": {
         "invalid_shipping_method_summary": "Виберіть дійсну адресу доставки, щоб переглянути доступні способи доставки"
+      },
+      "thank_you": {
+        "shipping_method_title": "Спосіб доставки"
+      },
+      "review": {
+        "blocks": {
+          "shipping_method_title": "Спосіб доставки",
+          "change_shipping_method_link_label": "Змінити спосіб доставки"
+        }
       }
     }
   },
   "customer_accounts": {
     "order_details": {
-      "marketing_checkbox_label": "Надішліть мені email з новинами та пропозиціями"
+      "marketing_checkbox_label": "Надішліть мені email з новинами та пропозиціями",
+      "shipping": {
+        "method": "Спосіб доставки"
+      }
     },
     "B2B": {
       "draft_order_details": {
