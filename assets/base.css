@@ -3907,7 +3907,7 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
 }
 
 .breadcrumbs--blogpage {
-  padding: 20px 60px 0;
+  padding: 20px 0 0;
 }
 
 .custom-image-text .image-with-text__heading {
