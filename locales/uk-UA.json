@@ -687,7 +687,11 @@
         "maximum_discount_code_limit_reached": "Досягнуто максимальний ліміт кодів знижки Ви досягли максимальної кількості кодів знижки. Видаліть існуючий код, щоб використовувати <strong style=\"text-transform:uppercase\">{{ code }}</strong>.",
         "apply_discount_button_label": "Застосувати",
         "subtotal_label": "Сума",
-        "recurring_subtotal_label": "Повторювана проміжна сума"
+        "recurring_subtotal_label": "Повторювана проміжна сума",
+        "subtotal_label_with_quantity": {
+          "one": "Сума · {{ count }} товар",
+          "other": "Сума · {{ count }} товари"
+        }
       },
       "marketing": {
         "accept_marketing_checkbox_label": "Надішліть мені email з новинами та пропозиціями"
