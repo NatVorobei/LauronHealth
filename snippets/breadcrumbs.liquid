@@ -31,6 +31,11 @@
         <li class="breadcrumbs__item" aria-current="page">
           {{ page.title }}
         </li>
+
+      {% elsif template contains 'blog' %}
+        <li class="breadcrumbs__item">
+          <a href="{{ blog.url }}" class="breadcrumbs__link">{{ blog.title }}</a>
+        </li>
   
       {% elsif template contains 'article' %}
         <li class="breadcrumbs__item">
