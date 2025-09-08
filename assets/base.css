@@ -3737,7 +3737,7 @@ p {
   border-radius: 20px;
   flex: 1;
   text-align: center;
-  min-height: 76px;
+  height: 76px;
   cursor: pointer;
 }
 .swatch-image-container {
