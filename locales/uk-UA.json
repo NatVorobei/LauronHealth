@@ -538,5 +538,11 @@
     "before_number": "Вам залишилося",
     "after_number": "до безкоштовної доставки!",
     "free_delivery": "Вітаємо, ви отримали безкоштовну доставку!"
+  },
+  "shopify": {
+    "sentence": {
+      "two_words_connector": "та",
+      "last_word_connector": ", та"
+    }
   }
 }
