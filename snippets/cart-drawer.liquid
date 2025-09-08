@@ -77,7 +77,10 @@
       {% if cart != empty and settings.show_shipping_bar %}
         {% render 'free-shipping-progress' %}
       {% endif %}
-      
+      {%- assign upsell_present = false -%}
+      {%- if cart.item_count > 0 and settings.show_upsell_offer -%}
+        {%- assign upsell_present = true -%}
+      {%- endif -%}
       <cart-drawer-items class="{% if cart == empty %}is-empty{% endif %}{% if cart.item_count > 1 %} has-multiple{% endif %}">
         <form
           action="{{ routes.cart_url }}"
