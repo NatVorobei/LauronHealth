@@ -26,12 +26,22 @@
         {% assign sidebar_active_tag = active_tag %}
 
         <ul class="blog-nav__list is-desktop">
+          <li class="blog-nav__item">
+            <a
+              class="blog-nav__link{% if sidebar_active_tag == blank %} is-active{% endif %}"
+              href="{{ blog_obj.url }}"
+              {% if sidebar_active_tag == blank %}aria-current="true"{% endif %}
+            >
+              {{ section.settings.all_label | default: 'All' }}
+            </a>
+          </li>
+
           {% for tag in blog_obj.all_tags %}
             <li class="blog-nav__item">
               <a
                 class="blog-nav__link{% if sidebar_active_tag == tag %} is-active{% endif %}"
                 href="{{ blog_obj.url }}/tagged/{{ tag | handle }}"
-                {% if sidebar_active_tag == tag %}aria-current="true"{% endif %}
+                {% if sidebar_active_tag == tag %}aria-current="true{% endif %}"
               >
                 {{ tag }}
               </a>
@@ -45,7 +55,9 @@
             onchange="if(this.value) window.location.href=this.value"
             aria-label="Select blog category"
           >
-            <option value="" disabled hidden{% if sidebar_active_tag == blank %} selected{% endif %}></option>
+            <option value="{{ blog_obj.url }}" {% if sidebar_active_tag == blank %}selected{% endif %}>
+              {{ section.settings.all_label | default: 'All' }}
+            </option>
 
             {% for tag in blog_obj.all_tags %}
               <option
@@ -63,7 +75,6 @@
             </svg>
           </span>
         </div>
-
       </aside>
 
       <main class="blog-content" role="main">
