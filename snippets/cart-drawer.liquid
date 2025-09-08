@@ -477,9 +477,11 @@
           <div id="CartDrawer-CartErrors" role="alert"></div>
         </form>
       </cart-drawer-items>
-      {% if cart != empty and settings.show_upsell_offer %}
-          {% render 'upsell-offer' %}
-        {% endif %}
+      {%- assign upsell_present = false -%}
+      {%- if cart != empty and settings.show_upsell_offer -%}
+        {%- assign upsell_present = true -%}
+        {% render 'upsell-offer' %}
+      {%- endif -%}
       <div class="drawer__footer">
         {%- if settings.show_cart_note -%}
           <details id="Details-CartDrawer">
