@@ -184,6 +184,23 @@
     background: #333;
   }
 
+  .custom-newsletter-form-container {
+    display: flex;
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  .custom-newsletter-form-container input[type="email"] {
+    flex: 1 1 auto; 
+    min-width: 0; 
+  }
+
+  @media (min-width: 750px) and (max-width: 1060px) {
+    .custom-newsletter-form-container { 
+      padding: 0 10px; 
+    }
+  }
+
   @media (max-width: 768px) {
     .custom-newsletter-wrapper {
       height: auto;
