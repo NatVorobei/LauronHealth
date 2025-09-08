@@ -684,7 +684,8 @@
         "discount_placeholder": "Код знижки",
         "discount_code_applied": "Код знижки застосовано",
         "discount_code_aria_text": "Код знижки",
-        "maximum_discount_code_limit_reached": "Досягнуто максимальний ліміт кодів знижки Ви досягли максимальної кількості кодів знижки. Видаліть існуючий код, щоб використовувати <strong style=\"text-transform:uppercase\">{{ code }}</strong>."
+        "maximum_discount_code_limit_reached": "Досягнуто максимальний ліміт кодів знижки Ви досягли максимальної кількості кодів знижки. Видаліть існуючий код, щоб використовувати <strong style=\"text-transform:uppercase\">{{ code }}</strong>.",
+        "apply_discount_button_label": "Застосувати"
       },
       "marketing": {
         "accept_marketing_checkbox_label": "Надішліть мені email з новинами та пропозиціями"
