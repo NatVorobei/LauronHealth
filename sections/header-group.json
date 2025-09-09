@@ -18,7 +18,7 @@
           "type": "announcement",
           "settings": {
             "text": "Безкоштовна доставка на всі замовлення від 300 zł",
-            "icon_image": "shopify://shop_images/12_2807c2f2-61c3-498d-8e13-703e46a13afb.svg",
+            "icon_image": "shopify://shop_images/cargo-truck.png",
             "link": ""
           }
         }
