@@ -841,6 +841,16 @@
             "november": "Листопад",
             "december": "Грудень"
           }
+        },
+        "list_formatter": {
+          "and": {
+            "lastWordConnector": "{{previousWords}}, і {{lastWord}}",
+            "twoWordConnector": "{{firstWord}} і {{secondWord}}"
+          },
+          "or": {
+            "lastWordConnector": "{{previousWords}}, або {{lastWord}}",
+            "twoWordConnector": "{{firstWord}} або {{secondWord}}"
+          }
         }
       },
       "delivery_options": {
