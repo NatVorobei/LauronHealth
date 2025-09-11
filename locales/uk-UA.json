@@ -760,7 +760,21 @@
         "processing": "Обробка...",
         "remove_chip": "Видалити елемент",
         "remove_item": "Видалити {{ label }}",
-        "remove_tag": "Видалити тег"
+        "remove_tag": "Видалити тег",
+        "checkout_context": {
+          "step_one": "{{ shop_name }} - Оформлення замовлення"
+        },
+        "errors": {
+          "session_identifier_not_unique_error": "Сталася помилка під час оформлення замовлення, спробуйте ще раз.",
+          "line_item_limit_reached": "Досягнуто максимальну кількість позицій.",
+          "session_is_already_finished": "Ця сесія оформлення замовлення вже завершена.",
+          "merchandise": {
+            "only_value_constraint": "У полі введення товару допускаються тільки точні значення.",
+            "merchandise_not_found": "Товар не знайдено.",
+            "merchandise_variant_not_found": "Варіант товару не знайдено.",
+            "merchandise_not_applicable": "Варіант товару не можна придбати."
+          }
+        }
       },
       "delivery_options": {
         "free_total_label": "Безкоштовно",
