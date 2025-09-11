@@ -772,7 +772,8 @@
             "only_value_constraint": "У полі введення товару допускаються тільки точні значення.",
             "merchandise_not_found": "Товар не знайдено.",
             "merchandise_variant_not_found": "Варіант товару не знайдено.",
-            "merchandise_not_applicable": "Варіант товару не можна придбати."
+            "merchandise_not_applicable": "Варіант товару не можна придбати.",
+            "mixed_currencies": "Кошик містить товари з різними валютами."
           }
         }
       },
