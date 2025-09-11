@@ -816,6 +816,31 @@
             "selected_pickup_option_no_longer_available": "Раніше вибраний варіант самовивозу більше не доступний.",
             "local_pickup_no_delivery_strategy_available": "Не знайдено доступної схеми доставки для місцевого самовивозу."
           }
+        },
+        "dates": {
+          "weekdays": {
+            "monday": "Понеділок",
+            "tuesday": "Вівторок",
+            "wednesday": "Середа",
+            "thursday": "Четвер",
+            "friday": "П'ятниця",
+            "saturday": "Субота",
+            "sunday": "Неділя"
+          },
+          "months": {
+            "january": "Січень",
+            "february": "Лютий",
+            "march": "Березень ",
+            "april": "Квітень",
+            "may": "Травень",
+            "june": "Червень",
+            "july": "Липень",
+            "august": "Серпень",
+            "september": "Вересень",
+            "october": "Жовтень",
+            "november": "Листопад",
+            "december": "Грудень"
+          }
         }
       },
       "delivery_options": {
