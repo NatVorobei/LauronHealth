@@ -899,7 +899,21 @@
         "pay_now": "Оплатити зараз"
       },
       "customer_account": {
-        "invalid_shipping_method_summary": "Виберіть дійсну адресу доставки, щоб переглянути доступні способи доставки"
+        "invalid_shipping_method_summary": "Виберіть дійсну адресу доставки, щоб переглянути доступні способи доставки",
+        "not_user_label": "Не {{ first_name }}?",
+        "have_an_account_label": "Маєте акаунт?",
+        "sign_in_link_label": "Увійти",
+        "sign_out_link_label": "Вийти",
+        "save_my_information_label": "Зберегти цю інформацію для наступного разу",
+        "invalid_address": "Вибрана адреса є неправильною. {{ update_address_link }} або виберіть іншу адресу.",
+        "incomplete_address": "Вибрана адреса є неповною. {{ update_address_link }} або виберіть іншу адресу.",
+        "rollup_label": "Акаунт",
+        "saved_address_option_description": {
+          "one": "У вас є {{count}} збережених адрес.",
+          "other": "У вас є {{count}} збережених адрес."
+        },
+        "saved_address_option_link": "Використовувати збережену адресу",
+        "saved_address_modal_title": "Використовувати мою збережену адресу"
       },
       "thank_you": {
         "shipping_method_title": "Спосіб доставки"
