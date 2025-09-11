@@ -696,7 +696,10 @@
         "free_shipping_discount_label": "Безкоштовна доставка",
         "applied_free_shipping_discount_label": "Застосовано",
         "shipping_label": "Доставка",
-        "total_label": "До сплати"
+        "total_label": "До сплати",
+        "estimated_taxes_finalization_tooltip_content": "Остаточна сума податків та загальна сума будуть підтверджені електронним листом або SMS-повідомленням після оформлення замовлення.",
+        "order_total_label": "Загальна сума замовлення",
+        "total_savings": "Економія"
       },
       "marketing": {
         "accept_marketing_checkbox_label": "Надішліть мені email з новинами та пропозиціями"
