@@ -3639,7 +3639,7 @@ details-disclosure > details {
 }
 .logo-link {
   margin-top: 7px;
-  margin-left: 0;
+  margin-left: 0 !important;
 }
 .lauron-cart,
 .user-icon {
