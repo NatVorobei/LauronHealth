@@ -3917,6 +3917,10 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
   max-width: 1160px;
 }
 
+.breadcrumbs--article{
+  padding: 20px 0 0;
+}
+
 .custom-image-text .image-with-text__heading {
   font-size: 42px;
   font-weight: 700;
