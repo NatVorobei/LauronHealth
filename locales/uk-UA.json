@@ -740,7 +740,16 @@
         "autocomplete_close": "Закрити пропозиції",
         "tooltip_accessibility_label": "Більше інформації",
         "qr_code": "QR-код",
-        "full_price": "Повна ціна:"
+        "full_price": "Повна ціна:",
+        "title": "Оформлення замовлення - {{shopName}}",
+        "full_title": "{{pageTitle}} - {{shopName}} - Оформлення замовлення",
+        "loading": "Завантаження…",
+        "loading_title": "Оформлення замовлення - {{shopName}}",
+        "google_map_title": "Карта Google",
+        "confirm_order_button_label": "Підтвердити замовлення",
+        "submit_order_button_label": "Відправити замовлення",
+        "submit_for_review_button_label": "Відправити на перевірку",
+        "back_button_label": "Повернутися"
       },
       "delivery_options": {
         "free_total_label": "Безкоштовно",
