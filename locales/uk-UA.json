@@ -699,7 +699,8 @@
         "total_label": "До сплати",
         "estimated_taxes_finalization_tooltip_content": "Остаточна сума податків та загальна сума будуть підтверджені електронним листом або SMS-повідомленням після оформлення замовлення.",
         "order_total_label": "Загальна сума замовлення",
-        "total_savings": "Економія"
+        "total_savings": "Економія",
+        "applied_discount_message": "Повідомлення про застосовану знижку {{ amount }} від загальної вартості замовлення"
       },
       "marketing": {
         "accept_marketing_checkbox_label": "Надішліть мені email з новинами та пропозиціями"
