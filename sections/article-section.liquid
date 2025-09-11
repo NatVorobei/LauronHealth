@@ -719,7 +719,7 @@
   {% endif %}
 </article>
 
-<script>
+{% comment %} <script>
 document.addEventListener('DOMContentLoaded', function () {
   const bodyEl = document.getElementById('article-body');
   const tocListEl = document.getElementById('article-toc-list');
@@ -915,6 +915,254 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+</script> {% endcomment %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+  // Кореневі вузли (працюємо всередині першої article-with-toc)
+  const root = document.querySelector('.article-with-toc') || document;
+  const bodyEl = root.querySelector('#article-body');
+  const tocListEl = root.querySelector('#article-toc-list');
+  const tocSelectEl = root.querySelector('#article-toc-select');
+
+  // Якщо контенту немає — нічого не будуємо, але не відвалюємось для селекта
+  if (!bodyEl) return;
+
+  const includeH3 = {{ include_h3_value | json }};
+  const tocMode = {{ toc_mode_value | json }};
+  const modeManual = (tocMode === 'manual');
+
+  function slugify(text) {
+    const s = String(text)
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^\p{L}\p{N}\s-]/gu, '')
+      .trim()
+      .replace(/\s+/g, '-')
+      .toLowerCase();
+    return s || 'section';
+  }
+
+  const selector = includeH3 ? 'h2, h3' : 'h2';
+  const headings = Array.from(bodyEl.querySelectorAll(selector));
+
+  // Якщо заголовків немає — очищуємо TOC/Select і виходимо
+  if (headings.length === 0) {
+    if (tocListEl) tocListEl.innerHTML = '';
+    if (tocSelectEl) tocSelectEl.innerHTML = '';
+    return;
+  }
+
+  // Присвоєння унікальних id
+  const usedIds = new Set();
+  function ensureId(el) {
+    let id = el.getAttribute('id');
+    if (!id || id.trim() === '') id = slugify(el.textContent || '');
+    const base = id;
+    let i = 2;
+    while (usedIds.has(id) || document.getElementById(id)) {
+      id = base + '-' + i;
+      i += 1;
+    }
+    usedIds.add(id);
+    el.setAttribute('id', id);
+    return id;
+  }
+  headings.forEach(ensureId);
+
+  function makeLink(id, label) {
+    const a = document.createElement('a');
+    a.className = 'article-toc__link';
+    a.href = '#' + id;
+    a.textContent = label;
+    return a;
+  }
+
+  // Рендер TOC
+  function renderAutoToc() {
+    if (!tocListEl) return;
+    tocListEl.innerHTML = '';
+    headings.forEach(function (h) {
+      const li = document.createElement('li');
+      li.className = 'article-toc__item';
+      const link = makeLink(h.id, (h.textContent || '').trim());
+      li.appendChild(link);
+      tocListEl.appendChild(li);
+    });
+  }
+
+  function renderManualToc() {
+    if (!tocListEl) { renderAutoToc(); return; }
+    const planned = Array.from(tocListEl.querySelectorAll('[data-toc-label]'));
+    if (planned.length === 0) { renderAutoToc(); return; }
+
+    const items = [];
+    planned.forEach(function (node) {
+      const label = (node.getAttribute('data-toc-label') || '').trim();
+      if (!label) return;
+      let target = headings.find(function (h) {
+        return (h.textContent || '').trim().toLowerCase() === label.toLowerCase();
+      });
+      if (!target) {
+        target = headings.find(function (h) {
+          return (h.textContent || '').toLowerCase().includes(label.toLowerCase());
+        });
+      }
+      if (!target) return;
+      const id = ensureId(target);
+      items.push({ id: id, label: label });
+    });
+
+    tocListEl.innerHTML = '';
+    items.forEach(function (it) {
+      const li = document.createElement('li');
+      li.className = 'article-toc__item';
+      li.appendChild(makeLink(it.id, it.label));
+      tocListEl.appendChild(li);
+    });
+  }
+
+  if (modeManual) { renderManualToc(); } else { renderAutoToc(); }
+
+  // Посилання TOC
+  function getLinks() {
+    if (!tocListEl) return [];
+    return Array.from(tocListEl.querySelectorAll('a.article-toc__link'));
+  }
+  let links = getLinks();
+
+  // Побудова селекта з TOC
+  function rebuildSelectFromToc() {
+    if (!tocSelectEl) return;
+    links = getLinks();
+    tocSelectEl.innerHTML = '';
+    const placeholder = document.createElement('option');
+    placeholder.value = '';
+    placeholder.textContent = '{{ section.settings.toc_title }}';
+    tocSelectEl.appendChild(placeholder);
+    links.forEach(function (a) {
+      const opt = document.createElement('option');
+      opt.value = a.getAttribute('href');
+      opt.textContent = a.textContent.trim();
+      tocSelectEl.appendChild(opt);
+    });
+  }
+  rebuildSelectFromToc();
+
+  // Активний пункт
+  function setActiveById(id) {
+    const hash = '#' + id;
+    links.forEach(function (a) {
+      a.classList.toggle('is-active', a.getAttribute('href') === hash);
+    });
+    if (tocSelectEl) tocSelectEl.value = hash;
+  }
+
+  // Прокрутка з офсетом (працює на мобільних)
+  function scrollToIdWithOffset(idOrEl) {
+    const el = typeof idOrEl === 'string'
+      ? document.getElementById(idOrEl.replace(/^#/, ''))
+      : idOrEl;
+    if (!el) return;
+    const offset = Number({{ section.settings.scroll_offset | default: 100 | json }}) || 0;
+    const rect = el.getBoundingClientRect();
+    const absoluteY = rect.top + (window.pageYOffset || document.documentElement.scrollTop);
+    const targetY = Math.max(absoluteY - offset, 0);
+    (document.scrollingElement || document.documentElement).scrollTo({
+      top: targetY,
+      behavior: 'smooth'
+    });
+  }
+
+  // Клік по TOC (десктоп)
+  if (tocListEl) {
+    tocListEl.addEventListener('click', function (e) {
+      const a = e.target.closest('a.article-toc__link');
+      if (!a) return;
+      const hash = a.getAttribute('href');
+      if (!hash || !hash.startsWith('#')) return;
+      const id = hash.slice(1);
+      const el = document.getElementById(id);
+      if (!el) return;
+      e.preventDefault();
+      links.forEach(function (l) { l.classList.remove('is-active'); });
+      a.classList.add('is-active');
+      if (tocSelectEl) tocSelectEl.value = '#' + id;
+
+      // Невелика затримка — стабільність на iOS
+      requestAnimationFrame(() => setTimeout(() => {
+        scrollToIdWithOffset(id);
+        history.replaceState(null, '', '#' + id);
+      }, 0));
+    });
+  }
+
+  // Зміна в селекті (мобільні): дублюємо на 'change' і 'input'
+  function handleSelectNavigate() {
+    const v = tocSelectEl.value;
+    if (!v) return;
+    const id = v.replace(/^#/, '');
+    links.forEach(function (l) {
+      l.classList.toggle('is-active', l.getAttribute('href') === ('#' + id));
+    });
+    // Закриваємо нативний селект (iOS) і тільки потім скролимо
+    tocSelectEl.blur();
+    requestAnimationFrame(() => setTimeout(() => {
+      scrollToIdWithOffset(id);
+      history.replaceState(null, '', '#' + id);
+    }, 0));
+  }
+
+  if (tocSelectEl) {
+    tocSelectEl.addEventListener('change', handleSelectNavigate, { passive: true });
+    tocSelectEl.addEventListener('input', handleSelectNavigate, { passive: true });
+  }
+
+  // Підсвічування активного пункту під час скролу
+  function updateActiveFromScroll() {
+    const y = window.scrollY + Number({{ section.settings.scroll_offset | default: 100 | json }}) + 1;
+    let currentId = headings[0].id;
+    for (let i = 0; i < headings.length; i++) {
+      if (headings[i].offsetTop <= y) currentId = headings[i].id; else break;
+    }
+    setActiveById(currentId);
+  }
+
+  let ticking = false;
+  window.addEventListener('scroll', function () {
+    if (ticking) return;
+    window.requestAnimationFrame(function () {
+      updateActiveFromScroll();
+      ticking = false;
+    });
+    ticking = true;
+  }, { passive: true });
+
+  // Початкове встановлення активного пункту/скрол за хешем
+  if (location.hash) {
+    const id = location.hash.slice(1);
+    const target = document.getElementById(id);
+    if (target) {
+      setTimeout(function () {
+        scrollToIdWithOffset(id);
+        setActiveById(id);
+      }, 0);
+    }
+  } else {
+    setActiveById(headings[0].id);
+  }
+
+  // Реакція на зміну хешу (навігація «назад/вперед»)
+  window.addEventListener('hashchange', function () {
+    const id = location.hash.slice(1);
+    const target = document.getElementById(id);
+    if (target) {
+      scrollToIdWithOffset(id);
+      setActiveById(id);
+    }
+  });
+});
+
 </script>
 
 <script>
