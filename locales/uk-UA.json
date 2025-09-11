@@ -721,7 +721,8 @@
         "recurring_total_multiple_label": "Це замовлення має повторну оплату за декілька позицій.",
         "deferred_total_due_date_label": "Загальна сума до сплати {{date}}",
         "deferred_total_due_date_label_next": "Термін оплати {{ date }}",
-        "alternative_payment_currency_total": "Списано {{ amount_due }}"
+        "alternative_payment_currency_total": "Списано {{ amount_due }}",
+        "discount_title": "Знижка"
       },
       "marketing": {
         "accept_marketing_checkbox_label": "Надішліть мені email з новинами та пропозиціями"
