@@ -804,6 +804,17 @@
             "customer_account_required": "Для продовження необхідно увійти в систему.",
             "company_location_required": "Для продовження клієнт повинен вибрати місцезнаходження компанії.",
             "company_purchase_permission_required": "Клієнт не має дозволу на розміщення замовлень від імені компанії."
+          },
+          "delivery": {
+            "only_one_delivery_line_allowed": "Кошик повинен мати тільки одну лінію доставки.",
+            "wrong_number_of_delivery_lines": "Для кожної групи товарів повинна бути вказана лінія доставки.",
+            "external_delivery_promise_error": "Помилка зовнішнього запиту терміну доставки.",
+            "options_instructions_invalid": "Зазначені інструкції не відповідають очікуваному шаблону.",
+            "destination_address_required": "Для продовження необхідно вказати адресу призначення.",
+            "pickup_points_unavailable": "Пункти видачі наразі недоступні.",
+            "local_pickup_delivery_line_detail_changed": "Змінено деталі лінії доставки для місцевого самовивозу Для продовження необхідно змінити поточну схему доставки для місцевого самовивозу.",
+            "selected_pickup_option_no_longer_available": "Раніше вибраний варіант самовивозу більше не доступний.",
+            "local_pickup_no_delivery_strategy_available": "Не знайдено доступної схеми доставки для місцевого самовивозу."
           }
         }
       },
