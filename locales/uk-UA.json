@@ -700,7 +700,20 @@
         "estimated_taxes_finalization_tooltip_content": "Остаточна сума податків та загальна сума будуть підтверджені електронним листом або SMS-повідомленням після оформлення замовлення.",
         "order_total_label": "Загальна сума замовлення",
         "total_savings": "Економія",
-        "applied_discount_message": "Повідомлення про застосовану знижку {{ amount }} від загальної вартості замовлення"
+        "applied_discount_message": "Повідомлення про застосовану знижку {{ amount }} від загальної вартості замовлення",
+        "total_due_label": "Загальна сума до сплати",
+        "total_price_label": "Загальна ціна",
+        "total_outstanding_label": "Сума до сплати",
+        "total_due_today_label": "Загальна сума до сплати сьогодні",
+        "total_due_later_label": "Загальна сума до сплати пізніше",
+        "partial_total_label": "Загальна сума",
+        "free_total_label": "Безкоштовно",
+        "free_shipping_total_label": "Безкоштовно",
+        "duties_included_label": "Загальна сума включає податки та мита. Додаткові витрати на доставку відсутні.",
+        "total_updated_label": "Оновлена загальна ціна:",
+        "order_total_updated_label": "Оновлена загальна сума",
+        "total_already_paid_label": "Сплачено",
+        "multiple_shipping_lines_label": "Загальна сума доставки"
       },
       "marketing": {
         "accept_marketing_checkbox_label": "Надішліть мені email з новинами та пропозиціями"
