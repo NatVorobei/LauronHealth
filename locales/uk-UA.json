@@ -747,9 +747,20 @@
         "loading_title": "Оформлення замовлення - {{shopName}}",
         "google_map_title": "Карта Google",
         "confirm_order_button_label": "Підтвердити замовлення",
-        "submit_order_button_label": "Відправити замовлення",
+        "submit_order_button_label": "Підтвердити замовлення",
         "submit_for_review_button_label": "Відправити на перевірку",
-        "back_button_label": "Повернутися"
+        "back_button_label": "Повернутися",
+        "forwarding_indicator": {
+          "new_window": "Відкривається в новому вікні.",
+          "external": "Відкриває зовнішній веб-сайт.",
+          "external_and_new_window": "Відкриває зовнішній веб-сайт у новому вікні."
+        },
+        "autocomplete_zero_item": "Немає доступних елементів",
+        "submit": "Підвердити",
+        "processing": "Обробка...",
+        "remove_chip": "Видалити елемент",
+        "remove_item": "Видалити {{ label }}",
+        "remove_tag": "Видалити тег"
       },
       "delivery_options": {
         "free_total_label": "Безкоштовно",
