@@ -730,14 +730,21 @@
         "from_other_stores_heading": "З інших магазинів",
         "order_name_label": "Замовлення {{ name }}",
         "shopping_cart_label": "Кошик",
-        "discount_not_found": "Неможливо знайти дійсну знижку, що відповідає введеному коду"
+        "discount_not_found": "Неможливо знайти дійсну знижку, що відповідає введеному коду",
+        "paid_label": "Оплачено",
+        "vat_label_html": "Включно з {{ сума }} податків"
       },
       "marketing": {
         "accept_marketing_checkbox_label": "Надішліть мені email з новинами та пропозиціями"
       },
       "alternative_payment_method_banner": {
         "express_checkout": "Експрес-оформлення замовлення",
-        "or_pay_with_credit_card": "Або оплатіть карткою"
+        "or_pay_with_credit_card": "Або оплатіть карткою",
+        "or": "або",
+        "or_pay_another_way": "Або оплатіть іншим способом",
+        "or_check_out_another_way": "Оформити замовлення іншим способом",
+        "show_more_options": "Показати більше опцій",
+        "hide_more_options": "Приховати"
       },
       "general": {
         "choose_delivery_strategy": "Вибрати спосіб доставки",
