@@ -799,6 +799,11 @@
             "merchandise_variant_not_found": "Варіант товару не знайдено.",
             "merchandise_not_applicable": "Варіант товару не можна придбати.",
             "mixed_currencies": "Кошик містить товари з різними валютами."
+          },
+          "buyer_identity": {
+            "customer_account_required": "Для продовження необхідно увійти в систему.",
+            "company_location_required": "Для продовження клієнт повинен вибрати місцезнаходження компанії.",
+            "company_purchase_permission_required": "Клієнт не має дозволу на розміщення замовлень від імені компанії."
           }
         }
       },
