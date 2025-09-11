@@ -691,7 +691,11 @@
         "subtotal_label_with_quantity": {
           "one": "Сума · {{ count }} товар",
           "other": "Сума · {{ count }} товари"
-        }
+        },
+        "enter_shipping_address": "Введіть адресу доставки",
+        "free_shipping_discount_label": "Безкоштовна доставка",
+        "applied_free_shipping_discount_label": "Застосовано",
+        "shipping_label": "Доставка"
       },
       "marketing": {
         "accept_marketing_checkbox_label": "Надішліть мені email з новинами та пропозиціями"
