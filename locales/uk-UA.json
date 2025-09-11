@@ -713,7 +713,34 @@
         "back_to_payment_method": "Повернутися до оплати",
         "choose_payment_method": "Виберіть спосіб оплати",
         "submit_for_review_notice_label": "Оплата не буде стягнута, доки ваше замовлення не буде перевірено",
-        "continue_to_payment_plans_button_label": "Перейти до планів оплати"
+        "continue_to_payment_plans_button_label": "Перейти до планів оплати",
+        "page_title": "Оформлення замовлення",
+        "error_page_title": "Помилка",
+        "skip_to_content": "Перейти до вмісту",
+        "continue_button_label": "Продовжити",
+        "complete_purchase_button_label": "Оформити замовлення",
+        "edit_link_label": "Редагувати",
+        "all_rights_reserved": "Всі права захищені {{ shop_name }}.",
+        "print_policies_link_label": "Роздрукувати",
+        "cart": "Кошик",
+        "close_modal_label": "Закрити",
+        "close_notice_label": "Закрити",
+        "expand_notice_label": "Деталі",
+        "continue_to_shipping_method": "Перейти до доставки",
+        "continue_to_review": "Переглянути замовлення",
+        "back_to_cart": "Повернутися до кошика",
+        "back_to_contact_information": "Повернутися до інформації",
+        "back_to_shipping_method": "Повернутися до доставки",
+        "choose_billing_address": "Вибрати розрахункову адресу",
+        "contact_us_html": "Зв'яжіться з нами для отримання додаткової інформації",
+        "autocomplete_title": "Пропозиції",
+        "autocomplete_single_item": "Доступний 1 елемент",
+        "autocomplete_multi_item": "Доступно {{number}} елементів",
+        "autocomplete_selection": "{{number}} з {{total}}",
+        "autocomplete_close": "Закрити пропозиції",
+        "tooltip_accessibility_label": "Більше інформації",
+        "qr_code": "QR-код",
+        "full_price": "Повна ціна:"
       },
       "delivery_options": {
         "free_total_label": "Безкоштовно",
@@ -784,6 +811,9 @@
           }
         },
         "credit_card_label": "Картка"
+      },
+      "address_management": {
+        "confirm_address_deletion": "Ви впевнені, що хочете видалити адресу {{address}}?"
       }
     }
   },
