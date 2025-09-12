@@ -915,6 +915,14 @@
             "one": "Кластер маркера {{number}}",
             "other": "Кластер із {{number}} маркерів"
           }
+        },
+        "sheet": {
+          "expand": "Розгорнути"
+        },
+        "dropzone": {
+          "add_file": "Додати файл",
+          "invalid_file_type": "Файл не підтримується",
+          "dragged_over": "Перетягніть файл для завантаження"
         }
       },
       "delivery_options": {
