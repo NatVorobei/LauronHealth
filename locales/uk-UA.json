@@ -1025,7 +1025,8 @@
         "subscription_policy": "Скасування",
         "purchase_options_cancellation_policy": "Скасування",
         "shipping_policy": "Доставка",
-        "terms_of_service": "Політика конфіденційності"
+        "terms_of_service": "Політика конфіденційності",
+        "contact_information": "Контакти"
       },
       "mor_policies": {
         "privacy_policy": "Політика конфіденційності продавця"
