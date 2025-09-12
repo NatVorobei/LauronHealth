@@ -959,6 +959,9 @@
         "shipping_method_first_shipment_group_title": {
           "one": "Перша доставка",
           "other": "Перша доставка"
+        },
+        "shipping_method_recurring_shipments_group_title": {
+          "other": "Повторні доставки"
         }
       },
       "order_payment_collection": {
