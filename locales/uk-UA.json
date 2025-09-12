@@ -682,7 +682,8 @@
         "markets_pro_disclaimer_label": "Натискаючи нижче і завершуючи замовлення, ви погоджуєтеся придбати товар(и) у Global-e як офіційного продавця для цієї транзакції, на умовах {{ markets_pro_terms }} та {{ privacy_policy }} Global-e. Global-e є міжнародним постачальником послуг з виконання замовлень для {{ shop_name }}.",
         "markets_pro_disclaimer_privacy_policy": "Політика конфіденційності",
         "markets_pro_disclaimer_privacy_policy_title": "Політика конфіденційності продавця",
-        "subscription_agreement_cancelled": "політиці скасування"
+        "subscription_agreement_cancelled": "політиці скасування",
+        "purchase_options_cancellation_policy_label": "політиці скасування"
       },
       "order_summary": {
         "discount_title_stacking": {
@@ -1061,6 +1062,9 @@
           "visibility": "Ми оновили нашу політику і тепер відстежуємо відкриття електронних листів. Дані про відкриття електронних листів будуть повідомлятися анонімно. Ми будемо бачити, чи відкрили ви електронний лист, лише як частину загального показника відкриття електронних листів."
         }
       }
+    },
+    "subscriptions": {
+      "cancellation_policy": "політиці скасування"
     }
   },
   "customer_accounts": {
@@ -1082,6 +1086,15 @@
       "order_list": {
         "column_headers": {
           "total": "Сума"
+        }
+      }
+    },
+    "payment_methods": {
+      "store_credit": {
+        "details_modal": {
+          "events": {
+            "order_cancellation": "Скасування замовлення"
+          }
         }
       }
     }
