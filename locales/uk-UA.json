@@ -882,6 +882,15 @@
             "october": "Жовтень",
             "november": "Листопад",
             "december": "Грудень"
+          },
+          "weekdays_abbreviation": {
+            "monday": "Пн",
+            "tuesday": "Вт",
+            "wednesday": "Ср",
+            "thursday": "Чт",
+            "friday": "Пт",
+            "saturday": "Сб",
+            "sunday": "Нд"
           }
         },
         "list_formatter": {
