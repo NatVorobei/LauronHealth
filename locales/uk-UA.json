@@ -690,7 +690,16 @@
         "amazon_payments_logout": "Вийти з Amazon Pay",
         "amazon_payments_failed_mfa_challenge": "Вибраний спосіб оплати не може бути використаний. Виберіть інший спосіб або зверніться до свого банку чи емітента картки.",
         "amazon_payments_abandoned_mfa_challenge": "Ваш платіж не може бути виконаний. Спробуйте інший спосіб оплати або зверніться до свого банку чи емітента картки.",
-        "amazon_payments_could_not_enqueue_authorize": "Виникла проблема під час обробки вашого платежу. Спробуйте ще раз або скористайтеся іншим способом оплати."
+        "amazon_payments_could_not_enqueue_authorize": "Виникла проблема під час обробки вашого платежу. Спробуйте ще раз або скористайтеся іншим способом оплати.",
+        "billing_address_associated_with_mandate": "Використати адресу, пов’язану зі способом оплати",
+        "billing_address_associated_with_mandate_info": "Якщо ви бажаєте змінити платіжну адресу, видаліть і повторно введіть дані кредитної картки",
+        "free_order_notice_html": "Ваше замовлення <strong>безкоштовне</strong> . Оплата не потрібна.",
+        "express_checkout_free_order": "З вас не стягуватиметься плата за безкоштовне замовлення",
+        "offsite_gateway_redirect_hint": "Після натискання «{{button_label}}» ви будете перенаправлені на {{gateway_label}}, щоб безпечно завершити покупку.",
+        "offsite_gateway_review_page_redirect_hint": "Після перегляду замовлення ви будете перенаправлені на {{ gateway_label }} для безпечного завершення покупки.",
+        "offsite_gateway_redirect_hint_multi_currency_html": "{{ gateway_label }} загалом {{ total_shop_price }}",
+        "offsite_gateway_redirect_hint_no_button_label": "Після продовження ви будете перенаправлені на {{ gateway_label }} для безпечного завершення покупки.",
+        "receiver_payment_experience_hint": "Після оформлення замовлення ви отримаєте платіжні реквізити. Здійсніть платіж у Multibanco або онлайн протягом {{due_days}} днів."
       },
       "order_summary": {
         "discount_title_stacking": {
