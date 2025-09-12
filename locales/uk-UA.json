@@ -541,8 +541,8 @@
   },
   "shopify": {
     "sentence": {
-      "two_words_connector": "та",
-      "last_word_connector": ", та"
+      "two_words_connector": "і",
+      "last_word_connector": ", і"
     },
     "checkout": {
       "contact": {
