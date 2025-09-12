@@ -1021,10 +1021,18 @@
       "shop_policies": {
         "privacy_policy": "Політика конфіденційності",
         "subscription_policy": "Скасування",
-        "purchase_options_cancellation_policy": "Скасування"
+        "purchase_options_cancellation_policy": "Скасування",
+        "shipping_policy": "Доставка"
       },
       "mor_policies": {
         "privacy_policy": "Політика конфіденційності продавця"
+      },
+      "change_country": {
+        "cart_updated_based_on_country": "Ваш кошик оновлено відповідно до країни доставки.",
+        "cart_and_currency_updated_based_on_country": "Ваш кошик і валюта оновлено відповідно до країни доставки."
+      },
+      "wallets": {
+        "shipping_line_label": "Доставка"
       }
     },
     "notices": {
