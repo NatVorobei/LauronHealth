@@ -740,7 +740,9 @@
         "shopping_cart_label": "Кошик",
         "discount_not_found": "Неможливо знайти дійсну знижку, що відповідає введеному коду",
         "paid_label": "Оплачено",
-        "vat_label_html": "Включно з {{ сума }} податків"
+        "vat_label_html": "Включно з {{ сума }} податків",
+        "calculating_shipping": "Розрахунок...",
+        "shipping_discount_title": "Знижка на доставку"
       },
       "marketing": {
         "accept_marketing_checkbox_label": "Надішліть мені email з новинами та пропозиціями",
@@ -943,7 +945,12 @@
           }
         },
         "shipping_method_subscription_group_title": "Підписка",
-        "subscription_shipping": "Доставка підписки"
+        "subscription_shipping": "Доставка підписки",
+        "title": "Доставка",
+        "shipping_method_one_time_purchase_group_title": "Разова покупка",
+        "free_rate_label": "Безкоштовно",
+        "cheapest_rate_label": "Найдешевше",
+        "please_enter_your_shipping_information_notice": "Введіть інформацію про доставку будь ласка."
       },
       "order_payment_collection": {
         "pay_now": "Оплатити зараз"
