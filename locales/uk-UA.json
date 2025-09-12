@@ -1196,6 +1196,14 @@
               "one": "кожен день",
               "other": "кожні {{ count }} дні"
             }
+          },
+          "free_shipping_cycles": {
+            "one": "Безкоштовна доставка для {{ count }} додаткових доставок",
+            "other": "Безкоштовна доставка для {{ count }} додаткових доставок"
+          },
+          "free_shipping_cycles_delivery_not_included": {
+            "one": "Безкоштовна доставка для {{ count }} доставок",
+            "other": "Безкоштовна доставка для {{ count }} доставок"
           }
         },
         "shipping_method_subscription_group_title": "Підписка",
@@ -1211,7 +1219,8 @@
           "other": "Перша доставка"
         },
         "shipping_method_recurring_shipments_group_title": {
-          "other": "Повторні доставки"
+          "other": "Повторні доставки",
+          "one": "Повторна доставка"
         },
         "split_shipping_merchandise_quantity_label_standard": "{{quantity}} елементів",
         "shipping_address_title": "Доставити до",
@@ -1279,7 +1288,19 @@
         "split_shipping_option_lowest_price": "Найнижча ціна",
         "split_shipping_option_fastest": "Найшвидша",
         "split_shipping_option_recommended": "Рекомендована",
-        "split_shipping_option_custom": "Індивідуальна"
+        "split_shipping_option_custom": "Індивідуальна",
+        "estimated_delivery_date": {
+          "one": "{{count}} робочий день",
+          "other": "{{count}} робочих днів"
+        },
+        "other_method": {
+          "zero": "Інших методів немає",
+          "one": "{{count}} інший метод доступний на",
+          "other": "{{count}} інші методи доступні, починаючи з"
+        },
+        "prime_not_available": {
+          "default": "Пріоритетна доставка для вашого замовлення недоступна. Ваші варіанти доставки оновлено."
+        }
       },
       "order_payment_collection": {
         "pay_now": "Оплатити зараз"
