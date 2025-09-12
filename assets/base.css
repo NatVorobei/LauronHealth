@@ -1764,6 +1764,7 @@ details[open] > .share-button__fallback {
 .customer .field input:focus,
 .customer .field input:not(:placeholder-shown),
 .customer .field input:-webkit-autofill {
+  border-radius: 20px;
   padding: 2.2rem 1.5rem 0.8rem 2rem;
   margin: var(--inputs-border-width);
 }
