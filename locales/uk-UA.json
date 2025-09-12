@@ -777,7 +777,15 @@
         "tip_label": "Порада",
         "unconfirmed_label": "Не підверджено",
         "calculating": "Розрахунок...",
-        "shipping_default_value": "Розраховується на наступному кроці"
+        "shipping_default_value": "Розраховується на наступному кроці",
+        "shipping_pending_message": "Ще не доступно",
+        "shipping_policy_link": "Вартість доставки",
+        "taxes_label": "Податки",
+        "estimated_taxes_label": "Орієнтовні податки",
+        "information_estimated_taxes_label": "Податки (приблизно)",
+        "price_before_discount_aria_text": "Початкова ціна",
+        "price_after_discount_aria_text": "Ціна зі знижкою",
+        "deposit_label": "Депозит"
       },
       "marketing": {
         "accept_marketing_checkbox_label": "Надішліть мені email з новинами та пропозиціями",
