@@ -747,7 +747,19 @@
         "shipping_discount_title": "Знижка на доставку",
         "pickup_unavailable_banner_body": {
           "ship_to_address": "Відправити на адресу"
-        }
+        },
+        "discount_code_allocations_mismatch": "Ваш код знижки <strong style=\"text-transform:uppercase\">{{ code }}</strong> змінився. Перегляньте кошик і спробуйте ще раз.",
+        "gift_card_applied": "Застосовано подарункову картку",
+        "gift_card_title": "Подарункова картка",
+        "gift_card_label": "Подарункова картка",
+        "gift_card_placeholder": "Подарункова картка",
+        "gift_card_and_discount_title": "Код знижки або подарункова карта",
+        "gift_card_and_discount_label": "Код знижки або подарункова карта",
+        "gift_card_and_discount_placeholder": "Код знижки або подарункова карта",
+        "remove_gift_card_label": "Видалити подарункову карту",
+        "remove_discount_label": "Забрати знижку",
+        "return_restocking_fee_label": "Плата за поповнення запасів",
+        "return_shipping_fee_label": "Зворотна доставка"
       },
       "marketing": {
         "accept_marketing_checkbox_label": "Надішліть мені email з новинами та пропозиціями",
