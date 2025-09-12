@@ -1239,7 +1239,17 @@
         "shipping_line_delivery_phone_label": "Номер мобільного телефону",
         "shipping_line_delivery_phone": "Ваш кур'єр може використовувати цей номер, щоб зв'язатися з вами.",
         "optional_shipping_line_delivery_instructions_label": "Інструкції щодо доставки (опційно)",
-        "shipping_line_delivery_instructions": "Введіть необхідну інформацію, таку як коди дверей або інструкції щодо доставки."
+        "shipping_line_delivery_instructions": "Введіть необхідну інформацію, таку як коди дверей або інструкції щодо доставки.",
+        "shipping_rate_discounted_amount": "Було: {{ original_amount }}. Зараз: {{ amount }}",
+        "local_delivery": "Місцева доставка",
+        "one_time_purchase_shipping": "Одноразова доставка",
+        "duties_and_taxes_title": "Мита та податки",
+        "shipping_information_required_notice": "Необхідна інформація про доставку. {{link}}.",
+        "shipping_information_redirect_link": "Введіть свою інформацію тут",
+        "loading_progressive_rates": "Пошук інших тарифів...",
+        "no_other_methods_available": "Інших методів немає",
+        "shipping_used_as_billing_notice": "Це також буде використовуватися як ваша адреса для виставлення рахунку за це замовлення.",
+        "address_update": "Оновити адресу"
       },
       "order_payment_collection": {
         "pay_now": "Оплатити зараз"
