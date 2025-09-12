@@ -856,6 +856,43 @@
             "one": "{{ ціна }} за {{ кількість }} штук",
             "other": "{{ ціна }} за {{ кількість }} штук"
           }
+        },
+        "deferred_payment_info": {
+          "title": "Платіж {{amount_due}} має бути сплачено {{due_at}}",
+          "description_html": "Якщо у вас є запитання щодо вашого замовлення, {{contact_us}}.",
+          "paid_today": "Всього сплачено сьогодні",
+          "paid_today_next": "Сплачено сьогодні",
+          "due_on_fulfillment_title": "Оплата {{amount_due}} має бути сплачена після виконання",
+          "due_on_receipt_title": "Оплата {{amount_due}} має бути сплачена після отримання"
+        },
+        "deferred_balance_info": {
+          "title": "Сума {{amount_due}} підлягає сплаті {{due_at}}",
+          "due_on_fulfillment_title": "Сума {{amount_due}} підлягає сплаті після виконання"
+        },
+        "payment_terms_totals": {
+          "due_today": "Загальна сума до сплати сьогодні",
+          "due_today_next": "Сплатити сьогодні",
+          "due_later": "Загальна сума до сплати {{ due_at }}",
+          "due_on_fulfillment": "Загальна сума до сплати після виконання",
+          "due_on_fulfillment_next": "До сплати при виконанні",
+          "due_on_receipt": "Загальна сума до сплати при отриманні",
+          "due_later_checkout_to_draft": "Загальна сума до сплати пізніше",
+          "total_paid": "Загальна сума сплачена"
+        },
+        "expand_component_information": {
+          "one": "Показати {{ count }} товар",
+          "other": "Показати {{ count }} товари"
+        },
+        "collapse_component_information": {
+          "one": "Приховати {{ count }} товар",
+          "other": "Приховати {{ count }} товари"
+        },
+        "discount_discovery": {
+          "add_code": "Додати знижку",
+          "merchandise_quantity_label": {
+            "one": "{{ count }} товар",
+            "other": "{{ count }} товари"
+          }
         }
       },
       "marketing": {
