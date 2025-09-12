@@ -913,7 +913,7 @@
         "subscription_delivery_description": {
           "subscription_delivery_frequency": {
             "week": {
-              "other": "{{ count }} тижні",
+              "other": "кожні {{ count }} тижні",
               "one": "кожен тиждень"
             },
             "month": {
