@@ -805,7 +805,11 @@
         "expand_order_summary": "Показати підсумок замовлення",
         "collapse_order_summary": "Приховати підсумок замовлення",
         "original_price": "Початкова ціна",
-        "sale_price": "Ціна з знижкою"
+        "sale_price": "Ціна з знижкою",
+        "gift_card_ending": "Подарункова картка закінчується на {{last_characters}}",
+        "estimated_tax_label": "Приблизний податок",
+        "confirmation_number_label": "Підтвердження #{{confirmation_number}}",
+        "higher_value_discount_applied": "<strong style=\"text-transform:uppercase\">{{code}}</strong> не можна використати з існуючими знижками."
       },
       "marketing": {
         "accept_marketing_checkbox_label": "Надішліть мені email з новинами та пропозиціями",
