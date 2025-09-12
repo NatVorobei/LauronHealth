@@ -681,7 +681,8 @@
         "mor_disclaimer_html": "Натискаючи нижче і завершуючи замовлення, ви погоджуєтеся придбати товар(и) у Global-e як офіційного продавця для цієї транзакції, на сайті Global-e <a class=\"link--small\" data-modal=«true» data-title-text=«{{ mor_terms }}» href=«{{ terms_href }}»>Умовами та положеннями</a> та <a class=\"link--small\" data-modal=“true” data-title-text=«{{ privacy_policy }}» href=\"{{ policy_href }}\">Політикою конфіденційності</a>. Global-e є міжнародним постачальником послуг з виконання замовлень для {{ shop_name }}",
         "markets_pro_disclaimer_label": "Натискаючи нижче і завершуючи замовлення, ви погоджуєтеся придбати товар(и) у Global-e як офіційного продавця для цієї транзакції, на умовах {{ markets_pro_terms }} та {{ privacy_policy }} Global-e. Global-e є міжнародним постачальником послуг з виконання замовлень для {{ shop_name }}.",
         "markets_pro_disclaimer_privacy_policy": "Політика конфіденційності",
-        "markets_pro_disclaimer_privacy_policy_title": "Політика конфіденційності продавця"
+        "markets_pro_disclaimer_privacy_policy_title": "Політика конфіденційності продавця",
+        "subscription_agreement_cancelled": "політиці скасування"
       },
       "order_summary": {
         "discount_title_stacking": {
