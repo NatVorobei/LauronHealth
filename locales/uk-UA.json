@@ -962,7 +962,8 @@
         },
         "shipping_method_recurring_shipments_group_title": {
           "other": "Повторні доставки"
-        }
+        },
+        "split_shipping_merchandise_quantity_label_standard": "{{quantity}} елементів"
       },
       "order_payment_collection": {
         "pay_now": "Оплатити зараз"
