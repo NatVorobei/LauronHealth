@@ -1012,7 +1012,9 @@
         }
       },
       "shop_policies": {
-        "privacy_policy": "Політика конфіденційності"
+        "privacy_policy": "Політика конфіденційності",
+        "subscription_policy": "Скасування",
+        "purchase_options_cancellation_policy": "Скасування"
       },
       "mor_policies": {
         "privacy_policy": "Політика конфіденційності продавця"
