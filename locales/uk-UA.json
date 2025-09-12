@@ -744,7 +744,10 @@
         "paid_label": "Оплачено",
         "vat_label_html": "Включно з {{ сума }} податків",
         "calculating_shipping": "Розрахунок...",
-        "shipping_discount_title": "Знижка на доставку"
+        "shipping_discount_title": "Знижка на доставку",
+        "pickup_unavailable_banner_body": {
+          "ship_to_address": "Відправити на адресу"
+        }
       },
       "marketing": {
         "accept_marketing_checkbox_label": "Надішліть мені email з новинами та пропозиціями",
@@ -963,7 +966,9 @@
         "shipping_method_recurring_shipments_group_title": {
           "other": "Повторні доставки"
         },
-        "split_shipping_merchandise_quantity_label_standard": "{{quantity}} елементів"
+        "split_shipping_merchandise_quantity_label_standard": "{{quantity}} елементів",
+        "shipping_address_title": "Доставити до",
+        "shipping_address_rollup_accessibility_label": "Варіанти адреси доставки"
       },
       "order_payment_collection": {
         "pay_now": "Оплатити зараз"
@@ -991,17 +996,21 @@
       "review": {
         "blocks": {
           "shipping_method_title": "Спосіб доставки",
-          "change_shipping_method_link_label": "Змінити спосіб доставки"
+          "change_shipping_method_link_label": "Змінити спосіб доставки",
+          "shipping_address_title": "Доставка до"
         }
       },
       "field_errors": {
-        "delivery_line_detail_changed": "Деякі деталі доставки могли змінитися. Перевірте спосіб доставки та спробуйте ще раз."
+        "delivery_line_detail_changed": "Деякі деталі доставки могли змінитися. Перевірте спосіб доставки та спробуйте ще раз.",
+        "address_country_not_supported": "Ми не здійснюємо доставку в цю країну або регіон. Введіть нову адресу доставки та спробуйте ще раз."
       },
       "shipping_errors": {
         "empty_state": "Введіть свою адресу доставки, щоб переглянути доступні способи доставки.",
         "shipping_method_not_available_updated": {
-          "other": "Один або декілька товарів, які ви додали, не доставляються у ваше місцезнаходження. Видаліть їх, щоб оформити замовлення, або зв'яжіться з магазином."
-        }
+          "other": "Один або декілька товарів, які ви додали, не доставляються у ваше місцезнаходження. Видаліть їх, щоб оформити замовлення, або зв'яжіться з магазином.",
+          "one": "Товар, який ви додали, не доставляється у ваше місцезнаходження. Видаліть його, щоб оформити замовлення, або зв'яжіться з магазином."
+        },
+        "payment_method_not_supported": "Ви не можете використовувати цей спосіб оплати для {{ країна }}. Будь ласка, використовуйте інший спосіб оплати для доставки в цю країну."
       },
       "payment_gateway": {
         "login_prompt": {
@@ -1049,6 +1058,14 @@
       },
       "wallets": {
         "shipping_line_label": "Доставка"
+      },
+      "local_pickup": {
+        "all_stores_far_away": {
+          "ship_to_address_link": "відправити на адресу"
+        },
+        "selected_pickup_option_no_longer_available": {
+          "ship_to_address_link": "відправити на адресу"
+        }
       }
     },
     "notices": {
