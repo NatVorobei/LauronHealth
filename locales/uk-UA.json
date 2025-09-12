@@ -1187,8 +1187,15 @@
         "banner_title": {
           "some_products_one": "Цей товар недоступний для доставки в {{ location_name }}.",
           "some_products_other": "Ці товари недоступні для доставки в {{ location_name }}.",
-          "all_products_one": "Товар у вашому кошику недоступний для доставки в {{ location_name }}."
-        }
+          "all_products_one": "Товар у вашому кошику недоступний для доставки в {{ location_name }}.",
+          "all_products_other": "Товари у вашому кошику недоступні для доставки в {{ location_name }}."
+        },
+        "missing_country_fallback": "Ваша країна",
+        "indeterminate_location_fallback": "Ваше місцезнаходження",
+        "cart_updated": "Ваш кошик оновлено.",
+        "change_address_only": "Змініть адресу доставки, щоб продовжити.",
+        "change_address_or_remove": "Змініть адресу доставки або {{ remove_action }}.",
+        "empty_cart_action": "Очистити кошик і повернутися до магазину"
       }
     },
     "notices": {
