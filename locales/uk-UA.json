@@ -1216,6 +1216,18 @@
           "max_cycles_base_shipping": {
             "one": "{{ count }} додаткових доставок за {{ shipping_price }}",
             "other": "{{ count }} додаткових доставок за {{ shipping_price }} кожна"
+          },
+          "max_cycles_base_shipping_delivery_not_included": {
+            "one": "{{ count }} доставка за {{ shipping_price }}",
+            "other": "{{ count }} додаткових доставок за {{ shipping_price }} кожна"
+          },
+          "prepaid_free_shipping_with_cycles": {
+            "one": "Безкоштовна доставка для першого {{ cycle }}, а потім {{ recurring_order_shipping_price }}",
+            "other": "Безкоштовна доставка для першого {{ cycle }}, а потім {{ recurring_order_shipping_price }}"
+          },
+          "prepaid_order_one_cycle": {
+            "one": "{{ shipping_price }} за {{ count }} додаткових доставок",
+            "other": "{{ shipping_price }} за {{ count }} додаткових доставок ({{ per_delivery_cost }})"
           }
         },
         "shipping_method_subscription_group_title": "Підписка",
