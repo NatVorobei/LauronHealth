@@ -1252,7 +1252,11 @@
           "shipping_price_included": "Вартість доставки включена",
           "recurring_order_shipping_price": "за якою йде {{ recurring_order_shipping_price }}",
           "first_order_shipping_price_included": "Перше замовлення включено, за яким йде {{ recurring_order_shipping_price }}",
-          "first_order_different_shipping_price": "{{ first_order_shipping_price }} ({{ per_delivery_price }} за доставку), за якою йде {{ recurring_order_shipping_price }}"
+          "first_order_different_shipping_price": "{{ first_order_shipping_price }} ({{ per_delivery_price }} за доставку), за якою йде {{ recurring_order_shipping_price }}",
+          "prepaid_delivery_frequency": {
+            "one": "для {{ count }} доставки",
+            "other": "для {{ count }} доставок"
+          }
         },
         "shipping_method_subscription_group_title": "Підписка",
         "subscription_shipping": "Доставка підписки",
