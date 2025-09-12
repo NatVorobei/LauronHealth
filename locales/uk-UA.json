@@ -920,7 +920,9 @@
               "other": "кожні {{ count }} місяці"
             }
           }
-        }
+        },
+        "shipping_method_subscription_group_title": "Підписка",
+        "subscription_shipping": "Доставка підписки"
       },
       "order_payment_collection": {
         "pay_now": "Оплатити зараз"
