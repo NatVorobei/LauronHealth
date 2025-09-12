@@ -747,11 +747,13 @@
       "marketing": {
         "accept_marketing_checkbox_label": "Надішліть мені email з новинами та пропозиціями",
         "disclaimer": {
-          "privacy_policy": "Політика конфіденційності"
+          "privacy_policy": "Політика конфіденційності",
+          "terms_of_service": "Політика конфіденційності"
         },
         "sms": {
           "disclaimer": {
-            "privacy_policy": "Політика конфіденційності"
+            "privacy_policy": "Політика конфіденційності",
+            "terms_of_service": "Політика конфіденційності"
           }
         }
       },
@@ -1022,7 +1024,8 @@
         "privacy_policy": "Політика конфіденційності",
         "subscription_policy": "Скасування",
         "purchase_options_cancellation_policy": "Скасування",
-        "shipping_policy": "Доставка"
+        "shipping_policy": "Доставка",
+        "terms_of_service": "Політика конфіденційності"
       },
       "mor_policies": {
         "privacy_policy": "Політика конфіденційності продавця"
