@@ -902,6 +902,13 @@
             "lastWordConnector": "{{previousWords}}, або {{lastWord}}",
             "twoWordConnector": "{{firstWord}} або {{secondWord}}"
           }
+        },
+        "datepicker": {
+          "show_previous_month": "Показати попередній місяць, {{month}} {{year}}",
+          "show_next_month": "Показати наступний місяць, {{month}} {{year}}",
+          "range_start": "Початок діапазону",
+          "in_range": "В діапазоні",
+          "range_end": "Кінець діапазону"
         }
       },
       "delivery_options": {
