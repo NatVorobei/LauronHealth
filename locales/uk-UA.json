@@ -1260,6 +1260,10 @@
           "prepaid_delivery_frequency": {
             "one": "для {{ count }} доставки",
             "other": "для {{ count }} доставок"
+          },
+          "first_n_order_free": {
+            "one": "Перше замовлення безкоштовно",
+            "other": "Перші {{count}} замовлень безкоштовно"
           }
         },
         "shipping_method_subscription_group_title": "Підписка",
