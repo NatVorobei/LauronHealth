@@ -720,7 +720,21 @@
         "klarna_pay_later_label": "Оплатити пізніше за допомогою Klarna",
         "afterpay_label": "Післяплата",
         "purchase_options_card_update_agreement_label_html": "Оновлюючи спосіб оплати, ви даєте згоду на оплату будь-яких періодичних або відстрочених покупок відповідно до <a class=\"link--small\" data-modal=«true» data-title-text=«{{ cancellation_policy }}» href=\"{{ policy_href }}\">політики скасування</a> цього магазину.",
-        "subscription_card_update_agreement_label": "Зміна способу оплати призведе до оновлення вашої передплати та майбутніх періодичних платежів."
+        "subscription_card_update_agreement_label": "Зміна способу оплати призведе до оновлення вашої передплати та майбутніх періодичних платежів.",
+        "subscription_heading": "Договір підписки",
+        "subscription_agreement_label_html": "Я розумію, що погоджуюся на підписку. Він поновлюватиметься за вказаною ціною та частотою, доки не закінчиться або завершиться <a class=\"link--small\" data-modal=\"true\" data-title-text=\"{{subscription_policy}}\" href=\"{{policy_href}}\">скасовано</a> .",
+        "change_currency_section_description": "Виберіть варіант валюти",
+        "no_real_orders_dev_store": "Цей магазин не приймає реальні замовлення або реальні платежі.",
+        "waiting_on_payment_methods": "Отримання доступних методів оплати...",
+        "apple_pay_payment_error": "Не вдалося здійснити платіж. Повторіть спробу або скористайтеся іншим способом оплати.",
+        "taxes_not_included": "Податки не включені",
+        "no_taxes_banner_content": "З цього замовлення податки не стягуються. Після отримання платежу податки більше не можна додавати.",
+        "account_connected": "Обліковий запис підключено.",
+        "update_payment_method": "Оновити спосіб оплати",
+        "order_covered_by_store_credit_notice": "На ваше замовлення поширюється кредит магазину.",
+        "order_covered_by_redeemables_notice": "Ваше замовлення покрито.",
+        "clear": "Очистити",
+        "billing_must_match_shipping_notice": "Адреса для виставлення рахунку за обраним способом оплати повинна збігатися з адресою доставки."
       },
       "order_summary": {
         "discount_title_stacking": {
