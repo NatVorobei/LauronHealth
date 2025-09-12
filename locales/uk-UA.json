@@ -742,7 +742,24 @@
         "use_location_billing_address_label": "Використовувати адресу для виставлення рахунків за місцем розташування",
         "use_location_shipping_address_label": "Використовувати адресу доставки за місцем розташування",
         "no_working_method_error": "Цей магазин зараз не може приймати платежі. Оновіть цю сторінку або поверніться пізніше.",
-        "brand_not_available": "Цей магазин не приймає {{brand}}. Будь ласка, використовуйте іншу картку для оплати."
+        "brand_not_available": "Цей магазин не приймає {{brand}}. Будь ласка, використовуйте іншу картку для оплати.",
+        "billing_address_invalid_phone": "Щоб продовжити, оновіть номер телефону у своїй платіжній адресі для {{label}} {{last_digits}} .",
+        "billing_address_invalid_phone_no_card": "Щоб продовжити, оновіть номер телефону у своїй платіжній адресі.",
+        "simulated_checkout": "Попередній перегляд незабаром",
+        "simulated_express_checkout": "Гаманці недоступні в попередньому перегляді редактора через ваш регіон або браузер",
+        "vaulting_agreement_label": "Збережіть мою платіжну інформацію в {{company}} для швидшої оплати.",
+        "business_customer_vaulting_payment_label": "Збережіть цю картку під час оплати та дозвольте {{company}} стягувати з цієї картки кошти для майбутніх покупок у цьому місці. Будь-який клієнт, призначений для цього місця, матиме право використовувати цю картку.",
+        "use_different_credit_card_label": "Використати іншу картку",
+        "saved_credit_card": "Ваша збережена кредитна картка",
+        "saved_credit_card_info": "Останні чотири цифри",
+        "saved_credit_card_cvv_verification": "Для підтвердження введіть код безпеки вашої картки.",
+        "local_payment_method_receiver_notice": "Після оформлення замовлення ви отримаєте реквізити для оплати. Здійсніть платіж через банкомат або онлайн протягом {{dueDays}} днів.",
+        "order_edit_banner_title": "Потрібно сплатити {{amount_owed}}",
+        "order_edit_banner_subtitle": "Ваше замовлення {{order_number}} оновлено. Перегляньте ці зміни, а потім сплатіть, щоб підтвердити замовлення.",
+        "order_edit_banner_single_item_added": "Додано",
+        "order_edit_banner_multiple_items_added": "Додано {{amount}}",
+        "order_edit_banner_single_item_removed": "Видалено",
+        "order_edit_banner_multiple_items_removed": "Видалено {{amount}}"
       },
       "order_summary": {
         "discount_title_stacking": {
