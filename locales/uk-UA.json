@@ -683,7 +683,14 @@
         "markets_pro_disclaimer_privacy_policy": "Політика конфіденційності",
         "markets_pro_disclaimer_privacy_policy_title": "Політика конфіденційності продавця",
         "subscription_agreement_cancelled": "політиці скасування",
-        "purchase_options_cancellation_policy_label": "політиці скасування"
+        "purchase_options_cancellation_policy_label": "політиці скасування",
+        "network_card_payment_options": "Виберіть мережу картки",
+        "network_card_persistence_description": "Вибрана мережа буде збережена разом із вашим способом оплати для майбутніх транзакцій.",
+        "amazon_payments_login_hint": "Вам буде запропоновано увійти в систему Amazon.",
+        "amazon_payments_logout": "Вийти з Amazon Pay",
+        "amazon_payments_failed_mfa_challenge": "Вибраний спосіб оплати не може бути використаний. Виберіть інший спосіб або зверніться до свого банку чи емітента картки.",
+        "amazon_payments_abandoned_mfa_challenge": "Ваш платіж не може бути виконаний. Спробуйте інший спосіб оплати або зверніться до свого банку чи емітента картки.",
+        "amazon_payments_could_not_enqueue_authorize": "Виникла проблема під час обробки вашого платежу. Спробуйте ще раз або скористайтеся іншим способом оплати."
       },
       "order_summary": {
         "discount_title_stacking": {
@@ -1384,7 +1391,8 @@
         },
         "local_pickup": {
           "search_address": "Пошук адреси",
-          "rollup_title": "Місце отримання"
+          "rollup_title": "Місце отримання",
+          "rollup_accessibility_label": "Варіанти місця отримання"
         }
       },
       "order_payment_collection": {
