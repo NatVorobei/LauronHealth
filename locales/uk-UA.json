@@ -771,7 +771,13 @@
         "customer_does_not_meet_discount_requirements_notice": "Код знижки <strong style=\"text-transform:uppercase\">%{code}</strong> вам зараз недоступний",
         "eligible_customer_missing_notice": "<strong style=\"text-transform:uppercase\">{{ code }}</strong> код знижки вимагає відповідності клієнта вимогам",
         "shipping_information_does_not_meet_discount_requirements_notice": "Код знижки <strong style=\"text-transform:uppercase\">%{code}</strong> недоступний для вашої адреси доставки",
-        "customer_already_used_once_per_customer_discount_notice": "Код знижки <strong style=\"text-transform:uppercase\">%{code}</strong> уже використано"
+        "customer_already_used_once_per_customer_discount_notice": "Код знижки <strong style=\"text-transform:uppercase\">%{code}</strong> уже використано",
+        "pickup_label": "Забрати в магазині",
+        "no_pickup_location": "Самовивіз недоступний для цього замовлення. Виберіть інший спосіб доставки.",
+        "tip_label": "Порада",
+        "unconfirmed_label": "Не підверджено",
+        "calculating": "Розрахунок...",
+        "shipping_default_value": "Розраховується на наступному кроці"
       },
       "marketing": {
         "accept_marketing_checkbox_label": "Надішліть мені email з новинами та пропозиціями",
