@@ -835,7 +835,15 @@
         "may_be_charged_on_delivery": "Може стягуватися під час доставки",
         "recurring_payments": "Регулярні платежі",
         "full_price": "Повна ціна: {{price}}",
-        "custom_discount": "Спеціальна знижка"
+        "custom_discount": "Спеціальна знижка",
+        "discount_order_stacking": {
+          "one": "Знижка на замовлення",
+          "other": "Знижки на замовлення"
+        },
+        "pickup_unavailable_banner_title": {
+          "one": "Немає магазинів, де можна придбати ваш товар",
+          "other": "Немає магазинів, де можна придбати ваші товари"
+        }
       },
       "marketing": {
         "accept_marketing_checkbox_label": "Надішліть мені email з новинами та пропозиціями",
