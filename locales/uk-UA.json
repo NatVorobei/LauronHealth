@@ -955,7 +955,11 @@
         "free_rate_label": "Безкоштовно",
         "cheapest_rate_label": "Найдешевше",
         "please_enter_your_shipping_information_notice": "Введіть інформацію про доставку будь ласка.",
-        "add_address": "Використати іншу адресу"
+        "add_address": "Використати іншу адресу",
+        "shipping_method_first_shipment_group_title": {
+          "one": "Перша доставка",
+          "other": "Перша доставка"
+        }
       },
       "order_payment_collection": {
         "pay_now": "Оплатити зараз"
