@@ -746,7 +746,8 @@
         "calculating_shipping": "Розрахунок...",
         "shipping_discount_title": "Знижка на доставку",
         "pickup_unavailable_banner_body": {
-          "ship_to_address": "Відправити на адресу"
+          "ship_to_address": "Відправити на адресу",
+          "ship_to_address_instead_html": "{{ link }} замість"
         },
         "discount_code_allocations_mismatch": "Ваш код знижки <strong style=\"text-transform:uppercase\">{{ code }}</strong> змінився. Перегляньте кошик і спробуйте ще раз.",
         "gift_card_applied": "Застосовано подарункову картку",
@@ -843,6 +844,18 @@
         "pickup_unavailable_banner_title": {
           "one": "Немає магазинів, де можна придбати ваш товар",
           "other": "Немає магазинів, де можна придбати ваші товари"
+        },
+        "price_per_item": {
+          "accessibility_label": "{{ price }} за одиницю",
+          "label": "{{ price }}/шт."
+        },
+        "unit_price": {
+          "accessible_separator": "на",
+          "per_item": {
+            "single": "{{ ціна }} за штуку",
+            "one": "{{ ціна }} за {{ кількість }} штук",
+            "other": "{{ ціна }} за {{ кількість }} штук"
+          }
         }
       },
       "marketing": {
