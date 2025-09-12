@@ -1370,6 +1370,17 @@
         },
         "shipping_method_combinations": {
           "combination": "{{ rest }} і {{ current }}"
+        },
+        "address_form": {
+          "add_address": "Додайте адресу",
+          "save": "Зберегти",
+          "cancel": "Скасувати",
+          "generic_error": "Під час збереження адреси виникла проблема. Будь ласка спробуйте ще раз.",
+          "one_time_address_subtitle": "Використовуйте одноразову адресу для цього замовлення"
+        },
+        "method_summary": {
+          "incomplete_address_entered": "Введіть повну адресу доставки, щоб переглянути доступні способи доставки",
+          "incomplete_address_selected": "Виберіть повну адресу доставки, щоб переглянути доступні способи доставки"
         }
       },
       "order_payment_collection": {
