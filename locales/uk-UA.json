@@ -1195,6 +1195,10 @@
             "day": {
               "one": "кожен день",
               "other": "кожні {{ count }} дні"
+            },
+            "year": {
+              "one": "щороку",
+              "other": "кожні {{count}} років"
             }
           },
           "free_shipping_cycles": {
