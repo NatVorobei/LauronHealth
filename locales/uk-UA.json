@@ -909,6 +909,12 @@
           "range_start": "Початок діапазону",
           "in_range": "В діапазоні",
           "range_end": "Кінець діапазону"
+        },
+        "map": {
+          "cluster_title": {
+            "one": "Кластер маркера {{number}}",
+            "other": "Кластер із {{number}} маркерів"
+          }
         }
       },
       "delivery_options": {
