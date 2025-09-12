@@ -809,7 +809,33 @@
         "gift_card_ending": "Подарункова картка закінчується на {{last_characters}}",
         "estimated_tax_label": "Приблизний податок",
         "confirmation_number_label": "Підтвердження #{{confirmation_number}}",
-        "higher_value_discount_applied": "<strong style=\"text-transform:uppercase\">{{code}}</strong> не можна використати з існуючими знижками."
+        "higher_value_discount_applied": "<strong style=\"text-transform:uppercase\">{{code}}</strong> не можна використати з існуючими знижками.",
+        "number_items": {
+          "one": "{{ count }} товар",
+          "other": "{{ count }} товари"
+        },
+        "view_all_items": {
+          "one": "Переглянути {{ count }} товар",
+          "other": "Переглянути всі {{ count }} товари"
+        },
+        "more_items_modal": {
+          "search_item": "Пошук",
+          "clear_search": "Очистити пошук",
+          "empty_results": "Не знайдено результатів для «{{ searchText }}». Перевірте правопис або використовуйте інше слово чи фразу.",
+          "number_items_shown": "{{ shownNumber }} з {{ totalNumber }} елементів"
+        },
+        "percent_off_shipping": "{{percent}} знижки на доставку",
+        "amount_off_shipping": "{{amount}} знижки на доставку",
+        "discount_code_application_failed": "<strong style=\"text-transform:uppercase\">{{code}}</strong> зараз не працює. Зверніться до нас за допомогою.",
+        "due_on_fulfillment": "Термін виконання",
+        "subscriptions": "Підписки",
+        "duties_label": "Мита",
+        "duties_and_taxes_label": "Мита та податки",
+        "error_duties_tooltip": "Це замовлення доставляється з іншої країни, тому під час доставки можуть стягуватися мита та податки.",
+        "may_be_charged_on_delivery": "Може стягуватися під час доставки",
+        "recurring_payments": "Регулярні платежі",
+        "full_price": "Повна ціна: {{price}}",
+        "custom_discount": "Спеціальна знижка"
       },
       "marketing": {
         "accept_marketing_checkbox_label": "Надішліть мені email з новинами та пропозиціями",
