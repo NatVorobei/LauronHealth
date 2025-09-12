@@ -997,7 +997,8 @@
           "week": {
             "other": "{{ count }} тижні"
           }
-        }
+        },
+        "recurring_totals": "{{ total_price }} кожні {{ interval }}"
       }
     },
     "notices": {
