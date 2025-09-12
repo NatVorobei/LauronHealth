@@ -1367,6 +1367,9 @@
         },
         "prime_not_available": {
           "default": "Пріоритетна доставка для вашого замовлення недоступна. Ваші варіанти доставки оновлено."
+        },
+        "shipping_method_combinations": {
+          "combination": "{{ rest }} і {{ current }}"
         }
       },
       "order_payment_collection": {
