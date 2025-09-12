@@ -1204,6 +1204,18 @@
           "free_shipping_cycles_delivery_not_included": {
             "one": "Безкоштовна доставка для {{ count }} доставок",
             "other": "Безкоштовна доставка для {{ count }} доставок"
+          },
+          "first_n_order_free_with_cycle": {
+            "one": "Безкоштовна доставка для {{ count }} додаткових доставок, потім {{ recurring_order_shipping_price }}",
+            "other": "Безкоштовна доставка для {{ count }} додаткових доставок, потім {{ recurring_order_shipping_price }}"
+          },
+          "first_n_order_free_with_cycle_delivery_not_included": {
+            "one": "Безкоштовна доставка для {{ count }} доставок, потім {{ recurring_order_shipping_price }}",
+            "other": "Безкоштовна доставка для {{ count }} доставок, потім {{ recurring_order_shipping_price }}"
+          },
+          "max_cycles_base_shipping": {
+            "one": "{{ count }} додаткових доставок за {{ shipping_price }}",
+            "other": "{{ count }} додаткових доставок за {{ shipping_price }} кожна"
           }
         },
         "shipping_method_subscription_group_title": "Підписка",
