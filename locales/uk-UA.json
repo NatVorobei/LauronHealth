@@ -1182,6 +1182,13 @@
           "other": "Ці продукти недоступні у вашій країні/регіоні."
         },
         "unavailable_label": "Недоступно"
+      },
+      "merchandise_unavailable_in_buyer_location": {
+        "banner_title": {
+          "some_products_one": "Цей товар недоступний для доставки в {{ location_name }}.",
+          "some_products_other": "Ці товари недоступні для доставки в {{ location_name }}.",
+          "all_products_one": "Товар у вашому кошику недоступний для доставки в {{ location_name }}."
+        }
       }
     },
     "notices": {
