@@ -1736,7 +1736,21 @@
         "credit_card_start_month_invalid": "Введіть правильний місяць початку дії картки",
         "credit_card_start_year_invalid": "Введіть правильний рік початку дії картки",
         "credit_card_number_blank": "Введіть номер картки",
-        "credit_card_verification_value_blank": "Введіть CVV-код або код безпеки на вашій картці"
+        "credit_card_verification_value_blank": "Введіть CVV-код або код безпеки на вашій картці",
+        "delivery_zone_not_found": "Зазначена зона не знайдена у вказаній країні.",
+        "reduction_code_code_not_found": "Введіть дійсний код знижки або подарункову картку",
+        "reduction_code_discount_not_found": "Введіть дійсний код знижки",
+        "reduction_code_gift_card_code_invalid": "Введіть дійсну подарункову картку.",
+        "reduction_code_gift_card_unusable": "Ви не можете використовувати подарункову картку для придбання іншої подарункової картки.",
+        "reduction_code_gift_cards_not_supported_with_deferred_purchase_options": "Подарункові картки не підтримуються з опціями відкладеної покупки.",
+        "shipping_line_phone_blank": "Введіть номер телефону, щоб скористатися цим способом доставки.",
+        "shipping_line_phone_invalid": "Введіть правильний номер телефону",
+        "tips_invalid_tip_amount": "Введіть суму чайових менше {{ amount }}",
+        "gift_card_already_applied": "Ця подарункова картка вже була використана для вашого замовлення",
+        "gift_card_disabled": "Ця подарункова картка більше не доступна",
+        "gift_card_expired": "Термін дії цієї подарункової картки закінчився",
+        "gift_card_depleted": "На цій подарунковій картці не залишилося коштів",
+        "gift_card_currency_mismatch": "Для цього замовлення можна використовувати тільки подарункові картки в {{ checkout_currency }}"
       },
       "shipping_errors": {
         "empty_state": "Введіть свою адресу доставки, щоб переглянути доступні способи доставки.",
