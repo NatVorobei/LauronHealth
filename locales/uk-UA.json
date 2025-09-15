@@ -2209,14 +2209,24 @@
       "subscriptions": {
         "recurring_total_intervals": {
           "week": {
-            "other": "{{ count }} тижні"
+            "other": "{{ count }} тижні",
+            "one": "тиждень"
           },
           "day": {
             "one": "день",
             "other": "{{ count }} днів"
+          },
+          "month": {
+            "one": "місяць",
+            "other": "{{ count }} місяці"
+          },
+          "year": {
+            "one": "рік",
+            "other": "{{ count }} роки"
           }
         },
-        "recurring_totals": "{{ total_price }} кожні {{ interval }}"
+        "recurring_totals": "{{ total_price }} кожні {{ interval }}",
+        "recurring_totals_with_initial_order_shipping_discount": "Перший платіж {{ total_price_with_discount }}, потім {{ recurring_total }}"
       },
       "shop_policies": {
         "privacy_policy": "Політика конфіденційності",
