@@ -2265,7 +2265,12 @@
         "cart_and_currency_updated_based_on_country": "Ваш кошик і валюта оновлено відповідно до країни доставки."
       },
       "wallets": {
-        "shipping_line_label": "Доставка"
+        "shipping_line_label": "Доставка",
+        "scrim": {
+          "continue_purchase_in_window": "Продовжити покупку у вікні {{walletName}}",
+          "and_return_to_checkout": "і повернутися до оформлення замовлення",
+          "cancel": "Скасувати"
+        }
       },
       "local_pickup": {
         "all_stores_far_away": {
