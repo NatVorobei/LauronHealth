@@ -2058,6 +2058,27 @@
           "no_auto_refresh_html": "Якщо вас не буде автоматично перенаправлено, {{link}}.",
           "refresh_this_page": "оновити цю сторінку"
         }
+      },
+      "payment_challenge_modal": {
+        "instructions": "Завершіть покупку, використовуючи код {{paymentMethod}}.",
+        "timer_message": "У вас є {{timeLeft}} для оплати.",
+        "copy_text": "Копіювати код {{paymentMethod}}.",
+        "open_app_text": "Відкрити додаток {{paymentMethod}}.",
+        "header": "Оплатити за допомогою {{paymentMethod}}.",
+        "qr_code": {
+          "instructions": "Завершіть покупку, використовуючи код {{paymentMethod}}."
+        },
+        "external": {
+          "instructions": "Підтвердіть оплату в додатку, щоб завершити цю покупку."
+        },
+        "close": "Закрити виклик."
+      },
+      "failed_payment": {
+        "page_title": "Оплату не вдалося обробити",
+        "title": "Оплату не вдалося обробити",
+        "payment_not_processed_title": "Ваша оплата не може бути оброблена",
+        "payment_not_processed_text": "З вас не стягнуто плату. Поверніться до кошика, щоб завершити покупку.",
+        "return_to_cart_button_label": "Повернутися до кошика"
       }
     },
     "notices": {
