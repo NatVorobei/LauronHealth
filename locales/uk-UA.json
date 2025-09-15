@@ -906,6 +906,15 @@
         "order_edit_banner_items_return_line_item_removed": {
           "in_full": "Видалено з повернення",
           "with_quantities": "Видалено {{delta}} з повернення"
+        },
+        "gift_card_wrapper": {
+          "heading": "Подарункова картка",
+          "apply_gift_card_label": "Застосувати подарункову картку",
+          "apply_another_gift_card_label": "Застосувати іншу подарункову картку",
+          "gift_card_label": "Подарункова картка {{ identifier }}",
+          "payment_tag": "Подарункова картка",
+          "add_label": "Додати подарункову картку",
+          "manage_label": "Керувати подарунковими картками"
         }
       },
       "order_summary": {
