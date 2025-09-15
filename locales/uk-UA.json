@@ -871,6 +871,13 @@
           "confirmation": "Ви впевнені, що хочете видалити {{brandName}}, що закінчується на {{lastDigits}}?",
           "cancel": "Скасувати",
           "delete": "Видалити"
+        },
+        "edit_credit_card_modal": {
+          "title": "Редагувати картку",
+          "edit_credit_card_rollup_accessibility_label": "Показати параметри картки",
+          "done": "Готово",
+          "cancel": "Скасувати",
+          "description": "Ви можете змінити лише адресу для виставлення рахунків за вашою карткою."
         }
       },
       "order_summary": {
