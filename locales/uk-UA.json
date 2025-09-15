@@ -1741,7 +1741,17 @@
         "thank_you_payments_app_pending_payment_description_buyer_action_required_with_phone_payment": "Після завершення оплати ви отримаєте підтвердження у вигляді SMS-повідомлення з номером вашого замовлення.",
         "thank_you_payments_app_pending_payment_description_buyer_action_required_with_phone_pick_up": "Після завершення оплати ви отримаєте підтвердження у вигляді SMS-повідомлення з номером вашого замовлення.",
         "thank_you_payments_app_pending_payment_description_provider_action_required_default": "Ваша оплата обробляється. Ви отримаєте електронний лист, коли оплата буде підтверджена.",
-        "track_your_order_link_text": "Відстежуйте своє замовлення"
+        "track_your_order_link_text": "Відстежуйте своє замовлення",
+        "checkout_on_remote_shop_link_text": "Оформити замовлення на {{ remoteShopName }}",
+        "order_status_confirmed_order_with_email": "Ви отримаєте електронний лист, коли ваше замовлення буде готове.",
+        "order_status_confirmed_order_with_phone": "Ви отримаєте  SMS-повідомлення, коли ваше замовлення буде готове.",
+        "order_status_confirmed_order_with_email_and_phone": "Ви отримаєте електронний лист, коли ваше замовлення буде готове.",
+        "order_status_confirmed_order_with_email_payment": "Ви здійснили платіж за замовленням {{date}}.",
+        "order_status_confirmed_order_with_phone_payment": "Ви здійснили платіж за замовленням {{date}}.",
+        "order_status_confirmed_order_with_email_and_phone_payment": "Ви здійснили платіж за замовленням {{date}}.",
+        "order_status_confirmed_order_with_email_pick_up": "Ви отримаєте електронний лист, коли ваше замовлення буде готове до отримання.",
+        "order_status_confirmed_order_with_phone_pick_up": "Ви отримаєте SMS-повідомлення, коли ваше замовлення буде готове до отримання.",
+        "order_status_confirmed_order_with_email_and_phone_pick_up": "Ви отримаєте електронний лист і SMS-повідомлення, коли ваше замовлення буде готове до отримання."
       },
       "review": {
         "blocks": {
