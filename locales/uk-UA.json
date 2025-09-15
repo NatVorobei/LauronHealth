@@ -1657,7 +1657,11 @@
           "added": {
             "one": "Додано",
             "other": "Додано {{count}}"
-          }
+          },
+          "removed": "Видалено",
+          "subtracted": "Видалено {{count}}",
+          "returned": "Повернуто {{count}}",
+          "return_line_item_removed": "Видалено {{ count }} з повернення"
         },
         "additional_payment_requested": "Потрібен платіж у розмірі {{total_outstanding}}",
         "checkout_review_and_pay": "Ваше замовлення {{order_name}} оновлено. Перегляньте ці зміни, а потім сплатіть, щоб підтвердити замовлення.",
