@@ -2027,6 +2027,27 @@
           "processing": "Обробка…",
           "submit": "Підтвердити"
         }
+      },
+      "processing": {
+        "redirecting_page_title": "Переспрямування…",
+        "redirecting_title": "Переспрямування…",
+        "redirecting_notice": "Зачекайте, поки ми вас перенаправимо.",
+        "redirecting_to_bank": "Перенаправлення на {{bank}}",
+        "complete_your_purchase_title": "Завершіть покупку",
+        "continue_to_payment_gateway_notice": "Перейдіть до платежу, щоб додати платіжну інформацію.",
+        "continue_to_payment_gateway_button_label": "Продовжити до оплати",
+        "complete_your_purchase_title_error": "Виправте платіжну інформацію",
+        "continue_to_payment_gateway_notice_error": "Не вдалося підтвердити вашу платіжну інформацію.",
+        "continue_to_payment_gateway_button_label_error": "Оновити платіжну інформацію",
+        "page_title": "Обробка замовлення",
+        "title": "Обробка замовлення",
+        "your_order_has_been_received_title": "Дякую за ваше замовлення",
+        "you_will_receive_confirmation": "Зараз ми отримуємо багато замовлень. Незабаром ви маєте отримати підтвердження електронною поштою або текстовим повідомленням. Якщо ви не отримаєте його протягом наступної години, повідомте нас.",
+        "you_will_not_be_charged": "З вас ще не буде стягнуто плату",
+        "remote_shops_payments_processing": "Обробка платежів",
+        "action_required": "Необхідні дії",
+        "modal_notice": "Ми зв'язуємося з {{paymentMethod}}",
+        "remote_checkout_count": "{{ current }} з {{ total }}"
       }
     },
     "notices": {
