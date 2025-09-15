@@ -2488,6 +2488,9 @@
         "change_currency_link": "Змінити на {{ currency_name }}",
         "card_provider_fx_charges_warning": "Ваш постачальник картки може стягувати комісії за транзакції з {{ currency_code }}.",
         "currency_not_supported_by_shop": "Вибрана вами валюта більше недоступна. Усі ціни тепер вказані в {{ currency_code }}."
+      },
+      "change_cart_localization": {
+        "verify_shipping_address": "Вашу країну/регіон оновлено. Введіть свою адресу доставки, щоб продовжити замовлення."
       }
     },
     "notices": {
