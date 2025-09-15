@@ -894,6 +894,10 @@
         "order_edit_banner_items_added": {
           "one": "Додано",
           "other": "Додано {{ count }}"
+        },
+        "order_edit_banner_items_removed": {
+          "in_full": "Видалено",
+          "with_quantities": "Видалено {{delta}} з {{quantity}}"
         }
       },
       "order_summary": {
