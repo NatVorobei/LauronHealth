@@ -1665,7 +1665,20 @@
         "return_to_store_link_label": "Продовжити покупки",
         "print_link_label": "Роздрукувати квитанцію",
         "payment_information_title": "Інформація про оплату",
-        "shipping_information_title": "Інформація про доставку"
+        "shipping_information_title": "Інформація про доставку",
+        "page_title": "Дякуємо, {{ display_name }}!",
+        "page_title_no_name": "Дякуємо!",
+        "purchase_order_number_title": "Номер замовлення  #{{ purchase_order_number }}",
+        "cancelled_page_title": "Замовлення скасовано",
+        "failed_pending_payment_page_title": "Виникла проблема з оплатою",
+        "customer_information_title": "Деталі замовлення",
+        "contact_information_title": "Контактна інформація",
+        "billing_address_title": "Адреса для виставлення рахунку",
+        "company_location_title": "Місцезнаходження",
+        "shipping_address_title": "Адреса доставки",
+        "shipping_address_map_title": "Карта Google з точним зазначенням адреси доставки: {{ address }}",
+        "payment_method_title": "Спосіб оплати",
+        "payment_method_not_charged": "Спосіб оплати не стягується"
       },
       "review": {
         "blocks": {
