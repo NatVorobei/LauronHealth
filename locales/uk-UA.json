@@ -2691,7 +2691,14 @@
         "merchandise_line_transformers": {
           "run_error": "У вашому кошику сталася помилка."
         },
-        "merchandise_not_applicable": "Товар не можна придбати, як налаштовано."
+        "merchandise_not_applicable": "Товар не можна придбати, як налаштовано.",
+        "selling_plan_not_available_for_company_locations": "Для замовлень B2B доступна лише одноразова покупка",
+        "digital_product_not_available_for_company_locations": "Цей товар не можна додати до замовлення B2B",
+        "buyer_cannot_purchase_for_company_locations": "Ви не можете купувати для цієї локації",
+        "selling_plan_not_applicable": "Неможливо застосувати план продажу до варіанта",
+        "shipping_address_not_required": "Цей кошик не вимагає доставки",
+        "shipping_address_invalid": "Виникла проблема з розрахунком вартості доставки.",
+        "bundle_requires_components": "Набір товарів '{{ name }}' не можна додати до кошика."
       },
       "storefront": {
         "invalid_password": "Неправильний пароль, спробуйте ще раз."
