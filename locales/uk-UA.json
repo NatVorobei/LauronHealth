@@ -2226,7 +2226,20 @@
           }
         },
         "recurring_totals": "{{ total_price }} кожні {{ interval }}",
-        "recurring_totals_with_initial_order_shipping_discount": "Перший платіж {{ total_price_with_discount }}, потім {{ recurring_total }}"
+        "recurring_totals_with_initial_order_shipping_discount": "Перший платіж {{ total_price_with_discount }}, потім {{ recurring_total }}",
+        "recurring_totals_with_policies": {
+          "first_cycles": {
+            "one": "Перший платіж {{ total_price }}",
+            "other": "Перші {{ count }} платежі по {{ total_price }} кожен"
+          },
+          "following_cycles": ", потім {{ total_price }} кожні {{ interval }}"
+        },
+        "recurring_totals_with_initial_order_shipping_discount_with_policies": {
+          "first_cycles": {
+            "one": ", потім {{ count }} платіж у розмірі {{ total_price }}",
+            "other": ", потім {{ count }} платежів по {{ total_price }} кожен"
+          }
+        }
       },
       "shop_policies": {
         "privacy_policy": "Політика конфіденційності",
