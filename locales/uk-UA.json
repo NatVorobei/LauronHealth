@@ -2270,7 +2270,16 @@
           "continue_purchase_in_window": "Продовжити покупку у вікні {{walletName}}",
           "and_return_to_checkout": "і повернутися до оформлення замовлення",
           "cancel": "Скасувати"
-        }
+        },
+        "return_to_store": "Повернутися до магазину",
+        "return_to_checkout": "Повернутися до оформлення замовлення",
+        "redirect_hint": "Вам буде запропоновано увійти за допомогою {{walletName}}.",
+        "logged_in": "Підключено до {{email}}",
+        "connect_shipping_methods": "{{method1}} та {{method2}}",
+        "payment_in_progress_title": "Виконується оплата",
+        "payment_in_progress_body": "Ваш платіж обробляється. Ваше замовлення буде завершено найближчим часом.",
+        "call_to_action": "Сплатити за допомогою {{walletName}}",
+        "redirection_notice": "Після натискання кнопки \"{{buttonLabel}}\" вас буде перенаправлено на {{walletName}} для безпечного завершення покупки."
       },
       "local_pickup": {
         "all_stores_far_away": {
@@ -2759,6 +2768,16 @@
       "clipboard": {
         "copied": "Скопійовано",
         "failed_to_copy": "Не вдалося скопіювати"
+      },
+      "shop_pay_external": {
+        "title": "Shop Pay оформлення замовлення",
+        "errors": {
+          "problem_loading": "Виникла проблема із завантаженням Shop Pay",
+          "try_again_later": "Перевірте з’єднання або закрийте це вікно та спробуйте ще раз через кілька хвилин.",
+          "checkout_has_expired": "Термін дії вашого замовлення минув. Закрийте це вікно та спробуйте знову оформити замовлення в {{shopName}}."
+        },
+        "return_to_store": "Повернутися до {{shopName}}",
+        "return_to_store_simple": "Повернутися до магазину"
       }
     },
     "notices": {
