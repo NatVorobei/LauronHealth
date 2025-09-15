@@ -1770,7 +1770,10 @@
         "phone_blank": "Введіть номер телефону",
         "address_country_invalid": "Виберіть країну/регіон зі списку",
         "address_zip_invalid": "Введіть дійсний поштовий індекс",
-        "gift_card_invalid": "Подарункова картка «••••{{ last_four_characters }}» більше не дійсна"
+        "gift_card_invalid": "Подарункова картка «••••{{ last_four_characters }}» більше не дійсна",
+        "vaulting_agreement_blank": "Ваша картка має бути збережена, оскільки оплата залишку цього замовлення має бути здійснена пізніше.",
+        "sms_marketing_phone_invalid": "Введіть дійсний номер телефону",
+        "address_suggestion_did_you_mean_html": "Ви мали на увазі {{ html }}?"
       },
       "shipping_errors": {
         "empty_state": "Введіть свою адресу доставки, щоб переглянути доступні способи доставки.",
