@@ -2297,7 +2297,15 @@
         "could_not_resolve_address": "Вашу адресу не вдалося знайти. Спробуйте ще раз або скористайтеся іншою адресою",
         "paginator": {
           "previous": "Попередня сторінка",
-          "next": "Наступна сторінка"
+          "next": "Наступна сторінка",
+          "label": {
+            "one": "{{ first }} - {{ last }} з {{ count }} магазинів",
+            "other": "{{ first }} - {{ last }} з {{ count }} магазинів"
+          }
+        },
+        "reveal_more_label": {
+          "one": "Показати ще {{ count }} місцезнаходження",
+          "other": "Показати ще {{ count }} місцезнаходження"
         }
       },
       "contextual_availability": {
@@ -2741,6 +2749,16 @@
       },
       "online_store_chat": {
         "title": "Є запитання? Зв'яжіться з нами у чаті"
+      },
+      "captcha": {
+        "title": "Заповніть CAPTCHA, щоб продовжити",
+        "errors": {
+          "not_solved": "Заповніть CAPTCHA, щоб продовжити"
+        }
+      },
+      "clipboard": {
+        "copied": "Скопійовано",
+        "failed_to_copy": "Не вдалося скопіювати"
       }
     },
     "notices": {
