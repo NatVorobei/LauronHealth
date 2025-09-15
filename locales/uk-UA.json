@@ -2676,7 +2676,10 @@
       "line_item": {
         "item_status": {
           "decrement_item": "Вилучено {{ delta }} з {{ total }}",
-          "decrement_fulfilled_line_item": "Повернено {{ delta }} з {{ total }}"
+          "decrement_fulfilled_line_item": "Повернено {{ delta }} з {{ total }}",
+          "add_variant": "Додано {{ delta }}",
+          "increment_item": "Додано {{ delta }}",
+          "decrement_return_line_item": "Видалено {{ delta }} з повернення"
         }
       },
       "cart": {
@@ -2762,7 +2765,9 @@
           "partially_refunded": "Частково повернено",
           "refunded": "Повернено",
           "expired": "Минув термін дії"
-        }
+        },
+        "not_available": "Це замовлення недоступне",
+        "cash_on_delivery": "Готівка при отриманні (COD)"
       }
     },
     "email_marketing": {
