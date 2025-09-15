@@ -2593,6 +2593,32 @@
         "creation_failure": "Під час створення замовлення виникла проблема. Спробуйте ще раз або зв’яжіться з нами, щоб дізнатися більше.",
         "network_failure": "Ваше замовлення не може бути відправлено через помилку мережі. Перевірте підключення та повторіть спробу.",
         "inventory_reservation_failure": "Деякі товари більше не доступні."
+      },
+      "session_errors": {
+        "session_not_unique": "Виникла проблема з обробкою вашого замовлення. Оновіть цю сторінку, щоб повернутися до магазину.",
+        "session_already_finished": "Це замовлення вже подано. Ви можете повернутися до магазину, щоб почати нове замовлення."
+      },
+      "artifact_errors": {
+        "artifact_dissatisfaction_without_violation": "Виникла проблема з обробкою вашого замовлення. Спробуйте ще раз через кілька хвилин."
+      },
+      "pickup_point": {
+        "location_is_currently_closed": "Зачинено",
+        "business_hours": "Години роботи",
+        "no_business_hours": "Години роботи недоступні",
+        "open_twenty_four_hours": "Відкрито 24/7",
+        "title": "Місце видачі",
+        "or": "або",
+        "search_button": "Пошук",
+        "address_label": "Адреса",
+        "selector_tabs": "Вибір місця отримання",
+        "selector_tab_map": "Карта",
+        "selector_tab_list": "Список",
+        "could_not_resolve_address": "Вашу адресу не вдалося знайти. Спробуйте ще раз або скористайтеся іншою адресою.",
+        "no_pickup_points_near_you": "Пунктів видачі поблизу вас немає.",
+        "no_pickup_points_near_location": "Пунктів видачі поблизу вашого місця розташування не знайдено.",
+        "no_pickup_points_found": "Пунктів видачі не знайдено.",
+        "change": "Змінити місце розташування.",
+        "waiting_on_pickup_point_location_notice": "Пошук пунктів видачі..."
       }
     },
     "notices": {
