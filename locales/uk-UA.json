@@ -1806,7 +1806,18 @@
             "link": "Увійти"
           }
         },
-        "credit_card_label": "Картка"
+        "credit_card_label": "Картка",
+        "bank_deposit_label": "Банківський депозит",
+        "cash_on_delivery_label": "Оплата при доставці (COD)",
+        "money_order_label": "Грошовий переказ",
+        "debit_card_label": "Дебетова картка",
+        "deferred_payment_label": "Виберіть спосіб оплати пізніше",
+        "fixed_payment_label": "Ваш платіж буде належний до сплати {{dueDate}}.",
+        "generic_payment_terms": "Ви перебуваєте на умовах {{translatedName}}. Ваш платіж буде належний до сплати {{dueDate}}.",
+        "direct_payment_terms": "Ви перебуваєте на умовах {{translatedName}}. Ваша картка буде списана {{dueDate}}.",
+        "fixed_direct_payment_terms": "Плата буде стягнута з вашої картки {{dueDate}}.",
+        "order_due_on_fulfillment_choose_later": "Ваш платіж буде сплачено, коли ваше замовлення буде виконано.",
+        "order_due_on_fulfillment_payment": "Плата буде стягнута з вашої картки, коли ваше замовлення буде виконано."
       },
       "address_management": {
         "confirm_address_deletion": "Ви впевнені, що хочете видалити адресу {{address}}?"
