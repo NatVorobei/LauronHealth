@@ -2622,6 +2622,14 @@
         "pickup_unavailable_banner_title": {
           "one": "Для вашого товару немає доступних пунктів видачі",
           "other": "Для ваших товарів немає доступних пунктів видачі"
+        },
+        "paginator": {
+          "next_accessibility_label": "Наступна сторінка",
+          "previous_accessibility_label": "Попередня сторінка",
+          "header": {
+            "one": "Показано {{ first }} - {{ last }} з {{ count }} балів",
+            "other": "Показано {{ first }} - {{ last }} з {{ count }} балів"
+          }
         }
       }
     },
