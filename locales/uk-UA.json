@@ -1670,7 +1670,34 @@
       },
       "field_errors": {
         "delivery_line_detail_changed": "Деякі деталі доставки могли змінитися. Перевірте спосіб доставки та спробуйте ще раз.",
-        "address_country_not_supported": "Ми не здійснюємо доставку в цю країну або регіон. Введіть нову адресу доставки та спробуйте ще раз."
+        "address_country_not_supported": "Ми не здійснюємо доставку в цю країну або регіон. Введіть нову адресу доставки та спробуйте ще раз.",
+        "handle_phone_invalid": "Введіть правильний номер телефону",
+        "handle_email_invalid": "Введіть правильну адресу електронної пошти",
+        "email_invalid": "Введіть правильну адресу електронної пошти",
+        "email_or_phone_blank": "Введіть адресу електронної пошти або номер телефону",
+        "email_or_phone_invalid": "Введіть правильну адресу електронної пошти або номер ",
+        "address_first_name_blank": "Введіть ім'я",
+        "address_first_name_too_long": "Ім'я занадто довге (максимум 255 символів)",
+        "address_first_name_contains_emojis": "Ім'я не може містити емодзі",
+        "address_first_name_contains_html_tags": "Ім'я не може містити теги HTML.",
+        "address_first_name_contains_url": "Ім'я не може містити URL-адресу",
+        "address_first_name_contains_mathematical_symbols": "Ім'я не може містити математичні символи",
+        "address_last_name_blank": "Введіть прізвище",
+        "address_last_name_too_long": "Прізвище занадто довге (максимум 255 символів)",
+        "address_last_name_contains_emojis": "Прізвище не може містити емодзі",
+        "address_last_name_contains_html_tags": "Прізвище не може містити теги HTML.",
+        "address_last_name_contains_url": "Прізвище не може містити URL-адресу.",
+        "address_last_name_contains_mathematical_symbols": "Прізвище не може містити математичні символи.",
+        "address_address1_blank": "Введіть адресу.",
+        "address_address1_too_long": "Перший рядок адреси занадто довгий (максимум 255 символів).",
+        "address_address1_contains_emojis": "Адреса1 не може містити емодзі.",
+        "address_address1_contains_html_tags": "Адреса1 не може містити теги HTML.",
+        "address_address1_contains_mathematical_symbols": "Адреса1 не може містити математичні символи.",
+        "address_address2_blank": "Введіть номер квартири, номер кімнати тощо.",
+        "address_address2_too_long": "Другий рядок адреси занадто довгий (максимум 255 символів).",
+        "address_address2_contains_emojis": "Адреса2 не може містити емодзі.",
+        "address_address2_contains_html_tags": "Адреса2 не може містити теги HTML.",
+        "address_address2_contains_mathematical_symbols": "Адреса2 не може містити математичні символи."
       },
       "shipping_errors": {
         "empty_state": "Введіть свою адресу доставки, щоб переглянути доступні способи доставки.",
@@ -1801,6 +1828,18 @@
           "save": "Зберегти",
           "cancel": "Скасувати"
         }
+      },
+      "company_location": {
+        "location_title": "Місце розташування компанії",
+        "location_rollup_accessibility_label": "Варіанти місця розташування компанії"
+      },
+      "payment_summary": {
+        "gift_card_current_balance_notice": "Поточний баланс {{ amount }}",
+        "credit_card_expires_on_notice": "Термін дії закінчується {{ month }}/{{ year }}",
+        "express_payment_gateway_label": "Експрес",
+        "manual_payment_gateway_label": "Вручну",
+        "billing_address_title": "Адреса для виставлення рахунку",
+        "free_label": "Безкоштовно"
       }
     },
     "notices": {
