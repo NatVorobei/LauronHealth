@@ -1773,7 +1773,11 @@
         "gift_card_invalid": "Подарункова картка «••••{{ last_four_characters }}» більше не дійсна",
         "vaulting_agreement_blank": "Ваша картка має бути збережена, оскільки оплата залишку цього замовлення має бути здійснена пізніше.",
         "sms_marketing_phone_invalid": "Введіть дійсний номер телефону",
-        "address_suggestion_did_you_mean_html": "Ви мали на увазі {{ html }}?"
+        "address_suggestion_did_you_mean_html": "Ви мали на увазі {{ html }}?",
+        "split_cart_international_shipping_not_supported": "Всі товари повинні використовувати один і той же спосіб доставки при міжнародній доставці. Оновіть спосіб доставки або створіть кілька замовлень.",
+        "invalid_delivery_address_reference_handle": "Ідентифікатор адреси доставки не може бути зіставлений з жодною з доступних адрес доставки.",
+        "must_use_available_delivery_address": "Адреса доставки повинна бути обрана з доступних адрес доставки.",
+        "must_use_available_shipping_rate": "Вартість доставки повинна бути обрана з доступних вартостей доставки."
       },
       "shipping_errors": {
         "empty_state": "Введіть свою адресу доставки, щоб переглянути доступні способи доставки.",
