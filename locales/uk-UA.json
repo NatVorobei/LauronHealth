@@ -1678,7 +1678,27 @@
         "shipping_address_title": "Адреса доставки",
         "shipping_address_map_title": "Карта Google з точним зазначенням адреси доставки: {{ address }}",
         "payment_method_title": "Спосіб оплати",
-        "payment_method_not_charged": "Спосіб оплати не стягується"
+        "payment_method_not_charged": "Спосіб оплати не стягується",
+        "tracking_number": "Номер для відстеження:",
+        "company_tracking_number": "{{ company }} номер для відстеження:",
+        "estimated_arrival": "Орієнтовна дата доставки: ",
+        "estimated_delivery": "Поточна оцінка доставки: ",
+        "re-order": "Повторне замовлення цих самих товарів",
+        "confirmed": "Підтверджено",
+        "confirmed_items_count": "{{ confirmed_count }} з {{ total_count }} товарів підтверджено",
+        "gift_card_confirmation_by_text": "Якщо ви не отримали його, надішліть SMS-повідомлення ще раз або зв'яжіться з нами.",
+        "gift_card_confirmation_by_email": "Якщо ви не отримали його, надішліть електронний лист ще раз або зв'яжіться з нами.",
+        "gift_card_title": "Подарункові картки",
+        "resend_gift_cards": "Повторно надіслати подарункові картки",
+        "thank_you_title": "Ваше замовлення підтверджено",
+        "thank_you_title_payment": "Ваша оплата підтверджена",
+        "thank_you_title_review": "Ваше замовлення надіслано на перевірку",
+        "thank_you_title_payments_app_pending_default": "Ваша оплата обробляється",
+        "thank_you_title_payments_app_pending_buyer_action_required": "Ваше замовлення отримано",
+        "thank_you_title_payments_app_failed_pending_payment": "Ваша оплата не може бути оброблена",
+        "thank_you_confirmed_order_with_email": "Ви отримаєте підтвердження електронною поштою з номером вашого замовлення найближчим часом.",
+        "thank_you_confirmed_order_with_phone": "Ви отримаєте підтвердження SMS з номером вашого замовлення найближчим часом.",
+        "thank_you_confirmed_order_with_email_and_phone": "Незабаром ви отримаєте електронний лист із підтвердженням із номером замовлення."
       },
       "review": {
         "blocks": {
