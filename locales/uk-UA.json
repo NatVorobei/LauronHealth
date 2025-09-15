@@ -1164,7 +1164,11 @@
         "post_accept_marketing_checkbox_label": "Ви підписані на отримання новин та пропозицій електронною поштою",
         "pending_accept_marketing_checkbox_label": "Перевірте свою електронну пошту, щоб підтвердити підписку на новини та пропозиції",
         "accept_sms_checkbox_label": "Надіслати мені SMS-повідомлення з новинами та пропозиціями",
-        "accept_shop_pay_marketing_checkbox_label": "Підписати мене на новини та пропозиції від цього магазину"
+        "accept_shop_pay_marketing_checkbox_label": "Підписати мене на новини та пропозиції від цього магазину",
+        "unsubscribe": {
+          "title": "Ви скасували підписку",
+          "description": "Ви більше не отримуватимете від нас нагадувань про кошик."
+        }
       },
       "alternative_payment_method_banner": {
         "express_checkout": "Експрес-оформлення замовлення",
