@@ -1710,7 +1710,15 @@
         "address_company_too_long": "Назва компанії занадто довга (максимум 255 символів)",
         "address_company_contains_emojis": "Компанія не може містити емодзі.",
         "address_company_contains_html_tags": "Компанія не може містити теги HTML.",
-        "address_company_contains_mathematical_symbols": "Компанія не може містити математичні символи"
+        "address_company_contains_mathematical_symbols": "Компанія не може містити математичні символи",
+        "address_phone_blank": "Введіть дійсний номер телефону",
+        "address_phone_contains_emojis": "Номер телефону не може містити емодзі",
+        "address_phone_invalid": "Введіть дійсний номер телефону",
+        "address_zip_blank": "Введіть поштовий індекс",
+        "address_zip_blocked_address": "Ця локація не підтримується",
+        "address_zip_too_long": "Поштовий індекс занадто довгий (максимум 255 символів)",
+        "address_zip_not_supported": "Ця локація не підтримується",
+        "address_zip_invalid_for_country": "Введіть дійсний поштовий індекс для {{ country }}"
       },
       "shipping_errors": {
         "empty_state": "Введіть свою адресу доставки, щоб переглянути доступні способи доставки.",
