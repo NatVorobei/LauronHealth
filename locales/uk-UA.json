@@ -1659,7 +1659,13 @@
         "saved_address_modal_title": "Використовувати мою збережену адресу"
       },
       "thank_you": {
-        "shipping_method_title": "Спосіб доставки"
+        "shipping_method_title": "Спосіб доставки",
+        "title": "Дякуємо за покупку!",
+        "confirmation_email_sent_text": "Електронний лист із підтвердженням надіслано на адресу {{email}}",
+        "return_to_store_link_label": "Продовжити покупки",
+        "print_link_label": "Роздрукувати квитанцію",
+        "payment_information_title": "Інформація про оплату",
+        "shipping_information_title": "Інформація про доставку"
       },
       "review": {
         "blocks": {
@@ -1803,7 +1809,8 @@
       "payment_gateway": {
         "login_prompt": {
           "no_access": {
-            "link": "Увійти"
+            "link": "Увійти",
+            "message": "{{logIn}} до облікового запису з доступом до цього місця, щоб додати або використати збережені способи оплати."
           }
         },
         "credit_card_label": "Картка",
