@@ -922,6 +922,10 @@
         },
         "custom_onsite_payment_method_modal": {
           "title": "Підтвердження власного способу оплати на сайті"
+        },
+        "purchase_order_number": {
+          "title": "Номер замовлення",
+          "label": "Номер замовлення (опційно)"
         }
       },
       "order_summary": {
