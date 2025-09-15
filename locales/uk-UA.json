@@ -2664,7 +2664,12 @@
       },
       "notice_banner": {
         "return_to_cart_link_text": "Повернутися до кошика",
-        "return_to_cart_to_update_quantities": "{{ return_to_cart_link_text }}, щоб оновити кількість"
+        "return_to_cart_to_update_quantities": "{{ return_to_cart_link_text }}, щоб оновити кількість",
+        "subscription_changed": "Одна з ваших підписок змінилася.",
+        "company_location_changed": "Ваш кошик оновлено. Перегляньте своє замовлення перед тим, як відправити його.",
+        "company_location_changed_product_removed": "Ваш кошик оновлено, оскільки деякі продукти недоступні в цьому місці. Перегляньте своє замовлення перед тим, як відправити його.",
+        "violations_title": "{{violation}} відсутній або недійсний",
+        "all_violations_content": "Зателефонуйте або {{emailLink}} нам, щоб оновити цю інформацію та завершити замовлення:"
       }
     },
     "notices": {
