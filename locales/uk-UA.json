@@ -2554,7 +2554,20 @@
         "cart_summary_heading": "Ваш кошик",
         "title": "Черга",
         "time_to_checkout_title": "Час перевірити – {{shopName}}",
-        "last_checked": "(Остання перевірка: {{time}} )"
+        "last_checked": "(Остання перевірка: {{time}} )",
+        "merchandise": {
+          "available": "В наявності",
+          "sold_out": "Немає в наявності"
+        },
+        "inventory": {
+          "partial_inventory_banner": "Частину вашого кошика розпродано та не можна буде придбати під час оплати.",
+          "sold_out": {
+            "heading": "Ваш кошик розпродано",
+            "storefront_body": "Поверніться до магазину, щоб продовжити покупки",
+            "no_storefront_body": "На жаль, товар, який ви хочете придбати, більше недоступний.",
+            "link": "Назад до магазину"
+          }
+        }
       }
     },
     "notices": {
