@@ -1786,7 +1786,17 @@
         "order_status_updates_with_email_and_phone": "Ви отримаєте оновлення про відправлення та доставку електронною поштою.",
         "order_status_updates_with_missing": "Виберіть, як ви хочете отримувати оновлення про відправлення.",
         "order_status_confirmed_with_installments_payment_return": "Будь ласка, зверніть увагу на продавця.",
-        "order_status_confirmed_with_installments_payment_confirm": "Незабаром ви отримаєте підтвердження електронною поштою з номером замовлення та деталями графіка оплати частинами."
+        "order_status_confirmed_with_installments_payment_confirm": "Незабаром ви отримаєте підтвердження електронною поштою з номером замовлення та деталями графіка оплати частинами.",
+        "confirmed_title": "Ваше замовлення підтверджено",
+        "confirmed_description": "Ми прийняли ваше замовлення і готуємо його до відправлення. Поверніться на цю сторінку, щоб дізнатися про статус вашої доставки.",
+        "confirmed_orders_title": "Ваші замовлення підтверджено",
+        "ready_for_pickup_title": "Ваше замовлення готове до отримання",
+        "ready_for_pickup_description": "Ваше замовлення готове до отримання. Принесіть підтвердження замовлення, коли будете його отримувати.",
+        "ready_for_delivery_title": "Ваше замовлення готове до доставки",
+        "ready_for_delivery_description": "Ми підготували ваше замовлення.",
+        "order_updates_title": "Оновлення замовлення",
+        "shop_phone_description": "Ви отримаєте SMS-повідомлення з посиланням на Shop app, за допомогою якого можна відстежувати ваше замовлення.",
+        "order_updates_description_html": "Оновлення будуть надіслані на {{ customer_contact }}"
       },
       "review": {
         "blocks": {
