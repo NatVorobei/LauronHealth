@@ -2015,6 +2015,18 @@
         "shop_pay_wallet_not_available": "Shop Pay недоступний для цього замовлення.",
         "market_manager_blocks_wallet_payments": "Спосіб оплати не підтримується у вашій країні.",
         "paypal_over_capture": "Загальна сума вашого замовлення була оновлена. Сплатіть за допомогою {{walletName}}, щоб завершити замовлення."
+      },
+      "post_purchase": {
+        "page_title": "Після покупки",
+        "title": "Після покупки",
+        "escape_confirmation": "Ви оплатили своє замовлення.",
+        "escape_action": "Переглянути підтвердження замовлення ›",
+        "components": {
+          "close": "Закрити",
+          "expand": "Дивитись більше",
+          "processing": "Обробка…",
+          "submit": "Підтвердити"
+        }
       }
     },
     "notices": {
