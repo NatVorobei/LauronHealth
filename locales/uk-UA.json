@@ -1817,7 +1817,16 @@
         "direct_payment_terms": "Ви перебуваєте на умовах {{translatedName}}. Ваша картка буде списана {{dueDate}}.",
         "fixed_direct_payment_terms": "Плата буде стягнута з вашої картки {{dueDate}}.",
         "order_due_on_fulfillment_choose_later": "Ваш платіж буде сплачено, коли ваше замовлення буде виконано.",
-        "order_due_on_fulfillment_payment": "Плата буде стягнута з вашої картки, коли ваше замовлення буде виконано."
+        "order_due_on_fulfillment_payment": "Плата буде стягнута з вашої картки, коли ваше замовлення буде виконано.",
+        "order_due_on_receipt_choose_later": "Оплата буде здійснена після отримання.",
+        "order_deposit_due_now": "{{depositAmount}} має бути сплачено сьогодні. Залишок суми сплачується на умовах {{translatedName}} і має бути сплачено до {{dueDate}}.",
+        "order_deposit_due_on_fulfillment": "{{depositAmount}} має бути сплачено сьогодні. Залишок суми буде сплачено після виконання замовлення.",
+        "order_deposit_due_on_receipt": "{{depositAmount}} підлягає сплаті сьогодні. Решта суми підлягає сплаті пізніше.",
+        "order_deposit_due_on_fixed_date": "{{depositAmount}} сплачується сьогодні. Залишок суми сплачується {{dueDate}}.",
+        "draft_order_payment_due_later_no_terms": "Ваш платіж буде сплачений після підтвердження замовлення.",
+        "draft_order_payment_due_later_no_terms_payment_selected": "Після підтвердження замовлення з вашої картки буде стягнуто кошти.",
+        "draft_order_payment_due_later_terms": "Ви діятимете на умовах {{translatedName}} , коли ваше замовлення буде підтверджено.",
+        "draft_order_payment_due_on_fulfillment": "Ваш платіж надійде після того, як ваше замовлення буде підтверджено та виконано."
       },
       "address_management": {
         "confirm_address_deletion": "Ви впевнені, що хочете видалити адресу {{address}}?"
