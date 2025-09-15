@@ -1789,7 +1789,12 @@
         "shipping_method": "Для вашого замовлення змінено параметри доставки. Перегляньте свій вибір і повторіть спробу.",
         "shipping_method_not_available": "Ваш кошик оновлено, і товари, які ви додали, не можуть бути відправлені на вашу адресу. Видаліть елементи, щоб завершити замовлення.",
         "shipping_method_not_available_due_to_unsatisfied_conditions": "Товари в кошику не відповідають вимогам щодо ціни чи ваги, щоб відповідати вимогам для доставки. Оновіть кошик і повторіть спробу.",
-        "title": "Доставка недоступна"
+        "title": "Доставка недоступна",
+        "invalid_selected_address": "Вибрана адреса доставки недійсна",
+        "invalid_selected_address_with_update_link": "Вибрана адреса доставки недійсна. {{ update_address_link }} або виберіть іншу адресу",
+        "unavailable_addresses_only_countries": "Ваше замовлення може бути доставлено тільки в {{countriesList}}. Додайте нову адресу, щоб продовжити.",
+        "unavailable_selected_address": "Доставка недоступна для вибраної адреси",
+        "unavailable_selected_address_for_region": "Доставка недоступна для {{region}}. Виберіть іншу адресу, щоб продовжити"
       },
       "payment_gateway": {
         "login_prompt": {
