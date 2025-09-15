@@ -2674,7 +2674,17 @@
         "company_location_changed": "Ваш кошик оновлено. Перегляньте своє замовлення перед тим, як відправити його.",
         "company_location_changed_product_removed": "Ваш кошик оновлено, оскільки деякі продукти недоступні в цьому місці. Перегляньте своє замовлення перед тим, як відправити його.",
         "violations_title": "{{violation}} відсутній або недійсний",
-        "all_violations_content": "Зателефонуйте або {{emailLink}} нам, щоб оновити цю інформацію та завершити замовлення:"
+        "all_violations_content": "Зателефонуйте або {{emailLink}} нам, щоб оновити цю інформацію та завершити замовлення:",
+        "editable_shipping_address_violations_message_title": "Додайте цю інформацію, щоб завершити замовлення:",
+        "editable_shipping_address_violations_message_footer": "Щоб остаточно оновити адресу для цього місцезнаходження, {{emailLink}}.",
+        "editable_shipping_address_violations_email_link": "зв’яжіться з нами",
+        "shipping_address_incomplete_title": "Адреса доставки неповна",
+        "calculating_shipping": "Вартість доставки все ще розраховується. Спробуйте ще раз через кілька секунд. З вас не стягнуто плату.",
+        "calculating_taxes": "Податки все ще розраховуються. Спробуйте ще раз через кілька секунд. З вас не стягнуто плату.",
+        "payment_method_not_available_with_payment_terms": "Вибраний вами спосіб оплати більше недоступний, оскільки оплата за це замовлення тепер здійснюється на умовах {{paymentTerms}}",
+        "payment_method_not_available_with_fulfillment_terms": "Вибраний вами спосіб оплати більше недоступний, оскільки оплата за це замовлення тепер має бути здійснена після виконання",
+        "payment_method_not_available_with_fixed_terms": "Вибраний вами спосіб оплати більше недоступний, оскільки оплата за це замовлення має бути здійснена пізніше",
+        "payment_method_not_available_with_review_requirement": "Вибраний вами спосіб оплати більше недоступний, оскільки оплата буде здійснена після підтвердження вашого замовлення."
       }
     },
     "notices": {
