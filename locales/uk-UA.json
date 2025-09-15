@@ -1870,7 +1870,11 @@
         "order_updates_subscribe_to_email_notifications_email_already_exists": "Введена вами електронна адреса вже існує.",
         "manage_order_label": "Керуйте своїм замовленням",
         "resend_gift_cards_by_email": "Повторно надіслати електронний лист",
-        "resend_gift_cards_by_text": "Повторно надіслати SMS-повідомлення"
+        "resend_gift_cards_by_text": "Повторно надіслати SMS-повідомлення",
+        "verify_shop_account_title": "Підтвердіть ваш Shop акаунт",
+        "verify_shop_account_message": "Вашу інформацію було збережено в Shop. Підтвердіть свій обліковий запис, щоб автоматично використовувати її в мільйонах магазинів.",
+        "verify_shop_account_cta": "Підтвердіть ваш акаунт",
+        "verify_shop_account_confirmation": "Дані оформлення замовлення збережено"
       },
       "review": {
         "blocks": {
