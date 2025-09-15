@@ -926,6 +926,13 @@
         "purchase_order_number": {
           "title": "Номер замовлення",
           "label": "Номер замовлення (опційно)"
+        },
+        "payment_option": {
+          "accessibility_label": "Виберіть варіант оплати"
+        },
+        "bank_account_type": {
+          "checking": "Перевірка",
+          "savings": "Заощадження"
         }
       },
       "order_summary": {
@@ -1777,6 +1784,22 @@
       "localized_fields": {
         "additional_information": {
           "title": "Додаткова інформація"
+        }
+      },
+      "billing": {
+        "billing_address_title": "Рахунок до",
+        "same_as_shipping": "Та сама, що й адреса доставки",
+        "add_address": "Використати іншу адресу",
+        "edit": "Редагувати",
+        "delete": "Видалити",
+        "address_more": "Більше дій для цієї адреси",
+        "address_edit": "Редагувати адресу",
+        "address_delete": "Видалити адресу",
+        "address_confirm": "Ви впевнені, що хочете видалити цю адресу зі свого облікового запису?",
+        "address_form": {
+          "add_address": "Додати адресу",
+          "save": "Зберегти",
+          "cancel": "Скасувати"
         }
       }
     },
