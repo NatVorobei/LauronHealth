@@ -1890,6 +1890,29 @@
         "thank_you_confirmed_items_with_phone": {
           "one": "Ви незабаром отримаєте SMS-повідомлення із підтвердженням та номером вашого замовлення",
           "other": "Ви незабаром отримаєте SMS-повідомленнями із підтвердженням та номером вашого замовлення"
+        },
+        "thank_you_item_label": {
+          "one": "{{ count }} товар",
+          "other": "{{ count }} товари"
+        },
+        "login_reorder_link_text": {
+          "one": "придбайте також цей товар",
+          "other": "також купуйте ці товари"
+        },
+        "marker": {
+          "current": "Поточне місце відправлення",
+          "shipping": "Адреса доставки"
+        },
+        "pick_up_in_store_marker": {
+          "current": "Поточне місце відправлення",
+          "shipping": "Місце отримання"
+        },
+        "fulfillment": {
+          "fulfilled_table_title": "Товари в цій відправці",
+          "unfulfilled_table_title": "Товари готуються до відправлення",
+          "product_image_label": "Зображення продукту",
+          "description_label": "Опис",
+          "quantity_label": "Кількість"
         }
       },
       "review": {
