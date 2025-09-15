@@ -1698,7 +1698,17 @@
         "thank_you_title_payments_app_failed_pending_payment": "Ваша оплата не може бути оброблена",
         "thank_you_confirmed_order_with_email": "Ви отримаєте підтвердження електронною поштою з номером вашого замовлення найближчим часом.",
         "thank_you_confirmed_order_with_phone": "Ви отримаєте підтвердження SMS з номером вашого замовлення найближчим часом.",
-        "thank_you_confirmed_order_with_email_and_phone": "Незабаром ви отримаєте електронний лист із підтвердженням із номером замовлення."
+        "thank_you_confirmed_order_with_email_and_phone": "Незабаром ви отримаєте електронний лист із підтвердженням із номером замовлення.",
+        "thank_you_confirmed_orders_with_email": "Незабаром ви отримаєте окремі підтверджувальні листи з номерами ваших замовлень.",
+        "thank_you_confirmed_orders_with_phone": "Незабаром ви отримаєте окремі підтверджувальні SMS-повідомлення з номерами ваших замовлень.",
+        "thank_you_confirmed_orders_with_email_and_phone": "Незабаром ви отримаєте окремі підтверджувальні листи з номерами ваших замовлень.",
+        "thank_you_confirmed_order_with_email_payment": "Ви здійснили платіж за замовленням {{date}}.",
+        "thank_you_confirmed_order_with_phone_payment": "Ви здійснили платіж за замовленням {{date}}.",
+        "thank_you_confirmed_order_with_email_and_phone_payment": "Ви здійснили платіж за замовленням {{date}}.",
+        "thank_you_confirmed_order_with_email_pick_up": "Ви отримаєте електронний лист, коли ваше замовлення буде готове до отримання.",
+        "thank_you_confirmed_order_with_phone_pick_up": "Ви отримаєте SMS-повідомлення, коли ваше замовлення буде готове до отримання.",
+        "thank_you_confirmed_order_with_email_and_phone_pick_up": "Ви отримаєте електронний лист, коли ваше замовлення буде готове до отримання.",
+        "thank_you_confirmed_order_with_missing": "Зв'яжіться з нами електронною поштою або телефоном, щоб отримати підтвердження замовлення."
       },
       "review": {
         "blocks": {
