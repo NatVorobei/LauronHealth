@@ -1651,7 +1651,18 @@
         }
       },
       "order_payment_collection": {
-        "pay_now": "Оплатити зараз"
+        "pay_now": "Оплатити зараз",
+        "custom_line_item_description": "Сума для оплати замовлення {{order_name}}",
+        "changes_summary": {
+          "added": {
+            "one": "Додано",
+            "other": "Додано {{count}}"
+          }
+        },
+        "additional_payment_requested": "Потрібен платіж у розмірі {{total_outstanding}}",
+        "checkout_review_and_pay": "Ваше замовлення {{order_name}} оновлено. Перегляньте ці зміни, а потім сплатіть, щоб підтвердити замовлення.",
+        "order_updated_on": "Ваше замовлення оновлено {{last_edited_at}}.",
+        "order_review_and_pay": "Ваше замовлення оновлено. Перегляньте та сплатіть, щоб підтвердити своє замовлення."
       },
       "customer_account": {
         "invalid_shipping_method_summary": "Виберіть дійсну адресу доставки, щоб переглянути доступні способи доставки",
@@ -2460,6 +2471,12 @@
       },
       "vaulted": {
         "change_button": "Змінити"
+      },
+      "markets": {
+        "invalid_market_manager_error": "Перегляньте свою контактну інформацію перед здійсненням платежу"
+      },
+      "notifications": {
+        "title": "Сповіщення"
       }
     },
     "notices": {
