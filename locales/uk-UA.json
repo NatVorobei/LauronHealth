@@ -2210,6 +2210,10 @@
         "recurring_total_intervals": {
           "week": {
             "other": "{{ count }} тижні"
+          },
+          "day": {
+            "one": "день",
+            "other": "{{ count }} днів"
           }
         },
         "recurring_totals": "{{ total_price }} кожні {{ interval }}"
