@@ -2629,6 +2629,10 @@
           "header": {
             "one": "Показано {{ first }} - {{ last }} з {{ count }} балів",
             "other": "Показано {{ first }} - {{ last }} з {{ count }} балів"
+          },
+          "selected_pickup_point_label": {
+            "one": "{{ pickup_point_index }} з {{ count }} балів",
+            "other": "{{ pickup_point_index }} з {{ count }} балів"
           }
         }
       }
