@@ -1757,7 +1757,13 @@
         "order_status_payments_app_pending_payment_description_default_with_missing_pick_up": "Зв'яжіться з нами електронною поштою або телефоном, щоб отримати підтвердження замовлення.",
         "order_status_payments_app_pending_payment_description_default_with_email_and_phone": "Незабаром ви отримаєте електронний лист із підтвердженням. Відстежуйте своє замовлення за допомогою Shop app.",
         "order_status_payments_app_pending_payment_description_default_with_email_and_phone_payment": "Незабаром ви отримаєте електронний лист із підтвердженням. Відстежуйте своє замовлення за допомогою Shop app.",
-        "order_status_payments_app_pending_payment_description_default_with_email_and_phone_pick_up": "Незабаром ви отримаєте електронний лист із підтвердженням. Відстежуйте своє замовлення за допомогою Shop app."
+        "order_status_payments_app_pending_payment_description_default_with_email_and_phone_pick_up": "Незабаром ви отримаєте електронний лист із підтвердженням. Відстежуйте своє замовлення за допомогою Shop app.",
+        "order_status_payments_app_pending_payment_description_default_with_email": "Ви скоро отримаєте підтвердження електронною поштою. Відстежуйте своє замовлення за допомогою Shop app.",
+        "order_status_payments_app_pending_payment_description_default_with_email_payment": "Ви скоро отримаєте підтвердження електронною поштою. Відстежуйте своє замовлення за допомогою Shop app.",
+        "order_status_payments_app_pending_payment_description_default_with_email_pick_up": "Ви скоро отримаєте підтвердження електронною поштою. Відстежуйте своє замовлення за допомогою Shop app.",
+        "order_status_payments_app_pending_payment_description_default_with_phone": "Ви скоро отримаєте підтвердження через SMS-повідомлення. Відстежуйте своє замовлення за допомогою Shop app.",
+        "order_status_payments_app_pending_payment_description_default_with_phone_payment": "Ви скоро отримаєте підтвердження через SMS-повідомлення. Відстежуйте своє замовлення за допомогою Shop app.",
+        "order_status_payments_app_pending_payment_description_default_with_phone_pick_up": "Ви скоро отримаєте підтвердження через SMS-повідомлення. Відстежуйте своє замовлення за допомогою Shop app."
       },
       "review": {
         "blocks": {
