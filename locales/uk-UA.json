@@ -1729,7 +1729,14 @@
         "credit_card_name_blank": "Введіть своє ім'я точно так, як воно написано на картці",
         "credit_card_name_invalid": "Введіть своє ім'я точно так, як воно написано на картці",
         "credit_card_number_invalid": "Введіть дійсний номер картки",
-        "credit_card_expiry_invalid": "Введіть дійсну дату закінчення терміну дії"
+        "credit_card_expiry_invalid": "Введіть дійсну дату закінчення терміну дії",
+        "credit_card_month_invalid": "Введіть правильний місяць дії",
+        "credit_card_year_invalid": "Введіть правильний рік дії",
+        "credit_card_start_invalid": "Введіть правильну дату початку дії картки",
+        "credit_card_start_month_invalid": "Введіть правильний місяць початку дії картки",
+        "credit_card_start_year_invalid": "Введіть правильний рік початку дії картки",
+        "credit_card_number_blank": "Введіть номер картки",
+        "credit_card_verification_value_blank": "Введіть CVV-код або код безпеки на вашій картці"
       },
       "shipping_errors": {
         "empty_state": "Введіть свою адресу доставки, щоб переглянути доступні способи доставки.",
