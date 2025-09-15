@@ -2744,6 +2744,13 @@
           "pending": "Очікується",
           "failure": "Невдача",
           "error": "Помилка"
+        },
+        "fulfillment_status": {
+          "fulfilled": "Виконано",
+          "complete": "Завершено",
+          "partial": "Частково",
+          "unfulfilled": "Невиконано",
+          "restocked": "Поповнено"
         }
       }
     },
