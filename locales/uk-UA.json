@@ -1854,7 +1854,23 @@
         "order_updates_subscribe_to_phone_notifications": "Отримуйте оновлення про доставку SMS-повідомленням",
         "order_updates_submit_subscription": "Підтвердити",
         "track_shipment": "Відстежити відправлення",
-        "other_options": "Інші варіанти"
+        "other_options": "Інші варіанти",
+        "delivery_information_label": "Інформація про доставку:",
+        "gift_card_sent_confirmation": "Подарункові картки надіслано",
+        "view_business_customer_account": "Переглянути акаунт",
+        "breadcrumbs_submitted": "Надіслано",
+        "breadcrumbs_in_review": "На огляді",
+        "breadcrumbs_confirmed": "Підтверджено",
+        "first_payment_complete": "Перший платіж завершено",
+        "in_store_purchase": "Купівля в магазині",
+        "company_location_section_title": "Компанія і місцезнаходження",
+        "thank_you_ready_for_picked_up": "Ваше замовлення забрали в {{address}}.",
+        "ready_for_delivery": "Готовий до доставки",
+        "order_updates_subscribe_to_email_notifications_failed": "Ми не можемо зберегти цей email для оновлень. Спробуйте ще раз або скористайтеся іншою електронною поштою.",
+        "order_updates_subscribe_to_email_notifications_email_already_exists": "Введена вами електронна адреса вже існує.",
+        "manage_order_label": "Керуйте своїм замовленням",
+        "resend_gift_cards_by_email": "Повторно надіслати електронний лист",
+        "resend_gift_cards_by_text": "Повторно надіслати SMS-повідомлення"
       },
       "review": {
         "blocks": {
