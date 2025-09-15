@@ -2751,6 +2751,17 @@
           "partial": "Частково",
           "unfulfilled": "Невиконано",
           "restocked": "Поповнено"
+        },
+        "financial_status": {
+          "authorized": "Авторизовано",
+          "pending": "Очікує на розгляд",
+          "paid": "Оплачено",
+          "unpaid": "Неоплачено",
+          "voided": "Скасовано",
+          "partially_paid": "Частково оплачено",
+          "partially_refunded": "Частково повернено",
+          "refunded": "Повернено",
+          "expired": "Минув термін дії"
         }
       }
     },
