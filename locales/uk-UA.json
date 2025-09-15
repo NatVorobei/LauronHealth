@@ -2535,6 +2535,26 @@
           "one": "Придбайте {{ product_name }} і ще {{ count }} товар",
           "other": "Придбайте {{ product_name }} і ще {{ count }} товарів"
         }
+      },
+      "customer_payment_methods": {
+        "page_title": "Методи оплати",
+        "title": "Методи оплати",
+        "update_card_button_label": "Оновити картку",
+        "delete_customer_mandate": {
+          "generic_error": "Виникла проблема з обробкою вашого запиту.",
+          "success_message": "Ваш спосіб оплати успішно видалено"
+        }
+      },
+      "throttle": {
+        "too_many_attempts": {
+          "message": "Забагато спроб",
+          "description": "Повторіть спробу через кілька хвилин"
+        },
+        "line_to_check_out": "Ви в черзі на оформлення замовлення",
+        "cart_summary_heading": "Ваш кошик",
+        "title": "Черга",
+        "time_to_checkout_title": "Час перевірити – {{shopName}}",
+        "last_checked": "(Остання перевірка: {{time}} )"
       }
     },
     "notices": {
