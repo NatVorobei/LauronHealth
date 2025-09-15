@@ -1697,7 +1697,20 @@
         "address_address2_too_long": "Другий рядок адреси занадто довгий (максимум 255 символів).",
         "address_address2_contains_emojis": "Адреса2 не може містити емодзі.",
         "address_address2_contains_html_tags": "Адреса2 не може містити теги HTML.",
-        "address_address2_contains_mathematical_symbols": "Адреса2 не може містити математичні символи."
+        "address_address2_contains_mathematical_symbols": "Адреса2 не може містити математичні символи.",
+        "address_city_blank": "Введіть місто",
+        "address_city_too_long": "Місто занадто довге (максимум 255 символів)",
+        "address_city_contains_emojis": "Місто не може містити емодзі.",
+        "address_city_contains_html_tags": "Місто не може містити теги HTML.",
+        "address_city_contains_mathematical_symbols": "Місто не може містити математичні символи. ",
+        "address_country_blank": "Виберіть країну/регіон",
+        "address_province_blank": "Виберіть штат/провінцію",
+        "address_province_invalid": "Виберіть дійсний штат/провінцію",
+        "address_company_blank": "Введіть назву компанії",
+        "address_company_too_long": "Назва компанії занадто довга (максимум 255 символів)",
+        "address_company_contains_emojis": "Компанія не може містити емодзі.",
+        "address_company_contains_html_tags": "Компанія не може містити теги HTML.",
+        "address_company_contains_mathematical_symbols": "Компанія не може містити математичні символи"
       },
       "shipping_errors": {
         "empty_state": "Введіть свою адресу доставки, щоб переглянути доступні способи доставки.",
