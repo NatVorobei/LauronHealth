@@ -784,7 +784,20 @@
         "bank_account_choose": "Виберіть рахунок, щоб безпечно завершити покупку",
         "bank_account_connect_another": "Підключити інший банківський рахунок ",
         "bank_account_connect": "Підключити банківський рахунок",
-        "bank_account_missing": "Необхідно підключити банківський рахунок"
+        "bank_account_missing": "Необхідно підключити банківський рахунок",
+        "crypto_payment_method": {
+          "description": "Безпечно підключіться до свого гаманця в мережі Base",
+          "tooltip": "Баланс і адреса вашого гаманця не будуть розкриті, і буде списана тільки запитувана сума"
+        },
+        "crypto_modal": {
+          "header": "Оплатити {{ shop_name }} {{ total_price }} USDC",
+          "error": {
+            "refresh": "Оновити",
+            "close": "закрити",
+            "sandbox_error": "Сталася помилка",
+            "web_component_error": "Сталася проблема під час завантаження цієї сторінки"
+          }
+        }
       },
       "order_summary": {
         "discount_title_stacking": {
