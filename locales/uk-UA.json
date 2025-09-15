@@ -1751,7 +1751,13 @@
         "order_status_confirmed_order_with_email_and_phone_payment": "Ви здійснили платіж за замовленням {{date}}.",
         "order_status_confirmed_order_with_email_pick_up": "Ви отримаєте електронний лист, коли ваше замовлення буде готове до отримання.",
         "order_status_confirmed_order_with_phone_pick_up": "Ви отримаєте SMS-повідомлення, коли ваше замовлення буде готове до отримання.",
-        "order_status_confirmed_order_with_email_and_phone_pick_up": "Ви отримаєте електронний лист і SMS-повідомлення, коли ваше замовлення буде готове до отримання."
+        "order_status_confirmed_order_with_email_and_phone_pick_up": "Ви отримаєте електронний лист і SMS-повідомлення, коли ваше замовлення буде готове до отримання.",
+        "order_status_payments_app_pending_payment_description_default_with_missing": "Зв'яжіться з нами електронною поштою або телефоном, щоб отримати підтвердження замовлення.",
+        "order_status_payments_app_pending_payment_description_default_with_missing_payment": "Зв'яжіться з нами електронною поштою або телефоном, щоб отримати підтвердження замовлення.",
+        "order_status_payments_app_pending_payment_description_default_with_missing_pick_up": "Зв'яжіться з нами електронною поштою або телефоном, щоб отримати підтвердження замовлення.",
+        "order_status_payments_app_pending_payment_description_default_with_email_and_phone": "Незабаром ви отримаєте електронний лист із підтвердженням. Відстежуйте своє замовлення за допомогою Shop app.",
+        "order_status_payments_app_pending_payment_description_default_with_email_and_phone_payment": "Незабаром ви отримаєте електронний лист із підтвердженням. Відстежуйте своє замовлення за допомогою Shop app.",
+        "order_status_payments_app_pending_payment_description_default_with_email_and_phone_pick_up": "Незабаром ви отримаєте електронний лист із підтвердженням. Відстежуйте своє замовлення за допомогою Shop app."
       },
       "review": {
         "blocks": {
