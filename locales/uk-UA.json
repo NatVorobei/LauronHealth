@@ -2491,6 +2491,23 @@
       },
       "change_cart_localization": {
         "verify_shipping_address": "Вашу країну/регіон оновлено. Введіть свою адресу доставки, щоб продовжити замовлення."
+      },
+      "tips": {
+        "title": "Додати чайові",
+        "description": "Висловіть свою підтримку команді в {{ shop_name }}",
+        "presets_description": "Виберіть відсоток чайових",
+        "custom_label": "Власні чайові",
+        "add_tip": "Додати чайові",
+        "update_tip": "Оновити чайові",
+        "message": "Дякуємо, ми це цінуємо.",
+        "no_tip_label": "Жодних"
+      },
+      "open_graph_meta_tag": {
+        "title_with_products": {
+          "zero": "Придбати {{ product_name }}",
+          "one": "Придбайте {{ product_name }} і ще {{ count }} товар",
+          "other": "Придбайте {{ product_name }} і ще {{ count }} товарів"
+        }
       }
     },
     "notices": {
