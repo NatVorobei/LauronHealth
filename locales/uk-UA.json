@@ -1782,7 +1782,11 @@
         "order_status_confirmed_order_local_pick_up": "Ми готуємо ваше замовлення.",
         "order_status_confirmed_order_local_payment": "Ми готуємо ваше замовлення.",
         "order_status_updates_with_email": "Ви отримаєте оновлення про відправлення та доставку електронною поштою. ",
-        "order_status_updates_with_phone": "Ви отримаєте оновлення про відправлення та доставку через SMS-повідомлення."
+        "order_status_updates_with_phone": "Ви отримаєте оновлення про відправлення та доставку через SMS-повідомлення.",
+        "order_status_updates_with_email_and_phone": "Ви отримаєте оновлення про відправлення та доставку електронною поштою.",
+        "order_status_updates_with_missing": "Виберіть, як ви хочете отримувати оновлення про відправлення.",
+        "order_status_confirmed_with_installments_payment_return": "Будь ласка, зверніть увагу на продавця.",
+        "order_status_confirmed_with_installments_payment_confirm": "Незабаром ви отримаєте підтвердження електронною поштою з номером замовлення та деталями графіка оплати частинами."
       },
       "review": {
         "blocks": {
