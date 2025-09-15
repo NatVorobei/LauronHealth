@@ -2633,7 +2633,15 @@
           "selected_pickup_point_label": {
             "one": "{{ pickup_point_index }} з {{ count }} балів",
             "other": "{{ pickup_point_index }} з {{ count }} балів"
+          },
+          "selected_page": {
+            "one": "{{ first }} - {{ last }} з {{ count }} балів",
+            "other": "{{ first }} - {{ last }} з {{ count }} балів"
           }
+        },
+        "number_of_pickup_points_near_location": {
+          "one": "{{ count }} пункт видачі поблизу вашого місцезнаходження",
+          "other": "{{ count }} пунктів видачі поблизу вашого місцезнаходження"
         }
       }
     },
