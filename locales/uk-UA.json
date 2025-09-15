@@ -2656,8 +2656,15 @@
         "terminal": {
           "title": "Виникла проблема з нашою касою",
           "message": "Оновіть сторінку або повторіть спробу через кілька хвилин",
-          "request_id": "Ідентифікатор запиту: {{requestId}}"
+          "request_id": "Ідентифікатор запиту: {{requestId}}",
+          "action": {
+            "cta": "Оновити сторінку"
+          }
         }
+      },
+      "notice_banner": {
+        "return_to_cart_link_text": "Повернутися до кошика",
+        "return_to_cart_to_update_quantities": "{{ return_to_cart_link_text }}, щоб оновити кількість"
       }
     },
     "notices": {
