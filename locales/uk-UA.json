@@ -2202,7 +2202,10 @@
       "one": {
         "errors": {
           "merchandise": {
-            "subtotal_limit_reached": "Досягнуто максимальну вартість позицій."
+            "subtotal_limit_reached": "Досягнуто максимальну вартість позицій.",
+            "gift_card_price_must_be_greater_than_zero": "Ціна подарункової картки має бути більшою за нуль.",
+            "gift_card_price_must_not_exceed_limit": "Ціна подарункової картки не повинна перевищувати {{ gift_card_limit }}.",
+            "signature_mismatch": "Невідповідність підписів товару для рядка {{ stable_id }}."
           }
         }
       },
@@ -2848,6 +2851,9 @@
         },
         "return_to_store": "Повернутися до {{shopName}}",
         "return_to_store_simple": "Повернутися до магазину"
+      },
+      "note": {
+        "length_exceeds_maximum": "Зменшіть розмір примітки до 5000 або менше символів."
       }
     },
     "notices": {
