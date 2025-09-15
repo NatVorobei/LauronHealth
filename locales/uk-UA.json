@@ -2618,7 +2618,11 @@
         "no_pickup_points_near_location": "Пунктів видачі поблизу вашого місця розташування не знайдено.",
         "no_pickup_points_found": "Пунктів видачі не знайдено.",
         "change": "Змінити місце розташування.",
-        "waiting_on_pickup_point_location_notice": "Пошук пунктів видачі..."
+        "waiting_on_pickup_point_location_notice": "Пошук пунктів видачі...",
+        "pickup_unavailable_banner_title": {
+          "one": "Для вашого товару немає доступних пунктів видачі",
+          "other": "Для ваших товарів немає доступних пунктів видачі"
+        }
       }
     },
     "notices": {
