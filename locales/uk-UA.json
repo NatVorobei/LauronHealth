@@ -898,6 +898,14 @@
         "order_edit_banner_items_removed": {
           "in_full": "Видалено",
           "with_quantities": "Видалено {{delta}} з {{quantity}}"
+        },
+        "order_edit_banner_items_returned": {
+          "in_full": "Повернено {{quantity}}",
+          "with_quantities": "Повернено {{delta}} із {{quantity}}"
+        },
+        "order_edit_banner_items_return_line_item_removed": {
+          "in_full": "Видалено з повернення",
+          "with_quantities": "Видалено {{delta}} з повернення"
         }
       },
       "order_summary": {
