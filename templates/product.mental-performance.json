@@ -1,0 +1,590 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "judge_me_reviews_preview_badge_Jb9i4Y": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "text_php7pf": {
+          "type": "text",
+          "settings": {
+            "text": "1. Оберіть формат:",
+            "text_style": "body"
+          }
+        },
+        "variant_picker_kmjixa": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "custom_swatch",
+            "swatch_shape": "circle"
+          }
+        },
+        "price": {
+          "type": "price",
+          "disabled": true,
+          "settings": {}
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": true,
+            "under_button_text": "Рекомендована тривалість прийому — 60 днів. 200 мл L'auron забезпечують добову потребу"
+          }
+        },
+        "collapsible_tab_PziDUK": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Інгредієнти",
+            "icon": "none",
+            "content": "<p>Наша комплексна формула поєднує 19 активних інгредієнтів у формах із підвищеною біодоступністю — вітаміни, мінерали, амінокислоти, антиоксиданти та високомолекулярну гіалуронову кислоту NUTRIHYL® — для глибокої клітинної дії, підтримки шкіри та загального самопочуття.*<br/><br/>Без доданого цукру. Натуральні ароматизатори. Без штучних підсолоджувачів, барвників і консервантів.<br/><strong><br/></strong><a href=\"https://d2ny1d-ma.myshopify.com/pages/ingredients\" title=\"https://d2ny1d-ma.myshopify.com/pages/ingredients\"><strong>Склад і дозування</strong></a></p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_ReprVF": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Опис смаку",
+            "icon": "none",
+            "content": "<p>Легкий, освіжаючий смак з тонкими цитрусовими й травʼяними нотами. Не солодкий, природний, щоденний.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_FYWTKV": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Як насолоджуватись",
+            "icon": "none",
+            "content": "<p>1. Найкраще смакує охолодженим — прямо з банки або в келиху.<br/>2. Щонайменше одна банка до 12:00 — ідеально; дві протягом дня — для більш інтенсивної підтримки.<br/>3. Вживайте щодня для глибокої, клітинної дії.</p><p><br/>Без змішування. Без клопоту. Лише простий, смачний і регулярний спосіб підтримати своє тіло.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_preview_badge_Jb9i4Y",
+        "title",
+        "description",
+        "text_php7pf",
+        "variant_picker_kmjixa",
+        "price",
+        "quantity_selector",
+        "buy_buttons",
+        "collapsible_tab_PziDUK",
+        "collapsible_tab_ReprVF",
+        "collapsible_tab_FYWTKV"
+      ],
+      "custom_css": [
+        ".accordion__content p {font-size: 14px;}"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "swiper",
+        "mobile_thumbnails": "hide",
+        "media_position": "left",
+        "image_zoom": "none",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 20,
+        "padding_bottom": 0
+      }
+    },
+    "icon_features_grid_QBn6kb": {
+      "type": "icon-features-grid",
+      "blocks": {
+        "feature_CAVx7T": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/product-icon-1.svg",
+            "title": "",
+            "subtitle": "30-денна гарантія повернення коштів"
+          }
+        },
+        "feature_JcNEdC": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/product-icon-2.svg",
+            "title": "",
+            "subtitle": "Заощаджуйте до 20% на підписці"
+          }
+        },
+        "feature_ANdMwN": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/product-icon-3.svg",
+            "title": "",
+            "subtitle": "Змінюйте або скасовуйте у будь-який момент"
+          }
+        },
+        "feature_iHTwiE": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/product-icon-4.svg",
+            "title": "",
+            "subtitle": "Безкоштовна доставка від 200 zł"
+          }
+        }
+      },
+      "block_order": [
+        "feature_CAVx7T",
+        "feature_JcNEdC",
+        "feature_ANdMwN",
+        "feature_iHTwiE"
+      ],
+      "name": "Icon Features Grid",
+      "settings": {}
+    },
+    "collapsible_content_with_image_U6AHjf": {
+      "type": "collapsible-content-with-image",
+      "blocks": {
+        "collapsible_row_8DPgfz": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Максимальна біодоступність",
+            "image": "shopify://shop_images/product-accordion-1.webp",
+            "row_content": "Висока біодоступність Lauron забезпечує доставку активних інгредієнтів без втрат у процесі травлення — безпосередньо до клітин, саме туди, де вони мають діяти.",
+            "background_color": "#f0f4f5",
+            "text_color": "#121212"
+          }
+        },
+        "collapsible_row_MiVwhr": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Клітинне відновлення",
+            "image": "shopify://shop_images/product-accordion-2.webp",
+            "row_content": "Lauron підтримує здоров’я клітин, доставляючи активні сполуки безпосередньо на рівень тканин. Це сприяє зволоженню, еластичності та структурній цілісності — ключовим чинникам системної рівноваги та довготривалої функціональності.",
+            "background_color": "#f0f4f5",
+            "text_color": "#000000"
+          }
+        },
+        "collapsible_row_jxqitC": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Клінічна база",
+            "image": "shopify://shop_images/product-accordion-3.webp",
+            "row_content": "Формула Lauron базується на клінічних даних і рецензованих дослідженнях. Кожен компонент підібрано з урахуванням доведеної біологічної дії та об’єднано технологіями, що підвищують ефективність і безпечність у реальному використанні.",
+            "background_color": "#f0f4f5",
+            "text_color": "#121212"
+          }
+        },
+        "collapsible_row_gY9Fnp": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Зручний формат",
+            "image": "shopify://shop_images/science-1.webp",
+            "row_content": "Готовий до вживання та простий у використанні. Lauron легко інтегрується в щоденний ритм — без приготування, змішування чи складного планування. Постійна підтримка організму у зручному сучасному форматі.",
+            "background_color": "#f0f4f5",
+            "text_color": "#121212"
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_8DPgfz",
+        "collapsible_row_MiVwhr",
+        "collapsible_row_jxqitC",
+        "collapsible_row_gY9Fnp"
+      ],
+      "name": "Collapsible content+image",
+      "settings": {
+        "layout": "none",
+        "container_color_scheme": "",
+        "color_scheme": "",
+        "open_first_collapsible_row": true,
+        "padding_top": 0,
+        "padding_bottom": 100
+      }
+    },
+    "image_with_accordion_LVRiRj": {
+      "type": "image-with-accordion",
+      "blocks": {
+        "heading_HqngUK": {
+          "type": "heading",
+          "settings": {
+            "heading": "Технологія",
+            "heading_size": "h1"
+          }
+        },
+        "text_6Q6Eaq": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Ми створили спеціальну технологію 3SDS™, яка допомагає організмуотримувати максимум з кожної активної речовини напої підвищуючи її біодоступність.</p>",
+            "text_style": "body"
+          }
+        },
+        "main_accordion_item_RrjeiQ": {
+          "type": "main_accordion_item",
+          "settings": {
+            "image": "shopify://shop_images/selenium.svg",
+            "title": "<p>Biopolymer Encapsulation</p>",
+            "content": "<p>Нанокапсули на основі натурального полімеру з бурих водоростей створюють захисну гелеву оболонку навколо активних речовин, ізолюючи їх від агресивного середовища ротової порожнини, шлунка та травних ферментів.</p><p>Технологія працює за принципом таргетованої доставки: полімерна матриця залишається стабільною на ранніх етапах травлення і поступово розпадається у нейтральному середовищі кишечника, вивільняючи діючі речовини саме там, де абсорбція є найбільш ефективною. Це дозволяє суттєво підвищити біодоступність, стабільність і функціональну активність інгредієнтів.</p>"
+          }
+        },
+        "main_accordion_item_zhEATx": {
+          "type": "main_accordion_item",
+          "settings": {
+            "image": "shopify://shop_images/nucleus.svg",
+            "title": "<p>Precise Soft Water®</p>",
+            "content": "<p>Має знижений вміст реактивних іонів кальцію та магнію та оптимізований іонний профіль для захисту біоактивних інгредієнтів. Контроль над формою і кількістю мінеральних компонентів запобігає утворенню важкозасвоюваних комплексів і втраті біодоступності та засвоюваності активних речовин, забезпечуючи їх розчинність, стабільність і ефективну абсорбцію.</p><p>Оптимальний об’єм води (не менше 200 мл) є необхідною умовою для забезпечення біодоступності активних інгредієнтів, проте часто ігнорується. Адекватна кількість рідини сприяє розчиненню сполук, їх транспорту до тонкого кишечника — основної ділянки абсорбції — та підтримці фізіологічних механізмів всмоктування.</p>"
+          }
+        },
+        "main_accordion_item_iQG9Gx": {
+          "type": "main_accordion_item",
+          "settings": {
+            "image": "shopify://shop_images/amino-acid.svg",
+            "title": "<p>Nutrihyl™</p>",
+            "content": "<p>Гіалуронова кислота з високою молекулярною масою формує всередині капсул стабільне гідрофільне середовище, захищаючи активні сполуки, полегшуючи їх розчинення та підтримуючи стабільність.</p><p>Завдяки цій структурі вона сприяє ефективнішій абсорбції інгредієнтів: захищає їх від розщеплення в агресивному середовищі шлунка, покращує проникність клітинних мембран і активує рецепторні механізми всмоктування. Водночас Nutrihyl™ виконує власну біоактивну функцію — підтримує гідратацію тканин, сприяє регенерації, захищає клітини від окисного стресу і допомагає уповільнювати вікові зміни, реалізуючи подвійну роль у складі формули.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_HqngUK",
+        "text_6Q6Eaq",
+        "main_accordion_item_RrjeiQ",
+        "main_accordion_item_zhEATx",
+        "main_accordion_item_iQG9Gx"
+      ],
+      "name": "Image with accordion",
+      "settings": {
+        "image": "shopify://shop_images/technology-section.webp",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "accordion_background": "#F0F4F5",
+        "accordion_padding_left": 140,
+        "accordion_padding_right": 0,
+        "main_accordion_padding_top": 68,
+        "main_accordion_padding_right": 0,
+        "main_accordion_padding_bottom": 68,
+        "main_accordion_padding_left": 60,
+        "main_accordion_padding_top_mobile": 50,
+        "main_accordion_padding_right_mobile": 10,
+        "main_accordion_padding_bottom_mobile": 50,
+        "main_accordion_padding_left_mobile": 20,
+        "padding_top": 0,
+        "padding_bottom": 100
+      }
+    },
+    "benefits_grid_MPVPXr": {
+      "type": "benefits-grid",
+      "blocks": {
+        "benefit_YYBxrW": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/grid-image-1.webp",
+            "title": "Підтримка шкіри",
+            "short_text": "Здоровий вигляд шкіри, еластичність та природне зволоження",
+            "image_position": "center",
+            "full_text": "Sodium Hyaluronate MW 2MDa, Vitamin C (Ascorbic Acid), Vitamin A – 240 µg (30% of 800 µg), Zinc (as Zinc Gluconate), Copper Gluconate, Vitamin E, Biotin, Proline, Lysine, Alanin"
+          }
+        },
+        "benefit_rtP8Cc": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/grid-image-2.webp",
+            "title": "Клітинна стійкість",
+            "short_text": "Допомагає захищати клітини від окисного стресу та передчасного старіння",
+            "image_position": "center",
+            "full_text": "N-acetyl-L-cysteine, Vitamin C (Ascorbic Acid), Vitamin E, L-glycine, Zinc (as Zinc Gluconate), Selenium, Manganese Gluconate, Copper Gluconate, L-Theanine"
+          }
+        },
+        "benefit_Xqewix": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/grid-image-3.webp",
+            "title": "Активне тіло",
+            "short_text": "Підтримує нормальний стан м’язів, суглобів, сполучної тканини та кісток",
+            "image_position": "center",
+            "full_text": "Sodium Hyaluronate MW 2MDa, Lysine, Proline, Alanin, Sodium alginate, Vitamin D3, Vitamin C (Ascorbic Acid),  Manganese Gluconate, Copper Gluconate"
+          }
+        },
+        "benefit_EdFgab": {
+          "type": "benefit",
+          "settings": {
+            "image": "shopify://shop_images/Image3.png",
+            "title": "Захист мозку",
+            "short_text": "Сприяє когнітивній функції, психоемоційній рівновазі та адаптації до навантажень",
+            "image_position": "center",
+            "full_text": "L-Theanine, N-acetyl-L-cysteine, L-glycine, Vitamin C (Ascorbic Acid), Zinc (as Zinc Gluconate), Vitamin D3, Copper Gluconate, Biotin"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_YYBxrW",
+        "benefit_rtP8Cc",
+        "benefit_Xqewix",
+        "benefit_EdFgab"
+      ],
+      "name": "Benefits Grid",
+      "settings": {
+        "title": "Цілеспрямована дія інгредієнтів",
+        "subtitle": "Кожен інгредієнт працює на конкретну потребу організму — для відчутної підтримки зсередини.",
+        "columns": 4,
+        "view_more_label": "ПОКАЗАТИ БІЛЬШЕ",
+        "view_less_label": "ПОКАЗАТИ МЕНШЕ"
+      }
+    },
+    "benefits_compare_UnCr7E": {
+      "type": "benefits-compare",
+      "blocks": {
+        "feature_LVNhHY": {
+          "type": "feature",
+          "settings": {
+            "label": "Клінічно підтверджена ефективність",
+            "product_1_check": true,
+            "product_2_check": true
+          }
+        },
+        "feature_BFJCeA": {
+          "type": "feature",
+          "settings": {
+            "label": "Високомолекулярна гіалуронова кислота",
+            "product_1_check": true,
+            "product_2_check": false
+          }
+        },
+        "feature_dCca4q": {
+          "type": "feature",
+          "settings": {
+            "label": "Технологія біополімерної інкапсуляції",
+            "product_1_check": true,
+            "product_2_check": false
+          }
+        },
+        "feature_VjHeT9": {
+          "type": "feature",
+          "settings": {
+            "label": "Захист активних компонентів від руйнування",
+            "product_1_check": true,
+            "product_2_check": false
+          }
+        },
+        "feature_dmgdXn": {
+          "type": "feature",
+          "settings": {
+            "label": "Запобігання утворенню важкозасвоюваних сполук",
+            "product_1_check": true,
+            "product_2_check": false
+          }
+        },
+        "feature_bE3aww": {
+          "type": "feature",
+          "settings": {
+            "label": "Використання Precisе Soft Water для оптимального засвоєння",
+            "product_1_check": true,
+            "product_2_check": false
+          }
+        },
+        "feature_FYytRP": {
+          "type": "feature",
+          "settings": {
+            "label": "Доведена біодоступність на клітинному рівні",
+            "product_1_check": true,
+            "product_2_check": false
+          }
+        },
+        "feature_9qRABw": {
+          "type": "feature",
+          "settings": {
+            "label": "Формула без доданого цукру, ароматизаторів і барвників",
+            "product_1_check": true,
+            "product_2_check": false
+          }
+        },
+        "feature_cjXB6B": {
+          "type": "feature",
+          "settings": {
+            "label": "Готовий до вживання формат",
+            "product_1_check": true,
+            "product_2_check": false
+          }
+        }
+      },
+      "block_order": [
+        "feature_LVNhHY",
+        "feature_BFJCeA",
+        "feature_dCca4q",
+        "feature_VjHeT9",
+        "feature_dmgdXn",
+        "feature_bE3aww",
+        "feature_FYytRP",
+        "feature_9qRABw",
+        "feature_cjXB6B"
+      ],
+      "custom_css": [
+        "@media (max-width: 749px) {.benefits-section {margin-top: 100px; }}"
+      ],
+      "name": "Benefits Compare",
+      "settings": {
+        "heading": "Переваги",
+        "description_1": "У світі добавок важливо не лише що ви споживаєте, а як це засвоюється.",
+        "description_2": "Більшість формул не проходять через бар’єри організму — ефекти залишаються недосяжними. Lauron змінює це: ми використовуємо передові технології доставки, щоб активні компоненти досягали клітинного рівня. Продуманий склад, підтверджена ефективність і максимальна зручність — усе в одному продукті.",
+        "product_1_image": "shopify://shop_images/benefits-compare-1.png",
+        "product_2_image": "shopify://shop_images/benefits-compare-2.png"
+      }
+    },
+    "collapsible_content_fMBfJ3": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_VqRiKN": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Чим Lauron відрізняється від звичайних добавок?",
+            "icon": "none",
+            "row_content": "<p>Lauron — це рідкий функціональний продукт із високою біодоступністю, у складі якого три технологічні компоненти: гіалуронова кислота з високою молекулярною масою, м’яка вода та система інкапсуляції (3SDS™). На відміну від капсул чи порошків, Lauron забезпечує стабільне засвоєння активних речовин саме там, де це потрібно — на рівні кишечника, з системним оздоровчим ефектом.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_eByR43": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Чому Lauron створено саме в рідкому форматі, а не в капсулах чи порошках?",
+            "icon": "none",
+            "row_content": "<p>Рідкий формат дозволяє досягти максимальної розчинності та біодоступності активних речовин. Крім того, інкапсуляція захищає інгредієнти від руйнування в шлунку, що робить Lauron ефективнішим за сухі форми.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_6hGLMq": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Lauron — це курс чи його можна приймати постійно?",
+            "icon": "none",
+            "row_content": "<p>Lauron краще за все підходить для регулярного щоденного вживання. Завдяки м’якому, фізіологічно сумісному складу він придатний для тривалого використання без перерв.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_FGmxqb": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Як Lauron вписується в щоденний догляд за здоров’ям?",
+            "icon": "none",
+            "row_content": "<p>Він стає частиною ранкового або денного ритуалу, підтримує водний баланс, стан шкіри та загальне самопочуття. Подібно до щоденного догляду за шкірою ззовні, Lauron діє зсередини — на користь клітинного здоров’я щодня.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_VqRiKN",
+        "collapsible_row_eByR43",
+        "collapsible_row_6hGLMq",
+        "collapsible_row_FGmxqb"
+      ],
+      "custom_css": [
+        "@media (max-width: 749px) {.collapsible-content__wrapper {padding: 100px 0; }}"
+      ],
+      "name": "t:sections.collapsible_content.presets.name",
+      "settings": {
+        "caption": "",
+        "details_link_text": "ЧИТАТИ БІЛЬШЕ",
+        "details_link": "shopify://pages/faq",
+        "heading": "<strong>Загальні питання</strong>",
+        "heading_size": "h1",
+        "heading_alignment": "left",
+        "layout": "none",
+        "container_color_scheme": "",
+        "color_scheme": "",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 120,
+        "padding_bottom": 120
+      }
+    },
+    "custom_newsletter_qmdmbR": {
+      "type": "custom-newsletter",
+      "name": "Custom Newsletter",
+      "settings": {
+        "background_image": "shopify://shop_images/email.png",
+        "discount": "-10%",
+        "heading": "на перше замовлення",
+        "subheading": "Підпишіться на розсилку, щоб першими дізнаватись про новинки, спеціальні пропозиції та корисні матеріали — і отримайте знижку 10% на першу покупку.",
+        "button": "Підписатися"
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "disabled": true,
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "1752733377df3d82a5": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_MmwzDT": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_MmwzDT"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "sticky_add_to_cart_C7dzcx": {
+      "type": "sticky-add-to-cart",
+      "name": "Sticky Add to Cart",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "icon_features_grid_QBn6kb",
+    "collapsible_content_with_image_U6AHjf",
+    "image_with_accordion_LVRiRj",
+    "benefits_grid_MPVPXr",
+    "benefits_compare_UnCr7E",
+    "collapsible_content_fMBfJ3",
+    "custom_newsletter_qmdmbR",
+    "related-products",
+    "1752733377df3d82a5",
+    "sticky_add_to_cart_C7dzcx"
+  ]
+}
