@@ -424,7 +424,7 @@
           "type": "button",
           "settings": {
             "label": "ДІЗНАТИСЯ БІЛЬШЕ",
-            "link": "shopify://pages/дослідження"
+            "link": "shopify://pages/research"
           }
         }
       },
