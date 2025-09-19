@@ -132,11 +132,18 @@
   white-space: nowrap; 
 }
 
-.lauron-newsletter--{{ section.id }} { 
+/* .lauron-newsletter--{{ section.id }} { 
   --lnl-alpha: 0.6; 
   --lnl-blur: 2px; 
   --lnl-bright: 1.15; 
   --lnl-sat: 0.92; 
+} */
+
+.lauron-newsletter--{{ section.id }} {
+  --lnl-alpha: {{ section.settings.overlay_alpha | default: 0.6 }};
+  --lnl-blur: {{ section.settings.overlay_blur | default: 2 }}px;
+  --lnl-bright: {{ section.settings.overlay_brightness | default: 1.1 }};
+  --lnl-sat: {{ section.settings.overlay_saturate | default: 0.9 }};
 }
 
 .lauron-newsletter--{{ section.id }} .lnl-media{
