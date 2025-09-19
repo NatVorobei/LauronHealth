@@ -9,12 +9,21 @@
 <nav class="header__inline-menu">
   <ul class="list-menu list-menu--inline lauron-menu" role="list">
   {%- for link in section.settings.menu.links -%}
-    {%- assign matched_dropdown = nil -%}
+    {% comment %} {%- assign matched_dropdown = nil -%}
     {%- for block in dropdown_blocks -%}
       {%- if block.settings.menu_title == link.title -%}
         {%- assign matched_dropdown = block -%}
       {%- endif -%}
-    {%- endfor -%}
+    {%- endfor -%} {% endcomment %}
+{%- assign matched_dropdown = nil -%}
+{%- for block in dropdown_blocks -%}
+  {%- assign block_handle_source = block.settings.menu_handle | default: block.settings.menu_title -%}
+  {%- assign block_handle = block_handle_source | handle -%}
+  {%- if block_handle == link.handle -%}
+    {%- assign matched_dropdown = block -%}
+    {%- break -%}
+  {%- endif -%}
+{%- endfor -%}
 
     
 
