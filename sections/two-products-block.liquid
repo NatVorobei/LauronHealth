@@ -72,7 +72,7 @@
               </ul>
               <div class="actions__container">
               <p class="two-product-card__caption">{{ block.settings.caption }}</p>
-              {% comment %} <div class="two-product-card__price-row">
+              {% comment %} <div class="two-product-card__discount-row">
                 {% if has_discount %}
                   <div class="two-product-card__discount-badge">
                     {{ block.settings.discount }}
@@ -88,7 +88,7 @@
                   </p>
                 {% endif %}
               </div> {% endcomment %}
-              <div class="two-product-card__price-row">
+              <div class="two-product-card__discount-row">
                 {% if has_discount %}
                   <div class="two-product-card__discount-badge">
                     {{ block.settings.discount }}
@@ -96,7 +96,7 @@
                   </div>
                 {% endif %}
               </div>
-<div>
+<div class="product__form-container">
   <div class="two-product-card__prices two-product-card__prices--in-button">
           {% if has_discount %}
             <s>{{ compare_price | money }}</s>
@@ -272,14 +272,17 @@
       line-height: 12px;
       color: #FF2400;
     }
-    .two-product-card__price-row  {
+    .two-product-card__discount-row  {
       display: flex;
       flex-direction: column;
       gap: 20px;
       justify-content: space-between;
-      align-self: center;
-      {% comment %} align-items: center;
-      margin-bottom: 32px; {% endcomment %}
+    }
+    .product__form-container {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
     }
     .two-product-card__prices {
       display: flex;
@@ -331,6 +334,8 @@
     .actions__container {
       display: flex;
       justify-content: space-between;
+      flex-direction: column;
+      gap: 20px;
     }
 
       @media (max-width: 749px) {
@@ -472,7 +477,7 @@
       color: var(--color-subtext);
     }
 
-    .two-product-card__price-row {
+    .two-product-card__discount-row {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
