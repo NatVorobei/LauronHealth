@@ -259,6 +259,7 @@
             "image": "shopify://shop_images/grid-image-1.webp",
             "title": "Підтримка шкіри",
             "short_text": "Здоровий вигляд шкіри, еластичність та природне зволоження",
+            "image_position": "center",
             "full_text": "◦ Sodium Hyaluronate MW 2MDa<br>\n◦ Vitamin C (Ascorbic Acid)<br>\n◦ Vitamin A – 240 µg (30% of 800 µg)<br>\n◦ Zinc (as Zinc Gluconate)<br>\n◦ Copper Gluconate<br>\n◦ Vitamin E<br>\n◦ Biotin<br>\n◦ Proline<br>\n◦ Lysine<br>\n◦ Alanin"
           }
         },
@@ -268,6 +269,7 @@
             "image": "shopify://shop_images/grid-image-2.webp",
             "title": "Клітинна стійкість",
             "short_text": "Допомагає захищати клітини від окисного стресу та передчасного старіння",
+            "image_position": "center",
             "full_text": "◦ N-acetyl-L-cysteine<br>\n◦ Vitamin C (Ascorbic Acid)<br>\n◦ Vitamin E, L-glycine<br>\n◦ Zinc (as Zinc Gluconate)<br>\n◦ Selenium<br>\n◦ Manganese Gluconate<br>\n◦ Copper Gluconate<br>\n◦ L-Theanine"
           }
         },
@@ -277,6 +279,7 @@
             "image": "shopify://shop_images/grid-image-3.webp",
             "title": "Активне тіло",
             "short_text": "Підтримує нормальний стан м’язів, суглобів, сполучної тканини та кісток",
+            "image_position": "center",
             "full_text": "◦ Sodium Hyaluronate MW 2MDa<br>\n◦ Lysine<br>\n◦ Proline<br>\n◦ Alanin<br>\n◦ Sodium alginate<br>\n◦ Vitamin D3<br>\n◦ Vitamin C (Ascorbic Acid)<br>\n◦ Manganese Gluconate<br>\n◦ Copper Gluconate"
           }
         },
@@ -286,6 +289,7 @@
             "image": "shopify://shop_images/Image3_20d48833-289e-4859-8618-b077f99c752b.png",
             "title": "Захист мозку",
             "short_text": "Сприяє когнітивній функції, психоемоційній рівновазі та адаптації до навантажень",
+            "image_position": "center",
             "full_text": "◦ L-Theanine<br>\n◦ N-acetyl-L-cysteine<br>\n◦ L-glycine<br>\n◦ Vitamin C (Ascorbic Acid)<br>\n◦ Zinc (as Zinc Gluconate)<br>\n◦ Vitamin D3<br>\n◦ Copper Gluconate<br>\n◦ Biotin<br>"
           }
         },
@@ -295,6 +299,7 @@
             "image": "shopify://shop_images/grid-image-5.webp",
             "title": "Ментальна ясність",
             "short_text": "Психічна функція, когнітивна стійкість і ясність мислення",
+            "image_position": "center",
             "full_text": "◦ Citicoline (CDP-Choline)<br>\n◦ Bacopa monnieri extract (20% bacosides)<br>\n◦ L-Theanine<br>\n◦ L-Tyrosine<br>\n◦ Vitamin C (Ascorbic Acid)<br>\n◦ Zinc (as Zinc Gluconate)<br>"
           }
         },
@@ -304,6 +309,7 @@
             "image": "shopify://shop_images/grid-image-6.webp",
             "title": "Концентрація",
             "short_text": "Фокус, уважність, розумова витривалість і швидкість реакції",
+            "image_position": "center",
             "full_text": "◦ Citicoline (CDP-Choline)<br>\n◦ Rhodiola Rosea Extract (standardized to 3% rosavins and 1% salidroside)<br>\n◦ L-Theanine<br>\n◦ L-Tyrosine<br>\n◦ Bacopa monnieri extract (20% bacosides)<br>\n◦ Vitamin B6<br>\n◦ Zinc (as Zinc Gluconate)<br>"
           }
         },
@@ -313,6 +319,7 @@
             "image": "shopify://shop_images/grid-image-7.webp",
             "title": "Стресостійкість",
             "short_text": "Стійкість до стресу, емоційний баланс і адаптація",
+            "image_position": "center",
             "full_text": "◦ Rhodiola Rosea Extract (standardized to 3% rosavins and 1% salidroside)<br>\n◦ L-Theanine<br>\n◦ L-Tyrosine<br>\n◦ Bacopa monnieri extract (20% bacosides)<br>\n◦ Vitamin B6<br>"
           }
         },
@@ -322,6 +329,7 @@
             "image": "shopify://shop_images/LS_LauronImage1.Final.png",
             "title": "Підтримка енергії",
             "short_text": "Енергетичний обмін, зменшення втоми та ментальна витривалість",
+            "image_position": "center",
             "full_text": "◦ PQQ (Pyrroloquinoline quinone)<br>\n◦ Rhodiola Rosea Extract (standardized to 3% rosavins and 1% salidroside)<br>\n◦ Vitamin B6<br>\n◦ Vitamin C (Ascorbic Acid)<br>"
           }
         }
@@ -493,6 +501,7 @@
       "name": "Facts Grid",
       "settings": {
         "title": "Факти про добавку",
+        "background": "#f0f4f5",
         "padding_top_desktop": 60,
         "padding_bottom_desktop": 60,
         "padding_top_mobile": 40,
