@@ -146,7 +146,7 @@
   --lnl-sat: 0.92; 
 }
 
-.lauron-newsletter--{{ section.id }} .lnl-overlay{ display:none !important; }
+/* .lauron-newsletter--{{ section.id }} .lnl-overlay{ display:none !important; } */
 
 .lauron-newsletter--{{ section.id }} .lnl-media{
   position:absolute; inset:0; z-index:0; overflow:hidden;
@@ -210,7 +210,7 @@
             </div>
         {%- endif -%}
     </div>
-    <div class="lnl-overlay" aria-hidden="true"></div>
+    {% comment %} <div class="lnl-overlay" aria-hidden="true"></div> {% endcomment %}
 
     <div class="newsletter__inner">
       {%- for block in section.blocks -%}
