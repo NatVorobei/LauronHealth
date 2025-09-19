@@ -262,6 +262,7 @@
     productBtns.forEach(b => b.classList.toggle('is-active', b === btn));
     applyFilters();
     syncHiddenOptions();
+    if (isMobile() && accProducts) accProducts.setAttribute('aria-expanded', 'false');
   }
 
   function onTagClick(btn) {
@@ -291,6 +292,7 @@
     }
     applyFilters();
     syncHiddenOptions();
+    if (isMobile() && accTags) accTags.setAttribute('aria-expanded', 'false');
   }
 
   function bindAccordion(btn) {
