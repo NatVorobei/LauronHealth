@@ -72,22 +72,6 @@
               </ul>
               <div class="actions__container">
               <p class="two-product-card__caption">{{ block.settings.caption }}</p>
-              {% comment %} <div class="two-product-card__discount-row">
-                {% if has_discount %}
-                  <div class="two-product-card__discount-badge">
-                    {{ block.settings.discount }}
-                    {{ discount }}%
-                  </div>
-                  <p class="two-product-card__prices">
-                    <s>{{ compare_price | money }}</s>
-                    <strong>{{ price | money }}</strong>
-                  </p>
-                {% else %}
-                  <p class="two-product-card__prices">
-                    <strong>{{ price | money }}</strong>
-                  </p>
-                {% endif %}
-              </div> {% endcomment %}
               <div class="two-product-card__discount-row">
                 {% if has_discount %}
                   <div class="two-product-card__discount-badge">
@@ -96,53 +80,52 @@
                   </div>
                 {% endif %}
               </div>
-<div class="product__form-container">
-  <div class="two-product-card__prices two-product-card__prices--in-button">
-          {% if has_discount %}
-            <s>{{ compare_price | money }}</s>
-            <strong>{{ price | money }}</strong>
-          {% else %}
-            <strong>{{ price | money }}</strong>
-          {% endif %}
-        </div>
+                <div class="product__form-container">
+                  <div class="two-product-card__prices two-product-card__prices--in-button">
+                    {% if has_discount %}
+                      <s>{{ compare_price | money }}</s>
+                      <strong>{{ price | money }}</strong>
+                    {% else %}
+                      <strong>{{ price | money }}</strong>
+                    {% endif %}
+                  </div>
 
-        <product-form data-section-id="{{ section.id }}" class="custom-product-form">
-                {% form 'product', product, class: 'product-form', data-type: 'add-to-cart-form' %}
-                  <input
-                    type="hidden"
-                    name="id"
-                    value="{{ variant.id }}"
-                    class="product-variant-id"
-                    {% unless variant.available %}
-                      disabled
-                    {% endunless %}
-                  >
-                  <button
-                    type="submit"
-                    name="add"
-                    class="two-product-card__actions-button"
-                    aria-live="polite"
-                    {% unless variant.available %}
-                      disabled
-                    {% endunless %}
-                  >
-                    {{ 'lauron-cart.svg' | inline_asset_content }}
-                    <span>
-                      {% if variant.available %}
-                        {{ block.settings.buy_button }}
-                      {% else %}
-                        {{ 'products.product.sold_out' | t }}
-                      {% endif %}
-                    </span>
-                    <span class="sold-out-message hidden">
-                      {{ 'products.product.sold_out' | t }}
-                    </span>
-                    {% render 'loading-spinner' %}
-                  </button>
-                {% endform %}
-              </product-form>
-</div>
-              
+                  <product-form data-section-id="{{ section.id }}" class="custom-product-form">
+                    {% form 'product', product, class: 'product-form', data-type: 'add-to-cart-form' %}
+                      <input
+                        type="hidden"
+                        name="id"
+                        value="{{ variant.id }}"
+                        class="product-variant-id"
+                        {% unless variant.available %}
+                          disabled
+                        {% endunless %}
+                      >
+                      <button
+                        type="submit"
+                        name="add"
+                        class="two-product-card__actions-button"
+                        aria-live="polite"
+                        {% unless variant.available %}
+                          disabled
+                        {% endunless %}
+                      >
+                        {{ 'lauron-cart.svg' | inline_asset_content }}
+                        <span>
+                          {% if variant.available %}
+                            {{ block.settings.buy_button }}
+                          {% else %}
+                            {{ 'products.product.sold_out' | t }}
+                          {% endif %}
+                        </span>
+                        <span class="sold-out-message hidden">
+                          {{ 'products.product.sold_out' | t }}
+                        </span>
+                        {% render 'loading-spinner' %}
+                      </button>
+                    {% endform %}
+                  </product-form>
+              </div>
               </div>
             </div>
           </div>
