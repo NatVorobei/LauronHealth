@@ -16,6 +16,8 @@
       {%- endif -%}
     {%- endfor -%}
 
+    <span class="dev-handle">({{ link.handle }})</span>
+
     <li class="header__menu-item-wrapper custom-dropdown-wrapper">
       {%- if link.url == '/pages/logo' -%}
         <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset logo-link">
