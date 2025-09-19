@@ -98,8 +98,7 @@
         "collapsible_tab_FYWTKV"
       ],
       "custom_css": [
-        ".accordion__content p {font-size: 14px;}",
-        ".accordion__content a {text-decoration: underline !important;}"
+        ".accordion__content p {font-size: 14px;}"
       ],
       "settings": {
         "enable_sticky_info": true,
