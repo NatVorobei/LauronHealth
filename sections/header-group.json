@@ -42,8 +42,7 @@
         "custom_dropdown_iJwnBp": {
           "type": "custom_dropdown",
           "settings": {
-            "menu_handle": "",
-            "menu_title": "Купити зараз",
+            "menu_handle": "купити-зараз",
             "image_1": "shopify://shop_images/freeze-age-product-block_1.png",
             "title_1": "Freeze Age",
             "text_1": "Функціональний напій для покращення самопочуття, клітинної гідратації та загальної стійкості організму",
