@@ -24,7 +24,7 @@
           <div class="two-product-card__container">
             {% if block.settings.custom_image != blank %}
               <a href="{{ product.url }}" class="two-product-card__image"
-                ><img src="{{ block.settings.custom_image | img_url: '400x' }}" alt=""
+                ><img src="{{ block.settings.custom_image | img_url: '400x' }}" alt="{{ product.title }}"
               ></a>
             {% endif %}
 
