@@ -9,23 +9,15 @@
 <nav class="header__inline-menu">
   <ul class="list-menu list-menu--inline lauron-menu" role="list">
   {%- for link in section.settings.menu.links -%}
-    {% comment %} {%- assign matched_dropdown = nil -%}
+    {%- assign matched_dropdown = nil -%}
     {%- for block in dropdown_blocks -%}
-      {%- if block.settings.menu_title == link.title -%}
+      {%- assign block_handle_source = block.settings.menu_handle | default: block.settings.menu_title -%}
+      {%- assign block_handle = block_handle_source | handle -%}
+      {%- if block_handle == link.handle -%}
         {%- assign matched_dropdown = block -%}
+        {%- break -%}
       {%- endif -%}
-    {%- endfor -%} {% endcomment %}
-{%- assign matched_dropdown = nil -%}
-{%- for block in dropdown_blocks -%}
-  {%- assign block_handle_source = block.settings.menu_handle | default: block.settings.menu_title -%}
-  {%- assign block_handle = block_handle_source | handle -%}
-  {%- if block_handle == link.handle -%}
-    {%- assign matched_dropdown = block -%}
-    {%- break -%}
-  {%- endif -%}
-{%- endfor -%}
-
-    
+    {%- endfor -%}
 
     <li class="header__menu-item-wrapper custom-dropdown-wrapper">
       {%- if link.url == '/pages/logo' -%}
