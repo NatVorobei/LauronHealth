@@ -109,7 +109,8 @@
     <div class="swatch-content">
       <span class="swatch-text">{{ value -}}</span>
       {{ label_unavailable }}
-      <span class="swatch-subtext">200 мл кожна</span>
+      {%- assign swatch_subtext = product.metafields.custom.swatch_subtext | default: '200 мл кожна' -%}
+      <span class="swatch-subtext">{{ swatch_subtext }}</span>
     </div>
     </label>
   {%- elsif picker_type == 'button' -%}
