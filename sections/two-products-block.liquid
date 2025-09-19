@@ -27,17 +27,10 @@
                 ><img src="{{ block.settings.custom_image | img_url: '400x' }}" alt="{{ product.title }}"
               ></a>
             {% endif %}
-
             <div class="two-product-card__content">
               <h3 class="two-product-card__title">
                 <a href="{{ product.url }}">{{ product.title }}</a>
               </h3>
-              {% comment %}
-                <div class="two-product-card__ratings">
-                  <div style="color: #FFC300;">{{ block.settings.rating }}</div>
-                  <div class="two-product-card__ratings-text">{{ block.settings.reviews }}</div>
-                </div>
-              {% endcomment %}
               <div class="two-product-card__ratings">
                 {%- if product.metafields.reviews.rating.value != blank -%}
                   {% liquid
