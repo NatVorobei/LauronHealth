@@ -1,4 +1,4 @@
-{% unless template == 'index' or template == 'cart' or template == '404' or template == 'customers/account' or template == 'customers/addresses' or template == 'customers/login' or template == 'customers/register' or page.handle == 'science' or page.handle == 'auto-delivery' or page.handle == 'about-us' or page.handle == 'ingredients' or page.handle == 'researh' or request.path contains '/apps/parcelpanel' %}
+{% unless template == 'index' or template == 'cart' or template == '404' or template == 'customers/account' or template == 'customers/addresses' or template == 'customers/login' or template == 'customers/register' or page.handle == 'science' or page.handle == 'auto-delivery' or page.handle == 'about-us' or page.handle == 'ingredients' or page.handle == 'research' or request.path contains '/apps/parcelpanel' %}
 
     <nav class="breadcrumbs{% if request.page_type == 'blog' %} breadcrumbs--blogpage{% endif %}{% if request.page_type == 'article' %} breadcrumbs--article{% endif %}" aria-label="Breadcrumb">
     <ol class="breadcrumbs__list">
