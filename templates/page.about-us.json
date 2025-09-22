@@ -46,7 +46,7 @@
       ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
-        "image": "shopify://shop_images/about-us.webp",
+        "image": "shopify://shop_images/Science_hero_screen.webp",
         "image_overlay_opacity": 0,
         "image_height": "small",
         "image_behavior": "none",
