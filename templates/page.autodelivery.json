@@ -42,7 +42,7 @@
       "custom_css": [
         ".banner__heading {font-family: var(--font-heading-main); font-weight: 700; font-size: 40px; line-height: 44px;}",
         ".banner__text {font-size: 20px; line-height: 24px;}",
-        ".media>img {object-position: bottom;}",
+        ".media > img {object-position: bottom;}",
         "@media (max-width: 749px) {.banner__heading, .banner__text {color: #fff; } .banner__heading {font-size: 24px; line-height: 30px; } .banner__text {font-size: 14px; line-height: 18px; }}"
       ],
       "name": "t:sections.image-banner.presets.name",
@@ -100,7 +100,7 @@
         "benefit_Jn68xC": {
           "type": "benefit",
           "settings": {
-            "text": "Безкоштовна доставка для замовлень від 200 zł"
+            "text": "Безкоштовна доставка для замовлень від 300 zł"
           }
         }
       },
