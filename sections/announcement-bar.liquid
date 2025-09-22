@@ -42,10 +42,10 @@
           <p class="announcement-bar__message h5">
             {%- if section.blocks.first.settings.icon_image != blank -%}
               <img
-                src="{{ section.blocks.first.settings.icon_image | image_url: width: 30 }}"
+                src="{{ section.blocks.first.settings.icon_image | image_url: width: 100 }}"
                 alt=""
                 class="announcement-bar__icon"
-                style="display: inline-block; width: 30px; height: auto; vertical-align: middle; margin-right: 8px;"
+                style="display: inline-block; height: auto; vertical-align: middle; margin-right: 8px;"
               >
             {%- endif -%}
             <span>{{ section.blocks.first.settings.text | escape }}</span>
