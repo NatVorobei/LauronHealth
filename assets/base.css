@@ -2259,7 +2259,7 @@ input[type='checkbox'] {
   display: flex;
   align-items: center;
   text-align: center;
-  padding: 11px 0;
+  padding: 5px 0;
   margin: 0;
   letter-spacing: 0.1rem;
   /* min-height: 3.8rem; */
