@@ -513,7 +513,15 @@
         "padding_top_desktop": 60,
         "padding_bottom_desktop": 60,
         "padding_top_mobile": 40,
-        "padding_bottom_mobile": 40
+        "padding_bottom_mobile": 40,
+        "use_video_desktop": true,
+        "video_desktop_webm": "",
+        "video_desktop_mp4": "https://cdn.shopify.com/videos/c/o/v/2e834fb9eff848b58daf6ae63383d3a9.mp4",
+        "video_desktop_poster": "",
+        "use_video_mobile": true,
+        "video_mobile_webm": "",
+        "video_mobile_mp4": "https://cdn.shopify.com/videos/c/o/v/2e834fb9eff848b58daf6ae63383d3a9.mp4",
+        "video_mobile_poster": ""
       }
     },
     "two_products_block_AMVERG": {
