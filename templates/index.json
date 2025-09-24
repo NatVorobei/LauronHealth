@@ -101,7 +101,15 @@
         "description2": "<p>Смачний функціональний напій, що глибоко зволожує зсередини, підтримує якість та пружність шкіри, суглобів й загальний баланс, а також допомагає довше зберігати енергію, ясність і відчуття ресурсу.</p>",
         "button1_text": "КУПИТИ ЗАРАЗ",
         "button2_text": "ЯК ЦЕ ПРАЦЮЄ?",
-        "button2_link": "shopify://pages/science"
+        "button2_link": "shopify://pages/science",
+        "use_video_desktop": true,
+        "video_desktop_webm": "",
+        "video_desktop_url": "https://cdn.shopify.com/videos/c/o/v/46378cb1ed1649f091c99963a8d73002.mp4",
+        "video_desktop_poster": "",
+        "use_video_mobile": true,
+        "video_mobile_webm": "",
+        "video_mobile_url": "https://cdn.shopify.com/videos/c/o/v/46378cb1ed1649f091c99963a8d73002.mp4",
+        "video_mobile_poster": ""
       }
     },
     "tabs_with_images_ADi6Ve": {
