@@ -1,4 +1,4 @@
-<div
+{% comment %} <div
   class="facts-grid-wrapper"
   style="
     padding-top: {{ section.settings.padding_top_desktop | default: 0 }}px;
@@ -172,6 +172,350 @@
       "max": 160,
       "step": 4,
       "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Факт",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Зображення"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Заголовок",
+          "default": "Заголовок картки"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Опис",
+          "default": "Опис картки"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 20,
+  "presets": [
+    {
+      "name": "Facts Grid",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %} {% endcomment %}
+
+
+
+
+
+
+
+<div
+  class="facts-grid-wrapper"
+  style="
+    padding-top: {{ section.settings.padding_top_desktop | default: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop | default: 0 }}px;
+    background-color: {{ section.settings.background }};
+  "
+>
+  <div class="facts-grid__bg" aria-hidden="true">
+    {%- if section.settings.use_video_desktop -%}
+      {%- if section.settings.video_desktop_webm != blank or section.settings.video_desktop_mp4 != blank -%}
+        <video
+          class="facts-grid__video facts-grid__video--desktop"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          {% if section.settings.video_desktop_poster != blank %}poster="{{ section.settings.video_desktop_poster }}"{% endif %}
+        >
+          {%- if section.settings.video_desktop_webm != blank -%}
+            <source src="{{ section.settings.video_desktop_webm }}" type="video/webm">
+          {%- endif -%}
+          {%- if section.settings.video_desktop_mp4 != blank -%}
+            <source src="{{ section.settings.video_desktop_mp4 }}" type="video/mp4">
+          {%- endif -%}
+        </video>
+      {%- endif -%}
+    {%- endif -%}
+
+
+    {%- if section.settings.use_video_mobile -%}
+      {%- if section.settings.video_mobile_webm != blank or section.settings.video_mobile_mp4 != blank -%}
+        <video
+          class="facts-grid__video facts-grid__video--mobile"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          {% if section.settings.video_mobile_poster != blank %}poster="{{ section.settings.video_mobile_poster }}"{% endif %}
+        >
+          {%- if section.settings.video_mobile_webm != blank -%}
+            <source src="{{ section.settings.video_mobile_webm }}" type="video/webm">
+          {%- endif -%}
+          {%- if section.settings.video_mobile_mp4 != blank -%}
+            <source src="{{ section.settings.video_mobile_mp4 }}" type="video/mp4">
+          {%- endif -%}
+        </video>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+
+  {% if section.settings.title != blank %}
+    <h2 class="facts-grid__heading">{{ section.settings.title }}</h2>
+  {% endif %}
+
+  <div class="facts-grid">
+    {% for block in section.blocks %}
+      <div class="facts-grid__item">
+        {% if block.settings.image != blank %}
+          <img
+            src="{{ block.settings.image | img_url: '100x' }}"
+            alt="{{ block.settings.title }}"
+            class="facts-grid__icon"
+          >
+        {% endif %}
+        <h3 class="facts-grid__title">{{ block.settings.title }}</h3>
+        <p class="facts-grid__desc">{{ block.settings.description }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+<style>
+    .facts-grid-wrapper {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .facts-grid__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .facts-grid__video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .facts-grid__video--desktop { display: block; }
+    .facts-grid__video--mobile { display: none; }
+
+    .facts-grid__heading,
+    .facts-grid,
+    .facts-grid__item {
+      position: relative;
+      z-index: 1;
+    }
+
+  .facts-grid__heading {
+    font-size: 42px;
+    font-weight: 700;
+    font-family: var(--font-heading-main);
+    color: var(--color-main-text);
+    text-align: center;
+    margin-bottom: 80px;
+    letter-spacing: 0;
+  }
+
+  .facts-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 60px 90px;
+    max-width: 1160px;
+    margin: 0 auto;
+  }
+
+  .facts-grid__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .facts-grid__icon {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+  }
+
+  .facts-grid__title {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: var(--font-heading-main);
+    line-height: 24px;
+    color: var(--color-main-text);
+    text-align: center;
+    letter-spacing: 0;
+    min-height: 48px;
+  }
+
+  .facts-grid__desc {
+    font-size: 14px;
+    line-height: 18px;
+    color: #87878D;
+    text-align: center;
+    letter-spacing: 0;
+  }
+
+  @media (max-width: 1240px) {
+    .facts-grid {
+        padding: 0 10px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .facts-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px 20px;
+    }
+  }
+
+  @media (max-width: 749px) {
+    .facts-grid-wrapper {
+      padding-top: {{ section.settings.padding_top_mobile | default: 0 }}px !important;
+      padding-bottom: {{ section.settings.padding_bottom_mobile | default: 0 }}px !important;
+    }
+
+    .facts-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;   
+    }
+
+    .facts-grid__heading {
+      font-size: 24px;
+       line-height: 24px;
+      margin-bottom: 30px;
+    }
+    .facts-grid__title {
+        font-size: 16px;
+        line-height: 16px;
+        min-height: 32px;
+    }
+    .facts-grid__video--desktop { display: none; }
+    .facts-grid__video--mobile { display: block; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Facts Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Заголовок",
+      "default": "Факти про добавку"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Колір фону",
+      "default":" #F0F4F5"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding зверху (десктоп)",
+      "default": 40,
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding знизу (десктоп)",
+      "default": 0,
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding зверху (мобілка)",
+      "default": 0,
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding знизу (мобілка)",
+      "default": 0,
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_video_desktop",
+      "label": "Use video on desktop",
+      "default": false
+    },
+    {
+      "type": "url",
+      "id": "video_desktop_webm",
+      "label": "Desktop video (WebM URL)",
+      "info": "Рекомендовано: WebM з CDN"
+    },
+    {
+      "type": "url",
+      "id": "video_desktop_mp4",
+      "label": "Desktop video fallback (MP4 URL)"
+    },
+    {
+      "type": "url",
+      "id": "video_desktop_poster",
+      "label": "Desktop video poster (WebP/JPG/PNG URL)"
+    },
+
+    {
+      "type": "header",
+      "content": "Mobile Video"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_video_mobile",
+      "label": "Use video on mobile",
+      "default": false
+    },
+    {
+      "type": "url",
+      "id": "video_mobile_webm",
+      "label": "Mobile video (WebM URL)"
+    },
+    {
+      "type": "url",
+      "id": "video_mobile_mp4",
+      "label": "Mobile video fallback (MP4 URL)"
+    },
+    {
+      "type": "url",
+      "id": "video_mobile_poster",
+      "label": "Mobile video poster (WebP/JPG/PNG URL)"
     }
   ],
   "blocks": [
