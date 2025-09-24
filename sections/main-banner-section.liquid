@@ -1,4 +1,4 @@
-<div class="main-banner__desktop">
+{% comment %} <div class="main-banner__desktop">
   <img src="{{ section.settings.banner_image | img_url: 'master' }}" alt="Banner image" class="main-banner__image" />
 
   <div class="main-banner__container">
@@ -307,6 +307,535 @@ document.addEventListener('DOMContentLoaded', () => {
   pointer-events: none;
 }
 
+
+
+
+
+  @media (max-width: 749px) {
+    .main-banner__desktop {
+      display: none;
+    }
+    .main-banner__mobile {
+      display: flex;
+    }
+    .main-banner__inner {
+      gap: 24px;
+    }
+    .main-banner__heading {
+      font-size: 24px;
+      line-height: 30px;
+    }
+    .main-banner__animated-text-wrapper {
+      height: 35px;
+    }
+    .word-item {
+      height: 35px;
+      font-size: 24px;
+      line-height: 30px;
+    }
+    .main-banner__description,
+    .main-banner__description2 {
+      font-size: 12px;
+    }
+    .main-banner__buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 24px;
+    }
+    .main-banner__button {
+      font-size: 12px;
+      font-weight: 900;
+      max-width: 148px;
+      padding: 0 24px;
+      line-height: 14px;
+    }
+  }
+  @media(max-width: 1200px) {
+    .main-banner__content--desktop {
+      padding-left: 30px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    function initRotatingWords(containerId, itemHeight) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+
+      const items = container.querySelectorAll('.word-item');
+      const total = items.length;
+      let index = 0;
+
+      function loopWords() {
+        index++;
+        container.style.transition = 'transform 0.7s ease-in-out';
+        container.style.transform = `translateY(-${itemHeight * index}px)`;
+
+        if (index === total - 1) {
+          setTimeout(() => {
+            container.style.transition = 'none';
+            container.style.transform = 'translateY(0)';
+            index = 0;
+          }, 700);
+        }
+      }
+
+      setInterval(loopWords, 2500);
+    }
+
+    initRotatingWords('rotating-words', 55); 
+    initRotatingWords('rotating-words-mobile', 35); 
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Custom Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Desktop Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_banner_image",
+      "label": "Mobile Background Image"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description (Top)"
+    },
+    {
+      "type": "richtext",
+      "id": "description2",
+      "label": "Description (Bottom)"
+    },
+    {
+      "type": "text",
+      "id": "button1_text",
+      "label": "Button 1 Text"
+    },
+    {
+      "type": "text",
+      "id": "button2_text",
+      "label": "Button 2 Text"
+    },
+    {
+      "type": "url",
+      "id": "button2_link",
+      "label": "Button 2 Link"
+    }
+  ],
+  "blocks": [
+  {
+    "type": "word",
+    "name": "Rotating Word",
+    "settings": [
+      {
+        "type": "text",
+        "id": "word",
+        "label": "Word"
+      }
+    ]
+  }
+],
+"max_blocks": 20,
+  "presets": [
+    {
+      "name": "Main Banner"
+    }
+  ]
+}
+{% endschema %} {% endcomment %}
+
+
+
+
+<div class="main-banner__desktop">
+  {% if section.settings.use_video_desktop and section.settings.video_desktop_url != blank %}
+    <video
+      class="main-banner__video"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+      {% if section.settings.video_desktop_poster != blank %}poster="{{ section.settings.video_desktop_poster }}"{% endif %}
+      aria-hidden="true"
+    >
+      {%- if section.settings.video_desktop_webm != blank -%}
+        <source src="{{ section.settings.video_desktop_webm }}" type="video/webm">
+      {%- endif -%}
+      {%- if section.settings.video_desktop_url != blank -%}
+        <source src="{{ section.settings.video_desktop_url }}" type="video/mp4">
+      {%- endif -%}
+    </video>
+    {% else %}
+      <img
+        src="{{ section.settings.banner_image | img_url: 'master' }}"
+        alt="Banner image"
+        class="main-banner__image"
+        decoding="async"
+      />
+    {% endif %}
+
+
+  <div class="main-banner__container">
+    <div class="main-banner__content main-banner__content--desktop">
+      <div class="main-banner__inner">
+        <div class="main-banner__heading-container">
+          <h2 class="main-banner__heading">{{ section.settings.heading }}</h2>
+          <div class="main-banner__animated-text-wrapper">
+            <div class="main-banner__animated-text" id="rotating-words">
+              {% for block in section.blocks %}
+                <div class="word-item">{{ block.settings.word }}</div>
+              {% endfor %}
+              {% if section.blocks.size > 0 %}
+                <div class="word-item">{{ section.blocks.first.settings.word }}</div>
+              {% endif %}
+            </div>
+          </div>  
+        </div>    
+        <div class="main-banner__description">{{ section.settings.description }}</div>
+        <div class="main-banner__description2">{{ section.settings.description2 }}</div>
+        <div class="main-banner__buttons">
+          <a href="#two-product-section" class="main-banner__button">
+            <img src="https://cdn.shopify.com/s/files/1/0745/8786/5320/files/can.png?v=1751960850" alt="can" width="16" height="32" />
+            {{ section.settings.button1_text }}
+          </a>
+          <a href="{{ section.settings.button2_link }}" class="main-banner__button">{{ section.settings.button2_text }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <div class="main-banner__mobile">
+    <div class="main-banner__mobile-image-wrapper">
+      {% if section.settings.use_video_mobile and section.settings.video_mobile_url != blank %}
+        <video
+          class="main-banner__video main-banner__video--mobile"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          {% if section.settings.video_mobile_poster != blank %}poster="{{ section.settings.video_mobile_poster }}"{% endif %}
+          aria-hidden="true"
+        >
+          {%- if section.settings.video_mobile_webm != blank -%}
+            <source src="{{ section.settings.video_mobile_webm }}" type="video/webm">
+          {%- endif -%}
+          {%- if section.settings.video_mobile_url != blank -%}
+            <source src="{{ section.settings.video_mobile_url }}" type="video/mp4">
+          {%- endif -%}
+        </video>
+      {% else %}
+        <picture>
+          <source media="(max-width: 749px)" srcset="{{ section.settings.mobile_banner_image | img_url: '720x' }}">
+          <img class="main-banner__mobile--image" src="{{ section.settings.banner_image | img_url: 'master' }}" alt="Banner image" loading="lazy" decoding="async">
+        </picture>
+      {% endif %}
+    </div>
+    <div class="main-banner__content main-banner__content--mobile">
+      <div class="main-banner__inner">
+        <div class="main-banner__heading-container">
+          <h2 class="main-banner__heading">
+            {{ section.settings.heading }}
+          </h2>
+          <div class="main-banner__animated-text-wrapper">
+            <div class="main-banner__animated-text" id="rotating-words-mobile">
+              {% for block in section.blocks %}
+                <div class="word-item">{{ block.settings.word }}</div>
+              {% endfor %}
+              {%- if section.blocks.size > 0 -%}
+                <div class="word-item">{{ section.blocks.first.settings.word }}</div>
+              {%- endif -%}
+            </div>
+          </div> 
+        </div>       
+        <div class="main-banner__description">
+          {{ section.settings.description }}
+        </div>
+        <div class="main-banner__description2">
+          {{ section.settings.description2 }}
+        </div>
+        {% if section.settings.button2_text != blank and section.settings.button1_text != blank %}
+        <div class="main-banner__buttons">
+          <a href="#two-product-section" class="main-banner__button">
+            <img src="https://cdn.shopify.com/s/files/1/0745/8786/5320/files/can.png?v=1751960850" alt="can" width="16" height="32" />
+            {{ section.settings.button1_text }}
+          </a>
+          <a href="{{ section.settings.button2_link }}" class="main-banner__button">{{ section.settings.button2_text }}</a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const targetId = this.getAttribute('href');
+      if (targetId.length > 1) {
+        e.preventDefault();
+        const el = document.querySelector(targetId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    });
+  });
+});
+</script>
+
+
+<style>
+  .main-banner {
+    width: 100%;
+  }
+
+  .main-banner__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .main-banner__desktop {
+    display: flex;
+    background-size: cover;
+    align-items: center;
+    {% comment %} padding-left: 140px; {% endcomment %}
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 720px;
+    position: relative;
+  }
+
+  .main-banner__content--desktop {
+    /* position: absolute;
+    top: 50%;
+    left: 140px;
+    transform: translateY(-50%); */
+    
+    color: #000;
+    max-width: 760px;
+    z-index: 2;
+  }
+
+  .main-banner__desktop::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0.6) 15%,
+      rgba(255, 255, 255, 0.15) 30%,
+      rgba(255, 255, 255, 0) 50%);
+    z-index: 1;
+    pointer-events: none;
+  }  
+
+  .main-banner__mobile {
+    display: none;
+    flex-direction: column;
+  }
+
+  .main-banner__mobile-image-wrapper {
+    position: relative;
+  }
+  
+  .main-banner__mobile-image-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0.6) 20%,
+      rgba(255, 255, 255, 0.2) 35%,
+      rgba(255, 255, 255, 0) 60%);
+    z-index: 1;
+    pointer-events: none;
+  }
+  
+  .main-banner__mobile--image {
+    display: block;
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    object-position: right;
+    z-index: 0;
+  }
+
+  .main-banner__content--mobile {
+    padding: 40px 14px 0;
+    background-color: #fff;
+    color: #000;
+  }
+
+  .main-banner__heading {
+    font-family: var(--font-heading-main);
+    font-size: 44px;
+    line-height: 50px;
+    margin: 0;
+  }
+
+  .main-banner__heading > p {
+    margin: 0;
+    font-size: inherit;
+    line-height: inherit;
+    display: inline;
+  }
+
+  .main-banner__animated-text-wrapper {
+    height: 55px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .main-banner__animated-text {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.7s ease-in-out;
+  }
+  
+  .word-item {
+    height: 55px;
+    font-size: 44px;
+    line-height: 50px;
+    font-style: italic;
+    color: #000;
+    display: flex;
+    align-items: center;
+  }
+
+  .main-banner__description,
+  .main-banner__description2 {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .main-banner__description > p,
+  .main-banner__description2 > p {
+    margin: 0;
+    font-size: inherit;
+    line-height: 1.5;
+  }
+
+  .main-banner__buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+  .main-banner__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 202px;
+    height: 50px;
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .main-banner__button:hover {
+    background-color: #333;
+  }
+
+  .main-banner__desktop {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 720px;
+  overflow: hidden;
+}
+
+.main-banner__desktop {
+  position: relative;
+  height: 720px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.main-banner__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+
+.main-banner__container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.main-banner__content--desktop {
+  color: #000;
+  max-width: 760px;
+}
+
+.main-banner__image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.6) 15%,
+    rgba(255, 255, 255, 0.15) 30%,
+    rgba(255, 255, 255, 0) 50%);
+  z-index: 1;
+  pointer-events: none;
+}
+/* Фонове відео */
+.main-banner__video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  z-index:0;
+  display:block;
+}
+
+/* мобільна висота як у зображення */
+.main-banner__video--mobile{
+  position:relative;
+  width:100%;
+  height:320px;
+  object-fit:cover;
+  object-position:right;
+  z-index:0;
+}
 
 
 
