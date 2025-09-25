@@ -10,7 +10,12 @@
     {% for block in section.blocks %}
       {% assign product = all_products[block.settings.product] %}
       {% if product %}
-        {% assign variant = product.variants.first %}
+        {% comment %} {% assign variant = product.variants.first %} {% endcomment %}
+        {% if block.settings.variant_id != blank %}
+          {% assign variant = product.variants | where: 'id', block.settings.variant_id | first %}
+        {% else %}
+          {% assign variant = product.variants.first %}
+        {% endif %}
         {% assign price = variant.price %}
         {% assign compare_price = variant.compare_at_price %}
         {% if compare_price and compare_price > price %}
@@ -521,6 +526,12 @@
           "type": "product",
           "id": "product",
           "label": "Виберіть товар"
+        },
+        {
+          "type": "text",
+          "id": "variant_id",
+          "label": "ID варіанту (опціонально)",
+          "info": "Скопіюйте ID потрібного варіанту з адмінки товару"
         },
         {
           "type": "image_picker",
