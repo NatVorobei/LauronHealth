@@ -11,11 +11,62 @@
       {% assign product = all_products[block.settings.product] %}
       {% if product %}
         {% comment %} {% assign variant = product.variants.first %} {% endcomment %}
-        {% if block.settings.variant_id != blank %}
-          {% assign variant = product.variants | where: 'id', block.settings.variant_id | first %}
-        {% else %}
-          {% assign variant = product.variants.first %}
-        {% endif %}
+        {%- comment -%}
+  Robust variant lookup:
+  - Accepts plain numeric id (e.g. 123456789)
+  - Accepts URL query like ?variant=123456789
+  - Accepts GraphQL gid like gid://shopify/ProductVariant/123456789
+  - Trims quotes/spaces
+  - Falls back to first available variant, then to first variant
+{%- endcomment -%}
+
+{% assign variant = nil %}
+
+{% if block.settings.variant_id != blank %}
+  {% assign raw = block.settings.variant_id | strip %}
+  {%- comment -%} remove surrounding quotes if admin pasted them {%- endcomment -%}
+  {% assign raw = raw | remove: '"' | remove: "'" | strip %}
+
+  {%- comment -%} if it's a query param like ?variant=123 or ...=123 {%- endcomment -%}
+  {% if raw contains '=' %}
+  {% assign parts_eq = raw | split: '=' %}
+  {% assign idx = parts_eq.size | minus: 1 %}
+  {% assign raw = parts_eq[idx] | strip %}
+{% endif %}
+
+{% if raw contains '/' %}
+  {% assign parts_slash = raw | split: '/' %}
+  {% assign idx = parts_slash.size | minus: 1 %}
+  {% assign raw = parts_slash[idx] | strip %}
+{% endif %}
+
+
+  {%- comment -%} convert to number (plus:0) so comparison with v.id (integer) works reliably {%- endcomment -%}
+  {% assign search_id = raw | plus: 0 %}
+
+  {% for v in product.variants %}
+    {% if v.id == search_id %}
+      {% assign variant = v %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{%- comment -%} if variant not found by id → pick first available variant (in-stock) {%- endcomment -%}
+{% if variant == nil %}
+  {% for v in product.variants %}
+    {% if v.available %}
+      {% assign variant = v %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{%- comment -%} last fallback: first variant (keeps previous behaviour) {%- endcomment -%}
+{% if variant == nil %}
+  {% assign variant = product.variants.first %}
+{% endif %}
+
         {% assign price = variant.price %}
         {% assign compare_price = variant.compare_at_price %}
         {% if compare_price and compare_price > price %}
