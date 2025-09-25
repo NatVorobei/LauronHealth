@@ -96,7 +96,7 @@
       "settings": {
         "banner_image": "shopify://shop_images/lauron-main-banner.webp",
         "mobile_banner_image": "shopify://shop_images/lauron-main-banner.webp",
-        "heading": "<p><strong>Щоденна готова до вживання функціональна добавка для</strong> </p>",
+        "heading": "<p><strong>Твоя щоденна добавка для</strong></p>",
         "description": "<p><strong>Створена на базі 3SDS™</strong> — технології, що забезпечує ефективний вплив активних компонентів на організм на клітинному рівні завдяки їх кратно підвищеній біодоступності.</p>",
         "description2": "<p>Смачний функціональний напій, що глибоко зволожує зсередини, підтримує якість та пружність шкіри, суглобів й загальний баланс, а також допомагає довше зберігати енергію, ясність і відчуття ресурсу.</p>",
         "button1_text": "КУПИТИ ЗАРАЗ",
@@ -521,7 +521,12 @@
         "use_video_mobile": true,
         "video_mobile_webm": "",
         "video_mobile_mp4": "https://cdn.shopify.com/videos/c/o/v/2e834fb9eff848b58daf6ae63383d3a9.mp4",
-        "video_mobile_poster": ""
+        "video_mobile_poster": "",
+        "overlay_color": "#ffffff",
+        "overlay_alpha": 0.6,
+        "overlay_blur": 2,
+        "overlay_brightness": 1.1,
+        "overlay_saturate": 0.9
       }
     },
     "two_products_block_AMVERG": {
