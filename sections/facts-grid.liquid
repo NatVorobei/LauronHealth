@@ -374,6 +374,63 @@
     letter-spacing: 0;
   }
 
+
+  .facts-grid-wrapper {
+    isolation: isolate;
+    --fg-overlay-rgb: 255, 255, 255;
+    --fg-alpha: 0.6;
+    --fg-blur: 2px;
+    --fg-bright: 1.1;
+    --fg-sat: 0.9;
+  }
+
+  .facts-grid-wrapper {
+    --fg-overlay-rgb: {{ section.settings.overlay_color | default: '#ffffff' | color_to_rgb | remove: 'rgb(' | remove: ')' }};
+    --fg-alpha: {{ section.settings.overlay_alpha | default: 0.6 }};
+    --fg-blur: {{ section.settings.overlay_blur | default: 2 }}px;
+    --fg-bright: {{ section.settings.overlay_brightness | default: 1.1 }};
+    --fg-sat: {{ section.settings.overlay_saturate | default: 0.9 }};
+  }
+
+
+  .facts-grid__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;  
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  
+  .facts-grid__bg::after {
+    content: "";
+    position: absolute; inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: rgba(var(--fg-overlay-rgb), var(--fg-alpha)) !important;
+    backdrop-filter: blur(var(--fg-blur)) brightness(var(--fg-bright)) saturate(var(--fg-sat));
+    -webkit-backdrop-filter: blur(var(--fg-blur)) brightness(var(--fg-bright)) saturate(var(--fg-sat));
+  }
+
+  
+  .facts-grid__heading,
+  .facts-grid,
+  .facts-grid__item {
+    position: relative;
+    z-index: 2;
+  }
+
+  
+  @supports not ((backdrop-filter: blur(2px)) or (-webkit-backdrop-filter: blur(2px))) {
+    .facts-grid__bg::after {
+      background: rgba(var(--fg-overlay-rgb), 0.82) !important;
+    }
+    .facts-grid__video {
+      filter: brightness(1.12) saturate(0.95);
+    }
+  }
+
+
   @media (max-width: 1240px) {
     .facts-grid {
         padding: 0 10px;
@@ -516,7 +573,54 @@
       "type": "url",
       "id": "video_mobile_poster",
       "label": "Mobile video poster (WebP/JPG/PNG URL)"
-    }
+    },
+    {
+  "type": "header",
+  "content": "Оверлей (backdrop-filter)"
+},
+{
+  "type": "color",
+  "id": "overlay_color",
+  "label": "Колір оверлею",
+  "default": "#ffffff"
+},
+{
+  "type": "range",
+  "id": "overlay_alpha",
+  "label": "Прозорість (alpha)",
+  "min": 0,
+  "max": 1,
+  "step": 0.1,
+  "default": 0.6
+},
+{
+  "type": "range",
+  "id": "overlay_blur",
+  "label": "Розмиття (blur, px)",
+  "min": 0,
+  "max": 20,
+  "step": 1,
+  "default": 2
+},
+{
+  "type": "range",
+  "id": "overlay_brightness",
+  "label": "Яскравість (brightness)",
+  "min": 0.5,
+  "max": 1.8,
+  "step": 0.1,
+  "default": 1.1
+},
+{
+  "type": "range",
+  "id": "overlay_saturate",
+  "label": "Насиченість (saturate)",
+  "min": 0,
+  "max": 2,
+  "step": 0.1,
+  "default": 0.9
+}
+
   ],
   "blocks": [
     {
