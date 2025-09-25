@@ -1,5 +1,5 @@
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
- {{ 'component-rating.css' | asset_url | stylesheet_tag }}
+{{ 'component-rating.css' | asset_url | stylesheet_tag }}
 <section class="two-product-section" id="two-product-section">
   <div class="two-product-section__header">
     {% if section.settings.title != blank %}
@@ -12,60 +12,59 @@
       {% if product %}
         {% comment %} {% assign variant = product.variants.first %} {% endcomment %}
         {%- comment -%}
-  Robust variant lookup:
-  - Accepts plain numeric id (e.g. 123456789)
-  - Accepts URL query like ?variant=123456789
-  - Accepts GraphQL gid like gid://shopify/ProductVariant/123456789
-  - Trims quotes/spaces
-  - Falls back to first available variant, then to first variant
-{%- endcomment -%}
+          Robust variant lookup:
+          - Accepts plain numeric id (e.g. 123456789)
+          - Accepts URL query like ?variant=123456789
+          - Accepts GraphQL gid like gid://shopify/ProductVariant/123456789
+          - Trims quotes/spaces
+          - Falls back to first available variant, then to first variant
+        {%- endcomment -%}
 
-{% assign variant = nil %}
+        {% assign variant = null %}
 
-{% if block.settings.variant_id != blank %}
-  {% assign raw = block.settings.variant_id | strip %}
-  {%- comment -%} remove surrounding quotes if admin pasted them {%- endcomment -%}
-  {% assign raw = raw | remove: '"' | remove: "'" | strip %}
+        {% if block.settings.variant_id != blank %}
+          {% assign raw = block.settings.variant_id | strip %}
+          {%- comment -%} remove surrounding quotes if admin pasted them {%- endcomment -%}
+          {% assign raw = raw | remove: '"' | remove: "'" | strip %}
 
-  {%- comment -%} if it's a query param like ?variant=123 or ...=123 {%- endcomment -%}
-  {% if raw contains '=' %}
-  {% assign parts_eq = raw | split: '=' %}
-  {% assign idx = parts_eq.size | minus: 1 %}
-  {% assign raw = parts_eq[idx] | strip %}
-{% endif %}
+          {%- comment -%} if it's a query param like ?variant=123 or ...=123 {%- endcomment -%}
+          {% if raw contains '=' %}
+            {% assign parts_eq = raw | split: '=' %}
+            {% assign idx = parts_eq.size | minus: 1 %}
+            {% assign raw = parts_eq[idx] | strip %}
+          {% endif %}
 
-{% if raw contains '/' %}
-  {% assign parts_slash = raw | split: '/' %}
-  {% assign idx = parts_slash.size | minus: 1 %}
-  {% assign raw = parts_slash[idx] | strip %}
-{% endif %}
+          {% if raw contains '/' %}
+            {% assign parts_slash = raw | split: '/' %}
+            {% assign idx = parts_slash.size | minus: 1 %}
+            {% assign raw = parts_slash[idx] | strip %}
+          {% endif %}
 
+          {%- comment -%} convert to number (plus:0) so comparison with v.id (integer) works reliably {%- endcomment -%}
+          {% assign search_id = raw | plus: 0 %}
 
-  {%- comment -%} convert to number (plus:0) so comparison with v.id (integer) works reliably {%- endcomment -%}
-  {% assign search_id = raw | plus: 0 %}
+          {% for v in product.variants %}
+            {% if v.id == search_id %}
+              {% assign variant = v %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
 
-  {% for v in product.variants %}
-    {% if v.id == search_id %}
-      {% assign variant = v %}
-      {% break %}
-    {% endif %}
-  {% endfor %}
-{% endif %}
+        {%- comment -%} if variant not found by id → pick first available variant (in-stock) {%- endcomment -%}
+        {% if variant == null %}
+          {% for v in product.variants %}
+            {% if v.available %}
+              {% assign variant = v %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
 
-{%- comment -%} if variant not found by id → pick first available variant (in-stock) {%- endcomment -%}
-{% if variant == nil %}
-  {% for v in product.variants %}
-    {% if v.available %}
-      {% assign variant = v %}
-      {% break %}
-    {% endif %}
-  {% endfor %}
-{% endif %}
-
-{%- comment -%} last fallback: first variant (keeps previous behaviour) {%- endcomment -%}
-{% if variant == nil %}
-  {% assign variant = product.variants.first %}
-{% endif %}
+        {%- comment -%} last fallback: first variant (keeps previous behaviour) {%- endcomment -%}
+        {% if variant == null %}
+          {% assign variant = product.variants.first %}
+        {% endif %}
 
         {% assign price = variant.price %}
         {% assign compare_price = variant.compare_at_price %}
@@ -112,7 +111,8 @@
                   </div>
 
                   <p class="two-product-card__ratings-text">
-                    {{ product.metafields.reviews.rating_count }} {{ 'accessibility.total_reviews' | t }}
+                    {{ product.metafields.reviews.rating_count }}
+                    {{ 'accessibility.total_reviews' | t }}
                   </p>
                 {%- endif -%}
               </div>
@@ -127,15 +127,15 @@
                 {% endfor %}
               </ul>
               <div class="actions__container">
-              <p class="two-product-card__caption">{{ block.settings.caption }}</p>
-              <div class="two-product-card__discount-row">
-                {% if has_discount %}
-                  <div class="two-product-card__discount-badge">
-                    {{ block.settings.discount }}
-                    {{ discount }}%
-                  </div>
-                {% endif %}
-              </div>
+                <p class="two-product-card__caption">{{ block.settings.caption }}</p>
+                <div class="two-product-card__discount-row">
+                  {% if has_discount %}
+                    <div class="two-product-card__discount-badge">
+                      {{ block.settings.discount }}
+                      {{ discount }}%
+                    </div>
+                  {% endif %}
+                </div>
                 <div class="product__form-container">
                   <div class="two-product-card__prices two-product-card__prices--in-button">
                     {% if has_discount %}
@@ -181,7 +181,7 @@
                       </button>
                     {% endform %}
                   </product-form>
-              </div>
+                </div>
               </div>
             </div>
           </div>
