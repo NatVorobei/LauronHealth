@@ -11,23 +11,13 @@
       {% assign product = all_products[block.settings.product] %}
       {% if product %}
         {% comment %} {% assign variant = product.variants.first %} {% endcomment %}
-        {%- comment -%}
-          Robust variant lookup:
-          - Accepts plain numeric id (e.g. 123456789)
-          - Accepts URL query like ?variant=123456789
-          - Accepts GraphQL gid like gid://shopify/ProductVariant/123456789
-          - Trims quotes/spaces
-          - Falls back to first available variant, then to first variant
-        {%- endcomment -%}
-
         {% assign variant = null %}
 
         {% if block.settings.variant_id != blank %}
           {% assign raw = block.settings.variant_id | strip %}
-          {%- comment -%} remove surrounding quotes if admin pasted them {%- endcomment -%}
+
           {% assign raw = raw | remove: '"' | remove: "'" | strip %}
 
-          {%- comment -%} if it's a query param like ?variant=123 or ...=123 {%- endcomment -%}
           {% if raw contains '=' %}
             {% assign parts_eq = raw | split: '=' %}
             {% assign idx = parts_eq.size | minus: 1 %}
@@ -40,7 +30,6 @@
             {% assign raw = parts_slash[idx] | strip %}
           {% endif %}
 
-          {%- comment -%} convert to number (plus:0) so comparison with v.id (integer) works reliably {%- endcomment -%}
           {% assign search_id = raw | plus: 0 %}
 
           {% for v in product.variants %}
@@ -51,7 +40,6 @@
           {% endfor %}
         {% endif %}
 
-        {%- comment -%} if variant not found by id → pick first available variant (in-stock) {%- endcomment -%}
         {% if variant == null %}
           {% for v in product.variants %}
             {% if v.available %}
@@ -61,7 +49,6 @@
           {% endfor %}
         {% endif %}
 
-        {%- comment -%} last fallback: first variant (keeps previous behaviour) {%- endcomment -%}
         {% if variant == null %}
           {% assign variant = product.variants.first %}
         {% endif %}
