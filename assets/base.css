@@ -4079,6 +4079,12 @@ input[type="radio"]:checked + .custom-swatch-label .swatch-content {
   }
 }
 
+@media(max-width: 1180px) {
+  .breadcrumbs--blogpage {
+    padding: 20px 10px 0;
+  }
+}
+
 @media (max-width: 749px) {
   .custom-image-text .image-with-text__heading {
     font-size: 26px;
