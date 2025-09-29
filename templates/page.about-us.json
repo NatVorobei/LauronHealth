@@ -41,7 +41,7 @@
       ],
       "custom_css": [
         ".banner__heading {font-family: var(--font-heading-main); font-weight: 700; font-size: 40px; line-height: 44px;}",
-        ".banner__text {font-size: 20px; line-height: 24px;}",
+        ".banner__text {font-size: 20px; line-height: 24px; color: #fff;}",
         "@media (max-width: 749px) {.banner__heading {font-size: 24px; line-height: 30px; } .banner__text {font-size: 14px; line-height: 18px; }}"
       ],
       "name": "t:sections.image-banner.presets.name",
