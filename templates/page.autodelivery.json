@@ -128,9 +128,8 @@
           "type": "product_block",
           "settings": {
             "product": "freeze-age",
+            "variant_id": "47495227932904",
             "custom_image": "shopify://shop_images/freeze-age-product-block_1.png",
-            "rating": "★ ★ ★ ★ ★",
-            "reviews": "31 відгук",
             "discount": "Збережіть",
             "caption": "",
             "features": "Підтримує загальну стійкість організму; Уповільнює вікові зміни; Покращує здоров'я шкіри та суглобів",
@@ -141,9 +140,8 @@
           "type": "product_block",
           "settings": {
             "product": "mental-performance",
+            "variant_id": "",
             "custom_image": "shopify://shop_images/mental-health-product-block_1.png",
-            "rating": "★ ★ ★ ★ ★",
-            "reviews": "31 відгук",
             "discount": "Збережіть",
             "caption": "",
             "features": "Щоденно підтримує ясність мислення; Знижує рівень стресу; Надає енергію для розумової витривалості",
