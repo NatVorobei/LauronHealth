@@ -36,7 +36,15 @@
         "description2": "",
         "button1_text": "",
         "button2_text": "",
-        "button2_link": ""
+        "button2_link": "",
+        "use_video_desktop": false,
+        "video_desktop_webm": "",
+        "video_desktop_url": "",
+        "video_desktop_poster": "",
+        "use_video_mobile": false,
+        "video_mobile_webm": "",
+        "video_mobile_url": "",
+        "video_mobile_poster": ""
       }
     },
     "image_banner_rcL9Wf": {
@@ -150,9 +158,8 @@
           "type": "product_block",
           "settings": {
             "product": "freeze-age",
+            "variant_id": "47495227932904",
             "custom_image": "shopify://shop_images/freeze-age-product-block_1.png",
-            "rating": "★ ★ ★ ★ ★",
-            "reviews": "31 відгук",
             "discount": "Збережіть",
             "caption": "",
             "features": "Підтримує загальну стійкість організму; Уповільнює вікові зміни; Покращує здоров'я шкіри та суглобів",
@@ -163,9 +170,8 @@
           "type": "product_block",
           "settings": {
             "product": "mental-performance",
+            "variant_id": "",
             "custom_image": "shopify://shop_images/mental-health-product-block_1.png",
-            "rating": "★ ★ ★ ★ ★",
-            "reviews": "31 відгук",
             "discount": "Збережіть",
             "caption": "",
             "features": "Щоденно підтримує ясність мислення; Знижує рівень стресу; Надає енергію для розумової витривалості",
