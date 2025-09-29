@@ -60,22 +60,6 @@
         "show_text_below": false
       }
     },
-    "autodelicery_steps_q7AGrp": {
-      "type": "autodelicery-steps",
-      "name": "How It Works Section",
-      "settings": {
-        "section_title": "Як це працює?",
-        "step1_icon": "shopify://shop_images/parcel.svg",
-        "step1_title": "Крок 1",
-        "step1_text": "Оберіть продукти, на які хочете оформити підписку, та натисніть автодоставку",
-        "step2_icon": "shopify://shop_images/calendar.svg",
-        "step2_title": "Крок 2",
-        "step2_text": "Вкажіть зручний для себе інтервал доставки та кількість баночок",
-        "step3_icon": "shopify://shop_images/cycle.svg",
-        "step3_title": "Крок 3",
-        "step3_text": "Завершіть оформлення замовлення — та отримуйте знижку до 20% на кожну доставку!"
-      }
-    },
     "exclusive_benefits_VPwFLN": {
       "type": "exclusive-benefits",
       "blocks": {
@@ -119,6 +103,22 @@
         "padding_bottom_desktop": 0,
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 0
+      }
+    },
+    "autodelicery_steps_q7AGrp": {
+      "type": "autodelicery-steps",
+      "name": "How It Works Section",
+      "settings": {
+        "section_title": "Як це працює?",
+        "step1_icon": "shopify://shop_images/parcel.svg",
+        "step1_title": "Крок 1",
+        "step1_text": "Оберіть продукти, на які хочете оформити підписку, та натисніть автодоставку",
+        "step2_icon": "shopify://shop_images/calendar.svg",
+        "step2_title": "Крок 2",
+        "step2_text": "Вкажіть зручний для себе інтервал доставки та кількість баночок",
+        "step3_icon": "shopify://shop_images/cycle.svg",
+        "step3_title": "Крок 3",
+        "step3_text": "Завершіть оформлення замовлення — та отримуйте знижку до 20% на кожну доставку!"
       }
     },
     "two_products_block_xE7L9i": {
@@ -281,8 +281,8 @@
   "order": [
     "main",
     "image_banner_WLYqkw",
-    "autodelicery_steps_q7AGrp",
     "exclusive_benefits_VPwFLN",
+    "autodelicery_steps_q7AGrp",
     "two_products_block_xE7L9i",
     "testimonials_hBqhiF",
     "collapsible_content_kkPzGf"
