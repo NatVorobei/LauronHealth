@@ -313,12 +313,9 @@
 }
 .article-related .swiper-pagination-bullet-active { background: #111; }
 
-@media (max-width: 1300px) {
-  /* .article-template{
+@media(min-width: 750px) and (max-width: 1300px) {
+  .article-related {
     padding: 0 10px;
-  } */
-  .breadcrumbs--article {
-    padding: 20px 10px 0;
   }
 }
 
@@ -327,9 +324,12 @@
   .article-wrap--2,
   .article-wrap--3,
   .article-header,
-  .article-meta,
-  .article-related {
+  .article-meta {
     padding: 0 10px;
+  }
+
+  .breadcrumbs--article {
+    padding: 20px 10px 0;
   }
 }
 
