@@ -194,6 +194,7 @@
   font-size: 12px;
   line-height: 12px;
   color: #fff;
+  gap: 10px;
 }
 
 .footer__priority-text {
