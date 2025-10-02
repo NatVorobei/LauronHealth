@@ -203,8 +203,22 @@
         "image_top": "shopify://shop_images/science-7.webp"
       }
     },
+    "new_science_block_6bMeJ9": {
+      "type": "new-science-block",
+      "name": "New Science Block",
+      "settings": {
+        "science_id": "",
+        "title": "Зручний формат споживання",
+        "text_1": "<p>Справжня турбота має бути простою. <br/><br/>Lauron не вимагає змінювати рутину чи витрачати час: відкрив — випив — живеш далі.</p>",
+        "text_2": "<p>Без порошків, без капсул, без складних схем. Легко взяти із собою на роботу, тренування чи у подорож.  <br/><br/>Кілька секунд на день — і ваш організм отримує підтримку, яка справді працює зсередини.</p>",
+        "text_3": "",
+        "text": "",
+        "image_top": "shopify://shop_images/science-8.webp"
+      }
+    },
     "science_block_rTmiUJ": {
       "type": "science-block",
+      "disabled": true,
       "custom_css": [
         "@media (max-width: 749px) {.science-container {padding-bottom: 0; }}"
       ],
@@ -340,6 +354,7 @@
     "science_block_wTJzkB",
     "new_science_block_A7jEA8",
     "science_block_f77LFk",
+    "new_science_block_6bMeJ9",
     "science_block_rTmiUJ",
     "two_products_block_4rf7UK",
     "collapsible_content_nndY7m"
