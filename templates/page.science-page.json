@@ -181,7 +181,6 @@
     },
     "science_block_f77LFk": {
       "type": "science-block",
-      "disabled": true,
       "name": "Custom Science Block",
       "settings": {
         "science_id": "soft-water",
