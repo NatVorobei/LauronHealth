@@ -1,0 +1,268 @@
+<div class="science-wrapper" id="{{ section.settings.science_id }}">
+  <div class="science-container science-desktop">
+    <div class="science-content">
+      {% if section.settings.title != blank %}
+        <h2 class="science-title">{{ section.settings.title }}</h2>
+      {% endif %}
+
+      <div class="science-text">
+        {% if section.settings.text_1 != blank %}
+          <div class="science-paragraph">{{ section.settings.text_1 }}</div>
+        {% endif %}
+        {% if section.settings.text_2 != blank %}
+          <div class="science-paragraph">{{ section.settings.text_2 }}</div>
+        {% endif %}
+        {% if section.settings.text_3 != blank %}
+          <div class="science-paragraph">{{ section.settings.text_3 }}</div>
+        {% endif %}
+        {%- if section.settings.text == blank
+          and section.settings.text_1 == blank
+          and section.settings.text_2 == blank
+          and section.settings.text_3 == blank
+        -%}
+          {{ section.settings.text }}
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="science-divider"></div>
+
+    <div class="science-images">
+      {% if section.settings.image_top %}
+        <div class="science-image top">
+          <img src="{{ section.settings.image_top | image_url: width: 600 }}" alt="Science image top" loading="lazy">
+        </div>
+      {% endif %}
+      {% if section.settings.image_middle %}
+        <div class="science-image middle">
+          <img
+            src="{{ section.settings.image_middle | image_url: width: 600 }}"
+            alt="Science image middle"
+            loading="lazy"
+          >
+        </div>
+      {% endif %}
+      {% if section.settings.image_bottom %}
+        <div class="science-image bottom">
+          <img
+            src="{{ section.settings.image_bottom | image_url: width: 600 }}"
+            alt="Science image bottom"
+            loading="lazy"
+          >
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="science-container-mobile">
+    {% if section.settings.title != blank %}
+      <h2 class="science-title">{{ section.settings.title }}</h2>
+    {% endif %}
+
+    {% if section.settings.text_1 != blank or section.settings.image_top != blank %}
+      <div class="science-chunk">
+        {% if section.settings.text_1 != blank %}
+          <div class="science-text">{{ section.settings.text_1 }}</div>
+        {% endif %}
+        {% if section.settings.image_top %}
+          <div class="science-image">
+            <img src="{{ section.settings.image_top | image_url: width: 900 }}" alt="Science image top" loading="lazy">
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if section.settings.text_2 != blank or section.settings.image_middle != blank %}
+      <div class="science-chunk">
+        {% if section.settings.text_2 != blank %}
+          <div class="science-text">{{ section.settings.text_2 }}</div>
+        {% endif %}
+        {% if section.settings.image_middle %}
+          <div class="science-image">
+            <img
+              src="{{ section.settings.image_middle | image_url: width: 900 }}"
+              alt="Science image middle"
+              loading="lazy"
+            >
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if section.settings.text_3 != blank or section.settings.image_bottom != blank %}
+      <div class="science-chunk">
+        {% if section.settings.text_3 != blank %}
+          <div class="science-text">{{ section.settings.text_3 }}</div>
+        {% endif %}
+        {% if section.settings.image_bottom %}
+          <div class="science-image">
+            <img
+              src="{{ section.settings.image_bottom | image_url: width: 900 }}"
+              alt="Science image bottom"
+              loading="lazy"
+            >
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {%- if section.settings.text == blank
+      and section.settings.text_1 == blank
+      and section.settings.text_2 == blank
+      and section.settings.text_3 == blank
+    -%}
+      <div class="science-chunk">
+        <div class="science-text">{{ section.settings.text }}</div>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<style>
+  .science-container,
+  .science-container-mobile {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .science-desktop {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+
+  .science-content {
+    max-width: 720px;
+    border-bottom: 1px solid #1F1F21;
+    padding-bottom: 60px;
+    padding-top: 80px;
+    border-top: none;
+  }
+
+  .science-title {
+    font-size: 30px;
+    font-family: var(--font-heading-main);
+    line-height: 30px;
+    font-weight: 700;
+    color: var(--color-main-text);
+    margin-bottom: 40px;
+  }
+
+  .science-text {
+    font-size: 20px;
+    line-height: 28px;
+    color: var(--color-main-text);
+  }
+
+  .science-paragraph + .science-paragraph {
+    margin-top: 18px;
+  }
+
+  .science-divider {
+    width: 1px;
+    background-color: #D7D7D7;
+  }
+
+  .science-images {
+    display: flex;
+    flex-direction: column;
+    gap: 270px;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 80px;
+  }
+
+  .science-image {
+    max-width: 340px;
+  }
+  .science-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    display: block;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+  }
+
+  .science-container-mobile {
+    display: none;
+    padding: 0 14px 60px;
+  }
+  .science-container-mobile .science-title {
+    font-size: 20px;
+    line-height: 26px;
+    margin-bottom: 26px;
+  }
+  .science-container-mobile .science-text {
+    font-size: 16px;
+    line-height: 22px;
+  }
+  .science-container-mobile .science-image {
+    max-width: 100%;
+    margin-top: 24px;
+  }
+  .science-container-mobile .science-chunk + .science-chunk {
+    margin-top: 24px;
+  }
+
+  .science-container-mobile .science-chunk:last-child {
+    padding-bottom: 24px;
+    border-bottom: 1px solid #D7D7D7;
+  }
+
+  @media (max-width: 1300px) {
+    .science-container,
+    .science-container-mobile {
+      padding: 0 14px 0;
+    }
+  }
+
+  @media (max-width: 1279px) {
+    .science-images { gap: 20px; }
+    .science-divider { display: none; }
+  }
+
+  @media (max-width: 989px) {
+    .science-desktop { display: none; }
+    .science-container-mobile { display: block; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Simple Science Block",
+  "tag": "section",
+  "class": "science-block",
+  "settings": [
+    { "type": "text", "id": "science_id", "label": "Science Id" },
+
+    { "type": "text", "id": "title", "label": "Заголовок", "default": "Новий формат добавок" },
+
+    {
+      "type": "richtext",
+      "id": "text_1",
+      "label": "Опис — блок 1",
+      "default": "<p>Текст...</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "text_2",
+      "label": "Опис — блок 2",
+      "default": "<p></p>"
+    },
+    {
+      "type": "richtext",
+      "id": "text_3",
+      "label": "Опис — блок 3",
+      "default": "<p></p>"
+    },
+
+    { "type": "richtext", "id": "text", "label": "Опис (старе поле, fallback)", "default": "<p></p>" },
+
+    { "type": "image_picker", "id": "image_top", "label": "Верхнє зображення" },
+    { "type": "image_picker", "id": "image_middle", "label": "Середнє зображення" },
+    { "type": "image_picker", "id": "image_bottom", "label": "Нижнє зображення" }
+  ],
+  "presets": [{ "name": "Science Block" }]
+}
+{% endschema %}
