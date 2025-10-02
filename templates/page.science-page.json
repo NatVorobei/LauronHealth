@@ -127,6 +127,7 @@
     },
     "science_block_6G8LmB": {
       "type": "science-block",
+      "disabled": true,
       "name": "Custom Science Block",
       "settings": {
         "science_id": "encapsulation",
@@ -139,6 +140,7 @@
     },
     "science_block_wTJzkB": {
       "type": "science-block",
+      "disabled": true,
       "name": "Custom Science Block",
       "settings": {
         "science_id": "hyaluronic-acid",
@@ -150,6 +152,7 @@
     },
     "science_block_f77LFk": {
       "type": "science-block",
+      "disabled": true,
       "name": "Custom Science Block",
       "settings": {
         "science_id": "soft-water",
@@ -160,6 +163,7 @@
     },
     "science_block_rTmiUJ": {
       "type": "science-block",
+      "disabled": true,
       "custom_css": [
         "@media (max-width: 749px) {.science-container {padding-bottom: 0; }}"
       ],
