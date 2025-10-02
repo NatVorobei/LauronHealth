@@ -179,8 +179,22 @@
         "image_bottom": "shopify://shop_images/b8bcf6d52ee8a7efe44ba461813edf1d6b93009f.jpg"
       }
     },
+    "new_science_block_A7jEA8": {
+      "type": "new-science-block",
+      "name": "New Science Block",
+      "settings": {
+        "science_id": "soft-water",
+        "title": "Precise Soft Water",
+        "text_1": "<p>Має знижений вміст реактивних іонів кальцію та магнію та оптимізований іонний профіль для захисту біоактивних інгредієнтів. Контроль над формою і кількістю мінеральних компонентів запобігає утворенню важкозасвоюваних комплексів і втраті біодоступності та засвоюваності активних речовин, забезпечуючи їх розчинність, стабільність і ефективну абсорбцію.</p>",
+        "text_2": "<p>Оптимальний об’єм води (не менше 200 мл) є необхідною умовою для забезпечення біодоступності активних інгредієнтів, проте часто ігнорується. Адекватна кількість рідини сприяє розчиненню сполук, їх транспорту до тонкого кишечника — основної ділянки абсорбції — та підтримці фізіологічних механізмів всмоктування.</p>",
+        "text_3": "",
+        "text": "",
+        "image_top": "shopify://shop_images/science-7.webp"
+      }
+    },
     "science_block_f77LFk": {
       "type": "science-block",
+      "disabled": true,
       "name": "Custom Science Block",
       "settings": {
         "science_id": "soft-water",
@@ -325,6 +339,7 @@
     "science_block_6G8LmB",
     "new_science_block_mzjzzh",
     "science_block_wTJzkB",
+    "new_science_block_A7jEA8",
     "science_block_f77LFk",
     "science_block_rTmiUJ",
     "two_products_block_4rf7UK",
