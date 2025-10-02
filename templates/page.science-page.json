@@ -110,6 +110,7 @@
     },
     "science_block_qQUdE8": {
       "type": "science-block",
+      "disabled": true,
       "custom_css": [
         ".science-content,.science-images {padding-top: 0;}",
         ".science-container {padding-top: 80px;}",
