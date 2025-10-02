@@ -91,6 +91,11 @@
     },
     "science_block_qQUdE8": {
       "type": "science-block",
+      "custom_css": [
+        ".science-content,.science-images {padding-top: 0;}",
+        ".science-container {padding-top: 80px;}",
+        "@media (max-width: 749px) {.science-container {padding-top: 40px; } .science-content {border-top: none; }}"
+      ],
       "name": "Custom Science Block",
       "settings": {
         "science_id": "",
