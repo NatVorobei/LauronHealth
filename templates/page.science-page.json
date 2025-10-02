@@ -153,6 +153,18 @@
         "image_bottom": "shopify://shop_images/science-4.webp"
       }
     },
+    "new_science_block_mzjzzh": {
+      "type": "new-science-block",
+      "name": "New Science Block",
+      "settings": {
+        "science_id": "",
+        "title": "Новий формат добавок",
+        "text_1": "<p>Текст...</p>",
+        "text_2": "<p></p>",
+        "text_3": "<p></p>",
+        "text": "<p></p>"
+      }
+    },
     "science_block_wTJzkB": {
       "type": "science-block",
       "name": "Custom Science Block",
@@ -309,6 +321,7 @@
     "science_block_qQUdE8",
     "new_science_block_fmabQE",
     "science_block_6G8LmB",
+    "new_science_block_mzjzzh",
     "science_block_wTJzkB",
     "science_block_f77LFk",
     "science_block_rTmiUJ",
