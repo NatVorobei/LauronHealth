@@ -267,67 +267,7 @@ document.addEventListener('DOMContentLoaded', function () {
     select.addEventListener('focusout', closeSelect);
   });
 
-// IOS
-document.addEventListener('DOMContentLoaded', () => {
-  const bar = document.getElementById('sticky-add-to-cart');
-  if (!bar) return;
 
-  if (bar.parentNode !== document.body) document.body.appendChild(bar);
-
-  const root = document.documentElement;
-
-  function measureBarHeight() {
-    const prevTransform = bar.style.transform;
-    bar.style.transform = 'none';
-    const h = bar.getBoundingClientRect().height;
-    bar.style.transform = prevTransform;
-    root.style.setProperty('--bar-h', h + 'px');
-  }
-
-  function updateViewportBottom() {
-    let vBottom = window.innerHeight;
-
-    if (window.visualViewport) {
-      const vv = window.visualViewport;
-
-      vBottom = vv.height + vv.offsetTop;
-
-      if ('pageTop' in vv && typeof vv.pageTop === 'number') {
-        vBottom = (vv.pageTop - window.scrollY) + vv.height;
-      }
-    }
-    if (vBottom < 0) vBottom = 0;
-
-    root.style.setProperty('--vvh', vBottom + 'px');
-  }
-
-  const place = () => {
-    updateViewportBottom();
-    measureBarHeight();
-  };
-
-  if (window.visualViewport) {
-    const vv = window.visualViewport;
-    if ('ongeometrychange' in vv) vv.addEventListener('geometrychange', place, { passive: true });
-    vv.addEventListener('resize', place,   { passive: true });
-    vv.addEventListener('scroll', place,   { passive: true });
-  }
-  window.addEventListener('resize', place,           { passive: true });
-  window.addEventListener('scroll', place,           { passive: true });
-  window.addEventListener('orientationchange', place,{ passive: true });
-
-  document.addEventListener('focusin', (e) => {
-    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
-      bar.classList.remove('show');
-    }
-  });
-  document.addEventListener('focusout', () => {
-    bar.classList.add('show');
-    place();
-  });
-
-  place();
-});
 
 
 
