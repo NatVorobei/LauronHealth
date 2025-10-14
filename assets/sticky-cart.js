@@ -270,11 +270,14 @@ document.addEventListener('DOMContentLoaded', function () {
 // IOS
 document.addEventListener('DOMContentLoaded', () => {
   const bar = document.getElementById('sticky-add-to-cart');
-  if (!bar || !window.visualViewport) return;
+  if (!bar) return;
 
+  if (bar.parentNode !== document.body) document.body.appendChild(bar);
+
+  if (!window.visualViewport) return;
   const vv = window.visualViewport;
 
-  function place() {
+  const place = () => {
     let off = Math.max(0, window.innerHeight - vv.height - vv.offsetTop);
 
     if ('pageTop' in vv && typeof vv.pageTop === 'number') {
@@ -283,8 +286,8 @@ document.addEventListener('DOMContentLoaded', () => {
       off = Math.max(0, bottomOfLayout - bottomOfVisual);
     }
 
-    bar.style.bottom = `calc(env(safe-area-inset-bottom, 0px) + ${off}px)`;
-  }
+    bar.style.setProperty('--vv-offset', off + 'px'); 
+  };
 
   if ('ongeometrychange' in vv) vv.addEventListener('geometrychange', place, { passive: true });
   vv.addEventListener('resize', place, { passive: true });
@@ -293,8 +296,19 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', place, { passive: true });
   window.addEventListener('orientationchange', place, { passive: true });
 
+  document.addEventListener('focusin', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+      bar.classList.remove('show');
+    }
+  });
+  document.addEventListener('focusout', () => {
+    bar.classList.add('show');
+    place();
+  });
+
   place();
 });
+
 
 
 
