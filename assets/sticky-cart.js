@@ -274,27 +274,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (bar.parentNode !== document.body) document.body.appendChild(bar);
 
-  if (!window.visualViewport) return;
-  const vv = window.visualViewport;
+  const root = document.documentElement;
+
+  function measureBarHeight() {
+    const prevTransform = bar.style.transform;
+    bar.style.transform = 'none';
+    const h = bar.getBoundingClientRect().height;
+    bar.style.transform = prevTransform;
+    root.style.setProperty('--bar-h', h + 'px');
+  }
+
+  function updateViewportBottom() {
+    let vBottom = window.innerHeight;
+
+    if (window.visualViewport) {
+      const vv = window.visualViewport;
+
+      vBottom = vv.height + vv.offsetTop;
+
+      if ('pageTop' in vv && typeof vv.pageTop === 'number') {
+        vBottom = (vv.pageTop - window.scrollY) + vv.height;
+      }
+    }
+    if (vBottom < 0) vBottom = 0;
+
+    root.style.setProperty('--vvh', vBottom + 'px');
+  }
 
   const place = () => {
-    let off = Math.max(0, window.innerHeight - vv.height - vv.offsetTop);
-
-    if ('pageTop' in vv && typeof vv.pageTop === 'number') {
-      const bottomOfLayout = window.scrollY + window.innerHeight;
-      const bottomOfVisual = vv.pageTop + vv.height;
-      off = Math.max(0, bottomOfLayout - bottomOfVisual);
-    }
-
-    bar.style.setProperty('--vv-offset', off + 'px'); 
+    updateViewportBottom();
+    measureBarHeight();
   };
 
-  if ('ongeometrychange' in vv) vv.addEventListener('geometrychange', place, { passive: true });
-  vv.addEventListener('resize', place, { passive: true });
-  vv.addEventListener('scroll', place, { passive: true });
-  window.addEventListener('resize', place, { passive: true });
-  window.addEventListener('scroll', place, { passive: true });
-  window.addEventListener('orientationchange', place, { passive: true });
+  if (window.visualViewport) {
+    const vv = window.visualViewport;
+    if ('ongeometrychange' in vv) vv.addEventListener('geometrychange', place, { passive: true });
+    vv.addEventListener('resize', place,   { passive: true });
+    vv.addEventListener('scroll', place,   { passive: true });
+  }
+  window.addEventListener('resize', place,           { passive: true });
+  window.addEventListener('scroll', place,           { passive: true });
+  window.addEventListener('orientationchange', place,{ passive: true });
 
   document.addEventListener('focusin', (e) => {
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
@@ -308,6 +328,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   place();
 });
+
 
 
 
