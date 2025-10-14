@@ -80,9 +80,7 @@
     opacity: 0;
     transition: opacity 0.3s ease;
     position: fixed;
-    bottom: 0;
-    bottom: env(safe-area-inset-bottom);
-    bottom: constant(safe-area-inset-bottom);
+    bottom: env(safe-area-inset-bottom, 0);
     left: 0;
     right: 0;
     background: linear-gradient(90deg, rgba(209, 232, 230, 1) 0%, rgba(255, 255, 255, 1) 100%);
