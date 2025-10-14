@@ -270,20 +270,32 @@ document.addEventListener('DOMContentLoaded', function () {
 // IOS
 document.addEventListener('DOMContentLoaded', () => {
   const bar = document.getElementById('sticky-add-to-cart');
-  if (!bar) return;
-  if (bar.parentNode !== document.body) document.body.appendChild(bar);
+  if (!bar || !window.visualViewport) return;
 
-  if (window.visualViewport) {
-    const place = () => {
-      const off = Math.max(0, window.innerHeight - window.visualViewport.height - window.visualViewport.offsetTop);
-      bar.style.bottom = `calc(env(safe-area-inset-bottom, 0px) + ${off}px)`;
-    };
-    visualViewport.addEventListener('resize', place);
-    visualViewport.addEventListener('scroll', place);
-    window.addEventListener('orientationchange', place);
-    place();
+  const vv = window.visualViewport;
+
+  function place() {
+    let off = Math.max(0, window.innerHeight - vv.height - vv.offsetTop);
+
+    if ('pageTop' in vv && typeof vv.pageTop === 'number') {
+      const bottomOfLayout = window.scrollY + window.innerHeight;
+      const bottomOfVisual = vv.pageTop + vv.height;
+      off = Math.max(0, bottomOfLayout - bottomOfVisual);
+    }
+
+    bar.style.bottom = `calc(env(safe-area-inset-bottom, 0px) + ${off}px)`;
   }
+
+  if ('ongeometrychange' in vv) vv.addEventListener('geometrychange', place, { passive: true });
+  vv.addEventListener('resize', place, { passive: true });
+  vv.addEventListener('scroll', place, { passive: true });
+  window.addEventListener('resize', place, { passive: true });
+  window.addEventListener('scroll', place, { passive: true });
+  window.addEventListener('orientationchange', place, { passive: true });
+
+  place();
 });
+
 
 
 
