@@ -87,11 +87,12 @@
     box-shadow: 1px 3px 10px #87878d;
     color: var(--color-main-text);
     z-index: 999;
-    transform: translateZ(0);
+    transform: translate3d(0, calc(-1 * var(--vv-offset, 0px)), 0);
+    will-change: transform; 
     -webkit-backface-visibility: hidden;
   }
 
-  #sticky-add-to-cart .sticky-add-to-cart__container {
+  #sticky-add-to-cart .sticky-add-to-cart__container{
     padding-bottom: env(safe-area-inset-bottom, 0);
   }
 
