@@ -116,7 +116,7 @@
         "image": "shopify://shop_images/autodelivery-benefits.webp",
         "heading": "Ексклюзивні переваги для вас",
         "reverse_layout": false,
-        "padding_top_desktop": 40,
+        "padding_top_desktop": 60,
         "padding_bottom_desktop": 0,
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 0
