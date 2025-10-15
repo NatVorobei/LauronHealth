@@ -23,14 +23,14 @@
         "heading_RLprKi": {
           "type": "heading",
           "settings": {
-            "heading": "Про нас",
+            "heading": "Ми створюємо рішення,",
             "heading_size": "h1"
           }
         },
         "text_qAM3XM": {
           "type": "text",
           "settings": {
-            "text": "Wellbel is a physician-formulated functional hair wellness brand that bridges the gap between health and beauty.",
+            "text": "які допомагають організму залишатись у балансі. < Це підхід, у якому наука поєднується з простотою щоденного життя.",
             "text_style": "body"
           }
         }
@@ -46,7 +46,7 @@
       ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
-        "image": "shopify://shop_images/Science_hero_screen.webp",
+        "image": "shopify://shop_images/ingredients-banner.webp",
         "image_overlay_opacity": 0,
         "image_height": "small",
         "image_behavior": "none",
