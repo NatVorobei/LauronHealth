@@ -48,7 +48,7 @@
       ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
-        "image": "shopify://shop_images/LS_LauronBox_Final_df5daaf6-3fc3-4567-b4ba-bc4a85b91484.png",
+        "image": "shopify://shop_images/LS_LauronBox_Final_marble.png",
         "image_overlay_opacity": 0,
         "image_height": "small",
         "image_behavior": "none",
