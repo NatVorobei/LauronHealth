@@ -181,15 +181,15 @@
           "type": "tab",
           "name": "Склад та активні компоненти",
           "settings": {
-            "tab_title": "Склад та активні компоненти",
-            "tab_id": "components"
+            "tab_title": "Як приймати",
+            "tab_id": "how-to-use"
           }
         },
         "faq_group_bDPaJC": {
           "type": "faq_group",
           "settings": {
-            "parent_tab": "components",
-            "group_title": "Склад та активні компоненти",
+            "parent_tab": "how-to-use",
+            "group_title": "Як приймати",
             "q1": "Які ключові речовини входять до складу Lauron?",
             "a1": "",
             "q2": "Що дає гіалуронова кислота при вживанні всередину?",
